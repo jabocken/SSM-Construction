@@ -1,0 +1,26 @@
+Number of assembly instructions     = 11
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 11
+Number of edges: 10
+
+7210 (False): 0
+
+7210: CMP Reg EDI, Immediate 15 3
+7213: LEA Reg RAX, Address (AddrPlus (FromReg RIP) (AddrImm 106448)) 7
+721a: JBE 7220 (resolved immediate)
+  |
+  `- 721c,7220
+721c: REPZ RET  2
+  |
+  `- 
+7220: LEA Reg RAX, Address (AddrPlus (FromReg RIP) (AddrImm 2251033)) 7
+7227: MOV Reg EDI, Reg EDI 2
+7229: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 106426)) 7
+7230: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDI)))) 4
+7234: TEST Reg RAX, Reg RAX 3
+7237: CMOVZ Reg RAX, Reg RDX 4
+723b: RET  1
+  |
+  `- 

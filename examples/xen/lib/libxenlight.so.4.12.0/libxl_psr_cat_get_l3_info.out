@@ -1,0 +1,37 @@
+Number of assembly instructions     = 20
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 20
+Number of edges: 20
+
+75130 (False): 0
+
+75130: PUSH Reg RBX 1
+75131: MOV Reg RBX, Reg RDX 3
+75134: MOV Reg ECX, Immediate 3 5
+75139: SUB Reg RSP, Immediate 16 4
+7513d: LEA Reg RDX, Address (AddrPlus (FromReg RSP) (AddrImm 4)) 5
+75142: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+7514b: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
+75150: XOR Reg EAX, Reg EAX 2
+75152: CALL libxl_psr_cat_get_info (external)
+75157: TEST Reg EAX, Reg EAX 2
+75159: JNZ 75161 (resolved immediate)
+  |
+  `- 7515b,75161
+7515b: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))) 4
+7515f: MOV Address (SizeDir 32 (FromReg RBX)), Reg EDX 2
+75161: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+75166: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+7516f: JNZ 75177 (resolved immediate)
+  |
+  `- 75171,75177
+75171: ADD Reg RSP, Immediate 16 4
+75175: POP Reg RBX 1
+75176: RET  1
+  |
+  `- 
+75177: CALL __stack_chk_fail (external)
+  |
+  `- 

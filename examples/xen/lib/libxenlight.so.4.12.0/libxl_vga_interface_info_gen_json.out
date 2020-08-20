@@ -1,0 +1,83 @@
+Number of assembly instructions     = 51
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 51
+Number of edges: 52
+
+40cd0 (True): 88aa3
+88a50 (False): 0
+
+40c90: TEST Reg RSI, Reg RSI 3
+40c93: JZ 40cc0 (resolved immediate)
+  |
+  `- 40c95,40cc0
+40c95: PUSH Reg RBP 1
+40c96: PUSH Reg RBX 1
+40c97: MOV Reg RBP, Reg RDI 3
+40c9a: MOV Reg RDI, Reg RSI 3
+40c9d: MOV Reg RBX, Reg RSI 3
+40ca0: SUB Reg RSP, Immediate 8 4
+40ca4: CALL strlen (external)
+40ca9: ADD Reg RSP, Immediate 8 4
+40cad: MOV Reg RSI, Reg RBX 3
+40cb0: MOV Reg RDI, Reg RBP 3
+40cb3: POP Reg RBX 1
+40cb4: POP Reg RBP 1
+40cb5: MOV Reg RDX, Reg RAX 3
+40cb8: JMP yajl_gen_string (jmp to external function)
+  |
+  `- 
+40cc0: JMP yajl_gen_null (jmp to external function)
+  |
+  `- 
+40cd0: JMP 40c90 (resolved immediate)
+  |
+  `- 40c90
+88a50: PUSH Reg RBP 1
+88a51: PUSH Reg RBX 1
+88a52: MOV Reg RBP, Reg RSI 3
+88a55: MOV Reg RBX, Reg RDI 3
+88a58: SUB Reg RSP, Immediate 8 4
+88a5c: CALL yajl_gen_map_open (external)
+88a61: TEST Reg EAX, Reg EAX 2
+88a63: JNZ 88a84 (resolved immediate)
+  |
+  `- 88a65,88a84
+88a65: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+88a68: TEST Reg EAX, Reg EAX 2
+88a6a: JZ 88aa7 (resolved immediate)
+  |
+  `- 88a6c,88aa7
+88a6c: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 129463)) 7
+88a73: MOV Reg EDX, Immediate 4 5
+88a78: MOV Reg RDI, Reg RBX 3
+88a7b: CALL yajl_gen_string (external)
+88a80: TEST Reg EAX, Reg EAX 2
+88a82: JZ 88a90 (resolved immediate)
+  |
+  `- 88a84,88a90
+88a84: ADD Reg RSP, Immediate 8 4
+88a88: POP Reg RBX 1
+88a89: POP Reg RBP 1
+88a8a: RET  1
+  |
+  `- 
+88a90: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+88a93: CALL libxl_vga_interface_type_to_string (external)
+88a98: MOV Reg RDI, Reg RBX 3
+88a9b: MOV Reg RSI, Reg RAX 3
+88a9e: CALL libxl__yajl_gen_enum (internal)
+  |
+  `- 40cd0
+88aa3: TEST Reg EAX, Reg EAX 2
+88aa5: JNZ 88a84 (resolved immediate)
+  |
+  `- 88a84,88aa7
+88aa7: ADD Reg RSP, Immediate 8 4
+88aab: MOV Reg RDI, Reg RBX 3
+88aae: POP Reg RBX 1
+88aaf: POP Reg RBP 1
+88ab0: JMP yajl_gen_map_close (jmp to external function)
+  |
+  `- 

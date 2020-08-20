@@ -1,0 +1,203 @@
+Number of assembly instructions     = 127
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 127
+Number of edges: 146
+
+40c90 (True): 7bf9c
+7bf50 (False): 0
+
+40c90: TEST Reg RSI, Reg RSI 3
+40c93: JZ 40cc0 (resolved immediate)
+  |
+  `- 40c95,40cc0
+40c95: PUSH Reg RBP 1
+40c96: PUSH Reg RBX 1
+40c97: MOV Reg RBP, Reg RDI 3
+40c9a: MOV Reg RDI, Reg RSI 3
+40c9d: MOV Reg RBX, Reg RSI 3
+40ca0: SUB Reg RSP, Immediate 8 4
+40ca4: CALL strlen (external)
+40ca9: ADD Reg RSP, Immediate 8 4
+40cad: MOV Reg RSI, Reg RBX 3
+40cb0: MOV Reg RDI, Reg RBP 3
+40cb3: POP Reg RBX 1
+40cb4: POP Reg RBP 1
+40cb5: MOV Reg RDX, Reg RAX 3
+40cb8: JMP yajl_gen_string (jmp to external function)
+  |
+  `- 
+40cc0: JMP yajl_gen_null (jmp to external function)
+  |
+  `- 
+7bf50: PUSH Reg R12 2
+7bf52: PUSH Reg RBP 1
+7bf53: MOV Reg RBP, Reg RSI 3
+7bf56: PUSH Reg RBX 1
+7bf57: MOV Reg RBX, Reg RDI 3
+7bf5a: CALL yajl_gen_map_open (external)
+7bf5f: TEST Reg EAX, Reg EAX 2
+7bf61: JNZ 7bf89 (resolved immediate)
+  |
+  `- 7bf63,7bf89
+7bf63: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+7bf66: TEST Reg ECX, Reg ECX 2
+7bf68: JNZ 7bfd0 (resolved immediate)
+  |
+  `- 7bf6a,7bfd0
+7bf6a: CMP Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))), Immediate 0 5
+7bf6f: JZ 7bfa0 (resolved immediate)
+  |
+  `- 7bf71,7bfa0
+7bf71: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 174926)) 7
+7bf78: MOV Reg EDX, Immediate 15 5
+7bf7d: MOV Reg RDI, Reg RBX 3
+7bf80: CALL yajl_gen_string (external)
+7bf85: TEST Reg EAX, Reg EAX 2
+7bf87: JZ 7bf90 (resolved immediate)
+  |
+  `- 7bf89,7bf90
+7bf89: POP Reg RBX 1
+7bf8a: POP Reg RBP 1
+7bf8b: POP Reg R12 2
+7bf8d: RET  1
+  |
+  `- 
+7bf90: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))) 4
+7bf94: MOV Reg RDI, Reg RBX 3
+7bf97: CALL libxl__string_gen_json (internal)
+  |
+  `- 7bf9c,40c90
+7bf9c: TEST Reg EAX, Reg EAX 2
+7bf9e: JNZ 7bf89 (resolved immediate)
+  |
+  `- 7bf89,7bfa0
+7bfa0: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 16))), Immediate 4294967295 4
+7bfa4: JNZ 7c000 (resolved immediate)
+  |
+  `- 7bfa6,7c000
+7bfa6: CMP Address (SizeDir 8 (AddrPlus (FromReg RBP) (AddrImm 20))), Immediate 0 4
+7bfaa: JNZ 7c038 (resolved immediate)
+  |
+  `- 7bfb0,7c038
+7bfb0: CMP Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 32))), Immediate 0 5
+7bfb5: JZ 7bfc2 (resolved immediate)
+  |
+  `- 7bfb7,7bfc2
+7bfb7: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 24))) 3
+7bfba: TEST Reg EDX, Reg EDX 2
+7bfbc: JNZ 7c070 (resolved immediate)
+  |
+  `- 7bfc2,7c070
+7bfc2: MOV Reg RDI, Reg RBX 3
+7bfc5: POP Reg RBX 1
+7bfc6: POP Reg RBP 1
+7bfc7: POP Reg R12 2
+7bfc9: JMP yajl_gen_map_close (jmp to external function)
+  |
+  `- 
+7bfd0: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 174817)) 7
+7bfd7: MOV Reg EDX, Immediate 13 5
+7bfdc: MOV Reg RDI, Reg RBX 3
+7bfdf: CALL yajl_gen_string (external)
+7bfe4: TEST Reg EAX, Reg EAX 2
+7bfe6: JNZ 7bf89 (resolved immediate)
+  |
+  `- 7bf89,7bfe8
+7bfe8: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+7bfeb: MOV Reg RDI, Reg RBX 3
+7bfee: CALL yajl_gen_integer (external)
+7bff3: TEST Reg EAX, Reg EAX 2
+7bff5: JZ 7bf6a (resolved immediate)
+  |
+  `- 7bf6a,7bffb
+7bffb: JMP 7bf89 (resolved immediate)
+  |
+  `- 7bf89
+7c000: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 174799)) 7
+7c007: MOV Reg EDX, Immediate 5 5
+7c00c: MOV Reg RDI, Reg RBX 3
+7c00f: CALL yajl_gen_string (external)
+7c014: TEST Reg EAX, Reg EAX 2
+7c016: JNZ 7bf89 (resolved immediate)
+  |
+  `- 7bf89,7c01c
+7c01c: MOVSXD Reg RSI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 16))) 4
+7c020: MOV Reg RDI, Reg RBX 3
+7c023: CALL yajl_gen_integer (external)
+7c028: TEST Reg EAX, Reg EAX 2
+7c02a: JZ 7bfa6 (resolved immediate)
+  |
+  `- 7bfa6,7c030
+7c030: JMP 7bf89 (resolved immediate)
+  |
+  `- 7bf89
+7c038: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 175007)) 7
+7c03f: MOV Reg EDX, Immediate 8 5
+7c044: MOV Reg RDI, Reg RBX 3
+7c047: CALL yajl_gen_string (external)
+7c04c: TEST Reg EAX, Reg EAX 2
+7c04e: JNZ 7bf89 (resolved immediate)
+  |
+  `- 7bf89,7c054
+7c054: MOVZX Reg ESI, Address (SizeDir 8 (AddrPlus (FromReg RBP) (AddrImm 20))) 4
+7c058: MOV Reg RDI, Reg RBX 3
+7c05b: CALL yajl_gen_bool (external)
+7c060: TEST Reg EAX, Reg EAX 2
+7c062: JZ 7bfb0 (resolved immediate)
+  |
+  `- 7bfb0,7c068
+7c068: JMP 7bf89 (resolved immediate)
+  |
+  `- 7bf89
+7c070: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 174960)) 7
+7c077: MOV Reg EDX, Immediate 10 5
+7c07c: MOV Reg RDI, Reg RBX 3
+7c07f: CALL yajl_gen_string (external)
+7c084: TEST Reg EAX, Reg EAX 2
+7c086: JNZ 7bf89 (resolved immediate)
+  |
+  `- 7bf89,7c08c
+7c08c: MOV Reg RDI, Reg RBX 3
+7c08f: CALL yajl_gen_array_open (external)
+7c094: TEST Reg EAX, Reg EAX 2
+7c096: JNZ 7bf89 (resolved immediate)
+  |
+  `- 7bf89,7c09c
+7c09c: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 24))) 3
+7c09f: TEST Reg EAX, Reg EAX 2
+7c0a1: JLE 7c0da (resolved immediate)
+  |
+  `- 7c0a3,7c0da
+7c0a3: XOR Reg R12D, Reg R12D 3
+7c0a6: JMP 7c0be (resolved immediate)
+  |
+  `- 7c0be
+7c0b0: LEA Reg EAX, Address (AddrPlus (FromReg R12) (AddrImm 1)) 5
+7c0b5: ADD Reg R12, Immediate 1 4
+7c0b9: CMP Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 24))) 3
+7c0bc: JGE 7c0da (resolved immediate)
+  |
+  `- 7c0be,7c0da
+7c0be: MOV Reg RSI, Reg R12 3
+7c0c1: MOV Reg RDI, Reg RBX 3
+7c0c4: SHL Reg RSI, Immediate 4 4
+7c0c8: ADD Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 32))) 4
+7c0cc: CALL libxl_connector_param_gen_json (external)
+7c0d1: TEST Reg EAX, Reg EAX 2
+7c0d3: JZ 7c0b0 (resolved immediate)
+  |
+  `- 7c0b0,7c0d5
+7c0d5: JMP 7bf89 (resolved immediate)
+  |
+  `- 7bf89
+7c0da: MOV Reg RDI, Reg RBX 3
+7c0dd: CALL yajl_gen_array_close (external)
+7c0e2: TEST Reg EAX, Reg EAX 2
+7c0e4: JZ 7bfc2 (resolved immediate)
+  |
+  `- 7bfc2,7c0ea
+7c0ea: JMP 7bf89 (resolved immediate)
+  |
+  `- 7bf89

@@ -1,0 +1,90 @@
+Number of assembly instructions     = 62
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 62
+Number of edges: 63
+
+219c0 (True): 21b26
+21ad0 (False): 0
+
+219c0: SUB Reg RSP, Immediate 40 4
+219c4: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+219cd: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
+219d2: XOR Reg EAX, Reg EAX 2
+219d4: MOV Reg RAX, Reg RSP 3
+219d7: MOV Address (SizeDir 64 (FromReg RSP)), Immediate 0 8
+219df: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))), Reg RCX 5
+219e4: MOV Address (SizeDir 8 (FromReg RSP)), Reg DL 3
+219e7: MOV Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 2))), Reg SI 5
+219ec: MOV Reg RDX, Reg RAX 3
+219ef: MOV Reg ECX, Immediate 24 5
+219f4: MOV Reg ESI, Immediate 20 5
+219f9: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg R8 5
+219fe: CALL do_memory_op (external)
+21a03: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
+21a08: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+21a11: JNZ 21a18 (resolved immediate)
+  |
+  `- 21a13,21a18
+21a13: ADD Reg RSP, Immediate 40 4
+21a17: RET  1
+  |
+  `- 
+21a18: CALL __stack_chk_fail (external)
+  |
+  `- 
+21ad0: PUSH Reg R14 2
+21ad2: PUSH Reg R13 2
+21ad4: MOV Reg R14, Reg RDX 3
+21ad7: PUSH Reg R12 2
+21ad9: PUSH Reg RBP 1
+21ada: MOV Reg R12, Reg RDI 3
+21add: PUSH Reg RBX 1
+21ade: MOV Reg RBX, Reg RCX 3
+21ae1: MOV Reg R13D, Reg ESI 3
+21ae4: CALL __errno_location (external)
+21ae9: TEST Reg RBX, Reg RBX 3
+21aec: MOV Address (SizeDir 32 (FromReg RAX)), Immediate 22 6
+21af2: JZ 21b50 (resolved immediate)
+  |
+  `- 21af4,21b50
+21af4: TEST Reg EBX, Immediate 4095 6
+21afa: JNZ 21b50 (resolved immediate)
+  |
+  `- 21afc,21b50
+21afc: MOV Reg ESI, Immediate 4096 5
+21b01: MOV Reg RDI, Reg RBX 3
+21b04: MOV Reg RBP, Reg RAX 3
+21b07: CALL mlock (external)
+21b0c: TEST Reg EAX, Reg EAX 2
+21b0e: JNZ 21b50 (resolved immediate)
+  |
+  `- 21b10,21b50
+21b10: MOV Reg ESI, Reg R13D 3
+21b13: MOV Reg RDI, Reg R12 3
+21b16: MOV Reg R8, Reg RBX 3
+21b19: MOV Reg RCX, Reg R14 3
+21b1c: MOV Reg EDX, Immediate 2 5
+21b21: CALL xc_mem_paging_memop (internal)
+  |
+  `- 219c0
+21b26: MOV Reg R13D, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 4
+21b2a: MOV Reg ESI, Immediate 4096 5
+21b2f: MOV Reg RDI, Reg RBX 3
+21b32: MOV Reg R12D, Reg EAX 3
+21b35: CALL munlock (external)
+21b3a: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R13D 4
+21b3e: POP Reg RBX 1
+21b3f: MOV Reg EAX, Reg R12D 3
+21b42: POP Reg RBP 1
+21b43: POP Reg R12 2
+21b45: POP Reg R13 2
+21b47: POP Reg R14 2
+21b49: RET  1
+  |
+  `- 
+21b50: MOV Reg R12D, Immediate 4294967295 6
+21b56: JMP 21b3e (resolved immediate)
+  |
+  `- 21b3e

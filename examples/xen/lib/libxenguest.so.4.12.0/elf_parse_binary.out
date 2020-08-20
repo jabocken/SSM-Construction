@@ -1,0 +1,124 @@
+Number of assembly instructions     = 95
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 95
+Number of edges: 101
+
+138d0 (False): 0
+
+138d0: PUSH Reg R15 2
+138d2: PUSH Reg R14 2
+138d4: PUSH Reg R13 2
+138d6: PUSH Reg R12 2
+138d8: PUSH Reg RBP 1
+138d9: PUSH Reg RBX 1
+138da: MOV Reg RBX, Reg RDI 3
+138dd: SUB Reg RSP, Immediate 24 4
+138e1: CALL elf_phdr_count (external)
+138e6: TEST Reg EAX, Reg EAX 2
+138e8: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))), Reg EAX 4
+138ec: JZ 13a00 (resolved immediate)
+  |
+  `- 138f2,13a00
+138f2: XOR Reg R12D, Reg R12D 3
+138f5: XOR Reg R14D, Reg R14D 3
+138f8: MOV Reg R13, Immediate 18446744073709551615 7
+138ff: JMP 1397c (resolved immediate)
+  |
+  `- 1397c
+13908: MOV Reg ECX, Immediate 4 5
+1390d: MOV Reg EDX, Immediate 12 5
+13912: MOV Reg RSI, Reg RBP 3
+13915: MOV Reg RDI, Reg RBX 3
+13918: CALL elf_access_unsigned (external)
+1391d: CMP Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 16))), Immediate 2 4
+13921: MOV Reg R15, Reg RAX 3
+13924: JZ 139d9 (resolved immediate)
+  |
+  `- 1392a,139d9
+1392a: MOV Reg RSI, Reg RBP 3
+1392d: MOV Reg ECX, Immediate 4 5
+13932: MOV Reg EDX, Immediate 20 5
+13937: MOV Reg RDI, Reg RBX 3
+1393a: CALL elf_access_unsigned (external)
+1393f: MOV Reg RBP, Reg RAX 3
+13942: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 68959)) 7
+13949: XOR Reg ESI, Reg ESI 2
+1394b: XOR Reg EAX, Reg EAX 2
+1394d: MOV Reg R8, Reg RBP 3
+13950: MOV Reg RCX, Reg R15 3
+13953: MOV Reg RDI, Reg RBX 3
+13956: CALL elf_call_log_callback (external)
+1395b: LEA Reg R9, Address (AddrPlus (FromReg R15) (FromReg RBP)) 4
+1395f: CMP Reg R13, Reg R15 3
+13962: CMOVA Reg R13, Reg R15 4
+13966: CMP Reg R14, Reg R9 3
+13969: CMOVB Reg R14, Reg R9 4
+1396d: ADD Reg R12D, Immediate 1 4
+13971: CMP Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))), Reg R12D 5
+13976: JZ 13a0a (resolved immediate)
+  |
+  `- 1397c,13a0a
+1397c: MOV Reg ESI, Reg R12D 3
+1397f: MOV Reg RDI, Reg RBX 3
+13982: CALL elf_phdr_by_index (external)
+13987: MOV Reg EDX, Immediate 1 5
+1398c: MOV Reg RSI, Reg RAX 3
+1398f: MOV Reg RDI, Reg RBX 3
+13992: MOV Reg RBP, Reg RAX 3
+13995: CALL elf_access_ok (external)
+1399a: TEST Reg AL, Reg AL 2
+1399c: JZ 13a0a (resolved immediate)
+  |
+  `- 1399e,13a0a
+1399e: MOV Reg RSI, Reg RBP 3
+139a1: MOV Reg RDI, Reg RBX 3
+139a4: CALL elf_phdr_is_loadable (external)
+139a9: TEST Reg AL, Reg AL 2
+139ab: JZ 1396d (resolved immediate)
+  |
+  `- 1396d,139ad
+139ad: CMP Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 16))), Immediate 2 4
+139b1: JNZ 13908 (resolved immediate)
+  |
+  `- 13908,139b7
+139b7: MOV Reg ECX, Immediate 8 5
+139bc: MOV Reg EDX, Immediate 24 5
+139c1: MOV Reg RSI, Reg RBP 3
+139c4: MOV Reg RDI, Reg RBX 3
+139c7: CALL elf_access_unsigned (external)
+139cc: CMP Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 16))), Immediate 2 4
+139d0: MOV Reg R15, Reg RAX 3
+139d3: JNZ 1392a (resolved immediate)
+  |
+  `- 1392a,139d9
+139d9: MOV Reg RSI, Reg RBP 3
+139dc: MOV Reg ECX, Immediate 8 5
+139e1: MOV Reg EDX, Immediate 40 5
+139e6: MOV Reg RDI, Reg RBX 3
+139e9: CALL elf_access_unsigned (external)
+139ee: MOV Reg RBP, Reg RAX 3
+139f1: JMP 13942 (resolved immediate)
+  |
+  `- 13942
+13a00: XOR Reg R14D, Reg R14D 3
+13a03: MOV Reg R13, Immediate 18446744073709551615 7
+13a0a: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 72))), Reg R13 4
+13a0e: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 80))), Reg R14 4
+13a12: ADD Reg RSP, Immediate 24 4
+13a16: MOV Reg R8, Reg R14 3
+13a19: MOV Reg RCX, Reg R13 3
+13a1c: MOV Reg RDI, Reg RBX 3
+13a1f: POP Reg RBX 1
+13a20: POP Reg RBP 1
+13a21: POP Reg R12 2
+13a23: POP Reg R13 2
+13a25: POP Reg R14 2
+13a27: POP Reg R15 2
+13a29: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 68468)) 7
+13a30: XOR Reg ESI, Reg ESI 2
+13a32: XOR Reg EAX, Reg EAX 2
+13a34: JMP elf_call_log_callback (jmp to external function)
+  |
+  `- 

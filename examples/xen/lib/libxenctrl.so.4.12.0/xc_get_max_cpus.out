@@ -1,0 +1,46 @@
+Number of assembly instructions     = 23
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 23
+Number of edges: 24
+
+15870 (False): 0
+
+15870: SUB Reg RSP, Immediate 120 4
+15874: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1587d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 104))), Reg RAX 5
+15882: XOR Reg EAX, Reg EAX 2
+15884: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2194782))) 6
+1588a: TEST Reg EAX, Reg EAX 2
+1588c: JZ 158a8 (resolved immediate)
+  |
+  `- 1588e,158a8
+1588e: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 104))) 5
+15893: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1589c: JNZ 158ca (resolved immediate)
+  |
+  `- 1589e,158ca
+1589e: ADD Reg RSP, Immediate 120 4
+158a2: RET  1
+  |
+  `- 
+158a8: MOV Reg RSI, Reg RSP 3
+158ab: CALL xc_physinfo (external)
+158b0: TEST Reg EAX, Reg EAX 2
+158b2: JNZ 158c3 (resolved immediate)
+  |
+  `- 158b4,158c3
+158b4: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 4
+158b8: ADD Reg EAX, Immediate 1 3
+158bb: MOV Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2194727))), Reg EAX 6
+158c1: JMP 1588e (resolved immediate)
+  |
+  `- 1588e
+158c3: MOV Reg EAX, Immediate 4294967295 5
+158c8: JMP 1588e (resolved immediate)
+  |
+  `- 1588e
+158ca: CALL __stack_chk_fail (external)
+  |
+  `- 

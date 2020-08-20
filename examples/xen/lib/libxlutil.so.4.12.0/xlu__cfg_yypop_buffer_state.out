@@ -1,0 +1,66 @@
+Number of assembly instructions     = 43
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 43
+Number of edges: 46
+
+5630 (False): 0
+
+5630: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 40))) 4
+5634: TEST Reg RAX, Reg RAX 3
+5637: JZ 56d0 (resolved immediate)
+  |
+  `- 563d,56d0
+563d: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 24))) 4
+5641: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX)))) 4
+5645: TEST Reg RAX, Reg RAX 3
+5648: JZ 56d0 (resolved immediate)
+  |
+  `- 564e,56d0
+564e: PUSH Reg RBX 1
+564f: MOV Reg RSI, Reg RDI 3
+5652: MOV Reg RBX, Reg RDI 3
+5655: MOV Reg RDI, Reg RAX 3
+5658: CALL xlu__cfg_yy_delete_buffer (external)
+565d: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 40))) 4
+5661: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
+5665: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX)))), Immediate 0 8
+566d: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
+5671: TEST Reg RAX, Reg RAX 3
+5674: JZ 567e (resolved immediate)
+  |
+  `- 5676,567e
+5676: SUB Reg RAX, Immediate 1 4
+567a: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))), Reg RAX 4
+567e: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 40))) 4
+5682: TEST Reg RAX, Reg RAX 3
+5685: JZ 56c8 (resolved immediate)
+  |
+  `- 5687,56c8
+5687: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
+568b: LEA Reg RAX, Address (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX))) 4
+568f: MOV Reg RDX, Address (SizeDir 64 (FromReg RAX)) 3
+5692: TEST Reg RDX, Reg RDX 3
+5695: JZ 56c8 (resolved immediate)
+  |
+  `- 5697,56c8
+5697: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 32))) 4
+569b: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 56))), Reg RDX 4
+569f: MOV Reg RDX, Address (SizeDir 64 (FromReg RAX)) 3
+56a2: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 16))) 4
+56a6: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 72))), Reg RDX 4
+56aa: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 136))), Reg RDX 7
+56b1: MOV Reg RAX, Address (SizeDir 64 (FromReg RAX)) 3
+56b4: MOV Reg RAX, Address (SizeDir 64 (FromReg RAX)) 3
+56b7: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))), Reg RAX 4
+56bb: MOVZX Reg EAX, Address (SizeDir 8 (FromReg RDX)) 3
+56be: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 88))), Immediate 1 7
+56c5: MOV Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 48))), Reg AL 3
+56c8: POP Reg RBX 1
+56c9: RET  1
+  |
+  `- 
+56d0: REPZ RET  2
+  |
+  `- 

@@ -1,0 +1,78 @@
+Number of assembly instructions     = 52
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 52
+Number of edges: 53
+
+2fcb (False): 766c, 7678
+75f0 (False): 0
+
+2fcb: SUB Reg RSP, Immediate 8 4
+2fcf: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2150410))) 7
+2fd6: MOV Reg RCX, Reg RDI 3
+2fd9: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 43521)) 7
+2fe0: MOV Reg ESI, Immediate 1 5
+2fe5: MOV Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
+2fe8: XOR Reg EAX, Reg EAX 2
+2fea: CALL __fprintf_chk (external)
+2fef: MOV Reg EDI, Immediate 2 5
+2ff4: CALL exit (external)
+  |
+  `- 
+75f0: PUSH Reg R13 2
+75f2: PUSH Reg R12 2
+75f4: LEA Reg R12, Address (AddrPlus (FromReg RSI) (AddrImm 2)) 4
+75f8: PUSH Reg RBP 1
+75f9: PUSH Reg RBX 1
+75fa: MOV Reg RBP, Reg RDI 3
+75fd: MOV Reg RBX, Reg RSI 3
+7600: MOV Reg RDI, Reg R12 3
+7603: MOV Reg RSI, Reg RDX 3
+7606: SUB Reg RSP, Immediate 8 4
+760a: MOV Reg R13, Reg RDX 3
+760d: CALL xlu__disk_yyalloc (external)
+7612: TEST Reg RAX, Reg RAX 3
+7615: JZ 7660 (resolved immediate)
+  |
+  `- 7617,7660
+7617: XOR Reg ECX, Reg ECX 2
+7619: TEST Reg RBX, Reg RBX 3
+761c: JZ 7632 (resolved immediate)
+  |
+  `- 761e,7632
+761e: NOP  2
+7620: MOVZX Reg ESI, Address (SizeDir 8 (AddrPlus (AddrPlus (FromReg RBP) (FromReg RCX)) (AddrImm 0))) 5
+7625: MOV Address (SizeDir 8 (AddrPlus (FromReg RAX) (FromReg RCX))), Reg SIL 4
+7629: ADD Reg RCX, Immediate 1 4
+762d: CMP Reg RBX, Reg RCX 3
+7630: JNZ 7620 (resolved immediate)
+  |
+  `- 7620,7632
+7632: MOV Address (SizeDir 8 (AddrPlus (AddrPlus (FromReg RAX) (FromReg RBX)) (AddrImm 1))), Immediate 0 5
+7637: MOV Address (SizeDir 8 (AddrPlus (FromReg RAX) (FromReg RBX))), Immediate 0 4
+763b: MOV Reg RDX, Reg R13 3
+763e: MOV Reg RSI, Reg R12 3
+7641: MOV Reg RDI, Reg RAX 3
+7644: CALL xlu__disk_yy_scan_buffer (external)
+7649: TEST Reg RAX, Reg RAX 3
+764c: JZ 766c (resolved immediate)
+  |
+  `- 764e,766c
+764e: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 40))), Immediate 1 7
+7655: ADD Reg RSP, Immediate 8 4
+7659: POP Reg RBX 1
+765a: POP Reg RBP 1
+765b: POP Reg R12 2
+765d: POP Reg R13 2
+765f: RET  1
+  |
+  `- 
+7660: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 16401)) 7
+7667: CALL yy_fatal_error.isra.2 (internal)
+  |
+  `- 2fcb
+766c: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 16445)) 7
+7673: CALL yy_fatal_error.isra.2 (internal)
+  |
+  `- 

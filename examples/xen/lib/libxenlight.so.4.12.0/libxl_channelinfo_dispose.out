@@ -1,0 +1,40 @@
+Number of assembly instructions     = 21
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 21
+Number of edges: 21
+
+7cd70 (False): 0
+
+7cd70: TEST Reg RDI, Reg RDI 3
+7cd73: JZ 7cdb0 (resolved immediate)
+  |
+  `- 7cd75,7cdb0
+7cd75: PUSH Reg RBX 1
+7cd76: MOV Reg RBX, Reg RDI 3
+7cd79: MOV Reg RDI, Address (SizeDir 64 (FromReg RDI)) 3
+7cd7c: CALL free (external)
+7cd81: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
+7cd85: CALL free (external)
+7cd8a: CMP Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 44))), Immediate 1 4
+7cd8e: JZ 7cdb8 (resolved immediate)
+  |
+  `- 7cd90,7cdb8
+7cd90: PXOR Reg XMM0, Reg XMM0 4
+7cd94: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 48))), Immediate 0 8
+7cd9c: MOVUPS Address (SizeDir 128 (FromReg RBX)), Reg XMM0 3
+7cd9f: MOVUPS Address (SizeDir 128 (AddrPlus (FromReg RBX) (AddrImm 16))), Reg XMM0 4
+7cda3: MOVUPS Address (SizeDir 128 (AddrPlus (FromReg RBX) (AddrImm 32))), Reg XMM0 4
+7cda7: POP Reg RBX 1
+7cda8: RET  1
+  |
+  `- 
+7cdb0: REPZ RET  2
+  |
+  `- 
+7cdb8: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 48))) 4
+7cdbc: CALL free (external)
+7cdc1: JMP 7cd90 (resolved immediate)
+  |
+  `- 7cd90

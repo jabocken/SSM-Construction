@@ -1,0 +1,161 @@
+Number of assembly instructions     = 117
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 117
+Number of edges: 122
+
+c190 (True): 12315
+122f0 (False): 0
+
+c190: PUSH Reg R13 2
+c192: PUSH Reg R12 2
+c194: PUSH Reg RBP 1
+c195: PUSH Reg RBX 1
+c196: MOV Reg RBX, Reg RDI 3
+c199: SUB Reg RSP, Immediate 216 7
+c1a0: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+c1a9: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 200))), Reg RAX 8
+c1b1: XOR Reg EAX, Reg EAX 2
+c1b3: MOVZX Reg EAX, Reg CL 3
+c1b6: CMP Reg CL, Immediate 1 3
+c1b9: MOV Reg R11D, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 256))) 8
+c1c1: MOV Reg R10D, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 264))) 8
+c1c9: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 272))) 7
+c1d0: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 48))), Immediate 48 8
+c1d8: MOV Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 56))), Reg SI 5
+c1dd: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 68))), Reg EAX 4
+c1e1: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 64))), Reg EDX 4
+c1e5: JZ c2f8 (resolved immediate)
+  |
+  `- c1eb,c2f8
+c1eb: JB c2e0 (resolved immediate)
+  |
+  `- c1f1,c2e0
+c1f1: CMP Reg CL, Immediate 3 3
+c1f4: JZ c2e0 (resolved immediate)
+  |
+  `- c1fa,c2e0
+c1fa: CMP Reg CL, Immediate 4 3
+c1fd: JNZ c2a0 (resolved immediate)
+  |
+  `- c203,c2a0
+c203: MOVZX Reg EDI, Reg DIL 4
+c207: MOV Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 72))), Reg DI 5
+c20c: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 48)) 5
+c211: MOV Reg RBP, Reg RSP 3
+c214: MOV Reg RDI, Reg RBX 3
+c217: MOV Reg RSI, Reg RBP 3
+c21a: MOV Address (SizeDir 64 (FromReg RSP)), Immediate 0 8
+c222: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Immediate 0 9
+c22b: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 3 8
+c233: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
+c238: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Immediate 144 9
+c241: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 52))), Immediate 17 8
+c249: CALL xc__hypercall_bounce_pre (external)
+c24e: TEST Reg EAX, Reg EAX 2
+c250: JNZ c331 (resolved immediate)
+  |
+  `- c256,c331
+c256: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+c25b: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1088))) 7
+c262: MOV Reg ESI, Immediate 36 5
+c267: TEST Reg RAX, Reg RAX 3
+c26a: CMOVZ Reg RAX, Reg RBP 4
+c26e: MOV Reg RDX, Address (SizeDir 64 (FromReg RAX)) 3
+c271: CALL xencall1 (external)
+c276: TEST Reg EAX, Reg EAX 2
+c278: MOV Reg R12D, Reg EAX 3
+c27b: JNS c28a (resolved immediate)
+  |
+  `- c27d,c28a
+c27d: CALL __errno_location (external)
+c282: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 13 3
+c285: MOV Reg R13, Reg RAX 3
+c288: JZ c308 (resolved immediate)
+  |
+  `- c28a,c308
+c28a: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+c28f: MOV Reg RDI, Reg RBX 3
+c292: TEST Reg RSI, Reg RSI 3
+c295: CMOVZ Reg RSI, Reg RBP 4
+c299: CALL xc__hypercall_bounce_post (external)
+c29e: JMP c2b1 (resolved immediate)
+  |
+  `- c2b1
+c2a0: CALL __errno_location (external)
+c2a5: MOV Reg R12D, Immediate 4294967295 6
+c2ab: MOV Address (SizeDir 32 (FromReg RAX)), Immediate 22 6
+c2b1: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 200))) 8
+c2b9: XOR Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+c2c2: MOV Reg EAX, Reg R12D 3
+c2c5: JNZ c372 (resolved immediate)
+  |
+  `- c2cb,c372
+c2cb: ADD Reg RSP, Immediate 216 7
+c2d2: POP Reg RBX 1
+c2d3: POP Reg RBP 1
+c2d4: POP Reg R12 2
+c2d6: POP Reg R13 2
+c2d8: RET  1
+  |
+  `- 
+c2e0: MOV Address (SizeDir 8 (AddrPlus (FromReg RSP) (AddrImm 72))), Reg R8B 5
+c2e5: MOV Address (SizeDir 8 (AddrPlus (FromReg RSP) (AddrImm 73))), Reg R9B 5
+c2ea: MOV Address (SizeDir 8 (AddrPlus (FromReg RSP) (AddrImm 74))), Reg R11B 5
+c2ef: JMP c20c (resolved immediate)
+  |
+  `- c20c
+c2f8: MOV Address (SizeDir 8 (AddrPlus (FromReg RSP) (AddrImm 72))), Reg R10B 5
+c2fd: JMP c20c (resolved immediate)
+  |
+  `- c20c
+c308: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+c30c: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 102541)) 7
+c313: XOR Reg ECX, Reg ECX 2
+c315: MOV Reg EDX, Immediate 3 5
+c31a: MOV Reg RDI, Reg RBX 3
+c31d: XOR Reg EAX, Reg EAX 2
+c31f: CALL xc_report (external)
+c324: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Immediate 13 8
+c32c: JMP c28a (resolved immediate)
+  |
+  `- c28a
+c331: CALL __errno_location (external)
+c336: MOV Reg R12D, Address (SizeDir 32 (FromReg RAX)) 3
+c339: MOV Reg RBP, Reg RAX 3
+c33c: MOV Reg RDI, Reg RBX 3
+c33f: MOV Reg ESI, Reg R12D 3
+c342: CALL xc_strerror (external)
+c347: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+c34a: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 102423)) 7
+c351: MOV Reg R8, Reg RAX 3
+c354: MOV Reg ESI, Immediate 1 5
+c359: MOV Reg RDI, Reg RBX 3
+c35c: XOR Reg EAX, Reg EAX 2
+c35e: CALL xc_report_error (external)
+c363: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R12D 4
+c367: MOV Reg R12D, Immediate 4294967295 6
+c36d: JMP c2b1 (resolved immediate)
+  |
+  `- c2b1
+c372: CALL __stack_chk_fail (external)
+  |
+  `- 
+122f0: SUB Reg RSP, Immediate 16 4
+122f4: MOVZX Reg ECX, Reg CL 3
+122f7: MOVZX Reg EDX, Reg DL 3
+122fa: PUSH Immediate 0 2
+122fc: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
+12301: MOVZX Reg R9D, Reg R9B 4
+12305: MOVZX Reg R8D, Reg R8B 4
+12309: PUSH Reg RAX 1
+1230a: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
+1230f: PUSH Reg RAX 1
+12310: CALL xc_domain_unbind_pt_irq_int (internal)
+  |
+  `- c190
+12315: ADD Reg RSP, Immediate 40 4
+12319: RET  1
+  |
+  `- 

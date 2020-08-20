@@ -1,0 +1,123 @@
+Number of assembly instructions     = 77
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 77
+Number of edges: 78
+
+3cce0 (False): 0
+50d60 (True): 51429
+50dd0 (True): 5145a
+51410 (True): 3ccff
+
+3cce0: PUSH Reg RBX 1
+3cce1: MOV Reg RBX, Reg RDI 3
+3cce4: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
+3cce8: TEST Reg RDI, Reg RDI 3
+3cceb: JZ 3ccf2 (resolved immediate)
+  |
+  `- 3cced,3ccf2
+3cced: CALL unlink (external)
+3ccf2: MOV Reg RDI, Address (SizeDir 64 (FromReg RBX)) 3
+3ccf5: TEST Reg RDI, Reg RDI 3
+3ccf8: JZ 3ccff (resolved immediate)
+  |
+  `- 3ccfa,3ccff
+3ccfa: CALL libxl__carefd_close (internal)
+  |
+  `- 51410
+3ccff: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+3cd03: CALL free (external)
+3cd08: MOV Reg RDI, Reg RBX 3
+3cd0b: POP Reg RBX 1
+3cd0c: JMP free (jmp to external function)
+  |
+  `- 
+50d60: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2622265)) 7
+50d67: SUB Reg RSP, Immediate 8 4
+50d6b: CALL pthread_mutex_lock (external)
+50d70: TEST Reg EAX, Reg EAX 2
+50d72: JNZ 50d79 (resolved immediate)
+  |
+  `- 50d74,50d79
+50d74: ADD Reg RSP, Immediate 8 4
+50d78: RET  1
+  |
+  `- 
+50d79: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 320112)) 7
+50d80: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 318703)) 7
+50d87: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 270559)) 7
+50d8e: MOV Reg EDX, Immediate 69 5
+50d93: CALL __assert_fail (external)
+  |
+  `- 
+50dd0: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2622153)) 7
+50dd7: SUB Reg RSP, Immediate 8 4
+50ddb: CALL pthread_mutex_unlock (external)
+50de0: TEST Reg EAX, Reg EAX 2
+50de2: JNZ 50de9 (resolved immediate)
+  |
+  `- 50de4,50de9
+50de4: ADD Reg RSP, Immediate 8 4
+50de8: RET  1
+  |
+  `- 
+50de9: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 319984)) 7
+50df0: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 318591)) 7
+50df7: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 270447)) 7
+50dfe: MOV Reg EDX, Immediate 75 5
+50e03: CALL __assert_fail (external)
+  |
+  `- 
+51410: PUSH Reg R13 2
+51412: PUSH Reg R12 2
+51414: PUSH Reg RBP 1
+51415: PUSH Reg RBX 1
+51416: XOR Reg EBP, Reg EBP 2
+51418: SUB Reg RSP, Immediate 8 4
+5141c: TEST Reg RDI, Reg RDI 3
+5141f: JZ 51466 (resolved immediate)
+  |
+  `- 51421,51466
+51421: MOV Reg RBX, Reg RDI 3
+51424: CALL atfork_lock (internal)
+  |
+  `- 50d60
+51429: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 16))) 3
+5142c: TEST Reg EDI, Reg EDI 2
+5142e: JNS 51478 (resolved immediate)
+  |
+  `- 51430,51478
+51430: CALL __errno_location (external)
+51435: MOV Reg RDX, Address (SizeDir 64 (FromReg RBX)) 3
+51438: MOV Reg R12, Reg RAX 3
+5143b: MOV Reg R13D, Address (SizeDir 32 (FromReg RAX)) 3
+5143e: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+51442: TEST Reg RDX, Reg RDX 3
+51445: JZ 51452 (resolved immediate)
+  |
+  `- 51447,51452
+51447: MOV Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 8))), Reg RCX 4
+5144b: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+5144f: MOV Reg RDX, Address (SizeDir 64 (FromReg RBX)) 3
+51452: MOV Address (SizeDir 64 (FromReg RCX)), Reg RDX 3
+51455: CALL atfork_unlock (internal)
+  |
+  `- 50dd0
+5145a: MOV Reg RDI, Reg RBX 3
+5145d: CALL free (external)
+51462: MOV Address (SizeDir 32 (FromReg R12)), Reg R13D 4
+51466: ADD Reg RSP, Immediate 8 4
+5146a: MOV Reg EAX, Reg EBP 2
+5146c: POP Reg RBX 1
+5146d: POP Reg RBP 1
+5146e: POP Reg R12 2
+51470: POP Reg R13 2
+51472: RET  1
+  |
+  `- 
+51478: CALL close (external)
+5147d: MOV Reg EBP, Reg EAX 2
+5147f: JMP 51430 (resolved immediate)
+  |
+  `- 51430

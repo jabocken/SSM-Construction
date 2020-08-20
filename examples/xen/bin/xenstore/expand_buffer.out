@@ -1,0 +1,38 @@
+Number of assembly instructions     = 20
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 20
+
+28a0 (False): 0
+
+28a0: MOVSXD Reg RAX, Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2103545))) 7
+28a7: MOVSXD Reg RCX, Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2103510))) 7
+28ae: ADD Reg RAX, Reg RDI 3
+28b1: CMP Reg RAX, Reg RCX 3
+28b4: JA 28c0 (resolved immediate)
+  |
+  `- 28b6,28c0
+28b6: REPZ RET  2
+  |
+  `- 
+28c0: SUB Reg RSP, Immediate 8 4
+28c4: LEA Reg ESI, Address (AddrPlus (AddrPlus (FromReg RCX) (FromReg RDI)) (AddrImm 1024)) 7
+28cb: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2103510))) 7
+28d2: MOV Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2103468))), Reg ESI 6
+28d8: MOVSXD Reg RSI, Reg ESI 3
+28db: CALL realloc (external)
+28e0: TEST Reg RAX, Reg RAX 3
+28e3: MOV Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2103486))), Reg RAX 7
+28ea: JZ 28f1 (resolved immediate)
+  |
+  `- 28ec,28f1
+28ec: ADD Reg RSP, Immediate 8 4
+28f0: RET  1
+  |
+  `- 
+28f1: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 710)) 7
+28f8: MOV Reg EDI, Immediate 1 5
+28fd: CALL err (external)
+  |
+  `- 

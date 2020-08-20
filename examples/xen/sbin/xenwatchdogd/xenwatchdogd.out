@@ -1,0 +1,249 @@
+Number of assembly instructions     = 169
+Number of indirect branches         = 1
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 174
+Number of edges: 188
+
+be0 (False): 0
+d50 (True): a47
+
+a30: CMP Reg EDI, Immediate 1 3
+a33: PUSH Reg R12 2
+a35: PUSH Reg RBP 1
+a36: MOV Reg RBP, Reg RSI 3
+a39: PUSH Reg RBX 1
+a3a: JLE b74 (resolved immediate)
+  |
+  `- a40,b74
+a40: MOV Reg EBX, Reg EDI 2
+a42: CALL daemonize (internal)
+  |
+  `- d50
+a47: XOR Reg EDX, Reg EDX 2
+a49: XOR Reg ESI, Reg ESI 2
+a4b: XOR Reg EDI, Reg EDI 2
+a4d: CALL xc_interface_open (external)
+a52: TEST Reg RAX, Reg RAX 3
+a55: MOV Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2102772))), Reg RAX 7
+a5c: JZ b8a (resolved immediate)
+  |
+  `- a62,b8a
+a62: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))) 4
+a66: XOR Reg EDX, Reg EDX 2
+a68: XOR Reg ESI, Reg ESI 2
+a6a: CALL strtoul (external)
+a6f: CMP Reg EAX, Immediate 4294967295 3
+a72: MOV Reg R12, Reg RAX 3
+a75: JZ bb3 (resolved immediate)
+  |
+  `- a7b,bb3
+a7b: CMP Reg EBX, Immediate 3 3
+a7e: JZ b9b (resolved immediate)
+  |
+  `- a84,b9b
+a84: MOV Reg ECX, Immediate 2 5
+a89: CDQ  1
+a8a: IDIV Reg ECX 2
+a8c: MOV Reg EBX, Reg EAX 2
+a8e: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 603)) 7
+a95: MOV Reg EDI, Immediate 1 5
+a9a: CALL signal (external)
+a9f: ADD Reg RAX, Immediate 1 4
+aa3: JZ b61 (resolved immediate)
+  |
+  `- aa9,b61
+aa9: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 576)) 7
+ab0: MOV Reg EDI, Immediate 2 5
+ab5: CALL signal (external)
+aba: ADD Reg RAX, Immediate 1 4
+abe: JZ b61 (resolved immediate)
+  |
+  `- ac4,b61
+ac4: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 549)) 7
+acb: MOV Reg EDI, Immediate 3 5
+ad0: CALL signal (external)
+ad5: ADD Reg RAX, Immediate 1 4
+ad9: JZ b61 (resolved immediate)
+  |
+  `- adf,b61
+adf: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 522)) 7
+ae6: MOV Reg EDI, Immediate 15 5
+aeb: CALL signal (external)
+af0: ADD Reg RAX, Immediate 1 4
+af4: JZ b61 (resolved immediate)
+  |
+  `- af6,b61
+af6: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 547)) 7
+afd: MOV Reg EDI, Immediate 10 5
+b02: CALL signal (external)
+b07: ADD Reg RAX, Immediate 1 4
+b0b: JZ b61 (resolved immediate)
+  |
+  `- b0d,b61
+b0d: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2102588))) 7
+b14: XOR Reg ESI, Reg ESI 2
+b16: MOV Reg EDX, Reg R12D 3
+b19: MOV Reg EBP, Reg R12D 3
+b1c: CALL xc_watchdog (external)
+b21: TEST Reg EAX, Reg EAX 2
+b23: MOV Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2102563))), Reg EAX 6
+b29: JLE bc6 (resolved immediate)
+  |
+  `- b2f,bc6
+b2f: MOV Reg EDI, Reg EBX 2
+b31: CALL sleep (external)
+b36: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2102544))) 6
+b3c: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2102541))) 7
+b43: MOV Reg EDX, Reg EBP 2
+b45: CALL xc_watchdog (external)
+b4a: TEST Reg EAX, Reg EAX 2
+b4c: JZ b2f (resolved immediate)
+  |
+  `- b2f,b4e
+b4e: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 1079)) 7
+b55: MOV Reg EDI, Immediate 1 5
+b5a: XOR Reg EAX, Reg EAX 2
+b5c: CALL err (external)
+  |
+  `- 
+b61: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 1035)) 7
+b68: MOV Reg EDI, Immediate 1 5
+b6d: XOR Reg EAX, Reg EAX 2
+b6f: CALL err (external)
+  |
+  `- 
+b74: MOV Reg RDX, Address (SizeDir 64 (FromReg RSI)) 3
+b77: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 959)) 7
+b7e: MOV Reg EDI, Immediate 1 5
+b83: XOR Reg EAX, Reg EAX 2
+b85: CALL errx (external)
+  |
+  `- 
+b8a: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 968)) 7
+b91: MOV Reg EDI, Immediate 1 5
+b96: CALL err (external)
+  |
+  `- 
+b9b: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))) 4
+b9f: XOR Reg EDX, Reg EDX 2
+ba1: XOR Reg ESI, Reg ESI 2
+ba3: CALL strtoul (external)
+ba8: MOV Reg EBX, Reg EAX 2
+baa: ADD Reg EAX, Immediate 1 3
+bad: JNZ a8e (resolved immediate)
+  |
+  `- a8e,bb3
+bb3: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 945)) 7
+bba: MOV Reg EDI, Immediate 1 5
+bbf: XOR Reg EAX, Reg EAX 2
+bc1: CALL err (external)
+  |
+  `- 
+bc6: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 941)) 7
+bcd: MOV Reg EDI, Immediate 1 5
+bd2: XOR Reg EAX, Reg EAX 2
+bd4: CALL err (external)
+  |
+  `- 
+be0: XOR Reg EBP, Reg EBP 2
+be2: MOV Reg R9, Reg RDX 3
+be5: POP Reg RSI 1
+be6: MOV Reg RDX, Reg RSP 3
+be9: AND Reg RSP, Immediate 18446744073709551600 4
+bed: PUSH Reg RAX 1
+bee: PUSH Reg RSP 1
+bef: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 746)) 7
+bf6: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 627)) 7
+bfd: LEA Reg RDI, Address (AddrMinus (FromReg RIP) (AddrImm 468)) 7
+c04: CALL __libc_start_main (external)
+  |
+  `- a30
+d50: SUB Reg RSP, Immediate 8 4
+d54: CALL fork (external)
+d59: CMP Reg EAX, Immediate 4294967295 3
+d5c: JZ e0a (resolved immediate)
+  |
+  `- d62,e0a
+d62: TEST Reg EAX, Reg EAX 2
+d64: JNZ df0 (resolved immediate)
+  |
+  `- d6a,df0
+d6a: XOR Reg EDI, Reg EDI 2
+d6c: CALL umask (external)
+d71: CALL setsid (external)
+d76: TEST Reg EAX, Reg EAX 2
+d78: JS df7 (resolved immediate)
+  |
+  `- d7a,df7
+d7a: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 389)) 7
+d81: CALL chdir (external)
+d86: TEST Reg EAX, Reg EAX 2
+d88: JS e50 (resolved immediate)
+  |
+  `- d8e,e50
+d8e: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2101915))) 7
+d95: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 415)) 7
+d9c: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 357)) 7
+da3: CALL freopen (external)
+da8: TEST Reg RAX, Reg RAX 3
+dab: JZ e1d (resolved immediate)
+  |
+  `- dad,e1d
+dad: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2101868))) 7
+db4: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 356)) 7
+dbb: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 326)) 7
+dc2: CALL freopen (external)
+dc7: TEST Reg RAX, Reg RAX 3
+dca: JZ e3f (resolved immediate)
+  |
+  `- dcc,e3f
+dcc: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2101869))) 7
+dd3: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 325)) 7
+dda: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 295)) 7
+de1: CALL freopen (external)
+de6: TEST Reg RAX, Reg RAX 3
+de9: JZ e2e (resolved immediate)
+  |
+  `- deb,e2e
+deb: ADD Reg RSP, Immediate 8 4
+def: RET  1
+  |
+  `- 
+df0: XOR Reg EDI, Reg EDI 2
+df2: CALL exit (external)
+  |
+  `- 
+df7: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 251)) 7
+dfe: MOV Reg EDI, Immediate 1 5
+e03: XOR Reg EAX, Reg EAX 2
+e05: CALL err (external)
+  |
+  `- 
+e0a: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 227)) 7
+e11: MOV Reg EDI, Immediate 1 5
+e16: XOR Reg EAX, Reg EAX 2
+e18: CALL err (external)
+  |
+  `- 
+e1d: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 238)) 7
+e24: MOV Reg EDI, Immediate 1 5
+e29: CALL err (external)
+  |
+  `- 
+e2e: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 250)) 7
+e35: MOV Reg EDI, Immediate 1 5
+e3a: CALL err (external)
+  |
+  `- 
+e3f: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 219)) 7
+e46: MOV Reg EDI, Immediate 1 5
+e4b: CALL err (external)
+  |
+  `- 
+e50: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 169)) 7
+e57: MOV Reg EDI, Immediate 1 5
+e5c: XOR Reg EAX, Reg EAX 2
+e5e: CALL err (external)
+  |
+  `- 

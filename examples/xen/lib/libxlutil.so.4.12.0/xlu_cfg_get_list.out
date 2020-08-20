@@ -1,0 +1,96 @@
+Number of assembly instructions     = 63
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 63
+Number of edges: 69
+
+6010 (False): 0
+
+6010: PUSH Reg R15 2
+6012: PUSH Reg R14 2
+6014: PUSH Reg R13 2
+6016: PUSH Reg R12 2
+6018: PUSH Reg RBP 1
+6019: PUSH Reg RBX 1
+601a: SUB Reg RSP, Immediate 24 4
+601e: MOV Reg RBX, Address (SizeDir 64 (FromReg RDI)) 3
+6021: TEST Reg RBX, Reg RBX 3
+6024: JZ 6088 (resolved immediate)
+  |
+  `- 6026,6088
+6026: MOV Reg R12, Reg RDI 3
+6029: MOV Reg RBP, Reg RSI 3
+602c: MOV Reg R15, Reg RDX 3
+602f: MOV Reg R14, Reg RCX 3
+6032: MOV Reg R13D, Reg R8D 3
+6035: JMP 6048 (resolved immediate)
+  |
+  `- 6048
+6040: MOV Reg RBX, Address (SizeDir 64 (FromReg RBX)) 3
+6043: TEST Reg RBX, Reg RBX 3
+6046: JZ 6088 (resolved immediate)
+  |
+  `- 6048,6088
+6048: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+604c: MOV Reg RSI, Reg RBP 3
+604f: CALL strcmp (external)
+6054: TEST Reg EAX, Reg EAX 2
+6056: MOV Reg R10D, Reg EAX 3
+6059: JNZ 6040 (resolved immediate)
+  |
+  `- 6040,605b
+605b: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
+605f: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 1 3
+6062: JZ 6090 (resolved immediate)
+  |
+  `- 6064,6090
+6064: TEST Reg R13D, Reg R13D 3
+6067: MOV Reg R10D, Immediate 22 6
+606d: JZ 60b0 (resolved immediate)
+  |
+  `- 606f,60b0
+606f: ADD Reg RSP, Immediate 24 4
+6073: MOV Reg EAX, Reg R10D 3
+6076: POP Reg RBX 1
+6077: POP Reg RBP 1
+6078: POP Reg R12 2
+607a: POP Reg R13 2
+607c: POP Reg R14 2
+607e: POP Reg R15 2
+6080: RET  1
+  |
+  `- 
+6088: MOV Reg R10D, Immediate 3 6
+608e: JMP 606f (resolved immediate)
+  |
+  `- 606f
+6090: TEST Reg R15, Reg R15 3
+6093: JZ 609c (resolved immediate)
+  |
+  `- 6095,609c
+6095: ADD Reg RAX, Immediate 8 4
+6099: MOV Address (SizeDir 64 (FromReg R15)), Reg RAX 3
+609c: TEST Reg R14, Reg R14 3
+609f: JZ 606f (resolved immediate)
+  |
+  `- 606f,60a1
+60a1: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
+60a5: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 12))) 3
+60a8: MOV Address (SizeDir 32 (FromReg R14)), Reg EAX 3
+60ab: JMP 606f (resolved immediate)
+  |
+  `- 606f
+60b0: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 16))) 5
+60b5: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 8))) 5
+60ba: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 20591)) 7
+60c1: MOV Reg R8D, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
+60c5: MOV Reg R9, Reg RBP 3
+60c8: MOV Reg ESI, Immediate 1 5
+60cd: XOR Reg EAX, Reg EAX 2
+60cf: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))), Reg R10D 5
+60d4: CALL __fprintf_chk (external)
+60d9: MOV Reg R10D, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 5
+60de: JMP 606f (resolved immediate)
+  |
+  `- 606f

@@ -1,0 +1,104 @@
+Number of assembly instructions     = 81
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 81
+Number of edges: 82
+
+16b30 (False): 0
+
+16b30: PUSH Reg R15 2
+16b32: PUSH Reg R14 2
+16b34: MOV Reg R14, Reg R8 3
+16b37: PUSH Reg R13 2
+16b39: PUSH Reg R12 2
+16b3b: MOV Reg R13, Reg RDI 3
+16b3e: PUSH Reg RBP 1
+16b3f: PUSH Reg RBX 1
+16b40: MOV Reg R12, Reg RDX 3
+16b43: MOV Reg RDX, Reg RCX 3
+16b46: MOV Reg ECX, Immediate 12 5
+16b4b: SUB Reg RSP, Immediate 136 7
+16b52: MOV Reg RBX, Reg RSP 3
+16b55: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 12))), Immediate 0 9
+16b5e: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+16b67: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 120))), Reg RAX 5
+16b6c: XOR Reg EAX, Reg EAX 2
+16b6e: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 16)) 4
+16b72: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 104))), Immediate 0 8
+16b7a: REP STOSQ  3
+16b7d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RDX 5
+16b82: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 41832)) 7
+16b89: MOV Address (SizeDir 64 (FromReg RSP)), Reg RSI 4
+16b8d: MOV Reg ECX, Immediate 112 5
+16b92: MOV Reg ESI, Immediate 47 5
+16b97: MOV Reg RDI, Reg RBX 3
+16b9a: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg R12D 5
+16b9f: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 32))), Reg R8D 5
+16ba4: CALL inflateInit2_ (external)
+16ba9: TEST Reg EAX, Reg EAX 2
+16bab: MOV Reg EBP, Reg EAX 2
+16bad: JNZ 16c50 (resolved immediate)
+  |
+  `- 16bb3,16c50
+16bb3: MOV Reg ESI, Immediate 4 5
+16bb8: MOV Reg RDI, Reg RBX 3
+16bbb: CALL inflate (external)
+16bc0: MOV Reg RDI, Reg RBX 3
+16bc3: MOV Reg R15D, Reg EAX 3
+16bc6: CALL inflateEnd (external)
+16bcb: CMP Reg R15D, Immediate 1 4
+16bcf: JNZ 16c18 (resolved immediate)
+  |
+  `- 16bd1,16c18
+16bd1: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 61816)) 7
+16bd8: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 59144)) 7
+16bdf: MOV Reg R8, Reg R14 3
+16be2: MOV Reg RCX, Reg R12 3
+16be5: MOV Reg RDI, Reg R13 3
+16be8: XOR Reg EAX, Reg EAX 2
+16bea: CALL xc_dom_printf (external)
+16bef: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 120))) 5
+16bf4: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+16bfd: MOV Reg EAX, Reg EBP 2
+16bff: JNZ 16c6f (resolved immediate)
+  |
+  `- 16c01,16c6f
+16c01: ADD Reg RSP, Immediate 136 7
+16c08: POP Reg RBX 1
+16c09: POP Reg RBP 1
+16c0a: POP Reg R12 2
+16c0c: POP Reg R13 2
+16c0e: POP Reg R14 2
+16c10: POP Reg R15 2
+16c12: RET  1
+  |
+  `- 
+16c18: SUB Reg RSP, Immediate 8 4
+16c1c: LEA Reg R9, Address (AddrPlus (FromReg RIP) (AddrImm 61741)) 7
+16c23: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 59042)) 7
+16c2a: PUSH Reg R15 2
+16c2c: MOV Reg ECX, Immediate 1 5
+16c31: MOV Reg EDX, Immediate 377 5
+16c36: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 58746)) 7
+16c3d: XOR Reg EAX, Reg EAX 2
+16c3f: MOV Reg RDI, Reg R13 3
+16c42: MOV Reg EBP, Immediate 4294967295 5
+16c47: CALL xc_dom_panic_func (external)
+16c4c: POP Reg RAX 1
+16c4d: POP Reg RDX 1
+16c4e: JMP 16bef (resolved immediate)
+  |
+  `- 16bef
+16c50: SUB Reg RSP, Immediate 8 4
+16c54: LEA Reg R9, Address (AddrPlus (FromReg RIP) (AddrImm 61685)) 7
+16c5b: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 60174)) 7
+16c62: PUSH Reg RAX 1
+16c63: MOV Reg ECX, Immediate 1 5
+16c68: MOV Reg EDX, Immediate 369 5
+16c6d: JMP 16c36 (resolved immediate)
+  |
+  `- 16c36
+16c6f: CALL __stack_chk_fail (external)
+  |
+  `- 

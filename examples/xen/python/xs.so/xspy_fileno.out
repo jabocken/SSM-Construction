@@ -1,0 +1,41 @@
+Number of assembly instructions     = 21
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 21
+Number of edges: 20
+
+1f11 (True): 1f52
+1f29 (False): 0
+
+1f11: PUSH Reg RBX 1
+1f12: MOV Reg EBX, Reg EDI 2
+1f14: CALL __errno_location (external)
+1f19: MOV Address (SizeDir 32 (FromReg RAX)), Reg EBX 2
+1f1b: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2111390))) 7
+1f22: CALL PyErr_SetFromErrno (external)
+1f27: POP Reg RBX 1
+1f28: RET  1
+  |
+  `- 
+1f29: SUB Reg RSP, Immediate 8 4
+1f2d: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))) 4
+1f31: TEST Reg RDI, Reg RDI 3
+1f34: JZ 1f48 (resolved immediate)
+  |
+  `- 1f36,1f48
+1f36: CALL xs_fileno (external)
+1f3b: MOVSXD Reg RDI, Reg EAX 3
+1f3e: CALL PyInt_FromLong (external)
+1f43: ADD Reg RSP, Immediate 8 4
+1f47: RET  1
+  |
+  `- 
+1f48: MOV Reg EDI, Immediate 22 5
+1f4d: CALL xs_set_error (internal)
+  |
+  `- 1f11
+1f52: MOV Reg EAX, Immediate 0 5
+1f57: JMP 1f43 (resolved immediate)
+  |
+  `- 1f43

@@ -1,0 +1,42 @@
+Number of assembly instructions     = 22
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 22
+Number of edges: 22
+
+3f50 (False): 417a
+4150 (False): 0
+
+3f50: SUB Reg RSP, Immediate 8 4
+3f54: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2146437))) 7
+3f5b: MOV Reg RCX, Reg RDI 3
+3f5e: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 39548)) 7
+3f65: MOV Reg ESI, Immediate 1 5
+3f6a: MOV Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
+3f6d: XOR Reg EAX, Reg EAX 2
+3f6f: CALL __fprintf_chk (external)
+3f74: MOV Reg EDI, Immediate 2 5
+3f79: CALL exit (external)
+  |
+  `- 
+4150: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 40))) 4
+4154: TEST Reg RAX, Reg RAX 3
+4157: JZ 416a (resolved immediate)
+  |
+  `- 4159,416a
+4159: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 24))) 4
+415d: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX)))) 4
+4161: TEST Reg RAX, Reg RAX 3
+4164: JZ 416a (resolved immediate)
+  |
+  `- 4166,416a
+4166: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 56))), Reg EDI 3
+4169: RET  1
+  |
+  `- 
+416a: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 25575)) 7
+4171: SUB Reg RSP, Immediate 8 4
+4175: CALL yy_fatal_error.isra.0 (internal)
+  |
+  `- 3f50

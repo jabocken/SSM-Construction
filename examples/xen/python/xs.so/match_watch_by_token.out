@@ -1,0 +1,98 @@
+Number of assembly instructions     = 64
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 64
+Number of edges: 66
+
+1f11 (True): 2772, 27c6
+2701 (False): 0
+
+1f11: PUSH Reg RBX 1
+1f12: MOV Reg EBX, Reg EDI 2
+1f14: CALL __errno_location (external)
+1f19: MOV Address (SizeDir 32 (FromReg RAX)), Reg EBX 2
+1f1b: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2111390))) 7
+1f22: CALL PyErr_SetFromErrno (external)
+1f27: POP Reg RBX 1
+1f28: RET  1
+  |
+  `- 
+2701: PUSH Reg R13 2
+2703: PUSH Reg R12 2
+2705: PUSH Reg RBP 1
+2706: PUSH Reg RBX 1
+2707: SUB Reg RSP, Immediate 24 4
+270b: MOV Reg R12, Reg RDI 3
+270e: MOV Reg R13, Reg RSI 3
+2711: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+271a: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
+271f: XOR Reg EAX, Reg EAX 2
+2721: MOV Reg RDX, Reg RSP 3
+2724: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))) 4
+2728: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 3016)) 7
+272f: CALL sscanf (external)
+2734: MOV Reg EBP, Immediate 0 5
+2739: CMP Reg EAX, Immediate 1 3
+273c: JNZ 2768 (resolved immediate)
+  |
+  `- 273e,2768
+273e: MOVSXD Reg RBX, Reg EBP 3
+2741: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 24))) 5
+2746: CALL PyList_Size (external)
+274b: CMP Reg RBX, Reg RAX 3
+274e: JGE 2779 (resolved immediate)
+  |
+  `- 2750,2779
+2750: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 24))) 5
+2755: MOV Reg RSI, Reg RBX 3
+2758: CALL PyList_GetItem (external)
+275d: CMP Reg RAX, Address (SizeDir 64 (FromReg RSP)) 4
+2761: JZ 2779 (resolved immediate)
+  |
+  `- 2763,2779
+2763: ADD Reg EBP, Immediate 1 3
+2766: JMP 273e (resolved immediate)
+  |
+  `- 273e
+2768: MOV Reg EDI, Immediate 22 5
+276d: CALL xs_set_error (internal)
+  |
+  `- 1f11
+2772: MOV Reg EAX, Immediate 0 5
+2777: JMP 27a1 (resolved immediate)
+  |
+  `- 27a1
+2779: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 24))) 5
+277e: CALL PyList_Size (external)
+2783: CMP Reg RBX, Reg RAX 3
+2786: JZ 27bc (resolved immediate)
+  |
+  `- 2788,27bc
+2788: MOV Reg RDX, Address (SizeDir 64 (FromReg RSP)) 4
+278c: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 0))) 4
+2790: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2916)) 7
+2797: MOV Reg EAX, Immediate 0 5
+279c: CALL Py_BuildValue (external)
+27a1: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+27a6: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+27af: JNZ 27cd (resolved immediate)
+  |
+  `- 27b1,27cd
+27b1: ADD Reg RSP, Immediate 24 4
+27b5: POP Reg RBX 1
+27b6: POP Reg RBP 1
+27b7: POP Reg R12 2
+27b9: POP Reg R13 2
+27bb: RET  1
+  |
+  `- 
+27bc: MOV Reg EDI, Immediate 11 5
+27c1: CALL xs_set_error (internal)
+27c6: MOV Reg EAX, Immediate 0 5
+27cb: JMP 27a1 (resolved immediate)
+  |
+  `- 27a1
+27cd: CALL __stack_chk_fail (external)
+  |
+  `- 

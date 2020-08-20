@@ -1,0 +1,72 @@
+Number of assembly instructions     = 53
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 53
+Number of edges: 53
+
+f9c0 (False): 0
+
+f9c0: PUSH Reg R15 2
+f9c2: PUSH Reg R14 2
+f9c4: MOV Reg R14D, Reg R8D 3
+f9c7: PUSH Reg R13 2
+f9c9: PUSH Reg R12 2
+f9cb: MOV Reg R13D, Reg ECX 3
+f9ce: PUSH Reg RBP 1
+f9cf: PUSH Reg RBX 1
+f9d0: MOV Reg RBP, Reg RDI 3
+f9d3: MOV Reg RBX, Reg RDX 3
+f9d6: MOV Reg R12D, Reg ESI 3
+f9d9: SUB Reg RSP, Immediate 8 4
+f9dd: CALL xc_domain_increase_reservation (external)
+f9e2: MOVSXD Reg RDX, Reg EAX 3
+f9e5: CMP Reg RDX, Reg RBX 3
+f9e8: JZ fa00 (resolved immediate)
+  |
+  `- f9ea,fa00
+f9ea: TEST Reg EAX, Reg EAX 2
+f9ec: JNS fa18 (resolved immediate)
+  |
+  `- f9ee,fa18
+f9ee: ADD Reg RSP, Immediate 8 4
+f9f2: POP Reg RBX 1
+f9f3: POP Reg RBP 1
+f9f4: POP Reg R12 2
+f9f6: POP Reg R13 2
+f9f8: POP Reg R14 2
+f9fa: POP Reg R15 2
+f9fc: RET  1
+  |
+  `- 
+fa00: ADD Reg RSP, Immediate 8 4
+fa04: XOR Reg EAX, Reg EAX 2
+fa06: POP Reg RBX 1
+fa07: POP Reg RBP 1
+fa08: POP Reg R12 2
+fa0a: POP Reg R13 2
+fa0c: POP Reg R14 2
+fa0e: POP Reg R15 2
+fa10: RET  1
+  |
+  `- 
+fa18: CALL __errno_location (external)
+fa1d: SUB Reg RSP, Immediate 8 4
+fa21: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))) 4
+fa25: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 89132)) 7
+fa2c: PUSH Reg R14 2
+fa2e: PUSH Reg R13 2
+fa30: MOV Reg R15, Reg RAX 3
+fa33: PUSH Reg RBX 1
+fa34: XOR Reg EAX, Reg EAX 2
+fa36: MOV Reg R9D, Reg R12D 3
+fa39: XOR Reg ECX, Reg ECX 2
+fa3b: MOV Reg EDX, Immediate 3 5
+fa40: MOV Reg RDI, Reg RBP 3
+fa43: CALL xc_report (external)
+fa48: MOV Address (SizeDir 32 (FromReg R15)), Immediate 12 7
+fa4f: ADD Reg RSP, Immediate 32 4
+fa53: MOV Reg EAX, Immediate 4294967295 5
+fa58: JMP f9ee (resolved immediate)
+  |
+  `- f9ee

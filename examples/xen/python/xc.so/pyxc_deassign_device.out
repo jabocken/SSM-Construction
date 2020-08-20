@@ -1,0 +1,182 @@
+Number of assembly instructions     = 145
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 145
+Number of edges: 148
+
+767b (True): 76f0, 770c, 7728, 7745
+76a1 (True): 77ef
+7779 (False): 0
+
+767b: SUB Reg RSP, Immediate 8 4
+767f: MOV Reg ESI, Immediate 120 5
+7684: CALL strchr (external)
+7689: LEA Reg RDI, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 4
+768d: MOV Reg EDX, Immediate 16 5
+7692: MOV Reg ESI, Immediate 0 5
+7697: CALL strtol (external)
+769c: ADD Reg RSP, Immediate 8 4
+76a0: RET  1
+  |
+  `- 
+76a1: PUSH Reg R15 2
+76a3: PUSH Reg R14 2
+76a5: PUSH Reg R13 2
+76a7: PUSH Reg R12 2
+76a9: PUSH Reg RBP 1
+76aa: PUSH Reg RBX 1
+76ab: SUB Reg RSP, Immediate 8 4
+76af: MOV Reg RBP, Address (SizeDir 64 (FromReg RDI)) 3
+76b2: MOV Reg R9D, Immediate 0 6
+76b8: TEST Reg RBP, Reg RBP 3
+76bb: JZ 7767 (resolved immediate)
+  |
+  `- 76c1,7767
+76c1: MOV Reg R12, Reg R8 3
+76c4: MOV Reg R13, Reg RCX 3
+76c7: MOV Reg R14, Reg RDX 3
+76ca: MOV Reg R15, Reg RSI 3
+76cd: MOV Reg RBX, Reg RDI 3
+76d0: MOV Reg ESI, Immediate 44 5
+76d5: MOV Reg RDI, Reg RBP 3
+76d8: CALL strchr (external)
+76dd: MOV Reg R9D, Immediate 0 6
+76e3: TEST Reg RAX, Reg RAX 3
+76e6: JZ 7767 (resolved immediate)
+  |
+  `- 76e8,7767
+76e8: MOV Reg RDI, Reg RBP 3
+76eb: CALL token_value (internal)
+  |
+  `- 767b
+76f0: MOV Address (SizeDir 32 (FromReg R15)), Reg EAX 3
+76f3: MOV Reg ESI, Immediate 44 5
+76f8: MOV Reg RDI, Reg RBP 3
+76fb: CALL strchr (external)
+7700: LEA Reg RBP, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 4
+7704: MOV Reg RDI, Reg RBP 3
+7707: CALL token_value (internal)
+770c: MOV Address (SizeDir 32 (FromReg R14)), Reg EAX 3
+770f: MOV Reg ESI, Immediate 44 5
+7714: MOV Reg RDI, Reg RBP 3
+7717: CALL strchr (external)
+771c: LEA Reg RBP, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 4
+7720: MOV Reg RDI, Reg RBP 3
+7723: CALL token_value (internal)
+7728: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Reg EAX 4
+772c: MOV Reg ESI, Immediate 44 5
+7731: MOV Reg RDI, Reg RBP 3
+7734: CALL strchr (external)
+7739: LEA Reg RBP, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 4
+773d: MOV Reg RDI, Reg RBP 3
+7740: CALL token_value (internal)
+7745: MOV Address (SizeDir 32 (FromReg R12)), Reg EAX 4
+7749: MOV Reg ESI, Immediate 44 5
+774e: MOV Reg RDI, Reg RBP 3
+7751: CALL strchr (external)
+7756: CMP Reg RAX, Immediate 1 4
+775a: SBB Reg RAX, Immediate 18446744073709551615 4
+775e: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
+7761: MOV Reg R9D, Immediate 1 6
+7767: MOV Reg EAX, Reg R9D 3
+776a: ADD Reg RSP, Immediate 8 4
+776e: POP Reg RBX 1
+776f: POP Reg RBP 1
+7770: POP Reg R12 2
+7772: POP Reg R13 2
+7774: POP Reg R14 2
+7776: POP Reg R15 2
+7778: RET  1
+  |
+  `- 
+7779: PUSH Reg R15 2
+777b: PUSH Reg R14 2
+777d: PUSH Reg R13 2
+777f: PUSH Reg R12 2
+7781: PUSH Reg RBP 1
+7782: PUSH Reg RBX 1
+7783: SUB Reg RSP, Immediate 56 4
+7787: MOV Reg R15, Reg RDI 3
+778a: MOV Reg RDI, Reg RSI 3
+778d: MOV Reg RSI, Reg RDX 3
+7790: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+7799: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Reg RAX 5
+779e: XOR Reg EAX, Reg EAX 2
+77a0: LEA Reg R9, Address (AddrPlus (FromReg RSP) (AddrImm 32)) 5
+77a5: LEA Reg R8, Address (AddrPlus (FromReg RSP) (AddrImm 12)) 5
+77aa: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2129263)) 7
+77b1: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 5903)) 7
+77b8: CALL PyArg_ParseTupleAndKeywords (external)
+77bd: TEST Reg EAX, Reg EAX 2
+77bf: JZ 7876 (resolved immediate)
+  |
+  `- 77c5,7876
+77c5: LEA Reg R14, Address (AddrPlus (FromReg RSP) (AddrImm 28)) 5
+77ca: LEA Reg R13, Address (AddrPlus (FromReg RSP) (AddrImm 24)) 5
+77cf: LEA Reg R12, Address (AddrPlus (FromReg RSP) (AddrImm 20)) 5
+77d4: LEA Reg RBP, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+77d9: LEA Reg RDI, Address (AddrPlus (FromReg RSP) (AddrImm 32)) 5
+77de: MOV Reg R8, Reg R14 3
+77e1: MOV Reg RCX, Reg R13 3
+77e4: MOV Reg RDX, Reg R12 3
+77e7: MOV Reg RSI, Reg RBP 3
+77ea: CALL next_bdf (internal)
+  |
+  `- 77ef,76a1
+77ef: MOV Reg EBX, Reg EAX 2
+77f1: TEST Reg EAX, Reg EAX 2
+77f3: JZ 7844 (resolved immediate)
+  |
+  `- 77f5,7844
+77f5: MOV Reg EBX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 28))) 4
+77f9: AND Reg EBX, Immediate 7 3
+77fc: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))) 4
+7800: SHL Reg EAX, Immediate 16 3
+7803: OR Reg EBX, Reg EAX 2
+7805: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 20))) 4
+7809: SHL Reg EAX, Immediate 8 3
+780c: MOVZX Reg EAX, Reg AX 3
+780f: OR Reg EAX, Reg EBX 2
+7811: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 24))) 4
+7815: LEA Reg EBX, Address (AddrPlus (AddrTimes (AddrImm 8) (FromReg RCX)) (AddrImm 0)) 7
+781c: MOVZX Reg EBX, Reg BL 3
+781f: OR Reg EBX, Reg EAX 2
+7821: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R15) (AddrImm 16))) 4
+7825: MOV Reg EDX, Reg EBX 2
+7827: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 4
+782b: CALL xc_deassign_device (external)
+7830: TEST Reg EAX, Reg EAX 2
+7832: JZ 77d9 (resolved immediate)
+  |
+  `- 77d9,7834
+7834: CALL __errno_location (external)
+7839: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 38 3
+783c: MOV Reg EAX, Immediate 4294967295 5
+7841: CMOVZ Reg EBX, Reg EAX 3
+7844: MOV Reg ESI, Reg EBX 2
+7846: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 6650)) 7
+784d: MOV Reg EAX, Immediate 0 5
+7852: CALL Py_BuildValue (external)
+7857: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
+785c: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+7865: JNZ 787d (resolved immediate)
+  |
+  `- 7867,787d
+7867: ADD Reg RSP, Immediate 56 4
+786b: POP Reg RBX 1
+786c: POP Reg RBP 1
+786d: POP Reg R12 2
+786f: POP Reg R13 2
+7871: POP Reg R14 2
+7873: POP Reg R15 2
+7875: RET  1
+  |
+  `- 
+7876: MOV Reg EAX, Immediate 0 5
+787b: JMP 7857 (resolved immediate)
+  |
+  `- 7857
+787d: CALL __stack_chk_fail (external)
+  |
+  `- 

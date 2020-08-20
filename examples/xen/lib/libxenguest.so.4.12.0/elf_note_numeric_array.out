@@ -1,0 +1,68 @@
+Number of assembly instructions     = 47
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 47
+Number of edges: 49
+
+130e0 (False): 0
+
+130e0: PUSH Reg R14 2
+130e2: PUSH Reg R13 2
+130e4: MOV Reg R14, Reg RSI 3
+130e7: PUSH Reg R12 2
+130e9: PUSH Reg RBP 1
+130ea: MOV Reg RBP, Reg RDI 3
+130ed: PUSH Reg RBX 1
+130ee: MOV Reg R13D, Reg ECX 3
+130f1: MOV Reg EBX, Reg EDX 2
+130f3: CALL elf_note_desc (external)
+130f8: MOV Reg EDX, Immediate 4 5
+130fd: MOV Reg ECX, Immediate 4 5
+13102: MOV Reg RSI, Reg R14 3
+13105: MOV Reg RDI, Reg RBP 3
+13108: MOV Reg R12, Reg RAX 3
+1310b: CALL elf_access_unsigned (external)
+13110: XOR Reg EDX, Reg EDX 2
+13112: DIV Reg EBX 2
+13114: TEST Reg EDX, Reg EDX 2
+13116: JNZ 13122 (resolved immediate)
+  |
+  `- 13118,13122
+13118: CMP Reg EBX, Immediate 8 3
+1311b: JA 13122 (resolved immediate)
+  |
+  `- 1311d,13122
+1311d: CMP Reg EAX, Reg R13D 3
+13120: JA 13130 (resolved immediate)
+  |
+  `- 13122,13130
+13122: POP Reg RBX 1
+13123: XOR Reg EAX, Reg EAX 2
+13125: POP Reg RBP 1
+13126: POP Reg R12 2
+13128: POP Reg R13 2
+1312a: POP Reg R14 2
+1312c: RET  1
+  |
+  `- 
+13130: MOV Reg EAX, Immediate 1 5
+13135: MOV Reg ECX, Reg EBX 2
+13137: SHL Reg RAX, Reg CL 3
+1313a: TEST Reg EAX, Immediate 278 5
+1313f: JZ 13122 (resolved immediate)
+  |
+  `- 13122,13141
+13141: MOV Reg EDX, Reg EBX 2
+13143: MOV Reg ECX, Reg EBX 2
+13145: MOV Reg RSI, Reg R12 3
+13148: POP Reg RBX 1
+13149: IMUL Reg EDX, Reg R13D 4
+1314d: MOV Reg RDI, Reg RBP 3
+13150: POP Reg RBP 1
+13151: POP Reg R12 2
+13153: POP Reg R13 2
+13155: POP Reg R14 2
+13157: JMP elf_access_unsigned (jmp to external function)
+  |
+  `- 

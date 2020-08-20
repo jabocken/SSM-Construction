@@ -1,0 +1,414 @@
+
+xenwatchdogd:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+0000000000000928 <_init>:
+ 928:	sub    rsp,0x8
+ 92c:	mov    rax,QWORD PTR [rip+0x2016b5]        # 201fe8 <__gmon_start__>
+ 933:	test   rax,rax
+ 936:	je     93a <_init+0x12>
+ 938:	call   rax
+ 93a:	add    rsp,0x8
+ 93e:	ret    
+
+Disassembly of section .plt:
+
+0000000000000940 <.plt>:
+ 940:	push   QWORD PTR [rip+0x20161a]        # 201f60 <_GLOBAL_OFFSET_TABLE_+0x8>
+ 946:	jmp    QWORD PTR [rip+0x20161c]        # 201f68 <_GLOBAL_OFFSET_TABLE_+0x10>
+ 94c:	nop    DWORD PTR [rax+0x0]
+
+0000000000000950 <xc_interface_open@plt>:
+ 950:	jmp    QWORD PTR [rip+0x20161a]        # 201f70 <xc_interface_open>
+ 956:	push   0x0
+ 95b:	jmp    940 <.plt>
+
+0000000000000960 <chdir@plt>:
+ 960:	jmp    QWORD PTR [rip+0x201612]        # 201f78 <chdir@GLIBC_2.2.5>
+ 966:	push   0x1
+ 96b:	jmp    940 <.plt>
+
+0000000000000970 <errx@plt>:
+ 970:	jmp    QWORD PTR [rip+0x20160a]        # 201f80 <errx@GLIBC_2.2.5>
+ 976:	push   0x2
+ 97b:	jmp    940 <.plt>
+
+0000000000000980 <freopen@plt>:
+ 980:	jmp    QWORD PTR [rip+0x201602]        # 201f88 <freopen@GLIBC_2.2.5>
+ 986:	push   0x3
+ 98b:	jmp    940 <.plt>
+
+0000000000000990 <setsid@plt>:
+ 990:	jmp    QWORD PTR [rip+0x2015fa]        # 201f90 <setsid@GLIBC_2.2.5>
+ 996:	push   0x4
+ 99b:	jmp    940 <.plt>
+
+00000000000009a0 <signal@plt>:
+ 9a0:	jmp    QWORD PTR [rip+0x2015f2]        # 201f98 <signal@GLIBC_2.2.5>
+ 9a6:	push   0x5
+ 9ab:	jmp    940 <.plt>
+
+00000000000009b0 <umask@plt>:
+ 9b0:	jmp    QWORD PTR [rip+0x2015ea]        # 201fa0 <umask@GLIBC_2.2.5>
+ 9b6:	push   0x6
+ 9bb:	jmp    940 <.plt>
+
+00000000000009c0 <err@plt>:
+ 9c0:	jmp    QWORD PTR [rip+0x2015e2]        # 201fa8 <err@GLIBC_2.2.5>
+ 9c6:	push   0x7
+ 9cb:	jmp    940 <.plt>
+
+00000000000009d0 <xc_watchdog@plt>:
+ 9d0:	jmp    QWORD PTR [rip+0x2015da]        # 201fb0 <xc_watchdog>
+ 9d6:	push   0x8
+ 9db:	jmp    940 <.plt>
+
+00000000000009e0 <strtoul@plt>:
+ 9e0:	jmp    QWORD PTR [rip+0x2015d2]        # 201fb8 <strtoul@GLIBC_2.2.5>
+ 9e6:	push   0x9
+ 9eb:	jmp    940 <.plt>
+
+00000000000009f0 <exit@plt>:
+ 9f0:	jmp    QWORD PTR [rip+0x2015ca]        # 201fc0 <exit@GLIBC_2.2.5>
+ 9f6:	push   0xa
+ 9fb:	jmp    940 <.plt>
+
+0000000000000a00 <sleep@plt>:
+ a00:	jmp    QWORD PTR [rip+0x2015c2]        # 201fc8 <sleep@GLIBC_2.2.5>
+ a06:	push   0xb
+ a0b:	jmp    940 <.plt>
+
+0000000000000a10 <fork@plt>:
+ a10:	jmp    QWORD PTR [rip+0x2015ba]        # 201fd0 <fork@GLIBC_2.2.5>
+ a16:	push   0xc
+ a1b:	jmp    940 <.plt>
+
+Disassembly of section .plt.got:
+
+0000000000000a20 <__cxa_finalize@plt>:
+ a20:	jmp    QWORD PTR [rip+0x2015d2]        # 201ff8 <__cxa_finalize@GLIBC_2.2.5>
+ a26:	xchg   ax,ax
+
+Disassembly of section .text:
+
+0000000000000a30 <main>:
+ a30:	cmp    edi,0x1
+ a33:	push   r12
+ a35:	push   rbp
+ a36:	mov    rbp,rsi
+ a39:	push   rbx
+ a3a:	jle    b74 <main+0x144>
+ a40:	mov    ebx,edi
+ a42:	call   d50 <daemonize>
+ a47:	xor    edx,edx
+ a49:	xor    esi,esi
+ a4b:	xor    edi,edi
+ a4d:	call   950 <xc_interface_open@plt>
+ a52:	test   rax,rax
+ a55:	mov    QWORD PTR [rip+0x2015f4],rax        # 202050 <h>
+ a5c:	je     b8a <main+0x15a>
+ a62:	mov    rdi,QWORD PTR [rbp+0x8]
+ a66:	xor    edx,edx
+ a68:	xor    esi,esi
+ a6a:	call   9e0 <strtoul@plt>
+ a6f:	cmp    eax,0xffffffff
+ a72:	mov    r12,rax
+ a75:	je     bb3 <main+0x183>
+ a7b:	cmp    ebx,0x3
+ a7e:	je     b9b <main+0x16b>
+ a84:	mov    ecx,0x2
+ a89:	cdq    
+ a8a:	idiv   ecx
+ a8c:	mov    ebx,eax
+ a8e:	lea    rsi,[rip+0x25b]        # cf0 <catch_exit>
+ a95:	mov    edi,0x1
+ a9a:	call   9a0 <signal@plt>
+ a9f:	add    rax,0x1
+ aa3:	je     b61 <main+0x131>
+ aa9:	lea    rsi,[rip+0x240]        # cf0 <catch_exit>
+ ab0:	mov    edi,0x2
+ ab5:	call   9a0 <signal@plt>
+ aba:	add    rax,0x1
+ abe:	je     b61 <main+0x131>
+ ac4:	lea    rsi,[rip+0x225]        # cf0 <catch_exit>
+ acb:	mov    edi,0x3
+ ad0:	call   9a0 <signal@plt>
+ ad5:	add    rax,0x1
+ ad9:	je     b61 <main+0x131>
+ adf:	lea    rsi,[rip+0x20a]        # cf0 <catch_exit>
+ ae6:	mov    edi,0xf
+ aeb:	call   9a0 <signal@plt>
+ af0:	add    rax,0x1
+ af4:	je     b61 <main+0x131>
+ af6:	lea    rsi,[rip+0x223]        # d20 <catch_usr1>
+ afd:	mov    edi,0xa
+ b02:	call   9a0 <signal@plt>
+ b07:	add    rax,0x1
+ b0b:	je     b61 <main+0x131>
+ b0d:	mov    rdi,QWORD PTR [rip+0x20153c]        # 202050 <h>
+ b14:	xor    esi,esi
+ b16:	mov    edx,r12d
+ b19:	mov    ebp,r12d
+ b1c:	call   9d0 <xc_watchdog@plt>
+ b21:	test   eax,eax
+ b23:	mov    DWORD PTR [rip+0x201523],eax        # 20204c <id>
+ b29:	jle    bc6 <main+0x196>
+ b2f:	mov    edi,ebx
+ b31:	call   a00 <sleep@plt>
+ b36:	mov    esi,DWORD PTR [rip+0x201510]        # 20204c <id>
+ b3c:	mov    rdi,QWORD PTR [rip+0x20150d]        # 202050 <h>
+ b43:	mov    edx,ebp
+ b45:	call   9d0 <xc_watchdog@plt>
+ b4a:	test   eax,eax
+ b4c:	je     b2f <main+0xff>
+ b4e:	lea    rsi,[rip+0x437]        # f8c <_IO_stdin_used+0x9c>
+ b55:	mov    edi,0x1
+ b5a:	xor    eax,eax
+ b5c:	call   9c0 <err@plt>
+ b61:	lea    rsi,[rip+0x40b]        # f73 <_IO_stdin_used+0x83>
+ b68:	mov    edi,0x1
+ b6d:	xor    eax,eax
+ b6f:	call   9c0 <err@plt>
+ b74:	mov    rdx,QWORD PTR [rsi]
+ b77:	lea    rsi,[rip+0x3bf]        # f3d <_IO_stdin_used+0x4d>
+ b7e:	mov    edi,0x1
+ b83:	xor    eax,eax
+ b85:	call   970 <errx@plt>
+ b8a:	lea    rsi,[rip+0x3c8]        # f59 <_IO_stdin_used+0x69>
+ b91:	mov    edi,0x1
+ b96:	call   9c0 <err@plt>
+ b9b:	mov    rdi,QWORD PTR [rbp+0x10]
+ b9f:	xor    edx,edx
+ ba1:	xor    esi,esi
+ ba3:	call   9e0 <strtoul@plt>
+ ba8:	mov    ebx,eax
+ baa:	add    eax,0x1
+ bad:	jne    a8e <main+0x5e>
+ bb3:	lea    rsi,[rip+0x3b1]        # f6b <_IO_stdin_used+0x7b>
+ bba:	mov    edi,0x1
+ bbf:	xor    eax,eax
+ bc1:	call   9c0 <err@plt>
+ bc6:	lea    rsi,[rip+0x3ad]        # f7a <_IO_stdin_used+0x8a>
+ bcd:	mov    edi,0x1
+ bd2:	xor    eax,eax
+ bd4:	call   9c0 <err@plt>
+ bd9:	nop    DWORD PTR [rax+0x0]
+
+0000000000000be0 <_start>:
+ be0:	xor    ebp,ebp
+ be2:	mov    r9,rdx
+ be5:	pop    rsi
+ be6:	mov    rdx,rsp
+ be9:	and    rsp,0xfffffffffffffff0
+ bed:	push   rax
+ bee:	push   rsp
+ bef:	lea    r8,[rip+0x2ea]        # ee0 <__libc_csu_fini>
+ bf6:	lea    rcx,[rip+0x273]        # e70 <__libc_csu_init>
+ bfd:	lea    rdi,[rip+0xfffffffffffffe2c]        # a30 <main>
+ c04:	call   QWORD PTR [rip+0x2013d6]        # 201fe0 <__libc_start_main@GLIBC_2.2.5>
+ c0a:	hlt    
+ c0b:	nop    DWORD PTR [rax+rax*1+0x0]
+
+0000000000000c10 <deregister_tm_clones>:
+ c10:	lea    rdi,[rip+0x2013f9]        # 202010 <__TMC_END__>
+ c17:	push   rbp
+ c18:	lea    rax,[rip+0x2013f1]        # 202010 <__TMC_END__>
+ c1f:	cmp    rax,rdi
+ c22:	mov    rbp,rsp
+ c25:	je     c40 <deregister_tm_clones+0x30>
+ c27:	mov    rax,QWORD PTR [rip+0x2013aa]        # 201fd8 <_ITM_deregisterTMCloneTable>
+ c2e:	test   rax,rax
+ c31:	je     c40 <deregister_tm_clones+0x30>
+ c33:	pop    rbp
+ c34:	jmp    rax
+ c36:	nop    WORD PTR cs:[rax+rax*1+0x0]
+ c40:	pop    rbp
+ c41:	ret    
+ c42:	nop    DWORD PTR [rax+0x0]
+ c46:	nop    WORD PTR cs:[rax+rax*1+0x0]
+
+0000000000000c50 <register_tm_clones>:
+ c50:	lea    rdi,[rip+0x2013b9]        # 202010 <__TMC_END__>
+ c57:	lea    rsi,[rip+0x2013b2]        # 202010 <__TMC_END__>
+ c5e:	push   rbp
+ c5f:	sub    rsi,rdi
+ c62:	mov    rbp,rsp
+ c65:	sar    rsi,0x3
+ c69:	mov    rax,rsi
+ c6c:	shr    rax,0x3f
+ c70:	add    rsi,rax
+ c73:	sar    rsi,1
+ c76:	je     c90 <register_tm_clones+0x40>
+ c78:	mov    rax,QWORD PTR [rip+0x201371]        # 201ff0 <_ITM_registerTMCloneTable>
+ c7f:	test   rax,rax
+ c82:	je     c90 <register_tm_clones+0x40>
+ c84:	pop    rbp
+ c85:	jmp    rax
+ c87:	nop    WORD PTR [rax+rax*1+0x0]
+ c90:	pop    rbp
+ c91:	ret    
+ c92:	nop    DWORD PTR [rax+0x0]
+ c96:	nop    WORD PTR cs:[rax+rax*1+0x0]
+
+0000000000000ca0 <__do_global_dtors_aux>:
+ ca0:	cmp    BYTE PTR [rip+0x2013a1],0x0        # 202048 <completed.7697>
+ ca7:	jne    cd8 <__do_global_dtors_aux+0x38>
+ ca9:	cmp    QWORD PTR [rip+0x201347],0x0        # 201ff8 <__cxa_finalize@GLIBC_2.2.5>
+ cb1:	push   rbp
+ cb2:	mov    rbp,rsp
+ cb5:	je     cc3 <__do_global_dtors_aux+0x23>
+ cb7:	mov    rdi,QWORD PTR [rip+0x20134a]        # 202008 <__dso_handle>
+ cbe:	call   a20 <__cxa_finalize@plt>
+ cc3:	call   c10 <deregister_tm_clones>
+ cc8:	mov    BYTE PTR [rip+0x201379],0x1        # 202048 <completed.7697>
+ ccf:	pop    rbp
+ cd0:	ret    
+ cd1:	nop    DWORD PTR [rax+0x0]
+ cd8:	repz ret 
+ cda:	nop    WORD PTR [rax+rax*1+0x0]
+
+0000000000000ce0 <frame_dummy>:
+ ce0:	push   rbp
+ ce1:	mov    rbp,rsp
+ ce4:	pop    rbp
+ ce5:	jmp    c50 <register_tm_clones>
+ cea:	nop    WORD PTR [rax+rax*1+0x0]
+
+0000000000000cf0 <catch_exit>:
+ cf0:	sub    rsp,0x8
+ cf4:	mov    esi,DWORD PTR [rip+0x201352]        # 20204c <id>
+ cfa:	test   esi,esi
+ cfc:	jne    d05 <catch_exit+0x15>
+ cfe:	xor    edi,edi
+ d00:	call   9f0 <exit@plt>
+ d05:	mov    rdi,QWORD PTR [rip+0x201344]        # 202050 <h>
+ d0c:	mov    edx,0x12c
+ d11:	call   9d0 <xc_watchdog@plt>
+ d16:	jmp    cfe <catch_exit+0xe>
+ d18:	nop    DWORD PTR [rax+rax*1+0x0]
+
+0000000000000d20 <catch_usr1>:
+ d20:	sub    rsp,0x8
+ d24:	mov    esi,DWORD PTR [rip+0x201322]        # 20204c <id>
+ d2a:	test   esi,esi
+ d2c:	jne    d35 <catch_usr1+0x15>
+ d2e:	xor    edi,edi
+ d30:	call   9f0 <exit@plt>
+ d35:	mov    rdi,QWORD PTR [rip+0x201314]        # 202050 <h>
+ d3c:	xor    edx,edx
+ d3e:	call   9d0 <xc_watchdog@plt>
+ d43:	jmp    d2e <catch_usr1+0xe>
+ d45:	nop
+ d46:	nop    WORD PTR cs:[rax+rax*1+0x0]
+
+0000000000000d50 <daemonize>:
+ d50:	sub    rsp,0x8
+ d54:	call   a10 <fork@plt>
+ d59:	cmp    eax,0xffffffff
+ d5c:	je     e0a <daemonize+0xba>
+ d62:	test   eax,eax
+ d64:	jne    df0 <daemonize+0xa0>
+ d6a:	xor    edi,edi
+ d6c:	call   9b0 <umask@plt>
+ d71:	call   990 <setsid@plt>
+ d76:	test   eax,eax
+ d78:	js     df7 <daemonize+0xa7>
+ d7a:	lea    rdi,[rip+0x185]        # f06 <_IO_stdin_used+0x16>
+ d81:	call   960 <chdir@plt>
+ d86:	test   eax,eax
+ d88:	js     e50 <daemonize+0x100>
+ d8e:	mov    rdx,QWORD PTR [rip+0x20129b]        # 202030 <stdin@@GLIBC_2.2.5>
+ d95:	lea    rsi,[rip+0x19f]        # f3b <_IO_stdin_used+0x4b>
+ d9c:	lea    rdi,[rip+0x165]        # f08 <_IO_stdin_used+0x18>
+ da3:	call   980 <freopen@plt>
+ da8:	test   rax,rax
+ dab:	je     e1d <daemonize+0xcd>
+ dad:	mov    rdx,QWORD PTR [rip+0x20126c]        # 202020 <stdout@@GLIBC_2.2.5>
+ db4:	lea    rsi,[rip+0x164]        # f1f <_IO_stdin_used+0x2f>
+ dbb:	lea    rdi,[rip+0x146]        # f08 <_IO_stdin_used+0x18>
+ dc2:	call   980 <freopen@plt>
+ dc7:	test   rax,rax
+ dca:	je     e3f <daemonize+0xef>
+ dcc:	mov    rdx,QWORD PTR [rip+0x20126d]        # 202040 <stderr@@GLIBC_2.2.5>
+ dd3:	lea    rsi,[rip+0x145]        # f1f <_IO_stdin_used+0x2f>
+ dda:	lea    rdi,[rip+0x127]        # f08 <_IO_stdin_used+0x18>
+ de1:	call   980 <freopen@plt>
+ de6:	test   rax,rax
+ de9:	je     e2e <daemonize+0xde>
+ deb:	add    rsp,0x8
+ def:	ret    
+ df0:	xor    edi,edi
+ df2:	call   9f0 <exit@plt>
+ df7:	lea    rsi,[rip+0xfb]        # ef9 <_IO_stdin_used+0x9>
+ dfe:	mov    edi,0x1
+ e03:	xor    eax,eax
+ e05:	call   9c0 <err@plt>
+ e0a:	lea    rsi,[rip+0xe3]        # ef4 <_IO_stdin_used+0x4>
+ e11:	mov    edi,0x1
+ e16:	xor    eax,eax
+ e18:	call   9c0 <err@plt>
+ e1d:	lea    rsi,[rip+0xee]        # f12 <_IO_stdin_used+0x22>
+ e24:	mov    edi,0x1
+ e29:	call   9c0 <err@plt>
+ e2e:	lea    rsi,[rip+0xfa]        # f2f <_IO_stdin_used+0x3f>
+ e35:	mov    edi,0x1
+ e3a:	call   9c0 <err@plt>
+ e3f:	lea    rsi,[rip+0xdb]        # f21 <_IO_stdin_used+0x31>
+ e46:	mov    edi,0x1
+ e4b:	call   9c0 <err@plt>
+ e50:	lea    rsi,[rip+0xa9]        # f00 <_IO_stdin_used+0x10>
+ e57:	mov    edi,0x1
+ e5c:	xor    eax,eax
+ e5e:	call   9c0 <err@plt>
+ e63:	nop    WORD PTR cs:[rax+rax*1+0x0]
+ e6d:	nop    DWORD PTR [rax]
+
+0000000000000e70 <__libc_csu_init>:
+ e70:	push   r15
+ e72:	push   r14
+ e74:	mov    r15,rdx
+ e77:	push   r13
+ e79:	push   r12
+ e7b:	lea    r12,[rip+0x200ec6]        # 201d48 <__frame_dummy_init_array_entry>
+ e82:	push   rbp
+ e83:	lea    rbp,[rip+0x200ec6]        # 201d50 <__init_array_end>
+ e8a:	push   rbx
+ e8b:	mov    r13d,edi
+ e8e:	mov    r14,rsi
+ e91:	sub    rbp,r12
+ e94:	sub    rsp,0x8
+ e98:	sar    rbp,0x3
+ e9c:	call   928 <_init>
+ ea1:	test   rbp,rbp
+ ea4:	je     ec6 <__libc_csu_init+0x56>
+ ea6:	xor    ebx,ebx
+ ea8:	nop    DWORD PTR [rax+rax*1+0x0]
+ eb0:	mov    rdx,r15
+ eb3:	mov    rsi,r14
+ eb6:	mov    edi,r13d
+ eb9:	call   QWORD PTR [r12+rbx*8]
+ ebd:	add    rbx,0x1
+ ec1:	cmp    rbp,rbx
+ ec4:	jne    eb0 <__libc_csu_init+0x40>
+ ec6:	add    rsp,0x8
+ eca:	pop    rbx
+ ecb:	pop    rbp
+ ecc:	pop    r12
+ ece:	pop    r13
+ ed0:	pop    r14
+ ed2:	pop    r15
+ ed4:	ret    
+ ed5:	nop
+ ed6:	nop    WORD PTR cs:[rax+rax*1+0x0]
+
+0000000000000ee0 <__libc_csu_fini>:
+ ee0:	repz ret 
+
+Disassembly of section .fini:
+
+0000000000000ee4 <_fini>:
+ ee4:	sub    rsp,0x8
+ ee8:	add    rsp,0x8
+ eec:	ret    

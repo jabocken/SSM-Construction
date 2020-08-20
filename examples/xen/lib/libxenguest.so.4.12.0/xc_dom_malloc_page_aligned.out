@@ -1,0 +1,117 @@
+Number of assembly instructions     = 81
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 81
+Number of edges: 81
+
+16100 (True): 16656
+165a0 (False): 0
+
+16100: CMP Reg RDX, Immediate 33554432 7
+16107: MOV Reg RCX, Reg RDX 3
+1610a: JA 16148 (resolved immediate)
+  |
+  `- 1610c,16148
+1610c: CMP Reg RDX, Immediate 32768 7
+16113: JA 16130 (resolved immediate)
+  |
+  `- 16115,16130
+16115: MOV Reg RDX, Reg RSI 3
+16118: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 61557)) 7
+1611f: XOR Reg EAX, Reg EAX 2
+16121: JMP xc_dom_printf (jmp to external function)
+  |
+  `- 
+16130: MOV Reg RDX, Reg RSI 3
+16133: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 61515)) 7
+1613a: SHR Reg RCX, Immediate 10 4
+1613e: XOR Reg EAX, Reg EAX 2
+16140: JMP xc_dom_printf (jmp to external function)
+  |
+  `- 
+16148: MOV Reg RDX, Reg RSI 3
+1614b: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 61476)) 7
+16152: SHR Reg RCX, Immediate 20 4
+16156: XOR Reg EAX, Reg EAX 2
+16158: JMP xc_dom_printf (jmp to external function)
+  |
+  `- 
+165a0: PUSH Reg R12 2
+165a2: PUSH Reg RBP 1
+165a3: MOV Reg RBP, Reg RDI 3
+165a6: PUSH Reg RBX 1
+165a7: MOV Reg EDI, Immediate 32 5
+165ac: MOV Reg R12, Reg RSI 3
+165af: CALL malloc (external)
+165b4: TEST Reg RAX, Reg RAX 3
+165b7: JZ 16660 (resolved immediate)
+  |
+  `- 165bd,16660
+165bd: PXOR Reg XMM0, Reg XMM0 4
+165c1: XOR Reg R9D, Reg R9D 3
+165c4: XOR Reg EDI, Reg EDI 2
+165c6: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 16))), Immediate 0 8
+165ce: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 24))), Reg R12 4
+165d2: MOV Reg R8D, Immediate 4294967295 6
+165d8: MOV Reg ECX, Immediate 34 5
+165dd: MOV Reg EDX, Immediate 3 5
+165e2: MOV Reg RSI, Reg R12 3
+165e5: MOVUPS Address (SizeDir 128 (FromReg RAX)), Reg XMM0 3
+165e8: MOV Reg RBX, Reg RAX 3
+165eb: CALL mmap (external)
+165f0: CMP Reg RAX, Immediate 18446744073709551615 4
+165f4: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))), Reg RAX 4
+165f8: JZ 16680 (resolved immediate)
+  |
+  `- 165fe,16680
+165fe: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 1152))) 7
+16605: ADD Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 1160))), Immediate 32 8
+1660d: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 16))), Immediate 2 7
+16614: MOV Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 1152))), Reg RBX 7
+1661b: MOV Address (SizeDir 64 (FromReg RBX)), Reg RDX 3
+1661e: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
+16622: ADD Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 1168))), Reg RDX 7
+16629: CMP Reg R12, Immediate 102400 7
+16630: JA 16640 (resolved immediate)
+  |
+  `- 16632,16640
+16632: POP Reg RBX 1
+16633: POP Reg RBP 1
+16634: POP Reg R12 2
+16636: RET  1
+  |
+  `- 
+16640: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 1224))) 7
+16647: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 63362)) 7
+1664e: MOV Reg RDX, Reg R12 3
+16651: CALL print_mem.isra.1 (internal)
+  |
+  `- 16100
+16656: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+1665a: POP Reg RBX 1
+1665b: POP Reg RBP 1
+1665c: POP Reg R12 2
+1665e: RET  1
+  |
+  `- 
+16660: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 1224))) 7
+16667: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 63330)) 7
+1666e: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 60332)) 7
+16675: XOR Reg EAX, Reg EAX 2
+16677: CALL xc_dom_printf (external)
+1667c: XOR Reg EAX, Reg EAX 2
+1667e: JMP 16632 (resolved immediate)
+  |
+  `- 16632
+16680: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 1224))) 7
+16687: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 63298)) 7
+1668e: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 60322)) 7
+16695: XOR Reg EAX, Reg EAX 2
+16697: CALL xc_dom_printf (external)
+1669c: MOV Reg RDI, Reg RBX 3
+1669f: CALL free (external)
+166a4: XOR Reg EAX, Reg EAX 2
+166a6: JMP 16632 (resolved immediate)
+  |
+  `- 16632

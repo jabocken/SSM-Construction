@@ -1,0 +1,108 @@
+Number of assembly instructions     = 83
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 83
+Number of edges: 87
+
+19dc0 (False): 0
+
+19dc0: PUSH Reg R13 2
+19dc2: PUSH Reg R12 2
+19dc4: PUSH Reg RBP 1
+19dc5: PUSH Reg RBX 1
+19dc6: XOR Reg EBP, Reg EBP 2
+19dc8: SUB Reg RSP, Immediate 8 4
+19dcc: TEST Reg RDI, Reg RDI 3
+19dcf: JZ 19e28 (resolved immediate)
+  |
+  `- 19dd1,19e28
+19dd1: MOV Reg RBX, Reg RDI 3
+19dd4: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 1088))) 7
+19ddb: CALL xencall_close (external)
+19de0: TEST Reg EAX, Reg EAX 2
+19de2: JNZ 19e78 (resolved immediate)
+  |
+  `- 19de8,19e78
+19de8: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1096))) 7
+19def: CALL xenforeignmemory_close (external)
+19df4: TEST Reg EAX, Reg EAX 2
+19df6: JNZ 19ec2 (resolved immediate)
+  |
+  `- 19dfc,19ec2
+19dfc: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1104))) 7
+19e03: CALL xendevicemodel_close (external)
+19e08: TEST Reg EAX, Reg EAX 2
+19e0a: MOV Reg EBP, Reg EAX 2
+19e0c: JNZ 19e38 (resolved immediate)
+  |
+  `- 19e0e,19e38
+19e0e: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 32))) 4
+19e12: CALL xtl_logger_destroy (external)
+19e17: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
+19e1b: CALL xtl_logger_destroy (external)
+19e20: MOV Reg RDI, Reg RBX 3
+19e23: CALL free (external)
+19e28: ADD Reg RSP, Immediate 8 4
+19e2c: MOV Reg EAX, Reg EBP 2
+19e2e: POP Reg RBX 1
+19e2f: POP Reg RBP 1
+19e30: POP Reg R12 2
+19e32: POP Reg R13 2
+19e34: RET  1
+  |
+  `- 
+19e38: CALL __errno_location (external)
+19e3d: MOV Reg R13D, Address (SizeDir 32 (FromReg RAX)) 3
+19e40: MOV Reg R12, Reg RAX 3
+19e43: MOV Reg RDI, Reg RBX 3
+19e46: MOV Reg ESI, Reg R13D 3
+19e49: CALL xc_strerror (external)
+19e4e: MOV Reg ECX, Address (SizeDir 32 (FromReg R12)) 4
+19e52: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 49551)) 7
+19e59: MOV Reg R8, Reg RAX 3
+19e5c: MOV Reg ESI, Immediate 1 5
+19e61: MOV Reg RDI, Reg RBX 3
+19e64: XOR Reg EAX, Reg EAX 2
+19e66: CALL xc_report_error (external)
+19e6b: MOV Address (SizeDir 32 (FromReg R12)), Reg R13D 4
+19e6f: JMP 19e0e (resolved immediate)
+  |
+  `- 19e0e
+19e78: CALL __errno_location (external)
+19e7d: MOV Reg R12D, Address (SizeDir 32 (FromReg RAX)) 3
+19e80: MOV Reg RBP, Reg RAX 3
+19e83: MOV Reg RDI, Reg RBX 3
+19e86: MOV Reg ESI, Reg R12D 3
+19e89: CALL xc_strerror (external)
+19e8e: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+19e91: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 49384)) 7
+19e98: MOV Reg R8, Reg RAX 3
+19e9b: MOV Reg ESI, Immediate 1 5
+19ea0: XOR Reg EAX, Reg EAX 2
+19ea2: MOV Reg RDI, Reg RBX 3
+19ea5: CALL xc_report_error (external)
+19eaa: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R12D 4
+19eae: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1096))) 7
+19eb5: CALL xenforeignmemory_close (external)
+19eba: TEST Reg EAX, Reg EAX 2
+19ebc: JZ 19dfc (resolved immediate)
+  |
+  `- 19dfc,19ec2
+19ec2: CALL __errno_location (external)
+19ec7: MOV Reg R12D, Address (SizeDir 32 (FromReg RAX)) 3
+19eca: MOV Reg RBP, Reg RAX 3
+19ecd: MOV Reg RDI, Reg RBX 3
+19ed0: MOV Reg ESI, Reg R12D 3
+19ed3: CALL xc_strerror (external)
+19ed8: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+19edb: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 49358)) 7
+19ee2: MOV Reg R8, Reg RAX 3
+19ee5: MOV Reg ESI, Immediate 1 5
+19eea: MOV Reg RDI, Reg RBX 3
+19eed: XOR Reg EAX, Reg EAX 2
+19eef: CALL xc_report_error (external)
+19ef4: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R12D 4
+19ef8: JMP 19dfc (resolved immediate)
+  |
+  `- 19dfc

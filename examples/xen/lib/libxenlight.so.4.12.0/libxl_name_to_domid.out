@@ -1,0 +1,99 @@
+Number of assembly instructions     = 70
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 70
+Number of edges: 74
+
+3fcb0 (False): 0
+
+3fcb0: PUSH Reg R15 2
+3fcb2: PUSH Reg R14 2
+3fcb4: PUSH Reg R13 2
+3fcb6: PUSH Reg R12 2
+3fcb8: MOV Reg R13, Reg RSI 3
+3fcbb: PUSH Reg RBP 1
+3fcbc: PUSH Reg RBX 1
+3fcbd: MOV Reg R12, Reg RDI 3
+3fcc0: SUB Reg RSP, Immediate 40 4
+3fcc4: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 20)) 5
+3fcc9: MOV Address (SizeDir 64 (FromReg RSP)), Reg RDX 4
+3fccd: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+3fcd6: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
+3fcdb: XOR Reg EAX, Reg EAX 2
+3fcdd: CALL libxl_list_domain (external)
+3fce2: TEST Reg RAX, Reg RAX 3
+3fce5: JZ 3fd8f (resolved immediate)
+  |
+  `- 3fceb,3fd8f
+3fceb: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 20))) 4
+3fcef: MOV Reg R14, Reg RAX 3
+3fcf2: MOV Reg EAX, Immediate 4294967290 5
+3fcf7: TEST Reg ESI, Reg ESI 2
+3fcf9: JLE 3fd3e (resolved immediate)
+  |
+  `- 3fcfb,3fd3e
+3fcfb: MOV Reg RBX, Reg R14 3
+3fcfe: XOR Reg EBP, Reg EBP 2
+3fd00: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 16))) 3
+3fd03: MOV Reg RDI, Reg R12 3
+3fd06: CALL libxl_domid_to_name (external)
+3fd0b: TEST Reg RAX, Reg RAX 3
+3fd0e: MOV Reg R15, Reg RAX 3
+3fd11: JZ 3fd2a (resolved immediate)
+  |
+  `- 3fd13,3fd2a
+3fd13: MOV Reg RSI, Reg R13 3
+3fd16: MOV Reg RDI, Reg RAX 3
+3fd19: CALL strcmp (external)
+3fd1e: TEST Reg EAX, Reg EAX 2
+3fd20: JZ 3fd70 (resolved immediate)
+  |
+  `- 3fd22,3fd70
+3fd22: MOV Reg RDI, Reg R15 3
+3fd25: CALL free (external)
+3fd2a: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 20))) 4
+3fd2e: ADD Reg EBP, Immediate 1 3
+3fd31: ADD Reg RBX, Immediate 112 4
+3fd35: CMP Reg ESI, Reg EBP 2
+3fd37: JG 3fd00 (resolved immediate)
+  |
+  `- 3fd00,3fd39
+3fd39: MOV Reg EAX, Immediate 4294967290 5
+3fd3e: MOV Reg RDI, Reg R14 3
+3fd41: MOV Address (SizeDir 32 (FromReg RSP)), Reg EAX 3
+3fd44: CALL libxl_dominfo_list_free (external)
+3fd49: MOV Reg EAX, Address (SizeDir 32 (FromReg RSP)) 3
+3fd4c: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
+3fd51: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+3fd5a: JNZ 3fd96 (resolved immediate)
+  |
+  `- 3fd5c,3fd96
+3fd5c: ADD Reg RSP, Immediate 40 4
+3fd60: POP Reg RBX 1
+3fd61: POP Reg RBP 1
+3fd62: POP Reg R12 2
+3fd64: POP Reg R13 2
+3fd66: POP Reg R14 2
+3fd68: POP Reg R15 2
+3fd6a: RET  1
+  |
+  `- 
+3fd70: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))), Reg EAX 4
+3fd74: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 16))) 3
+3fd77: MOV Reg RDI, Reg R15 3
+3fd7a: MOV Reg RAX, Address (SizeDir 64 (FromReg RSP)) 4
+3fd7e: MOV Address (SizeDir 32 (FromReg RAX)), Reg ECX 2
+3fd80: CALL free (external)
+3fd85: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 20))) 4
+3fd89: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 4
+3fd8d: JMP 3fd3e (resolved immediate)
+  |
+  `- 3fd3e
+3fd8f: MOV Reg EAX, Immediate 4294967291 5
+3fd94: JMP 3fd4c (resolved immediate)
+  |
+  `- 3fd4c
+3fd96: CALL __stack_chk_fail (external)
+  |
+  `- 

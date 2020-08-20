@@ -1,0 +1,28 @@
+Number of assembly instructions     = 15
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 15
+Number of edges: 15
+
+1760 (False): 0
+
+1760: PUSH Reg RBP 1
+1761: PUSH Reg RBX 1
+1762: MOV Reg RBP, Reg RDI 3
+1765: MOV Reg EDI, Immediate 16 5
+176a: MOV Reg RBX, Reg RSI 3
+176d: SUB Reg RSP, Immediate 8 4
+1771: CALL malloc (external)
+1776: TEST Reg RAX, Reg RAX 3
+1779: JZ 1782 (resolved immediate)
+  |
+  `- 177b,1782
+177b: MOV Address (SizeDir 64 (FromReg RAX)), Reg RBP 3
+177e: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))), Reg RBX 4
+1782: ADD Reg RSP, Immediate 8 4
+1786: POP Reg RBX 1
+1787: POP Reg RBP 1
+1788: RET  1
+  |
+  `- 

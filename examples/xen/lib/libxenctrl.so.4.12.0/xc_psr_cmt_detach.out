@@ -1,0 +1,104 @@
+Number of assembly instructions     = 79
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 79
+Number of edges: 81
+
+23660 (False): 0
+
+23660: PUSH Reg R13 2
+23662: PUSH Reg R12 2
+23664: PUSH Reg RBP 1
+23665: PUSH Reg RBX 1
+23666: MOV Reg RBX, Reg RDI 3
+23669: SUB Reg RSP, Immediate 216 7
+23670: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+23679: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 200))), Reg RAX 8
+23681: XOR Reg EAX, Reg EAX 2
+23683: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 48)) 5
+23688: MOV Reg RBP, Reg RSP 3
+2368b: MOV Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 56))), Reg SI 5
+23690: MOV Reg RSI, Reg RBP 3
+23693: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 64))), Immediate 0 8
+2369b: MOV Address (SizeDir 64 (FromReg RSP)), Immediate 0 8
+236a3: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
+236a8: MOV Reg RAX, Immediate 73014444107 10
+236b2: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Immediate 0 9
+236bb: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 3 8
+236c3: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Immediate 144 9
+236cc: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))), Reg RAX 5
+236d1: CALL xc__hypercall_bounce_pre (external)
+236d6: TEST Reg EAX, Reg EAX 2
+236d8: JNZ 23776 (resolved immediate)
+  |
+  `- 236de,23776
+236de: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+236e3: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1088))) 7
+236ea: MOV Reg ESI, Immediate 36 5
+236ef: TEST Reg RAX, Reg RAX 3
+236f2: CMOVZ Reg RAX, Reg RBP 4
+236f6: MOV Reg RDX, Address (SizeDir 64 (FromReg RAX)) 3
+236f9: CALL xencall1 (external)
+236fe: TEST Reg EAX, Reg EAX 2
+23700: MOV Reg R12D, Reg EAX 3
+23703: JNS 23712 (resolved immediate)
+  |
+  `- 23705,23712
+23705: CALL __errno_location (external)
+2370a: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 13 3
+2370d: MOV Reg R13, Reg RAX 3
+23710: JZ 23750 (resolved immediate)
+  |
+  `- 23712,23750
+23712: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+23717: MOV Reg RDI, Reg RBX 3
+2371a: TEST Reg RSI, Reg RSI 3
+2371d: CMOVZ Reg RSI, Reg RBP 4
+23721: CALL xc__hypercall_bounce_post (external)
+23726: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 200))) 8
+2372e: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+23737: MOV Reg EAX, Reg R12D 3
+2373a: JNZ 237b7 (resolved immediate)
+  |
+  `- 2373c,237b7
+2373c: ADD Reg RSP, Immediate 216 7
+23743: POP Reg RBX 1
+23744: POP Reg RBP 1
+23745: POP Reg R12 2
+23747: POP Reg R13 2
+23749: RET  1
+  |
+  `- 
+23750: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+23754: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 7237)) 7
+2375b: XOR Reg ECX, Reg ECX 2
+2375d: MOV Reg EDX, Immediate 3 5
+23762: MOV Reg RDI, Reg RBX 3
+23765: XOR Reg EAX, Reg EAX 2
+23767: CALL xc_report (external)
+2376c: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Immediate 13 8
+23774: JMP 23712 (resolved immediate)
+  |
+  `- 23712
+23776: CALL __errno_location (external)
+2377b: MOV Reg R12D, Address (SizeDir 32 (FromReg RAX)) 3
+2377e: MOV Reg RBP, Reg RAX 3
+23781: MOV Reg RDI, Reg RBX 3
+23784: MOV Reg ESI, Reg R12D 3
+23787: CALL xc_strerror (external)
+2378c: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+2378f: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 7122)) 7
+23796: MOV Reg R8, Reg RAX 3
+23799: MOV Reg ESI, Immediate 1 5
+2379e: MOV Reg RDI, Reg RBX 3
+237a1: XOR Reg EAX, Reg EAX 2
+237a3: CALL xc_report_error (external)
+237a8: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R12D 4
+237ac: MOV Reg R12D, Immediate 4294967295 6
+237b2: JMP 23726 (resolved immediate)
+  |
+  `- 23726
+237b7: CALL __stack_chk_fail (external)
+  |
+  `- 

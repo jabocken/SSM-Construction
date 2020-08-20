@@ -1,0 +1,23 @@
+Number of assembly instructions     = 10
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 10
+Number of edges: 10
+
+223f0 (False): 0
+
+223f0: PUSH Reg RBX 1
+223f1: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 1088))) 7
+223f8: MOV Reg RBX, Reg RSI 3
+223fb: MOVSXD Reg RSI, Reg EDX 3
+223fe: CALL xencall_alloc_buffer_pages (external)
+22403: TEST Reg RAX, Reg RAX 3
+22406: JZ 2240b (resolved immediate)
+  |
+  `- 22408,2240b
+22408: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
+2240b: POP Reg RBX 1
+2240c: RET  1
+  |
+  `- 

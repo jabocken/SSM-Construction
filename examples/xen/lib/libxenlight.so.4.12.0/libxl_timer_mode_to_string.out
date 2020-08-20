@@ -1,0 +1,44 @@
+Number of assembly instructions     = 19
+Number of indirect branches         = 1
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 27
+Number of edges: 66
+
+87490 (False): 0
+
+87490: ADD Reg EDI, Immediate 1 3
+87493: CMP Reg EDI, Immediate 4 3
+87496: JA 87500 (resolved immediate)
+  |
+  `- 87498,87500
+87498: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 134409)) 7
+8749f: MOVSXD Reg RAX, Address (SizeDir 32 (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 4) (FromReg RDI)))) 4
+874a3: ADD Reg RAX, Reg RDX 3
+874a6: JMP Reg RAX 2
+  |
+  `- 874f0,874e0,874d0,874c0,874b0
+874b0: LEA Reg RAX, Address (AddrPlus (FromReg RIP) (AddrImm 129098)) 7
+874b7: RET  1
+  |
+  `- 
+874c0: LEA Reg RAX, Address (AddrPlus (FromReg RIP) (AddrImm 130210)) 7
+874c7: RET  1
+  |
+  `- 
+874d0: LEA Reg RAX, Address (AddrPlus (FromReg RIP) (AddrImm 130147)) 7
+874d7: RET  1
+  |
+  `- 
+874e0: LEA Reg RAX, Address (AddrPlus (FromReg RIP) (AddrImm 130128)) 7
+874e7: RET  1
+  |
+  `- 
+874f0: LEA Reg RAX, Address (AddrPlus (FromReg RIP) (AddrImm 130138)) 7
+874f7: RET  1
+  |
+  `- 
+87500: XOR Reg EAX, Reg EAX 2
+87502: RET  1
+  |
+  `- 

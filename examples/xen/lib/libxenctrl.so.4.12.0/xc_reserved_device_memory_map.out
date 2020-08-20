@@ -1,0 +1,79 @@
+Number of assembly instructions     = 60
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 60
+Number of edges: 60
+
+f150 (False): 0
+
+f150: PUSH Reg R13 2
+f152: PUSH Reg R12 2
+f154: PUSH Reg RBP 1
+f155: PUSH Reg RBX 1
+f156: MOV Reg RBX, Reg RDI 3
+f159: PXOR Reg XMM0, Reg XMM0 4
+f15d: SUB Reg RSP, Immediate 88 4
+f161: MOV Reg R12, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 128))) 8
+f169: LEA Reg R13, Address (AddrPlus (FromReg RSP) (AddrImm 32)) 5
+f16e: MOV Address (SizeDir 32 (FromReg RSP)), Reg ESI 3
+f171: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+f17a: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 72))), Reg RAX 5
+f17f: XOR Reg EAX, Reg EAX 2
+f181: MOV Reg RSI, Reg R13 3
+f184: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Immediate 0 9
+f18d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Immediate 0 9
+f196: MOV Reg EAX, Address (SizeDir 32 (FromReg R12)) 4
+f19a: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 48))), Immediate 2 8
+f1a2: MOVUPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg XMM0 5
+f1a7: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))), Reg R9 5
+f1ac: MOV Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 16))), Reg DX 5
+f1b1: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))), Reg EAX 4
+f1b5: SHL Reg RAX, Immediate 4 4
+f1b9: MOV Address (SizeDir 8 (AddrPlus (FromReg RSP) (AddrImm 18))), Reg CL 4
+f1bd: MOV Address (SizeDir 8 (AddrPlus (FromReg RSP) (AddrImm 19))), Reg R8B 5
+f1c2: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 64))), Reg RAX 5
+f1c7: CALL xc__hypercall_bounce_pre (external)
+f1cc: TEST Reg EAX, Reg EAX 2
+f1ce: JNZ f238 (resolved immediate)
+  |
+  `- f1d0,f238
+f1d0: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
+f1d5: MOV Reg RDX, Reg RSP 3
+f1d8: MOV Reg ECX, Immediate 24 5
+f1dd: MOV Reg ESI, Immediate 27 5
+f1e2: MOV Reg RDI, Reg RBX 3
+f1e5: TEST Reg RAX, Reg RAX 3
+f1e8: CMOVZ Reg RAX, Reg R13 4
+f1ec: MOV Reg RAX, Address (SizeDir 64 (FromReg RAX)) 3
+f1ef: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
+f1f4: CALL do_memory_op (external)
+f1f9: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
+f1fe: MOV Reg RDI, Reg RBX 3
+f201: MOV Reg EBP, Reg EAX 2
+f203: TEST Reg RSI, Reg RSI 3
+f206: CMOVZ Reg RSI, Reg R13 4
+f20a: CALL xc__hypercall_bounce_post (external)
+f20f: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))) 4
+f213: MOV Address (SizeDir 32 (FromReg R12)), Reg EAX 4
+f217: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 72))) 5
+f21c: XOR Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+f225: MOV Reg EAX, Reg EBP 2
+f227: JNZ f23f (resolved immediate)
+  |
+  `- f229,f23f
+f229: ADD Reg RSP, Immediate 88 4
+f22d: POP Reg RBX 1
+f22e: POP Reg RBP 1
+f22f: POP Reg R12 2
+f231: POP Reg R13 2
+f233: RET  1
+  |
+  `- 
+f238: MOV Reg EBP, Immediate 4294967295 5
+f23d: JMP f217 (resolved immediate)
+  |
+  `- f217
+f23f: CALL __stack_chk_fail (external)
+  |
+  `- 

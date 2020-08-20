@@ -1,0 +1,41 @@
+Number of assembly instructions     = 24
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 24
+Number of edges: 24
+
+5fb0 (False): 0
+
+5fb0: PUSH Reg RBX 1
+5fb1: MOV Reg RBX, Reg RDX 3
+5fb4: SUB Reg RSP, Immediate 32 4
+5fb8: LEA Reg RDX, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+5fbd: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+5fc6: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
+5fcb: XOR Reg EAX, Reg EAX 2
+5fcd: CALL xlu_cfg_get_long (external)
+5fd2: TEST Reg EAX, Reg EAX 2
+5fd4: JNZ 5ff2 (resolved immediate)
+  |
+  `- 5fd6,5ff2
+5fd6: XOR Reg ESI, Reg ESI 2
+5fd8: CMP Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 0 6
+5fde: MOV Reg RDI, Reg RBX 3
+5fe1: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))), Reg EAX 4
+5fe5: SETNZ Reg SIL 4
+5fe9: CALL libxl_defbool_set (external)
+5fee: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 4
+5ff2: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
+5ff7: XOR Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+6000: JNZ 6008 (resolved immediate)
+  |
+  `- 6002,6008
+6002: ADD Reg RSP, Immediate 32 4
+6006: POP Reg RBX 1
+6007: RET  1
+  |
+  `- 
+6008: CALL __stack_chk_fail (external)
+  |
+  `- 

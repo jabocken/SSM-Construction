@@ -1,0 +1,1601 @@
+
+xen-tmem-list-parse:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+00000000000006b0 <_init>:
+ 6b0:	sub    rsp,0x8
+ 6b4:	mov    rax,QWORD PTR [rip+0x20392d]        # 203fe8 <__gmon_start__>
+ 6bb:	test   rax,rax
+ 6be:	je     6c2 <_init+0x12>
+ 6c0:	call   rax
+ 6c2:	add    rsp,0x8
+ 6c6:	ret    
+
+Disassembly of section .plt:
+
+00000000000006d0 <.plt>:
+ 6d0:	push   QWORD PTR [rip+0x2038c2]        # 203f98 <_GLOBAL_OFFSET_TABLE_+0x8>
+ 6d6:	jmp    QWORD PTR [rip+0x2038c4]        # 203fa0 <_GLOBAL_OFFSET_TABLE_+0x10>
+ 6dc:	nop    DWORD PTR [rax+0x0]
+
+00000000000006e0 <putchar@plt>:
+ 6e0:	jmp    QWORD PTR [rip+0x2038c2]        # 203fa8 <putchar@GLIBC_2.2.5>
+ 6e6:	push   0x0
+ 6eb:	jmp    6d0 <.plt>
+
+00000000000006f0 <__stack_chk_fail@plt>:
+ 6f0:	jmp    QWORD PTR [rip+0x2038ba]        # 203fb0 <__stack_chk_fail@GLIBC_2.4>
+ 6f6:	push   0x1
+ 6fb:	jmp    6d0 <.plt>
+
+0000000000000700 <fgets@plt>:
+ 700:	jmp    QWORD PTR [rip+0x2038b2]        # 203fb8 <fgets@GLIBC_2.2.5>
+ 706:	push   0x2
+ 70b:	jmp    6d0 <.plt>
+
+0000000000000710 <__isoc99_sscanf@plt>:
+ 710:	jmp    QWORD PTR [rip+0x2038aa]        # 203fc0 <__isoc99_sscanf@GLIBC_2.7>
+ 716:	push   0x3
+ 71b:	jmp    6d0 <.plt>
+
+0000000000000720 <__printf_chk@plt>:
+ 720:	jmp    QWORD PTR [rip+0x2038a2]        # 203fc8 <__printf_chk@GLIBC_2.3.4>
+ 726:	push   0x4
+ 72b:	jmp    6d0 <.plt>
+
+0000000000000730 <strstr@plt>:
+ 730:	jmp    QWORD PTR [rip+0x20389a]        # 203fd0 <strstr@GLIBC_2.2.5>
+ 736:	push   0x5
+ 73b:	jmp    6d0 <.plt>
+
+Disassembly of section .plt.got:
+
+0000000000000740 <__cxa_finalize@plt>:
+ 740:	jmp    QWORD PTR [rip+0x2038b2]        # 203ff8 <__cxa_finalize@GLIBC_2.2.5>
+ 746:	xchg   ax,ax
+
+Disassembly of section .text:
+
+0000000000000750 <main>:
+     750:	push   rbp
+     751:	push   rbx
+     752:	lea    rbp,[rip+0x21cf]        # 2928 <_IO_stdin_used+0x728>
+     759:	sub    rsp,0x1018
+     760:	mov    rax,QWORD PTR fs:0x28
+     769:	mov    QWORD PTR [rsp+0x1008],rax
+     771:	xor    eax,eax
+     773:	mov    rbx,rsp
+     776:	nop    WORD PTR cs:[rax+rax*1+0x0]
+     780:	mov    rdx,QWORD PTR [rip+0x203889]        # 204010 <stdin@@GLIBC_2.2.5>
+     787:	mov    esi,0x1000
+     78c:	mov    rdi,rbx
+     78f:	call   700 <fgets@plt>
+     794:	test   rax,rax
+     797:	je     7c0 <main+0x70>
+     799:	cmp    BYTE PTR [rax+0x1],0x3d
+     79d:	jne    780 <main+0x30>
+     79f:	lea    rdi,[rax+0x2]
+     7a3:	movzx  eax,BYTE PTR [rax]
+     7a6:	sub    eax,0x43
+     7a9:	cmp    al,0x11
+     7ab:	ja     780 <main+0x30>
+     7ad:	movzx  eax,al
+     7b0:	movsxd rax,DWORD PTR [rbp+rax*4+0x0]
+     7b5:	add    rax,rbp
+     7b8:	jmp    rax
+     7ba:	nop    WORD PTR [rax+rax*1+0x0]
+     7c0:	mov    rcx,QWORD PTR [rsp+0x1008]
+     7c8:	xor    rcx,QWORD PTR fs:0x28
+     7d1:	jne    800 <main+0xb0>
+     7d3:	add    rsp,0x1018
+     7da:	pop    rbx
+     7db:	pop    rbp
+     7dc:	ret    
+     7dd:	call   1150 <parse_time_stats>
+     7e2:	jmp    780 <main+0x30>
+     7e4:	call   1ea0 <parse_shared_pool>
+     7e9:	jmp    780 <main+0x30>
+     7eb:	call   1bf0 <parse_pool>
+     7f0:	jmp    780 <main+0x30>
+     7f2:	call   b20 <parse_global>
+     7f7:	jmp    780 <main+0x30>
+     7f9:	call   1a20 <parse_client>
+     7fe:	jmp    780 <main+0x30>
+     800:	call   6f0 <__stack_chk_fail@plt>
+     805:	nop    WORD PTR cs:[rax+rax*1+0x0]
+     80f:	nop
+
+0000000000000810 <_start>:
+     810:	xor    ebp,ebp
+     812:	mov    r9,rdx
+     815:	pop    rsi
+     816:	mov    rdx,rsp
+     819:	and    rsp,0xfffffffffffffff0
+     81d:	push   rax
+     81e:	push   rsp
+     81f:	lea    r8,[rip+0x19ca]        # 21f0 <__libc_csu_fini>
+     826:	lea    rcx,[rip+0x1953]        # 2180 <__libc_csu_init>
+     82d:	lea    rdi,[rip+0xffffffffffffff1c]        # 750 <main>
+     834:	call   QWORD PTR [rip+0x2037a6]        # 203fe0 <__libc_start_main@GLIBC_2.2.5>
+     83a:	hlt    
+     83b:	nop    DWORD PTR [rax+rax*1+0x0]
+
+0000000000000840 <deregister_tm_clones>:
+     840:	lea    rdi,[rip+0x2037c9]        # 204010 <stdin@@GLIBC_2.2.5>
+     847:	push   rbp
+     848:	lea    rax,[rip+0x2037c1]        # 204010 <stdin@@GLIBC_2.2.5>
+     84f:	cmp    rax,rdi
+     852:	mov    rbp,rsp
+     855:	je     870 <deregister_tm_clones+0x30>
+     857:	mov    rax,QWORD PTR [rip+0x20377a]        # 203fd8 <_ITM_deregisterTMCloneTable>
+     85e:	test   rax,rax
+     861:	je     870 <deregister_tm_clones+0x30>
+     863:	pop    rbp
+     864:	jmp    rax
+     866:	nop    WORD PTR cs:[rax+rax*1+0x0]
+     870:	pop    rbp
+     871:	ret    
+     872:	nop    DWORD PTR [rax+0x0]
+     876:	nop    WORD PTR cs:[rax+rax*1+0x0]
+
+0000000000000880 <register_tm_clones>:
+     880:	lea    rdi,[rip+0x203789]        # 204010 <stdin@@GLIBC_2.2.5>
+     887:	lea    rsi,[rip+0x203782]        # 204010 <stdin@@GLIBC_2.2.5>
+     88e:	push   rbp
+     88f:	sub    rsi,rdi
+     892:	mov    rbp,rsp
+     895:	sar    rsi,0x3
+     899:	mov    rax,rsi
+     89c:	shr    rax,0x3f
+     8a0:	add    rsi,rax
+     8a3:	sar    rsi,1
+     8a6:	je     8c0 <register_tm_clones+0x40>
+     8a8:	mov    rax,QWORD PTR [rip+0x203741]        # 203ff0 <_ITM_registerTMCloneTable>
+     8af:	test   rax,rax
+     8b2:	je     8c0 <register_tm_clones+0x40>
+     8b4:	pop    rbp
+     8b5:	jmp    rax
+     8b7:	nop    WORD PTR [rax+rax*1+0x0]
+     8c0:	pop    rbp
+     8c1:	ret    
+     8c2:	nop    DWORD PTR [rax+0x0]
+     8c6:	nop    WORD PTR cs:[rax+rax*1+0x0]
+
+00000000000008d0 <__do_global_dtors_aux>:
+     8d0:	cmp    BYTE PTR [rip+0x203741],0x0        # 204018 <completed.7697>
+     8d7:	jne    908 <__do_global_dtors_aux+0x38>
+     8d9:	cmp    QWORD PTR [rip+0x203717],0x0        # 203ff8 <__cxa_finalize@GLIBC_2.2.5>
+     8e1:	push   rbp
+     8e2:	mov    rbp,rsp
+     8e5:	je     8f3 <__do_global_dtors_aux+0x23>
+     8e7:	mov    rdi,QWORD PTR [rip+0x20371a]        # 204008 <__dso_handle>
+     8ee:	call   740 <__cxa_finalize@plt>
+     8f3:	call   840 <deregister_tm_clones>
+     8f8:	mov    BYTE PTR [rip+0x203719],0x1        # 204018 <completed.7697>
+     8ff:	pop    rbp
+     900:	ret    
+     901:	nop    DWORD PTR [rax+0x0]
+     908:	repz ret 
+     90a:	nop    WORD PTR [rax+rax*1+0x0]
+
+0000000000000910 <frame_dummy>:
+     910:	push   rbp
+     911:	mov    rbp,rsp
+     914:	pop    rbp
+     915:	jmp    880 <register_tm_clones>
+     91a:	nop    WORD PTR [rax+rax*1+0x0]
+
+0000000000000920 <parse>:
+     920:	sub    rsp,0x18
+     924:	mov    rax,QWORD PTR fs:0x28
+     92d:	mov    QWORD PTR [rsp+0x8],rax
+     932:	xor    eax,eax
+     934:	call   730 <strstr@plt>
+     939:	mov    rdi,rax
+     93c:	xor    eax,eax
+     93e:	test   rdi,rdi
+     941:	je     949 <parse+0x29>
+     943:	cmp    BYTE PTR [rdi+0x2],0x3a
+     947:	je     960 <parse+0x40>
+     949:	mov    rcx,QWORD PTR [rsp+0x8]
+     94e:	xor    rcx,QWORD PTR fs:0x28
+     957:	jne    979 <parse+0x59>
+     959:	add    rsp,0x18
+     95d:	ret    
+     95e:	xchg   ax,ax
+     960:	lea    rsi,[rip+0x189d]        # 2204 <_IO_stdin_used+0x4>
+     967:	mov    rdx,rsp
+     96a:	add    rdi,0x3
+     96e:	call   710 <__isoc99_sscanf@plt>
+     973:	mov    rax,QWORD PTR [rsp]
+     977:	jmp    949 <parse+0x29>
+     979:	call   6f0 <__stack_chk_fail@plt>
+     97e:	xchg   ax,ax
+
+0000000000000980 <parse_hex>:
+     980:	sub    rsp,0x18
+     984:	mov    rax,QWORD PTR fs:0x28
+     98d:	mov    QWORD PTR [rsp+0x8],rax
+     992:	xor    eax,eax
+     994:	call   730 <strstr@plt>
+     999:	mov    rdi,rax
+     99c:	xor    eax,eax
+     99e:	test   rdi,rdi
+     9a1:	je     9a9 <parse_hex+0x29>
+     9a3:	cmp    BYTE PTR [rdi+0x2],0x3a
+     9a7:	je     9c0 <parse_hex+0x40>
+     9a9:	mov    rcx,QWORD PTR [rsp+0x8]
+     9ae:	xor    rcx,QWORD PTR fs:0x28
+     9b7:	jne    9d9 <parse_hex+0x59>
+     9b9:	add    rsp,0x18
+     9bd:	ret    
+     9be:	xchg   ax,ax
+     9c0:	lea    rsi,[rip+0x1842]        # 2209 <_IO_stdin_used+0x9>
+     9c7:	mov    rdx,rsp
+     9ca:	add    rdi,0x3
+     9ce:	call   710 <__isoc99_sscanf@plt>
+     9d3:	mov    rax,QWORD PTR [rsp]
+     9d7:	jmp    9a9 <parse_hex+0x29>
+     9d9:	call   6f0 <__stack_chk_fail@plt>
+     9de:	xchg   ax,ax
+
+00000000000009e0 <parse2>:
+     9e0:	sub    rsp,0x18
+     9e4:	mov    rax,QWORD PTR fs:0x28
+     9ed:	mov    QWORD PTR [rsp+0x8],rax
+     9f2:	xor    eax,eax
+     9f4:	movzx  eax,BYTE PTR [rsi]
+     9f7:	lea    rsi,[rsp+0x5]
+     9fc:	mov    BYTE PTR [rsp+0x7],0x0
+     a01:	mov    BYTE PTR [rsp+0x5],al
+     a05:	movzx  eax,BYTE PTR [rdx]
+     a08:	mov    BYTE PTR [rsp+0x6],al
+     a0c:	call   920 <parse>
+     a11:	mov    rcx,QWORD PTR [rsp+0x8]
+     a16:	xor    rcx,QWORD PTR fs:0x28
+     a1f:	jne    a26 <parse2+0x46>
+     a21:	add    rsp,0x18
+     a25:	ret    
+     a26:	call   6f0 <__stack_chk_fail@plt>
+     a2b:	nop    DWORD PTR [rax+rax*1+0x0]
+
+0000000000000a30 <parse_string>:
+     a30:	push   rbp
+     a31:	push   rbx
+     a32:	mov    ebp,ecx
+     a34:	mov    rbx,rdx
+     a37:	sub    rsp,0x8
+     a3b:	call   730 <strstr@plt>
+     a40:	test   rax,rax
+     a43:	je     a4b <parse_string+0x1b>
+     a45:	cmp    BYTE PTR [rax+0x2],0x3a
+     a49:	je     a58 <parse_string+0x28>
+     a4b:	add    rsp,0x8
+     a4f:	pop    rbx
+     a50:	pop    rbp
+     a51:	ret    
+     a52:	nop    WORD PTR [rax+rax*1+0x0]
+     a58:	test   ebp,ebp
+     a5a:	jle    a4b <parse_string+0x1b>
+     a5c:	lea    rsi,[rax+0x3]
+     a60:	lea    eax,[rbp-0x1]
+     a63:	lea    rax,[rbx+rax*1+0x1]
+     a68:	nop    DWORD PTR [rax+rax*1+0x0]
+     a70:	mov    rdi,rbx
+     a73:	movs   BYTE PTR es:[rdi],BYTE PTR ds:[rsi]
+     a74:	cmp    rax,rdi
+     a77:	mov    rbx,rdi
+     a7a:	jne    a70 <parse_string+0x40>
+     a7c:	add    rsp,0x8
+     a80:	pop    rbx
+     a81:	pop    rbp
+     a82:	ret    
+     a83:	nop    DWORD PTR [rax]
+     a86:	nop    WORD PTR cs:[rax+rax*1+0x0]
+
+0000000000000a90 <parse_sharers>:
+     a90:	push   r13
+     a92:	push   r12
+     a94:	mov    r12,rdx
+     a97:	push   rbp
+     a98:	push   rbx
+     a99:	mov    rbp,rsi
+     a9c:	sub    rsp,0x8
+     aa0:	call   730 <strstr@plt>
+     aa5:	test   rax,rax
+     aa8:	je     b09 <parse_sharers+0x79>
+     aaa:	mov    rbx,r12
+     aad:	nop    DWORD PTR [rax]
+     ab0:	cmp    BYTE PTR [rax+0x2],0x3a
+     ab4:	lea    rdi,[rax+0x3]
+     ab8:	jne    b09 <parse_sharers+0x79>
+     aba:	movzx  eax,BYTE PTR [rax+0x3]
+     abe:	lea    edx,[rax-0x30]
+     ac1:	cmp    dl,0x9
+     ac4:	ja     ae6 <parse_sharers+0x56>
+     ac6:	nop    WORD PTR cs:[rax+rax*1+0x0]
+     ad0:	add    rdi,0x1
+     ad4:	add    rbx,0x1
+     ad8:	mov    BYTE PTR [rbx-0x1],al
+     adb:	movzx  eax,BYTE PTR [rdi]
+     ade:	lea    edx,[rax-0x30]
+     ae1:	cmp    dl,0x9
+     ae4:	jbe    ad0 <parse_sharers+0x40>
+     ae6:	mov    r13,rbx
+     ae9:	mov    rsi,rbp
+     aec:	add    rbx,0x1
+     af0:	mov    BYTE PTR [r13+0x0],0x2c
+     af5:	call   730 <strstr@plt>
+     afa:	test   rax,rax
+     afd:	jne    ab0 <parse_sharers+0x20>
+     aff:	cmp    r12,rbx
+     b02:	je     b09 <parse_sharers+0x79>
+     b04:	mov    BYTE PTR [r13+0x0],0x0
+     b09:	add    rsp,0x8
+     b0d:	pop    rbx
+     b0e:	pop    rbp
+     b0f:	pop    r12
+     b11:	pop    r13
+     b13:	ret    
+     b14:	xchg   ax,ax
+     b16:	nop    WORD PTR cs:[rax+rax*1+0x0]
+
+0000000000000b20 <parse_global>:
+     b20:	push   r15
+     b22:	push   r14
+     b24:	lea    rsi,[rip+0x16e3]        # 220e <_IO_stdin_used+0xe>
+     b2b:	push   r13
+     b2d:	push   r12
+     b2f:	push   rbp
+     b30:	push   rbx
+     b31:	mov    rbx,rdi
+     b34:	sub    rsp,0xc8
+     b3b:	call   920 <parse>
+     b40:	lea    rsi,[rip+0x16ca]        # 2211 <_IO_stdin_used+0x11>
+     b47:	mov    rdi,rbx
+     b4a:	mov    QWORD PTR [rsp+0xa0],rax
+     b52:	call   920 <parse>
+     b57:	lea    rsi,[rip+0x16b6]        # 2214 <_IO_stdin_used+0x14>
+     b5e:	mov    rdi,rbx
+     b61:	mov    QWORD PTR [rsp+0x98],rax
+     b69:	call   920 <parse>
+     b6e:	lea    rsi,[rip+0x16a2]        # 2217 <_IO_stdin_used+0x17>
+     b75:	mov    rdi,rbx
+     b78:	mov    QWORD PTR [rsp+0x8],rax
+     b7d:	call   920 <parse>
+     b82:	lea    rsi,[rip+0x1691]        # 221a <_IO_stdin_used+0x1a>
+     b89:	mov    rdi,rbx
+     b8c:	mov    QWORD PTR [rsp+0x10],rax
+     b91:	call   920 <parse>
+     b96:	lea    rsi,[rip+0x1680]        # 221d <_IO_stdin_used+0x1d>
+     b9d:	mov    rdi,rbx
+     ba0:	mov    QWORD PTR [rsp+0x18],rax
+     ba5:	call   920 <parse>
+     baa:	lea    rsi,[rip+0x166f]        # 2220 <_IO_stdin_used+0x20>
+     bb1:	mov    rdi,rbx
+     bb4:	mov    QWORD PTR [rsp+0x90],rax
+     bbc:	call   920 <parse>
+     bc1:	lea    rsi,[rip+0x165b]        # 2223 <_IO_stdin_used+0x23>
+     bc8:	mov    rdi,rbx
+     bcb:	mov    QWORD PTR [rsp+0x20],rax
+     bd0:	call   920 <parse>
+     bd5:	lea    rsi,[rip+0x164a]        # 2226 <_IO_stdin_used+0x26>
+     bdc:	mov    rdi,rbx
+     bdf:	mov    QWORD PTR [rsp+0x28],rax
+     be4:	call   920 <parse>
+     be9:	lea    rsi,[rip+0x1639]        # 2229 <_IO_stdin_used+0x29>
+     bf0:	mov    rdi,rbx
+     bf3:	mov    QWORD PTR [rsp+0x30],rax
+     bf8:	call   920 <parse>
+     bfd:	lea    rsi,[rip+0x1628]        # 222c <_IO_stdin_used+0x2c>
+     c04:	mov    rdi,rbx
+     c07:	mov    QWORD PTR [rsp+0x38],rax
+     c0c:	call   920 <parse>
+     c11:	lea    rsi,[rip+0x1617]        # 222f <_IO_stdin_used+0x2f>
+     c18:	mov    rdi,rbx
+     c1b:	mov    QWORD PTR [rsp+0x40],rax
+     c20:	call   920 <parse>
+     c25:	lea    rsi,[rip+0x1606]        # 2232 <_IO_stdin_used+0x32>
+     c2c:	mov    rdi,rbx
+     c2f:	mov    QWORD PTR [rsp+0x48],rax
+     c34:	call   920 <parse>
+     c39:	lea    rsi,[rip+0x15f5]        # 2235 <_IO_stdin_used+0x35>
+     c40:	mov    rdi,rbx
+     c43:	mov    QWORD PTR [rsp+0x50],rax
+     c48:	call   920 <parse>
+     c4d:	lea    rsi,[rip+0x15e4]        # 2238 <_IO_stdin_used+0x38>
+     c54:	mov    rdi,rbx
+     c57:	mov    r12,rax
+     c5a:	call   920 <parse>
+     c5f:	lea    rsi,[rip+0x15d5]        # 223b <_IO_stdin_used+0x3b>
+     c66:	mov    rdi,rbx
+     c69:	mov    QWORD PTR [rsp+0x58],rax
+     c6e:	call   920 <parse>
+     c73:	lea    rsi,[rip+0x15c4]        # 223e <_IO_stdin_used+0x3e>
+     c7a:	mov    rdi,rbx
+     c7d:	mov    QWORD PTR [rsp+0x60],rax
+     c82:	call   920 <parse>
+     c87:	lea    rsi,[rip+0x15b3]        # 2241 <_IO_stdin_used+0x41>
+     c8e:	mov    rdi,rbx
+     c91:	mov    QWORD PTR [rsp+0x68],rax
+     c96:	call   920 <parse>
+     c9b:	lea    rsi,[rip+0x15a2]        # 2244 <_IO_stdin_used+0x44>
+     ca2:	mov    rdi,rbx
+     ca5:	mov    r14,rax
+     ca8:	call   920 <parse>
+     cad:	lea    rsi,[rip+0x1593]        # 2247 <_IO_stdin_used+0x47>
+     cb4:	mov    rdi,rbx
+     cb7:	mov    r15,rax
+     cba:	call   920 <parse>
+     cbf:	lea    rsi,[rip+0x1584]        # 224a <_IO_stdin_used+0x4a>
+     cc6:	mov    rdi,rbx
+     cc9:	mov    QWORD PTR [rsp+0x70],rax
+     cce:	call   920 <parse>
+     cd3:	lea    rsi,[rip+0x1573]        # 224d <_IO_stdin_used+0x4d>
+     cda:	mov    rdi,rbx
+     cdd:	mov    QWORD PTR [rsp+0x88],rax
+     ce5:	call   920 <parse>
+     cea:	lea    rsi,[rip+0x155f]        # 2250 <_IO_stdin_used+0x50>
+     cf1:	mov    rdi,rbx
+     cf4:	mov    QWORD PTR [rsp+0x80],rax
+     cfc:	call   920 <parse>
+     d01:	lea    rsi,[rip+0x154b]        # 2253 <_IO_stdin_used+0x53>
+     d08:	mov    rdi,rbx
+     d0b:	mov    QWORD PTR [rsp+0x78],rax
+     d10:	call   920 <parse>
+     d15:	lea    rsi,[rip+0x153a]        # 2256 <_IO_stdin_used+0x56>
+     d1c:	mov    rdi,rbx
+     d1f:	mov    r13,rax
+     d22:	call   920 <parse>
+     d27:	lea    rsi,[rip+0x152b]        # 2259 <_IO_stdin_used+0x59>
+     d2e:	mov    rdi,rbx
+     d31:	mov    rbp,rax
+     d34:	call   920 <parse>
+     d39:	lea    rsi,[rip+0x151c]        # 225c <_IO_stdin_used+0x5c>
+     d40:	mov    rdi,rbx
+     d43:	mov    QWORD PTR [rsp+0xb0],rax
+     d4b:	call   920 <parse>
+     d50:	lea    rsi,[rip+0x1508]        # 225f <_IO_stdin_used+0x5f>
+     d57:	mov    rdi,rbx
+     d5a:	mov    QWORD PTR [rsp+0xa8],rax
+     d62:	call   920 <parse>
+     d67:	lea    rsi,[rip+0x14f4]        # 2262 <_IO_stdin_used+0x62>
+     d6e:	mov    rdi,rbx
+     d71:	mov    QWORD PTR [rsp+0xb8],rax
+     d79:	call   920 <parse>
+     d7e:	mov    r8,QWORD PTR [rsp+0x90]
+     d86:	mov    rcx,QWORD PTR [rsp+0x98]
+     d8e:	lea    rsi,[rip+0x1573]        # 2308 <_IO_stdin_used+0x108>
+     d95:	mov    rdx,QWORD PTR [rsp+0xa0]
+     d9d:	mov    edi,0x1
+     da2:	mov    rbx,rax
+     da5:	xor    eax,eax
+     da7:	call   720 <__printf_chk@plt>
+     dac:	mov    r10,QWORD PTR [rsp+0x78]
+     db1:	lea    rsi,[rip+0x1590]        # 2348 <_IO_stdin_used+0x148>
+     db8:	xor    eax,eax
+     dba:	mov    edi,0x1
+     dbf:	push   r10
+     dc1:	mov    r11,QWORD PTR [rsp+0x88]
+     dc9:	push   r11
+     dcb:	push   r15
+     dcd:	push   r14
+     dcf:	mov    rdx,QWORD PTR [rsp+0x80]
+     dd7:	mov    r9,QWORD PTR [rsp+0xa8]
+     ddf:	mov    r8,QWORD PTR [rsp+0x90]
+     de7:	mov    rcx,QWORD PTR [rsp+0x88]
+     def:	call   720 <__printf_chk@plt>
+     df4:	add    rsp,0x20
+     df8:	test   rbp,rbp
+     dfb:	setne  dl
+     dfe:	test   r12,r12
+     e01:	setne  al
+     e04:	test   dl,al
+     e06:	je     e11 <parse_global+0x2f1>
+     e08:	test   rbx,rbx
+     e0b:	jne    eb8 <parse_global+0x398>
+     e11:	test   r13,r13
+     e14:	je     e50 <parse_global+0x330>
+     e16:	mov    rax,QWORD PTR [rsp+0xb0]
+     e1e:	test   rax,rax
+     e21:	je     e33 <parse_global+0x313>
+     e23:	mov    rdx,r13
+     e26:	shl    rdx,0xc
+     e2a:	cmp    rdx,rax
+     e2d:	ja     fc0 <parse_global+0x4a0>
+     e33:	mov    rax,QWORD PTR [rsp+0xa8]
+     e3b:	test   rax,rax
+     e3e:	je     e50 <parse_global+0x330>
+     e40:	mov    r11,r13
+     e43:	shl    r11,0xc
+     e47:	cmp    r11,rax
+     e4a:	ja     f68 <parse_global+0x448>
+     e50:	mov    edi,0xa
+     e55:	call   6e0 <putchar@plt>
+     e5a:	push   QWORD PTR [rsp+0x58]
+     e5e:	push   r12
+     e60:	lea    rsi,[rip+0x1571]        # 23d8 <_IO_stdin_used+0x1d8>
+     e67:	push   QWORD PTR [rsp+0x60]
+     e6b:	push   QWORD PTR [rsp+0x60]
+     e6f:	mov    edi,0x1
+     e74:	push   QWORD PTR [rsp+0x60]
+     e78:	push   QWORD PTR [rsp+0x60]
+     e7c:	xor    eax,eax
+     e7e:	push   QWORD PTR [rsp+0x60]
+     e82:	push   QWORD PTR [rsp+0x60]
+     e86:	mov    r9,QWORD PTR [rsp+0x60]
+     e8b:	mov    r8,QWORD PTR [rsp+0x58]
+     e90:	mov    rcx,QWORD PTR [rsp+0x50]
+     e95:	mov    rdx,QWORD PTR [rsp+0x48]
+     e9a:	call   720 <__printf_chk@plt>
+     e9f:	add    rsp,0x108
+     ea6:	pop    rbx
+     ea7:	pop    rbp
+     ea8:	pop    r12
+     eaa:	pop    r13
+     eac:	pop    r14
+     eae:	pop    r15
+     eb0:	ret    
+     eb1:	nop    DWORD PTR [rax+0x0]
+     eb8:	lea    rsi,[rip+0x13a6]        # 2265 <_IO_stdin_used+0x65>
+     ebf:	xor    eax,eax
+     ec1:	mov    rcx,rbp
+     ec4:	mov    rdx,r13
+     ec7:	mov    edi,0x1
+     ecc:	call   720 <__printf_chk@plt>
+     ed1:	test   r13,r13
+     ed4:	js     1098 <parse_global+0x578>
+     eda:	pxor   xmm0,xmm0
+     ede:	cvtsi2sd xmm0,r13
+     ee3:	test   r12,r12
+     ee6:	js     1070 <parse_global+0x550>
+     eec:	pxor   xmm1,xmm1
+     ef0:	cvtsi2sd xmm1,r12
+     ef5:	divsd  xmm0,xmm1
+     ef9:	cmp    QWORD PTR [rsp+0xb8],0x0
+     f02:	movsd  xmm1,QWORD PTR [rip+0x1a66]        # 2970 <_IO_stdin_used+0x770>
+     f0a:	movsd  xmm3,QWORD PTR [rip+0x1a66]        # 2978 <_IO_stdin_used+0x778>
+     f12:	subsd  xmm1,xmm0
+     f16:	mulsd  xmm1,xmm3
+     f1a:	js     1040 <parse_global+0x520>
+     f20:	pxor   xmm0,xmm0
+     f24:	cvtsi2sd xmm0,QWORD PTR [rsp+0xb8]
+     f2e:	test   rbx,rbx
+     f31:	js     1020 <parse_global+0x500>
+     f37:	pxor   xmm2,xmm2
+     f3b:	cvtsi2sd xmm2,rbx
+     f40:	divsd  xmm0,xmm2
+     f44:	lea    rsi,[rip+0x1465]        # 23b0 <_IO_stdin_used+0x1b0>
+     f4b:	mov    edi,0x1
+     f50:	mov    eax,0x2
+     f55:	mulsd  xmm0,xmm3
+     f59:	call   720 <__printf_chk@plt>
+     f5e:	jmp    e11 <parse_global+0x2f1>
+     f63:	nop    DWORD PTR [rax+rax*1+0x0]
+     f68:	test   rax,rax
+     f6b:	js     10c0 <parse_global+0x5a0>
+     f71:	pxor   xmm1,xmm1
+     f75:	cvtsi2sd xmm1,rax
+     f7a:	test   r11,r11
+     f7d:	js     10f0 <parse_global+0x5d0>
+     f83:	pxor   xmm0,xmm0
+     f87:	cvtsi2sd xmm0,r11
+     f8c:	divsd  xmm1,xmm0
+     f90:	lea    rsi,[rip+0x12f9]        # 2290 <_IO_stdin_used+0x90>
+     f97:	mov    edi,0x1
+     f9c:	mov    eax,0x1
+     fa1:	movsd  xmm0,QWORD PTR [rip+0x19c7]        # 2970 <_IO_stdin_used+0x770>
+     fa9:	subsd  xmm0,xmm1
+     fad:	mulsd  xmm0,QWORD PTR [rip+0x19c3]        # 2978 <_IO_stdin_used+0x778>
+     fb5:	call   720 <__printf_chk@plt>
+     fba:	jmp    e50 <parse_global+0x330>
+     fbf:	nop
+     fc0:	test   rax,rax
+     fc3:	js     1120 <parse_global+0x600>
+     fc9:	pxor   xmm1,xmm1
+     fcd:	cvtsi2sd xmm1,rax
+     fd2:	test   rdx,rdx
+     fd5:	js     1108 <parse_global+0x5e8>
+     fdb:	pxor   xmm0,xmm0
+     fdf:	cvtsi2sd xmm0,rdx
+     fe4:	divsd  xmm1,xmm0
+     fe8:	lea    rsi,[rip+0x128c]        # 227b <_IO_stdin_used+0x7b>
+     fef:	mov    edi,0x1
+     ff4:	mov    eax,0x1
+     ff9:	movsd  xmm0,QWORD PTR [rip+0x196f]        # 2970 <_IO_stdin_used+0x770>
+    1001:	subsd  xmm0,xmm1
+    1005:	mulsd  xmm0,QWORD PTR [rip+0x196b]        # 2978 <_IO_stdin_used+0x778>
+    100d:	call   720 <__printf_chk@plt>
+    1012:	jmp    e33 <parse_global+0x313>
+    1017:	nop    WORD PTR [rax+rax*1+0x0]
+    1020:	mov    rax,rbx
+    1023:	pxor   xmm2,xmm2
+    1027:	shr    rax,1
+    102a:	and    ebx,0x1
+    102d:	or     rax,rbx
+    1030:	cvtsi2sd xmm2,rax
+    1035:	addsd  xmm2,xmm2
+    1039:	jmp    f40 <parse_global+0x420>
+    103e:	xchg   ax,ax
+    1040:	mov    rax,QWORD PTR [rsp+0xb8]
+    1048:	pxor   xmm0,xmm0
+    104c:	mov    rdx,rax
+    104f:	and    eax,0x1
+    1052:	shr    rdx,1
+    1055:	or     rdx,rax
+    1058:	cvtsi2sd xmm0,rdx
+    105d:	addsd  xmm0,xmm0
+    1061:	jmp    f2e <parse_global+0x40e>
+    1066:	nop    WORD PTR cs:[rax+rax*1+0x0]
+    1070:	mov    rax,r12
+    1073:	mov    rdx,r12
+    1076:	pxor   xmm1,xmm1
+    107a:	shr    rax,1
+    107d:	and    edx,0x1
+    1080:	or     rax,rdx
+    1083:	cvtsi2sd xmm1,rax
+    1088:	addsd  xmm1,xmm1
+    108c:	jmp    ef5 <parse_global+0x3d5>
+    1091:	nop    DWORD PTR [rax+0x0]
+    1098:	mov    rax,r13
+    109b:	mov    rdx,r13
+    109e:	pxor   xmm0,xmm0
+    10a2:	shr    rax,1
+    10a5:	and    edx,0x1
+    10a8:	or     rax,rdx
+    10ab:	cvtsi2sd xmm0,rax
+    10b0:	addsd  xmm0,xmm0
+    10b4:	jmp    ee3 <parse_global+0x3c3>
+    10b9:	nop    DWORD PTR [rax+0x0]
+    10c0:	mov    rax,QWORD PTR [rsp+0xa8]
+    10c8:	pxor   xmm1,xmm1
+    10cc:	mov    rdx,rax
+    10cf:	and    eax,0x1
+    10d2:	shr    rdx,1
+    10d5:	or     rdx,rax
+    10d8:	cvtsi2sd xmm1,rdx
+    10dd:	addsd  xmm1,xmm1
+    10e1:	jmp    f7a <parse_global+0x45a>
+    10e6:	nop    WORD PTR cs:[rax+rax*1+0x0]
+    10f0:	pxor   xmm0,xmm0
+    10f4:	shr    r11,1
+    10f7:	cvtsi2sd xmm0,r11
+    10fc:	addsd  xmm0,xmm0
+    1100:	jmp    f8c <parse_global+0x46c>
+    1105:	nop    DWORD PTR [rax]
+    1108:	pxor   xmm0,xmm0
+    110c:	shr    rdx,1
+    110f:	cvtsi2sd xmm0,rdx
+    1114:	addsd  xmm0,xmm0
+    1118:	jmp    fe4 <parse_global+0x4c4>
+    111d:	nop    DWORD PTR [rax]
+    1120:	mov    rax,QWORD PTR [rsp+0xb0]
+    1128:	pxor   xmm1,xmm1
+    112c:	mov    rcx,rax
+    112f:	and    eax,0x1
+    1132:	shr    rcx,1
+    1135:	or     rcx,rax
+    1138:	cvtsi2sd xmm1,rcx
+    113d:	addsd  xmm1,xmm1
+    1141:	jmp    fd2 <parse_global+0x4b2>
+    1146:	nop    WORD PTR cs:[rax+rax*1+0x0]
+
+0000000000001150 <parse_time_stats>:
+    1150:	push   r15
+    1152:	push   r14
+    1154:	mov    r15d,0x6d67
+    115a:	push   r13
+    115c:	push   r12
+    115e:	mov    r12d,0x7467
+    1164:	push   rbp
+    1165:	push   rbx
+    1166:	mov    rbx,rdi
+    1169:	mov    r13d,0x7867
+    116f:	sub    rsp,0x118
+    1176:	lea    rbp,[rsp+0x105]
+    117e:	mov    BYTE PTR [rsp+0x107],0x0
+    1186:	mov    rax,QWORD PTR fs:0x28
+    118f:	mov    QWORD PTR [rsp+0x108],rax
+    1197:	xor    eax,eax
+    1199:	mov    rsi,rbp
+    119c:	mov    eax,0x6e47
+    11a1:	mov    WORD PTR [rsp+0x105],ax
+    11a9:	call   920 <parse>
+    11ae:	mov    edx,0x7447
+    11b3:	mov    rdi,rbx
+    11b6:	mov    rsi,rbp
+    11b9:	mov    WORD PTR [rsp+0x105],dx
+    11c1:	mov    QWORD PTR [rsp+0x68],rax
+    11c6:	mov    BYTE PTR [rsp+0x107],0x0
+    11ce:	call   920 <parse>
+    11d3:	mov    ecx,0x7847
+    11d8:	mov    rdi,rbx
+    11db:	mov    rsi,rbp
+    11de:	mov    WORD PTR [rsp+0x105],cx
+    11e6:	mov    QWORD PTR [rsp+0xf8],rax
+    11ee:	mov    BYTE PTR [rsp+0x107],0x0
+    11f6:	call   920 <parse>
+    11fb:	mov    esi,0x6d47
+    1200:	mov    rdi,rbx
+    1203:	mov    QWORD PTR [rsp+0xf0],rax
+    120b:	mov    WORD PTR [rsp+0x105],si
+    1213:	mov    rsi,rbp
+    1216:	mov    BYTE PTR [rsp+0x107],0x0
+    121e:	call   920 <parse>
+    1223:	mov    edi,0x6e50
+    1228:	mov    rsi,rbp
+    122b:	mov    QWORD PTR [rsp+0xe8],rax
+    1233:	mov    WORD PTR [rsp+0x105],di
+    123b:	mov    rdi,rbx
+    123e:	mov    BYTE PTR [rsp+0x107],0x0
+    1246:	call   920 <parse>
+    124b:	mov    r8d,0x7450
+    1251:	mov    rdi,rbx
+    1254:	mov    rsi,rbp
+    1257:	mov    WORD PTR [rsp+0x105],r8w
+    1260:	mov    r14,rax
+    1263:	mov    BYTE PTR [rsp+0x107],0x0
+    126b:	call   920 <parse>
+    1270:	mov    r9d,0x7850
+    1276:	mov    rdi,rbx
+    1279:	mov    rsi,rbp
+    127c:	mov    WORD PTR [rsp+0x105],r9w
+    1285:	mov    QWORD PTR [rsp+0x30],rax
+    128a:	mov    BYTE PTR [rsp+0x107],0x0
+    1292:	call   920 <parse>
+    1297:	mov    r10d,0x6d50
+    129d:	mov    rdi,rbx
+    12a0:	mov    rsi,rbp
+    12a3:	mov    WORD PTR [rsp+0x105],r10w
+    12ac:	mov    QWORD PTR [rsp+0xe0],rax
+    12b4:	mov    BYTE PTR [rsp+0x107],0x0
+    12bc:	call   920 <parse>
+    12c1:	mov    r11d,0x6e67
+    12c7:	mov    rdi,rbx
+    12ca:	mov    rsi,rbp
+    12cd:	mov    WORD PTR [rsp+0x105],r11w
+    12d6:	mov    QWORD PTR [rsp+0xd8],rax
+    12de:	mov    BYTE PTR [rsp+0x107],0x0
+    12e6:	call   920 <parse>
+    12eb:	mov    rdi,rbx
+    12ee:	mov    rsi,rbp
+    12f1:	mov    WORD PTR [rsp+0x105],r12w
+    12fa:	mov    QWORD PTR [rsp+0x20],rax
+    12ff:	mov    BYTE PTR [rsp+0x107],0x0
+    1307:	mov    r12d,0x7843
+    130d:	call   920 <parse>
+    1312:	mov    rdi,rbx
+    1315:	mov    rsi,rbp
+    1318:	mov    WORD PTR [rsp+0x105],r13w
+    1321:	mov    QWORD PTR [rsp+0x38],rax
+    1326:	mov    BYTE PTR [rsp+0x107],0x0
+    132e:	mov    r13d,0x6d43
+    1334:	call   920 <parse>
+    1339:	mov    rdi,rbx
+    133c:	mov    rsi,rbp
+    133f:	mov    WORD PTR [rsp+0x105],r15w
+    1348:	mov    QWORD PTR [rsp+0xd0],rax
+    1350:	mov    BYTE PTR [rsp+0x107],0x0
+    1358:	call   920 <parse>
+    135d:	mov    rdi,rbx
+    1360:	mov    QWORD PTR [rsp+0xc8],rax
+    1368:	mov    rsi,rbp
+    136b:	mov    eax,0x6e70
+    1370:	mov    BYTE PTR [rsp+0x107],0x0
+    1378:	mov    WORD PTR [rsp+0x105],ax
+    1380:	call   920 <parse>
+    1385:	mov    rdi,rbx
+    1388:	mov    QWORD PTR [rsp+0x18],rax
+    138d:	mov    rsi,rbp
+    1390:	mov    eax,0x7470
+    1395:	mov    BYTE PTR [rsp+0x107],0x0
+    139d:	mov    WORD PTR [rsp+0x105],ax
+    13a5:	call   920 <parse>
+    13aa:	mov    rdi,rbx
+    13ad:	mov    QWORD PTR [rsp+0x40],rax
+    13b2:	mov    rsi,rbp
+    13b5:	mov    eax,0x7870
+    13ba:	mov    BYTE PTR [rsp+0x107],0x0
+    13c2:	mov    WORD PTR [rsp+0x105],ax
+    13ca:	call   920 <parse>
+    13cf:	mov    rdi,rbx
+    13d2:	mov    QWORD PTR [rsp+0xc0],rax
+    13da:	mov    rsi,rbp
+    13dd:	mov    eax,0x6d70
+    13e2:	mov    BYTE PTR [rsp+0x107],0x0
+    13ea:	mov    WORD PTR [rsp+0x105],ax
+    13f2:	call   920 <parse>
+    13f7:	mov    rdi,rbx
+    13fa:	mov    QWORD PTR [rsp+0xb8],rax
+    1402:	mov    rsi,rbp
+    1405:	mov    eax,0x6e46
+    140a:	mov    BYTE PTR [rsp+0x107],0x0
+    1412:	mov    WORD PTR [rsp+0x105],ax
+    141a:	call   920 <parse>
+    141f:	mov    rdi,rbx
+    1422:	mov    QWORD PTR [rsp+0x10],rax
+    1427:	mov    rsi,rbp
+    142a:	mov    eax,0x7446
+    142f:	mov    BYTE PTR [rsp+0x107],0x0
+    1437:	mov    WORD PTR [rsp+0x105],ax
+    143f:	call   920 <parse>
+    1444:	mov    edx,0x7846
+    1449:	mov    rdi,rbx
+    144c:	mov    rsi,rbp
+    144f:	mov    WORD PTR [rsp+0x105],dx
+    1457:	mov    QWORD PTR [rsp+0x48],rax
+    145c:	mov    BYTE PTR [rsp+0x107],0x0
+    1464:	call   920 <parse>
+    1469:	mov    ecx,0x6d46
+    146e:	mov    rdi,rbx
+    1471:	mov    rsi,rbp
+    1474:	mov    WORD PTR [rsp+0x105],cx
+    147c:	mov    QWORD PTR [rsp+0xb0],rax
+    1484:	mov    BYTE PTR [rsp+0x107],0x0
+    148c:	call   920 <parse>
+    1491:	mov    esi,0x6e4f
+    1496:	mov    rdi,rbx
+    1499:	mov    QWORD PTR [rsp+0xa8],rax
+    14a1:	mov    WORD PTR [rsp+0x105],si
+    14a9:	mov    rsi,rbp
+    14ac:	mov    BYTE PTR [rsp+0x107],0x0
+    14b4:	call   920 <parse>
+    14b9:	mov    edi,0x744f
+    14be:	mov    rsi,rbp
+    14c1:	mov    QWORD PTR [rsp+0x8],rax
+    14c6:	mov    WORD PTR [rsp+0x105],di
+    14ce:	mov    rdi,rbx
+    14d1:	mov    BYTE PTR [rsp+0x107],0x0
+    14d9:	call   920 <parse>
+    14de:	mov    r8d,0x784f
+    14e4:	mov    rdi,rbx
+    14e7:	mov    rsi,rbp
+    14ea:	mov    WORD PTR [rsp+0x105],r8w
+    14f3:	mov    QWORD PTR [rsp+0x50],rax
+    14f8:	mov    BYTE PTR [rsp+0x107],0x0
+    1500:	call   920 <parse>
+    1505:	mov    r9d,0x6d4f
+    150b:	mov    rdi,rbx
+    150e:	mov    rsi,rbp
+    1511:	mov    WORD PTR [rsp+0x105],r9w
+    151a:	mov    QWORD PTR [rsp+0xa0],rax
+    1522:	mov    BYTE PTR [rsp+0x107],0x0
+    152a:	call   920 <parse>
+    152f:	mov    r10d,0x6e43
+    1535:	mov    rdi,rbx
+    1538:	mov    rsi,rbp
+    153b:	mov    WORD PTR [rsp+0x105],r10w
+    1544:	mov    QWORD PTR [rsp+0x98],rax
+    154c:	mov    BYTE PTR [rsp+0x107],0x0
+    1554:	call   920 <parse>
+    1559:	mov    r11d,0x7443
+    155f:	mov    rdi,rbx
+    1562:	mov    rsi,rbp
+    1565:	mov    WORD PTR [rsp+0x105],r11w
+    156e:	mov    r15,rax
+    1571:	mov    BYTE PTR [rsp+0x107],0x0
+    1579:	call   920 <parse>
+    157e:	mov    rdi,rbx
+    1581:	mov    rsi,rbp
+    1584:	mov    WORD PTR [rsp+0x105],r12w
+    158d:	mov    QWORD PTR [rsp+0x58],rax
+    1592:	mov    BYTE PTR [rsp+0x107],0x0
+    159a:	call   920 <parse>
+    159f:	mov    rdi,rbx
+    15a2:	mov    rsi,rbp
+    15a5:	mov    WORD PTR [rsp+0x105],r13w
+    15ae:	mov    QWORD PTR [rsp+0x90],rax
+    15b6:	mov    BYTE PTR [rsp+0x107],0x0
+    15be:	call   920 <parse>
+    15c3:	mov    rdi,rbx
+    15c6:	mov    QWORD PTR [rsp+0x88],rax
+    15ce:	mov    rsi,rbp
+    15d1:	mov    eax,0x6e63
+    15d6:	mov    BYTE PTR [rsp+0x107],0x0
+    15de:	mov    WORD PTR [rsp+0x105],ax
+    15e6:	call   920 <parse>
+    15eb:	mov    rdi,rbx
+    15ee:	mov    rsi,rbp
+    15f1:	mov    r13,rax
+    15f4:	mov    eax,0x7463
+    15f9:	mov    BYTE PTR [rsp+0x107],0x0
+    1601:	mov    WORD PTR [rsp+0x105],ax
+    1609:	call   920 <parse>
+    160e:	mov    rdi,rbx
+    1611:	mov    QWORD PTR [rsp+0x60],rax
+    1616:	mov    rsi,rbp
+    1619:	mov    eax,0x7863
+    161e:	mov    BYTE PTR [rsp+0x107],0x0
+    1626:	mov    WORD PTR [rsp+0x105],ax
+    162e:	call   920 <parse>
+    1633:	mov    rdi,rbx
+    1636:	mov    QWORD PTR [rsp+0x80],rax
+    163e:	mov    rsi,rbp
+    1641:	mov    eax,0x6d63
+    1646:	mov    BYTE PTR [rsp+0x107],0x0
+    164e:	mov    WORD PTR [rsp+0x105],ax
+    1656:	call   920 <parse>
+    165b:	mov    rdi,rbx
+    165e:	mov    QWORD PTR [rsp+0x78],rax
+    1663:	mov    rsi,rbp
+    1666:	mov    eax,0x6e64
+    166b:	mov    BYTE PTR [rsp+0x107],0x0
+    1673:	mov    WORD PTR [rsp+0x105],ax
+    167b:	call   920 <parse>
+    1680:	mov    rdi,rbx
+    1683:	mov    rsi,rbp
+    1686:	mov    r12,rax
+    1689:	mov    eax,0x7464
+    168e:	mov    BYTE PTR [rsp+0x107],0x0
+    1696:	mov    WORD PTR [rsp+0x105],ax
+    169e:	call   920 <parse>
+    16a3:	mov    edx,0x7864
+    16a8:	mov    rdi,rbx
+    16ab:	mov    rsi,rbp
+    16ae:	mov    WORD PTR [rsp+0x105],dx
+    16b6:	mov    QWORD PTR [rsp+0x28],rax
+    16bb:	mov    BYTE PTR [rsp+0x107],0x0
+    16c3:	call   920 <parse>
+    16c8:	mov    ecx,0x6d64
+    16cd:	mov    rdi,rbx
+    16d0:	mov    rsi,rbp
+    16d3:	mov    QWORD PTR [rsp+0x70],rax
+    16d8:	mov    WORD PTR [rsp+0x105],cx
+    16e0:	mov    BYTE PTR [rsp+0x107],0x0
+    16e8:	call   920 <parse>
+    16ed:	mov    r9,QWORD PTR [rsp+0x68]
+    16f2:	mov    rbx,rax
+    16f5:	test   r9,r9
+    16f8:	je     1731 <parse_time_stats+0x5e1>
+    16fa:	mov    r10,QWORD PTR [rsp+0xf8]
+    1702:	test   r10,r10
+    1705:	jne    1a00 <parse_time_stats+0x8b0>
+    170b:	mov    r8,QWORD PTR [rsp+0xe8]
+    1713:	mov    rcx,QWORD PTR [rsp+0xf0]
+    171b:	lea    rsi,[rip+0xd76]        # 2498 <_IO_stdin_used+0x298>
+    1722:	mov    rdx,r10
+    1725:	mov    edi,0x1
+    172a:	xor    eax,eax
+    172c:	call   720 <__printf_chk@plt>
+    1731:	test   r14,r14
+    1734:	je     176f <parse_time_stats+0x61f>
+    1736:	mov    rax,QWORD PTR [rsp+0x30]
+    173b:	test   rax,rax
+    173e:	jne    19f0 <parse_time_stats+0x8a0>
+    1744:	mov    r8,QWORD PTR [rsp+0xd8]
+    174c:	mov    rcx,QWORD PTR [rsp+0xe0]
+    1754:	lea    rsi,[rip+0xd7d]        # 24d8 <_IO_stdin_used+0x2d8>
+    175b:	mov    rdx,QWORD PTR [rsp+0x30]
+    1760:	mov    r9,r14
+    1763:	mov    edi,0x1
+    1768:	xor    eax,eax
+    176a:	call   720 <__printf_chk@plt>
+    176f:	mov    rcx,QWORD PTR [rsp+0x20]
+    1774:	test   rcx,rcx
+    1777:	je     17b4 <parse_time_stats+0x664>
+    1779:	mov    rax,QWORD PTR [rsp+0x38]
+    177e:	test   rax,rax
+    1781:	jne    19d8 <parse_time_stats+0x888>
+    1787:	mov    r9,QWORD PTR [rsp+0x20]
+    178c:	mov    r8,QWORD PTR [rsp+0xc8]
+    1794:	lea    rsi,[rip+0xd7d]        # 2518 <_IO_stdin_used+0x318>
+    179b:	mov    rcx,QWORD PTR [rsp+0xd0]
+    17a3:	mov    rdx,QWORD PTR [rsp+0x38]
+    17a8:	mov    edi,0x1
+    17ad:	xor    eax,eax
+    17af:	call   720 <__printf_chk@plt>
+    17b4:	mov    rdx,QWORD PTR [rsp+0x18]
+    17b9:	test   rdx,rdx
+    17bc:	je     17f9 <parse_time_stats+0x6a9>
+    17be:	mov    rax,QWORD PTR [rsp+0x40]
+    17c3:	test   rax,rax
+    17c6:	jne    19c0 <parse_time_stats+0x870>
+    17cc:	mov    r9,QWORD PTR [rsp+0x18]
+    17d1:	mov    r8,QWORD PTR [rsp+0xb8]
+    17d9:	lea    rsi,[rip+0xd78]        # 2558 <_IO_stdin_used+0x358>
+    17e0:	mov    rcx,QWORD PTR [rsp+0xc0]
+    17e8:	mov    rdx,QWORD PTR [rsp+0x40]
+    17ed:	mov    edi,0x1
+    17f2:	xor    eax,eax
+    17f4:	call   720 <__printf_chk@plt>
+    17f9:	mov    rcx,QWORD PTR [rsp+0x10]
+    17fe:	test   rcx,rcx
+    1801:	je     183e <parse_time_stats+0x6ee>
+    1803:	mov    rax,QWORD PTR [rsp+0x48]
+    1808:	test   rax,rax
+    180b:	jne    19a8 <parse_time_stats+0x858>
+    1811:	mov    r9,QWORD PTR [rsp+0x10]
+    1816:	mov    r8,QWORD PTR [rsp+0xa8]
+    181e:	lea    rsi,[rip+0xd73]        # 2598 <_IO_stdin_used+0x398>
+    1825:	mov    rcx,QWORD PTR [rsp+0xb0]
+    182d:	mov    rdx,QWORD PTR [rsp+0x48]
+    1832:	mov    edi,0x1
+    1837:	xor    eax,eax
+    1839:	call   720 <__printf_chk@plt>
+    183e:	mov    rdx,QWORD PTR [rsp+0x8]
+    1843:	test   rdx,rdx
+    1846:	je     1883 <parse_time_stats+0x733>
+    1848:	mov    rax,QWORD PTR [rsp+0x50]
+    184d:	test   rax,rax
+    1850:	jne    1990 <parse_time_stats+0x840>
+    1856:	mov    r9,QWORD PTR [rsp+0x8]
+    185b:	mov    r8,QWORD PTR [rsp+0x98]
+    1863:	lea    rsi,[rip+0xd6e]        # 25d8 <_IO_stdin_used+0x3d8>
+    186a:	mov    rcx,QWORD PTR [rsp+0xa0]
+    1872:	mov    rdx,QWORD PTR [rsp+0x50]
+    1877:	mov    edi,0x1
+    187c:	xor    eax,eax
+    187e:	call   720 <__printf_chk@plt>
+    1883:	test   r15,r15
+    1886:	je     18c1 <parse_time_stats+0x771>
+    1888:	mov    rax,QWORD PTR [rsp+0x58]
+    188d:	test   rax,rax
+    1890:	jne    1980 <parse_time_stats+0x830>
+    1896:	mov    r8,QWORD PTR [rsp+0x88]
+    189e:	mov    rcx,QWORD PTR [rsp+0x90]
+    18a6:	lea    rsi,[rip+0xd6b]        # 2618 <_IO_stdin_used+0x418>
+    18ad:	mov    rdx,QWORD PTR [rsp+0x58]
+    18b2:	mov    r9,r15
+    18b5:	mov    edi,0x1
+    18ba:	xor    eax,eax
+    18bc:	call   720 <__printf_chk@plt>
+    18c1:	test   r13,r13
+    18c4:	je     18fc <parse_time_stats+0x7ac>
+    18c6:	mov    rax,QWORD PTR [rsp+0x60]
+    18cb:	test   rax,rax
+    18ce:	jne    1970 <parse_time_stats+0x820>
+    18d4:	mov    r8,QWORD PTR [rsp+0x78]
+    18d9:	mov    rcx,QWORD PTR [rsp+0x80]
+    18e1:	lea    rsi,[rip+0xd70]        # 2658 <_IO_stdin_used+0x458>
+    18e8:	mov    rdx,QWORD PTR [rsp+0x60]
+    18ed:	mov    r9,r13
+    18f0:	mov    edi,0x1
+    18f5:	xor    eax,eax
+    18f7:	call   720 <__printf_chk@plt>
+    18fc:	test   r12,r12
+    18ff:	je     192e <parse_time_stats+0x7de>
+    1901:	mov    rax,QWORD PTR [rsp+0x28]
+    1906:	test   rax,rax
+    1909:	jne    1960 <parse_time_stats+0x810>
+    190b:	mov    rcx,QWORD PTR [rsp+0x70]
+    1910:	mov    rdx,QWORD PTR [rsp+0x28]
+    1915:	lea    rsi,[rip+0xd7c]        # 2698 <_IO_stdin_used+0x498>
+    191c:	mov    r9,r12
+    191f:	mov    r8,rbx
+    1922:	mov    edi,0x1
+    1927:	xor    eax,eax
+    1929:	call   720 <__printf_chk@plt>
+    192e:	mov    rax,QWORD PTR [rsp+0x108]
+    1936:	xor    rax,QWORD PTR fs:0x28
+    193f:	jne    1a10 <parse_time_stats+0x8c0>
+    1945:	add    rsp,0x118
+    194c:	pop    rbx
+    194d:	pop    rbp
+    194e:	pop    r12
+    1950:	pop    r13
+    1952:	pop    r14
+    1954:	pop    r15
+    1956:	ret    
+    1957:	nop    WORD PTR [rax+rax*1+0x0]
+    1960:	xor    edx,edx
+    1962:	div    r12
+    1965:	mov    QWORD PTR [rsp+0x28],rax
+    196a:	jmp    190b <parse_time_stats+0x7bb>
+    196c:	nop    DWORD PTR [rax+0x0]
+    1970:	xor    edx,edx
+    1972:	div    r13
+    1975:	mov    QWORD PTR [rsp+0x60],rax
+    197a:	jmp    18d4 <parse_time_stats+0x784>
+    197f:	nop
+    1980:	xor    edx,edx
+    1982:	div    r15
+    1985:	mov    QWORD PTR [rsp+0x58],rax
+    198a:	jmp    1896 <parse_time_stats+0x746>
+    198f:	nop
+    1990:	mov    rcx,rdx
+    1993:	xor    edx,edx
+    1995:	div    rcx
+    1998:	mov    QWORD PTR [rsp+0x50],rax
+    199d:	jmp    1856 <parse_time_stats+0x706>
+    19a2:	nop    WORD PTR [rax+rax*1+0x0]
+    19a8:	xor    edx,edx
+    19aa:	div    rcx
+    19ad:	mov    QWORD PTR [rsp+0x48],rax
+    19b2:	jmp    1811 <parse_time_stats+0x6c1>
+    19b7:	nop    WORD PTR [rax+rax*1+0x0]
+    19c0:	mov    rcx,rdx
+    19c3:	xor    edx,edx
+    19c5:	div    rcx
+    19c8:	mov    QWORD PTR [rsp+0x40],rax
+    19cd:	jmp    17cc <parse_time_stats+0x67c>
+    19d2:	nop    WORD PTR [rax+rax*1+0x0]
+    19d8:	xor    edx,edx
+    19da:	div    rcx
+    19dd:	mov    QWORD PTR [rsp+0x38],rax
+    19e2:	jmp    1787 <parse_time_stats+0x637>
+    19e7:	nop    WORD PTR [rax+rax*1+0x0]
+    19f0:	xor    edx,edx
+    19f2:	div    r14
+    19f5:	mov    QWORD PTR [rsp+0x30],rax
+    19fa:	jmp    1744 <parse_time_stats+0x5f4>
+    19ff:	nop
+    1a00:	mov    rax,r10
+    1a03:	xor    edx,edx
+    1a05:	div    r9
+    1a08:	mov    r10,rax
+    1a0b:	jmp    170b <parse_time_stats+0x5bb>
+    1a10:	call   6f0 <__stack_chk_fail@plt>
+    1a15:	nop
+    1a16:	nop    WORD PTR cs:[rax+rax*1+0x0]
+
+0000000000001a20 <parse_client>:
+    1a20:	push   r15
+    1a22:	push   r14
+    1a24:	lea    rsi,[rip+0x882]        # 22ad <_IO_stdin_used+0xad>
+    1a2b:	push   r13
+    1a2d:	push   r12
+    1a2f:	push   rbp
+    1a30:	push   rbx
+    1a31:	mov    rbx,rdi
+    1a34:	sub    rsp,0x58
+    1a38:	call   920 <parse>
+    1a3d:	lea    rsi,[rip+0x86c]        # 22b0 <_IO_stdin_used+0xb0>
+    1a44:	mov    rdi,rbx
+    1a47:	mov    QWORD PTR [rsp+0x8],rax
+    1a4c:	call   920 <parse>
+    1a51:	lea    rsi,[rip+0x85b]        # 22b3 <_IO_stdin_used+0xb3>
+    1a58:	mov    rdi,rbx
+    1a5b:	mov    QWORD PTR [rsp+0x40],rax
+    1a60:	call   920 <parse>
+    1a65:	lea    rsi,[rip+0x84a]        # 22b6 <_IO_stdin_used+0xb6>
+    1a6c:	mov    rdi,rbx
+    1a6f:	mov    QWORD PTR [rsp+0x38],rax
+    1a74:	call   920 <parse>
+    1a79:	lea    rsi,[rip+0x839]        # 22b9 <_IO_stdin_used+0xb9>
+    1a80:	mov    rdi,rbx
+    1a83:	mov    QWORD PTR [rsp+0x30],rax
+    1a88:	call   920 <parse>
+    1a8d:	lea    rsi,[rip+0x7a1]        # 2235 <_IO_stdin_used+0x35>
+    1a94:	mov    rdi,rbx
+    1a97:	mov    r12,rax
+    1a9a:	call   920 <parse>
+    1a9f:	lea    rsi,[rip+0x792]        # 2238 <_IO_stdin_used+0x38>
+    1aa6:	mov    rdi,rbx
+    1aa9:	mov    QWORD PTR [rsp+0x10],rax
+    1aae:	call   920 <parse>
+    1ab3:	lea    rsi,[rip+0x802]        # 22bc <_IO_stdin_used+0xbc>
+    1aba:	mov    rdi,rbx
+    1abd:	mov    QWORD PTR [rsp+0x18],rax
+    1ac2:	call   920 <parse>
+    1ac7:	lea    rsi,[rip+0x7f1]        # 22bf <_IO_stdin_used+0xbf>
+    1ace:	mov    rdi,rbx
+    1ad1:	mov    rbp,rax
+    1ad4:	call   920 <parse>
+    1ad9:	lea    rsi,[rip+0x7e2]        # 22c2 <_IO_stdin_used+0xc2>
+    1ae0:	mov    rdi,rbx
+    1ae3:	mov    QWORD PTR [rsp+0x48],rax
+    1ae8:	call   920 <parse>
+    1aed:	lea    rsi,[rip+0x7d1]        # 22c5 <_IO_stdin_used+0xc5>
+    1af4:	mov    rdi,rbx
+    1af7:	mov    QWORD PTR [rsp+0x28],rax
+    1afc:	call   920 <parse>
+    1b01:	lea    rsi,[rip+0x7c0]        # 22c8 <_IO_stdin_used+0xc8>
+    1b08:	mov    rdi,rbx
+    1b0b:	mov    QWORD PTR [rsp+0x20],rax
+    1b10:	call   920 <parse>
+    1b15:	lea    rsi,[rip+0x7af]        # 22cb <_IO_stdin_used+0xcb>
+    1b1c:	mov    rdi,rbx
+    1b1f:	mov    r13,rax
+    1b22:	call   920 <parse>
+    1b27:	lea    rsi,[rip+0x7a0]        # 22ce <_IO_stdin_used+0xce>
+    1b2e:	mov    rdi,rbx
+    1b31:	mov    r14,rax
+    1b34:	call   920 <parse>
+    1b39:	lea    rsi,[rip+0x791]        # 22d1 <_IO_stdin_used+0xd1>
+    1b40:	mov    rdi,rbx
+    1b43:	mov    r15,rax
+    1b46:	call   920 <parse>
+    1b4b:	mov    rsi,rax
+    1b4e:	xor    eax,eax
+    1b50:	test   rbp,rbp
+    1b53:	mov    r11,QWORD PTR [rsp+0x20]
+    1b58:	mov    r10,QWORD PTR [rsp+0x28]
+    1b5d:	mov    r9,QWORD PTR [rsp+0x30]
+    1b62:	mov    r8,QWORD PTR [rsp+0x38]
+    1b67:	mov    rcx,QWORD PTR [rsp+0x40]
+    1b6c:	je     1b8b <parse_client+0x16b>
+    1b6e:	mov    rdx,QWORD PTR [rsp+0x48]
+    1b73:	mov    rdi,rbp
+    1b76:	shl    rdi,0xc
+    1b7a:	lea    rax,[rdx+rdx*4]
+    1b7e:	xor    edx,edx
+    1b80:	lea    rax,[rax+rax*4]
+    1b84:	shl    rax,0x2
+    1b88:	div    rdi
+    1b8b:	test   r9,r9
+    1b8e:	mov    edi,0x1
+    1b93:	setne  r9b
+    1b97:	sub    rsp,0x8
+    1b9b:	push   r11
+    1b9d:	push   r10
+    1b9f:	movzx  r9d,r9b
+    1ba3:	push   rbp
+    1ba4:	push   rax
+    1ba5:	xor    eax,eax
+    1ba7:	test   r12,r12
+    1baa:	push   QWORD PTR [rsp+0x40]
+    1bae:	push   QWORD PTR [rsp+0x40]
+    1bb2:	setne  al
+    1bb5:	push   rsi
+    1bb6:	push   r15
+    1bb8:	push   r14
+    1bba:	push   r13
+    1bbc:	lea    rsi,[rip+0xb1d]        # 26e0 <_IO_stdin_used+0x4e0>
+    1bc3:	push   rax
+    1bc4:	mov    rdx,QWORD PTR [rsp+0x68]
+    1bc9:	xor    eax,eax
+    1bcb:	call   720 <__printf_chk@plt>
+    1bd0:	add    rsp,0xb8
+    1bd7:	pop    rbx
+    1bd8:	pop    rbp
+    1bd9:	pop    r12
+    1bdb:	pop    r13
+    1bdd:	pop    r14
+    1bdf:	pop    r15
+    1be1:	ret    
+    1be2:	nop    DWORD PTR [rax+0x0]
+    1be6:	nop    WORD PTR cs:[rax+rax*1+0x0]
+
+0000000000001bf0 <parse_pool>:
+    1bf0:	push   r15
+    1bf2:	push   r14
+    1bf4:	lea    rsi,[rip+0x6b2]        # 22ad <_IO_stdin_used+0xad>
+    1bfb:	push   r13
+    1bfd:	push   r12
+    1bff:	push   rbp
+    1c00:	push   rbx
+    1c01:	mov    rbx,rdi
+    1c04:	sub    rsp,0x98
+    1c0b:	mov    rax,QWORD PTR fs:0x28
+    1c14:	mov    QWORD PTR [rsp+0x88],rax
+    1c1c:	xor    eax,eax
+    1c1e:	call   920 <parse>
+    1c23:	lea    rsi,[rip+0x6aa]        # 22d4 <_IO_stdin_used+0xd4>
+    1c2a:	mov    rdi,rbx
+    1c2d:	mov    QWORD PTR [rsp+0x8],rax
+    1c32:	call   920 <parse>
+    1c37:	lea    rsi,[rip+0x609]        # 2247 <_IO_stdin_used+0x47>
+    1c3e:	mov    rdi,rbx
+    1c41:	mov    QWORD PTR [rsp+0x10],rax
+    1c46:	call   920 <parse>
+    1c4b:	lea    rsi,[rip+0x5f8]        # 224a <_IO_stdin_used+0x4a>
+    1c52:	mov    rdi,rbx
+    1c55:	mov    QWORD PTR [rsp+0x78],rax
+    1c5a:	call   920 <parse>
+    1c5f:	lea    rsi,[rip+0x5d5]        # 223b <_IO_stdin_used+0x3b>
+    1c66:	mov    rdi,rbx
+    1c69:	mov    QWORD PTR [rsp+0x18],rax
+    1c6e:	call   920 <parse>
+    1c73:	lea    rsi,[rip+0x5c4]        # 223e <_IO_stdin_used+0x3e>
+    1c7a:	mov    rdi,rbx
+    1c7d:	mov    QWORD PTR [rsp+0x20],rax
+    1c82:	call   920 <parse>
+    1c87:	lea    rsi,[rip+0x5b3]        # 2241 <_IO_stdin_used+0x41>
+    1c8e:	mov    rdi,rbx
+    1c91:	mov    QWORD PTR [rsp+0x28],rax
+    1c96:	call   920 <parse>
+    1c9b:	lea    rsi,[rip+0x5a2]        # 2244 <_IO_stdin_used+0x44>
+    1ca2:	mov    rdi,rbx
+    1ca5:	mov    QWORD PTR [rsp+0x30],rax
+    1caa:	call   920 <parse>
+    1caf:	lea    rsi,[rip+0x621]        # 22d7 <_IO_stdin_used+0xd7>
+    1cb6:	mov    rdi,rbx
+    1cb9:	mov    QWORD PTR [rsp+0x38],rax
+    1cbe:	call   920 <parse>
+    1cc3:	lea    rsi,[rip+0x610]        # 22da <_IO_stdin_used+0xda>
+    1cca:	mov    rdi,rbx
+    1ccd:	mov    QWORD PTR [rsp+0x40],rax
+    1cd2:	call   920 <parse>
+    1cd7:	lea    rsi,[rip+0x5ff]        # 22dd <_IO_stdin_used+0xdd>
+    1cde:	mov    rdi,rbx
+    1ce1:	mov    QWORD PTR [rsp+0x48],rax
+    1ce6:	call   920 <parse>
+    1ceb:	lea    rsi,[rip+0x5ee]        # 22e0 <_IO_stdin_used+0xe0>
+    1cf2:	mov    rdi,rbx
+    1cf5:	mov    QWORD PTR [rsp+0x50],rax
+    1cfa:	call   920 <parse>
+    1cff:	lea    rsi,[rip+0x5dd]        # 22e3 <_IO_stdin_used+0xe3>
+    1d06:	mov    rdi,rbx
+    1d09:	mov    QWORD PTR [rsp+0x58],rax
+    1d0e:	call   920 <parse>
+    1d13:	lea    rsi,[rip+0x5cc]        # 22e6 <_IO_stdin_used+0xe6>
+    1d1a:	mov    rdi,rbx
+    1d1d:	mov    QWORD PTR [rsp+0x60],rax
+    1d22:	call   920 <parse>
+    1d27:	lea    rsi,[rip+0x5bb]        # 22e9 <_IO_stdin_used+0xe9>
+    1d2e:	mov    rdi,rbx
+    1d31:	mov    rbp,rax
+    1d34:	call   920 <parse>
+    1d39:	lea    rsi,[rip+0x5ac]        # 22ec <_IO_stdin_used+0xec>
+    1d40:	mov    rdi,rbx
+    1d43:	mov    r12,rax
+    1d46:	call   920 <parse>
+    1d4b:	lea    rsi,[rip+0x59d]        # 22ef <_IO_stdin_used+0xef>
+    1d52:	mov    rdi,rbx
+    1d55:	mov    QWORD PTR [rsp+0x68],rax
+    1d5a:	call   920 <parse>
+    1d5f:	lea    rsi,[rip+0x58c]        # 22f2 <_IO_stdin_used+0xf2>
+    1d66:	mov    rdi,rbx
+    1d69:	mov    r13,rax
+    1d6c:	call   920 <parse>
+    1d71:	lea    rsi,[rip+0x57d]        # 22f5 <_IO_stdin_used+0xf5>
+    1d78:	mov    rdi,rbx
+    1d7b:	mov    r14,rax
+    1d7e:	call   920 <parse>
+    1d83:	lea    r8,[rsp+0x85]
+    1d8b:	lea    rsi,[rip+0x566]        # 22f8 <_IO_stdin_used+0xf8>
+    1d92:	mov    ecx,0x2
+    1d97:	mov    rdi,rbx
+    1d9a:	mov    r15,rax
+    1d9d:	mov    rdx,r8
+    1da0:	mov    QWORD PTR [rsp+0x70],r8
+    1da5:	call   a30 <parse_string>
+    1daa:	cmp    BYTE PTR [rsp+0x86],0x53
+    1db2:	mov    BYTE PTR [rsp+0x87],0x0
+    1dba:	je     1e68 <parse_pool+0x278>
+    1dc0:	xor    eax,eax
+    1dc2:	test   r12,r12
+    1dc5:	mov    r8,QWORD PTR [rsp+0x70]
+    1dca:	mov    r9,QWORD PTR [rsp+0x78]
+    1dcf:	je     1de3 <parse_pool+0x1f3>
+    1dd1:	lea    rax,[rbp+rbp*4+0x0]
+    1dd6:	xor    edx,edx
+    1dd8:	lea    rax,[rax+rax*4]
+    1ddc:	shl    rax,0x2
+    1de0:	div    r12
+    1de3:	sub    rsp,0x8
+    1de7:	lea    rsi,[rip+0x9d2]        # 27c0 <_IO_stdin_used+0x5c0>
+    1dee:	mov    edi,0x1
+    1df3:	push   r15
+    1df5:	push   r14
+    1df7:	push   r13
+    1df9:	push   QWORD PTR [rsp+0x88]
+    1e00:	push   rax
+    1e01:	push   r12
+    1e03:	xor    eax,eax
+    1e05:	push   rbp
+    1e06:	push   QWORD PTR [rsp+0xa0]
+    1e0d:	push   QWORD PTR [rsp+0xa0]
+    1e14:	push   QWORD PTR [rsp+0xa0]
+    1e1b:	push   QWORD PTR [rsp+0xa0]
+    1e22:	push   QWORD PTR [rsp+0xa0]
+    1e29:	push   QWORD PTR [rsp+0xa0]
+    1e30:	push   QWORD PTR [rsp+0xa0]
+    1e37:	push   QWORD PTR [rsp+0xa0]
+    1e3e:	push   QWORD PTR [rsp+0xa0]
+    1e45:	push   QWORD PTR [rsp+0xa0]
+    1e4c:	mov    rcx,QWORD PTR [rsp+0xa0]
+    1e54:	mov    rdx,QWORD PTR [rsp+0x98]
+    1e5c:	call   720 <__printf_chk@plt>
+    1e61:	add    rsp,0x90
+    1e68:	mov    rax,QWORD PTR [rsp+0x88]
+    1e70:	xor    rax,QWORD PTR fs:0x28
+    1e79:	jne    1e8d <parse_pool+0x29d>
+    1e7b:	add    rsp,0x98
+    1e82:	pop    rbx
+    1e83:	pop    rbp
+    1e84:	pop    r12
+    1e86:	pop    r13
+    1e88:	pop    r14
+    1e8a:	pop    r15
+    1e8c:	ret    
+    1e8d:	call   6f0 <__stack_chk_fail@plt>
+    1e92:	nop    DWORD PTR [rax+0x0]
+    1e96:	nop    WORD PTR cs:[rax+rax*1+0x0]
+
+0000000000001ea0 <parse_shared_pool>:
+    1ea0:	push   r15
+    1ea2:	push   r14
+    1ea4:	lea    rsi,[rip+0x429]        # 22d4 <_IO_stdin_used+0xd4>
+    1eab:	push   r13
+    1ead:	push   r12
+    1eaf:	push   rbp
+    1eb0:	push   rbx
+    1eb1:	mov    rbx,rdi
+    1eb4:	sub    rsp,0x10b8
+    1ebb:	mov    rax,QWORD PTR fs:0x28
+    1ec4:	mov    QWORD PTR [rsp+0x10a8],rax
+    1ecc:	xor    eax,eax
+    1ece:	call   920 <parse>
+    1ed3:	lea    rsi,[rip+0x421]        # 22fb <_IO_stdin_used+0xfb>
+    1eda:	mov    rdi,rbx
+    1edd:	mov    QWORD PTR [rsp+0x8],rax
+    1ee2:	lea    r13,[rsp+0x9d]
+    1eea:	lea    r14,[rsp+0xa0]
+    1ef2:	call   980 <parse_hex>
+    1ef7:	lea    rsi,[rip+0x400]        # 22fe <_IO_stdin_used+0xfe>
+    1efe:	mov    rdi,rbx
+    1f01:	mov    QWORD PTR [rsp+0x88],rax
+    1f09:	call   980 <parse_hex>
+    1f0e:	lea    rsi,[rip+0x332]        # 2247 <_IO_stdin_used+0x47>
+    1f15:	mov    rdi,rbx
+    1f18:	mov    QWORD PTR [rsp+0x80],rax
+    1f20:	call   920 <parse>
+    1f25:	lea    rsi,[rip+0x31e]        # 224a <_IO_stdin_used+0x4a>
+    1f2c:	mov    rdi,rbx
+    1f2f:	mov    QWORD PTR [rsp+0x10],rax
+    1f34:	call   920 <parse>
+    1f39:	lea    rsi,[rip+0x2fb]        # 223b <_IO_stdin_used+0x3b>
+    1f40:	mov    rdi,rbx
+    1f43:	mov    QWORD PTR [rsp+0x18],rax
+    1f48:	call   920 <parse>
+    1f4d:	lea    rsi,[rip+0x2ea]        # 223e <_IO_stdin_used+0x3e>
+    1f54:	mov    rdi,rbx
+    1f57:	mov    QWORD PTR [rsp+0x20],rax
+    1f5c:	call   920 <parse>
+    1f61:	lea    rsi,[rip+0x2d9]        # 2241 <_IO_stdin_used+0x41>
+    1f68:	mov    rdi,rbx
+    1f6b:	mov    QWORD PTR [rsp+0x28],rax
+    1f70:	call   920 <parse>
+    1f75:	lea    rsi,[rip+0x2c8]        # 2244 <_IO_stdin_used+0x44>
+    1f7c:	mov    rdi,rbx
+    1f7f:	mov    QWORD PTR [rsp+0x30],rax
+    1f84:	call   920 <parse>
+    1f89:	lea    rsi,[rip+0x347]        # 22d7 <_IO_stdin_used+0xd7>
+    1f90:	mov    rdi,rbx
+    1f93:	mov    QWORD PTR [rsp+0x38],rax
+    1f98:	call   920 <parse>
+    1f9d:	lea    rsi,[rip+0x336]        # 22da <_IO_stdin_used+0xda>
+    1fa4:	mov    rdi,rbx
+    1fa7:	mov    QWORD PTR [rsp+0x40],rax
+    1fac:	call   920 <parse>
+    1fb1:	lea    rsi,[rip+0x325]        # 22dd <_IO_stdin_used+0xdd>
+    1fb8:	mov    rdi,rbx
+    1fbb:	mov    QWORD PTR [rsp+0x48],rax
+    1fc0:	call   920 <parse>
+    1fc5:	lea    rsi,[rip+0x314]        # 22e0 <_IO_stdin_used+0xe0>
+    1fcc:	mov    rdi,rbx
+    1fcf:	mov    QWORD PTR [rsp+0x50],rax
+    1fd4:	call   920 <parse>
+    1fd9:	lea    rsi,[rip+0x303]        # 22e3 <_IO_stdin_used+0xe3>
+    1fe0:	mov    rdi,rbx
+    1fe3:	mov    QWORD PTR [rsp+0x58],rax
+    1fe8:	call   920 <parse>
+    1fed:	lea    rsi,[rip+0x2f2]        # 22e6 <_IO_stdin_used+0xe6>
+    1ff4:	mov    rdi,rbx
+    1ff7:	mov    r15,rax
+    1ffa:	call   920 <parse>
+    1fff:	lea    rsi,[rip+0x2e3]        # 22e9 <_IO_stdin_used+0xe9>
+    2006:	mov    rdi,rbx
+    2009:	mov    r12,rax
+    200c:	call   920 <parse>
+    2011:	lea    rsi,[rip+0x2d4]        # 22ec <_IO_stdin_used+0xec>
+    2018:	mov    rdi,rbx
+    201b:	mov    rbp,rax
+    201e:	call   920 <parse>
+    2023:	lea    rsi,[rip+0x2c5]        # 22ef <_IO_stdin_used+0xef>
+    202a:	mov    rdi,rbx
+    202d:	mov    QWORD PTR [rsp+0x60],rax
+    2032:	call   920 <parse>
+    2037:	lea    rsi,[rip+0x2b4]        # 22f2 <_IO_stdin_used+0xf2>
+    203e:	mov    rdi,rbx
+    2041:	mov    QWORD PTR [rsp+0x68],rax
+    2046:	call   920 <parse>
+    204b:	lea    rsi,[rip+0x2a3]        # 22f5 <_IO_stdin_used+0xf5>
+    2052:	mov    rdi,rbx
+    2055:	mov    QWORD PTR [rsp+0x78],rax
+    205a:	call   920 <parse>
+    205f:	lea    rsi,[rip+0x292]        # 22f8 <_IO_stdin_used+0xf8>
+    2066:	mov    ecx,0x2
+    206b:	mov    rdx,r13
+    206e:	mov    rdi,rbx
+    2071:	mov    QWORD PTR [rsp+0x70],rax
+    2076:	call   a30 <parse_string>
+    207b:	lea    rsi,[rip+0x27f]        # 2301 <_IO_stdin_used+0x101>
+    2082:	mov    ecx,0x1000
+    2087:	mov    rdx,r14
+    208a:	mov    rdi,rbx
+    208d:	mov    BYTE PTR [rsp+0x9f],0x0
+    2095:	call   a90 <parse_sharers>
+    209a:	xor    eax,eax
+    209c:	test   rbp,rbp
+    209f:	mov    r11,QWORD PTR [rsp+0x70]
+    20a4:	mov    r10,QWORD PTR [rsp+0x78]
+    20a9:	mov    r9,QWORD PTR [rsp+0x80]
+    20b1:	mov    r8,QWORD PTR [rsp+0x88]
+    20b9:	je     20cc <parse_shared_pool+0x22c>
+    20bb:	lea    rax,[r12+r12*4]
+    20bf:	xor    edx,edx
+    20c1:	lea    rax,[rax+rax*4]
+    20c5:	shl    rax,0x2
+    20c9:	div    rbp
+    20cc:	sub    rsp,0x8
+    20d0:	lea    rsi,[rip+0x791]        # 2868 <_IO_stdin_used+0x668>
+    20d7:	mov    rcx,r13
+    20da:	push   r11
+    20dc:	push   r10
+    20de:	mov    edi,0x1
+    20e3:	push   QWORD PTR [rsp+0x80]
+    20ea:	push   QWORD PTR [rsp+0x80]
+    20f1:	push   rax
+    20f2:	push   rbp
+    20f3:	xor    eax,eax
+    20f5:	push   r12
+    20f7:	push   r15
+    20f9:	push   QWORD PTR [rsp+0xa0]
+    2100:	push   QWORD PTR [rsp+0xa0]
+    2107:	push   QWORD PTR [rsp+0xa0]
+    210e:	push   QWORD PTR [rsp+0xa0]
+    2115:	push   QWORD PTR [rsp+0xa0]
+    211c:	push   QWORD PTR [rsp+0xa0]
+    2123:	push   QWORD PTR [rsp+0xa0]
+    212a:	push   QWORD PTR [rsp+0xa0]
+    2131:	push   QWORD PTR [rsp+0xa0]
+    2138:	push   QWORD PTR [rsp+0xa0]
+    213f:	push   r14
+    2141:	mov    rdx,QWORD PTR [rsp+0xa8]
+    2149:	call   720 <__printf_chk@plt>
+    214e:	add    rsp,0xa0
+    2155:	mov    rax,QWORD PTR [rsp+0x10a8]
+    215d:	xor    rax,QWORD PTR fs:0x28
+    2166:	jne    217a <parse_shared_pool+0x2da>
+    2168:	add    rsp,0x10b8
+    216f:	pop    rbx
+    2170:	pop    rbp
+    2171:	pop    r12
+    2173:	pop    r13
+    2175:	pop    r14
+    2177:	pop    r15
+    2179:	ret    
+    217a:	call   6f0 <__stack_chk_fail@plt>
+    217f:	nop
+
+0000000000002180 <__libc_csu_init>:
+    2180:	push   r15
+    2182:	push   r14
+    2184:	mov    r15,rdx
+    2187:	push   r13
+    2189:	push   r12
+    218b:	lea    r12,[rip+0x201bfe]        # 203d90 <__frame_dummy_init_array_entry>
+    2192:	push   rbp
+    2193:	lea    rbp,[rip+0x201bfe]        # 203d98 <__init_array_end>
+    219a:	push   rbx
+    219b:	mov    r13d,edi
+    219e:	mov    r14,rsi
+    21a1:	sub    rbp,r12
+    21a4:	sub    rsp,0x8
+    21a8:	sar    rbp,0x3
+    21ac:	call   6b0 <_init>
+    21b1:	test   rbp,rbp
+    21b4:	je     21d6 <__libc_csu_init+0x56>
+    21b6:	xor    ebx,ebx
+    21b8:	nop    DWORD PTR [rax+rax*1+0x0]
+    21c0:	mov    rdx,r15
+    21c3:	mov    rsi,r14
+    21c6:	mov    edi,r13d
+    21c9:	call   QWORD PTR [r12+rbx*8]
+    21cd:	add    rbx,0x1
+    21d1:	cmp    rbp,rbx
+    21d4:	jne    21c0 <__libc_csu_init+0x40>
+    21d6:	add    rsp,0x8
+    21da:	pop    rbx
+    21db:	pop    rbp
+    21dc:	pop    r12
+    21de:	pop    r13
+    21e0:	pop    r14
+    21e2:	pop    r15
+    21e4:	ret    
+    21e5:	nop
+    21e6:	nop    WORD PTR cs:[rax+rax*1+0x0]
+
+00000000000021f0 <__libc_csu_fini>:
+    21f0:	repz ret 
+
+Disassembly of section .fini:
+
+00000000000021f4 <_fini>:
+    21f4:	sub    rsp,0x8
+    21f8:	add    rsp,0x8
+    21fc:	ret    

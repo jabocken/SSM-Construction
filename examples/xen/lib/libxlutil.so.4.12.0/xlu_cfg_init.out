@@ -1,0 +1,43 @@
+Number of assembly instructions     = 26
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 26
+Number of edges: 27
+
+5960 (False): 0
+
+5960: PUSH Reg R12 2
+5962: PUSH Reg RBP 1
+5963: MOV Reg R12, Reg RDI 3
+5966: PUSH Reg RBX 1
+5967: MOV Reg EDI, Immediate 24 5
+596c: MOV Reg RBP, Reg RSI 3
+596f: CALL malloc (external)
+5974: TEST Reg RAX, Reg RAX 3
+5977: MOV Reg RBX, Reg RAX 3
+597a: JZ 5998 (resolved immediate)
+  |
+  `- 597c,5998
+597c: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))), Reg R12 4
+5980: MOV Reg RDI, Reg RBP 3
+5983: CALL strdup (external)
+5988: TEST Reg RAX, Reg RAX 3
+598b: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))), Reg RAX 4
+598f: JZ 59a0 (resolved immediate)
+  |
+  `- 5991,59a0
+5991: MOV Address (SizeDir 64 (FromReg RBX)), Immediate 0 7
+5998: MOV Reg RAX, Reg RBX 3
+599b: POP Reg RBX 1
+599c: POP Reg RBP 1
+599d: POP Reg R12 2
+599f: RET  1
+  |
+  `- 
+59a0: MOV Reg RDI, Reg RBX 3
+59a3: XOR Reg EBX, Reg EBX 2
+59a5: CALL free (external)
+59aa: JMP 5998 (resolved immediate)
+  |
+  `- 5998

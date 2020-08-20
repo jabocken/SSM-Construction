@@ -1,0 +1,23 @@
+Number of assembly instructions     = 10
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 10
+Number of edges: 10
+
+142e (False): 0
+
+142e: PUSH Reg RBX 1
+142f: MOV Reg RBX, Reg RDI 3
+1432: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))) 4
+1436: TEST Reg RDI, Reg RDI 3
+1439: JZ 1440 (resolved immediate)
+  |
+  `- 143b,1440
+143b: CALL fsi_close_fsimage (external)
+1440: MOV Reg RDI, Reg RBX 3
+1443: CALL PyObject_Free (external)
+1448: POP Reg RBX 1
+1449: RET  1
+  |
+  `- 

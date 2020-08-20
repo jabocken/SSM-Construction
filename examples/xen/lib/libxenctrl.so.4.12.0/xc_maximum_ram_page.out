@@ -1,0 +1,25 @@
+Number of assembly instructions     = 12
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 12
+Number of edges: 12
+
+1a4f0 (False): 0
+
+1a4f0: PUSH Reg RBX 1
+1a4f1: XOR Reg ECX, Reg ECX 2
+1a4f3: XOR Reg EDX, Reg EDX 2
+1a4f5: MOV Reg RBX, Reg RSI 3
+1a4f8: MOV Reg ESI, Immediate 2 5
+1a4fd: CALL do_memory_op (external)
+1a502: TEST Reg RAX, Reg RAX 3
+1a505: JS 1a50c (resolved immediate)
+  |
+  `- 1a507,1a50c
+1a507: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
+1a50a: XOR Reg EAX, Reg EAX 2
+1a50c: POP Reg RBX 1
+1a50d: RET  1
+  |
+  `- 

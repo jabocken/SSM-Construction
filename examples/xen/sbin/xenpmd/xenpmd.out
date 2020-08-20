@@ -1,0 +1,1030 @@
+Number of assembly instructions     = 779
+Number of indirect branches         = 1
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 784
+Number of edges: 827
+
+e90 (False): 0
+fa0 (True): 159b
+1070 (True): 152d
+1320 (True): 14f7
+1440 (True): 15be
+1540 (True): 1973, 1b07
+1650 (True): 1796, 17a3, 17b0, 17bc, 17c9, 17d6, 17e3, 17f0, 17fd, 1a3d, 1a4a, 1a57, 1a64
+16a0 (True): 19b5
+1920 (True): e41
+19c0 (True): 1b78
+1aa0 (True): e4a
+
+df0: SUB Reg RSP, Immediate 8 4
+df4: CALL fork (external)
+df9: TEST Reg EAX, Reg EAX 2
+dfb: JS e7d (resolved immediate)
+  |
+  `- e01,e7d
+e01: JNZ e60 (resolved immediate)
+  |
+  `- e03,e60
+e03: CALL setsid (external)
+e08: CALL fork (external)
+e0d: TEST Reg EAX, Reg EAX 2
+e0f: JS e7d (resolved immediate)
+  |
+  `- e11,e7d
+e11: JNZ e60 (resolved immediate)
+  |
+  `- e13,e60
+e13: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 4035)) 7
+e1a: CALL chdir (external)
+e1f: ADD Reg EAX, Immediate 1 3
+e22: JZ e7d (resolved immediate)
+  |
+  `- e24,e7d
+e24: XOR Reg EDI, Reg EDI 2
+e26: CALL umask (external)
+e2b: CALL xs_daemon_open (external)
+e30: TEST Reg RAX, Reg RAX 3
+e33: MOV Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2105822))), Reg RAX 7
+e3a: JZ e78 (resolved immediate)
+  |
+  `- e3c,e78
+e3c: CALL write_one_time_battery_info (internal)
+  |
+  `- 1920
+e41: TEST Reg EAX, Reg EAX 2
+e43: JZ e67 (resolved immediate)
+  |
+  `- e45,e67
+e45: CALL wait_for_and_update_battery_status_request (internal)
+  |
+  `- 1aa0
+e4a: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2105799))) 7
+e51: CALL xs_daemon_close (external)
+e56: XOR Reg EAX, Reg EAX 2
+e58: ADD Reg RSP, Immediate 8 4
+e5c: RET  1
+  |
+  `- 
+e60: XOR Reg EDI, Reg EDI 2
+e62: CALL exit (external)
+  |
+  `- 
+e67: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2105770))) 7
+e6e: CALL xs_daemon_close (external)
+e73: OR Reg EAX, Immediate 4294967295 3
+e76: JMP e58 (resolved immediate)
+  |
+  `- e58
+e78: OR Reg EAX, Immediate 4294967295 3
+e7b: JMP e58 (resolved immediate)
+  |
+  `- e58
+e7d: MOV Reg EDI, Immediate 1 5
+e82: CALL exit (external)
+  |
+  `- 
+e90: XOR Reg EBP, Reg EBP 2
+e92: MOV Reg R9, Reg RDX 3
+e95: POP Reg RSI 1
+e96: MOV Reg RDX, Reg RSP 3
+e99: AND Reg RSP, Immediate 18446744073709551600 4
+e9d: PUSH Reg RAX 1
+e9e: PUSH Reg RSP 1
+e9f: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 3402)) 7
+ea6: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 3283)) 7
+ead: LEA Reg RDI, Address (AddrMinus (FromReg RIP) (AddrImm 196)) 7
+eb4: CALL __libc_start_main (external)
+  |
+  `- df0
+fa0: PUSH Reg R13 2
+fa2: PUSH Reg R12 2
+fa4: MOV Reg R13D, Reg ESI 3
+fa7: PUSH Reg RBP 1
+fa8: PUSH Reg RBX 1
+fa9: MOV Reg R12, Reg RDI 3
+fac: SUB Reg RSP, Immediate 312 7
+fb3: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+fbc: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 296))), Reg RAX 8
+fc4: XOR Reg EAX, Reg EAX 2
+fc6: MOV Reg RBP, Reg RSP 3
+fc9: NOP  7
+fd0: MOV Reg RDI, Reg R12 3
+fd3: CALL readdir (external)
+fd8: TEST Reg RAX, Reg RAX 3
+fdb: JZ 1058 (resolved immediate)
+  |
+  `- fdd,1058
+fdd: LEA Reg RBX, Address (AddrPlus (FromReg RAX) (AddrImm 19)) 4
+fe1: MOV Reg RDI, Reg RBX 3
+fe4: CALL strlen (external)
+fe9: CMP Reg RAX, Immediate 3 4
+fed: JBE fd0 (resolved immediate)
+  |
+  `- fd0,fef
+fef: TEST Reg R13D, Reg R13D 3
+ff2: MOV Reg R9, Reg RBX 3
+ff5: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 3080)) 7
+ffc: JZ 1005 (resolved immediate)
+  |
+  `- ffe,1005
+ffe: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 3092)) 7
+1005: MOV Reg ECX, Immediate 284 5
+100a: MOV Reg EDX, Immediate 1 5
+100f: MOV Reg ESI, Immediate 284 5
+1014: MOV Reg RDI, Reg RBP 3
+1017: XOR Reg EAX, Reg EAX 2
+1019: CALL __snprintf_chk (external)
+101e: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 3291)) 7
+1025: MOV Reg RDI, Reg RBP 3
+1028: CALL fopen (external)
+102d: TEST Reg RAX, Reg RAX 3
+1030: JZ fd0 (resolved immediate)
+  |
+  `- fd0,1032
+1032: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 296))) 8
+103a: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1043: JNZ 105c (resolved immediate)
+  |
+  `- 1045,105c
+1045: ADD Reg RSP, Immediate 312 7
+104c: POP Reg RBX 1
+104d: POP Reg RBP 1
+104e: POP Reg R12 2
+1050: POP Reg R13 2
+1052: RET  1
+  |
+  `- 
+1058: XOR Reg EAX, Reg EAX 2
+105a: JMP 1032 (resolved immediate)
+  |
+  `- 1032
+105c: CALL __stack_chk_fail (external)
+  |
+  `- 
+1070: PUSH Reg R12 2
+1072: PUSH Reg RBP 1
+1073: MOV Reg RBP, Reg RSI 3
+1076: PUSH Reg RBX 1
+1077: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2993)) 7
+107e: MOV Reg RBX, Reg RDI 3
+1081: MOV Reg R12, Reg RDX 3
+1084: CALL strstr (external)
+1089: TEST Reg RAX, Reg RAX 3
+108c: JZ 10b0 (resolved immediate)
+  |
+  `- 108e,10b0
+108e: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2978)) 7
+1095: MOV Reg RDI, Reg RBP 3
+1098: CALL strstr (external)
+109d: TEST Reg RAX, Reg RAX 3
+10a0: JZ 10aa (resolved immediate)
+  |
+  `- 10a2,10aa
+10a2: MOV Address (SizeDir 32 (FromReg R12)), Immediate 1 8
+10aa: POP Reg RBX 1
+10ab: POP Reg RBP 1
+10ac: POP Reg R12 2
+10ae: RET  1
+  |
+  `- 
+10b0: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2948)) 7
+10b7: MOV Reg RDI, Reg RBX 3
+10ba: CALL strstr (external)
+10bf: TEST Reg RAX, Reg RAX 3
+10c2: JNZ 10f0 (resolved immediate)
+  |
+  `- 10c4,10f0
+10c4: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2952)) 7
+10cb: MOV Reg RDI, Reg RBX 3
+10ce: CALL strstr (external)
+10d3: TEST Reg RAX, Reg RAX 3
+10d6: JZ 1110 (resolved immediate)
+  |
+  `- 10d8,1110
+10d8: MOV Reg EDX, Immediate 10 5
+10dd: XOR Reg ESI, Reg ESI 2
+10df: MOV Reg RDI, Reg RBP 3
+10e2: CALL strtoull (external)
+10e7: MOV Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 48))), Reg RAX 5
+10ec: JMP 10aa (resolved immediate)
+  |
+  `- 10aa
+10f0: MOV Reg RDI, Reg RBP 3
+10f3: MOV Reg EDX, Immediate 10 5
+10f8: XOR Reg ESI, Reg ESI 2
+10fa: CALL strtoull (external)
+10ff: POP Reg RBX 1
+1100: MOV Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 40))), Reg RAX 5
+1105: POP Reg RBP 1
+1106: POP Reg R12 2
+1108: RET  1
+  |
+  `- 
+1110: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2896)) 7
+1117: MOV Reg RDI, Reg RBX 3
+111a: CALL strstr (external)
+111f: TEST Reg RAX, Reg RAX 3
+1122: JNZ 1158 (resolved immediate)
+  |
+  `- 1124,1158
+1124: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2892)) 7
+112b: MOV Reg RDI, Reg RBX 3
+112e: CALL strstr (external)
+1133: TEST Reg RAX, Reg RAX 3
+1136: JZ 1178 (resolved immediate)
+  |
+  `- 1138,1178
+1138: MOV Reg EDX, Immediate 10 5
+113d: XOR Reg ESI, Reg ESI 2
+113f: MOV Reg RDI, Reg RBP 3
+1142: CALL strtoull (external)
+1147: MOV Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 16))), Reg RAX 5
+114c: JMP 10aa (resolved immediate)
+  |
+  `- 10aa
+1158: MOV Reg EDX, Immediate 10 5
+115d: XOR Reg ESI, Reg ESI 2
+115f: MOV Reg RDI, Reg RBP 3
+1162: CALL strtoull (external)
+1167: MOV Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 8))), Reg RAX 5
+116c: JMP 10aa (resolved immediate)
+  |
+  `- 10aa
+1178: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2827)) 7
+117f: MOV Reg RDI, Reg RBX 3
+1182: CALL strstr (external)
+1187: TEST Reg RAX, Reg RAX 3
+118a: JZ 11a5 (resolved immediate)
+  |
+  `- 118c,11a5
+118c: MOV Reg EDX, Immediate 10 5
+1191: XOR Reg ESI, Reg ESI 2
+1193: MOV Reg RDI, Reg RBP 3
+1196: CALL strtoull (external)
+119b: MOV Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 32))), Reg RAX 5
+11a0: JMP 10aa (resolved immediate)
+  |
+  `- 10aa
+11a5: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2797)) 7
+11ac: MOV Reg RDI, Reg RBX 3
+11af: CALL strstr (external)
+11b4: TEST Reg RAX, Reg RAX 3
+11b7: JZ 11d2 (resolved immediate)
+  |
+  `- 11b9,11d2
+11b9: MOV Reg EDX, Immediate 10 5
+11be: XOR Reg ESI, Reg ESI 2
+11c0: MOV Reg RDI, Reg RBP 3
+11c3: CALL strtoull (external)
+11c8: MOV Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 56))), Reg RAX 5
+11cd: JMP 10aa (resolved immediate)
+  |
+  `- 10aa
+11d2: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2775)) 7
+11d9: MOV Reg RDI, Reg RBX 3
+11dc: CALL strstr (external)
+11e1: TEST Reg RAX, Reg RAX 3
+11e4: JZ 11ff (resolved immediate)
+  |
+  `- 11e6,11ff
+11e6: MOV Reg EDX, Immediate 10 5
+11eb: XOR Reg ESI, Reg ESI 2
+11ed: MOV Reg RDI, Reg RBP 3
+11f0: CALL strtoull (external)
+11f5: MOV Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 64))), Reg RAX 5
+11fa: JMP 10aa (resolved immediate)
+  |
+  `- 10aa
+11ff: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2753)) 7
+1206: MOV Reg RDI, Reg RBX 3
+1209: CALL strstr (external)
+120e: TEST Reg RAX, Reg RAX 3
+1211: JZ 123b (resolved immediate)
+  |
+  `- 1213,123b
+1213: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2752)) 7
+121a: MOV Reg ECX, Immediate 12 5
+121f: MOV Reg RSI, Reg RBP 3
+1222: REPZ CMPSB  2
+1224: SETA Reg AL 3
+1227: SBB Reg AL, Immediate 0 2
+1229: TEST Reg AL, Reg AL 2
+122b: SETZ Reg AL 3
+122e: MOVZX Reg EAX, Reg AL 3
+1231: MOV Address (SizeDir 32 (AddrPlus (FromReg R12) (AddrImm 24))), Reg EAX 5
+1236: JMP 10aa (resolved immediate)
+  |
+  `- 10aa
+123b: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2725)) 7
+1242: MOV Reg RDI, Reg RBX 3
+1245: CALL strstr (external)
+124a: TEST Reg RAX, Reg RAX 3
+124d: JZ 126c (resolved immediate)
+  |
+  `- 124f,126c
+124f: LEA Reg RDI, Address (AddrPlus (FromReg R12) (AddrImm 72)) 5
+1254: MOV Reg EDX, Immediate 31 5
+1259: MOV Reg RSI, Reg RBP 3
+125c: CALL strncpy (external)
+1261: MOV Address (SizeDir 8 (AddrPlus (FromReg R12) (AddrImm 103))), Immediate 0 6
+1267: JMP 10aa (resolved immediate)
+  |
+  `- 10aa
+126c: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2689)) 7
+1273: MOV Reg RDI, Reg RBX 3
+1276: CALL strstr (external)
+127b: TEST Reg RAX, Reg RAX 3
+127e: JZ 12a0 (resolved immediate)
+  |
+  `- 1280,12a0
+1280: LEA Reg RDI, Address (AddrPlus (FromReg R12) (AddrImm 104)) 5
+1285: MOV Reg EDX, Immediate 31 5
+128a: MOV Reg RSI, Reg RBP 3
+128d: CALL strncpy (external)
+1292: MOV Address (SizeDir 8 (AddrPlus (FromReg R12) (AddrImm 135))), Immediate 0 9
+129b: JMP 10aa (resolved immediate)
+  |
+  `- 10aa
+12a0: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2651)) 7
+12a7: MOV Reg RDI, Reg RBX 3
+12aa: CALL strstr (external)
+12af: TEST Reg RAX, Reg RAX 3
+12b2: JZ 12d7 (resolved immediate)
+  |
+  `- 12b4,12d7
+12b4: LEA Reg RDI, Address (AddrPlus (FromReg R12) (AddrImm 136)) 8
+12bc: MOV Reg EDX, Immediate 31 5
+12c1: MOV Reg RSI, Reg RBP 3
+12c4: CALL strncpy (external)
+12c9: MOV Address (SizeDir 8 (AddrPlus (FromReg R12) (AddrImm 167))), Immediate 0 9
+12d2: JMP 10aa (resolved immediate)
+  |
+  `- 10aa
+12d7: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2609)) 7
+12de: MOV Reg RDI, Reg RBX 3
+12e1: CALL strstr (external)
+12e6: TEST Reg RAX, Reg RAX 3
+12e9: JZ 10aa (resolved immediate)
+  |
+  `- 10aa,12ef
+12ef: LEA Reg RDI, Address (AddrPlus (FromReg R12) (AddrImm 168)) 8
+12f7: MOV Reg EDX, Immediate 31 5
+12fc: MOV Reg RSI, Reg RBP 3
+12ff: CALL strncpy (external)
+1304: MOV Address (SizeDir 8 (AddrPlus (FromReg R12) (AddrImm 199))), Immediate 0 9
+130d: JMP 10aa (resolved immediate)
+  |
+  `- 10aa
+1320: PUSH Reg R12 2
+1322: PUSH Reg RBP 1
+1323: MOV Reg RBP, Reg RSI 3
+1326: PUSH Reg RBX 1
+1327: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2538)) 7
+132e: MOV Reg RBX, Reg RDI 3
+1331: MOV Reg R12, Reg RDX 3
+1334: CALL strstr (external)
+1339: TEST Reg RAX, Reg RAX 3
+133c: JZ 1360 (resolved immediate)
+  |
+  `- 133e,1360
+133e: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2530)) 7
+1345: MOV Reg RDI, Reg RBP 3
+1348: CALL strstr (external)
+134d: TEST Reg RAX, Reg RAX 3
+1350: SETZ Reg AL 3
+1353: MOVZX Reg EAX, Reg AL 3
+1356: MOV Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 8))), Reg RAX 5
+135b: POP Reg RBX 1
+135c: POP Reg RBP 1
+135d: POP Reg R12 2
+135f: RET  1
+  |
+  `- 
+1360: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2504)) 7
+1367: MOV Reg RDI, Reg RBX 3
+136a: CALL strstr (external)
+136f: TEST Reg RAX, Reg RAX 3
+1372: JNZ 13a0 (resolved immediate)
+  |
+  `- 1374,13a0
+1374: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2497)) 7
+137b: MOV Reg RDI, Reg RBX 3
+137e: CALL strstr (external)
+1383: TEST Reg RAX, Reg RAX 3
+1386: JZ 13c0 (resolved immediate)
+  |
+  `- 1388,13c0
+1388: MOV Reg EDX, Immediate 10 5
+138d: XOR Reg ESI, Reg ESI 2
+138f: MOV Reg RDI, Reg RBP 3
+1392: CALL strtoull (external)
+1397: MOV Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 24))), Reg RAX 5
+139c: JMP 135b (resolved immediate)
+  |
+  `- 135b
+13a0: MOV Reg RDI, Reg RBP 3
+13a3: MOV Reg EDX, Immediate 10 5
+13a8: XOR Reg ESI, Reg ESI 2
+13aa: CALL strtoull (external)
+13af: POP Reg RBX 1
+13b0: MOV Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 16))), Reg RAX 5
+13b5: POP Reg RBP 1
+13b6: POP Reg R12 2
+13b8: RET  1
+  |
+  `- 
+13c0: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2440)) 7
+13c7: MOV Reg RDI, Reg RBX 3
+13ca: CALL strstr (external)
+13cf: TEST Reg RAX, Reg RAX 3
+13d2: JNZ 1418 (resolved immediate)
+  |
+  `- 13d4,1418
+13d4: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2132)) 7
+13db: MOV Reg RDI, Reg RBX 3
+13de: CALL strstr (external)
+13e3: TEST Reg RAX, Reg RAX 3
+13e6: JZ 135b (resolved immediate)
+  |
+  `- 135b,13ec
+13ec: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2116)) 7
+13f3: MOV Reg RDI, Reg RBP 3
+13f6: CALL strstr (external)
+13fb: TEST Reg RAX, Reg RAX 3
+13fe: JZ 135b (resolved immediate)
+  |
+  `- 135b,1404
+1404: MOV Address (SizeDir 32 (FromReg R12)), Immediate 1 8
+140c: JMP 135b (resolved immediate)
+  |
+  `- 135b
+1418: MOV Reg EDX, Immediate 10 5
+141d: XOR Reg ESI, Reg ESI 2
+141f: MOV Reg RDI, Reg RBP 3
+1422: CALL strtoull (external)
+1427: MOV Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 32))), Reg RAX 5
+142c: JMP 135b (resolved immediate)
+  |
+  `- 135b
+1440: PUSH Reg R15 2
+1442: PUSH Reg R14 2
+1444: MOV Reg R14, Reg RDX 3
+1447: PUSH Reg R13 2
+1449: PUSH Reg R12 2
+144b: MOV Reg R12, Reg RDI 3
+144e: PUSH Reg RBP 1
+144f: PUSH Reg RBX 1
+1450: MOV Reg R13D, Reg ESI 3
+1453: SUB Reg RSP, Immediate 216 7
+145a: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1463: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 200))), Reg RAX 8
+146b: XOR Reg EAX, Reg EAX 2
+146d: CALL strlen (external)
+1472: MOV Reg ESI, Immediate 58 5
+1477: MOV Reg RDI, Reg R12 3
+147a: MOV Reg RBP, Reg RAX 3
+147d: CALL strchr (external)
+1482: TEST Reg RAX, Reg RAX 3
+1485: JZ 1500 (resolved immediate)
+  |
+  `- 1487,1500
+1487: CMP Reg R12, Reg RAX 3
+148a: MOV Reg RBX, Reg RAX 3
+148d: JZ 1500 (resolved immediate)
+  |
+  `- 148f,1500
+148f: ADD Reg RBP, Reg R12 3
+1492: CMP Reg RBP, Reg RAX 3
+1495: JZ 1500 (resolved immediate)
+  |
+  `- 1497,1500
+1497: LEA Reg R15, Address (AddrPlus (FromReg RSP) (AddrImm 64)) 5
+149c: MOV Reg RDX, Reg RAX 3
+149f: MOV Reg ECX, Immediate 128 5
+14a4: SUB Reg RDX, Reg R12 3
+14a7: MOV Reg RSI, Reg R12 3
+14aa: MOV Reg RDI, Reg R15 3
+14ad: CALL __strncpy_chk (external)
+14b2: JMP 14c4 (resolved immediate)
+  |
+  `- 14c4
+14b8: LEA Reg RAX, Address (AddrPlus (FromReg RSI) (AddrImm 1)) 4
+14bc: MOV Reg RBX, Reg RSI 3
+14bf: CMP Reg RBP, Reg RAX 3
+14c2: JZ 1500 (resolved immediate)
+  |
+  `- 14c4,1500
+14c4: CMP Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 1))), Immediate 32 4
+14c8: LEA Reg RSI, Address (AddrPlus (FromReg RBX) (AddrImm 1)) 4
+14cc: JZ 14b8 (resolved immediate)
+  |
+  `- 14b8,14ce
+14ce: MOV Reg R8, Reg RSP 3
+14d1: MOV Reg RDX, Reg RBP 3
+14d4: MOV Reg ECX, Immediate 64 5
+14d9: SUB Reg RDX, Reg RBX 3
+14dc: MOV Reg RDI, Reg R8 3
+14df: CALL __strncpy_chk (external)
+14e4: TEST Reg R13D, Reg R13D 3
+14e7: MOV Reg RDX, Reg R14 3
+14ea: MOV Reg RSI, Reg RAX 3
+14ed: MOV Reg RDI, Reg R15 3
+14f0: JZ 1528 (resolved immediate)
+  |
+  `- 14f2,1528
+14f2: CALL set_attribute_battery_status (internal)
+  |
+  `- 1320
+14f7: NOP  9
+1500: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 200))) 8
+1508: XOR Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1511: JNZ 152f (resolved immediate)
+  |
+  `- 1513,152f
+1513: ADD Reg RSP, Immediate 216 7
+151a: POP Reg RBX 1
+151b: POP Reg RBP 1
+151c: POP Reg R12 2
+151e: POP Reg R13 2
+1520: POP Reg R14 2
+1522: POP Reg R15 2
+1524: RET  1
+  |
+  `- 
+1528: CALL set_attribute_battery_info (internal)
+  |
+  `- 1070
+152d: JMP 1500 (resolved immediate)
+  |
+  `- 1500
+152f: CALL __stack_chk_fail (external)
+  |
+  `- 
+1540: PUSH Reg R13 2
+1542: PUSH Reg R12 2
+1544: PUSH Reg RBP 1
+1545: PUSH Reg RBX 1
+1546: SUB Reg RSP, Immediate 280 7
+154d: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1556: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 264))), Reg RAX 8
+155e: XOR Reg EAX, Reg EAX 2
+1560: TEST Reg RDX, Reg RDX 3
+1563: JZ 1640 (resolved immediate)
+  |
+  `- 1569,1640
+1569: TEST Reg ESI, Reg ESI 2
+156b: MOV Reg R8, Reg RDI 3
+156e: MOV Reg R13D, Reg ESI 3
+1571: MOV Reg RBX, Reg RDX 3
+1574: JZ 1608 (resolved immediate)
+  |
+  `- 157a,1608
+157a: PXOR Reg XMM0, Reg XMM0 4
+157e: MOV Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 32))), Immediate 0 8
+1586: MOVUPS Address (SizeDir 128 (FromReg RDX)), Reg XMM0 3
+1589: MOVUPS Address (SizeDir 128 (AddrPlus (FromReg RDX) (AddrImm 16))), Reg XMM0 4
+158d: MOV Reg ESI, Reg R13D 3
+1590: MOV Reg RDI, Reg R8 3
+1593: MOV Reg RBP, Reg RSP 3
+1596: CALL get_next_battery_file (internal)
+  |
+  `- fa0
+159b: TEST Reg RAX, Reg RAX 3
+159e: MOV Reg R12, Reg RAX 3
+15a1: JNZ 15be (resolved immediate)
+  |
+  `- 15a3,15be
+15a3: JMP 1640 (resolved immediate)
+  |
+  `- 1640
+15b0: MOV Reg RDX, Reg RBX 3
+15b3: MOV Reg ESI, Reg R13D 3
+15b6: MOV Reg RDI, Reg RBP 3
+15b9: CALL parse_battery_info_or_status (internal)
+  |
+  `- 1440
+15be: MOV Reg RDX, Reg R12 3
+15c1: MOV Reg ESI, Immediate 256 5
+15c6: MOV Reg RDI, Reg RBP 3
+15c9: CALL fgets (external)
+15ce: TEST Reg RAX, Reg RAX 3
+15d1: JNZ 15b0 (resolved immediate)
+  |
+  `- 15b0,15d3
+15d3: MOV Reg RDI, Reg R12 3
+15d6: CALL fclose (external)
+15db: MOV Reg EAX, Immediate 1 5
+15e0: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 264))) 8
+15e8: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+15f1: JNZ 1644 (resolved immediate)
+  |
+  `- 15f3,1644
+15f3: ADD Reg RSP, Immediate 280 7
+15fa: POP Reg RBX 1
+15fb: POP Reg RBP 1
+15fc: POP Reg R12 2
+15fe: POP Reg R13 2
+1600: RET  1
+  |
+  `- 
+1608: LEA Reg RDI, Address (AddrPlus (FromReg RDX) (AddrImm 8)) 4
+160c: MOV Reg RCX, Reg RDX 3
+160f: XOR Reg EAX, Reg EAX 2
+1611: MOV Address (SizeDir 64 (FromReg RDX)), Immediate 0 7
+1618: MOV Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 192))), Immediate 0 11
+1623: AND Reg RDI, Immediate 18446744073709551608 4
+1627: SUB Reg RCX, Reg RDI 3
+162a: ADD Reg ECX, Immediate 200 6
+1630: SHR Reg ECX, Immediate 3 3
+1633: REP STOSQ  3
+1636: JMP 158d (resolved immediate)
+  |
+  `- 158d
+1640: XOR Reg EAX, Reg EAX 2
+1642: JMP 15e0 (resolved immediate)
+  |
+  `- 15e0
+1644: CALL __stack_chk_fail (external)
+  |
+  `- 
+1650: MOV Reg EAX, Reg ESI 2
+1652: SUB Reg RSP, Immediate 16 4
+1656: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 1794)) 7
+165d: SHR Reg EAX, Immediate 24 3
+1660: MOVZX Reg R9D, Reg SIL 4
+1664: MOV Reg RCX, Immediate 18446744073709551615 7
+166b: PUSH Reg RAX 1
+166c: MOV Reg EAX, Reg ESI 2
+166e: MOV Reg EDX, Immediate 1 5
+1673: SHR Reg EAX, Immediate 16 3
+1676: MOVZX Reg EAX, Reg AL 3
+1679: PUSH Reg RAX 1
+167a: MOV Reg EAX, Reg ESI 2
+167c: MOV Reg ESI, Immediate 9 5
+1681: MOVZX Reg EAX, Reg AH 3
+1684: PUSH Reg RAX 1
+1685: XOR Reg EAX, Reg EAX 2
+1687: CALL __snprintf_chk (external)
+168c: ADD Reg RSP, Immediate 40 4
+1690: RET  1
+  |
+  `- 
+16a0: PUSH Reg R15 2
+16a2: PUSH Reg R14 2
+16a4: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 1733)) 7
+16ab: PUSH Reg R13 2
+16ad: PUSH Reg R12 2
+16af: XOR Reg ESI, Reg ESI 2
+16b1: PUSH Reg RBP 1
+16b2: PUSH Reg RBX 1
+16b3: MOV Reg RBP, Reg RDI 3
+16b6: LEA Reg R15, Address (AddrPlus (FromReg RBP) (AddrImm 72)) 4
+16ba: LEA Reg R14, Address (AddrPlus (FromReg RBP) (AddrImm 104)) 4
+16be: LEA Reg R13, Address (AddrPlus (FromReg RBP) (AddrImm 136)) 7
+16c5: SUB Reg RSP, Immediate 1336 7
+16cc: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2103621))) 7
+16d3: LEA Reg R12, Address (AddrPlus (FromReg RBP) (AddrImm 168)) 7
+16da: LEA Reg RBX, Address (AddrPlus (FromReg RSP) (AddrImm 288)) 8
+16e2: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+16eb: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 1320))), Reg RAX 8
+16f3: XOR Reg EAX, Reg EAX 2
+16f5: CALL xs_mkdir (external)
+16fa: XOR Reg EAX, Reg EAX 2
+16fc: MOV Reg ECX, Immediate 128 5
+1701: MOV Reg RDI, Reg RBX 3
+1704: REP STOSQ  3
+1707: LEA Reg RDI, Address (AddrPlus (FromReg RSP) (AddrImm 32)) 5
+170c: MOV Reg ECX, Immediate 32 5
+1711: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RDI 5
+1716: REP STOSQ  3
+1719: MOV Reg RDI, Reg R15 3
+171c: CALL strlen (external)
+1721: MOV Reg RDI, Reg R14 3
+1724: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))), Reg RAX 5
+1729: CALL strlen (external)
+172e: MOV Reg RDI, Reg R13 3
+1731: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
+1736: CALL strlen (external)
+173b: MOV Reg RDI, Reg R12 3
+173e: MOV Address (SizeDir 64 (FromReg RSP)), Reg RAX 4
+1742: CALL strlen (external)
+1747: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+174c: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
+1751: LEA Reg R9D, Address (AddrPlus (AddrPlus (FromReg RCX) (FromReg RDX)) (AddrImm 40)) 5
+1756: ADD Reg R9D, Address (SizeDir 32 (FromReg RSP)) 4
+175a: ADD Reg R9D, Reg EAX 3
+175d: CMP Reg R9D, Immediate 254 7
+1764: JA 18f5 (resolved immediate)
+  |
+  `- 176a,18f5
+176a: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 1530)) 7
+1771: MOV Reg ECX, Immediate 1024 5
+1776: MOV Reg EDX, Immediate 1 5
+177b: MOV Reg ESI, Immediate 3 5
+1780: MOV Reg RDI, Reg RBX 3
+1783: XOR Reg EAX, Reg EAX 2
+1785: CALL __snprintf_chk (external)
+178a: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+178d: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 2)) 4
+1791: CALL write_ulong_lsb_first (internal)
+1796: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))) 4
+179a: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 10)) 4
+179e: CALL write_ulong_lsb_first (internal)
+17a3: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))) 4
+17a7: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 18)) 4
+17ab: CALL write_ulong_lsb_first (internal)
+17b0: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 24))) 3
+17b3: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 26)) 4
+17b7: CALL write_ulong_lsb_first (internal)
+17bc: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 32))) 4
+17c0: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 34)) 4
+17c4: CALL write_ulong_lsb_first (internal)
+17c9: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 40))) 4
+17cd: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 42)) 4
+17d1: CALL write_ulong_lsb_first (internal)
+17d6: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 48))) 4
+17da: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 50)) 4
+17de: CALL write_ulong_lsb_first (internal)
+17e3: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 56))) 4
+17e7: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 58)) 4
+17eb: CALL write_ulong_lsb_first (internal)
+17f0: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 64))) 4
+17f4: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 66)) 4
+17f8: CALL write_ulong_lsb_first (internal)
+17fd: MOV Reg RDI, Reg R12 3
+1800: CALL strlen (external)
+1805: MOV Reg RDI, Reg R13 3
+1808: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
+180d: CALL strlen (external)
+1812: MOV Reg RDI, Reg R14 3
+1815: MOV Address (SizeDir 64 (FromReg RSP)), Reg RAX 4
+1819: CALL strlen (external)
+181e: MOV Reg RDI, Reg R15 3
+1821: MOV Reg RBP, Reg RAX 3
+1824: CALL strlen (external)
+1829: SUB Reg RSP, Immediate 8 4
+182d: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 1363)) 7
+1834: MOV Reg R9D, Reg EAX 3
+1837: PUSH Reg R12 2
+1839: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
+183e: MOV Reg ESI, Immediate 256 5
+1843: XOR Reg EAX, Reg EAX 2
+1845: PUSH Reg RCX 1
+1846: PUSH Reg R13 2
+1848: MOV Reg ECX, Immediate 256 5
+184d: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))) 5
+1852: PUSH Reg RDX 1
+1853: PUSH Reg R14 2
+1855: MOV Reg EDX, Immediate 1 5
+185a: PUSH Reg RBP 1
+185b: PUSH Reg R15 2
+185d: MOV Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 88))) 5
+1862: MOV Reg RDI, Reg RBP 3
+1865: CALL __snprintf_chk (external)
+186a: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 73)) 4
+186e: ADD Reg RSP, Immediate 64 4
+1872: MOV Reg RSI, Reg RBP 3
+1875: MOV Reg ECX, Immediate 951 5
+187a: MOV Reg EDX, Immediate 950 5
+187f: CALL __strncat_chk (external)
+1884: MOV Reg RDI, Reg R15 3
+1887: CALL strlen (external)
+188c: MOV Reg RDI, Reg R14 3
+188f: MOV Reg R15, Reg RAX 3
+1892: CALL strlen (external)
+1897: MOV Reg RDI, Reg R13 3
+189a: MOV Reg R14, Reg RAX 3
+189d: CALL strlen (external)
+18a2: MOV Reg RDI, Reg R12 3
+18a5: MOV Reg RBP, Reg RAX 3
+18a8: CALL strlen (external)
+18ad: LEA Reg EDX, Address (AddrPlus (AddrPlus (FromReg R15) (FromReg R14)) (AddrImm 82)) 5
+18b2: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2103135))) 7
+18b9: XOR Reg ESI, Reg ESI 2
+18bb: MOV Reg RCX, Reg RBX 3
+18be: ADD Reg EDX, Reg EBP 2
+18c0: LEA Reg R8D, Address (AddrPlus (FromReg RDX) (FromReg RAX)) 4
+18c4: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 1237)) 7
+18cb: CALL xs_write (external)
+18d0: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 1320))) 8
+18d8: XOR Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+18e1: JNZ 1914 (resolved immediate)
+  |
+  `- 18e3,1914
+18e3: ADD Reg RSP, Immediate 1336 7
+18ea: POP Reg RBX 1
+18eb: POP Reg RBP 1
+18ec: POP Reg R12 2
+18ee: POP Reg R13 2
+18f0: POP Reg R14 2
+18f2: POP Reg R15 2
+18f4: RET  1
+  |
+  `- 
+18f5: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 1252)) 7
+18fc: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 1137)) 7
+1903: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 1139)) 7
+190a: MOV Reg EDX, Immediate 358 5
+190f: CALL __assert_fail (external)
+  |
+  `- 
+1914: CALL __stack_chk_fail (external)
+  |
+  `- 
+1920: PUSH Reg R12 2
+1922: PUSH Reg RBP 1
+1923: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 1150)) 7
+192a: PUSH Reg RBX 1
+192b: XOR Reg EBX, Reg EBX 2
+192d: SUB Reg RSP, Immediate 208 7
+1934: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+193d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 200))), Reg RAX 8
+1945: XOR Reg EAX, Reg EAX 2
+1947: CALL opendir (external)
+194c: TEST Reg RAX, Reg RAX 3
+194f: JZ 1981 (resolved immediate)
+  |
+  `- 1951,1981
+1951: MOV Reg RBP, Reg RAX 3
+1954: MOV Reg R12, Reg RSP 3
+1957: JMP 1966 (resolved immediate)
+  |
+  `- 1966
+1960: CMP Address (SizeDir 32 (FromReg RSP)), Immediate 1 4
+1964: JZ 19a8 (resolved immediate)
+  |
+  `- 1966,19a8
+1966: XOR Reg ESI, Reg ESI 2
+1968: MOV Reg RDX, Reg R12 3
+196b: MOV Reg RDI, Reg RBP 3
+196e: CALL get_next_battery_info_or_status (internal)
+  |
+  `- 1973,1540
+1973: TEST Reg EAX, Reg EAX 2
+1975: MOV Reg EBX, Reg EAX 2
+1977: JNZ 1960 (resolved immediate)
+  |
+  `- 1960,1979
+1979: MOV Reg RDI, Reg RBP 3
+197c: CALL closedir (external)
+1981: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 200))) 8
+1989: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1992: MOV Reg EAX, Reg EBX 2
+1994: JNZ 19b7 (resolved immediate)
+  |
+  `- 1996,19b7
+1996: ADD Reg RSP, Immediate 208 7
+199d: POP Reg RBX 1
+199e: POP Reg RBP 1
+199f: POP Reg R12 2
+19a1: RET  1
+  |
+  `- 
+19a8: MOV Reg RDI, Reg R12 3
+19ab: MOV Reg EBX, Immediate 1 5
+19b0: CALL write_battery_info_to_xenstore (internal)
+  |
+  `- 16a0
+19b5: JMP 1979 (resolved immediate)
+  |
+  `- 1979
+19b7: CALL __stack_chk_fail (external)
+  |
+  `- 
+19c0: PUSH Reg RBP 1
+19c1: PUSH Reg RBX 1
+19c2: MOV Reg RBP, Reg RDI 3
+19c5: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 932)) 7
+19cc: XOR Reg ESI, Reg ESI 2
+19ce: SUB Reg RSP, Immediate 56 4
+19d2: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2102847))) 7
+19d9: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+19e2: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Reg RAX 5
+19e7: XOR Reg EAX, Reg EAX 2
+19e9: MOV Reg RBX, Reg RSP 3
+19ec: CALL xs_mkdir (external)
+19f1: PXOR Reg XMM0, Reg XMM0 4
+19f5: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 879)) 7
+19fc: XOR Reg EAX, Reg EAX 2
+19fe: MOV Reg R9D, Immediate 16 6
+1a04: MOV Reg ECX, Immediate 35 5
+1a09: MOV Reg EDX, Immediate 1 5
+1a0e: MOV Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 32))), Reg AX 5
+1a13: MOV Reg ESI, Immediate 3 5
+1a18: MOV Reg RDI, Reg RBX 3
+1a1b: XOR Reg EAX, Reg EAX 2
+1a1d: MOV Address (SizeDir 8 (AddrPlus (FromReg RSP) (AddrImm 34))), Immediate 0 5
+1a22: MOVAPS Address (SizeDir 128 (FromReg RSP)), Reg XMM0 4
+1a26: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 16))), Reg XMM0 5
+1a2b: CALL __snprintf_chk (external)
+1a30: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 2)) 4
+1a34: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))) 4
+1a38: CALL write_ulong_lsb_first (internal)
+  |
+  `- 1650
+1a3d: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))) 4
+1a41: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 10)) 4
+1a45: CALL write_ulong_lsb_first (internal)
+1a4a: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 24))) 4
+1a4e: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 18)) 4
+1a52: CALL write_ulong_lsb_first (internal)
+1a57: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 32))) 4
+1a5b: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 26)) 4
+1a5f: CALL write_ulong_lsb_first (internal)
+1a64: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2102701))) 7
+1a6b: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 835)) 7
+1a72: XOR Reg ESI, Reg ESI 2
+1a74: MOV Reg R8D, Immediate 35 6
+1a7a: MOV Reg RCX, Reg RBX 3
+1a7d: CALL xs_write (external)
+1a82: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
+1a87: XOR Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1a90: JNZ 1a99 (resolved immediate)
+  |
+  `- 1a92,1a99
+1a92: ADD Reg RSP, Immediate 56 4
+1a96: POP Reg RBX 1
+1a97: POP Reg RBP 1
+1a98: RET  1
+  |
+  `- 
+1a99: CALL __stack_chk_fail (external)
+  |
+  `- 
+1aa0: PUSH Reg R14 2
+1aa2: PUSH Reg R13 2
+1aa4: LEA Reg R14, Address (AddrPlus (FromReg RIP) (AddrImm 786)) 7
+1aab: PUSH Reg R12 2
+1aad: LEA Reg R12, Address (AddrPlus (FromReg RIP) (AddrImm 756)) 7
+1ab4: PUSH Reg RBP 1
+1ab5: PUSH Reg RBX 1
+1ab6: MOV Reg RDI, Reg R12 3
+1ab9: SUB Reg RSP, Immediate 64 4
+1abd: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1ac6: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))), Reg RAX 5
+1acb: XOR Reg EAX, Reg EAX 2
+1acd: CALL opendir (external)
+1ad2: TEST Reg RAX, Reg RAX 3
+1ad5: LEA Reg RBP, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+1ada: LEA Reg R13, Address (AddrPlus (FromReg RSP) (AddrImm 12)) 5
+1adf: MOV Reg RBX, Reg RAX 3
+1ae2: JNZ 1af7 (resolved immediate)
+  |
+  `- 1ae4,1af7
+1ae4: JMP 1b48 (resolved immediate)
+  |
+  `- 1b48
+1af0: CMP Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 1 5
+1af5: JZ 1b70 (resolved immediate)
+  |
+  `- 1af7,1b70
+1af7: MOV Reg RDX, Reg RBP 3
+1afa: MOV Reg ESI, Immediate 1 5
+1aff: MOV Reg RDI, Reg RBX 3
+1b02: CALL get_next_battery_info_or_status (internal)
+1b07: TEST Reg EAX, Reg EAX 2
+1b09: JNZ 1af0 (resolved immediate)
+  |
+  `- 1af0,1b0b
+1b0b: MOV Reg RDI, Reg RBX 3
+1b0e: CALL closedir (external)
+1b13: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2102526))) 7
+1b1a: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 689)) 7
+1b21: MOV Reg RDX, Reg R14 3
+1b24: CALL xs_watch (external)
+1b29: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2102504))) 7
+1b30: MOV Reg RSI, Reg R13 3
+1b33: CALL xs_read_watch (external)
+1b38: MOV Reg RDI, Reg R12 3
+1b3b: CALL opendir (external)
+1b40: TEST Reg RAX, Reg RAX 3
+1b43: MOV Reg RBX, Reg RAX 3
+1b46: JNZ 1af7 (resolved immediate)
+  |
+  `- 1af7,1b48
+1b48: XOR Reg EAX, Reg EAX 2
+1b4a: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))) 5
+1b4f: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1b58: JNZ 1b7a (resolved immediate)
+  |
+  `- 1b5a,1b7a
+1b5a: ADD Reg RSP, Immediate 64 4
+1b5e: POP Reg RBX 1
+1b5f: POP Reg RBP 1
+1b60: POP Reg R12 2
+1b62: POP Reg R13 2
+1b64: POP Reg R14 2
+1b66: RET  1
+  |
+  `- 
+1b70: MOV Reg RDI, Reg RBP 3
+1b73: CALL write_battery_status_to_xenstore (internal)
+  |
+  `- 19c0
+1b78: JMP 1b0b (resolved immediate)
+  |
+  `- 1b0b
+1b7a: CALL __stack_chk_fail (external)
+  |
+  `- 

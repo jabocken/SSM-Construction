@@ -1,0 +1,42 @@
+Number of assembly instructions     = 23
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 23
+Number of edges: 23
+
+7e3d0 (False): 0
+
+7e3d0: TEST Reg RDI, Reg RDI 3
+7e3d3: JZ 7e428 (resolved immediate)
+  |
+  `- 7e3d5,7e428
+7e3d5: PUSH Reg RBX 1
+7e3d6: CMP Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 48))), Immediate 3 4
+7e3da: MOV Reg RBX, Reg RDI 3
+7e3dd: JZ 7e410 (resolved immediate)
+  |
+  `- 7e3df,7e410
+7e3df: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 8)) 4
+7e3e3: MOV Address (SizeDir 64 (FromReg RBX)), Immediate 0 7
+7e3ea: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 176))), Immediate 0 11
+7e3f5: XOR Reg EAX, Reg EAX 2
+7e3f7: AND Reg RDI, Immediate 18446744073709551608 4
+7e3fb: SUB Reg RBX, Reg RDI 3
+7e3fe: LEA Reg ECX, Address (AddrPlus (FromReg RBX) (AddrImm 184)) 6
+7e404: SHR Reg ECX, Immediate 3 3
+7e407: REP STOSQ  3
+7e40a: POP Reg RBX 1
+7e40b: RET  1
+  |
+  `- 
+7e410: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 56))) 4
+7e414: CALL free (external)
+7e419: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 64)) 4
+7e41d: CALL libxl_device_disk_dispose (external)
+7e422: JMP 7e3df (resolved immediate)
+  |
+  `- 7e3df
+7e428: REPZ RET  2
+  |
+  `- 

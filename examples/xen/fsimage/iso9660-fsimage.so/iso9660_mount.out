@@ -1,0 +1,144 @@
+Number of assembly instructions     = 104
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 104
+Number of edges: 108
+
+9f0 (True): f9c
+f60 (False): 0
+
+9f0: PUSH Reg R14 2
+9f2: PUSH Reg R13 2
+9f4: MOV Reg R14D, Reg ESI 3
+9f7: PUSH Reg R12 2
+9f9: PUSH Reg RBP 1
+9fa: MOV Reg RBP, Reg RDI 3
+9fd: PUSH Reg RBX 1
+9fe: MOV Reg EDI, Immediate 512 5
+a03: MOV Reg EBX, Reg EDX 2
+a05: MOV Reg R13D, Reg ECX 3
+a08: MOV Reg R12, Reg R8 3
+a0b: CALL fsig_log2 (external)
+a10: TEST Reg R14D, Reg R14D 3
+a13: JS a80 (resolved immediate)
+  |
+  `- a15,a80
+a15: TEST Reg R13D, Reg R13D 3
+a18: JLE a70 (resolved immediate)
+  |
+  `- a1a,a70
+a1a: MOV Reg ECX, Reg EAX 2
+a1c: MOV Reg EAX, Reg R13D 3
+a1f: MOV Reg EDX, Reg EBX 2
+a21: SAR Reg EAX, Immediate 9 3
+a24: ADD Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2102938))) 6
+a2a: SAR Reg EDX, Reg CL 2
+a2c: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2102870))) 6
+a32: AND Reg EBX, Immediate 511 6
+a38: LEA Reg ESI, Address (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 4) (FromReg R14))) 4
+a3c: MOV Reg EDX, Reg EBX 2
+a3e: MOV Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2102912))), Reg EAX 6
+a44: SAR Reg EAX, Immediate 11 3
+a47: CMP Reg EAX, Reg ECX 2
+a49: JLE a54 (resolved immediate)
+  |
+  `- a4b,a54
+a4b: ADD Reg ECX, Immediate 2 3
+a4e: MOV Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2102836))), Reg ECX 6
+a54: POP Reg RBX 1
+a55: MOV Reg R8, Reg R12 3
+a58: MOV Reg ECX, Reg R13D 3
+a5b: MOV Reg RDI, Reg RBP 3
+a5e: POP Reg RBP 1
+a5f: POP Reg R12 2
+a61: POP Reg R13 2
+a63: POP Reg R14 2
+a65: JMP fsig_devread (jmp to external function)
+  |
+  `- 
+a70: POP Reg RBX 1
+a71: MOV Reg EAX, Immediate 1 5
+a76: POP Reg RBP 1
+a77: POP Reg R12 2
+a79: POP Reg R13 2
+a7b: POP Reg R14 2
+a7d: RET  1
+  |
+  `- 
+a80: MOV Reg RDI, Reg RBP 3
+a83: CALL fsig_errnum (external)
+a88: MOV Address (SizeDir 32 (FromReg RAX)), Immediate 1 6
+a8e: XOR Reg EAX, Reg EAX 2
+a90: POP Reg RBX 1
+a91: POP Reg RBP 1
+a92: POP Reg R12 2
+a94: POP Reg R13 2
+a96: POP Reg R14 2
+a98: RET  1
+  |
+  `- 
+f60: PUSH Reg RBP 1
+f61: PUSH Reg RBX 1
+f62: MOV Reg RBP, Reg RDI 3
+f65: MOV Reg EBX, Immediate 16 5
+f6a: SUB Reg RSP, Immediate 8 4
+f6e: JMP f7c (resolved immediate)
+  |
+  `- f7c
+f70: ADD Reg EBX, Immediate 1 3
+f73: CMP Reg EBX, Immediate 32 3
+f76: JZ 1000 (resolved immediate)
+  |
+  `- f7c,1000
+f7c: MOV Reg RDI, Reg RBP 3
+f7f: CALL fsig_file_buf (external)
+f84: LEA Reg R8, Address (AddrPlus (FromReg RAX) (AddrImm 2048)) 7
+f8b: XOR Reg EDX, Reg EDX 2
+f8d: MOV Reg ECX, Immediate 2048 5
+f92: MOV Reg ESI, Reg EBX 2
+f94: MOV Reg RDI, Reg RBP 3
+f97: CALL iso9660_devread (internal)
+  |
+  `- f9c,9f0
+f9c: TEST Reg EAX, Reg EAX 2
+f9e: JZ 1000 (resolved immediate)
+  |
+  `- fa0,1000
+fa0: MOV Reg RDI, Reg RBP 3
+fa3: CALL fsig_file_buf (external)
+fa8: CMP Address (SizeDir 8 (AddrPlus (FromReg RAX) (AddrImm 2048))), Immediate 1 7
+faf: JNZ f70 (resolved immediate)
+  |
+  `- f70,fb1
+fb1: MOV Reg RDI, Reg RBP 3
+fb4: CALL fsig_file_buf (external)
+fb9: CMP Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 2049))), Immediate 808469571 10
+fc3: JNZ f70 (resolved immediate)
+  |
+  `- f70,fc5
+fc5: CMP Address (SizeDir 8 (AddrPlus (FromReg RAX) (AddrImm 2053))), Immediate 49 7
+fcc: JNZ f70 (resolved immediate)
+  |
+  `- f70,fce
+fce: MOV Reg RDI, Reg RBP 3
+fd1: CALL fsig_file_buf (external)
+fd6: MOV Reg ECX, Reg EBX 2
+fd8: MOV Reg RDI, Reg RBP 3
+fdb: MOV Address (SizeDir 64 (FromReg RAX)), Reg RCX 3
+fde: CALL fsig_file_buf (external)
+fe3: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))), Immediate 0 8
+feb: ADD Reg RSP, Immediate 8 4
+fef: MOV Reg EAX, Immediate 1 5
+ff4: POP Reg RBX 1
+ff5: POP Reg RBP 1
+ff6: RET  1
+  |
+  `- 
+1000: ADD Reg RSP, Immediate 8 4
+1004: XOR Reg EAX, Reg EAX 2
+1006: POP Reg RBX 1
+1007: POP Reg RBP 1
+1008: RET  1
+  |
+  `- 

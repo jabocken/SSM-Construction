@@ -1,0 +1,38 @@
+Number of assembly instructions     = 19
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 19
+Number of edges: 19
+
+fe0 (False): 0
+
+fe0: SUB Reg RSP, Immediate 24 4
+fe4: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 16))) 3
+fe7: MOV Reg EDX, Immediate 4 5
+fec: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 4)) 5
+ff1: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+ffa: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
+fff: XOR Reg EAX, Reg EAX 2
+1001: CALL read (external)
+1006: CMP Reg RAX, Immediate 4 4
+100a: JNZ 1028 (resolved immediate)
+  |
+  `- 100c,1028
+100c: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))) 4
+1010: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+1015: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+101e: JNZ 102f (resolved immediate)
+  |
+  `- 1020,102f
+1020: ADD Reg RSP, Immediate 24 4
+1024: RET  1
+  |
+  `- 
+1028: MOV Reg EAX, Immediate 4294967295 5
+102d: JMP 1010 (resolved immediate)
+  |
+  `- 1010
+102f: CALL __stack_chk_fail (external)
+  |
+  `- 

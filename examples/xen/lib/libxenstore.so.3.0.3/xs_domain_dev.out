@@ -1,0 +1,31 @@
+Number of assembly instructions     = 16
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 16
+Number of edges: 15
+
+4d60 (False): 0
+
+4d60: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 1110)) 7
+4d67: SUB Reg RSP, Immediate 8 4
+4d6b: CALL getenv (external)
+4d70: TEST Reg RAX, Reg RAX 3
+4d73: JZ 4d80 (resolved immediate)
+  |
+  `- 4d75,4d80
+4d75: ADD Reg RSP, Immediate 8 4
+4d79: RET  1
+  |
+  `- 
+4d80: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 1099)) 7
+4d87: XOR Reg ESI, Reg ESI 2
+4d89: CALL access (external)
+4d8e: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 1101)) 7
+4d95: TEST Reg EAX, Reg EAX 2
+4d97: LEA Reg RAX, Address (AddrPlus (FromReg RIP) (AddrImm 1076)) 7
+4d9e: CMOVNZ Reg RAX, Reg RDX 4
+4da2: ADD Reg RSP, Immediate 8 4
+4da6: RET  1
+  |
+  `- 

@@ -1,0 +1,29 @@
+Number of assembly instructions     = 16
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 16
+Number of edges: 16
+
+3eba0 (False): 0
+
+3eba0: MOV Reg EAX, Address (SizeDir 32 (FromReg RDI)) 2
+3eba2: SHL Reg EAX, Immediate 3 3
+3eba5: CMP Reg EAX, Reg ESI 2
+3eba7: JBE 3ebc8 (resolved immediate)
+  |
+  `- 3eba9,3ebc8
+3eba9: LEA Reg EAX, Address (AddrPlus (FromReg RSI) (AddrImm 7)) 3
+3ebac: TEST Reg ESI, Reg ESI 2
+3ebae: MOV Reg ECX, Reg ESI 2
+3ebb0: MOV Reg EDX, Immediate 1 5
+3ebb5: CMOVNS Reg EAX, Reg ESI 3
+3ebb8: AND Reg ECX, Immediate 7 3
+3ebbb: SAR Reg EAX, Immediate 3 3
+3ebbe: SHL Reg EDX, Reg CL 2
+3ebc0: CDQE  2
+3ebc2: ADD Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
+3ebc6: OR Address (SizeDir 8 (FromReg RAX)), Reg DL 2
+3ebc8: REPZ RET  2
+  |
+  `- 

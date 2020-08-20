@@ -1,0 +1,40 @@
+Number of assembly instructions     = 19
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 19
+Number of edges: 22
+
+33f0 (False): 0
+
+33f0: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 48))) 3
+33f3: TEST Reg ECX, Reg ECX 2
+33f5: JZ 3429 (resolved immediate)
+  |
+  `- 33f7,3429
+33f7: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 56))) 4
+33fb: CMP Reg ESI, Address (SizeDir 32 (FromReg RAX)) 2
+33fd: JZ 342b (resolved immediate)
+  |
+  `- 33ff,342b
+33ff: LEA Reg RDX, Address (AddrPlus (FromReg RAX) (AddrImm 128)) 7
+3406: SUB Reg ECX, Immediate 1 3
+3409: SHL Reg RCX, Immediate 7 4
+340d: ADD Reg RCX, Reg RDX 3
+3410: JMP 3424 (resolved immediate)
+  |
+  `- 3424
+3418: MOV Reg RAX, Reg RDX 3
+341b: SUB Reg RDX, Immediate 18446744073709551488 4
+341f: CMP Address (SizeDir 32 (AddrMinus (FromReg RDX) (AddrImm 128))), Reg ESI 3
+3422: JZ 342b (resolved immediate)
+  |
+  `- 3424,342b
+3424: CMP Reg RDX, Reg RCX 3
+3427: JNZ 3418 (resolved immediate)
+  |
+  `- 3418,3429
+3429: XOR Reg EAX, Reg EAX 2
+342b: REPZ RET  2
+  |
+  `- 

@@ -1,0 +1,58 @@
+Number of assembly instructions     = 37
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 39
+Number of edges: 43
+
+ff40 (False): 0
+
+ff40: PUSH Reg RBX 1
+ff41: PXOR Reg XMM0, Reg XMM0 4
+ff45: MOV Reg ECX, Immediate 32 5
+ff4a: SUB Reg RSP, Immediate 48 4
+ff4e: MOVAPS Address (SizeDir 128 (FromReg RSP)), Reg XMM0 4
+ff52: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RDX 5
+ff57: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2216066))) 7
+ff5e: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+ff67: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Reg RAX 5
+ff6c: XOR Reg EAX, Reg EAX 2
+ff6e: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 16))), Reg XMM0 5
+ff73: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 8))) 4
+ff77: MOV Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg SI 5
+ff7c: MOV Reg ESI, Immediate 24 5
+ff81: TEST Reg RAX, Reg RAX 3
+ff84: CMOVZ Reg RAX, Reg RDX 4
+ff88: MOV Reg RDX, Reg RSP 3
+ff8b: MOV Reg RAX, Address (SizeDir 64 (FromReg RAX)) 3
+ff8e: MOV Address (SizeDir 64 (FromReg RSP)), Reg RAX 4
+ff92: CALL do_memory_op (external)
+ff97: CMP Reg EAX, Immediate 4294967295 3
+ff9a: MOV Reg EBX, Reg EAX 2
+ff9c: JZ ffc0 (resolved immediate)
+  |
+  `- ff9e,ffc0
+ff9e: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
+ffa3: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+ffac: MOV Reg EAX, Reg EBX 2
+ffae: JNZ ffd4 (resolved immediate)
+  |
+  `- ffb0,ffd4
+ffb0: ADD Reg RSP, Immediate 48 4
+ffb4: POP Reg RBX 1
+ffb5: RET  1
+  |
+  `- 
+ffc0: CALL __errno_location (external)
+ffc5: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 38 3
+ffc8: JNZ ff9e (resolved immediate)
+  |
+  `- ff9e,ffca
+ffca: MOV Address (SizeDir 32 (FromReg RAX)), Immediate 0 6
+ffd0: XOR Reg EBX, Reg EBX 2
+ffd2: JMP ff9e (resolved immediate)
+  |
+  `- ff9e
+ffd4: CALL __stack_chk_fail (external)
+  |
+  `- 

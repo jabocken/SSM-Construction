@@ -1,0 +1,258 @@
+
+local_array:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+0000000000001000 <_init>:
+    1000:	endbr64 
+    1004:	sub    rsp,0x8
+    1008:	mov    rax,QWORD PTR [rip+0x2fd9]        # 3fe8 <__gmon_start__>
+    100f:	test   rax,rax
+    1012:	je     1016 <_init+0x16>
+    1014:	call   rax
+    1016:	add    rsp,0x8
+    101a:	ret    
+
+Disassembly of section .plt:
+
+0000000000001020 <.plt>:
+    1020:	push   QWORD PTR [rip+0x2f9a]        # 3fc0 <_GLOBAL_OFFSET_TABLE_+0x8>
+    1026:	bnd jmp QWORD PTR [rip+0x2f9b]        # 3fc8 <_GLOBAL_OFFSET_TABLE_+0x10>
+    102d:	nop    DWORD PTR [rax]
+    1030:	endbr64 
+    1034:	push   0x0
+    1039:	bnd jmp 1020 <.plt>
+    103f:	nop
+
+Disassembly of section .plt.got:
+
+0000000000001040 <__cxa_finalize@plt>:
+    1040:	endbr64 
+    1044:	bnd jmp QWORD PTR [rip+0x2fad]        # 3ff8 <__cxa_finalize@GLIBC_2.2.5>
+    104b:	nop    DWORD PTR [rax+rax*1+0x0]
+
+Disassembly of section .plt.sec:
+
+0000000000001050 <__stack_chk_fail@plt>:
+    1050:	endbr64 
+    1054:	bnd jmp QWORD PTR [rip+0x2f75]        # 3fd0 <__stack_chk_fail@GLIBC_2.4>
+    105b:	nop    DWORD PTR [rax+rax*1+0x0]
+
+Disassembly of section .text:
+
+0000000000001060 <_start>:
+    1060:	endbr64 
+    1064:	xor    ebp,ebp
+    1066:	mov    r9,rdx
+    1069:	pop    rsi
+    106a:	mov    rdx,rsp
+    106d:	and    rsp,0xfffffffffffffff0
+    1071:	push   rax
+    1072:	push   rsp
+    1073:	lea    r8,[rip+0x296]        # 1310 <__libc_csu_fini>
+    107a:	lea    rcx,[rip+0x21f]        # 12a0 <__libc_csu_init>
+    1081:	lea    rdi,[rip+0x1ee]        # 1276 <main>
+    1088:	call   QWORD PTR [rip+0x2f52]        # 3fe0 <__libc_start_main@GLIBC_2.2.5>
+    108e:	hlt    
+    108f:	nop
+
+0000000000001090 <deregister_tm_clones>:
+    1090:	lea    rdi,[rip+0x2f79]        # 4010 <__TMC_END__>
+    1097:	lea    rax,[rip+0x2f72]        # 4010 <__TMC_END__>
+    109e:	cmp    rax,rdi
+    10a1:	je     10b8 <deregister_tm_clones+0x28>
+    10a3:	mov    rax,QWORD PTR [rip+0x2f2e]        # 3fd8 <_ITM_deregisterTMCloneTable>
+    10aa:	test   rax,rax
+    10ad:	je     10b8 <deregister_tm_clones+0x28>
+    10af:	jmp    rax
+    10b1:	nop    DWORD PTR [rax+0x0]
+    10b8:	ret    
+    10b9:	nop    DWORD PTR [rax+0x0]
+
+00000000000010c0 <register_tm_clones>:
+    10c0:	lea    rdi,[rip+0x2f49]        # 4010 <__TMC_END__>
+    10c7:	lea    rsi,[rip+0x2f42]        # 4010 <__TMC_END__>
+    10ce:	sub    rsi,rdi
+    10d1:	mov    rax,rsi
+    10d4:	shr    rsi,0x3f
+    10d8:	sar    rax,0x3
+    10dc:	add    rsi,rax
+    10df:	sar    rsi,1
+    10e2:	je     10f8 <register_tm_clones+0x38>
+    10e4:	mov    rax,QWORD PTR [rip+0x2f05]        # 3ff0 <_ITM_registerTMCloneTable>
+    10eb:	test   rax,rax
+    10ee:	je     10f8 <register_tm_clones+0x38>
+    10f0:	jmp    rax
+    10f2:	nop    WORD PTR [rax+rax*1+0x0]
+    10f8:	ret    
+    10f9:	nop    DWORD PTR [rax+0x0]
+
+0000000000001100 <__do_global_dtors_aux>:
+    1100:	endbr64 
+    1104:	cmp    BYTE PTR [rip+0x2f05],0x0        # 4010 <__TMC_END__>
+    110b:	jne    1138 <__do_global_dtors_aux+0x38>
+    110d:	push   rbp
+    110e:	cmp    QWORD PTR [rip+0x2ee2],0x0        # 3ff8 <__cxa_finalize@GLIBC_2.2.5>
+    1116:	mov    rbp,rsp
+    1119:	je     1127 <__do_global_dtors_aux+0x27>
+    111b:	mov    rdi,QWORD PTR [rip+0x2ee6]        # 4008 <__dso_handle>
+    1122:	call   1040 <__cxa_finalize@plt>
+    1127:	call   1090 <deregister_tm_clones>
+    112c:	mov    BYTE PTR [rip+0x2edd],0x1        # 4010 <__TMC_END__>
+    1133:	pop    rbp
+    1134:	ret    
+    1135:	nop    DWORD PTR [rax]
+    1138:	ret    
+    1139:	nop    DWORD PTR [rax+0x0]
+
+0000000000001140 <frame_dummy>:
+    1140:	endbr64 
+    1144:	jmp    10c0 <register_tm_clones>
+
+0000000000001149 <local_array>:
+    1149:	endbr64 
+    114d:	push   rbp
+    114e:	mov    rbp,rsp
+    1151:	push   rbx
+    1152:	sub    rsp,0x38
+    1156:	mov    DWORD PTR [rbp-0x34],edi
+    1159:	mov    rax,QWORD PTR fs:0x28
+    1162:	mov    QWORD PTR [rbp-0x18],rax
+    1166:	xor    eax,eax
+    1168:	mov    rax,rsp
+    116b:	mov    rsi,rax
+    116e:	mov    DWORD PTR [rbp-0x2c],0x1
+    1175:	mov    eax,DWORD PTR [rbp-0x34]
+    1178:	mov    edx,eax
+    117a:	sub    rdx,0x1
+    117e:	mov    QWORD PTR [rbp-0x28],rdx
+    1182:	mov    edx,eax
+    1184:	mov    r8,rdx
+    1187:	mov    r9d,0x0
+    118d:	mov    edx,eax
+    118f:	mov    rcx,rdx
+    1192:	mov    ebx,0x0
+    1197:	mov    eax,eax
+    1199:	lea    rdx,[rax*4+0x0]
+    11a1:	mov    eax,0x10
+    11a6:	sub    rax,0x1
+    11aa:	add    rax,rdx
+    11ad:	mov    edi,0x10
+    11b2:	mov    edx,0x0
+    11b7:	div    rdi
+    11ba:	imul   rax,rax,0x10
+    11be:	mov    rdx,rax
+    11c1:	and    rdx,0xfffffffffffff000
+    11c8:	mov    rbx,rsp
+    11cb:	sub    rbx,rdx
+    11ce:	mov    rdx,rbx
+    11d1:	cmp    rsp,rdx
+    11d4:	je     11e8 <local_array+0x9f>
+    11d6:	sub    rsp,0x1000
+    11dd:	or     QWORD PTR [rsp+0xff8],0x0
+    11e6:	jmp    11d1 <local_array+0x88>
+    11e8:	mov    rdx,rax
+    11eb:	and    edx,0xfff
+    11f1:	sub    rsp,rdx
+    11f4:	mov    rdx,rax
+    11f7:	and    edx,0xfff
+    11fd:	test   rdx,rdx
+    1200:	je     1212 <local_array+0xc9>
+    1202:	and    eax,0xfff
+    1207:	sub    rax,0x8
+    120b:	add    rax,rsp
+    120e:	or     QWORD PTR [rax],0x0
+    1212:	mov    rax,rsp
+    1215:	add    rax,0x3
+    1219:	shr    rax,0x2
+    121d:	shl    rax,0x2
+    1221:	mov    QWORD PTR [rbp-0x20],rax
+    1225:	mov    DWORD PTR [rbp-0x30],0x0
+    122c:	jmp    1242 <local_array+0xf9>
+    122e:	shl    DWORD PTR [rbp-0x2c],1
+    1231:	mov    rax,QWORD PTR [rbp-0x20]
+    1235:	mov    edx,DWORD PTR [rbp-0x30]
+    1238:	mov    ecx,DWORD PTR [rbp-0x2c]
+    123b:	mov    DWORD PTR [rax+rdx*4],ecx
+    123e:	add    DWORD PTR [rbp-0x30],0x1
+    1242:	mov    eax,DWORD PTR [rbp-0x30]
+    1245:	cmp    eax,DWORD PTR [rbp-0x34]
+    1248:	jb     122e <local_array+0xe5>
+    124a:	mov    eax,DWORD PTR [rbp-0x34]
+    124d:	lea    edx,[rax-0x1]
+    1250:	mov    rax,QWORD PTR [rbp-0x20]
+    1254:	mov    edx,edx
+    1256:	mov    eax,DWORD PTR [rax+rdx*4]
+    1259:	mov    rsp,rsi
+    125c:	mov    rdi,QWORD PTR [rbp-0x18]
+    1260:	xor    rdi,QWORD PTR fs:0x28
+    1269:	je     1270 <local_array+0x127>
+    126b:	call   1050 <__stack_chk_fail@plt>
+    1270:	mov    rbx,QWORD PTR [rbp-0x8]
+    1274:	leave  
+    1275:	ret    
+
+0000000000001276 <main>:
+    1276:	endbr64 
+    127a:	push   rbp
+    127b:	mov    rbp,rsp
+    127e:	sub    rsp,0x10
+    1282:	mov    DWORD PTR [rbp-0x4],edi
+    1285:	mov    QWORD PTR [rbp-0x10],rsi
+    1289:	mov    eax,DWORD PTR [rbp-0x4]
+    128c:	mov    edi,eax
+    128e:	call   1149 <local_array>
+    1293:	leave  
+    1294:	ret    
+    1295:	nop    WORD PTR cs:[rax+rax*1+0x0]
+    129f:	nop
+
+00000000000012a0 <__libc_csu_init>:
+    12a0:	endbr64 
+    12a4:	push   r15
+    12a6:	lea    r15,[rip+0x2b0b]        # 3db8 <__frame_dummy_init_array_entry>
+    12ad:	push   r14
+    12af:	mov    r14,rdx
+    12b2:	push   r13
+    12b4:	mov    r13,rsi
+    12b7:	push   r12
+    12b9:	mov    r12d,edi
+    12bc:	push   rbp
+    12bd:	lea    rbp,[rip+0x2afc]        # 3dc0 <__do_global_dtors_aux_fini_array_entry>
+    12c4:	push   rbx
+    12c5:	sub    rbp,r15
+    12c8:	sub    rsp,0x8
+    12cc:	call   1000 <_init>
+    12d1:	sar    rbp,0x3
+    12d5:	je     12f6 <__libc_csu_init+0x56>
+    12d7:	xor    ebx,ebx
+    12d9:	nop    DWORD PTR [rax+0x0]
+    12e0:	mov    rdx,r14
+    12e3:	mov    rsi,r13
+    12e6:	mov    edi,r12d
+    12e9:	call   QWORD PTR [r15+rbx*8]
+    12ed:	add    rbx,0x1
+    12f1:	cmp    rbp,rbx
+    12f4:	jne    12e0 <__libc_csu_init+0x40>
+    12f6:	add    rsp,0x8
+    12fa:	pop    rbx
+    12fb:	pop    rbp
+    12fc:	pop    r12
+    12fe:	pop    r13
+    1300:	pop    r14
+    1302:	pop    r15
+    1304:	ret    
+    1305:	data16 nop WORD PTR cs:[rax+rax*1+0x0]
+
+0000000000001310 <__libc_csu_fini>:
+    1310:	endbr64 
+    1314:	ret    
+
+Disassembly of section .fini:
+
+0000000000001318 <_fini>:
+    1318:	endbr64 
+    131c:	sub    rsp,0x8
+    1320:	add    rsp,0x8
+    1324:	ret    

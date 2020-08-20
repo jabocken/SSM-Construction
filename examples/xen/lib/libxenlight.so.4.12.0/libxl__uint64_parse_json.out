@@ -1,0 +1,79 @@
+Number of assembly instructions     = 50
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 50
+Number of edges: 52
+
+41e40 (False): 0
+
+41e40: TEST Reg RSI, Reg RSI 3
+41e43: JZ 41e51 (resolved immediate)
+  |
+  `- 41e45,41e51
+41e45: MOV Reg EAX, Address (SizeDir 32 (FromReg RSI)) 2
+41e47: CMP Reg EAX, Immediate 4 3
+41e4a: JZ 41e60 (resolved immediate)
+  |
+  `- 41e4c,41e60
+41e4c: CMP Reg EAX, Immediate 16 3
+41e4f: JZ 41e70 (resolved immediate)
+  |
+  `- 41e51,41e70
+41e51: MOV Reg EAX, Immediate 4294967293 5
+41e56: RET  1
+  |
+  `- 
+41e60: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))) 4
+41e64: TEST Reg RAX, Reg RAX 3
+41e67: JS 41e51 (resolved immediate)
+  |
+  `- 41e51,41e69
+41e69: MOV Address (SizeDir 64 (FromReg RDX)), Reg RAX 3
+41e6c: XOR Reg EAX, Reg EAX 2
+41e6e: RET  1
+  |
+  `- 
+41e70: PUSH Reg R13 2
+41e72: PUSH Reg R12 2
+41e74: PUSH Reg RBP 1
+41e75: PUSH Reg RBX 1
+41e76: MOV Reg RBX, Reg RSI 3
+41e79: MOV Reg RBP, Reg RDX 3
+41e7c: SUB Reg RSP, Immediate 8 4
+41e80: CALL __errno_location (external)
+41e85: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+41e89: MOV Reg R13D, Address (SizeDir 32 (FromReg RAX)) 3
+41e8c: XOR Reg ESI, Reg ESI 2
+41e8e: MOV Address (SizeDir 32 (FromReg RAX)), Immediate 0 6
+41e94: MOV Reg EDX, Immediate 10 5
+41e99: MOV Reg R12, Reg RAX 3
+41e9c: CALL strtoull (external)
+41ea1: CMP Reg RAX, Immediate 18446744073709551615 4
+41ea5: JZ 41ec0 (resolved immediate)
+  |
+  `- 41ea7,41ec0
+41ea7: MOV Address (SizeDir 32 (FromReg R12)), Reg R13D 4
+41eab: MOV Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg RAX 4
+41eaf: ADD Reg RSP, Immediate 8 4
+41eb3: POP Reg RBX 1
+41eb4: XOR Reg EAX, Reg EAX 2
+41eb6: POP Reg RBP 1
+41eb7: POP Reg R12 2
+41eb9: POP Reg R13 2
+41ebb: RET  1
+  |
+  `- 
+41ec0: CMP Address (SizeDir 32 (FromReg R12)), Immediate 34 5
+41ec5: JNZ 41ea7 (resolved immediate)
+  |
+  `- 41ea7,41ec7
+41ec7: ADD Reg RSP, Immediate 8 4
+41ecb: MOV Reg EAX, Immediate 4294967293 5
+41ed0: POP Reg RBX 1
+41ed1: POP Reg RBP 1
+41ed2: POP Reg R12 2
+41ed4: POP Reg R13 2
+41ed6: RET  1
+  |
+  `- 

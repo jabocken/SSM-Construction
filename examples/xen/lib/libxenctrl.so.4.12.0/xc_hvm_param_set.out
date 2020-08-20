@@ -1,0 +1,90 @@
+Number of assembly instructions     = 65
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 65
+Number of edges: 67
+
+10fa0 (False): 0
+
+10fa0: PUSH Reg R14 2
+10fa2: PUSH Reg R13 2
+10fa4: MOV Reg R14D, Reg ESI 3
+10fa7: PUSH Reg R12 2
+10fa9: PUSH Reg RBP 1
+10faa: MOV Reg R12D, Reg EDX 3
+10fad: PUSH Reg RBX 1
+10fae: MOV Reg R13, Reg RCX 3
+10fb1: MOV Reg RBX, Reg RDI 3
+10fb4: SUB Reg RSP, Immediate 48 4
+10fb8: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+10fc1: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Reg RAX 5
+10fc6: XOR Reg EAX, Reg EAX 2
+10fc8: CMP Reg EDX, Immediate 30 3
+10fcb: MOV Address (SizeDir 64 (FromReg RSP)), Immediate 0 8
+10fd3: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Immediate 0 9
+10fdc: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 0 8
+10fe4: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Immediate 18446744073709551615 9
+10fed: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Immediate 0 9
+10ff6: JA 1100d (resolved immediate)
+  |
+  `- 10ff8,1100d
+10ff8: MOV Reg EAX, Immediate 1 5
+10ffd: MOV Reg ECX, Reg EDX 2
+10fff: SHL Reg RAX, Reg CL 3
+11002: TEST Reg EAX, Immediate 1123024896 5
+11007: JNZ 11090 (resolved immediate)
+  |
+  `- 1100d,11090
+1100d: MOV Reg RBP, Reg RSP 3
+11010: MOV Reg EDX, Immediate 16 5
+11015: MOV Reg RDI, Reg RBX 3
+11018: MOV Reg RSI, Reg RBP 3
+1101b: CALL xc__hypercall_buffer_alloc (external)
+11020: TEST Reg RAX, Reg RAX 3
+11023: JZ 11098 (resolved immediate)
+  |
+  `- 11025,11098
+11025: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 4))), Reg R12D 4
+11029: MOV Address (SizeDir 16 (FromReg RAX)), Reg R14W 4
+1102d: MOV Reg ESI, Immediate 34 5
+11032: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))), Reg R13 4
+11036: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+1103b: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1088))) 7
+11042: TEST Reg RAX, Reg RAX 3
+11045: CMOVZ Reg RAX, Reg RBP 4
+11049: XOR Reg EDX, Reg EDX 2
+1104b: MOV Reg RCX, Address (SizeDir 64 (FromReg RAX)) 3
+1104e: CALL xencall2 (external)
+11053: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+11058: MOV Reg RDI, Reg RBX 3
+1105b: MOV Reg R12D, Reg EAX 3
+1105e: TEST Reg RSI, Reg RSI 3
+11061: CMOVZ Reg RSI, Reg RBP 4
+11065: CALL xc__hypercall_buffer_free (external)
+1106a: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
+1106f: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+11078: MOV Reg EAX, Reg R12D 3
+1107b: JNZ 110a0 (resolved immediate)
+  |
+  `- 1107d,110a0
+1107d: ADD Reg RSP, Immediate 48 4
+11081: POP Reg RBX 1
+11082: POP Reg RBP 1
+11083: POP Reg R12 2
+11085: POP Reg R13 2
+11087: POP Reg R14 2
+11089: RET  1
+  |
+  `- 
+11090: MOV Reg R12D, Immediate 4294967201 6
+11096: JMP 1106a (resolved immediate)
+  |
+  `- 1106a
+11098: MOV Reg R12D, Immediate 4294967295 6
+1109e: JMP 1106a (resolved immediate)
+  |
+  `- 1106a
+110a0: CALL __stack_chk_fail (external)
+  |
+  `- 

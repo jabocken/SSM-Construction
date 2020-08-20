@@ -1,0 +1,240 @@
+Number of assembly instructions     = 182
+Number of indirect branches         = 4
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 4: 4b52, 6d7f, 6db2, 6de6
+Number of symbolic states (representative of non-determinism): 182
+Number of edges: 194
+
+4ac7 (True): 6b99
+6b43 (False): 0
+
+4ac7: PUSH Reg RBP 1
+4ac8: PUSH Reg RBX 1
+4ac9: SUB Reg RSP, Immediate 8 4
+4acd: MOV Reg RBP, Reg RDI 3
+4ad0: TEST Reg RDI, Reg RDI 3
+4ad3: JZ 4b64 (resolved immediate)
+  |
+  `- 4ad9,4b64
+4ad9: CALL xc_get_last_error (external)
+4ade: MOV Reg RBX, Reg RAX 3
+4ae1: MOV Reg EDI, Address (SizeDir 32 (FromReg RBX)) 2
+4ae3: CALL xc_error_code_to_desc (external)
+4ae8: MOV Reg ESI, Address (SizeDir 32 (FromReg RBX)) 2
+4aea: TEST Reg ESI, Reg ESI 2
+4aec: JZ 4bb0 (resolved immediate)
+  |
+  `- 4af2,4bb0
+4af2: CMP Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 4))), Immediate 0 4
+4af6: JZ 4bc1 (resolved immediate)
+  |
+  `- 4afc,4bc1
+4afc: LEA Reg RCX, Address (AddrPlus (FromReg RBX) (AddrImm 4)) 4
+4b00: MOV Reg RDX, Reg RAX 3
+4b03: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 17259)) 7
+4b0a: MOV Reg EAX, Immediate 0 5
+4b0f: CALL Py_BuildValue (external)
+4b14: MOV Reg RBX, Reg RAX 3
+4b17: TEST Reg RBP, Reg RBP 3
+4b1a: JZ 4b24 (resolved immediate)
+  |
+  `- 4b1c,4b24
+4b1c: MOV Reg RDI, Reg RBP 3
+4b1f: CALL xc_clear_last_error (external)
+4b24: TEST Reg RBX, Reg RBX 3
+4b27: JZ 4b5a (resolved immediate)
+  |
+  `- 4b29,4b5a
+4b29: MOV Reg RSI, Reg RBX 3
+4b2c: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2145429))) 7
+4b33: CALL PyErr_SetObject (external)
+4b38: MOV Reg RAX, Address (SizeDir 64 (FromReg RBX)) 3
+4b3b: SUB Reg RAX, Immediate 1 4
+4b3f: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
+4b42: TEST Reg RAX, Reg RAX 3
+4b45: JNZ 4bdd (resolved immediate)
+  |
+  `- 4b4b,4bdd
+4b4b: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+4b4f: MOV Reg RDI, Reg RBX 3
+4b52: CALL Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 48))) 3
+4b55: MOV Reg EBX, Immediate 0 5
+4b5a: MOV Reg RAX, Reg RBX 3
+4b5d: ADD Reg RSP, Immediate 8 4
+4b61: POP Reg RBX 1
+4b62: POP Reg RBP 1
+4b63: RET  1
+  |
+  `- 
+4b64: CALL __errno_location (external)
+4b69: MOV Reg EDI, Address (SizeDir 32 (FromReg RAX)) 2
+4b6b: CALL strerror (external)
+4b70: MOV Reg R9, Reg RAX 3
+4b73: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 17118)) 7
+4b7a: MOV Reg ECX, Immediate 1024 5
+4b7f: MOV Reg EDX, Immediate 1 5
+4b84: MOV Reg ESI, Immediate 1024 5
+4b89: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2144244)) 7
+4b90: MOV Reg EAX, Immediate 0 5
+4b95: CALL __snprintf_chk (external)
+4b9a: MOV Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2144220))), Immediate 1 10
+4ba4: LEA Reg RBX, Address (AddrPlus (FromReg RIP) (AddrImm 2144213)) 7
+4bab: JMP 4ae1 (resolved immediate)
+  |
+  `- 4ae1
+4bb0: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2145297))) 7
+4bb7: CALL PyErr_SetFromErrno (external)
+4bbc: MOV Reg RBX, Reg RAX 3
+4bbf: JMP 4b5a (resolved immediate)
+  |
+  `- 4b5a
+4bc1: MOV Reg RDX, Reg RAX 3
+4bc4: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 17072)) 7
+4bcb: MOV Reg EAX, Immediate 0 5
+4bd0: CALL Py_BuildValue (external)
+4bd5: MOV Reg RBX, Reg RAX 3
+4bd8: JMP 4b17 (resolved immediate)
+  |
+  `- 4b17
+4bdd: MOV Reg EBX, Immediate 0 5
+4be2: JMP 4b5a (resolved immediate)
+  |
+  `- 4b5a
+6b43: PUSH Reg R15 2
+6b45: PUSH Reg R14 2
+6b47: PUSH Reg R13 2
+6b49: PUSH Reg R12 2
+6b4b: PUSH Reg RBP 1
+6b4c: PUSH Reg RBX 1
+6b4d: SUB Reg RSP, Immediate 40 4
+6b51: MOV Reg RBP, Reg RDI 3
+6b54: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+6b5d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
+6b62: XOR Reg EAX, Reg EAX 2
+6b64: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 20))), Immediate 0 8
+6b6c: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 20)) 5
+6b71: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))) 4
+6b75: MOV Reg EDX, Immediate 0 5
+6b7a: CALL xc_cputopoinfo (external)
+6b7f: MOV Reg EBX, Immediate 0 5
+6b84: TEST Reg EAX, Reg EAX 2
+6b86: JZ 6bc2 (resolved immediate)
+  |
+  `- 6b88,6bc2
+6b88: MOV Reg RDI, Reg RBX 3
+6b8b: CALL free (external)
+6b90: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))) 4
+6b94: CALL pyxc_error_to_exception (internal)
+  |
+  `- 6b99,4ac7
+6b99: MOV Reg R12, Reg RAX 3
+6b9c: MOV Reg RAX, Reg R12 3
+6b9f: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
+6ba4: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+6bad: JNZ 6dff (resolved immediate)
+  |
+  `- 6bb3,6dff
+6bb3: ADD Reg RSP, Immediate 40 4
+6bb7: POP Reg RBX 1
+6bb8: POP Reg RBP 1
+6bb9: POP Reg R12 2
+6bbb: POP Reg R13 2
+6bbd: POP Reg R14 2
+6bbf: POP Reg R15 2
+6bc1: RET  1
+  |
+  `- 
+6bc2: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 20))) 4
+6bc6: MOV Reg ESI, Immediate 12 5
+6bcb: CALL calloc (external)
+6bd0: MOV Reg RBX, Reg RAX 3
+6bd3: TEST Reg RAX, Reg RAX 3
+6bd6: JZ 6b88 (resolved immediate)
+  |
+  `- 6b88,6bd8
+6bd8: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 20)) 5
+6bdd: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))) 4
+6be1: MOV Reg RDX, Reg RAX 3
+6be4: CALL xc_cputopoinfo (external)
+6be9: TEST Reg EAX, Reg EAX 2
+6beb: JNZ 6b88 (resolved immediate)
+  |
+  `- 6b88,6bed
+6bed: MOV Reg EDI, Immediate 0 5
+6bf2: CALL PyList_New (external)
+6bf7: MOV Reg R15, Reg RAX 3
+6bfa: MOV Reg EDI, Immediate 0 5
+6bff: CALL PyList_New (external)
+6c04: MOV Address (SizeDir 64 (FromReg RSP)), Reg RAX 4
+6c08: MOV Reg EDI, Immediate 0 5
+6c0d: CALL PyList_New (external)
+6c12: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
+6c17: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 20))) 4
+6c1b: TEST Reg EDX, Reg EDX 2
+6c1d: JZ 6d39 (resolved immediate)
+  |
+  `- 6d39
+6d39: SUB Reg EDX, Immediate 1 3
+6d3c: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 8872)) 7
+6d43: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 8797)) 7
+6d4a: MOV Reg EAX, Immediate 0 5
+6d4f: CALL Py_BuildValue (external)
+6d54: MOV Reg R12, Reg RAX 3
+6d57: MOV Reg RDX, Reg R15 3
+6d5a: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 8856)) 7
+6d61: MOV Reg RDI, Reg RAX 3
+6d64: CALL PyDict_SetItemString (external)
+6d69: MOV Reg RAX, Address (SizeDir 64 (FromReg R15)) 3
+6d6c: SUB Reg RAX, Immediate 1 4
+6d70: MOV Address (SizeDir 64 (FromReg R15)), Reg RAX 3
+6d73: TEST Reg RAX, Reg RAX 3
+6d76: JNZ 6d82 (resolved immediate)
+  |
+  `- 6d78,6d82
+6d78: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R15) (AddrImm 8))) 4
+6d7c: MOV Reg RDI, Reg R15 3
+6d7f: CALL Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 48))) 3
+6d82: MOV Reg R15, Address (SizeDir 64 (FromReg RSP)) 4
+6d86: MOV Reg RDX, Reg R15 3
+6d89: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 8821)) 7
+6d90: MOV Reg RDI, Reg R12 3
+6d93: CALL PyDict_SetItemString (external)
+6d98: MOV Reg RAX, Address (SizeDir 64 (FromReg R15)) 3
+6d9b: MOV Address (SizeDir 64 (FromReg RSP)), Reg RAX 4
+6d9f: SUB Reg RAX, Immediate 1 4
+6da3: MOV Address (SizeDir 64 (FromReg R15)), Reg RAX 3
+6da6: TEST Reg RAX, Reg RAX 3
+6da9: JNZ 6db5 (resolved immediate)
+  |
+  `- 6dab,6db5
+6dab: MOV Reg RDI, Reg R15 3
+6dae: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R15) (AddrImm 8))) 4
+6db2: CALL Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 48))) 3
+6db5: MOV Reg R15, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+6dba: MOV Reg RDX, Reg R15 3
+6dbd: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 8783)) 7
+6dc4: MOV Reg RDI, Reg R12 3
+6dc7: CALL PyDict_SetItemString (external)
+6dcc: MOV Reg RAX, Address (SizeDir 64 (FromReg R15)) 3
+6dcf: MOV Address (SizeDir 64 (FromReg RSP)), Reg RAX 4
+6dd3: SUB Reg RAX, Immediate 1 4
+6dd7: MOV Address (SizeDir 64 (FromReg R15)), Reg RAX 3
+6dda: TEST Reg RAX, Reg RAX 3
+6ddd: JNZ 6de9 (resolved immediate)
+  |
+  `- 6ddf,6de9
+6ddf: MOV Reg RDI, Reg R15 3
+6de2: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R15) (AddrImm 8))) 4
+6de6: CALL Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 48))) 3
+6de9: MOV Reg RDI, Reg RBX 3
+6dec: CALL free (external)
+6df1: TEST Reg R12, Reg R12 3
+6df4: JNZ 6b9c (resolved immediate)
+  |
+  `- 6b9c,6dfa
+6dfa: JMP 6b90 (resolved immediate)
+  |
+  `- 6b90
+6dff: CALL __stack_chk_fail (external)
+  |
+  `- 

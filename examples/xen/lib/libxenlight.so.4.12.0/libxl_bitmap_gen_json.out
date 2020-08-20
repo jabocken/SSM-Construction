@@ -1,0 +1,64 @@
+Number of assembly instructions     = 39
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 39
+Number of edges: 42
+
+40880 (False): 0
+
+40880: PUSH Reg R12 2
+40882: PUSH Reg RBP 1
+40883: MOV Reg R12, Reg RDI 3
+40886: PUSH Reg RBX 1
+40887: MOV Reg RBP, Reg RSI 3
+4088a: CALL yajl_gen_array_open (external)
+4088f: TEST Reg EAX, Reg EAX 2
+40891: JNZ 408d6 (resolved immediate)
+  |
+  `- 40893,408d6
+40893: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+40896: SHL Reg EAX, Immediate 3 3
+40899: TEST Reg EAX, Reg EAX 2
+4089b: JZ 408e0 (resolved immediate)
+  |
+  `- 4089d,408e0
+4089d: XOR Reg EBX, Reg EBX 2
+4089f: JMP 408b9 (resolved immediate)
+  |
+  `- 408b9
+408a8: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+408ab: LEA Reg EDX, Address (AddrPlus (FromReg RBX) (AddrImm 1)) 3
+408ae: ADD Reg RBX, Immediate 1 4
+408b2: SHL Reg EAX, Immediate 3 3
+408b5: CMP Reg EAX, Reg EDX 2
+408b7: JBE 408e0 (resolved immediate)
+  |
+  `- 408b9,408e0
+408b9: MOV Reg ESI, Reg EBX 2
+408bb: MOV Reg RDI, Reg RBP 3
+408be: CALL libxl_bitmap_test (external)
+408c3: TEST Reg EAX, Reg EAX 2
+408c5: JZ 408a8 (resolved immediate)
+  |
+  `- 408a8,408c7
+408c7: MOV Reg RSI, Reg RBX 3
+408ca: MOV Reg RDI, Reg R12 3
+408cd: CALL yajl_gen_integer (external)
+408d2: TEST Reg EAX, Reg EAX 2
+408d4: JZ 408a8 (resolved immediate)
+  |
+  `- 408a8,408d6
+408d6: POP Reg RBX 1
+408d7: POP Reg RBP 1
+408d8: POP Reg R12 2
+408da: RET  1
+  |
+  `- 
+408e0: POP Reg RBX 1
+408e1: MOV Reg RDI, Reg R12 3
+408e4: POP Reg RBP 1
+408e5: POP Reg R12 2
+408e7: JMP yajl_gen_array_close (jmp to external function)
+  |
+  `- 

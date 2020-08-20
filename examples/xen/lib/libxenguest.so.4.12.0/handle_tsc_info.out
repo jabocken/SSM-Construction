@@ -1,0 +1,73 @@
+Number of assembly instructions     = 54
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 54
+Number of edges: 55
+
+76f0 (False): 0
+
+76f0: PUSH Reg R13 2
+76f2: PUSH Reg R12 2
+76f4: PUSH Reg RBP 1
+76f5: PUSH Reg RBX 1
+76f6: SUB Reg RSP, Immediate 8 4
+76fa: MOV Reg EBX, Address (SizeDir 32 (AddrPlus (FromReg RSI) (AddrImm 4))) 3
+76fd: MOV Reg RBP, Address (SizeDir 64 (FromReg RDI)) 3
+7700: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))) 4
+7704: CMP Reg EBX, Immediate 24 3
+7707: JNZ 7738 (resolved immediate)
+  |
+  `- 7709,7738
+7709: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 8))) 3
+770c: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))) 4
+7710: MOV Reg RDI, Reg RBP 3
+7713: MOV Reg R9D, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 16))) 4
+7717: MOV Reg R8D, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 4))) 4
+771b: MOV Reg EDX, Address (SizeDir 32 (FromReg RAX)) 2
+771d: CALL xc_domain_set_tsc_info (external)
+7722: TEST Reg EAX, Reg EAX 2
+7724: JNZ 776c (resolved immediate)
+  |
+  `- 7726,776c
+7726: ADD Reg RSP, Immediate 8 4
+772a: POP Reg RBX 1
+772b: POP Reg RBP 1
+772c: POP Reg R12 2
+772e: POP Reg R13 2
+7730: RET  1
+  |
+  `- 
+7738: CALL __errno_location (external)
+773d: MOV Reg R13D, Address (SizeDir 32 (FromReg RAX)) 3
+7740: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 105849)) 7
+7747: MOV Reg R12, Reg RAX 3
+774a: MOV Reg R8D, Immediate 24 6
+7750: XOR Reg EAX, Reg EAX 2
+7752: MOV Reg ECX, Reg EBX 2
+7754: MOV Reg ESI, Immediate 1 5
+7759: MOV Reg RDI, Reg RBP 3
+775c: CALL xc_report_error (external)
+7761: MOV Address (SizeDir 32 (FromReg R12)), Reg R13D 4
+7765: MOV Reg EAX, Immediate 4294967295 5
+776a: JMP 7726 (resolved immediate)
+  |
+  `- 7726
+776c: CALL __errno_location (external)
+7771: MOV Reg R12D, Address (SizeDir 32 (FromReg RAX)) 3
+7774: MOV Reg RBX, Reg RAX 3
+7777: MOV Reg RDI, Reg RBP 3
+777a: MOV Reg ESI, Reg R12D 3
+777d: CALL xc_strerror (external)
+7782: MOV Reg ECX, Address (SizeDir 32 (FromReg RBX)) 2
+7784: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 105837)) 7
+778b: MOV Reg R8, Reg RAX 3
+778e: MOV Reg ESI, Immediate 1 5
+7793: XOR Reg EAX, Reg EAX 2
+7795: MOV Reg RDI, Reg RBP 3
+7798: CALL xc_report_error (external)
+779d: MOV Address (SizeDir 32 (FromReg RBX)), Reg R12D 3
+77a0: MOV Reg EAX, Immediate 4294967295 5
+77a5: JMP 7726 (resolved immediate)
+  |
+  `- 7726

@@ -1,0 +1,77 @@
+Number of assembly instructions     = 58
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 58
+Number of edges: 58
+
+b020 (False): 0
+
+b020: PUSH Reg R13 2
+b022: PUSH Reg R12 2
+b024: MOV Reg R12, Reg RDX 3
+b027: PUSH Reg RBP 1
+b028: PUSH Reg RBX 1
+b029: MOV Reg RBP, Reg RDI 3
+b02c: MOV Reg EBX, Reg ESI 2
+b02e: MOV Reg EDX, Immediate 384 5
+b033: MOV Reg ESI, Immediate 578 5
+b038: SUB Reg RSP, Immediate 24 4
+b03c: MOV Reg RDI, Reg R12 3
+b03f: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+b048: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
+b04d: XOR Reg EAX, Reg EAX 2
+b04f: CALL open (external)
+b054: TEST Reg EAX, Reg EAX 2
+b056: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))), Reg EAX 4
+b05a: JS b0b0 (resolved immediate)
+  |
+  `- b05c,b0b0
+b05c: LEA Reg RDX, Address (AddrPlus (FromReg RSP) (AddrImm 4)) 5
+b061: LEA Reg RCX, Address (AddrMinus (FromReg RIP) (AddrImm 6088)) 7
+b068: MOV Reg ESI, Reg EBX 2
+b06a: MOV Reg RDI, Reg RBP 3
+b06d: CALL xc_domain_dumpcore_via_callback (external)
+b072: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))) 4
+b076: MOV Reg RDI, Reg RBP 3
+b079: MOV Reg EDX, Immediate 1 5
+b07e: MOV Reg EBX, Reg EAX 2
+b080: CALL discard_file_cache (external)
+b085: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))) 4
+b089: CALL close (external)
+b08e: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+b093: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+b09c: MOV Reg EAX, Reg EBX 2
+b09e: JNZ b0ec (resolved immediate)
+  |
+  `- b0a0,b0ec
+b0a0: ADD Reg RSP, Immediate 24 4
+b0a4: POP Reg RBX 1
+b0a5: POP Reg RBP 1
+b0a6: POP Reg R12 2
+b0a8: POP Reg R13 2
+b0aa: RET  1
+  |
+  `- 
+b0b0: CALL __errno_location (external)
+b0b5: MOV Reg EBX, Address (SizeDir 32 (FromReg RAX)) 2
+b0b7: MOV Reg R13, Reg RAX 3
+b0ba: MOV Reg RDI, Reg RBP 3
+b0bd: MOV Reg ESI, Reg EBX 2
+b0bf: CALL xc_strerror (external)
+b0c4: MOV Reg R8D, Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))) 4
+b0c8: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 106289)) 7
+b0cf: MOV Reg R9, Reg RAX 3
+b0d2: MOV Reg RCX, Reg R12 3
+b0d5: MOV Reg ESI, Immediate 1 5
+b0da: MOV Reg RDI, Reg RBP 3
+b0dd: XOR Reg EAX, Reg EAX 2
+b0df: CALL xc_report_error (external)
+b0e4: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Reg EBX 4
+b0e8: NEG Reg EBX 2
+b0ea: JMP b08e (resolved immediate)
+  |
+  `- b08e
+b0ec: CALL __stack_chk_fail (external)
+  |
+  `- 

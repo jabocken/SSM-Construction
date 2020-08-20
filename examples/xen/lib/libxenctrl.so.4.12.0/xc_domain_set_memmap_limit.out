@@ -1,0 +1,32 @@
+Number of assembly instructions     = 17
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 17
+Number of edges: 16
+
+f0f0 (False): 0
+
+f0f0: SUB Reg RSP, Immediate 40 4
+f0f4: SHL Reg RDX, Immediate 10 4
+f0f8: MOV Reg ECX, Immediate 1 5
+f0fd: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RDX 5
+f102: MOV Reg RDX, Reg RSP 3
+f105: MOV Address (SizeDir 64 (FromReg RSP)), Immediate 0 8
+f10d: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+f116: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
+f11b: XOR Reg EAX, Reg EAX 2
+f11d: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 1 8
+f125: CALL xc_domain_set_memory_map (external)
+f12a: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
+f12f: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+f138: JNZ f13f (resolved immediate)
+  |
+  `- f13a,f13f
+f13a: ADD Reg RSP, Immediate 40 4
+f13e: RET  1
+  |
+  `- 
+f13f: CALL __stack_chk_fail (external)
+  |
+  `- 

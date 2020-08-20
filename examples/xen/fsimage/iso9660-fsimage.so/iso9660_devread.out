@@ -1,0 +1,79 @@
+Number of assembly instructions     = 58
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 58
+Number of edges: 58
+
+9f0 (False): 0
+
+9f0: PUSH Reg R14 2
+9f2: PUSH Reg R13 2
+9f4: MOV Reg R14D, Reg ESI 3
+9f7: PUSH Reg R12 2
+9f9: PUSH Reg RBP 1
+9fa: MOV Reg RBP, Reg RDI 3
+9fd: PUSH Reg RBX 1
+9fe: MOV Reg EDI, Immediate 512 5
+a03: MOV Reg EBX, Reg EDX 2
+a05: MOV Reg R13D, Reg ECX 3
+a08: MOV Reg R12, Reg R8 3
+a0b: CALL fsig_log2 (external)
+a10: TEST Reg R14D, Reg R14D 3
+a13: JS a80 (resolved immediate)
+  |
+  `- a15,a80
+a15: TEST Reg R13D, Reg R13D 3
+a18: JLE a70 (resolved immediate)
+  |
+  `- a1a,a70
+a1a: MOV Reg ECX, Reg EAX 2
+a1c: MOV Reg EAX, Reg R13D 3
+a1f: MOV Reg EDX, Reg EBX 2
+a21: SAR Reg EAX, Immediate 9 3
+a24: ADD Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2102938))) 6
+a2a: SAR Reg EDX, Reg CL 2
+a2c: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2102870))) 6
+a32: AND Reg EBX, Immediate 511 6
+a38: LEA Reg ESI, Address (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 4) (FromReg R14))) 4
+a3c: MOV Reg EDX, Reg EBX 2
+a3e: MOV Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2102912))), Reg EAX 6
+a44: SAR Reg EAX, Immediate 11 3
+a47: CMP Reg EAX, Reg ECX 2
+a49: JLE a54 (resolved immediate)
+  |
+  `- a4b,a54
+a4b: ADD Reg ECX, Immediate 2 3
+a4e: MOV Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2102836))), Reg ECX 6
+a54: POP Reg RBX 1
+a55: MOV Reg R8, Reg R12 3
+a58: MOV Reg ECX, Reg R13D 3
+a5b: MOV Reg RDI, Reg RBP 3
+a5e: POP Reg RBP 1
+a5f: POP Reg R12 2
+a61: POP Reg R13 2
+a63: POP Reg R14 2
+a65: JMP fsig_devread (jmp to external function)
+  |
+  `- 
+a70: POP Reg RBX 1
+a71: MOV Reg EAX, Immediate 1 5
+a76: POP Reg RBP 1
+a77: POP Reg R12 2
+a79: POP Reg R13 2
+a7b: POP Reg R14 2
+a7d: RET  1
+  |
+  `- 
+a80: MOV Reg RDI, Reg RBP 3
+a83: CALL fsig_errnum (external)
+a88: MOV Address (SizeDir 32 (FromReg RAX)), Immediate 1 6
+a8e: XOR Reg EAX, Reg EAX 2
+a90: POP Reg RBX 1
+a91: POP Reg RBP 1
+a92: POP Reg R12 2
+a94: POP Reg R13 2
+a96: POP Reg R14 2
+a98: RET  1
+  |
+  `- 

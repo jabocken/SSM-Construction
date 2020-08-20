@@ -1,0 +1,32 @@
+Number of assembly instructions     = 17
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 17
+Number of edges: 16
+
+18970 (False): 0
+
+18970: SUB Reg RSP, Immediate 56 4
+18974: MOV Reg ESI, Reg ESI 2
+18976: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))), Reg RSI 5
+1897b: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RSI 5
+18980: MOV Reg RSI, Reg RSP 3
+18983: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1898c: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Reg RAX 5
+18991: XOR Reg EAX, Reg EAX 2
+18993: MOV Address (SizeDir 32 (FromReg RSP)), Immediate 22 7
+1899a: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 8))), Immediate 1 8
+189a2: CALL xc_flask_op (external)
+189a7: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
+189ac: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+189b5: JNZ 189bc (resolved immediate)
+  |
+  `- 189b7,189bc
+189b7: ADD Reg RSP, Immediate 56 4
+189bb: RET  1
+  |
+  `- 
+189bc: CALL __stack_chk_fail (external)
+  |
+  `- 

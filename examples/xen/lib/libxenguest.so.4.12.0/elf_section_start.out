@@ -1,0 +1,31 @@
+Number of assembly instructions     = 16
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 16
+Number of edges: 15
+
+12d90 (False): 0
+
+12d90: CMP Address (SizeDir 8 (AddrPlus (FromReg RDI) (AddrImm 16))), Immediate 2 4
+12d94: PUSH Reg RBX 1
+12d95: MOV Reg RBX, Address (SizeDir 64 (FromReg RDI)) 3
+12d98: JZ 12db0 (resolved immediate)
+  |
+  `- 12d9a,12db0
+12d9a: MOV Reg ECX, Immediate 4 5
+12d9f: MOV Reg EDX, Immediate 16 5
+12da4: CALL elf_access_unsigned (external)
+12da9: ADD Reg RAX, Reg RBX 3
+12dac: POP Reg RBX 1
+12dad: RET  1
+  |
+  `- 
+12db0: MOV Reg ECX, Immediate 8 5
+12db5: MOV Reg EDX, Immediate 24 5
+12dba: CALL elf_access_unsigned (external)
+12dbf: ADD Reg RAX, Reg RBX 3
+12dc2: POP Reg RBX 1
+12dc3: RET  1
+  |
+  `- 

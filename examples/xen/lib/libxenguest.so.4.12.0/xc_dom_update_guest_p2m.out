@@ -1,0 +1,90 @@
+Number of assembly instructions     = 59
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 59
+Number of edges: 63
+
+17e60 (False): 0
+
+17e60: CMP Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 1112))), Immediate 0 8
+17e68: JZ 17f70 (resolved immediate)
+  |
+  `- 17e6e,17f70
+17e6e: PUSH Reg RBX 1
+17e6f: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 2328))) 7
+17e76: MOV Reg RBX, Reg RDI 3
+17e79: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 1224))) 7
+17e80: MOV Reg R9D, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 100))) 4
+17e84: CMP Reg R9D, Immediate 4 4
+17e88: JZ 17ef0 (resolved immediate)
+  |
+  `- 17e8a,17ef0
+17e8a: CMP Reg R9D, Immediate 8 4
+17e8e: JNZ 17f40 (resolved immediate)
+  |
+  `- 17e94,17f40
+17e94: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1136))) 7
+17e9b: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 56350)) 7
+17ea2: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 54780)) 7
+17ea9: XOR Reg EAX, Reg EAX 2
+17eab: CALL xc_dom_printf (external)
+17eb0: CMP Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1136))), Immediate 0 8
+17eb8: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1112))) 7
+17ebf: JZ 17ee4 (resolved immediate)
+  |
+  `- 17ec1,17ee4
+17ec1: XOR Reg EAX, Reg EAX 2
+17ec3: NOP  5
+17ec8: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1104))) 7
+17ecf: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 8) (FromReg RAX)))) 4
+17ed3: MOV Address (SizeDir 64 (AddrPlus (FromReg RCX) (AddrTimes (AddrImm 8) (FromReg RAX)))), Reg RDX 4
+17ed7: ADD Reg RAX, Immediate 1 4
+17edb: CMP Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1136))), Reg RAX 7
+17ee2: JA 17ec8 (resolved immediate)
+  |
+  `- 17ec8,17ee4
+17ee4: XOR Reg EAX, Reg EAX 2
+17ee6: POP Reg RBX 1
+17ee7: RET  1
+  |
+  `- 
+17ef0: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1136))) 7
+17ef7: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 56258)) 7
+17efe: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 54661)) 7
+17f05: XOR Reg EAX, Reg EAX 2
+17f07: CALL xc_dom_printf (external)
+17f0c: CMP Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1136))), Immediate 0 8
+17f14: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1112))) 7
+17f1b: JZ 17ee4 (resolved immediate)
+  |
+  `- 17ee4,17f1d
+17f1d: XOR Reg EAX, Reg EAX 2
+17f1f: NOP  1
+17f20: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1104))) 7
+17f27: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 8) (FromReg RAX)))) 4
+17f2b: MOV Address (SizeDir 32 (AddrPlus (FromReg RCX) (AddrTimes (AddrImm 4) (FromReg RAX)))), Reg EDX 3
+17f2e: ADD Reg RAX, Immediate 1 4
+17f32: CMP Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1136))), Reg RAX 7
+17f39: JA 17f20 (resolved immediate)
+  |
+  `- 17f20,17f3b
+17f3b: XOR Reg EAX, Reg EAX 2
+17f3d: JMP 17ee6 (resolved immediate)
+  |
+  `- 17ee6
+17f40: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 55945)) 7
+17f47: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 53865)) 7
+17f4e: XOR Reg EAX, Reg EAX 2
+17f50: MOV Reg ECX, Immediate 1 5
+17f55: MOV Reg EDX, Immediate 1006 5
+17f5a: CALL xc_dom_panic_func (external)
+17f5f: MOV Reg EAX, Immediate 4294967295 5
+17f64: POP Reg RBX 1
+17f65: RET  1
+  |
+  `- 
+17f70: XOR Reg EAX, Reg EAX 2
+17f72: RET  1
+  |
+  `- 

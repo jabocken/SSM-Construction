@@ -1,0 +1,52 @@
+Number of assembly instructions     = 29
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 29
+Number of edges: 32
+
+1acf0 (False): 0
+
+1acf0: TEST Reg EDX, Reg EDX 2
+1acf2: JLE 1ad4a (resolved immediate)
+  |
+  `- 1acf4,1ad4a
+1acf4: XOR Reg R10D, Reg R10D 3
+1acf7: XOR Reg R11D, Reg R11D 3
+1acfa: XOR Reg EAX, Reg EAX 2
+1acfc: XOR Reg R9D, Reg R9D 3
+1acff: JMP 1ad0c (resolved immediate)
+  |
+  `- 1ad0c
+1ad08: TEST Reg EDX, Reg EDX 2
+1ad0a: JLE 1ad30 (resolved immediate)
+  |
+  `- 1ad0c,1ad30
+1ad0c: LEA Reg ECX, Address (AddrPlus (FromReg RAX) (FromReg R10)) 4
+1ad10: SUB Reg EDX, Immediate 8 3
+1ad13: MOVSXD Reg RCX, Reg ECX 3
+1ad16: MOVZX Reg R8D, Address (SizeDir 8 (AddrPlus (FromReg RSI) (FromReg RCX))) 5
+1ad1b: LEA Reg ECX, Address (AddrPlus (AddrTimes (AddrImm 8) (FromReg RAX)) (AddrImm 0)) 7
+1ad22: ADD Reg EAX, Immediate 1 3
+1ad25: SHL Reg R8, Reg CL 3
+1ad28: OR Reg R9, Reg R8 3
+1ad2b: CMP Reg EAX, Immediate 7 3
+1ad2e: JBE 1ad08 (resolved immediate)
+  |
+  `- 1ad08,1ad30
+1ad30: MOVSXD Reg RAX, Reg R11D 3
+1ad33: TEST Reg EDX, Reg EDX 2
+1ad35: MOV Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrTimes (AddrImm 8) (FromReg RAX)))), Reg R9 4
+1ad39: JLE 1ad4a (resolved immediate)
+  |
+  `- 1ad3b,1ad4a
+1ad3b: ADD Reg R11D, Immediate 1 4
+1ad3f: ADD Reg R10D, Immediate 8 4
+1ad43: XOR Reg EAX, Reg EAX 2
+1ad45: XOR Reg R9D, Reg R9D 3
+1ad48: JMP 1ad0c (resolved immediate)
+  |
+  `- 1ad0c
+1ad4a: REPZ RET  2
+  |
+  `- 

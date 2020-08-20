@@ -1,0 +1,104 @@
+Number of assembly instructions     = 79
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 79
+Number of edges: 81
+
+13c80 (False): 0
+
+13c80: PUSH Reg R13 2
+13c82: PUSH Reg R12 2
+13c84: PUSH Reg RBP 1
+13c85: PUSH Reg RBX 1
+13c86: MOV Reg RBX, Reg RDI 3
+13c89: SUB Reg RSP, Immediate 216 7
+13c90: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+13c99: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 200))), Reg RAX 8
+13ca1: XOR Reg EAX, Reg EAX 2
+13ca3: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 48)) 5
+13ca8: MOV Reg RBP, Reg RSP 3
+13cab: MOV Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 56))), Reg SI 5
+13cb0: MOV Reg RSI, Reg RBP 3
+13cb3: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 64))), Reg EDX 4
+13cb7: MOV Address (SizeDir 64 (FromReg RSP)), Immediate 0 8
+13cbf: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
+13cc4: MOV Reg RAX, Immediate 73014444098 10
+13cce: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Immediate 0 9
+13cd7: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 3 8
+13cdf: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Immediate 144 9
+13ce8: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))), Reg RAX 5
+13ced: CALL xc__hypercall_bounce_pre (external)
+13cf2: TEST Reg EAX, Reg EAX 2
+13cf4: JNZ 13d96 (resolved immediate)
+  |
+  `- 13cfa,13d96
+13cfa: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+13cff: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1088))) 7
+13d06: MOV Reg ESI, Immediate 36 5
+13d0b: TEST Reg RAX, Reg RAX 3
+13d0e: CMOVZ Reg RAX, Reg RBP 4
+13d12: MOV Reg RDX, Address (SizeDir 64 (FromReg RAX)) 3
+13d15: CALL xencall1 (external)
+13d1a: TEST Reg EAX, Reg EAX 2
+13d1c: MOV Reg R12D, Reg EAX 3
+13d1f: JNS 13d2e (resolved immediate)
+  |
+  `- 13d21,13d2e
+13d21: CALL __errno_location (external)
+13d26: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 13 3
+13d29: MOV Reg R13, Reg RAX 3
+13d2c: JZ 13d70 (resolved immediate)
+  |
+  `- 13d2e,13d70
+13d2e: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+13d33: MOV Reg RDI, Reg RBX 3
+13d36: TEST Reg RSI, Reg RSI 3
+13d39: CMOVZ Reg RSI, Reg RBP 4
+13d3d: CALL xc__hypercall_bounce_post (external)
+13d42: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 200))) 8
+13d4a: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+13d53: MOV Reg EAX, Reg R12D 3
+13d56: JNZ 13dd7 (resolved immediate)
+  |
+  `- 13d58,13dd7
+13d58: ADD Reg RSP, Immediate 216 7
+13d5f: POP Reg RBX 1
+13d60: POP Reg RBP 1
+13d61: POP Reg R12 2
+13d63: POP Reg R13 2
+13d65: RET  1
+  |
+  `- 
+13d70: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+13d74: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 71205)) 7
+13d7b: XOR Reg ECX, Reg ECX 2
+13d7d: MOV Reg EDX, Immediate 3 5
+13d82: MOV Reg RDI, Reg RBX 3
+13d85: XOR Reg EAX, Reg EAX 2
+13d87: CALL xc_report (external)
+13d8c: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Immediate 13 8
+13d94: JMP 13d2e (resolved immediate)
+  |
+  `- 13d2e
+13d96: CALL __errno_location (external)
+13d9b: MOV Reg R12D, Address (SizeDir 32 (FromReg RAX)) 3
+13d9e: MOV Reg RBP, Reg RAX 3
+13da1: MOV Reg RDI, Reg RBX 3
+13da4: MOV Reg ESI, Reg R12D 3
+13da7: CALL xc_strerror (external)
+13dac: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+13daf: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 71090)) 7
+13db6: MOV Reg R8, Reg RAX 3
+13db9: MOV Reg ESI, Immediate 1 5
+13dbe: MOV Reg RDI, Reg RBX 3
+13dc1: XOR Reg EAX, Reg EAX 2
+13dc3: CALL xc_report_error (external)
+13dc8: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R12D 4
+13dcc: MOV Reg R12D, Immediate 4294967295 6
+13dd2: JMP 13d42 (resolved immediate)
+  |
+  `- 13d42
+13dd7: CALL __stack_chk_fail (external)
+  |
+  `- 

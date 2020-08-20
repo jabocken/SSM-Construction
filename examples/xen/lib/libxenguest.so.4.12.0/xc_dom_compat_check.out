@@ -1,0 +1,111 @@
+Number of assembly instructions     = 82
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 82
+Number of edges: 85
+
+188a0 (False): 0
+
+188a0: PUSH Reg R14 2
+188a2: PUSH Reg R13 2
+188a4: LEA Reg RSI, Address (AddrPlus (FromReg RDI) (AddrImm 1244)) 7
+188ab: PUSH Reg R12 2
+188ad: PUSH Reg RBP 1
+188ae: MOV Reg EDX, Immediate 1023 5
+188b3: PUSH Reg RBX 1
+188b4: MOV Reg RBP, Reg RDI 3
+188b7: SUB Reg RSP, Immediate 1056 7
+188be: LEA Reg RCX, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+188c3: LEA Reg R13, Address (AddrPlus (FromReg RSP) (AddrImm 8)) 5
+188c8: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+188d1: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 1048))), Reg RAX 8
+188d9: XOR Reg EAX, Reg EAX 2
+188db: MOV Reg RDI, Reg RCX 3
+188de: CALL strncpy (external)
+188e3: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 51986)) 7
+188ea: MOV Reg RDX, Reg R13 3
+188ed: MOV Reg RDI, Reg RAX 3
+188f0: MOV Address (SizeDir 8 (AddrPlus (FromReg RSP) (AddrImm 1039))), Immediate 0 8
+188f8: CALL strtok_r (external)
+188fd: TEST Reg RAX, Reg RAX 3
+18900: JZ 189c0 (resolved immediate)
+  |
+  `- 18906,189c0
+18906: MOV Reg RBX, Reg RAX 3
+18909: XOR Reg R12D, Reg R12D 3
+1890c: LEA Reg R14, Address (AddrPlus (FromReg RIP) (AddrImm 54550)) 7
+18913: JMP 18950 (resolved immediate)
+  |
+  `- 18950
+18918: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 55825)) 7
+1891f: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 54858)) 7
+18926: MOV Reg R8, Reg R14 3
+18929: MOV Reg RCX, Reg RBX 3
+1892c: XOR Reg EAX, Reg EAX 2
+1892e: ADD Reg R12D, Immediate 1 4
+18932: CALL xc_dom_printf (external)
+18937: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 51902)) 7
+1893e: XOR Reg EDI, Reg EDI 2
+18940: MOV Reg RDX, Reg R13 3
+18943: CALL strtok_r (external)
+18948: TEST Reg RAX, Reg RAX 3
+1894b: MOV Reg RBX, Reg RAX 3
+1894e: JZ 18990 (resolved immediate)
+  |
+  `- 18950,18990
+18950: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 832))) 7
+18957: MOV Reg RSI, Reg RBX 3
+1895a: CALL strcmp (external)
+1895f: TEST Reg EAX, Reg EAX 2
+18961: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 1224))) 7
+18968: JZ 18918 (resolved immediate)
+  |
+  `- 18918,1896a
+1896a: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 49046)) 7
+18971: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 55736)) 7
+18978: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 54769)) 7
+1897f: MOV Reg RCX, Reg RBX 3
+18982: XOR Reg EAX, Reg EAX 2
+18984: CALL xc_dom_printf (external)
+18989: JMP 18937 (resolved immediate)
+  |
+  `- 18937
+18990: TEST Reg R12D, Reg R12D 3
+18993: JZ 189c0 (resolved immediate)
+  |
+  `- 18995,189c0
+18995: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 1048))) 8
+1899d: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+189a6: MOV Reg EAX, Reg R12D 3
+189a9: JNZ 189fe (resolved immediate)
+  |
+  `- 189ab,189fe
+189ab: ADD Reg RSP, Immediate 1056 7
+189b2: POP Reg RBX 1
+189b3: POP Reg RBP 1
+189b4: POP Reg R12 2
+189b6: POP Reg R13 2
+189b8: POP Reg R14 2
+189ba: RET  1
+  |
+  `- 
+189c0: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 1224))) 7
+189c7: SUB Reg RSP, Immediate 8 4
+189cb: LEA Reg R9, Address (AddrPlus (FromReg RIP) (AddrImm 55646)) 7
+189d2: PUSH Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 832))) 6
+189d8: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 54617)) 7
+189df: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 54325)) 7
+189e6: MOV Reg EDX, Immediate 89 5
+189eb: XOR Reg EAX, Reg EAX 2
+189ed: MOV Reg ECX, Immediate 2 5
+189f2: CALL xc_dom_panic_func (external)
+189f7: XOR Reg R12D, Reg R12D 3
+189fa: POP Reg RAX 1
+189fb: POP Reg RDX 1
+189fc: JMP 18995 (resolved immediate)
+  |
+  `- 18995
+189fe: CALL __stack_chk_fail (external)
+  |
+  `- 

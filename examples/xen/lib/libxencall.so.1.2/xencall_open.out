@@ -1,0 +1,185 @@
+Number of assembly instructions     = 130
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 130
+Number of edges: 140
+
+1010 (False): 0
+1660 (True): 1093
+1730 (True): 10e0
+
+1010: PUSH Reg R13 2
+1012: PUSH Reg R12 2
+1014: MOV Reg R12D, Reg ESI 3
+1017: PUSH Reg RBP 1
+1018: PUSH Reg RBX 1
+1019: MOV Reg RBP, Reg RDI 3
+101c: MOV Reg EDI, Immediate 128 5
+1021: SUB Reg RSP, Immediate 8 4
+1025: CALL malloc (external)
+102a: TEST Reg RAX, Reg RAX 3
+102d: MOV Reg RBX, Reg RAX 3
+1030: JZ 1097 (resolved immediate)
+  |
+  `- 1032,1097
+1032: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 20))), Immediate 18446744073709551615 8
+103a: LEA Reg R13, Address (AddrPlus (FromReg RBX) (AddrImm 32)) 4
+103e: LEA Reg RAX, Address (AddrMinus (FromReg RIP) (AddrImm 101)) 7
+1045: MOV Reg RDI, Reg R13 3
+1048: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 32))), Reg RAX 4
+104c: CALL xentoolcore__register_active_handle (external)
+1051: TEST Reg RBP, Reg RBP 3
+1054: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 16))), Reg R12D 4
+1058: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 56))), Immediate 0 7
+105f: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 96))), Immediate 0 8
+1067: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 104))), Immediate 0 8
+106f: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 112))), Immediate 0 8
+1077: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 120))), Immediate 0 7
+107e: MOV Address (SizeDir 64 (FromReg RBX)), Reg RBP 3
+1081: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))), Immediate 0 8
+1089: JZ 10a8 (resolved immediate)
+  |
+  `- 108b,10a8
+108b: MOV Reg RDI, Reg RBX 3
+108e: CALL osdep_xencall_open (internal)
+  |
+  `- 1660
+1093: TEST Reg EAX, Reg EAX 2
+1095: JS 10d0 (resolved immediate)
+  |
+  `- 1097,10d0
+1097: ADD Reg RSP, Immediate 8 4
+109b: MOV Reg RAX, Reg RBX 3
+109e: POP Reg RBX 1
+109f: POP Reg RBP 1
+10a0: POP Reg R12 2
+10a2: POP Reg R13 2
+10a4: RET  1
+  |
+  `- 
+10a8: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2105161))) 7
+10af: XOR Reg EDX, Reg EDX 2
+10b1: MOV Reg ESI, Immediate 4 5
+10b6: MOV Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
+10b9: CALL xtl_createlogger_stdiostream (external)
+10be: TEST Reg RAX, Reg RAX 3
+10c1: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))), Reg RAX 4
+10c5: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
+10c8: JNZ 108b (resolved immediate)
+  |
+  `- 108b,10ca
+10ca: NOP  6
+10d0: MOV Reg RDI, Reg R13 3
+10d3: CALL xentoolcore__deregister_active_handle (external)
+10d8: MOV Reg RDI, Reg RBX 3
+10db: CALL osdep_xencall_close (internal)
+  |
+  `- 10e0,1730
+10e0: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+10e4: CALL xtl_logger_destroy (external)
+10e9: MOV Reg RDI, Reg RBX 3
+10ec: XOR Reg EBX, Reg EBX 2
+10ee: CALL free (external)
+10f3: JMP 1097 (resolved immediate)
+  |
+  `- 1097
+1660: PUSH Reg R12 2
+1662: PUSH Reg RBP 1
+1663: MOV Reg RBP, Reg RDI 3
+1666: PUSH Reg RBX 1
+1667: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 921)) 7
+166e: XOR Reg EAX, Reg EAX 2
+1670: MOV Reg ESI, Immediate 524290 5
+1675: CALL open (external)
+167a: CMP Reg EAX, Immediate 4294967295 3
+167d: MOV Reg EBX, Reg EAX 2
+167f: JZ 16b0 (resolved immediate)
+  |
+  `- 1681,16b0
+1681: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 938)) 7
+1688: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 20))), Reg EBX 3
+168b: XOR Reg EAX, Reg EAX 2
+168d: MOV Reg ESI, Immediate 524290 5
+1692: CALL open (external)
+1697: CMP Reg EAX, Immediate 4294967295 3
+169a: MOV Reg EBX, Reg EAX 2
+169c: JZ 16f0 (resolved immediate)
+  |
+  `- 169e,16f0
+169e: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 24))), Reg EBX 3
+16a1: XOR Reg EBX, Reg EBX 2
+16a3: MOV Reg EAX, Reg EBX 2
+16a5: POP Reg RBX 1
+16a6: POP Reg RBP 1
+16a7: POP Reg R12 2
+16a9: RET  1
+  |
+  `- 
+16b0: CALL __errno_location (external)
+16b5: MOV Reg EDX, Address (SizeDir 32 (FromReg RAX)) 2
+16b7: MOV Reg R12, Reg RAX 3
+16ba: MOV Reg EAX, Reg EDX 2
+16bc: AND Reg EAX, Immediate 4294967291 3
+16bf: CMP Reg EAX, Immediate 2 3
+16c2: JZ 1708 (resolved immediate)
+  |
+  `- 16c4,1708
+16c4: CMP Reg EDX, Immediate 19 3
+16c7: JZ 1708 (resolved immediate)
+  |
+  `- 16c9,1708
+16c9: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 888)) 7
+16d0: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))) 4
+16d4: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 847)) 7
+16db: MOV Reg ESI, Immediate 8 5
+16e0: XOR Reg EAX, Reg EAX 2
+16e2: CALL xtl_log (external)
+16e7: JMP 16a3 (resolved immediate)
+  |
+  `- 16a3
+16f0: CALL __errno_location (external)
+16f5: MOV Reg EDX, Address (SizeDir 32 (FromReg RAX)) 2
+16f7: CMP Reg EDX, Immediate 2 3
+16fa: JZ 169e (resolved immediate)
+  |
+  `- 169e,16fc
+16fc: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 893)) 7
+1703: JMP 16d0 (resolved immediate)
+  |
+  `- 16d0
+1708: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 777)) 7
+170f: XOR Reg EAX, Reg EAX 2
+1711: MOV Reg ESI, Immediate 524290 5
+1716: CALL open (external)
+171b: CMP Reg EAX, Immediate 4294967295 3
+171e: JZ 1727 (resolved immediate)
+  |
+  `- 1720,1727
+1720: MOV Reg EBX, Reg EAX 2
+1722: JMP 1681 (resolved immediate)
+  |
+  `- 1681
+1727: MOV Reg EDX, Address (SizeDir 32 (FromReg R12)) 4
+172b: JMP 16c9 (resolved immediate)
+  |
+  `- 16c9
+1730: PUSH Reg RBX 1
+1731: MOV Reg RBX, Reg RDI 3
+1734: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 24))) 3
+1737: TEST Reg EDI, Reg EDI 2
+1739: JS 1740 (resolved immediate)
+  |
+  `- 173b,1740
+173b: CALL close (external)
+1740: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 20))) 3
+1743: TEST Reg EDI, Reg EDI 2
+1745: JS 174c (resolved immediate)
+  |
+  `- 1747,174c
+1747: CALL close (external)
+174c: XOR Reg EAX, Reg EAX 2
+174e: POP Reg RBX 1
+174f: RET  1
+  |
+  `- 

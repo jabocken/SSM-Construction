@@ -1,0 +1,177 @@
+Number of assembly instructions     = 132
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 132
+Number of edges: 142
+
+1e70 (False): 0
+
+1e70: PUSH Reg R15 2
+1e72: PUSH Reg R14 2
+1e74: MOV Reg EDX, Reg EDX 2
+1e76: PUSH Reg R13 2
+1e78: PUSH Reg R12 2
+1e7a: MOV Reg R13, Reg RDI 3
+1e7d: PUSH Reg RBP 1
+1e7e: PUSH Reg RBX 1
+1e7f: MOV Reg EBX, Reg ESI 2
+1e81: MOV Reg RSI, Reg RBX 3
+1e84: MOV Reg EBP, Reg ECX 2
+1e86: MOV Reg R12, Reg R8 3
+1e89: SUB Reg RSP, Immediate 552 7
+1e90: SHL Reg RSI, Immediate 9 4
+1e94: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1e9d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 536))), Reg RAX 8
+1ea5: XOR Reg EAX, Reg EAX 2
+1ea7: MOV Reg RAX, Address (SizeDir 64 (FromReg RDI)) 3
+1eaa: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))) 4
+1eae: ADD Reg RBX, Reg RSI 3
+1eb1: ADD Reg RBX, Reg RDX 3
+1eb4: MOV Reg ESI, Reg EBX 2
+1eb6: AND Reg ESI, Immediate 511 6
+1ebc: JZ 1f90 (resolved immediate)
+  |
+  `- 1ec2,1f90
+1ec2: MOV Reg R15D, Immediate 512 6
+1ec8: MOV Reg R8D, Immediate 512 6
+1ece: SUB Reg R15D, Reg ESI 3
+1ed1: CMP Reg R15D, Reg ECX 3
+1ed4: JBE 1ee0 (resolved immediate)
+  |
+  `- 1ed6,1ee0
+1ed6: LEA Reg R8D, Address (AddrPlus (FromReg RSI) (FromReg RCX)) 4
+1eda: MOV Reg R15D, Reg ECX 3
+1edd: MOVSXD Reg R8, Reg R8D 3
+1ee0: LEA Reg R9, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+1ee5: MOV Reg EDI, Address (SizeDir 32 (FromReg RAX)) 2
+1ee7: MOVSXD Reg R14, Reg ESI 3
+1eea: MOV Reg RCX, Reg RBX 3
+1eed: MOV Reg EDX, Immediate 512 5
+1ef2: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg R8 5
+1ef7: SUB Reg RCX, Reg R14 3
+1efa: MOV Reg RSI, Reg R9 3
+1efd: MOV Address (SizeDir 64 (FromReg RSP)), Reg R9 4
+1f01: CALL pread (external)
+1f06: MOV Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+1f0b: MOV Reg R9, Address (SizeDir 64 (FromReg RSP)) 4
+1f0f: CMP Reg RAX, Reg R8 3
+1f12: JGE 1f48 (resolved immediate)
+  |
+  `- 1f14,1f48
+1f14: XOR Reg EBX, Reg EBX 2
+1f16: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 536))) 8
+1f1e: XOR Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1f27: MOV Reg EAX, Reg EBX 2
+1f29: JNZ 2064 (resolved immediate)
+  |
+  `- 1f2f,2064
+1f2f: ADD Reg RSP, Immediate 552 7
+1f36: POP Reg RBX 1
+1f37: POP Reg RBP 1
+1f38: POP Reg R12 2
+1f3a: POP Reg R13 2
+1f3c: POP Reg R14 2
+1f3e: POP Reg R15 2
+1f40: RET  1
+  |
+  `- 
+1f48: CMP Reg R15D, Immediate 8 4
+1f4c: MOVSXD Reg RAX, Reg R15D 3
+1f4f: LEA Reg RSI, Address (AddrPlus (FromReg R9) (FromReg R14)) 4
+1f53: JAE 2010 (resolved immediate)
+  |
+  `- 1f59,2010
+1f59: TEST Reg R15B, Immediate 4 4
+1f5d: JNZ 2050 (resolved immediate)
+  |
+  `- 1f63,2050
+1f63: TEST Reg R15D, Reg R15D 3
+1f66: JZ 203f (resolved immediate)
+  |
+  `- 1f6c,203f
+1f6c: MOVZX Reg EDX, Address (SizeDir 8 (FromReg RSI)) 3
+1f6f: TEST Reg R15B, Immediate 2 4
+1f73: MOV Address (SizeDir 8 (FromReg R12)), Reg DL 4
+1f77: JZ 203f (resolved immediate)
+  |
+  `- 1f7d,203f
+1f7d: MOV Reg EDX, Reg R15D 3
+1f80: MOVZX Reg ECX, Address (SizeDir 16 (AddrMinus (AddrPlus (FromReg RSI) (FromReg RDX)) (AddrImm 2))) 5
+1f85: MOV Address (SizeDir 16 (AddrMinus (AddrPlus (FromReg R12) (FromReg RDX)) (AddrImm 2))), Reg CX 6
+1f8b: JMP 203f (resolved immediate)
+  |
+  `- 203f
+1f90: MOV Reg R14, Reg RBX 3
+1f93: MOV Reg R15D, Reg EBP 3
+1f96: AND Reg R15D, Immediate 4294966784 7
+1f9d: JLE 1fc8 (resolved immediate)
+  |
+  `- 1f9f,1fc8
+1f9f: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 0))) 4
+1fa3: MOVSXD Reg RBX, Reg R15D 3
+1fa6: MOV Reg RCX, Reg R14 3
+1fa9: MOV Reg RDX, Reg RBX 3
+1fac: MOV Reg RSI, Reg R12 3
+1faf: MOV Reg EDI, Address (SizeDir 32 (FromReg RAX)) 2
+1fb1: CALL pread (external)
+1fb6: CMP Reg RBX, Reg RAX 3
+1fb9: JG 1f14 (resolved immediate)
+  |
+  `- 1f14,1fbf
+1fbf: ADD Reg R12, Reg RBX 3
+1fc2: SUB Reg EBP, Reg R15D 3
+1fc5: ADD Reg R14, Reg RBX 3
+1fc8: TEST Reg EBP, Reg EBP 2
+1fca: MOV Reg EBX, Immediate 1 5
+1fcf: JZ 1f16 (resolved immediate)
+  |
+  `- 1f16,1fd5
+1fd5: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 0))) 4
+1fd9: LEA Reg R15, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+1fde: MOV Reg EDX, Immediate 512 5
+1fe3: MOV Reg RCX, Reg R14 3
+1fe6: MOV Reg RSI, Reg R15 3
+1fe9: MOV Reg EDI, Address (SizeDir 32 (FromReg RAX)) 2
+1feb: CALL pread (external)
+1ff0: MOV Reg EDX, Reg EBP 2
+1ff2: CMP Reg RDX, Reg RAX 3
+1ff5: JG 1f14 (resolved immediate)
+  |
+  `- 1f14,1ffb
+1ffb: MOV Reg RSI, Reg R15 3
+1ffe: MOV Reg RDI, Reg R12 3
+2001: CALL memcpy (external)
+2006: JMP 1f16 (resolved immediate)
+  |
+  `- 1f16
+2010: MOV Reg RDX, Address (SizeDir 64 (FromReg RSI)) 3
+2013: LEA Reg RDI, Address (AddrPlus (FromReg R12) (AddrImm 8)) 5
+2018: AND Reg RDI, Immediate 18446744073709551608 4
+201c: MOV Address (SizeDir 64 (FromReg R12)), Reg RDX 4
+2020: MOV Reg EDX, Reg R15D 3
+2023: MOV Reg RCX, Address (SizeDir 64 (AddrMinus (AddrPlus (FromReg RSI) (FromReg RDX)) (AddrImm 8))) 5
+2028: MOV Address (SizeDir 64 (AddrMinus (AddrPlus (FromReg R12) (FromReg RDX)) (AddrImm 8))), Reg RCX 5
+202d: MOV Reg RCX, Reg R12 3
+2030: SUB Reg RCX, Reg RDI 3
+2033: SUB Reg RSI, Reg RCX 3
+2036: ADD Reg ECX, Reg R15D 3
+2039: SHR Reg ECX, Immediate 3 3
+203c: REP MOVSQ  3
+203f: ADD Reg R12, Reg RAX 3
+2042: SUB Reg EBP, Reg R15D 3
+2045: LEA Reg R14, Address (AddrPlus (FromReg RBX) (FromReg RAX)) 4
+2049: JMP 1f93 (resolved immediate)
+  |
+  `- 1f93
+2050: MOV Reg EDX, Address (SizeDir 32 (FromReg RSI)) 2
+2052: MOV Address (SizeDir 32 (FromReg R12)), Reg EDX 4
+2056: MOV Reg EDX, Reg R15D 3
+2059: MOV Reg ECX, Address (SizeDir 32 (AddrMinus (AddrPlus (FromReg RSI) (FromReg RDX)) (AddrImm 4))) 4
+205d: MOV Address (SizeDir 32 (AddrMinus (AddrPlus (FromReg R12) (FromReg RDX)) (AddrImm 4))), Reg ECX 5
+2062: JMP 203f (resolved immediate)
+  |
+  `- 203f
+2064: CALL __stack_chk_fail (external)
+  |
+  `- 

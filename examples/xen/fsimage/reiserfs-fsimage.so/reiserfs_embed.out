@@ -1,0 +1,86 @@
+Number of assembly instructions     = 57
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 57
+Number of edges: 61
+
+2330 (False): 0
+
+2330: PUSH Reg R12 2
+2332: PUSH Reg RBP 1
+2333: MOV Reg R12, Reg RSI 3
+2336: PUSH Reg RBX 1
+2337: MOV Reg EBP, Reg EDX 2
+2339: MOV Reg ECX, Immediate 204 5
+233e: XOR Reg EDX, Reg EDX 2
+2340: MOV Reg ESI, Immediate 128 5
+2345: SUB Reg RSP, Immediate 224 7
+234c: MOV Reg RBX, Reg RSP 3
+234f: MOV Reg R8, Reg RBX 3
+2352: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+235b: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 216))), Reg RAX 8
+2363: XOR Reg EAX, Reg EAX 2
+2365: CALL fsig_devread (external)
+236a: TEST Reg EAX, Reg EAX 2
+236c: JNZ 2398 (resolved immediate)
+  |
+  `- 236e,2398
+236e: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 216))) 8
+2376: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+237f: JNZ 2417 (resolved immediate)
+  |
+  `- 2385,2417
+2385: ADD Reg RSP, Immediate 224 7
+238c: POP Reg RBX 1
+238d: POP Reg RBP 1
+238e: POP Reg R12 2
+2390: RET  1
+  |
+  `- 
+2398: ADD Reg RBX, Immediate 52 4
+239c: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 191)) 7
+23a3: MOV Address (SizeDir 32 (FromReg R12)), Immediate 1 8
+23ab: MOV Reg RSI, Reg RBX 3
+23ae: CALL fsig_substring (external)
+23b3: TEST Reg EAX, Reg EAX 2
+23b5: JG 23e0 (resolved immediate)
+  |
+  `- 23b7,23e0
+23b7: MOVZX Reg EAX, Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 44))) 5
+23bc: MOV Reg EDX, Immediate 127 5
+23c1: IMUL Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 5
+23c6: CMP Reg EAX, Immediate 65536 5
+23cb: JBE 2406 (resolved immediate)
+  |
+  `- 23cd,2406
+23cd: XOR Reg EAX, Reg EAX 2
+23cf: CMP Reg EDX, Reg EBP 2
+23d1: SETGE Reg AL 3
+23d4: JMP 236e (resolved immediate)
+  |
+  `- 236e
+23e0: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 113)) 7
+23e7: MOV Reg RSI, Reg RBX 3
+23ea: CALL fsig_substring (external)
+23ef: TEST Reg EAX, Reg EAX 2
+23f1: JLE 23b7 (resolved immediate)
+  |
+  `- 23b7,23f3
+23f3: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 84)) 7
+23fa: MOV Reg RSI, Reg RBX 3
+23fd: CALL fsig_substring (external)
+2402: TEST Reg EAX, Reg EAX 2
+2404: JLE 23b7 (resolved immediate)
+  |
+  `- 23b7,2406
+2406: MOV Reg EDX, Immediate 15 5
+240b: XOR Reg EAX, Reg EAX 2
+240d: CMP Reg EDX, Reg EBP 2
+240f: SETGE Reg AL 3
+2412: JMP 236e (resolved immediate)
+  |
+  `- 236e
+2417: CALL __stack_chk_fail (external)
+  |
+  `- 

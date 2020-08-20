@@ -1,0 +1,152 @@
+Number of assembly instructions     = 91
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 91
+Number of edges: 99
+
+20500 (True): 411b6
+41160 (True): 4120b, 41279
+411d0 (False): 0
+
+20500: CMP Address (SizeDir 32 (FromReg RDI)), Reg ESI 2
+20502: MOV Reg EAX, Immediate 1 5
+20507: JLE 20519 (resolved immediate)
+  |
+  `- 20509,20519
+20509: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))) 4
+2050d: MOVSXD Reg RSI, Reg ESI 3
+20510: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RSI)))) 4
+20514: MOV Address (SizeDir 64 (FromReg RDX)), Reg RAX 3
+20517: XOR Reg EAX, Reg EAX 2
+20519: REPZ RET  2
+  |
+  `- 
+41160: SUB Reg RSP, Immediate 24 4
+41164: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+4116d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
+41172: XOR Reg EAX, Reg EAX 2
+41174: TEST Reg RDI, Reg RDI 3
+41177: MOV Address (SizeDir 64 (FromReg RSP)), Immediate 0 8
+4117f: JZ 41189 (resolved immediate)
+  |
+  `- 41181,41189
+41181: CMP Address (SizeDir 32 (FromReg RDI)), Immediate 128 6
+41187: JZ 411a0 (resolved immediate)
+  |
+  `- 41189,411a0
+41189: XOR Reg EAX, Reg EAX 2
+4118b: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+41190: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+41199: JNZ 411c0 (resolved immediate)
+  |
+  `- 4119b,411c0
+4119b: ADD Reg RSP, Immediate 24 4
+4119f: RET  1
+  |
+  `- 
+411a0: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
+411a4: TEST Reg RDI, Reg RDI 3
+411a7: JZ 41189 (resolved immediate)
+  |
+  `- 41189,411a9
+411a9: CMP Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 8))), Reg ESI 3
+411ac: JBE 41189 (resolved immediate)
+  |
+  `- 41189,411ae
+411ae: MOV Reg RDX, Reg RSP 3
+411b1: CALL flexarray_get (internal)
+  |
+  `- 20500
+411b6: TEST Reg EAX, Reg EAX 2
+411b8: JNZ 41189 (resolved immediate)
+  |
+  `- 41189,411ba
+411ba: MOV Reg RAX, Address (SizeDir 64 (FromReg RSP)) 4
+411be: JMP 4118b (resolved immediate)
+  |
+  `- 4118b
+411c0: CALL __stack_chk_fail (external)
+  |
+  `- 
+411d0: TEST Reg RSI, Reg RSI 3
+411d3: JZ 411dd (resolved immediate)
+  |
+  `- 411d5,411dd
+411d5: CMP Address (SizeDir 32 (FromReg RSI)), Immediate 128 6
+411db: JZ 411e8 (resolved immediate)
+  |
+  `- 411dd,411e8
+411dd: MOV Reg EAX, Immediate 4294967293 5
+411e2: RET  1
+  |
+  `- 
+411e8: PUSH Reg R12 2
+411ea: PUSH Reg RBP 1
+411eb: MOV Reg RBP, Reg RSI 3
+411ee: PUSH Reg RBX 1
+411ef: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))) 4
+411f3: MOV Reg R12, Reg RDX 3
+411f6: MOV Reg RBX, Reg RDI 3
+411f9: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 8))) 3
+411fc: TEST Reg ESI, Reg ESI 2
+411fe: JZ 41228 (resolved immediate)
+  |
+  `- 41200,41228
+41200: SUB Reg ESI, Immediate 1 3
+41203: MOV Reg RDI, Reg RBP 3
+41206: CALL libxl__json_array_get (internal)
+  |
+  `- 41160
+4120b: TEST Reg RAX, Reg RAX 3
+4120e: JZ 41218 (resolved immediate)
+  |
+  `- 41210,41218
+41210: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 4 3
+41213: JZ 41240 (resolved immediate)
+  |
+  `- 41215,41240
+41215: NOP  3
+41218: MOV Reg EAX, Immediate 4294967293 5
+4121d: POP Reg RBX 1
+4121e: POP Reg RBP 1
+4121f: POP Reg R12 2
+41221: RET  1
+  |
+  `- 
+41228: MOV Reg RDI, Reg R12 3
+4122b: CALL libxl_bitmap_init (external)
+41230: POP Reg RBX 1
+41231: XOR Reg EAX, Reg EAX 2
+41233: POP Reg RBP 1
+41234: POP Reg R12 2
+41236: RET  1
+  |
+  `- 
+41240: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))) 4
+41244: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
+41248: MOV Reg RSI, Reg R12 3
+4124b: XOR Reg EBX, Reg EBX 2
+4124d: ADD Reg EDX, Immediate 1 3
+41250: CALL libxl_bitmap_alloc (external)
+41255: JMP 4126f (resolved immediate)
+  |
+  `- 4126f
+41260: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))) 4
+41264: MOV Reg RDI, Reg R12 3
+41267: ADD Reg EBX, Immediate 1 3
+4126a: CALL libxl_bitmap_set (external)
+4126f: MOV Reg ESI, Reg EBX 2
+41271: MOV Reg RDI, Reg RBP 3
+41274: CALL libxl__json_array_get (internal)
+41279: TEST Reg RAX, Reg RAX 3
+4127c: JZ 4121d (resolved immediate)
+  |
+  `- 4121d,4127e
+4127e: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 4 3
+41281: JNZ 41218 (resolved immediate)
+  |
+  `- 41218,41283
+41283: JMP 41260 (resolved immediate)
+  |
+  `- 41260

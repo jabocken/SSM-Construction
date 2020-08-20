@@ -1,0 +1,45 @@
+Number of assembly instructions     = 30
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 30
+Number of edges: 30
+
+166b0 (False): 0
+
+166b0: PUSH Reg R12 2
+166b2: PUSH Reg RBP 1
+166b3: MOV Reg R12, Reg RSI 3
+166b6: PUSH Reg RBX 1
+166b7: MOV Reg RBX, Reg RDI 3
+166ba: MOV Reg EDI, Immediate 32 5
+166bf: MOV Reg RBP, Reg RDX 3
+166c2: CALL malloc (external)
+166c7: TEST Reg RAX, Reg RAX 3
+166ca: JZ 16709 (resolved immediate)
+  |
+  `- 166cc,16709
+166cc: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1152))) 7
+166d3: ADD Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1160))), Immediate 32 8
+166db: ADD Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1168))), Reg RBP 7
+166e2: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 20))), Immediate 0 7
+166e9: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))), Reg R12 4
+166ed: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 24))), Reg RBP 4
+166f1: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 16))), Immediate 1 7
+166f8: MOV Address (SizeDir 64 (FromReg RAX)), Reg RDX 3
+166fb: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1152))), Reg RAX 7
+16702: XOR Reg EAX, Reg EAX 2
+16704: POP Reg RBX 1
+16705: POP Reg RBP 1
+16706: POP Reg R12 2
+16708: RET  1
+  |
+  `- 
+16709: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1224))) 7
+16710: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 63129)) 7
+16717: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 60163)) 7
+1671e: CALL xc_dom_printf (external)
+16723: MOV Reg EAX, Immediate 4294967295 5
+16728: JMP 16704 (resolved immediate)
+  |
+  `- 16704

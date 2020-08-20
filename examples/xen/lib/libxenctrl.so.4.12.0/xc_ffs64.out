@@ -1,0 +1,32 @@
+Number of assembly instructions     = 13
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 13
+Number of edges: 12
+
+1b0b0 (False): 0
+
+1b0b0: TEST Reg EDI, Reg EDI 2
+1b0b2: JNZ 1b0e0 (resolved immediate)
+  |
+  `- 1b0b4,1b0e0
+1b0b4: SHR Reg RDI, Immediate 32 4
+1b0b8: XOR Reg EAX, Reg EAX 2
+1b0ba: TEST Reg RDI, Reg RDI 3
+1b0bd: JNZ 1b0c8 (resolved immediate)
+  |
+  `- 1b0bf,1b0c8
+1b0bf: REPZ RET  2
+  |
+  `- 
+1b0c8: SUB Reg RSP, Immediate 8 4
+1b0cc: CALL xc_ffs32 (external)
+1b0d1: ADD Reg RSP, Immediate 8 4
+1b0d5: ADD Reg EAX, Immediate 32 3
+1b0d8: RET  1
+  |
+  `- 
+1b0e0: JMP xc_ffs32 (jmp to external function)
+  |
+  `- 

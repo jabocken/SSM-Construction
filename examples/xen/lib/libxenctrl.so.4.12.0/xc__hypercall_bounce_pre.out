@@ -1,0 +1,74 @@
+Number of assembly instructions     = 45
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 45
+Number of edges: 46
+
+22460 (False): 0
+
+22460: PUSH Reg RBP 1
+22461: PUSH Reg RBX 1
+22462: SUB Reg RSP, Immediate 8 4
+22466: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 24))) 4
+2246a: CMP Reg RAX, Immediate 18446744073709551615 4
+2246e: JZ 224e1 (resolved immediate)
+  |
+  `- 22470,224e1
+22470: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RSI) (AddrImm 16))) 3
+22473: MOV Reg RBX, Reg RSI 3
+22476: TEST Reg EDX, Reg EDX 2
+22478: JZ 224e1 (resolved immediate)
+  |
+  `- 2247a,224e1
+2247a: TEST Reg RAX, Reg RAX 3
+2247d: JZ 224c8 (resolved immediate)
+  |
+  `- 2247f,224c8
+2247f: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 32))) 4
+22483: CALL xc__hypercall_buffer_alloc (external)
+22488: TEST Reg RAX, Reg RAX 3
+2248b: JZ 224da (resolved immediate)
+  |
+  `- 2248d,224da
+2248d: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 16))) 3
+22490: XOR Reg EBP, Reg EBP 2
+22492: AND Reg EAX, Immediate 4294967293 3
+22495: CMP Reg EAX, Immediate 1 3
+22498: JZ 224a8 (resolved immediate)
+  |
+  `- 2249a,224a8
+2249a: ADD Reg RSP, Immediate 8 4
+2249e: MOV Reg EAX, Reg EBP 2
+224a0: POP Reg RBX 1
+224a1: POP Reg RBP 1
+224a2: RET  1
+  |
+  `- 
+224a8: MOV Reg RDI, Address (SizeDir 64 (FromReg RBX)) 3
+224ab: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
+224af: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 32))) 4
+224b3: CALL memcpy (external)
+224b8: ADD Reg RSP, Immediate 8 4
+224bc: MOV Reg EAX, Reg EBP 2
+224be: POP Reg RBX 1
+224bf: POP Reg RBP 1
+224c0: RET  1
+  |
+  `- 
+224c8: MOV Address (SizeDir 64 (FromReg RSI)), Immediate 0 7
+224cf: XOR Reg EBP, Reg EBP 2
+224d1: ADD Reg RSP, Immediate 8 4
+224d5: MOV Reg EAX, Reg EBP 2
+224d7: POP Reg RBX 1
+224d8: POP Reg RBP 1
+224d9: RET  1
+  |
+  `- 
+224da: MOV Reg EBP, Immediate 4294967295 5
+224df: JMP 2249a (resolved immediate)
+  |
+  `- 2249a
+224e1: CALL abort (external)
+  |
+  `- 

@@ -1,0 +1,84 @@
+Number of assembly instructions     = 58
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 58
+Number of edges: 59
+
+3f50 (False): 47a4
+4700 (False): 0
+
+3f50: SUB Reg RSP, Immediate 8 4
+3f54: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2146437))) 7
+3f5b: MOV Reg RCX, Reg RDI 3
+3f5e: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 39548)) 7
+3f65: MOV Reg ESI, Immediate 1 5
+3f6a: MOV Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
+3f6d: XOR Reg EAX, Reg EAX 2
+3f6f: CALL __fprintf_chk (external)
+3f74: MOV Reg EDI, Immediate 2 5
+3f79: CALL exit (external)
+  |
+  `- 
+4700: PUSH Reg R13 2
+4702: PUSH Reg R12 2
+4704: PUSH Reg RBP 1
+4705: PUSH Reg RBX 1
+4706: SUB Reg RSP, Immediate 8 4
+470a: CMP Reg RSI, Immediate 1 4
+470e: JBE 4788 (resolved immediate)
+  |
+  `- 4710,4788
+4710: CMP Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RDI) (FromReg RSI)) (AddrImm 2))), Immediate 0 5
+4715: LEA Reg R13, Address (AddrMinus (FromReg RSI) (AddrImm 2)) 4
+4719: JNZ 4788 (resolved immediate)
+  |
+  `- 471b,4788
+471b: CMP Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RDI) (FromReg RSI)) (AddrImm 1))), Immediate 0 5
+4720: JNZ 4788 (resolved immediate)
+  |
+  `- 4722,4788
+4722: MOV Reg RBP, Reg RDI 3
+4725: MOV Reg RSI, Reg RDX 3
+4728: MOV Reg EDI, Immediate 72 5
+472d: MOV Reg R12, Reg RDX 3
+4730: CALL xlu__cfg_yyalloc (external)
+4735: TEST Reg RAX, Reg RAX 3
+4738: MOV Reg RBX, Reg RAX 3
+473b: JZ 4798 (resolved immediate)
+  |
+  `- 473d,4798
+473d: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 24))), Reg R13 4
+4741: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))), Reg RBP 4
+4745: MOV Reg RSI, Reg R12 3
+4748: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 16))), Reg RBP 4
+474c: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 32))), Reg R13 4
+4750: MOV Reg RDI, Reg RAX 3
+4753: MOV Address (SizeDir 64 (FromReg RAX)), Immediate 0 7
+475a: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 40))), Immediate 0 8
+4762: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 48))), Immediate 1 7
+4769: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 60))), Immediate 0 8
+4771: CALL xlu__cfg_yy_switch_to_buffer (external)
+4776: ADD Reg RSP, Immediate 8 4
+477a: MOV Reg RAX, Reg RBX 3
+477d: POP Reg RBX 1
+477e: POP Reg RBP 1
+477f: POP Reg R12 2
+4781: POP Reg R13 2
+4783: RET  1
+  |
+  `- 
+4788: ADD Reg RSP, Immediate 8 4
+478c: XOR Reg EBX, Reg EBX 2
+478e: MOV Reg RAX, Reg RBX 3
+4791: POP Reg RBX 1
+4792: POP Reg RBP 1
+4793: POP Reg R12 2
+4795: POP Reg R13 2
+4797: RET  1
+  |
+  `- 
+4798: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 24161)) 7
+479f: CALL yy_fatal_error.isra.0 (internal)
+  |
+  `- 3f50

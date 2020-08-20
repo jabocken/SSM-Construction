@@ -1,0 +1,67 @@
+Number of assembly instructions     = 44
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 44
+Number of edges: 45
+
+3d3e0 (False): 0
+
+3d3e0: PUSH Reg R12 2
+3d3e2: PUSH Reg RBP 1
+3d3e3: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 381753)) 7
+3d3ea: PUSH Reg RBX 1
+3d3eb: MOV Reg R9D, Reg ESI 3
+3d3ee: MOV Reg R12, Reg RDI 3
+3d3f1: MOV Reg ECX, Immediate 23 5
+3d3f6: MOV Reg EDX, Immediate 1 5
+3d3fb: MOV Reg EBP, Reg ESI 2
+3d3fd: SUB Reg RSP, Immediate 48 4
+3d401: MOV Reg ESI, Immediate 23 5
+3d406: LEA Reg RBX, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+3d40b: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+3d414: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Reg RAX 5
+3d419: XOR Reg EAX, Reg EAX 2
+3d41b: MOV Reg RDI, Reg RBX 3
+3d41e: CALL __snprintf_chk (external)
+3d423: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 16))) 5
+3d428: LEA Reg RCX, Address (AddrPlus (FromReg RSP) (AddrImm 12)) 5
+3d42d: XOR Reg ESI, Reg ESI 2
+3d42f: MOV Reg RDX, Reg RBX 3
+3d432: CALL xs_read (external)
+3d437: TEST Reg RAX, Reg RAX 3
+3d43a: JNZ 3d468 (resolved immediate)
+  |
+  `- 3d43c,3d468
+3d43c: TEST Reg EBP, Reg EBP 2
+3d43e: JNZ 3d468 (resolved immediate)
+  |
+  `- 3d440,3d468
+3d440: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
+3d445: XOR Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+3d44e: JNZ 3d481 (resolved immediate)
+  |
+  `- 3d450,3d481
+3d450: ADD Reg RSP, Immediate 48 4
+3d454: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 381660)) 7
+3d45b: POP Reg RBX 1
+3d45c: POP Reg RBP 1
+3d45d: POP Reg R12 2
+3d45f: JMP strdup (jmp to external function)
+  |
+  `- 
+3d468: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
+3d46d: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+3d476: JNZ 3d481 (resolved immediate)
+  |
+  `- 3d478,3d481
+3d478: ADD Reg RSP, Immediate 48 4
+3d47c: POP Reg RBX 1
+3d47d: POP Reg RBP 1
+3d47e: POP Reg R12 2
+3d480: RET  1
+  |
+  `- 
+3d481: CALL __stack_chk_fail (external)
+  |
+  `- 

@@ -1,0 +1,83 @@
+Number of assembly instructions     = 62
+Number of indirect branches         = 1
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 1: 8e47
+Number of symbolic states (representative of non-determinism): 62
+Number of edges: 65
+
+8d27 (False): 0
+
+8d27: PUSH Reg RBX 1
+8d28: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2124753)) 7
+8d2f: CALL PyType_Ready (external)
+8d34: TEST Reg EAX, Reg EAX 2
+8d36: JS 8e2f (resolved immediate)
+  |
+  `- 8d3c,8e2f
+8d3c: MOV Reg R8D, Immediate 1013 6
+8d42: MOV Reg ECX, Immediate 0 5
+8d47: MOV Reg EDX, Immediate 0 5
+8d4c: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2128461)) 7
+8d53: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 1079)) 7
+8d5a: CALL Py_InitModule4_64 (external)
+8d5f: MOV Reg RBX, Reg RAX 3
+8d62: TEST Reg RAX, Reg RAX 3
+8d65: JZ 8e2f (resolved immediate)
+  |
+  `- 8d6b,8e2f
+8d6b: MOV Reg EDX, Immediate 0 5
+8d70: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2122313))) 7
+8d77: MOV Reg RSI, Address (SizeDir 64 (FromReg RAX)) 3
+8d7a: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 1056)) 7
+8d81: CALL PyErr_NewException (external)
+8d86: MOV Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2128443))), Reg RAX 7
+8d8d: TEST Reg RAX, Reg RAX 3
+8d90: JZ 8e31 (resolved immediate)
+  |
+  `- 8d96,8e31
+8d96: MOV Reg EDI, Immediate 0 5
+8d9b: CALL PyInt_FromLong (external)
+8da0: MOV Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2128409))), Reg RAX 7
+8da7: MOV Reg ESI, Immediate 0 5
+8dac: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2122245))) 7
+8db3: MOV Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
+8db6: CALL setbuf (external)
+8dbb: MOV Reg ESI, Immediate 0 5
+8dc0: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2122289))) 7
+8dc7: MOV Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
+8dca: CALL setbuf (external)
+8dcf: ADD Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2124585))), Immediate 1 8
+8dd7: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 2124578)) 7
+8dde: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 1393)) 7
+8de5: MOV Reg RDI, Reg RBX 3
+8de8: CALL PyModule_AddObject (external)
+8ded: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2128340))) 7
+8df4: ADD Address (SizeDir 64 (FromReg RDX)), Immediate 1 4
+8df8: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 946)) 7
+8dff: MOV Reg RDI, Reg RBX 3
+8e02: CALL PyModule_AddObject (external)
+8e07: MOV Reg EDX, Immediate 5 5
+8e0c: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 932)) 7
+8e13: MOV Reg RDI, Reg RBX 3
+8e16: CALL PyModule_AddIntConstant (external)
+8e1b: MOV Reg EDX, Immediate 6 5
+8e20: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 933)) 7
+8e27: MOV Reg RDI, Reg RBX 3
+8e2a: CALL PyModule_AddIntConstant (external)
+8e2f: POP Reg RBX 1
+8e30: RET  1
+  |
+  `- 
+8e31: MOV Reg RAX, Address (SizeDir 64 (FromReg RBX)) 3
+8e34: SUB Reg RAX, Immediate 1 4
+8e38: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
+8e3b: TEST Reg RAX, Reg RAX 3
+8e3e: JNZ 8e2f (resolved immediate)
+  |
+  `- 8e2f,8e40
+8e40: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+8e44: MOV Reg RDI, Reg RBX 3
+8e47: CALL Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 48))) 3
+8e4a: JMP 8e2f (resolved immediate)
+  |
+  `- 8e2f

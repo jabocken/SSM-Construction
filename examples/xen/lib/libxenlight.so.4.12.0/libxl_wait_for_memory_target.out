@@ -1,0 +1,103 @@
+Number of assembly instructions     = 70
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 70
+Number of edges: 74
+
+63460 (False): 0
+
+63460: PUSH Reg R14 2
+63462: PUSH Reg R13 2
+63464: MOV Reg R13D, Reg ESI 3
+63467: PUSH Reg R12 2
+63469: PUSH Reg RBP 1
+6346a: MOV Reg R12, Reg RDI 3
+6346d: PUSH Reg RBX 1
+6346e: MOV Reg EBX, Reg EDX 2
+63470: SUB Reg RSP, Immediate 160 7
+63477: LEA Reg RDX, Address (AddrPlus (FromReg RSP) (AddrImm 24)) 5
+6347c: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Immediate 0 9
+63485: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+6348e: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 152))), Reg RAX 8
+63496: XOR Reg EAX, Reg EAX 2
+63498: CALL libxl_get_memory_target (external)
+6349d: TEST Reg EAX, Reg EAX 2
+6349f: JS 6352d (resolved immediate)
+  |
+  `- 634a5,6352d
+634a5: LEA Reg RBP, Address (AddrPlus (FromReg RSP) (AddrImm 32)) 5
+634aa: MOV Reg R14, Immediate 18446744073709551615 7
+634b1: MOV Reg RDI, Reg RBP 3
+634b4: CALL libxl_dominfo_init (external)
+634b9: JMP 634f1 (resolved immediate)
+  |
+  `- 634f1
+634c0: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 80))) 5
+634c5: ADD Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 88))) 5
+634ca: CMP Reg R14, Reg RAX 3
+634cd: JB 63550 (resolved immediate)
+  |
+  `- 634d3,63550
+634d3: LEA Reg EDX, Address (AddrMinus (FromReg RBX) (AddrImm 2)) 3
+634d6: CMP Reg R14, Reg RAX 3
+634d9: CMOVZ Reg EBX, Reg EDX 3
+634dc: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
+634e1: TEST Reg EBX, Reg EBX 2
+634e3: JLE 63560 (resolved immediate)
+  |
+  `- 634e5,63560
+634e5: CMP Reg RDX, Reg RAX 3
+634e8: MOV Reg R14, Reg RAX 3
+634eb: JAE 63570 (resolved immediate)
+  |
+  `- 634f1,63570
+634f1: MOV Reg EDI, Immediate 2 5
+634f6: CALL sleep (external)
+634fb: MOV Reg RDI, Reg RBP 3
+634fe: CALL libxl_dominfo_dispose (external)
+63503: MOV Reg RDI, Reg RBP 3
+63506: CALL libxl_dominfo_init (external)
+6350b: MOV Reg EDX, Reg R13D 3
+6350e: MOV Reg RSI, Reg RBP 3
+63511: MOV Reg RDI, Reg R12 3
+63514: CALL libxl_domain_info (external)
+63519: TEST Reg EAX, Reg EAX 2
+6351b: JNS 634c0 (resolved immediate)
+  |
+  `- 634c0,6351d
+6351d: MOV Reg RDI, Reg RBP 3
+63520: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))), Reg EAX 4
+63524: CALL libxl_dominfo_dispose (external)
+63529: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 4
+6352d: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 152))) 8
+63535: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+6353e: JNZ 63574 (resolved immediate)
+  |
+  `- 63540,63574
+63540: ADD Reg RSP, Immediate 160 7
+63547: POP Reg RBX 1
+63548: POP Reg RBP 1
+63549: POP Reg R12 2
+6354b: POP Reg R13 2
+6354d: POP Reg R14 2
+6354f: RET  1
+  |
+  `- 
+63550: MOV Reg EAX, Immediate 4294967293 5
+63555: JMP 6351d (resolved immediate)
+  |
+  `- 6351d
+63560: CMP Reg RDX, Reg RAX 3
+63563: SBB Reg EAX, Reg EAX 2
+63565: AND Reg EAX, Immediate 4294967293 3
+63568: JMP 6351d (resolved immediate)
+  |
+  `- 6351d
+63570: XOR Reg EAX, Reg EAX 2
+63572: JMP 6351d (resolved immediate)
+  |
+  `- 6351d
+63574: CALL __stack_chk_fail (external)
+  |
+  `- 

@@ -1,0 +1,82 @@
+Number of assembly instructions     = 55
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 55
+Number of edges: 57
+
+4f9d (False): 0
+
+4f9d: PUSH Reg RBP 1
+4f9e: PUSH Reg RBX 1
+4f9f: SUB Reg RSP, Immediate 1064 7
+4fa6: MOV Reg RDI, Reg RSI 3
+4fa9: MOV Reg RSI, Reg RDX 3
+4fac: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+4fb5: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 1048))), Reg RAX 8
+4fbd: XOR Reg EAX, Reg EAX 2
+4fbf: LEA Reg R8, Address (AddrPlus (FromReg RSP) (AddrImm 12)) 5
+4fc4: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2140325)) 7
+4fcb: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 17013)) 7
+4fd2: CALL PyArg_ParseTupleAndKeywords (external)
+4fd7: TEST Reg EAX, Reg EAX 2
+4fd9: JZ 507c (resolved immediate)
+  |
+  `- 4fdf,507c
+4fdf: MOV Reg EDX, Immediate 0 5
+4fe4: MOV Reg ESI, Immediate 0 5
+4fe9: MOV Reg EDI, Immediate 0 5
+4fee: CALL xc_interface_open (external)
+4ff3: MOV Reg RBX, Reg RAX 3
+4ff6: TEST Reg RAX, Reg RAX 3
+4ff9: JZ 5057 (resolved immediate)
+  |
+  `- 4ffb,5057
+4ffb: LEA Reg RDX, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+5000: MOV Reg ECX, Immediate 1024 5
+5005: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 4
+5009: MOV Reg RDI, Reg RAX 3
+500c: CALL xc_flask_sid_to_context (external)
+5011: MOV Reg EBP, Reg EAX 2
+5013: MOV Reg RDI, Reg RBX 3
+5016: CALL xc_interface_close (external)
+501b: TEST Reg EBP, Reg EBP 2
+501d: JNZ 5065 (resolved immediate)
+  |
+  `- 501f,5065
+501f: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+5024: MOV Reg EDX, Immediate 1024 5
+5029: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 15939)) 7
+5030: MOV Reg EAX, Immediate 0 5
+5035: CALL Py_BuildValue (external)
+503a: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 1048))) 8
+5042: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+504b: JNZ 5083 (resolved immediate)
+  |
+  `- 504d,5083
+504d: ADD Reg RSP, Immediate 1064 7
+5054: POP Reg RBX 1
+5055: POP Reg RBP 1
+5056: RET  1
+  |
+  `- 
+5057: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2144106))) 7
+505e: CALL PyErr_SetFromErrno (external)
+5063: JMP 503a (resolved immediate)
+  |
+  `- 503a
+5065: CALL __errno_location (external)
+506a: NEG Reg EBP 2
+506c: MOV Address (SizeDir 32 (FromReg RAX)), Reg EBP 2
+506e: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2144083))) 7
+5075: CALL PyErr_SetFromErrno (external)
+507a: JMP 503a (resolved immediate)
+  |
+  `- 503a
+507c: MOV Reg EAX, Immediate 0 5
+5081: JMP 503a (resolved immediate)
+  |
+  `- 503a
+5083: CALL __stack_chk_fail (external)
+  |
+  `- 

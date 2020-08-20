@@ -1,0 +1,26 @@
+Number of assembly instructions     = 11
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 11
+Number of edges: 10
+
+1ee6 (False): 0
+
+1ee6: TEST Reg DIL, Reg DIL 3
+1ee9: JZ 1ef7 (resolved immediate)
+  |
+  `- 1eeb,1ef7
+1eeb: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2109678))) 7
+1ef2: ADD Address (SizeDir 64 (FromReg RAX)), Immediate 1 4
+1ef6: RET  1
+  |
+  `- 
+1ef7: SUB Reg RSP, Immediate 8 4
+1efb: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2111422))) 7
+1f02: CALL PyErr_SetFromErrno (external)
+1f07: MOV Reg EAX, Immediate 0 5
+1f0c: ADD Reg RSP, Immediate 8 4
+1f10: RET  1
+  |
+  `- 

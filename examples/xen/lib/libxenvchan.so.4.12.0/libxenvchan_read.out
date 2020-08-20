@@ -1,0 +1,185 @@
+Number of assembly instructions     = 134
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 134
+Number of edges: 145
+
+25b0 (False): 0
+
+2030: PUSH Reg R12 2
+2032: PUSH Reg RBP 1
+2033: MOV Reg R8, Reg RSI 3
+2036: PUSH Reg RBX 1
+2037: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 48))) 3
+203a: MOV Reg EBX, Immediate 1 5
+203f: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 32))) 4
+2043: MOV Reg R12, Reg RDI 3
+2046: MOV Reg RBP, Reg RDX 3
+2049: SHL Reg EBX, Reg CL 2
+204b: LEA Reg ESI, Address (AddrMinus (FromReg RBX) (AddrImm 1)) 3
+204e: AND Reg ESI, Address (SizeDir 32 (FromReg RAX)) 2
+2050: MOVSXD Reg RAX, Reg EDX 3
+2053: SUB Reg EBX, Reg ESI 2
+2055: MOVSXD Reg RBX, Reg EBX 3
+2058: CMP Reg RBX, Reg RDX 3
+205b: CMOVA Reg RBX, Reg RAX 4
+205f: MOVSXD Reg RSI, Reg ESI 3
+2062: ADD Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 40))) 4
+2066: MOV Reg RDX, Reg RBX 3
+2069: MOV Reg RDI, Reg R8 3
+206c: CALL memcpy (external)
+2071: CMP Reg RBP, Reg RBX 3
+2074: JA 20e0 (resolved immediate)
+  |
+  `- 2076,20e0
+2076: MFENCE  3
+2079: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 32))) 5
+207e: ADD Address (SizeDir 32 (FromReg RAX)), Reg EBP 2
+2080: MFENCE  3
+2083: TEST Address (SizeDir 8 (AddrPlus (FromReg R12) (AddrImm 28))), Immediate 1 6
+2089: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 8))) 5
+208e: JZ 20b8 (resolved immediate)
+  |
+  `- 2090,20b8
+2090: LEA Reg RDX, Address (AddrPlus (FromReg RAX) (AddrImm 23)) 4
+2094: MOVZX Reg EAX, Address (SizeDir 8 (FromReg RDX)) 3
+2097: MOV Reg ESI, Reg EAX 2
+2099: MOV Reg ECX, Reg EAX 2
+209b: AND Reg ESI, Immediate 4294967293 3
+209e: LOCK CMPXCHG Address (SizeDir 8 (FromReg RDX)), Reg SIL 5
+20a3: JNZ 2097 (resolved immediate)
+  |
+  `- 2097,20a5
+20a5: AND Reg ECX, Immediate 2 3
+20a8: JNZ 20c0 (resolved immediate)
+  |
+  `- 20aa,20c0
+20aa: MOV Reg EAX, Reg EBP 2
+20ac: POP Reg RBX 1
+20ad: POP Reg RBP 1
+20ae: POP Reg R12 2
+20b0: RET  1
+  |
+  `- 
+20b8: LEA Reg RDX, Address (AddrPlus (FromReg RAX) (AddrImm 22)) 4
+20bc: JMP 2094 (resolved immediate)
+  |
+  `- 2094
+20c0: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg R12) (AddrImm 24))) 5
+20c5: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 16))) 5
+20ca: CALL xenevtchn_notify (external)
+20cf: TEST Reg EAX, Reg EAX 2
+20d1: JZ 20aa (resolved immediate)
+  |
+  `- 20aa,20d3
+20d3: MOV Reg EAX, Immediate 4294967295 5
+20d8: JMP 20ac (resolved immediate)
+  |
+  `- 20ac
+20e0: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 40))) 5
+20e5: MOV Reg RDX, Reg RBP 3
+20e8: LEA Reg RDI, Address (AddrPlus (FromReg RAX) (FromReg RBX)) 4
+20ec: SUB Reg RDX, Reg RBX 3
+20ef: CALL memcpy (external)
+20f4: JMP 2076 (resolved immediate)
+  |
+  `- 2076
+25b0: PUSH Reg R13 2
+25b2: PUSH Reg R12 2
+25b4: MOV Reg R13, Reg RDI 3
+25b7: PUSH Reg RBP 1
+25b8: PUSH Reg RBX 1
+25b9: MOV Reg RBP, Reg RSI 3
+25bc: MOV Reg RBX, Reg RDX 3
+25bf: MOV Reg R12D, Immediate 1 6
+25c5: SUB Reg RSP, Immediate 8 4
+25c9: NOP  7
+25d0: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 32))) 4
+25d4: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RDX) (AddrImm 4))) 3
+25d7: SUB Reg EAX, Address (SizeDir 32 (FromReg RDX)) 2
+25d9: MFENCE  3
+25dc: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 48))) 4
+25e0: MOV Reg EDX, Reg R12D 3
+25e3: SHL Reg EDX, Reg CL 2
+25e5: CMP Reg EAX, Reg EDX 2
+25e7: JBE 2680 (resolved immediate)
+  |
+  `- 25ed,2680
+25ed: TEST Reg RBX, Reg RBX 3
+25f0: JZ 2650 (resolved immediate)
+  |
+  `- 25f2,2650
+25f2: XOR Reg EAX, Reg EAX 2
+25f4: TEST Address (SizeDir 8 (AddrPlus (FromReg R13) (AddrImm 28))), Immediate 1 5
+25f9: SETZ Reg AL 3
+25fc: ADD Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 8))) 4
+2600: ADD Reg RAX, Immediate 22 4
+2604: LOCK OR Address (SizeDir 8 (FromReg RAX)), Immediate 1 4
+2608: MFENCE  3
+260b: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 32))) 4
+260f: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RDX) (AddrImm 4))) 3
+2612: SUB Reg EAX, Address (SizeDir 32 (FromReg RDX)) 2
+2614: MFENCE  3
+2617: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 48))) 4
+261b: MOV Reg EDX, Reg R12D 3
+261e: SHL Reg EDX, Reg CL 2
+2620: CMP Reg EAX, Reg EDX 2
+2622: JA 2650 (resolved immediate)
+  |
+  `- 2624,2650
+2624: TEST Reg EAX, Reg EAX 2
+2626: JZ 2650 (resolved immediate)
+  |
+  `- 2628,2650
+2628: CDQE  2
+262a: MOV Reg RSI, Reg RBP 3
+262d: MOV Reg RDI, Reg R13 3
+2630: CMP Reg RAX, Reg RBX 3
+2633: CMOVBE Reg RBX, Reg RAX 4
+2637: ADD Reg RSP, Immediate 8 4
+263b: MOV Reg RDX, Reg RBX 3
+263e: POP Reg RBX 1
+263f: POP Reg RBP 1
+2640: POP Reg R12 2
+2642: POP Reg R13 2
+2644: JMP 2030 (resolved immediate)
+  |
+  `- 2030
+2650: MOV Reg RDI, Reg R13 3
+2653: CALL libxenvchan_is_open (external)
+2658: TEST Reg EAX, Reg EAX 2
+265a: JZ 2673 (resolved immediate)
+  |
+  `- 265c,2673
+265c: TEST Address (SizeDir 8 (AddrPlus (FromReg R13) (AddrImm 28))), Immediate 4 5
+2661: JZ 2690 (resolved immediate)
+  |
+  `- 2663,2690
+2663: MOV Reg RDI, Reg R13 3
+2666: CALL libxenvchan_wait (external)
+266b: TEST Reg EAX, Reg EAX 2
+266d: JZ 25d0 (resolved immediate)
+  |
+  `- 25d0,2673
+2673: MOV Reg EAX, Immediate 4294967295 5
+2678: POP Reg RDX 1
+2679: POP Reg RBX 1
+267a: POP Reg RBP 1
+267b: POP Reg R12 2
+267d: POP Reg R13 2
+267f: RET  1
+  |
+  `- 
+2680: MOVSXD Reg RDX, Reg EAX 3
+2683: CMP Reg RBX, Reg RDX 3
+2686: JA 25f2 (resolved immediate)
+  |
+  `- 25f2,268c
+268c: JMP 2624 (resolved immediate)
+  |
+  `- 2624
+2690: XOR Reg EAX, Reg EAX 2
+2692: JMP 2678 (resolved immediate)
+  |
+  `- 2678

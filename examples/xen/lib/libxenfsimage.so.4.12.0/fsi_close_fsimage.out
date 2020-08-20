@@ -1,0 +1,26 @@
+Number of assembly instructions     = 15
+Number of indirect branches         = 1
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 1: 155b
+Number of symbolic states (representative of non-determinism): 15
+Number of edges: 14
+
+1540 (False): 0
+
+1540: PUSH Reg RBX 1
+1541: MOV Reg RBX, Reg RDI 3
+1544: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2104437)) 7
+154b: CALL pthread_mutex_lock (external)
+1550: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
+1554: MOV Reg RDI, Reg RBX 3
+1557: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 16))) 4
+155b: CALL Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 16))) 3
+155e: MOV Reg EDI, Address (SizeDir 32 (FromReg RBX)) 2
+1560: CALL close (external)
+1565: MOV Reg RDI, Reg RBX 3
+1568: CALL free (external)
+156d: POP Reg RBX 1
+156e: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2104395)) 7
+1575: JMP pthread_mutex_unlock (jmp to external function)
+  |
+  `- 
