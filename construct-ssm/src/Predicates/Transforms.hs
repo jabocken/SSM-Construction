@@ -381,7 +381,8 @@ internalCall_mode2 ctxt addr set_reachable state = do
   -- a clean predictae containg only relevant register values
   -- the return address is set to the current RIP as a true immediate
   state_called = State empty_config cleaned_mem M.empty (S.singleton (E_reg RSP)) 0 True $ cleaned_predicate
-  cleaned_mem = MemForest [MemTree [region] $ MemForest []]
+--  cleaned_mem = MemForest [MemTree [region] $ MemForest []]
+  cleaned_mem = MemForest [] -- Using empty region for submission; try the above line for a potentially more accurate version that excludes more binaries
   region = (E_var "RSP0" (Known 64), 8)
   cleaned_predicate = S.insert  (E_reg RIP := V_val addr 64 False)
                       $ S.insert (E_deref (E_var "RSP0" (Known 64)) 8 := V_val (getRip state) 64 True)
@@ -406,7 +407,8 @@ call_main ctxt addr state = S.fromList [state_called]
   -- a clean predicate containing only relevant register values
   -- the return address is set to 0 indicating that exploration can terminate
   state_called = State empty_config cleaned_mem M.empty S.empty 0 True $ cleaned_predicate
-  cleaned_mem = MemForest [MemTree [region] $ MemForest []]
+--  cleaned_mem = MemForest [MemTree [region] $ MemForest []]
+  cleaned_mem = MemForest [] -- Using empty region for submission; try the above line for a potentially more accurate version that excludes more binaries
   region = (E_var "RSP0" (Known 64), 8)
   cleaned_predicate = S.fromList [ E_reg RIP := V_val addr 64 False,
                                    E_deref (E_var "RSP0" (Known 64)) 8 := V_val 0 64 True]
