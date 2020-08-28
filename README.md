@@ -1,6 +1,6 @@
 # Initial setup
 
-Assuming a recent (this year) install of an Ubuntu-based Linux distribution with up-to-date default packages, you will need the following additional packages (installable via `apt`):
+Assuming a recent (2020) install of an Ubuntu-based Linux distribution with up-to-date default packages, you will need the following additional packages (installable via `apt`):
 
     autoconf libtool python-is-python2 libz3-dev
 
