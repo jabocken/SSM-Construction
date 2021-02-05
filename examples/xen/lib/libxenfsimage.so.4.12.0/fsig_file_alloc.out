@@ -1,0 +1,51 @@
+Number of assembly instructions     = 32
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 32
+Number of edges: 33
+
+1b00 (False): 0
+
+1b00: PUSH Reg RBP 1
+1b01: PUSH Reg RBX 1
+1b02: MOV Reg RBP, Reg RDI 3
+1b05: MOV Reg ESI, Immediate 1 5
+1b0a: MOV Reg EDI, Immediate 262184 5
+1b0f: SUB Reg RSP, Immediate 24 4
+1b13: CALL calloc (external)
+1b18: TEST Reg RAX, Reg RAX 3
+1b1b: JZ 1b50 (resolved immediate)
+  |
+  `- 1b1d,1b50
+1b1d: MOV Reg RBX, Reg RAX 3
+1b20: MOV Reg RDI, Reg RBP 3
+1b23: CALL fsig_fs_buf (external)
+1b28: MOV Reg EDX, Immediate 262144 5
+1b2d: MOV Reg RSI, Reg RAX 3
+1b30: MOV Reg RDI, Reg RBX 3
+1b33: CALL memmove (external)
+1b38: MOV Reg RSI, Reg RBX 3
+1b3b: MOV Reg RDI, Reg RBP 3
+1b3e: CALL fsip_file_alloc (external)
+1b43: TEST Reg RAX, Reg RAX 3
+1b46: JZ 1b58 (resolved immediate)
+  |
+  `- 1b48,1b58
+1b48: ADD Reg RSP, Immediate 24 4
+1b4c: POP Reg RBX 1
+1b4d: POP Reg RBP 1
+1b4e: RET  1
+  |
+  `- 
+1b50: XOR Reg EAX, Reg EAX 2
+1b52: JMP 1b48 (resolved immediate)
+  |
+  `- 1b48
+1b58: MOV Reg RDI, Reg RBX 3
+1b5b: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
+1b60: CALL free (external)
+1b65: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+1b6a: JMP 1b48 (resolved immediate)
+  |
+  `- 1b48

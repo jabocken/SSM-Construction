@@ -1,0 +1,23 @@
+Number of assembly instructions     = 8
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 8
+Number of edges: 7
+
+13270 (False): 0
+
+13270: TEST Reg RSI, Reg RSI 3
+13273: MOV Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 112))), Reg RSI 4
+13277: MOV Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 120))), Reg RDX 4
+1327b: JZ 13290 (resolved immediate)
+  |
+  `- 1327d,13290
+1327d: MOV Reg RCX, Reg RDX 3
+13280: XOR Reg EDX, Reg EDX 2
+13282: JMP elf_memset_safe (jmp to external function)
+  |
+  `- 
+13290: REPZ RET  2
+  |
+  `- 

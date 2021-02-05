@@ -1,0 +1,55 @@
+Number of assembly instructions     = 34
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 34
+Number of edges: 34
+
+78ce0 (False): 0
+
+78ce0: PUSH Reg RBP 1
+78ce1: PUSH Reg RBX 1
+78ce2: MOV Reg RBP, Reg RSI 3
+78ce5: MOV Reg RBX, Reg RDI 3
+78ce8: SUB Reg RSP, Immediate 8 4
+78cec: CALL yajl_gen_map_open (external)
+78cf1: TEST Reg EAX, Reg EAX 2
+78cf3: JNZ 78d67 (resolved immediate)
+  |
+  `- 78cf5,78d67
+78cf5: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+78cf8: TEST Reg EDX, Reg EDX 2
+78cfa: JNZ 78d40 (resolved immediate)
+  |
+  `- 78cfc,78d40
+78cfc: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 4))) 3
+78cff: TEST Reg EAX, Reg EAX 2
+78d01: JZ 78d2a (resolved immediate)
+  |
+  `- 78d2a
+78d2a: ADD Reg RSP, Immediate 8 4
+78d2e: MOV Reg RDI, Reg RBX 3
+78d31: POP Reg RBX 1
+78d32: POP Reg RBP 1
+78d33: JMP yajl_gen_map_close (jmp to external function)
+  |
+  `- 
+78d40: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 187387)) 7
+78d47: MOV Reg EDX, Immediate 5 5
+78d4c: MOV Reg RDI, Reg RBX 3
+78d4f: CALL yajl_gen_string (external)
+78d54: TEST Reg EAX, Reg EAX 2
+78d56: JNZ 78d67 (resolved immediate)
+78d58: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+78d5b: MOV Reg RDI, Reg RBX 3
+78d5e: CALL yajl_gen_integer (external)
+78d63: TEST Reg EAX, Reg EAX 2
+78d65: JZ 78cfc (resolved immediate)
+  |
+  `- 78cfc
+78d67: ADD Reg RSP, Immediate 8 4
+78d6b: POP Reg RBX 1
+78d6c: POP Reg RBP 1
+78d6d: RET  1
+  |
+  `- 

@@ -1,0 +1,67 @@
+Number of assembly instructions     = 48
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 48
+Number of edges: 48
+
+18910 (False): 0
+
+18300: PUSH Reg R14 2
+18302: PUSH Reg R13 2
+18304: MOV Reg R14D, Reg ESI 3
+18307: PUSH Reg R12 2
+18309: PUSH Reg RBP 1
+1830a: MOV Reg RBP, Reg RDI 3
+1830d: PUSH Reg RBX 1
+1830e: MOV Reg RDI, Reg R8 3
+18311: MOV Reg RBX, Reg R8 3
+18314: MOV Reg R13, Reg RDX 3
+18317: MOV Reg R12, Reg RCX 3
+1831a: SUB Reg RSP, Immediate 64 4
+1831e: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+18327: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))), Reg RAX 5
+1832c: XOR Reg EAX, Reg EAX 2
+1832e: CALL strlen (external)
+18333: LEA Reg RCX, Address (AddrPlus (FromReg RSP) (AddrImm 12)) 5
+18338: MOV Reg EDX, Reg EAX 2
+1833a: MOV Reg RSI, Reg RBX 3
+1833d: MOV Reg RDI, Reg RBP 3
+18340: CALL xc_flask_context_to_sid (external)
+18345: TEST Reg EAX, Reg EAX 2
+18347: JNZ 18375 (resolved immediate)
+  |
+  `- 18349,18375
+18349: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 4
+1834d: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+18352: MOV Reg RDI, Reg RBP 3
+18355: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 21 8
+1835d: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg R14D 5
+18362: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Reg R13 5
+18367: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Reg R12 5
+1836c: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 28))), Reg EAX 4
+18370: CALL xc_flask_op (external)
+18375: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))) 5
+1837a: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+18383: JNZ 18392 (resolved immediate)
+  |
+  `- 18385,18392
+18385: ADD Reg RSP, Immediate 64 4
+18389: POP Reg RBX 1
+1838a: POP Reg RBP 1
+1838b: POP Reg R12 2
+1838d: POP Reg R13 2
+1838f: POP Reg R14 2
+18391: RET  1
+  |
+  `- 
+18392: CALL __stack_chk_fail (external)
+  |
+  `- 
+18910: MOV Reg R8, Reg RCX 3
+18913: MOV Reg RCX, Reg RDX 3
+18916: MOV Reg RDX, Reg RSI 3
+18919: MOV Reg ESI, Immediate 2 5
+1891e: JMP 18300 (resolved immediate)
+  |
+  `- 18300

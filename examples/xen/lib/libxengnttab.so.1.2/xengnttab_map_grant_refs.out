@@ -1,0 +1,253 @@
+Number of assembly instructions     = 199
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 199
+Number of edges: 208
+
+11d0 (False): 0
+14d0 (True): 11e8
+
+11d0: SUB Reg RSP, Immediate 8 4
+11d4: MOV Reg R9, Reg RCX 3
+11d7: MOV Reg ECX, Reg R8D 3
+11da: PUSH Immediate 18446744073709551615 2
+11dc: PUSH Immediate 18446744073709551615 2
+11de: MOV Reg R8, Reg RDX 3
+11e1: XOR Reg EDX, Reg EDX 2
+11e3: CALL osdep_gnttab_grant_map (internal)
+  |
+  `- 14d0
+11e8: ADD Reg RSP, Immediate 24 4
+11ec: RET  1
+  |
+  `- 
+14d0: PUSH Reg RBP 1
+14d1: MOV Reg RAX, Reg RDI 3
+14d4: NOT Reg EDX 2
+14d6: AND Reg EDX, Immediate 1 3
+14d9: MOV Reg R10, Reg R9 3
+14dc: MOV Reg RBP, Reg RSP 3
+14df: PUSH Reg R15 2
+14e1: PUSH Reg R14 2
+14e3: PUSH Reg R13 2
+14e5: PUSH Reg R12 2
+14e7: MOV Reg R12D, Reg ESI 3
+14ea: PUSH Reg RBX 1
+14eb: MOV Reg R15D, Reg ECX 3
+14ee: MOV Reg R13, Reg R8 3
+14f1: MOVSXD Reg R11, Reg EDX 3
+14f4: SUB Reg RSP, Immediate 72 4
+14f8: MOV Reg R14D, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 16))) 4
+14fc: LEA Reg EAX, Address (AddrPlus (FromReg RSI) (AddrTimes (AddrImm 2) (FromReg RSI))) 3
+14ff: MOV Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 96))), Reg RDI 4
+1503: LEA Reg ESI, Address (AddrPlus (AddrTimes (AddrImm 8) (FromReg RAX)) (AddrImm 4095)) 7
+150a: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1513: MOV Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 56))), Reg RDI 4
+1517: XOR Reg EDI, Reg EDI 2
+1519: MOV Reg EAX, Reg ESI 2
+151b: AND Reg EAX, Immediate 4294963200 5
+1520: CMP Reg EAX, Immediate 4096 5
+1525: MOV Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 84))), Reg EAX 3
+1528: JA 1668 (resolved immediate)
+  |
+  `- 152e,1668
+152e: LEA Reg EAX, Address (AddrMinus (FromReg R12) (AddrImm 1)) 5
+1533: LEA Reg RAX, Address (AddrPlus (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 2) (FromReg RAX))) (AddrImm 3)) 5
+1538: LEA Reg RAX, Address (AddrPlus (AddrTimes (AddrImm 8) (FromReg RAX)) (AddrImm 30)) 8
+1540: SHR Reg RAX, Immediate 4 4
+1544: SHL Reg RAX, Immediate 4 4
+1548: SUB Reg RSP, Reg RAX 3
+154b: LEA Reg RBX, Address (AddrPlus (FromReg RSP) (AddrImm 15)) 5
+1550: AND Reg RBX, Immediate 18446744073709551600 4
+1554: TEST Reg R12D, Reg R12D 3
+1557: JZ 158c (resolved immediate)
+  |
+  `- 1559,158c
+1559: LEA Reg ECX, Address (AddrMinus (FromReg R12) (AddrImm 1)) 5
+155e: SHL Reg R11, Immediate 2 4
+1562: XOR Reg EAX, Reg EAX 2
+1564: ADD Reg RCX, Immediate 1 4
+1568: NOP  8
+1570: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))) 4
+1574: ADD Reg R13, Reg R11 3
+1577: MOV Address (SizeDir 32 (AddrPlus (AddrPlus (FromReg RBX) (AddrTimes (AddrImm 8) (FromReg RAX))) (AddrImm 16))), Reg EDX 4
+157b: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg R10) (AddrTimes (AddrImm 4) (FromReg RAX)))) 4
+157f: MOV Address (SizeDir 32 (AddrPlus (AddrPlus (FromReg RBX) (AddrTimes (AddrImm 8) (FromReg RAX))) (AddrImm 20))), Reg EDX 4
+1583: ADD Reg RAX, Immediate 1 4
+1587: CMP Reg RAX, Reg RCX 3
+158a: JNZ 1570 (resolved immediate)
+  |
+  `- 1570,158c
+158c: XOR Reg EAX, Reg EAX 2
+158e: MOV Address (SizeDir 32 (FromReg RBX)), Reg R12D 3
+1591: MOV Reg RDX, Reg RBX 3
+1594: MOV Reg ESI, Immediate 1591040 5
+1599: MOV Reg EDI, Reg R14D 3
+159c: MOV Reg R13D, Reg R12D 3
+159f: CALL ioctl (external)
+15a4: SHL Reg R13, Immediate 12 4
+15a8: TEST Reg EAX, Reg EAX 2
+15aa: JZ 15d7 (resolved immediate)
+  |
+  `- 15ac,15d7
+15ac: JMP 16d8 (resolved immediate)
+  |
+  `- 16d8
+15b8: CALL __errno_location (external)
+15bd: MOV Reg R9D, Address (SizeDir 32 (FromReg RAX)) 3
+15c0: MOV Reg R10, Reg RAX 3
+15c3: CMP Reg R9D, Immediate 11 4
+15c7: JNZ 1710 (resolved immediate)
+  |
+  `- 15cd,1710
+15cd: MOV Reg EDI, Immediate 1000 5
+15d2: CALL usleep (external)
+15d7: MOV Reg R9, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+15db: XOR Reg EDI, Reg EDI 2
+15dd: MOV Reg R8D, Reg R14D 3
+15e0: MOV Reg ECX, Immediate 1 5
+15e5: MOV Reg EDX, Reg R15D 3
+15e8: MOV Reg RSI, Reg R13 3
+15eb: CALL mmap (external)
+15f0: CMP Reg RAX, Immediate 18446744073709551615 4
+15f4: MOV Reg R9, Reg RAX 3
+15f7: JZ 15b8 (resolved immediate)
+  |
+  `- 15b8,15f9
+15f9: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 16))) 3
+15fc: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+1600: MOV Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 72))), Immediate 0 7
+1607: MOV Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 80))), Reg RAX 4
+160b: CMP Reg R13, Reg RDX 3
+160e: JA 1778 (resolved immediate)
+  |
+  `- 1614,1778
+1614: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 24))), Immediate 4294967295 4
+1618: JNZ 1810 (resolved immediate)
+  |
+  `- 161e,1810
+161e: NOP  2
+1620: CMP Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 84))), Immediate 4096 7
+1627: JBE 163c (resolved immediate)
+  |
+  `- 1629,163c
+1629: MOV Reg ESI, Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 84))) 3
+162c: MOV Reg RDI, Reg RBX 3
+162f: MOV Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 96))), Reg R9 4
+1633: CALL munmap (external)
+1638: MOV Reg R9, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 96))) 4
+163c: MOV Reg RSI, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 56))) 4
+1640: XOR Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1649: MOV Reg RAX, Reg R9 3
+164c: JNZ 181a (resolved immediate)
+  |
+  `- 1652,181a
+1652: LEA Reg RSP, Address (AddrMinus (FromReg RBP) (AddrImm 40)) 4
+1656: POP Reg RBX 1
+1657: POP Reg R12 2
+1659: POP Reg R13 2
+165b: POP Reg R14 2
+165d: POP Reg R15 2
+165f: POP Reg RBP 1
+1660: RET  1
+  |
+  `- 
+1668: MOV Reg ESI, Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 84))) 3
+166b: MOV Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 112))), Reg R9 4
+166f: XOR Reg EDI, Reg EDI 2
+1671: XOR Reg R9D, Reg R9D 3
+1674: MOV Reg R8D, Immediate 4294967295 6
+167a: MOV Reg ECX, Immediate 32802 5
+167f: MOV Reg EDX, Immediate 3 5
+1684: MOV Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 104))), Reg R11D 4
+1688: CALL mmap (external)
+168d: CMP Reg RAX, Immediate 18446744073709551615 4
+1691: MOV Reg RBX, Reg RAX 3
+1694: MOVSXD Reg R11, Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 104))) 4
+1698: MOV Reg R10, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 112))) 4
+169c: JNZ 1554 (resolved immediate)
+  |
+  `- 1554,16a2
+16a2: CALL __errno_location (external)
+16a7: MOV Reg EDX, Address (SizeDir 32 (FromReg RAX)) 2
+16a9: MOV Reg RAX, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 96))) 4
+16ad: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 2207)) 7
+16b4: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2193)) 7
+16bb: MOV Reg ESI, Immediate 8 5
+16c0: MOV Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
+16c3: XOR Reg EAX, Reg EAX 2
+16c5: CALL xtl_log (external)
+16ca: XOR Reg R9D, Reg R9D 3
+16cd: JMP 163c (resolved immediate)
+  |
+  `- 163c
+16d8: CALL __errno_location (external)
+16dd: MOV Reg EDX, Address (SizeDir 32 (FromReg RAX)) 2
+16df: MOV Reg RAX, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 96))) 4
+16e3: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 2172)) 7
+16ea: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2139)) 7
+16f1: MOV Reg ESI, Immediate 8 5
+16f6: MOV Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
+16f9: XOR Reg EAX, Reg EAX 2
+16fb: CALL xtl_log (external)
+1700: XOR Reg R9D, Reg R9D 3
+1703: JMP 1620 (resolved immediate)
+  |
+  `- 1620
+1710: LEA Reg R15, Address (AddrMinus (FromReg RBP) (AddrImm 80)) 4
+1714: MOV Reg RAX, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 96))) 4
+1718: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 2176)) 7
+171f: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2086)) 7
+1726: MOV Reg EDX, Reg R9D 3
+1729: MOV Reg ESI, Immediate 8 5
+172e: MOV Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 112))), Reg R10 4
+1732: MOV Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 104))), Reg R9D 4
+1736: MOV Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
+1739: XOR Reg EAX, Reg EAX 2
+173b: CALL xtl_log (external)
+1740: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+1744: MOV Reg RDX, Reg R15 3
+1747: MOV Reg ESI, Immediate 1066753 5
+174c: MOV Reg EDI, Reg R14D 3
+174f: MOV Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 72))), Reg R12D 4
+1753: MOV Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 80))), Reg RAX 4
+1757: XOR Reg EAX, Reg EAX 2
+1759: CALL ioctl (external)
+175e: MOV Reg R9D, Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 104))) 4
+1762: MOV Reg R10, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 112))) 4
+1766: MOV Address (SizeDir 32 (FromReg R10)), Reg R9D 3
+1769: XOR Reg R9D, Reg R9D 3
+176c: JMP 1620 (resolved immediate)
+  |
+  `- 1620
+1778: ADD Reg RAX, Reg RDX 3
+177b: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 24))), Immediate 4294967295 4
+177f: MOV Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 72))), Immediate 1 7
+1786: MOV Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 80))), Reg RAX 4
+178a: JZ 179a (resolved immediate)
+  |
+  `- 178c,179a
+178c: MOV Reg EAX, Immediate 3 5
+1791: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 24))) 3
+1794: MOV Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 72))), Reg EAX 3
+1797: MOV Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 68))), Reg EDI 3
+179a: LEA Reg R15, Address (AddrMinus (FromReg RBP) (AddrImm 80)) 4
+179e: XOR Reg EAX, Reg EAX 2
+17a0: MOV Reg ESI, Immediate 1066759 5
+17a5: MOV Reg EDI, Reg R14D 3
+17a8: MOV Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 104))), Reg R9 4
+17ac: MOV Reg RDX, Reg R15 3
+17af: CALL ioctl (external)
+17b4: TEST Reg EAX, Reg EAX 2
+17b6: MOV Reg R9, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 104))) 4
+17ba: JZ 1620 (resolved immediate)
+  |
+  `- 1620
+1810: MOV Reg EAX, Immediate 2 5
+1815: JMP 1791 (resolved immediate)
+  |
+  `- 1791
+181a: CALL __stack_chk_fail (external)
+  |
+  `- 

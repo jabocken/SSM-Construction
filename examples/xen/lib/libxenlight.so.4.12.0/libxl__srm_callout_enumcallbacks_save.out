@@ -1,0 +1,36 @@
+Number of assembly instructions     = 17
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 17
+Number of edges: 20
+
+47fc0 (False): 0
+
+47fc0: XOR Reg EAX, Reg EAX 2
+47fc2: CMP Address (SizeDir 64 (FromReg RDI)), Immediate 0 4
+47fc6: SETNZ Reg AL 3
+47fc9: SHL Reg EAX, Immediate 3 3
+47fcc: CMP Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))), Immediate 0 5
+47fd1: JZ 47fd6 (resolved immediate)
+  |
+  `- 47fd3,47fd6
+47fd3: OR Reg EAX, Immediate 16 3
+47fd6: CMP Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))), Immediate 0 5
+47fdb: JZ 47fe0 (resolved immediate)
+  |
+  `- 47fdd,47fe0
+47fdd: OR Reg EAX, Immediate 32 3
+47fe0: CMP Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 24))), Immediate 0 5
+47fe5: JZ 47fea (resolved immediate)
+  |
+  `- 47fe7,47fea
+47fe7: OR Reg EAX, Immediate 64 3
+47fea: CMP Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 32))), Immediate 0 5
+47fef: JZ 47ff3 (resolved immediate)
+  |
+  `- 47ff1,47ff3
+47ff1: OR Reg AL, Immediate 128 2
+47ff3: REPZ RET  2
+  |
+  `- 

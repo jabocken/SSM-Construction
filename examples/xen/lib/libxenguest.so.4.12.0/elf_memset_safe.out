@@ -1,0 +1,36 @@
+Number of assembly instructions     = 21
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 21
+Number of edges: 20
+
+12900 (False): 0
+
+12900: PUSH Reg R12 2
+12902: PUSH Reg RBP 1
+12903: MOV Reg R12D, Reg EDX 3
+12906: PUSH Reg RBX 1
+12907: MOV Reg RDX, Reg RCX 3
+1290a: MOV Reg RBX, Reg RSI 3
+1290d: MOV Reg RBP, Reg RCX 3
+12910: CALL elf_access_ok (external)
+12915: TEST Reg AL, Reg AL 2
+12917: JNZ 12920 (resolved immediate)
+  |
+  `- 12919,12920
+12919: POP Reg RBX 1
+1291a: POP Reg RBP 1
+1291b: POP Reg R12 2
+1291d: RET  1
+  |
+  `- 
+12920: MOV Reg RDX, Reg RBP 3
+12923: MOV Reg ESI, Reg R12D 3
+12926: MOV Reg RDI, Reg RBX 3
+12929: POP Reg RBX 1
+1292a: POP Reg RBP 1
+1292b: POP Reg R12 2
+1292d: JMP memset (jmp to external function)
+  |
+  `- 

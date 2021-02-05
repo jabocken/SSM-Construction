@@ -1,0 +1,23 @@
+Number of assembly instructions     = 10
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 10
+Number of edges: 10
+
+198a0 (False): 0
+
+198a0: PUSH Reg RBX 1
+198a1: MOV Reg EDI, Immediate 16392 5
+198a6: MOV Reg EBX, Reg ESI 2
+198a8: CALL malloc (external)
+198ad: TEST Reg RAX, Reg RAX 3
+198b0: JZ 198c2 (resolved immediate)
+  |
+  `- 198b2,198c2
+198b2: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 16384))), Immediate 0 10
+198bc: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 16388))), Reg EBX 6
+198c2: POP Reg RBX 1
+198c3: RET  1
+  |
+  `- 

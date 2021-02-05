@@ -1,0 +1,45 @@
+Number of assembly instructions     = 21
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 21
+Number of edges: 20
+
+970 (True): a28
+a00 (False): 0
+
+970: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2103113)) 7
+977: PUSH Reg RBP 1
+978: LEA Reg RAX, Address (AddrPlus (FromReg RIP) (AddrImm 2103105)) 7
+97f: CMP Reg RAX, Reg RDI 3
+982: MOV Reg RBP, Reg RSP 3
+985: JZ 9a0 (resolved immediate)
+  |
+  `- 9a0
+9a0: POP Reg RBP 1
+9a1: RET  1
+  |
+  `- 
+a00: CMP Address (SizeDir 8 (AddrPlus (FromReg RIP) (AddrImm 2102969))), Immediate 0 7
+a07: JNZ a38 (resolved immediate)
+  |
+  `- a09,a38
+a09: CMP Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2102759))), Immediate 0 8
+a11: PUSH Reg RBP 1
+a12: MOV Reg RBP, Reg RSP 3
+a15: JZ a23 (resolved immediate)
+  |
+  `- a17,a23
+a17: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2102882))) 7
+a1e: CALL __cxa_finalize (external)
+a23: CALL deregister_tm_clones (internal)
+  |
+  `- 970
+a28: MOV Address (SizeDir 8 (AddrPlus (FromReg RIP) (AddrImm 2102929))), Immediate 1 7
+a2f: POP Reg RBP 1
+a30: RET  1
+  |
+  `- 
+a38: REPZ RET  2
+  |
+  `- 

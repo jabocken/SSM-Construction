@@ -1,0 +1,21 @@
+Number of assembly instructions     = 6
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 6
+Number of edges: 5
+
+1640 (False): 0
+
+1640: TEST Reg RSI, Reg RSI 3
+1643: JZ 1658 (resolved immediate)
+  |
+  `- 1645,1658
+1645: MOVSXD Reg RDX, Address (SizeDir 32 (AddrMinus (FromReg RSI) (AddrImm 16))) 4
+1649: SUB Reg RSI, Immediate 16 4
+164d: JMP xencall_free_buffer_pages (jmp to external function)
+  |
+  `- 
+1658: REPZ RET  2
+  |
+  `- 

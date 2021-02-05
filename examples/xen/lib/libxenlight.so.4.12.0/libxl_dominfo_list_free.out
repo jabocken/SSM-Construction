@@ -1,0 +1,38 @@
+Number of assembly instructions     = 23
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 23
+Number of edges: 24
+
+3fc60 (False): 0
+
+3fc60: TEST Reg ESI, Reg ESI 2
+3fc62: PUSH Reg R12 2
+3fc64: MOV Reg R12, Reg RDI 3
+3fc67: PUSH Reg RBP 1
+3fc68: PUSH Reg RBX 1
+3fc69: JLE 3fc99 (resolved immediate)
+  |
+  `- 3fc6b,3fc99
+3fc6b: LEA Reg EDX, Address (AddrMinus (FromReg RSI) (AddrImm 1)) 3
+3fc6e: MOV Reg RBX, Reg RDI 3
+3fc71: LEA Reg RAX, Address (AddrPlus (AddrTimes (AddrImm 8) (FromReg RDX)) (AddrImm 0)) 8
+3fc79: SUB Reg RAX, Reg RDX 3
+3fc7c: SHL Reg RAX, Immediate 4 4
+3fc80: LEA Reg RBP, Address (AddrPlus (AddrPlus (FromReg RDI) (FromReg RAX)) (AddrImm 112)) 5
+3fc85: NOP  3
+3fc88: MOV Reg RDI, Reg RBX 3
+3fc8b: ADD Reg RBX, Immediate 112 4
+3fc8f: CALL libxl_dominfo_dispose (external)
+3fc94: CMP Reg RBX, Reg RBP 3
+3fc97: JNZ 3fc88 (resolved immediate)
+  |
+  `- 3fc88,3fc99
+3fc99: POP Reg RBX 1
+3fc9a: MOV Reg RDI, Reg R12 3
+3fc9d: POP Reg RBP 1
+3fc9e: POP Reg R12 2
+3fca0: JMP free (jmp to external function)
+  |
+  `- 

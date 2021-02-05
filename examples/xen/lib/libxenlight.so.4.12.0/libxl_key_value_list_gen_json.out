@@ -1,0 +1,78 @@
+Number of assembly instructions     = 51
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 51
+Number of edges: 54
+
+408f0 (False): 0
+
+408f0: PUSH Reg R12 2
+408f2: PUSH Reg RBP 1
+408f3: MOV Reg R12, Reg RDI 3
+408f6: PUSH Reg RBX 1
+408f7: MOV Reg RBX, Address (SizeDir 64 (FromReg RSI)) 3
+408fa: CALL yajl_gen_map_open (external)
+408ff: TEST Reg EAX, Reg EAX 2
+40901: JNZ 40975 (resolved immediate)
+  |
+  `- 40903,40975
+40903: TEST Reg RBX, Reg RBX 3
+40906: JZ 40980 (resolved immediate)
+  |
+  `- 40908,40980
+40908: MOV Reg RBP, Address (SizeDir 64 (FromReg RBX)) 3
+4090b: TEST Reg RBP, Reg RBP 3
+4090e: JZ 40980 (resolved immediate)
+  |
+  `- 40910,40980
+40910: ADD Reg RBX, Immediate 8 4
+40914: JMP 40947 (resolved immediate)
+  |
+  `- 40947
+40920: MOV Reg RDI, Reg RBP 3
+40923: CALL strlen (external)
+40928: MOV Reg RSI, Reg RBP 3
+4092b: MOV Reg RDX, Reg RAX 3
+4092e: MOV Reg RDI, Reg R12 3
+40931: CALL yajl_gen_string (external)
+40936: TEST Reg EAX, Reg EAX 2
+40938: JNZ 40975 (resolved immediate)
+4093a: ADD Reg RBX, Immediate 16 4
+4093e: MOV Reg RBP, Address (SizeDir 64 (AddrMinus (FromReg RBX) (AddrImm 8))) 4
+40942: TEST Reg RBP, Reg RBP 3
+40945: JZ 40980 (resolved immediate)
+  |
+  `- 40947,40980
+40947: MOV Reg RDI, Reg RBP 3
+4094a: CALL strlen (external)
+4094f: MOV Reg RSI, Reg RBP 3
+40952: MOV Reg RDX, Reg RAX 3
+40955: MOV Reg RDI, Reg R12 3
+40958: CALL yajl_gen_string (external)
+4095d: TEST Reg EAX, Reg EAX 2
+4095f: JNZ 40975 (resolved immediate)
+40961: MOV Reg RBP, Address (SizeDir 64 (FromReg RBX)) 3
+40964: TEST Reg RBP, Reg RBP 3
+40967: JNZ 40920 (resolved immediate)
+  |
+  `- 40920,40969
+40969: MOV Reg RDI, Reg R12 3
+4096c: CALL yajl_gen_null (external)
+40971: TEST Reg EAX, Reg EAX 2
+40973: JZ 4093a (resolved immediate)
+  |
+  `- 4093a
+40975: POP Reg RBX 1
+40976: POP Reg RBP 1
+40977: POP Reg R12 2
+40979: RET  1
+  |
+  `- 
+40980: POP Reg RBX 1
+40981: MOV Reg RDI, Reg R12 3
+40984: POP Reg RBP 1
+40985: POP Reg R12 2
+40987: JMP yajl_gen_map_close (jmp to external function)
+  |
+  `- 

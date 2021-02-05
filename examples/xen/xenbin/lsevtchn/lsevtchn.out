@@ -1,0 +1,123 @@
+Number of assembly instructions     = 88
+Number of indirect branches         = 2
+Number of unresolved indirect jumps = 1: 91e
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 93
+Number of edges: 104
+
+a20 (False): 0
+
+870: PUSH Reg R14 2
+872: PUSH Reg R13 2
+874: PUSH Reg R12 2
+876: PUSH Reg RBP 1
+877: XOR Reg EBP, Reg EBP 2
+879: PUSH Reg RBX 1
+87a: SUB Reg RSP, Immediate 32 4
+87e: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+887: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
+88c: XOR Reg EAX, Reg EAX 2
+88e: CMP Reg EDI, Immediate 1 3
+891: JLE 8a5 (resolved immediate)
+  |
+  `- 893,8a5
+893: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))) 4
+897: MOV Reg EDX, Immediate 10 5
+89c: XOR Reg ESI, Reg ESI 2
+89e: CALL strtol (external)
+8a3: MOV Reg EBP, Reg EAX 2
+8a5: XOR Reg EDX, Reg EDX 2
+8a7: XOR Reg ESI, Reg ESI 2
+8a9: XOR Reg EDI, Reg EDI 2
+8ab: CALL xc_interface_open (external)
+8b0: TEST Reg RAX, Reg RAX 3
+8b3: MOV Reg R12, Reg RAX 3
+8b6: JZ a03 (resolved immediate)
+  |
+  `- 8bc,a03
+8bc: LEA Reg R14, Address (AddrPlus (FromReg RIP) (AddrImm 969)) 7
+8c3: XOR Reg EBX, Reg EBX 2
+8c5: MOV Reg R13, Reg RSP 3
+8c8: NOP  8
+8d0: MOV Reg RSI, Reg R13 3
+8d3: MOV Reg RDI, Reg R12 3
+8d6: MOV Address (SizeDir 16 (FromReg RSP)), Reg BP 4
+8da: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))), Reg EBX 4
+8de: CALL xc_evtchn_status (external)
+8e3: TEST Reg EAX, Reg EAX 2
+8e5: JS 950 (resolved immediate)
+  |
+  `- 8e7,950
+8e7: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 8))) 4
+8eb: TEST Reg EAX, Reg EAX 2
+8ed: JZ 942 (resolved immediate)
+  |
+  `- 8ef,942
+8ef: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 4
+8f3: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 854)) 7
+8fa: XOR Reg EAX, Reg EAX 2
+8fc: MOV Reg EDX, Reg EBX 2
+8fe: MOV Reg EDI, Immediate 1 5
+903: CALL __printf_chk (external)
+908: CMP Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 8))), Immediate 5 5
+90d: JA 9eb (resolved immediate)
+  |
+  `- 913,9eb
+913: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 8))) 4
+917: MOVSXD Reg RAX, Address (SizeDir 32 (AddrPlus (FromReg R14) (AddrTimes (AddrImm 4) (FromReg RAX)))) 4
+91b: ADD Reg RAX, Reg R14 3
+91e: JMP Reg RAX 2
+  |
+  `- 
+938: MOV Reg EDI, Immediate 10 5
+93d: CALL putchar (external)
+942: ADD Reg EBX, Immediate 1 3
+945: JMP 8d0 (resolved immediate)
+  |
+  `- 8d0
+950: MOV Reg RDI, Reg R12 3
+953: CALL xc_interface_close (external)
+958: XOR Reg EAX, Reg EAX 2
+95a: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
+95f: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+968: JNZ a16 (resolved immediate)
+  |
+  `- 96e,a16
+96e: ADD Reg RSP, Immediate 32 4
+972: POP Reg RBX 1
+973: POP Reg RBP 1
+974: POP Reg R12 2
+976: POP Reg R13 2
+978: POP Reg R14 2
+97a: RET  1
+  |
+  `- 
+9eb: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 656)) 7
+9f2: MOV Reg EDI, Immediate 1 5
+9f7: XOR Reg EAX, Reg EAX 2
+9f9: CALL __printf_chk (external)
+9fe: JMP 938 (resolved immediate)
+  |
+  `- 938
+a03: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 430)) 7
+a0a: MOV Reg EDI, Immediate 1 5
+a0f: XOR Reg EAX, Reg EAX 2
+a11: CALL errx (external)
+  |
+  `- 
+a16: CALL __stack_chk_fail (external)
+  |
+  `- 
+a20: XOR Reg EBP, Reg EBP 2
+a22: MOV Reg R9, Reg RDX 3
+a25: POP Reg RSI 1
+a26: MOV Reg RDX, Reg RSP 3
+a29: AND Reg RSP, Immediate 18446744073709551600 4
+a2d: PUSH Reg RAX 1
+a2e: PUSH Reg RSP 1
+a2f: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 362)) 7
+a36: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 243)) 7
+a3d: LEA Reg RDI, Address (AddrMinus (FromReg RIP) (AddrImm 468)) 7
+a44: CALL __libc_start_main (external)
+  |
+  `- 870

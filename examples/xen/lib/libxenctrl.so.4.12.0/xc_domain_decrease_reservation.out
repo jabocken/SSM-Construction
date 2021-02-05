@@ -1,0 +1,104 @@
+Number of assembly instructions     = 81
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 81
+Number of edges: 82
+
+fa60 (False): 0
+
+fa60: PUSH Reg R12 2
+fa62: PUSH Reg RBP 1
+fa63: PUSH Reg RBX 1
+fa64: PXOR Reg XMM0, Reg XMM0 4
+fa68: MOV Reg RBX, Reg RDI 3
+fa6b: SUB Reg RSP, Immediate 80 4
+fa6f: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+fa78: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 72))), Reg RAX 5
+fa7d: XOR Reg EAX, Reg EAX 2
+fa7f: LEA Reg RAX, Address (AddrPlus (AddrTimes (AddrImm 8) (FromReg RDX)) (AddrImm 0)) 8
+fa87: TEST Reg R8, Reg R8 3
+fa8a: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Immediate 0 9
+fa93: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 16))), Reg XMM0 5
+fa98: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Immediate 0 9
+faa1: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 48))), Immediate 3 8
+faa9: MOVAPS Address (SizeDir 128 (FromReg RSP)), Reg XMM0 4
+faad: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))), Reg R8 5
+fab2: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 64))), Reg RAX 5
+fab7: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RDX 5
+fabc: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))), Reg ECX 4
+fac0: MOV Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg SI 5
+fac5: JZ fb72 (resolved immediate)
+  |
+  `- facb,fb72
+facb: LEA Reg R12, Address (AddrPlus (FromReg RSP) (AddrImm 32)) 5
+fad0: MOV Reg RSI, Reg R12 3
+fad3: CALL xc__hypercall_bounce_pre (external)
+fad8: TEST Reg EAX, Reg EAX 2
+fada: JNZ fb35 (resolved immediate)
+  |
+  `- fadc,fb35
+fadc: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
+fae1: MOV Reg ESI, Immediate 1 5
+fae6: MOV Reg RDI, Reg RBX 3
+fae9: MOV Reg RDX, Reg RSP 3
+faec: MOV Reg ECX, Immediate 32 5
+faf1: TEST Reg RAX, Reg RAX 3
+faf4: CMOVZ Reg RAX, Reg R12 4
+faf8: MOV Reg RAX, Address (SizeDir 64 (FromReg RAX)) 3
+fafb: MOV Address (SizeDir 64 (FromReg RSP)), Reg RAX 4
+faff: CALL do_memory_op (external)
+fb04: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
+fb09: MOV Reg RDI, Reg RBX 3
+fb0c: MOV Reg EBP, Reg EAX 2
+fb0e: TEST Reg RSI, Reg RSI 3
+fb11: CMOVZ Reg RSI, Reg R12 4
+fb15: CALL xc__hypercall_bounce_post (external)
+fb1a: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 72))) 5
+fb1f: XOR Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+fb28: MOV Reg EAX, Reg EBP 2
+fb2a: JNZ fba7 (resolved immediate)
+  |
+  `- fb2c,fba7
+fb2c: ADD Reg RSP, Immediate 80 4
+fb30: POP Reg RBX 1
+fb31: POP Reg RBP 1
+fb32: POP Reg R12 2
+fb34: RET  1
+  |
+  `- 
+fb35: CALL __errno_location (external)
+fb3a: MOV Reg R12D, Address (SizeDir 32 (FromReg RAX)) 3
+fb3d: MOV Reg RBP, Reg RAX 3
+fb40: MOV Reg RDI, Reg RBX 3
+fb43: MOV Reg ESI, Reg R12D 3
+fb46: CALL xc_strerror (external)
+fb4b: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+fb4e: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 88955)) 7
+fb55: MOV Reg R8, Reg RAX 3
+fb58: MOV Reg ESI, Immediate 1 5
+fb5d: MOV Reg RDI, Reg RBX 3
+fb60: XOR Reg EAX, Reg EAX 2
+fb62: CALL xc_report_error (external)
+fb67: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R12D 4
+fb6b: MOV Reg EBP, Immediate 4294967295 5
+fb70: JMP fb1a (resolved immediate)
+  |
+  `- fb1a
+fb72: CALL __errno_location (external)
+fb77: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+fb7b: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 88862)) 7
+fb82: MOV Reg RBP, Reg RAX 3
+fb85: XOR Reg ECX, Reg ECX 2
+fb87: MOV Reg EDX, Immediate 3 5
+fb8c: MOV Reg RDI, Reg RBX 3
+fb8f: XOR Reg EAX, Reg EAX 2
+fb91: CALL xc_report (external)
+fb96: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Immediate 22 7
+fb9d: MOV Reg EBP, Immediate 4294967295 5
+fba2: JMP fb1a (resolved immediate)
+  |
+  `- fb1a
+fba7: CALL __stack_chk_fail (external)
+  |
+  `- 

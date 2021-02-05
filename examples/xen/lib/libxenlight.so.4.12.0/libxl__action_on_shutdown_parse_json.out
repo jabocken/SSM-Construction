@@ -1,0 +1,26 @@
+Number of assembly instructions     = 9
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 9
+Number of edges: 9
+
+87250 (False): 0
+
+87250: TEST Reg RSI, Reg RSI 3
+87253: JZ 8725a (resolved immediate)
+  |
+  `- 87255,8725a
+87255: CMP Address (SizeDir 32 (FromReg RSI)), Immediate 32 3
+87258: JZ 87260 (resolved immediate)
+  |
+  `- 8725a,87260
+8725a: MOV Reg EAX, Immediate 4294967295 5
+8725f: RET  1
+  |
+  `- 
+87260: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))) 4
+87264: MOV Reg RSI, Reg RDX 3
+87267: JMP libxl_action_on_shutdown_from_string (jmp to external function)
+  |
+  `- 

@@ -1,0 +1,713 @@
+Entry                = 1060
+Size of TLS image    = Undefined
+Start address of TLS = Undefined
+FS                   = Undefined
+Sections:
+318: .interp (28)                       338: .note.gnu.property (32)            358: .note.gnu.build-id (36)            37c: .note.ABI-tag (32)                 
+3a0: .gnu.hash (36)                     3c8: .dynsym (168)                      470: .dynstr (152)                      508: .gnu.version (14)                  
+518: .gnu.version_r (48)                548: .rela.dyn (192)                    608: .rela.plt (24)                     1000: .init (27)                        
+1020: .plt (32)                         1040: .plt.got (16)                     1050: .plt.sec (16)                     1060: .text (453)                       
+1228: .fini (13)                        2000: .rodata (4)                       2004: .eh_frame_hdr (68)                2048: .eh_frame (264)                   
+3db8: .init_array (8)                   3dc0: .fini_array (8)                   3dc8: .dynamic (496)                    3fb8: .got (72)                         
+4000: .data (16)                        4010: .bss (8)                          0: .comment (42)                        0: .symtab (1560)                       
+0: .strtab (527)                        0: .shstrtab (282)                      
+Addresses mapped to symbols:
+1000: _init                             1060: _start                            1090: deregister_tm_clones              10c0: register_tm_clones                
+1100: __do_global_dtors_aux             1140: frame_dummy                       1149: main                              11b0: __libc_csu_init                   
+1220: __libc_csu_fini                   1228: _fini                             2000: _IO_stdin_used                    2004: __GNU_EH_FRAME_HDR                
+214c: __FRAME_END__                     3db8: __init_array_start                3dc0: __init_array_end                  3dc8: _DYNAMIC                          
+3fb8: _GLOBAL_OFFSET_TABLE_             3fd0: __stack_chk_fail                  3fd8: _ITM_deregisterTMCloneTable       3fe0: __libc_start_main                 
+3fe8: __gmon_start__                    3ff0: _ITM_registerTMCloneTable         3ff8: __cxa_finalize                    4000: __data_start                      
+4008: __dso_handle                      4010: __TMC_END__                       4018: _end                              
+
+-------------------------
+0
+1060: ENDBR64  4
+Edge from 1060 to 1064 with memory model: 
+|
+`- [RSP0, 8]
+
+Postcondition = fromList [RIP = 4196,[RSP0,E_val 8 64 False] = 0_t]
+-------------------------
+0
+1064: XOR Reg EBP, Reg EBP 2
+Edge from 1064 to 1066 with memory model: 
+|
+`- [RSP0, 8]
+
+Postcondition = fromList [RIP = 4198,RBP = 0,ZF = <31,0>(RBP0),CF = <31,0>(RBP0),SF = <31,0>(RBP0),OF = <31,0>(RBP0),PF = <31,0>(RBP0),[RSP0,E_val 8 64 False] = 0_t]
+-------------------------
+0
+1066: MOV Reg R9, Reg RDX 3
+Edge from 1066 to 1069 with memory model: 
+|
+`- [RSP0, 8]
+
+Postcondition = fromList [RIP = 4201,RDX = RDX0,RBP = 0,R9 = RDX0,ZF = <31,0>(RBP0),CF = <31,0>(RBP0),SF = <31,0>(RBP0),OF = <31,0>(RBP0),PF = <31,0>(RBP0),[RSP0,E_val 8 64 False] = 0_t]
+-------------------------
+0
+1069: POP Reg RSI 1
+Edge from 1069 to 106a with memory model: 
+|
+`- [RSP0, 8]
+
+Postcondition = fromList [RIP = 4202,RDX = RDX0,RSI = 0_t,RSP = (RSP0 + 8),RBP = 0,R9 = RDX0,ZF = <31,0>(RBP0),CF = <31,0>(RBP0),SF = <31,0>(RBP0),OF = <31,0>(RBP0),PF = <31,0>(RBP0),[RSP0,E_val 8 64 False] = 0_t]
+-------------------------
+0
+106a: MOV Reg RDX, Reg RSP 3
+Edge from 106a to 106d with memory model: 
+|
+`- [RSP0, 8]
+
+Postcondition = fromList [RIP = 4205,RDX = (RSP0 + 8),RSI = 0_t,RSP = (RSP0 + 8),RBP = 0,R9 = RDX0,ZF = <31,0>(RBP0),CF = <31,0>(RBP0),SF = <31,0>(RBP0),OF = <31,0>(RBP0),PF = <31,0>(RBP0),[RSP0,E_val 8 64 False] = 0_t]
+-------------------------
+0
+106d: AND Reg RSP, Immediate 18446744073709551600 4
+Edge from 106d to 1071 with memory model: 
+|
+`- [RSP0, 8]
+
+Postcondition = fromList [RIP = 4209,RDX = (RSP0 + 8),RSI = 0_t,RSP = AND((RSP0 + 8),18446744073709551600),RBP = 0,R9 = RDX0,ZF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),CF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),SF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),OF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),PF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),[RSP0,E_val 8 64 False] = 0_t]
+-------------------------
+0
+1071: PUSH Reg RAX 1
+Edge from 1071 to 1072 with memory model: 
+|
++- [RSP0, 8]
+|
+`- [(AND((RSP0 + 8),18446744073709551600) - 8), 8]
+
+Postcondition = fromList [RIP = 4210,RAX = RAX0,RDX = (RSP0 + 8),RSI = 0_t,RSP = (AND((RSP0 + 8),18446744073709551600) - 8),RBP = 0,R9 = RDX0,ZF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),CF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),SF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),OF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),PF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),[RSP0,E_val 8 64 False] = 0_t,[(AND((RSP0 + 8),18446744073709551600) - 8),E_val 8 64 False] = RAX0]
+Edge from 1071 to 1072 with memory model: 
+|
+`- [RSP0, 8]:[(AND((RSP0 + 8),18446744073709551600) - 8), 8]
+
+Postcondition = fromList [RIP = 4210,RAX = RAX0,RDX = (RSP0 + 8),RSI = 0_t,RSP = (AND((RSP0 + 8),18446744073709551600) - 8),RBP = 0,R9 = RDX0,ZF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),CF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),SF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),OF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),PF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),[(AND((RSP0 + 8),18446744073709551600) - 8),E_val 8 64 False] = RAX0]
+-------------------------
+1
+1072: PUSH Reg RSP 1
+Edge from 1072 to 1073 with memory model: 
+|
++- [RSP0, 8]
+|
++- [(AND((RSP0 + 8),18446744073709551600) - 8), 8]
+|
+`- [(AND((RSP0 + 8),18446744073709551600) - 16), 8]
+
+Postcondition = fromList [RIP = 4211,RAX = RAX0,RDX = (RSP0 + 8),RSI = 0_t,RSP = (AND((RSP0 + 8),18446744073709551600) - 16),RBP = 0,R9 = RDX0,ZF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),CF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),SF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),OF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),PF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),[RSP0,E_val 8 64 False] = 0_t,[(AND((RSP0 + 8),18446744073709551600) - 8),E_val 8 64 False] = RAX0,[(AND((RSP0 + 8),18446744073709551600) - 16),E_val 8 64 False] = (AND((RSP0 + 8),18446744073709551600) - 16)]
+-------------------------
+1
+1072: PUSH Reg RSP 1
+Edge from 1072 to 1073 with memory model: 
+|
++- [RSP0, 8]:[(AND((RSP0 + 8),18446744073709551600) - 8), 8]
+|
+`- [(AND((RSP0 + 8),18446744073709551600) - 16), 8]
+
+Postcondition = fromList [RIP = 4211,RAX = RAX0,RDX = (RSP0 + 8),RSI = 0_t,RSP = (AND((RSP0 + 8),18446744073709551600) - 16),RBP = 0,R9 = RDX0,ZF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),CF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),SF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),OF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),PF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),[(AND((RSP0 + 8),18446744073709551600) - 8),E_val 8 64 False] = RAX0,[(AND((RSP0 + 8),18446744073709551600) - 16),E_val 8 64 False] = (AND((RSP0 + 8),18446744073709551600) - 16)]
+-------------------------
+1
+1073: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 422)) 7
+Edge from 1073 to 107a with memory model: 
+|
++- [RSP0, 8]
+|
++- [(AND((RSP0 + 8),18446744073709551600) - 8), 8]
+|
+`- [(AND((RSP0 + 8),18446744073709551600) - 16), 8]
+
+Postcondition = fromList [RIP = 4218,RAX = RAX0,RDX = (RSP0 + 8),RSI = 0_t,RSP = (AND((RSP0 + 8),18446744073709551600) - 16),RBP = 0,R9 = RDX0,R8 = 4640,ZF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),CF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),SF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),OF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),PF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),[RSP0,E_val 8 64 False] = 0_t,[(AND((RSP0 + 8),18446744073709551600) - 8),E_val 8 64 False] = RAX0,[(AND((RSP0 + 8),18446744073709551600) - 16),E_val 8 64 False] = (AND((RSP0 + 8),18446744073709551600) - 16)]
+-------------------------
+1
+1073: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 422)) 7
+Edge from 1073 to 107a with memory model: 
+|
++- [RSP0, 8]:[(AND((RSP0 + 8),18446744073709551600) - 8), 8]
+|
+`- [(AND((RSP0 + 8),18446744073709551600) - 16), 8]
+
+Postcondition = fromList [RIP = 4218,RAX = RAX0,RDX = (RSP0 + 8),RSI = 0_t,RSP = (AND((RSP0 + 8),18446744073709551600) - 16),RBP = 0,R9 = RDX0,R8 = 4640,ZF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),CF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),SF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),OF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),PF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),[(AND((RSP0 + 8),18446744073709551600) - 8),E_val 8 64 False] = RAX0,[(AND((RSP0 + 8),18446744073709551600) - 16),E_val 8 64 False] = (AND((RSP0 + 8),18446744073709551600) - 16)]
+-------------------------
+1
+107a: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 303)) 7
+Edge from 107a to 1081 with memory model: 
+|
++- [RSP0, 8]
+|
++- [(AND((RSP0 + 8),18446744073709551600) - 8), 8]
+|
+`- [(AND((RSP0 + 8),18446744073709551600) - 16), 8]
+
+Postcondition = fromList [RIP = 4225,RAX = RAX0,RCX = 4528,RDX = (RSP0 + 8),RSI = 0_t,RSP = (AND((RSP0 + 8),18446744073709551600) - 16),RBP = 0,R9 = RDX0,R8 = 4640,ZF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),CF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),SF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),OF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),PF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),[RSP0,E_val 8 64 False] = 0_t,[(AND((RSP0 + 8),18446744073709551600) - 8),E_val 8 64 False] = RAX0,[(AND((RSP0 + 8),18446744073709551600) - 16),E_val 8 64 False] = (AND((RSP0 + 8),18446744073709551600) - 16)]
+-------------------------
+1
+107a: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 303)) 7
+Edge from 107a to 1081 with memory model: 
+|
++- [RSP0, 8]:[(AND((RSP0 + 8),18446744073709551600) - 8), 8]
+|
+`- [(AND((RSP0 + 8),18446744073709551600) - 16), 8]
+
+Postcondition = fromList [RIP = 4225,RAX = RAX0,RCX = 4528,RDX = (RSP0 + 8),RSI = 0_t,RSP = (AND((RSP0 + 8),18446744073709551600) - 16),RBP = 0,R9 = RDX0,R8 = 4640,ZF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),CF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),SF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),OF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),PF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),[(AND((RSP0 + 8),18446744073709551600) - 8),E_val 8 64 False] = RAX0,[(AND((RSP0 + 8),18446744073709551600) - 16),E_val 8 64 False] = (AND((RSP0 + 8),18446744073709551600) - 16)]
+-------------------------
+1
+1081: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 193)) 7
+Edge from 1081 to 1088 with memory model: 
+|
++- [RSP0, 8]
+|
++- [(AND((RSP0 + 8),18446744073709551600) - 8), 8]
+|
+`- [(AND((RSP0 + 8),18446744073709551600) - 16), 8]
+
+Postcondition = fromList [RIP = 4232,RAX = RAX0,RCX = 4528,RDX = (RSP0 + 8),RDI = 4425,RSI = 0_t,RSP = (AND((RSP0 + 8),18446744073709551600) - 16),RBP = 0,R9 = RDX0,R8 = 4640,ZF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),CF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),SF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),OF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),PF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),[RSP0,E_val 8 64 False] = 0_t,[(AND((RSP0 + 8),18446744073709551600) - 8),E_val 8 64 False] = RAX0,[(AND((RSP0 + 8),18446744073709551600) - 16),E_val 8 64 False] = (AND((RSP0 + 8),18446744073709551600) - 16)]
+-------------------------
+1
+1081: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 193)) 7
+Edge from 1081 to 1088 with memory model: 
+|
++- [RSP0, 8]:[(AND((RSP0 + 8),18446744073709551600) - 8), 8]
+|
+`- [(AND((RSP0 + 8),18446744073709551600) - 16), 8]
+
+Postcondition = fromList [RIP = 4232,RAX = RAX0,RCX = 4528,RDX = (RSP0 + 8),RDI = 4425,RSI = 0_t,RSP = (AND((RSP0 + 8),18446744073709551600) - 16),RBP = 0,R9 = RDX0,R8 = 4640,ZF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),CF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),SF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),OF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),PF = AND(AND((RSP0 + 8),18446744073709551600),18446744073709551600),[(AND((RSP0 + 8),18446744073709551600) - 8),E_val 8 64 False] = RAX0,[(AND((RSP0 + 8),18446744073709551600) - 16),E_val 8 64 False] = (AND((RSP0 + 8),18446744073709551600) - 16)]
+-------------------------
+1
+1088: CALL __libc_start_main (external)
+Executing __libc_start_main
+Calling main function at address: 1149
+
+Edge from 1088 to 1149 with memory model: 
+|
+`- [RSP0, 8]
+
+Postcondition = fromList [RIP = 4425,[RSP0,E_val 8 64 False] = 0_t]
+-------------------------
+1
+1088: CALL __libc_start_main (external)
+Executing __libc_start_main
+Calling main function at address: 1149
+
+Edge from 1088 to 1149 with memory model: 
+|
+`- [RSP0, 8]
+
+Postcondition = fromList [RIP = 4425,[RSP0,E_val 8 64 False] = 0_t]
+-------------------------
+0
+1149: ENDBR64  4
+Edge from 1149 to 114d with memory model: 
+|
+`- [RSP0, 8]
+
+Postcondition = fromList [RIP = 4429,[RSP0,E_val 8 64 False] = 0_t]
+-------------------------
+0
+114d: PUSH Reg RBP 1
+Edge from 114d to 114e with memory model: 
+|
++- [RSP0, 8]
+|
+`- [(RSP0 - 8), 8]
+
+Postcondition = fromList [RIP = 4430,RSP = (RSP0 - 8),RBP = RBP0,[RSP0,E_val 8 64 False] = 0_t,[(RSP0 - 8),E_val 8 64 False] = RBP0]
+-------------------------
+0
+114e: MOV Reg RBP, Reg RSP 3
+Edge from 114e to 1151 with memory model: 
+|
++- [RSP0, 8]
+|
+`- [(RSP0 - 8), 8]
+
+Postcondition = fromList [RIP = 4433,RSP = (RSP0 - 8),RBP = (RSP0 - 8),[RSP0,E_val 8 64 False] = 0_t,[(RSP0 - 8),E_val 8 64 False] = RBP0]
+-------------------------
+0
+1151: SUB Reg RSP, Immediate 64 4
+Edge from 1151 to 1155 with memory model: 
+|
++- [RSP0, 8]
+|
+`- [(RSP0 - 8), 8]
+
+Postcondition = fromList [RIP = 4437,RSP = (RSP0 - 72),RBP = (RSP0 - 8),ZF = (RSP0 - 136),CF = (RSP0 - 136),SF = (RSP0 - 136),OF = (RSP0 - 136),PF = (RSP0 - 136),[RSP0,E_val 8 64 False] = 0_t,[(RSP0 - 8),E_val 8 64 False] = RBP0]
+-------------------------
+0
+1155: MOV Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 52))), Reg EDI 3
+Edge from 1155 to 1158 with memory model: 
+|
++- [RSP0, 8]
+|
++- [(RSP0 - 8), 8]
+|
+`- [(RSP0 - 60), 4]
+
+Postcondition = fromList [RIP = 4440,RDI = RDI0,RSP = (RSP0 - 72),RBP = (RSP0 - 8),ZF = (RSP0 - 136),CF = (RSP0 - 136),SF = (RSP0 - 136),OF = (RSP0 - 136),PF = (RSP0 - 136),[RSP0,E_val 8 64 False] = 0_t,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0)]
+-------------------------
+0
+1158: MOV Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 64))), Reg RSI 4
+Edge from 1158 to 115c with memory model: 
+|
++- [RSP0, 8]
+|
++- [(RSP0 - 8), 8]
+|
++- [(RSP0 - 60), 4]
+|
+`- [(RSP0 - 72), 8]
+
+Postcondition = fromList [RIP = 4444,RDI = RDI0,RSI = RSI0,RSP = (RSP0 - 72),RBP = (RSP0 - 8),ZF = (RSP0 - 136),CF = (RSP0 - 136),SF = (RSP0 - 136),OF = (RSP0 - 136),PF = (RSP0 - 136),[RSP0,E_val 8 64 False] = 0_t,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0),[(RSP0 - 72),E_val 8 64 False] = RSI0]
+-------------------------
+0
+115c: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+Edge from 115c to 1165 with memory model: 
+|
++- [RSP0, 8]
+|
++- [(FS0 + 40), 8]
+|
++- [(RSP0 - 8), 8]
+|
++- [(RSP0 - 60), 4]
+|
+`- [(RSP0 - 72), 8]
+
+Postcondition = fromList [RIP = 4453,RAX = 64ADDvarFS0val40False0,RDI = RDI0,RSI = RSI0,RSP = (RSP0 - 72),RBP = (RSP0 - 8),FS = FS0,ZF = (RSP0 - 136),CF = (RSP0 - 136),SF = (RSP0 - 136),OF = (RSP0 - 136),PF = (RSP0 - 136),[RSP0,E_val 8 64 False] = 0_t,[(FS0 + 40),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0),[(RSP0 - 72),E_val 8 64 False] = RSI0]
+-------------------------
+0
+1165: MOV Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 8))), Reg RAX 4
+Edge from 1165 to 1169 with memory model: 
+|
++- [RSP0, 8]
+|
++- [(FS0 + 40), 8]
+|
++- [(RSP0 - 8), 8]
+|
++- [(RSP0 - 16), 8]
+|
++- [(RSP0 - 60), 4]
+|
+`- [(RSP0 - 72), 8]
+
+Postcondition = fromList [RIP = 4457,RAX = 64ADDvarFS0val40False0,RDI = RDI0,RSI = RSI0,RSP = (RSP0 - 72),RBP = (RSP0 - 8),FS = FS0,ZF = (RSP0 - 136),CF = (RSP0 - 136),SF = (RSP0 - 136),OF = (RSP0 - 136),PF = (RSP0 - 136),[RSP0,E_val 8 64 False] = 0_t,[(FS0 + 40),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 16),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0),[(RSP0 - 72),E_val 8 64 False] = RSI0]
+-------------------------
+0
+1169: XOR Reg EAX, Reg EAX 2
+Edge from 1169 to 116b with memory model: 
+|
++- [RSP0, 8]
+|
++- [(FS0 + 40), 8]
+|
++- [(RSP0 - 8), 8]
+|
++- [(RSP0 - 16), 8]
+|
++- [(RSP0 - 60), 4]
+|
+`- [(RSP0 - 72), 8]
+
+Postcondition = fromList [RIP = 4459,RAX = 0,RDI = RDI0,RSI = RSI0,RSP = (RSP0 - 72),RBP = (RSP0 - 8),FS = FS0,ZF = <31,0>(64ADDvarFS0val40False0),CF = <31,0>(64ADDvarFS0val40False0),SF = <31,0>(64ADDvarFS0val40False0),OF = <31,0>(64ADDvarFS0val40False0),PF = <31,0>(64ADDvarFS0val40False0),[RSP0,E_val 8 64 False] = 0_t,[(FS0 + 40),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 16),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0),[(RSP0 - 72),E_val 8 64 False] = RSI0]
+-------------------------
+0
+116b: MOV Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 32))), Immediate 5 7
+Edge from 116b to 1172 with memory model: 
+|
++- [RSP0, 8]
+|
++- [(FS0 + 40), 8]
+|
++- [(RSP0 - 8), 8]
+|
++- [(RSP0 - 16), 8]
+|
++- [(RSP0 - 40), 4]
+|
++- [(RSP0 - 60), 4]
+|
+`- [(RSP0 - 72), 8]
+
+Postcondition = fromList [RIP = 4466,RAX = 0,RDI = RDI0,RSI = RSI0,RSP = (RSP0 - 72),RBP = (RSP0 - 8),FS = FS0,ZF = <31,0>(64ADDvarFS0val40False0),CF = <31,0>(64ADDvarFS0val40False0),SF = <31,0>(64ADDvarFS0val40False0),OF = <31,0>(64ADDvarFS0val40False0),PF = <31,0>(64ADDvarFS0val40False0),[RSP0,E_val 8 64 False] = 0_t,[(FS0 + 40),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 16),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 40),E_val 4 64 False] = 5,[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0),[(RSP0 - 72),E_val 8 64 False] = RSI0]
+-------------------------
+0
+1172: MOV Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 28))), Immediate 6 7
+Edge from 1172 to 1179 with memory model: 
+|
++- [RSP0, 8]
+|
++- [(FS0 + 40), 8]
+|
++- [(RSP0 - 8), 8]
+|
++- [(RSP0 - 16), 8]
+|
++- [(RSP0 - 36), 4]
+|
++- [(RSP0 - 40), 4]
+|
++- [(RSP0 - 60), 4]
+|
+`- [(RSP0 - 72), 8]
+
+Postcondition = fromList [RIP = 4473,RAX = 0,RDI = RDI0,RSI = RSI0,RSP = (RSP0 - 72),RBP = (RSP0 - 8),FS = FS0,ZF = <31,0>(64ADDvarFS0val40False0),CF = <31,0>(64ADDvarFS0val40False0),SF = <31,0>(64ADDvarFS0val40False0),OF = <31,0>(64ADDvarFS0val40False0),PF = <31,0>(64ADDvarFS0val40False0),[RSP0,E_val 8 64 False] = 0_t,[(FS0 + 40),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 16),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 36),E_val 4 64 False] = 6,[(RSP0 - 40),E_val 4 64 False] = 5,[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0),[(RSP0 - 72),E_val 8 64 False] = RSI0]
+-------------------------
+0
+1179: LEA Reg RAX, Address (AddrMinus (FromReg RBP) (AddrImm 32)) 4
+Edge from 1179 to 117d with memory model: 
+|
++- [RSP0, 8]
+|
++- [(FS0 + 40), 8]
+|
++- [(RSP0 - 8), 8]
+|
++- [(RSP0 - 16), 8]
+|
++- [(RSP0 - 36), 4]
+|
++- [(RSP0 - 40), 4]
+|
++- [(RSP0 - 60), 4]
+|
+`- [(RSP0 - 72), 8]
+
+Postcondition = fromList [RIP = 4477,RAX = (RSP0 - 40),RDI = RDI0,RSI = RSI0,RSP = (RSP0 - 72),RBP = (RSP0 - 8),FS = FS0,ZF = <31,0>(64ADDvarFS0val40False0),CF = <31,0>(64ADDvarFS0val40False0),SF = <31,0>(64ADDvarFS0val40False0),OF = <31,0>(64ADDvarFS0val40False0),PF = <31,0>(64ADDvarFS0val40False0),[RSP0,E_val 8 64 False] = 0_t,[(FS0 + 40),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 16),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 36),E_val 4 64 False] = 6,[(RSP0 - 40),E_val 4 64 False] = 5,[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0),[(RSP0 - 72),E_val 8 64 False] = RSI0]
+-------------------------
+0
+117d: ADD Reg RAX, Immediate 2 4
+Edge from 117d to 1181 with memory model: 
+|
++- [RSP0, 8]
+|
++- [(FS0 + 40), 8]
+|
++- [(RSP0 - 8), 8]
+|
++- [(RSP0 - 16), 8]
+|
++- [(RSP0 - 36), 4]
+|
++- [(RSP0 - 40), 4]
+|
++- [(RSP0 - 60), 4]
+|
+`- [(RSP0 - 72), 8]
+
+Postcondition = fromList [RIP = 4481,RAX = (RSP0 - 38),RDI = RDI0,RSI = RSI0,RSP = (RSP0 - 72),RBP = (RSP0 - 8),FS = FS0,ZF = (RSP0 - 36),CF = (RSP0 - 36),SF = (RSP0 - 36),OF = (RSP0 - 36),PF = (RSP0 - 36),[RSP0,E_val 8 64 False] = 0_t,[(FS0 + 40),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 16),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 36),E_val 4 64 False] = 6,[(RSP0 - 40),E_val 4 64 False] = 5,[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0),[(RSP0 - 72),E_val 8 64 False] = RSI0]
+-------------------------
+0
+1181: MOV Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 40))), Reg RAX 4
+Edge from 1181 to 1185 with memory model: 
+|
++- [RSP0, 8]
+|
++- [(FS0 + 40), 8]
+|
++- [(RSP0 - 8), 8]
+|
++- [(RSP0 - 16), 8]
+|
++- [(RSP0 - 36), 4]
+|
++- [(RSP0 - 40), 4]
+|
++- [(RSP0 - 48), 8]
+|
++- [(RSP0 - 60), 4]
+|
+`- [(RSP0 - 72), 8]
+
+Postcondition = fromList [RIP = 4485,RAX = (RSP0 - 38),RDI = RDI0,RSI = RSI0,RSP = (RSP0 - 72),RBP = (RSP0 - 8),FS = FS0,ZF = (RSP0 - 36),CF = (RSP0 - 36),SF = (RSP0 - 36),OF = (RSP0 - 36),PF = (RSP0 - 36),[RSP0,E_val 8 64 False] = 0_t,[(FS0 + 40),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 16),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 36),E_val 4 64 False] = 6,[(RSP0 - 40),E_val 4 64 False] = 5,[(RSP0 - 48),E_val 8 64 False] = (RSP0 - 38),[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0),[(RSP0 - 72),E_val 8 64 False] = RSI0]
+-------------------------
+0
+1185: MOV Reg RAX, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 40))) 4
+Edge from 1185 to 1189 with memory model: 
+|
++- [RSP0, 8]
+|
++- [(FS0 + 40), 8]
+|
++- [(RSP0 - 8), 8]
+|
++- [(RSP0 - 16), 8]
+|
++- [(RSP0 - 36), 4]
+|
++- [(RSP0 - 40), 4]
+|
++- [(RSP0 - 48), 8]
+|
++- [(RSP0 - 60), 4]
+|
+`- [(RSP0 - 72), 8]
+
+Postcondition = fromList [RIP = 4489,RAX = (RSP0 - 38),RDI = RDI0,RSI = RSI0,RSP = (RSP0 - 72),RBP = (RSP0 - 8),FS = FS0,ZF = (RSP0 - 36),CF = (RSP0 - 36),SF = (RSP0 - 36),OF = (RSP0 - 36),PF = (RSP0 - 36),[RSP0,E_val 8 64 False] = 0_t,[(FS0 + 40),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 16),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 36),E_val 4 64 False] = 6,[(RSP0 - 40),E_val 4 64 False] = 5,[(RSP0 - 48),E_val 8 64 False] = (RSP0 - 38),[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0),[(RSP0 - 72),E_val 8 64 False] = RSI0]
+-------------------------
+0
+1189: MOV Address (SizeDir 32 (FromReg RAX)), Immediate 3 6
+Edge from 1189 to 118f with memory model: 
+|
++- [RSP0, 8]
+|
++- [(FS0 + 40), 8]
+|
++- [(RSP0 - 8), 8]
+|
++- [(RSP0 - 16), 8]
+|
++- [(RSP0 - 36), 4]
+|
++- [(RSP0 - 38), 4]
+|
++- [(RSP0 - 40), 4]
+|
++- [(RSP0 - 48), 8]
+|
++- [(RSP0 - 60), 4]
+|
+`- [(RSP0 - 72), 8]
+
+Postcondition = fromList [RIP = 4495,RAX = (RSP0 - 38),RDI = RDI0,RSI = RSI0,RSP = (RSP0 - 72),RBP = (RSP0 - 8),FS = FS0,ZF = (RSP0 - 36),CF = (RSP0 - 36),SF = (RSP0 - 36),OF = (RSP0 - 36),PF = (RSP0 - 36),[RSP0,E_val 8 64 False] = 0_t,[(FS0 + 40),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 16),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 36),E_val 4 64 False] = 6,[(RSP0 - 38),E_val 4 64 False] = 3,[(RSP0 - 40),E_val 4 64 False] = 5,[(RSP0 - 48),E_val 8 64 False] = (RSP0 - 38),[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0),[(RSP0 - 72),E_val 8 64 False] = RSI0]
+Edge from 1189 to 118f with memory model: 
+|
++- [RSP0, 8]
+|
++- [(FS0 + 40), 8]
+|
++- [(RSP0 - 8), 8]
+|
++- [(RSP0 - 16), 8]
+|
++- [(RSP0 - 36), 4]
+|
++- [(RSP0 - 38), 4]:[(RSP0 - 40), 4]
+|
++- [(RSP0 - 48), 8]
+|
++- [(RSP0 - 60), 4]
+|
+`- [(RSP0 - 72), 8]
+
+Postcondition = fromList [RIP = 4495,RAX = (RSP0 - 38),RDI = RDI0,RSI = RSI0,RSP = (RSP0 - 72),RBP = (RSP0 - 8),FS = FS0,ZF = (RSP0 - 36),CF = (RSP0 - 36),SF = (RSP0 - 36),OF = (RSP0 - 36),PF = (RSP0 - 36),[RSP0,E_val 8 64 False] = 0_t,[(FS0 + 40),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 16),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 36),E_val 4 64 False] = 6,[(RSP0 - 38),E_val 4 64 False] = 3,[(RSP0 - 48),E_val 8 64 False] = (RSP0 - 38),[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0),[(RSP0 - 72),E_val 8 64 False] = RSI0]
+Edge from 1189 to 118f with memory model: 
+|
++- [RSP0, 8]
+|
++- [(FS0 + 40), 8]
+|
++- [(RSP0 - 8), 8]
+|
++- [(RSP0 - 16), 8]
+|
++- [(RSP0 - 36), 4]:[(RSP0 - 38), 4]
+|
++- [(RSP0 - 40), 4]
+|
++- [(RSP0 - 48), 8]
+|
++- [(RSP0 - 60), 4]
+|
+`- [(RSP0 - 72), 8]
+
+Postcondition = fromList [RIP = 4495,RAX = (RSP0 - 38),RDI = RDI0,RSI = RSI0,RSP = (RSP0 - 72),RBP = (RSP0 - 8),FS = FS0,ZF = (RSP0 - 36),CF = (RSP0 - 36),SF = (RSP0 - 36),OF = (RSP0 - 36),PF = (RSP0 - 36),[RSP0,E_val 8 64 False] = 0_t,[(FS0 + 40),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 16),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 38),E_val 4 64 False] = 3,[(RSP0 - 40),E_val 4 64 False] = 5,[(RSP0 - 48),E_val 8 64 False] = (RSP0 - 38),[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0),[(RSP0 - 72),E_val 8 64 False] = RSI0]
+-------------------------
+0
+118f: MOV Reg EAX, Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 32))) 3
+Edge from 118f to 1192 with memory model: 
+|
++- [RSP0, 8]
+|
++- [(FS0 + 40), 8]
+|
++- [(RSP0 - 8), 8]
+|
++- [(RSP0 - 16), 8]
+|
++- [(RSP0 - 36), 4]
+|
++- [(RSP0 - 40), 4]
+|
++- [(RSP0 - 48), 8]
+|
++- [(RSP0 - 60), 4]
+|
+`- [(RSP0 - 72), 8]
+
+Postcondition = fromList [RIP = 4498,RAX = zextend(Unknown_1192_[(RSP0 - 40),E_val 4 64 False],64),RDI = RDI0,RSI = RSI0,RSP = (RSP0 - 72),RBP = (RSP0 - 8),FS = FS0,ZF = (RSP0 - 36),CF = (RSP0 - 36),SF = (RSP0 - 36),OF = (RSP0 - 36),PF = (RSP0 - 36),[RSP0,E_val 8 64 False] = 0_t,[(FS0 + 40),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 16),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 38),E_val 4 64 False] = 3,[(RSP0 - 48),E_val 8 64 False] = (RSP0 - 38),[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0),[(RSP0 - 72),E_val 8 64 False] = RSI0]
+-------------------------
+0
+1192: MOV Reg RDX, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 8))) 4
+Edge from 1192 to 1196 with memory model: 
+|
++- [RSP0, 8]
+|
++- [(FS0 + 40), 8]
+|
++- [(RSP0 - 8), 8]
+|
++- [(RSP0 - 16), 8]
+|
++- [(RSP0 - 36), 4]
+|
++- [(RSP0 - 40), 4]
+|
++- [(RSP0 - 48), 8]
+|
++- [(RSP0 - 60), 4]
+|
+`- [(RSP0 - 72), 8]
+
+Postcondition = fromList [RIP = 4502,RAX = zextend(Unknown_1192_[(RSP0 - 40),E_val 4 64 False],64),RDX = 64ADDvarFS0val40False0,RDI = RDI0,RSI = RSI0,RSP = (RSP0 - 72),RBP = (RSP0 - 8),FS = FS0,ZF = (RSP0 - 36),CF = (RSP0 - 36),SF = (RSP0 - 36),OF = (RSP0 - 36),PF = (RSP0 - 36),[RSP0,E_val 8 64 False] = 0_t,[(FS0 + 40),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 16),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 38),E_val 4 64 False] = 3,[(RSP0 - 48),E_val 8 64 False] = (RSP0 - 38),[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0),[(RSP0 - 72),E_val 8 64 False] = RSI0]
+-------------------------
+0
+1196: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+Edge from 1196 to 119f with memory model: 
+|
++- [RSP0, 8]
+|
++- [(FS0 + 40), 8]
+|
++- [(RSP0 - 8), 8]
+|
++- [(RSP0 - 16), 8]
+|
++- [(RSP0 - 36), 4]
+|
++- [(RSP0 - 40), 4]
+|
++- [(RSP0 - 48), 8]
+|
++- [(RSP0 - 60), 4]
+|
+`- [(RSP0 - 72), 8]
+
+Postcondition = fromList [RIP = 4511,RAX = zextend(Unknown_1192_[(RSP0 - 40),E_val 4 64 False],64),RDX = 0,RDI = RDI0,RSI = RSI0,RSP = (RSP0 - 72),RBP = (RSP0 - 8),FS = FS0,ZF = 64ADDvarFS0val40False0,CF = 64ADDvarFS0val40False0,SF = 64ADDvarFS0val40False0,OF = 64ADDvarFS0val40False0,PF = 64ADDvarFS0val40False0,[RSP0,E_val 8 64 False] = 0_t,[(FS0 + 40),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 16),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 38),E_val 4 64 False] = 3,[(RSP0 - 48),E_val 8 64 False] = (RSP0 - 38),[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0),[(RSP0 - 72),E_val 8 64 False] = RSI0]
+-------------------------
+0
+119f: JZ 11a6 (resolved immediate)
+Edge from 119f to 11a1 with memory model: 
+|
++- [RSP0, 8]
+|
++- [(FS0 + 40), 8]
+|
++- [(RSP0 - 8), 8]
+|
++- [(RSP0 - 16), 8]
+|
++- [(RSP0 - 36), 4]
+|
++- [(RSP0 - 40), 4]
+|
++- [(RSP0 - 48), 8]
+|
++- [(RSP0 - 60), 4]
+|
+`- [(RSP0 - 72), 8]
+
+Postcondition = fromList [RIP = 4513,RAX = zextend(Unknown_1192_[(RSP0 - 40),E_val 4 64 False],64),RDX = 0,RDI = RDI0,RSI = RSI0,RSP = (RSP0 - 72),RBP = (RSP0 - 8),FS = FS0,ZF = 64ADDvarFS0val40False0,CF = 64ADDvarFS0val40False0,SF = 64ADDvarFS0val40False0,OF = 64ADDvarFS0val40False0,PF = 64ADDvarFS0val40False0,[RSP0,E_val 8 64 False] = 0_t,[(FS0 + 40),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 16),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 38),E_val 4 64 False] = 3,[(RSP0 - 48),E_val 8 64 False] = (RSP0 - 38),[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0),[(RSP0 - 72),E_val 8 64 False] = RSI0]
+Edge from 119f to 11a6 with memory model: 
+|
++- [RSP0, 8]
+|
++- [(FS0 + 40), 8]
+|
++- [(RSP0 - 8), 8]
+|
++- [(RSP0 - 16), 8]
+|
++- [(RSP0 - 36), 4]
+|
++- [(RSP0 - 40), 4]
+|
++- [(RSP0 - 48), 8]
+|
++- [(RSP0 - 60), 4]
+|
+`- [(RSP0 - 72), 8]
+
+Postcondition = fromList [RIP = 4518,RAX = zextend(Unknown_1192_[(RSP0 - 40),E_val 4 64 False],64),RDX = 0,RDI = RDI0,RSI = RSI0,RSP = (RSP0 - 72),RBP = (RSP0 - 8),FS = FS0,ZF = 64ADDvarFS0val40False0,CF = 64ADDvarFS0val40False0,SF = 64ADDvarFS0val40False0,OF = 64ADDvarFS0val40False0,PF = 64ADDvarFS0val40False0,[RSP0,E_val 8 64 False] = 0_t,[(FS0 + 40),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 16),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 38),E_val 4 64 False] = 3,[(RSP0 - 48),E_val 8 64 False] = (RSP0 - 38),[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0),[(RSP0 - 72),E_val 8 64 False] = RSI0]
+-------------------------
+1
+11a1: CALL __stack_chk_fail (external)
+-------------------------
+0
+11a6: LEAVE  1
+Edge from 11a6 to 11a7 with memory model: 
+|
++- [RSP0, 8]
+|
++- [(FS0 + 40), 8]
+|
++- [(RSP0 - 8), 8]
+|
++- [(RSP0 - 16), 8]
+|
++- [(RSP0 - 36), 4]
+|
++- [(RSP0 - 40), 4]
+|
++- [(RSP0 - 48), 8]
+|
++- [(RSP0 - 60), 4]
+|
+`- [(RSP0 - 72), 8]
+
+Postcondition = fromList [RIP = 4519,RAX = zextend(Unknown_1192_[(RSP0 - 40),E_val 4 64 False],64),RDX = 0,RDI = RDI0,RSI = RSI0,RSP = RSP0,RBP = RBP0,FS = FS0,ZF = 64ADDvarFS0val40False0,CF = 64ADDvarFS0val40False0,SF = 64ADDvarFS0val40False0,OF = 64ADDvarFS0val40False0,PF = 64ADDvarFS0val40False0,[RSP0,E_val 8 64 False] = 0_t,[(FS0 + 40),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 8),E_val 8 64 False] = RBP0,[(RSP0 - 16),E_val 8 64 False] = 64ADDvarFS0val40False0,[(RSP0 - 38),E_val 4 64 False] = 3,[(RSP0 - 48),E_val 8 64 False] = (RSP0 - 38),[(RSP0 - 60),E_val 4 64 False] = <31,0>(RDI0),[(RSP0 - 72),E_val 8 64 False] = RSI0]
+-------------------------
+0
+11a7: RET  1
+
+Number of assembly instructions     = 35
+Number of indirect branches         = 1
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 40
+Number of edges: 48
+
+1060 (False): 0
+
+1060: ENDBR64  4
+1064: XOR Reg EBP, Reg EBP 2
+1066: MOV Reg R9, Reg RDX 3
+1069: POP Reg RSI 1
+106a: MOV Reg RDX, Reg RSP 3
+106d: AND Reg RSP, Immediate 18446744073709551600 4
+1071: PUSH Reg RAX 1
+1072: PUSH Reg RSP 1
+1073: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 422)) 7
+107a: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 303)) 7
+1081: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 193)) 7
+1088: CALL __libc_start_main (external)
+  |
+  `- 1149
+1149: ENDBR64  4
+114d: PUSH Reg RBP 1
+114e: MOV Reg RBP, Reg RSP 3
+1151: SUB Reg RSP, Immediate 64 4
+1155: MOV Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 52))), Reg EDI 3
+1158: MOV Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 64))), Reg RSI 4
+115c: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1165: MOV Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 8))), Reg RAX 4
+1169: XOR Reg EAX, Reg EAX 2
+116b: MOV Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 32))), Immediate 5 7
+1172: MOV Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 28))), Immediate 6 7
+1179: LEA Reg RAX, Address (AddrMinus (FromReg RBP) (AddrImm 32)) 4
+117d: ADD Reg RAX, Immediate 2 4
+1181: MOV Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 40))), Reg RAX 4
+1185: MOV Reg RAX, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 40))) 4
+1189: MOV Address (SizeDir 32 (FromReg RAX)), Immediate 3 6
+118f: MOV Reg EAX, Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 32))) 3
+1192: MOV Reg RDX, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 8))) 4
+1196: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+119f: JZ 11a6 (resolved immediate)
+  |
+  `- 11a1,11a6
+11a1: CALL __stack_chk_fail (external)
+  |
+  `- 
+11a6: LEAVE  1
+11a7: RET  1
+  |
+  `- 

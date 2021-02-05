@@ -1,4 +1,4 @@
-# Initial setup
+Fthere # Initial setup
 
 Assuming a recent (2020) install of an Ubuntu-based Linux distribution with up-to-date default packages, you will need the following additional packages (installable via `apt`):
 
@@ -33,7 +33,7 @@ To collect info about the program binaries and library functions in a form suita
     ./parse.py xen/bin
     ./so_parse.py xen/lib
 
-There is also `make.py` and `so_make.py`, which can be used to produce makefiles for sets of binaries or libraries, respectively, in their own subfolders, following the layout used for the current contents of `examples`. To create a single makefile
+We have also provided `make.py` and `so_make.py`, which can be used to produce makefiles for sets of binaries or libraries, respectively, in their own subfolders, following the layout used for the current contents of `examples`. To create a single makefile
 for testing, use the template `Makefile` in `examples`.
 
 As a final note, the output (.out) and error (.err) files can grow very large. Their contents are useful for investigating the sources of errors and failure, but if you only want to keep the info used for statistics, run `slim_files.py` to trim down the file sizes after analysis. This takes a top-level directory and recursively operates in it on the `.out` and `.err` files, so running `./slim_files.py xen` from `examples` will slim down the entire contents of `xen`.

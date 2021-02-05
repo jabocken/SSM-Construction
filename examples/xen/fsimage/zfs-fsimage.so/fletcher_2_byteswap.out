@@ -1,0 +1,40 @@
+Number of assembly instructions     = 25
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 25
+Number of edges: 26
+
+1b70 (False): 0
+
+1b70: AND Reg RSI, Immediate 18446744073709551608 4
+1b74: XOR Reg R8D, Reg R8D 3
+1b77: XOR Reg ECX, Reg ECX 2
+1b79: LEA Reg R10, Address (AddrPlus (FromReg RDI) (FromReg RSI)) 4
+1b7d: XOR Reg R9D, Reg R9D 3
+1b80: XOR Reg ESI, Reg ESI 2
+1b82: CMP Reg RDI, Reg R10 3
+1b85: JAE 1bb2 (resolved immediate)
+  |
+  `- 1b87,1bb2
+1b87: NOP  9
+1b90: MOV Reg RAX, Address (SizeDir 64 (FromReg RDI)) 3
+1b93: ADD Reg RDI, Immediate 16 4
+1b97: BSWAP Reg RAX 3
+1b9a: ADD Reg RSI, Reg RAX 3
+1b9d: MOV Reg RAX, Address (SizeDir 64 (AddrMinus (FromReg RDI) (AddrImm 8))) 4
+1ba1: ADD Reg R9, Reg RSI 3
+1ba4: BSWAP Reg RAX 3
+1ba7: ADD Reg RCX, Reg RAX 3
+1baa: ADD Reg R8, Reg RCX 3
+1bad: CMP Reg R10, Reg RDI 3
+1bb0: JA 1b90 (resolved immediate)
+  |
+  `- 1b90,1bb2
+1bb2: MOV Address (SizeDir 64 (FromReg RDX)), Reg RSI 3
+1bb5: MOV Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 8))), Reg RCX 4
+1bb9: MOV Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 16))), Reg R9 4
+1bbd: MOV Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 24))), Reg R8 4
+1bc1: RET  1
+  |
+  `- 

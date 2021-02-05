@@ -1,0 +1,119 @@
+Number of assembly instructions     = 92
+Number of indirect branches         = 2
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 1: 111b
+Number of symbolic states (representative of non-determinism): 97
+Number of edges: 109
+
+1190 (False): 0
+
+1060: PUSH Reg R15 2
+1062: PUSH Reg R14 2
+1064: PUSH Reg R13 2
+1066: PUSH Reg R12 2
+1068: PUSH Reg RBP 1
+1069: PUSH Reg RBX 1
+106a: SUB Reg RSP, Immediate 24 4
+106e: CMP Reg EDI, Immediate 1 3
+1071: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RSI 5
+1076: JLE 1144 (resolved immediate)
+  |
+  `- 107c,1144
+107c: XOR Reg EDX, Reg EDX 2
+107e: XOR Reg ESI, Reg ESI 2
+1080: MOV Reg R13D, Reg EDI 3
+1083: XOR Reg EDI, Reg EDI 2
+1085: CALL xc_interface_open (external)
+108a: TEST Reg RAX, Reg RAX 3
+108d: MOV Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2105340))), Reg RAX 7
+1094: JZ 1165 (resolved immediate)
+  |
+  `- 109a,1165
+109a: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+109f: OR Reg RCX, Immediate 18446744073709551615 4
+10a3: LEA Reg R14, Address (AddrPlus (FromReg RIP) (AddrImm 2105206)) 7
+10aa: XOR Reg R15D, Reg R15D 3
+10ad: MOV Reg R12, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))) 4
+10b1: XOR Reg EAX, Reg EAX 2
+10b3: MOV Reg RDI, Reg R12 3
+10b6: REPNZ SCASB  2
+10b8: NOT Reg RCX 3
+10bb: LEA Reg RBX, Address (AddrMinus (FromReg RCX) (AddrImm 1)) 4
+10bf: MOV Reg RAX, Reg R15 3
+10c2: MOV Reg RDX, Reg RBX 3
+10c5: MOV Reg RSI, Reg R12 3
+10c8: SHL Reg RAX, Immediate 4 4
+10cc: MOVSXD Reg RBP, Reg R15D 3
+10cf: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R14) (FromReg RAX))) 4
+10d3: CALL strncmp (external)
+10d8: TEST Reg EAX, Reg EAX 2
+10da: JZ 110a (resolved immediate)
+  |
+  `- 10dc,110a
+10dc: ADD Reg R15, Immediate 1 4
+10e0: CMP Reg R15, Immediate 6 4
+10e4: JNZ 10bf (resolved immediate)
+  |
+  `- 10bf,10e6
+10e6: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2105235))) 7
+10ed: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 4796)) 7
+10f4: MOV Reg RCX, Reg R12 3
+10f7: MOV Reg ESI, Immediate 1 5
+10fc: XOR Reg EAX, Reg EAX 2
+10fe: CALL __fprintf_chk (external)
+1103: MOV Reg EAX, Immediate 1 5
+1108: JMP 1135 (resolved immediate)
+  |
+  `- 1135
+110a: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+110f: SHL Reg RBP, Immediate 4 4
+1113: LEA Reg EDI, Address (AddrMinus (FromReg R13) (AddrImm 2)) 4
+1117: ADD Reg RSI, Immediate 16 4
+111b: CALL Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg R14) (FromReg RBP)) (AddrImm 8))) 5
+1120: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2105193))) 7
+1127: MOV Reg EBX, Reg EAX 2
+1129: CALL xc_interface_close (external)
+112e: XOR Reg EAX, Reg EAX 2
+1130: TEST Reg EBX, Reg EBX 2
+1132: SETNZ Reg AL 3
+1135: ADD Reg RSP, Immediate 24 4
+1139: POP Reg RBX 1
+113a: POP Reg RBP 1
+113b: POP Reg R12 2
+113d: POP Reg R13 2
+113f: POP Reg R14 2
+1141: POP Reg R15 2
+1143: RET  1
+  |
+  `- 
+1144: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2105141))) 7
+114b: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2966)) 7
+1152: MOV Reg EDX, Immediate 370 5
+1157: MOV Reg ESI, Immediate 1 5
+115c: CALL fwrite (external)
+1161: XOR Reg EAX, Reg EAX 2
+1163: JMP 1135 (resolved immediate)
+  |
+  `- 1135
+1165: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2105108))) 7
+116c: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 4976)) 7
+1173: MOV Reg EDX, Immediate 26 5
+1178: MOV Reg ESI, Immediate 1 5
+117d: CALL fwrite (external)
+1182: XOR Reg EAX, Reg EAX 2
+1184: JMP 1135 (resolved immediate)
+  |
+  `- 1135
+1190: XOR Reg EBP, Reg EBP 2
+1192: MOV Reg R9, Reg RDX 3
+1195: POP Reg RSI 1
+1196: MOV Reg RDX, Reg RSP 3
+1199: AND Reg RSP, Immediate 18446744073709551600 4
+119d: PUSH Reg RAX 1
+119e: PUSH Reg RSP 1
+119f: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 2858)) 7
+11a6: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2739)) 7
+11ad: LEA Reg RDI, Address (AddrMinus (FromReg RIP) (AddrImm 340)) 7
+11b4: CALL __libc_start_main (external)
+  |
+  `- 1060

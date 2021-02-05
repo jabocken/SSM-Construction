@@ -1,0 +1,85 @@
+Number of assembly instructions     = 58
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 58
+Number of edges: 63
+
+19460 (False): 0
+
+19460: PUSH Reg R13 2
+19462: PUSH Reg R12 2
+19464: PUSH Reg RBP 1
+19465: PUSH Reg RBX 1
+19466: MOV Reg RBX, Reg RDI 3
+19469: SUB Reg RSP, Immediate 8 4
+1946d: CALL xc_dom_translated (external)
+19472: MOV Reg RDI, Reg RBX 3
+19475: MOV Reg R13D, Reg EAX 3
+19478: MOV Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1008))) 7
+1947f: CALL xc_dom_translated (external)
+19484: TEST Reg AL, Reg AL 2
+19486: JNZ 194b9 (resolved immediate)
+  |
+  `- 19488,194b9
+19488: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1120))) 7
+1948f: CMP Reg RBP, Reg RAX 3
+19492: JB 19540 (resolved immediate)
+  |
+  `- 19498,19540
+19498: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1128))) 7
+1949f: ADD Reg RDX, Reg RAX 3
+194a2: CMP Reg RBP, Reg RDX 3
+194a5: JAE 19540 (resolved immediate)
+  |
+  `- 194ab,19540
+194ab: SUB Reg RBP, Reg RAX 3
+194ae: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1104))) 7
+194b5: MOV Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RBP)))) 4
+194b9: MOV Reg RDI, Reg RBX 3
+194bc: MOV Reg R12, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1016))) 7
+194c3: CALL xc_dom_translated (external)
+194c8: TEST Reg AL, Reg AL 2
+194ca: JNZ 194f5 (resolved immediate)
+  |
+  `- 194cc,194f5
+194cc: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1120))) 7
+194d3: CMP Reg R12, Reg RAX 3
+194d6: JB 19530 (resolved immediate)
+  |
+  `- 194d8,19530
+194d8: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1128))) 7
+194df: ADD Reg RDX, Reg RAX 3
+194e2: CMP Reg R12, Reg RDX 3
+194e5: JAE 19530 (resolved immediate)
+  |
+  `- 194e7,19530
+194e7: SUB Reg R12, Reg RAX 3
+194ea: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1104))) 7
+194f1: MOV Reg R12, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg R12)))) 4
+194f5: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 1212))) 6
+194fb: SUB Reg RSP, Immediate 8 4
+194ff: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 1232))) 6
+19505: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1224))) 7
+1950c: MOV Reg R9D, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 1208))) 7
+19513: MOVZX Reg EDX, Reg R13B 4
+19517: MOV Reg R8, Reg R12 3
+1951a: MOV Reg RCX, Reg RBP 3
+1951d: PUSH Reg RAX 1
+1951e: CALL xc_dom_gnttab_seed (external)
+19523: ADD Reg RSP, Immediate 24 4
+19527: POP Reg RBX 1
+19528: POP Reg RBP 1
+19529: POP Reg R12 2
+1952b: POP Reg R13 2
+1952d: RET  1
+  |
+  `- 
+19530: MOV Reg R12, Immediate 18446744073709551615 7
+19537: JMP 194f5 (resolved immediate)
+  |
+  `- 194f5
+19540: MOV Reg RBP, Immediate 18446744073709551615 7
+19547: JMP 194b9 (resolved immediate)
+  |
+  `- 194b9

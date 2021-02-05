@@ -1,0 +1,38 @@
+Number of assembly instructions     = 21
+Number of indirect branches         = 1
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 1: 12b6
+Number of symbolic states (representative of non-determinism): 21
+Number of edges: 23
+
+1284 (False): 0
+
+1284: PUSH Reg RBX 1
+1285: MOV Reg RBX, Reg RDI 3
+1288: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 24))) 4
+128c: TEST Reg RDI, Reg RDI 3
+128f: JZ 1296 (resolved immediate)
+  |
+  `- 1291,1296
+1291: CALL fsi_close_file (external)
+1296: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
+129a: TEST Reg RDX, Reg RDX 3
+129d: JZ 12b9 (resolved immediate)
+  |
+  `- 129f,12b9
+129f: MOV Reg RAX, Address (SizeDir 64 (FromReg RDX)) 3
+12a2: SUB Reg RAX, Immediate 1 4
+12a6: MOV Address (SizeDir 64 (FromReg RDX)), Reg RAX 3
+12a9: TEST Reg RAX, Reg RAX 3
+12ac: JNZ 12b9 (resolved immediate)
+  |
+  `- 12ae,12b9
+12ae: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
+12b2: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
+12b6: CALL Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 48))) 3
+12b9: MOV Reg RDI, Reg RBX 3
+12bc: CALL PyObject_Free (external)
+12c1: POP Reg RBX 1
+12c2: RET  1
+  |
+  `- 

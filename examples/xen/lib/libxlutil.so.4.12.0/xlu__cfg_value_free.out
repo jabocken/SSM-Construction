@@ -1,0 +1,63 @@
+Number of assembly instructions     = 38
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 38
+Number of edges: 40
+
+5b80 (False): 0
+
+5b80: TEST Reg RDI, Reg RDI 3
+5b83: JZ 5bf0 (resolved immediate)
+  |
+  `- 5b85,5bf0
+5b85: PUSH Reg R12 2
+5b87: PUSH Reg RBP 1
+5b88: PUSH Reg RBX 1
+5b89: MOV Reg EAX, Address (SizeDir 32 (FromReg RDI)) 2
+5b8b: MOV Reg RBX, Reg RDI 3
+5b8e: TEST Reg EAX, Reg EAX 2
+5b90: JZ 5bd8 (resolved immediate)
+  |
+  `- 5b92,5bd8
+5b92: CMP Reg EAX, Immediate 1 3
+5b95: JNZ 5be1 (resolved immediate)
+  |
+  `- 5b97,5be1
+5b97: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 12))) 3
+5b9a: XOR Reg R12D, Reg R12D 3
+5b9d: XOR Reg EBP, Reg EBP 2
+5b9f: TEST Reg EAX, Reg EAX 2
+5ba1: JLE 5bbc (resolved immediate)
+  |
+  `- 5ba3,5bbc
+5ba3: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
+5ba7: ADD Reg EBP, Immediate 1 3
+5baa: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (FromReg R12))) 4
+5bae: ADD Reg R12, Immediate 8 4
+5bb2: CALL xlu__cfg_value_free (external)
+5bb7: CMP Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 12))), Reg EBP 3
+5bba: JG 5ba3 (resolved immediate)
+  |
+  `- 5ba3,5bbc
+5bbc: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
+5bc0: CALL free (external)
+5bc5: MOV Reg RDI, Reg RBX 3
+5bc8: POP Reg RBX 1
+5bc9: POP Reg RBP 1
+5bca: POP Reg R12 2
+5bcc: JMP free (jmp to external function)
+  |
+  `- 
+5bd8: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
+5bdc: CALL free (external)
+5be1: MOV Reg RDI, Reg RBX 3
+5be4: POP Reg RBX 1
+5be5: POP Reg RBP 1
+5be6: POP Reg R12 2
+5be8: JMP free (jmp to external function)
+  |
+  `- 
+5bf0: REPZ RET  2
+  |
+  `- 

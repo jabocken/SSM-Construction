@@ -8,7 +8,7 @@ import qualified Data.IntMap as IM
 import Data.List (find, intercalate)
 import Data.Word
 import Control.Exception.Assert
-import Control.Monad (forM,forM_)
+import Control.Monad (forM, forM_, when)
 import Data.Bits (shift)
 import Utils
 import Debug.Trace
@@ -206,9 +206,9 @@ get_call_info :: Context -> Instr -> IO (Maybe (String, Word64, Bool))
 get_call_info ctxt@(elf,symbols) i@(Instr addr prefix op op1 op2 op3 _ instr_size) = do
   case op1 of
     Just (Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm offset)))) -> do
-      let a' = addr + fromIntegral instr_size + fromIntegral offset
-      case M.lookup a' symbols of
-        Just f@"__libc_start_main" -> return $ Just (f, a', True)
+      let a = addr + fromIntegral instr_size + fromIntegral offset
+      case M.lookup a symbols of
+        Just f@"__libc_start_main" -> return $ Just (f, a, True)
         _ -> call_info_op1
     _ -> call_info_op1
  where
@@ -222,10 +222,10 @@ get_call_info ctxt@(elf,symbols) i@(Instr addr prefix op op1 op2 op3 _ instr_siz
   call_info_with_start_address a' = do
     case find (sectionWithAddr a') (Elf.elfSections elf) of
       Just s ->
-        if Elf.elfSectionName s `elem` [".plt",".plt.got",".got.plt"] then do
+        if Elf.elfSectionName s `elem` [".plt",".plt.got",".got.plt", ".plt.sec"] then do
           i' <- fetch_instruction_in_section elf a' s
           case i' of
-            (Instr a' _ ENDBR64 _ _ _ _ instr_size') -> do -- Push should be next
+            (Instr a' _ ENDBR64 _ _ _ _ instr_size') -> do -- Push or jump should be next
               call_info_with_start_address $ a' + fromIntegral instr_size'
             (Instr a' _ PUSH _ _ _ _ instr_size') -> do -- Jump should be next; not modeling the push because we assume the external call resets it
               call_info_with_start_address $ a' + fromIntegral instr_size'
@@ -315,15 +315,21 @@ terminating_functions = [
                   "__assert_fail",
                   "g_assertion_message_expr",
                   "g_assertion_message",
-                  "g_abort"
+                  "g_abort",
+                  "pthread_exit"
                 ]
 
-in_rodata_section :: Context -> Word64 -> Bool
-in_rodata_section (elf,_) addr =
+inSection :: [String] -> Context -> Word64 -> Bool
+inSection sections (elf, _) addr =
     case find (sectionWithAddr addr) (Elf.elfSections elf) of
      Nothing -> False
-     Just s -> Elf.elfSectionName s `elem` [{--".data", --}".rodata", ".got"]
+     Just s -> Elf.elfSectionName s `elem` sections
 
+inRodataSection :: Context -> Word64 -> Bool
+inRodataSection = inSection [{--".data", --}".rodata", ".got"]
+
+inTextSection :: Context -> Word64 -> Bool
+inTextSection = inSection [".text"]
 
 elf_read_address :: Context -> Word64 -> Int -> IO Word64
 elf_read_address (elf,_) a size =
@@ -341,4 +347,3 @@ elf_section_of_addr (elf,_) addr =
   case find (sectionWithAddr addr) (Elf.elfSections elf) of
     Nothing -> Nothing
     Just s -> Just $ Elf.elfSectionName s
-

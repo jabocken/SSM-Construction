@@ -1,0 +1,45 @@
+Number of assembly instructions     = 28
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 28
+Number of edges: 28
+
+21f90 (False): 0
+
+21f90: PUSH Reg RBX 1
+21f91: PXOR Reg XMM0, Reg XMM0 4
+21f95: MOV Reg RBX, Reg RCX 3
+21f98: MOV Reg ECX, Immediate 48 5
+21f9d: SUB Reg RSP, Immediate 64 4
+21fa1: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+21faa: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))), Reg RAX 5
+21faf: XOR Reg EAX, Reg EAX 2
+21fb1: MOV Reg RAX, Reg RSP 3
+21fb4: MOVAPS Address (SizeDir 128 (FromReg RSP)), Reg XMM0 4
+21fb8: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RDX 5
+21fbd: MOV Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 2))), Reg SI 5
+21fc2: MOV Reg RDX, Reg RAX 3
+21fc5: MOV Reg ESI, Immediate 22 5
+21fca: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 16))), Reg XMM0 5
+21fcf: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 32))), Reg XMM0 5
+21fd4: CALL do_memory_op (external)
+21fd9: TEST Reg EAX, Reg EAX 2
+21fdb: JNZ 21fe5 (resolved immediate)
+  |
+  `- 21fdd,21fe5
+21fdd: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
+21fe2: MOV Address (SizeDir 64 (FromReg RBX)), Reg RDX 3
+21fe5: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))) 5
+21fea: XOR Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+21ff3: JNZ 21ffb (resolved immediate)
+  |
+  `- 21ff5,21ffb
+21ff5: ADD Reg RSP, Immediate 64 4
+21ff9: POP Reg RBX 1
+21ffa: RET  1
+  |
+  `- 
+21ffb: CALL __stack_chk_fail (external)
+  |
+  `- 

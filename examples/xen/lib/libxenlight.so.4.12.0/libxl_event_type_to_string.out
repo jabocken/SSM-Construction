@@ -1,0 +1,24 @@
+Number of assembly instructions     = 9
+Number of indirect branches         = 1
+Number of unresolved indirect jumps = 1: 8fe25
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 9
+Number of edges: 8
+
+8fe10 (False): 0
+
+8fe10: CMP Reg EDI, Immediate 5 3
+8fe13: JA 8fe80 (resolved immediate)
+  |
+  `- 8fe15,8fe80
+8fe15: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 99452)) 7
+8fe1c: MOV Reg EDI, Reg EDI 2
+8fe1e: MOVSXD Reg RAX, Address (SizeDir 32 (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 4) (FromReg RDI)))) 4
+8fe22: ADD Reg RAX, Reg RDX 3
+8fe25: JMP Reg RAX 2
+  |
+  `- 
+8fe80: XOR Reg EAX, Reg EAX 2
+8fe82: RET  1
+  |
+  `- 

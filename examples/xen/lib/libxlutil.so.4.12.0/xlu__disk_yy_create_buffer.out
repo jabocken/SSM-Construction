@@ -1,0 +1,118 @@
+Number of assembly instructions     = 87
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 87
+Number of edges: 89
+
+2fcb (False): 7072
+6e30 (True): 7058
+7000 (False): 0
+
+2fcb: SUB Reg RSP, Immediate 8 4
+2fcf: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2150410))) 7
+2fd6: MOV Reg RCX, Reg RDI 3
+2fd9: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 43521)) 7
+2fe0: MOV Reg ESI, Immediate 1 5
+2fe5: MOV Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
+2fe8: XOR Reg EAX, Reg EAX 2
+2fea: CALL __fprintf_chk (external)
+2fef: MOV Reg EDI, Immediate 2 5
+2ff4: CALL exit (external)
+  |
+  `- 
+6e30: PUSH Reg R14 2
+6e32: PUSH Reg R13 2
+6e34: PUSH Reg R12 2
+6e36: PUSH Reg RBP 1
+6e37: MOV Reg RBP, Reg RDX 3
+6e3a: PUSH Reg RBX 1
+6e3b: MOV Reg RBX, Reg RDI 3
+6e3e: MOV Reg R12, Reg RSI 3
+6e41: CALL __errno_location (external)
+6e46: MOV Reg RSI, Reg RBP 3
+6e49: MOV Reg RDI, Reg RBX 3
+6e4c: MOV Reg R13, Reg RAX 3
+6e4f: MOV Reg R14D, Address (SizeDir 32 (FromReg RAX)) 3
+6e52: CALL xlu__disk_yy_flush_buffer (external)
+6e57: MOV Address (SizeDir 64 (FromReg RBX)), Reg R12 3
+6e5a: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 60))), Immediate 1 7
+6e61: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 40))) 4
+6e65: TEST Reg RAX, Reg RAX 3
+6e68: JZ 6e74 (resolved immediate)
+  |
+  `- 6e6a,6e74
+6e6a: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 24))) 4
+6e6e: CMP Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX)))) 4
+6e72: JZ 6e7c (resolved immediate)
+  |
+  `- 6e74,6e7c
+6e74: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 52))), Immediate 1 8
+6e7c: XOR Reg EAX, Reg EAX 2
+6e7e: TEST Reg R12, Reg R12 3
+6e81: JZ 6e9a (resolved immediate)
+  |
+  `- 6e83,6e9a
+6e83: MOV Reg RDI, Reg R12 3
+6e86: CALL fileno (external)
+6e8b: MOV Reg EDI, Reg EAX 2
+6e8d: CALL isatty (external)
+6e92: TEST Reg EAX, Reg EAX 2
+6e94: SETG Reg AL 3
+6e97: MOVZX Reg EAX, Reg AL 3
+6e9a: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 44))), Reg EAX 3
+6e9d: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Reg R14D 4
+6ea1: POP Reg RBX 1
+6ea2: POP Reg RBP 1
+6ea3: POP Reg R12 2
+6ea5: POP Reg R13 2
+6ea7: POP Reg R14 2
+6ea9: RET  1
+  |
+  `- 
+7000: PUSH Reg R13 2
+7002: PUSH Reg R12 2
+7004: MOV Reg R13, Reg RDI 3
+7007: PUSH Reg RBP 1
+7008: PUSH Reg RBX 1
+7009: MOV Reg EBP, Reg ESI 2
+700b: MOV Reg EDI, Immediate 72 5
+7010: MOV Reg RSI, Reg RDX 3
+7013: MOV Reg R12, Reg RDX 3
+7016: SUB Reg RSP, Immediate 8 4
+701a: CALL xlu__disk_yyalloc (external)
+701f: TEST Reg RAX, Reg RAX 3
+7022: JZ 7066 (resolved immediate)
+  |
+  `- 7024,7066
+7024: MOVSXD Reg RSI, Reg EBP 3
+7027: MOV Reg RBX, Reg RAX 3
+702a: LEA Reg RDI, Address (AddrPlus (FromReg RSI) (AddrImm 2)) 4
+702e: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 24))), Reg RSI 4
+7032: MOV Reg RSI, Reg R12 3
+7035: CALL xlu__disk_yyalloc (external)
+703a: TEST Reg RAX, Reg RAX 3
+703d: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))), Reg RAX 4
+7041: JZ 7066 (resolved immediate)
+  |
+  `- 7043,7066
+7043: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 40))), Immediate 1 7
+704a: MOV Reg RDX, Reg R12 3
+704d: MOV Reg RSI, Reg R13 3
+7050: MOV Reg RDI, Reg RBX 3
+7053: CALL xlu__disk_yy_init_buffer (internal)
+  |
+  `- 6e30
+7058: ADD Reg RSP, Immediate 8 4
+705c: MOV Reg RAX, Reg RBX 3
+705f: POP Reg RBX 1
+7060: POP Reg RBP 1
+7061: POP Reg R12 2
+7063: POP Reg R13 2
+7065: RET  1
+  |
+  `- 
+7066: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 17755)) 7
+706d: CALL yy_fatal_error.isra.2 (internal)
+  |
+  `- 2fcb

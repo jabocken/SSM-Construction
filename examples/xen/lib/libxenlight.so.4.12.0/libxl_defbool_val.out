@@ -1,0 +1,29 @@
+Number of assembly instructions     = 14
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 14
+Number of edges: 13
+
+212b0 (False): 0
+
+212b0: PUSH Reg RBX 1
+212b1: MOV Reg EBX, Reg EDI 2
+212b3: CALL libxl_defbool_is_default (external)
+212b8: TEST Reg AL, Reg AL 2
+212ba: JNZ 212c3 (resolved immediate)
+  |
+  `- 212bc,212c3
+212bc: TEST Reg EBX, Reg EBX 2
+212be: SETG Reg AL 3
+212c1: POP Reg RBX 1
+212c2: RET  1
+  |
+  `- 
+212c3: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 467350)) 7
+212ca: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 465742)) 7
+212d1: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 465946)) 7
+212d8: MOV Reg EDX, Immediate 339 5
+212dd: CALL __assert_fail (external)
+  |
+  `- 

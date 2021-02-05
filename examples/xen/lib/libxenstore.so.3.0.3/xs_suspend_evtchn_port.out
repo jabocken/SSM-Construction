@@ -1,0 +1,79 @@
+Number of assembly instructions     = 54
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 54
+Number of edges: 56
+
+46a0 (False): 0
+
+46a0: PUSH Reg R12 2
+46a2: PUSH Reg RBP 1
+46a3: MOV Reg R12D, Reg EDI 3
+46a6: PUSH Reg RBX 1
+46a7: SUB Reg RSP, Immediate 160 7
+46ae: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+46b7: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 152))), Reg RAX 8
+46bf: XOR Reg EAX, Reg EAX 2
+46c1: CALL xs_daemon_open (external)
+46c6: TEST Reg RAX, Reg RAX 3
+46c9: JZ 4768 (resolved immediate)
+  |
+  `- 46cf,4768
+46cf: LEA Reg RBP, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+46d4: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2565)) 7
+46db: MOV Reg RBX, Reg RAX 3
+46de: MOV Reg R8D, Reg R12D 3
+46e1: MOV Reg EDX, Immediate 128 5
+46e6: MOV Reg ESI, Immediate 1 5
+46eb: MOV Reg RDI, Reg RBP 3
+46ee: XOR Reg EAX, Reg EAX 2
+46f0: CALL __sprintf_chk (external)
+46f5: LEA Reg RCX, Address (AddrPlus (FromReg RSP) (AddrImm 12)) 5
+46fa: MOV Reg RDX, Reg RBP 3
+46fd: XOR Reg ESI, Reg ESI 2
+46ff: MOV Reg RDI, Reg RBX 3
+4702: CALL xs_read (external)
+4707: MOV Reg RDI, Reg RBX 3
+470a: MOV Reg RBP, Reg RAX 3
+470d: MOV Reg EBX, Immediate 4294967295 5
+4712: CALL xs_daemon_close (external)
+4717: TEST Reg RBP, Reg RBP 3
+471a: JZ 4724 (resolved immediate)
+  |
+  `- 471c,4724
+471c: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 4
+4720: TEST Reg EAX, Reg EAX 2
+4722: JNZ 4750 (resolved immediate)
+  |
+  `- 4724,4750
+4724: MOV Reg RDI, Reg RBP 3
+4727: CALL free (external)
+472c: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 152))) 8
+4734: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+473d: MOV Reg EAX, Reg EBX 2
+473f: JNZ 476f (resolved immediate)
+  |
+  `- 4741,476f
+4741: ADD Reg RSP, Immediate 160 7
+4748: POP Reg RBX 1
+4749: POP Reg RBP 1
+474a: POP Reg R12 2
+474c: RET  1
+  |
+  `- 
+4750: MOV Reg EDX, Immediate 10 5
+4755: XOR Reg ESI, Reg ESI 2
+4757: MOV Reg RDI, Reg RBP 3
+475a: CALL strtol (external)
+475f: MOV Reg EBX, Reg EAX 2
+4761: JMP 4724 (resolved immediate)
+  |
+  `- 4724
+4768: MOV Reg EBX, Immediate 4294967295 5
+476d: JMP 472c (resolved immediate)
+  |
+  `- 472c
+476f: CALL __stack_chk_fail (external)
+  |
+  `- 

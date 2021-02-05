@@ -1,0 +1,73 @@
+Number of assembly instructions     = 52
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 52
+Number of edges: 54
+
+8f10 (False): 0
+
+8f10: PUSH Reg RBX 1
+8f11: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 40))) 4
+8f15: MOV Reg RBX, Reg RDI 3
+8f18: TEST Reg RAX, Reg RAX 3
+8f1b: JNZ 8f55 (resolved immediate)
+  |
+  `- 8f1d,8f55
+8f1d: JMP 9020 (resolved immediate)
+  |
+  `- 9020
+8f28: MOV Reg RSI, Reg RBX 3
+8f2b: CALL xlu__disk_yy_delete_buffer (external)
+8f30: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 40))) 4
+8f34: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
+8f38: MOV Reg RDI, Reg RBX 3
+8f3b: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX)))), Immediate 0 8
+8f43: CALL xlu__disk_yypop_buffer_state (external)
+8f48: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 40))) 4
+8f4c: TEST Reg RAX, Reg RAX 3
+8f4f: JZ 9020 (resolved immediate)
+  |
+  `- 8f55,9020
+8f55: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
+8f59: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX)))) 4
+8f5d: TEST Reg RDI, Reg RDI 3
+8f60: JNZ 8f28 (resolved immediate)
+  |
+  `- 8f28,8f62
+8f62: MOV Reg RDI, Reg RAX 3
+8f65: MOV Reg RSI, Reg RBX 3
+8f68: CALL xlu__disk_yyfree (external)
+8f6d: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 104))) 4
+8f71: MOV Reg RSI, Reg RBX 3
+8f74: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 40))), Immediate 0 8
+8f7c: CALL xlu__disk_yyfree (external)
+8f81: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 136))) 7
+8f88: MOV Reg RSI, Reg RBX 3
+8f8b: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 104))), Immediate 0 8
+8f93: CALL xlu__disk_yyfree (external)
+8f98: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 136))), Immediate 0 11
+8fa3: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 40))), Immediate 0 8
+8fab: MOV Reg RSI, Reg RBX 3
+8fae: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))), Immediate 0 8
+8fb6: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 32))), Immediate 0 8
+8fbe: MOV Reg RDI, Reg RBX 3
+8fc1: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 72))), Immediate 0 8
+8fc9: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 80))), Immediate 0 8
+8fd1: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 92))), Immediate 0 8
+8fd9: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 104))), Immediate 0 8
+8fe1: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 144))), Immediate 0 11
+8fec: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 152))), Immediate 0 11
+8ff7: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 160))), Immediate 0 10
+9001: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))), Immediate 0 8
+9009: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))), Immediate 0 8
+9011: CALL xlu__disk_yyfree (external)
+9016: XOR Reg EAX, Reg EAX 2
+9018: POP Reg RBX 1
+9019: RET  1
+  |
+  `- 
+9020: XOR Reg EAX, Reg EAX 2
+9022: JMP 8f62 (resolved immediate)
+  |
+  `- 8f62

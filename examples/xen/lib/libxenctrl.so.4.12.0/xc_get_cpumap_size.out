@@ -1,0 +1,25 @@
+Number of assembly instructions     = 10
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 10
+Number of edges: 10
+
+158d0 (False): 0
+
+158d0: SUB Reg RSP, Immediate 8 4
+158d4: CALL xc_get_max_cpus (external)
+158d9: TEST Reg EAX, Reg EAX 2
+158db: JS 158f0 (resolved immediate)
+  |
+  `- 158dd,158f0
+158dd: ADD Reg EAX, Immediate 7 3
+158e0: SAR Reg EAX, Immediate 3 3
+158e3: ADD Reg RSP, Immediate 8 4
+158e7: RET  1
+  |
+  `- 
+158f0: MOV Reg EAX, Immediate 4294967295 5
+158f5: JMP 158e3 (resolved immediate)
+  |
+  `- 158e3

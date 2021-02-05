@@ -1,0 +1,55 @@
+Number of assembly instructions     = 40
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 40
+Number of edges: 39
+
+40b40 (False): 0
+
+40b40: PUSH Reg RBP 1
+40b41: PUSH Reg RBX 1
+40b42: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 345647)) 7
+40b49: MOV Reg ECX, Immediate 18 5
+40b4e: MOV Reg RBP, Reg RDI 3
+40b51: MOV Reg EDX, Immediate 1 5
+40b56: SUB Reg RSP, Immediate 40 4
+40b5a: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+40b63: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
+40b68: XOR Reg EAX, Reg EAX 2
+40b6a: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 5))) 4
+40b6e: MOV Reg RBX, Reg RSP 3
+40b71: SUB Reg RSP, Immediate 8 4
+40b75: MOV Reg RDI, Reg RBX 3
+40b78: PUSH Reg RAX 1
+40b79: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 4))) 4
+40b7d: PUSH Reg RAX 1
+40b7e: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 3))) 4
+40b82: PUSH Reg RAX 1
+40b83: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 2))) 4
+40b87: PUSH Reg RAX 1
+40b88: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 1))) 4
+40b8c: PUSH Reg RAX 1
+40b8d: MOVZX Reg R9D, Address (SizeDir 8 (FromReg RSI)) 4
+40b91: XOR Reg EAX, Reg EAX 2
+40b93: MOV Reg ESI, Immediate 18 5
+40b98: CALL __snprintf_chk (external)
+40b9d: ADD Reg RSP, Immediate 48 4
+40ba1: MOV Reg EDX, Immediate 17 5
+40ba6: MOV Reg RSI, Reg RBX 3
+40ba9: MOV Reg RDI, Reg RBP 3
+40bac: CALL yajl_gen_string (external)
+40bb1: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
+40bb6: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+40bbf: JNZ 40bc8 (resolved immediate)
+  |
+  `- 40bc1,40bc8
+40bc1: ADD Reg RSP, Immediate 40 4
+40bc5: POP Reg RBX 1
+40bc6: POP Reg RBP 1
+40bc7: RET  1
+  |
+  `- 
+40bc8: CALL __stack_chk_fail (external)
+  |
+  `- 

@@ -1,0 +1,70 @@
+Number of assembly instructions     = 45
+Number of indirect branches         = 2
+Number of unresolved indirect jumps = 1: 7b8
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 50
+Number of edges: 60
+
+810 (False): 0
+
+750: PUSH Reg RBP 1
+751: PUSH Reg RBX 1
+752: LEA Reg RBP, Address (AddrPlus (FromReg RIP) (AddrImm 8655)) 7
+759: SUB Reg RSP, Immediate 4120 7
+760: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+769: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 4104))), Reg RAX 8
+771: XOR Reg EAX, Reg EAX 2
+773: MOV Reg RBX, Reg RSP 3
+776: NOP  10
+780: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2111625))) 7
+787: MOV Reg ESI, Immediate 4096 5
+78c: MOV Reg RDI, Reg RBX 3
+78f: CALL fgets (external)
+794: TEST Reg RAX, Reg RAX 3
+797: JZ 7c0 (resolved immediate)
+  |
+  `- 799,7c0
+799: CMP Address (SizeDir 8 (AddrPlus (FromReg RAX) (AddrImm 1))), Immediate 61 4
+79d: JNZ 780 (resolved immediate)
+  |
+  `- 780,79f
+79f: LEA Reg RDI, Address (AddrPlus (FromReg RAX) (AddrImm 2)) 4
+7a3: MOVZX Reg EAX, Address (SizeDir 8 (FromReg RAX)) 3
+7a6: SUB Reg EAX, Immediate 67 3
+7a9: CMP Reg AL, Immediate 17 2
+7ab: JA 780 (resolved immediate)
+  |
+  `- 780,7ad
+7ad: MOVZX Reg EAX, Reg AL 3
+7b0: MOVSXD Reg RAX, Address (SizeDir 32 (AddrPlus (AddrPlus (FromReg RBP) (AddrTimes (AddrImm 4) (FromReg RAX))) (AddrImm 0))) 5
+7b5: ADD Reg RAX, Reg RBP 3
+7b8: JMP Reg RAX 2
+  |
+  `- 
+7c0: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 4104))) 8
+7c8: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+7d1: JNZ 800 (resolved immediate)
+  |
+  `- 7d3,800
+7d3: ADD Reg RSP, Immediate 4120 7
+7da: POP Reg RBX 1
+7db: POP Reg RBP 1
+7dc: RET  1
+  |
+  `- 
+800: CALL __stack_chk_fail (external)
+  |
+  `- 
+810: XOR Reg EBP, Reg EBP 2
+812: MOV Reg R9, Reg RDX 3
+815: POP Reg RSI 1
+816: MOV Reg RDX, Reg RSP 3
+819: AND Reg RSP, Immediate 18446744073709551600 4
+81d: PUSH Reg RAX 1
+81e: PUSH Reg RSP 1
+81f: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 6602)) 7
+826: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 6483)) 7
+82d: LEA Reg RDI, Address (AddrMinus (FromReg RIP) (AddrImm 228)) 7
+834: CALL __libc_start_main (external)
+  |
+  `- 750

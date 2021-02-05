@@ -1,8 +1,8 @@
 #include <stdint.h>
 
 uint32_t local_array(uint32_t exponent) {
-    uint32_t a = 1; // requires C99/GNU99 or newer
-    uint32_t b[exponent];
+    uint32_t a = 1;
+    uint32_t b[exponent]; // requires C99/GNU99 or newer
     for (uint32_t i = 0; i < exponent; ++i) {
         a += a;
         b[i] = a;

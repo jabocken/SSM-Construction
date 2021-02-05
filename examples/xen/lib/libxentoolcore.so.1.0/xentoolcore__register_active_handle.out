@@ -1,0 +1,66 @@
+Number of assembly instructions     = 38
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 38
+Number of edges: 37
+
+830 (True): 8b9
+8b0 (False): 0
+
+830: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2099305)) 7
+837: SUB Reg RSP, Immediate 8 4
+83b: CALL pthread_mutex_lock (external)
+840: TEST Reg EAX, Reg EAX 2
+842: JNZ 849 (resolved immediate)
+  |
+  `- 844,849
+844: ADD Reg RSP, Immediate 8 4
+848: RET  1
+  |
+  `- 
+849: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 441)) 7
+850: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 402)) 7
+857: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 407)) 7
+85e: MOV Reg EDX, Immediate 38 5
+863: CALL __assert_fail (external)
+  |
+  `- 
+870: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2099241)) 7
+877: SUB Reg RSP, Immediate 8 4
+87b: CALL pthread_mutex_unlock (external)
+880: TEST Reg EAX, Reg EAX 2
+882: JNZ 889 (resolved immediate)
+  |
+  `- 884,889
+884: ADD Reg RSP, Immediate 8 4
+888: RET  1
+  |
+  `- 
+889: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 370)) 7
+890: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 338)) 7
+897: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 343)) 7
+89e: MOV Reg EDX, Immediate 43 5
+8a3: CALL __assert_fail (external)
+  |
+  `- 
+8b0: PUSH Reg RBX 1
+8b1: MOV Reg RBX, Reg RDI 3
+8b4: CALL lock (internal)
+  |
+  `- 830
+8b9: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2099136))) 7
+8c0: TEST Reg RAX, Reg RAX 3
+8c3: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))), Reg RAX 4
+8c7: JZ 8d1 (resolved immediate)
+  |
+  `- 8c9,8d1
+8c9: LEA Reg RDX, Address (AddrPlus (FromReg RBX) (AddrImm 8)) 4
+8cd: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 16))), Reg RDX 4
+8d1: LEA Reg RAX, Address (AddrPlus (FromReg RIP) (AddrImm 2099112)) 7
+8d8: MOV Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2099105))), Reg RBX 7
+8df: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))), Reg RAX 4
+8e3: POP Reg RBX 1
+8e4: JMP 870 (resolved immediate)
+  |
+  `- 870

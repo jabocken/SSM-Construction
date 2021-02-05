@@ -4,8 +4,8 @@ module Predicates.Flags (makeFlag) where
 
 import Control.Exception.Base (assert)
 import Control.Monad (when)
-import Control.Monad.State.Strict hiding (State)
-import qualified Control.Monad.State.Strict as SL (State)
+import Control.Monad.State.Lazy hiding (State)
+import qualified Control.Monad.State.Lazy as SL (State)
 import qualified Data.Map as M
 import qualified Data.Set as S
 import Data.Maybe (isJust, maybeToList, mapMaybe, catMaybes)
@@ -23,8 +23,7 @@ import Utils (allEqual, mapTuple, liftMList)
 
 type LookupResult = (Maybe (Opcode, Maybe ValueExpr, Maybe ValueExpr), Maybe Expr)
 
-vTrue = V_val 1 (- 1) False
-vFalse = V_val 0 (- 1) False
+sMaybe = S.fromList . maybeToList
 
 unknownToMaybe :: ValueExpr -> Maybe ValueExpr
 unknownToMaybe (V_var "Unknown" _) = Nothing
@@ -57,26 +56,35 @@ flagsSetBy flags = do
       se : _ -> if allEqual flagStateExprs then Just se else Nothing
       _ -> Nothing
 
-liftMVal :: ClauseOp -> _ -> Maybe Expr -> Maybe Clause
-liftMVal op num = liftM $ flip op $ V_val num (- 1) False
+liftMVal :: Config -> ClauseOp -> _ -> Maybe Expr -> Maybe Clause
+liftMVal c op num = liftM foo where
+  foo e = op e $ V_val num (getKnownExprSize c e) False
 
 -- Special case for :=; need to check if the expr, if it exists, is already
 -- present and if so return Nothing.
-liftMValEq :: Pred -> _ -> Maybe Expr -> Maybe Clause
-liftMValEq pred num = liftM (:= V_val num (- 1) False) <=< liftM foo where
+liftMValEq :: Config -> Pred -> _ -> Maybe Expr -> Maybe Clause
+liftMValEq c pred num = liftM bar <=< liftM foo where
+  bar e = e := V_val num (getKnownExprSize c e) False
   foo e = if isJust $ lookupExpr e pred then
     Nothing
   else
     Just e
 
-liftAnd :: Maybe Expr -> Maybe Expr -> _ -> Pred
-liftAnd e0 e1 val = S.fromList $ maybeToList $ liftM2 ander e0 e1 where
-  ander e0 e1 = E_app (Op AND) [e0, e1] := V_val val (- 1) False
+liftAnd :: Config -> Maybe Expr -> Maybe Expr -> _ -> Pred
+liftAnd c e0 e1 val = S.fromList $ maybeToList $ liftM2 ander e0 e1 where
+  ander e0 e1 = apper := V_val val (getKnownExprSize c apper) False where
+    apper = E_app (Op AND) [e0, e1]
 
 -- May change this later if we add proper FP clauses
-liftFP :: Operation -> Maybe Expr -> Maybe Expr -> Pred
-liftFP op e0 e1 = S.fromList $ maybeToList $ liftMList clause [e0, e1] where
-  clause es = E_app (F op) es := V_val 1 (- 1) False
+liftFP :: Config -> Operation -> Maybe Expr -> Maybe Expr -> Pred
+liftFP c op e0 e1 = S.fromList $ maybeToList $ liftMList clause [e0, e1] where
+  clause es = apper := V_val 1 (getKnownExprSize c apper) False where
+    apper = E_app (F op) es
+
+fpLifter :: Maybe Expr -> Maybe Expr -> Operation -> Operation -> SL.State State (Pred, Pred)
+fpLifter e0 e1 fpTrue fpFalse = do
+  c <- gets config
+  return (liftFP c fpTrue e0 e1, liftFP c fpFalse e0 e1)
 
 make :: ClauseOp -> ClauseOp -> Maybe ValueExpr -> Maybe ValueExpr -> Maybe Expr -> (Pred, Pred)
 make opTrue opFalse e0 e1 lhs = (mapper liftTrue, mapper liftFalse) where
@@ -100,9 +108,11 @@ makeNotEq = (((swap .) .) .) . makeEq
 makeNoAdd :: String -> ClauseOp -> ClauseOp -> LookupResult -> SL.State State (Pred, Pred)
 makeNoAdd str opTrue opFalse = aps where
   aps (Just (CMP, e0, e1), lhs) = return $ make opTrue opFalse e0 e1 lhs
-  aps (Just (TEST, e0, e1), lhs) = return $ assert (e0 == e1) mapped where
-    mapped = (mapper $ liftMVal opTrue 0, mapper $ liftMVal opFalse 0)
-    mapper t = S.fromList $ mapMaybe t [toExpr <$> e0, lhs]
+  aps (Just (TEST, e0, e1), lhs) = do
+    c <- gets config
+    return $ assert (e0 == e1) $ mapped c where
+      mapped c = (mapper $ liftMVal c opTrue 0, mapper $ liftMVal c opFalse 0)
+      mapper t = S.fromList $ mapMaybe t [toExpr <$> e0, lhs]
   aps (ops, lhs) = gets $ report_unsupported_flag str
 
 makeWithAdd :: String -> ClauseOp -> ClauseOp -> LookupResult -> SL.State State (Pred, Pred)
@@ -110,9 +120,11 @@ makeWithAdd str opTrue opFalse = aps where
   aps (Just (CMP, e0, e1), lhs) = do
     c <- gets config
     return $ make opTrue opFalse e0 (addOne c <$> e1) lhs
-  aps (Just (TEST, e0, e1), lhs) = return $ assert (e0 == e1) mapped where
-    mapped = (mapper $ liftMVal opTrue 1, mapper $ liftMVal opFalse 1)
-    mapper t = S.fromList $ mapMaybe t [toExpr <$> e0, lhs]
+  aps (Just (TEST, e0, e1), lhs) = do
+      c <- gets config
+      return $ assert (e0 == e1) $ mapped c where
+        mapped c = (mapper $ liftMVal c opTrue 1, mapper $ liftMVal c opFalse 1)
+        mapper t = S.fromList $ mapMaybe t [toExpr <$> e0, lhs]
   aps (ops, lhs) = do
     gets $ report_unsupported_flag str
 
@@ -122,6 +134,14 @@ makeWithAdd str opTrue opFalse = aps where
 --   out the predicate clause
 
 makeFlag :: String -> SL.State State (Pred, Pred)
+-- Looks like when using SF and you have e0 - e1, SF set true means e0 < e1
+-- Apparently that's not exactly how SF works (you're really supposed to use OF
+-- for checking greater-than for signed values, it seems?), but I'm not sure
+-- how else to handle it.
+makeFlag "SF" = flagLookup SF >>= \f -> case f of
+  (Just (CMP, _, _), _) -> do
+    makeNoAdd "SF" (:<-) (:>=-) f
+  (ops, lhs) -> gets $ report_unsupported_flag "SF"
 makeFlag "ZF" = flagLookup ZF >>= \f -> case f of
   (Just (CMP, e0, e1), lhs) -> do
     pred <- gets predicate
@@ -131,19 +151,19 @@ makeFlag "ZF" = flagLookup ZF >>= \f -> case f of
     e1' = toExpr <$> e1 in
       if e0 == e1 then do
         pred <- gets predicate
+        c <- gets config
         let mapper t = S.fromList $ mapMaybe t [e0', lhs]
-        return $ mapTuple mapper (liftMValEq pred 0, liftMVal (:!=) 0)
-      else
-        return (liftAnd e0' e1' 0, liftAnd e0' e1' 1)
-  (Just (UCOMISD, e0, e1), _) -> let -- simplified version for now
+        return $ mapTuple mapper (liftMValEq c pred 0, liftMVal c (:!=) 0)
+      else do
+        c <- gets config
+        return (liftAnd c e0' e1' 0, liftAnd c e0' e1' 1)
+  (Just (UCOMISD, e0, e1), _) -> fpLifter e0' e1' FPEqual FPNotEqual where
+    -- simplified version for now
     e0' = toExpr <$> e0
     e1' = toExpr <$> e1
-    es = [e0', e1'] in
-      return (liftFP FPEqual e0' e1', liftFP FPNotEqual e0' e1')
-  (Just (UCOMISS, e0, e1), _) -> let
+  (Just (UCOMISS, e0, e1), _) -> fpLifter e0' e1' FPSEqual FPSNotEqual where
     e0' = toExpr <$> e0
-    e1' = toExpr <$> e1 in
-      return (liftFP FPSEqual e0' e1', liftFP FPSNotEqual e0' e1')
+    e1' = toExpr <$> e1
   (ops, lhs) -> gets $ report_unsupported_flag "ZF"
 makeFlag "!ZF" = flagLookup ZF >>= \f -> case f of
   (Just (CMP, e0, e1), lhs) -> do
@@ -153,32 +173,30 @@ makeFlag "!ZF" = flagLookup ZF >>= \f -> case f of
     e0' = toExpr <$> e0
     e1' = toExpr <$> e1 in
       if e0 == e1 then do
-        pred <- gets predicate
         let mapper t = S.fromList $ mapMaybe t [e0', lhs]
-        return $ mapTuple mapper (liftMVal (:!=) 0, liftMValEq pred 0)
-      else
-        return (liftAnd e0' e1' 1, liftAnd e0' e1' 0)
-  (Just (UCOMISD, e0, e1), _) -> let -- simplified version for now
+        pred <- gets predicate
+        c <- gets config
+        return $ mapTuple mapper (liftMVal c (:!=) 0, liftMValEq c pred 0)
+      else do
+        c <- gets config
+        return (liftAnd c e0' e1' 1, liftAnd c e0' e1' 0)
+  (Just (UCOMISD, e0, e1), _) -> fpLifter e0' e1' FPNotEqual FPEqual where
     e0' = toExpr <$> e0
     e1' = toExpr <$> e1
-    es = [e0', e1'] in
-      return (liftFP FPNotEqual e0' e1', liftFP FPEqual e0' e1')
-  (Just (UCOMISS, e0, e1), _) -> let
+  (Just (UCOMISS, e0, e1), _) -> fpLifter e0' e1' FPSNotEqual FPSEqual where
     e0' = toExpr <$> e0
-    e1' = toExpr <$> e1 in
-      return (liftFP FPSNotEqual e0' e1', liftFP FPSEqual e0' e1')
+    e1' = toExpr <$> e1
   (ops, lhs) -> gets $ report_unsupported_flag "!ZF"
 -- e0 :< e1
 makeFlag str@"CF" = flagLookup CF >>= \f -> case f of
   (Just (UCOMISD, e0, e1), _) -> let -- simplified version for now
     e0' = toExpr <$> e0
-    e1' = toExpr <$> e1
-    es = [e0', e1'] in
-      return (liftFP FPLessThan e0' e1', liftFP FPGreaterThanOrEqual e0' e1')
+    e1' = toExpr <$> e1 in
+      fpLifter e0' e1' FPLessThan FPGreaterThanOrEqual
   (Just (UCOMISS, e0, e1), _) -> let
     e0' = toExpr <$> e0
     e1' = toExpr <$> e1 in
-      return (liftFP FPSLessThan e0' e1', liftFP FPSGreaterThanOrEqual e0' e1')
+      fpLifter e0' e1' FPSLessThan FPSGreaterThanOrEqual
   e -> makeNoAdd str (:<) (:>=) e
 -- e0 :<s e1
 makeFlag str@"SF != OF" = flagsSetBy [SF, OF] >>= makeNoAdd str (:<-) (:>=-)
@@ -188,13 +206,12 @@ makeFlag str@"SF == OF" = flagsSetBy [SF, OF] >>= makeNoAdd str (:>=-) (:<-)
 makeFlag str@"CF || ZF" = flagsSetBy [CF, ZF] >>= \f -> case f of
   (Just (UCOMISD, e0, e1), _) -> let -- simplified version for now
     e0' = toExpr <$> e0
-    e1' = toExpr <$> e1
-    es = [e0', e1'] in
-      return (liftFP FPLessThanOrEqual e0' e1', liftFP FPGreaterThan e0' e1')
+    e1' = toExpr <$> e1 in
+      fpLifter e0' e1' FPLessThanOrEqual FPGreaterThan
   (Just (UCOMISS, e0, e1), _) -> let
     e0' = toExpr <$> e0
     e1' = toExpr <$> e1 in
-      return (liftFP FPLessThanOrEqual e0' e1', liftFP FPSGreaterThan e0' e1')
+      fpLifter e0' e1' FPSLessThanOrEqual FPSGreaterThan
   e -> makeWithAdd str (:<) (:>=) e
 -- e0 :<=s e1; almost equivalent to `e0 :<s e1 + 1`
 makeFlag str@"ZF || SF != OF" = flagsSetBy [ZF, SF, OF] >>= mk where
@@ -203,47 +220,49 @@ makeFlag str@"ZF || SF != OF" = flagsSetBy [ZF, SF, OF] >>= mk where
 makeFlag str@"!CF" = flagLookup ZF >>= \f -> case f of
   (Just (UCOMISD, e0, e1), _) -> let -- simplified version for now
     e0' = toExpr <$> e0
-    e1' = toExpr <$> e1
-    es = [e0', e1'] in
-      return (liftFP FPGreaterThanOrEqual e0' e1', liftFP FPLessThan e0' e1')
+    e1' = toExpr <$> e1 in
+      fpLifter e0' e1' FPGreaterThanOrEqual FPLessThan
   (Just (UCOMISS, e0, e1), _) -> let
     e0' = toExpr <$> e0
     e1' = toExpr <$> e1 in
-      return (liftFP FPSGreaterThanOrEqual e0' e1', liftFP FPSLessThan e0' e1')
+      fpLifter e0' e1' FPSGreaterThanOrEqual FPSLessThan
   e -> makeNoAdd str (:>=) (:<) e
 -- e0 :> e1; should be equivalent to `e0 :>= e1 + 1`
 makeFlag str@"!CF && !ZF" = flagsSetBy [CF, ZF] >>= \f -> case f of
   (Just (UCOMISD, e0, e1), _) -> let -- simplified version for now
     e0' = toExpr <$> e0
-    e1' = toExpr <$> e1
-    es = [e0', e1'] in
-      return (liftFP FPGreaterThan e0' e1', liftFP FPLessThanOrEqual e0' e1')
+    e1' = toExpr <$> e1 in
+      fpLifter e0' e1' FPGreaterThan FPLessThanOrEqual
   (Just (UCOMISS, e0, e1), _) -> let
     e0' = toExpr <$> e0
     e1' = toExpr <$> e1 in
-      return (liftFP FPSGreaterThan e0' e1', liftFP FPLessThanOrEqual e0' e1')
+      fpLifter e0' e1' FPSGreaterThan FPSLessThanOrEqual
   e -> makeWithAdd str (:>=) (:<) e
 -- e0 :>s e1; almost equivalent to `e0 :>=s e1 + 1`
 makeFlag str@"!ZF && SF == OF" = flagsSetBy [ZF, SF, OF] >>= mk where
   mk = makeWithAdd str (:>=-) (:<-)
 makeFlag "PF" = flagLookup PF >>= \f -> let
   nan e = E_app (F IsNAN) [e]
-  or bool e0 e1 = E_app (F Or) [nan e0, nan e1] := bool
+  or c bool e0 e1 = lhs := V_val bool (getKnownExprSize c lhs) False where
+    lhs = E_app (F Or) [nan e0, nan e1]
   t e = toExpr <$> e
-  or' b e0 e1 = S.fromList $ maybeToList $ (liftM2 $ or b) (t e0) $ t e1 in
+  or' c b e0 e1 = sMaybe $ (liftM2 $ or c b) (t e0) $ t e1 in do
+    c <- gets config
     case f of
-      (Just (UCOMISD, e0, e1), _) -> return (or' vTrue e0 e1, or' vFalse e0 e1)
-      (Just (UCOMISS, e0, e1), _) -> return (or' vTrue e0 e1, or' vFalse e0 e1)
+      (Just (UCOMISD, e0, e1), _) -> return (or' c 1 e0 e1, or' c 0 e0 e1)
+      (Just (UCOMISS, e0, e1), _) -> return (or' c 1 e0 e1, or' c 0 e0 e1)
       (ops, lhs) -> gets $ report_unsupported_flag "PF"
 makeFlag "!PF" = flagLookup PF >>= \f -> let
   nan e = E_app (F IsNAN) [e]
   notter e0 e1 = [E_app (F Not) [nan e0], E_app (F Not) [nan e1]]
-  and bool e0 e1 = E_app (F And) (notter e0 e1) := bool
+  and c bool e0 e1 = lhs := V_val bool (getKnownExprSize c lhs) False where
+    lhs = E_app (F And) (notter e0 e1)
   t e = toExpr <$> e
-  a' b e0 e1 = S.fromList $ maybeToList $ (liftM2 $ and b) (t e0) $ t e1 in
+  and' c b e0 e1 = sMaybe $ (liftM2 $ and c b) (t e0) $ t e1 in do
+    c <- gets config
     case f of
-      (Just (UCOMISD, e0, e1), _) -> return (a' vTrue e0 e1, a' vFalse e0 e1)
-      (Just (UCOMISS, e0, e1), _) -> return (a' vTrue e0 e1, a' vFalse e0 e1)
+      (Just (UCOMISD, e0, e1), _) -> return (and' c 1 e0 e1, and' c 0 e0 e1)
+      (Just (UCOMISS, e0, e1), _) -> return (and' c 1 e0 e1, and' c 0 e0 e1)
       (ops, lhs) -> gets $ report_unsupported_flag "!PF"
 -- If a flag cannot be translated, we simply produce True (top) as the conditions on which is branched.
 makeFlag flag = do
@@ -251,9 +270,10 @@ makeFlag flag = do
   return $ report_unsupported_flag flag state
 
 
-report_unsupported_flag flag state = (top, top) --unsafePerformIO $ do
-  --hPutStrLn stderr $ "--------------------"
-  --hPutStrLn stderr $ "Cannot translate " ++ flag ++ " in state with predicate:"
-  --hPutStrLn stderr $ show $ predicate state
-  --hPutStrLn stderr $ "--------------------"
-  --return (top, top)
+report_unsupported_flag flag state = (top, top)
+  -- unsafePerformIO $ do
+  --   hPutStrLn stderr $ "--------------------"
+  --   hPutStrLn stderr $ "Cannot translate " ++ flag ++ " in state with predicate:"
+  --   hPutStrLn stderr $ show $ predicate state
+  --   hPutStrLn stderr $ "--------------------"
+  --   return (top, top)

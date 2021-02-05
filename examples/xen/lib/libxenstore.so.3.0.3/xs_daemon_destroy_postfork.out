@@ -1,0 +1,91 @@
+Number of assembly instructions     = 63
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 63
+Number of edges: 66
+
+2470 (True): 3629
+3620 (False): 0
+
+2470: PUSH Reg R13 2
+2472: PUSH Reg R12 2
+2474: LEA Reg R13, Address (AddrPlus (FromReg RDI) (AddrImm 168)) 7
+247b: PUSH Reg RBP 1
+247c: PUSH Reg RBX 1
+247d: MOV Reg R12, Reg RDI 3
+2480: SUB Reg RSP, Immediate 8 4
+2484: MOV Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 168))) 7
+248b: CMP Reg RBP, Reg R13 3
+248e: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))) 4
+2492: JZ 24b7 (resolved immediate)
+  |
+  `- 2494,24b7
+2494: NOP  4
+2498: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 32))) 4
+249c: CALL free (external)
+24a1: MOV Reg RDI, Reg RBP 3
+24a4: MOV Reg RBP, Reg RBX 3
+24a7: CALL free (external)
+24ac: MOV Reg RAX, Reg RBX 3
+24af: MOV Reg RBX, Address (SizeDir 64 (FromReg RBX)) 3
+24b2: CMP Reg RAX, Reg R13 3
+24b5: JNZ 2498 (resolved immediate)
+  |
+  `- 2498,24b7
+24b7: MOV Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 48))) 5
+24bc: ADD Reg R12, Immediate 48 4
+24c0: CMP Reg R12, Reg RBP 3
+24c3: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))) 4
+24c7: JZ 24ef (resolved immediate)
+  |
+  `- 24c9,24ef
+24c9: NOP  7
+24d0: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 32))) 4
+24d4: CALL free (external)
+24d9: MOV Reg RDI, Reg RBP 3
+24dc: MOV Reg RBP, Reg RBX 3
+24df: CALL free (external)
+24e4: MOV Reg RAX, Reg RBX 3
+24e7: MOV Reg RBX, Address (SizeDir 64 (FromReg RBX)) 3
+24ea: CMP Reg RAX, Reg R12 3
+24ed: JNZ 24d0 (resolved immediate)
+  |
+  `- 24d0,24ef
+24ef: ADD Reg RSP, Immediate 8 4
+24f3: POP Reg RBX 1
+24f4: POP Reg RBP 1
+24f5: POP Reg R12 2
+24f7: POP Reg R13 2
+24f9: RET  1
+  |
+  `- 
+2500: PUSH Reg RBX 1
+2501: MOV Reg RBX, Reg RDI 3
+2504: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 152))) 6
+250a: CMP Reg EDI, Immediate 4294967295 3
+250d: JZ 251f (resolved immediate)
+  |
+  `- 250f,251f
+250f: CALL close (external)
+2514: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 156))) 6
+251a: CALL close (external)
+251f: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 8)) 4
+2523: CALL xentoolcore__deregister_active_handle (external)
+2528: MOV Reg EDI, Address (SizeDir 32 (FromReg RBX)) 2
+252a: CALL close (external)
+252f: MOV Reg RDI, Reg RBX 3
+2532: POP Reg RBX 1
+2533: JMP free (jmp to external function)
+  |
+  `- 
+3620: PUSH Reg RBX 1
+3621: MOV Reg RBX, Reg RDI 3
+3624: CALL close_free_msgs (internal)
+  |
+  `- 2470
+3629: MOV Reg RDI, Reg RBX 3
+362c: POP Reg RBX 1
+362d: JMP 2500 (resolved immediate)
+  |
+  `- 2500

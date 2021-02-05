@@ -1,0 +1,37 @@
+Number of assembly instructions     = 20
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 20
+Number of edges: 19
+
+793c0 (False): 0
+
+793c0: PUSH Reg RBP 1
+793c1: PUSH Reg RBX 1
+793c2: MOV Reg RBP, Reg RSI 3
+793c5: MOV Reg RBX, Reg RDI 3
+793c8: SUB Reg RSP, Immediate 8 4
+793cc: CALL yajl_gen_map_open (external)
+793d1: TEST Reg EAX, Reg EAX 2
+793d3: JNZ 793f4 (resolved immediate)
+  |
+  `- 793d5,793f4
+793d5: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+793d8: TEST Reg EAX, Reg EAX 2
+793da: JZ 79410 (resolved immediate)
+  |
+  `- 79410
+793f4: ADD Reg RSP, Immediate 8 4
+793f8: POP Reg RBX 1
+793f9: POP Reg RBP 1
+793fa: RET  1
+  |
+  `- 
+79410: ADD Reg RSP, Immediate 8 4
+79414: MOV Reg RDI, Reg RBX 3
+79417: POP Reg RBX 1
+79418: POP Reg RBP 1
+79419: JMP yajl_gen_map_close (jmp to external function)
+  |
+  `- 

@@ -1,0 +1,66 @@
+Number of assembly instructions     = 43
+Number of indirect branches         = 1
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 1: 13399
+Number of symbolic states (representative of non-determinism): 43
+Number of edges: 46
+
+132e0 (False): 0
+
+132e0: SUB Reg RSP, Immediate 216 7
+132e7: TEST Reg AL, Reg AL 2
+132e9: MOV Reg R10, Reg RDI 3
+132ec: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))), Reg RCX 5
+132f1: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 64))), Reg R8 5
+132f6: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 72))), Reg R9 5
+132fb: JZ 13334 (resolved immediate)
+  |
+  `- 132fd,13334
+132fd: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 80))), Reg XMM0 5
+13302: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 96))), Reg XMM1 5
+13307: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 112))), Reg XMM2 5
+1330c: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 128))), Reg XMM3 8
+13314: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 144))), Reg XMM4 8
+1331c: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 160))), Reg XMM5 8
+13324: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 176))), Reg XMM6 8
+1332c: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 192))), Reg XMM7 8
+13334: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1333d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
+13342: XOR Reg EAX, Reg EAX 2
+13344: CMP Address (SizeDir 64 (AddrPlus (FromReg R10) (AddrImm 128))), Immediate 0 8
+1334c: JZ 133a0 (resolved immediate)
+  |
+  `- 1334e,133a0
+1334e: TEST Reg SIL, Reg SIL 3
+13351: JNZ 1335d (resolved immediate)
+  |
+  `- 13353,1335d
+13353: CMP Address (SizeDir 8 (AddrPlus (FromReg R10) (AddrImm 144))), Immediate 0 8
+1335b: JZ 133a0 (resolved immediate)
+  |
+  `- 1335d,133a0
+1335d: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 224)) 8
+13365: MOV Reg RCX, Reg RDX 3
+13368: MOV Address (SizeDir 32 (FromReg RSP)), Immediate 24 7
+1336f: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))), Immediate 48 8
+13377: MOV Reg R8, Reg RSP 3
+1337a: MOV Reg RDI, Reg R10 3
+1337d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
+13382: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 32)) 5
+13387: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))), Reg RAX 5
+1338c: MOVZX Reg EAX, Reg SIL 4
+13390: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg R10) (AddrImm 136))) 7
+13397: MOV Reg EDX, Reg EAX 2
+13399: CALL Address (SizeDir 64 (AddrPlus (FromReg R10) (AddrImm 128))) 7
+133a0: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
+133a5: XOR Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+133ae: JNZ 133b8 (resolved immediate)
+  |
+  `- 133b0,133b8
+133b0: ADD Reg RSP, Immediate 216 7
+133b7: RET  1
+  |
+  `- 
+133b8: CALL __stack_chk_fail (external)
+  |
+  `- 

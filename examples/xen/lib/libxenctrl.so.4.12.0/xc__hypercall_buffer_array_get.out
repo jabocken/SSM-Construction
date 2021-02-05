@@ -1,0 +1,37 @@
+Number of assembly instructions     = 20
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 20
+Number of edges: 20
+
+22600 (False): 0
+
+22600: CMP Address (SizeDir 32 (FromReg RSI)), Reg EDX 2
+22602: JBE 2263c (resolved immediate)
+  |
+  `- 22604,2263c
+22604: MOV Reg EDX, Reg EDX 2
+22606: LEA Reg RAX, Address (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 4) (FromReg RDX))) 4
+2260a: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))) 4
+2260e: SHL Reg RAX, Immediate 3 4
+22612: ADD Reg RDX, Reg RAX 3
+22615: CMP Address (SizeDir 64 (FromReg RDX)), Immediate 0 4
+22619: JZ 2263c (resolved immediate)
+  |
+  `- 2261b,2263c
+2261b: MOVDQU Reg XMM0, Address (SizeDir 128 (FromReg RDX)) 4
+2261f: MOVUPS Address (SizeDir 128 (FromReg RCX)), Reg XMM0 3
+22622: MOVDQU Reg XMM0, Address (SizeDir 128 (AddrPlus (FromReg RDX) (AddrImm 16))) 5
+22627: MOVUPS Address (SizeDir 128 (AddrPlus (FromReg RCX) (AddrImm 16))), Reg XMM0 4
+2262b: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 32))) 4
+2262f: MOV Address (SizeDir 64 (AddrPlus (FromReg RCX) (AddrImm 32))), Reg RDX 4
+22633: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))) 4
+22637: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (FromReg RAX))) 4
+2263b: RET  1
+  |
+  `- 
+2263c: SUB Reg RSP, Immediate 8 4
+22640: CALL abort (external)
+  |
+  `- 

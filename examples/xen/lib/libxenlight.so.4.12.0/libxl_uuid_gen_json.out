@@ -1,0 +1,75 @@
+Number of assembly instructions     = 60
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 60
+Number of edges: 59
+
+407a0 (False): 0
+
+407a0: PUSH Reg RBP 1
+407a1: PUSH Reg RBX 1
+407a2: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 360127)) 7
+407a9: MOV Reg ECX, Immediate 37 5
+407ae: MOV Reg RBP, Reg RDI 3
+407b1: MOV Reg EDX, Immediate 1 5
+407b6: SUB Reg RSP, Immediate 56 4
+407ba: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+407c3: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Reg RAX 5
+407c8: XOR Reg EAX, Reg EAX 2
+407ca: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 15))) 4
+407ce: MOV Reg RBX, Reg RSP 3
+407d1: SUB Reg RSP, Immediate 8 4
+407d5: MOV Reg RDI, Reg RBX 3
+407d8: PUSH Reg RAX 1
+407d9: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 14))) 4
+407dd: PUSH Reg RAX 1
+407de: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 13))) 4
+407e2: PUSH Reg RAX 1
+407e3: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 12))) 4
+407e7: PUSH Reg RAX 1
+407e8: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 11))) 4
+407ec: PUSH Reg RAX 1
+407ed: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 10))) 4
+407f1: PUSH Reg RAX 1
+407f2: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 9))) 4
+407f6: PUSH Reg RAX 1
+407f7: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 8))) 4
+407fb: PUSH Reg RAX 1
+407fc: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 7))) 4
+40800: PUSH Reg RAX 1
+40801: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 6))) 4
+40805: PUSH Reg RAX 1
+40806: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 5))) 4
+4080a: PUSH Reg RAX 1
+4080b: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 4))) 4
+4080f: PUSH Reg RAX 1
+40810: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 3))) 4
+40814: PUSH Reg RAX 1
+40815: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 2))) 4
+40819: PUSH Reg RAX 1
+4081a: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 1))) 4
+4081e: PUSH Reg RAX 1
+4081f: MOVZX Reg R9D, Address (SizeDir 8 (FromReg RSI)) 4
+40823: XOR Reg EAX, Reg EAX 2
+40825: MOV Reg ESI, Immediate 37 5
+4082a: CALL __snprintf_chk (external)
+4082f: SUB Reg RSP, Immediate 18446744073709551488 4
+40833: MOV Reg EDX, Immediate 36 5
+40838: MOV Reg RSI, Reg RBX 3
+4083b: MOV Reg RDI, Reg RBP 3
+4083e: CALL yajl_gen_string (external)
+40843: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
+40848: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+40851: JNZ 4085a (resolved immediate)
+  |
+  `- 40853,4085a
+40853: ADD Reg RSP, Immediate 56 4
+40857: POP Reg RBX 1
+40858: POP Reg RBP 1
+40859: RET  1
+  |
+  `- 
+4085a: CALL __stack_chk_fail (external)
+  |
+  `- 

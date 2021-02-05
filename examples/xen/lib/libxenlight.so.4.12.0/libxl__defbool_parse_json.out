@@ -1,0 +1,61 @@
+Number of assembly instructions     = 38
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 38
+Number of edges: 38
+
+406d0 (False): 0
+
+406d0: TEST Reg RSI, Reg RSI 3
+406d3: MOV Reg EAX, Immediate 4294967293 5
+406d8: JZ 406df (resolved immediate)
+  |
+  `- 406da,406df
+406da: CMP Address (SizeDir 32 (FromReg RSI)), Immediate 32 3
+406dd: JZ 406e8 (resolved immediate)
+  |
+  `- 406df,406e8
+406df: REPZ RET  2
+  |
+  `- 
+406e8: MOV Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))) 4
+406ec: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 337960)) 7
+406f3: MOV Reg ECX, Immediate 9 5
+406f8: MOV Reg RSI, Reg R8 3
+406fb: REPZ CMPSB  2
+406fd: SETA Reg AL 3
+40700: SBB Reg AL, Immediate 0 2
+40702: MOVSX Reg EAX, Reg AL 3
+40705: TEST Reg EAX, Reg EAX 2
+40707: JZ 40760 (resolved immediate)
+  |
+  `- 40709,40760
+40709: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 337926)) 7
+40710: MOV Reg ECX, Immediate 4 5
+40715: MOV Reg RSI, Reg R8 3
+40718: REPZ CMPSB  2
+4071a: SETA Reg AL 3
+4071d: SBB Reg AL, Immediate 0 2
+4071f: MOVSX Reg EAX, Reg AL 3
+40722: TEST Reg EAX, Reg EAX 2
+40724: JZ 40750 (resolved immediate)
+40726: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 337891)) 7
+4072d: MOV Reg ECX, Immediate 5 5
+40732: MOV Reg RSI, Reg R8 3
+40735: REPZ CMPSB  2
+40737: SETA Reg AL 3
+4073a: SBB Reg AL, Immediate 0 2
+4073c: MOVSX Reg EAX, Reg AL 3
+4073f: TEST Reg EAX, Reg EAX 2
+40741: JNZ 40767 (resolved immediate)
+  |
+  `- 40767
+40760: MOV Address (SizeDir 32 (FromReg RDX)), Immediate 0 6
+40766: RET  1
+  |
+  `- 
+40767: MOV Reg EAX, Immediate 4294967293 5
+4076c: RET  1
+  |
+  `- 

@@ -1,0 +1,28 @@
+Number of assembly instructions     = 13
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 13
+Number of edges: 12
+
+7e3a0 (False): 0
+
+7e3a0: TEST Reg RDI, Reg RDI 3
+7e3a3: JZ 7e3c8 (resolved immediate)
+  |
+  `- 7e3a5,7e3c8
+7e3a5: PUSH Reg RBX 1
+7e3a6: MOV Reg RBX, Reg RDI 3
+7e3a9: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 24))) 4
+7e3ad: CALL free (external)
+7e3b2: PXOR Reg XMM0, Reg XMM0 4
+7e3b6: MOVUPS Address (SizeDir 128 (FromReg RBX)), Reg XMM0 3
+7e3b9: MOVUPS Address (SizeDir 128 (AddrPlus (FromReg RBX) (AddrImm 16))), Reg XMM0 4
+7e3bd: MOVUPS Address (SizeDir 128 (AddrPlus (FromReg RBX) (AddrImm 32))), Reg XMM0 4
+7e3c1: POP Reg RBX 1
+7e3c2: RET  1
+  |
+  `- 
+7e3c8: REPZ RET  2
+  |
+  `- 

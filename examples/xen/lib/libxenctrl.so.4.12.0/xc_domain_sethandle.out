@@ -1,0 +1,105 @@
+Number of assembly instructions     = 80
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 80
+Number of edges: 82
+
+104e0 (False): 0
+
+104e0: PUSH Reg R13 2
+104e2: PUSH Reg R12 2
+104e4: PUSH Reg RBP 1
+104e5: PUSH Reg RBX 1
+104e6: MOV Reg RBX, Reg RDI 3
+104e9: SUB Reg RSP, Immediate 216 7
+104f0: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+104f9: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 200))), Reg RAX 8
+10501: XOR Reg EAX, Reg EAX 2
+10503: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 48)) 5
+10508: MOVDQU Reg XMM0, Address (SizeDir 128 (FromReg RDX)) 4
+1050c: MOV Reg RBP, Reg RSP 3
+1050f: MOV Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 56))), Reg SI 5
+10514: MOV Address (SizeDir 64 (FromReg RSP)), Immediate 0 8
+1051c: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
+10521: MOV Reg RSI, Reg RBP 3
+10524: MOV Reg RAX, Immediate 73014444049 10
+1052e: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 64))), Reg XMM0 5
+10533: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Immediate 0 9
+1053c: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 3 8
+10544: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Immediate 144 9
+1054d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))), Reg RAX 5
+10552: CALL xc__hypercall_bounce_pre (external)
+10557: TEST Reg EAX, Reg EAX 2
+10559: JNZ 105f6 (resolved immediate)
+  |
+  `- 1055f,105f6
+1055f: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+10564: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1088))) 7
+1056b: MOV Reg ESI, Immediate 36 5
+10570: TEST Reg RAX, Reg RAX 3
+10573: CMOVZ Reg RAX, Reg RBP 4
+10577: MOV Reg RDX, Address (SizeDir 64 (FromReg RAX)) 3
+1057a: CALL xencall1 (external)
+1057f: TEST Reg EAX, Reg EAX 2
+10581: MOV Reg R12D, Reg EAX 3
+10584: JNS 10593 (resolved immediate)
+  |
+  `- 10586,10593
+10586: CALL __errno_location (external)
+1058b: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 13 3
+1058e: MOV Reg R13, Reg RAX 3
+10591: JZ 105d0 (resolved immediate)
+  |
+  `- 10593,105d0
+10593: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+10598: MOV Reg RDI, Reg RBX 3
+1059b: TEST Reg RSI, Reg RSI 3
+1059e: CMOVZ Reg RSI, Reg RBP 4
+105a2: CALL xc__hypercall_bounce_post (external)
+105a7: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 200))) 8
+105af: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+105b8: MOV Reg EAX, Reg R12D 3
+105bb: JNZ 10637 (resolved immediate)
+  |
+  `- 105bd,10637
+105bd: ADD Reg RSP, Immediate 216 7
+105c4: POP Reg RBX 1
+105c5: POP Reg RBP 1
+105c6: POP Reg R12 2
+105c8: POP Reg R13 2
+105ca: RET  1
+  |
+  `- 
+105d0: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+105d4: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 85445)) 7
+105db: XOR Reg ECX, Reg ECX 2
+105dd: MOV Reg EDX, Immediate 3 5
+105e2: MOV Reg RDI, Reg RBX 3
+105e5: XOR Reg EAX, Reg EAX 2
+105e7: CALL xc_report (external)
+105ec: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Immediate 13 8
+105f4: JMP 10593 (resolved immediate)
+  |
+  `- 10593
+105f6: CALL __errno_location (external)
+105fb: MOV Reg R12D, Address (SizeDir 32 (FromReg RAX)) 3
+105fe: MOV Reg RBP, Reg RAX 3
+10601: MOV Reg RDI, Reg RBX 3
+10604: MOV Reg ESI, Reg R12D 3
+10607: CALL xc_strerror (external)
+1060c: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+1060f: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 85330)) 7
+10616: MOV Reg R8, Reg RAX 3
+10619: MOV Reg ESI, Immediate 1 5
+1061e: MOV Reg RDI, Reg RBX 3
+10621: XOR Reg EAX, Reg EAX 2
+10623: CALL xc_report_error (external)
+10628: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R12D 4
+1062c: MOV Reg R12D, Immediate 4294967295 6
+10632: JMP 105a7 (resolved immediate)
+  |
+  `- 105a7
+10637: CALL __stack_chk_fail (external)
+  |
+  `- 

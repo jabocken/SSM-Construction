@@ -1,4 +1,5 @@
 PROG=simple_local_array
+CC=clang
 
 .PHONY: symbols dump test
 

@@ -1,0 +1,35 @@
+Number of assembly instructions     = 20
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 20
+Number of edges: 21
+
+3f730 (False): 0
+
+3f730: TEST Reg ESI, Reg ESI 2
+3f732: PUSH Reg R12 2
+3f734: MOV Reg R12, Reg RDI 3
+3f737: PUSH Reg RBP 1
+3f738: PUSH Reg RBX 1
+3f739: JLE 3f761 (resolved immediate)
+  |
+  `- 3f73b,3f761
+3f73b: LEA Reg EAX, Address (AddrMinus (FromReg RSI) (AddrImm 1)) 3
+3f73e: MOV Reg RBX, Reg RDI 3
+3f741: LEA Reg RBP, Address (AddrPlus (AddrPlus (FromReg RDI) (AddrTimes (AddrImm 8) (FromReg RAX))) (AddrImm 8)) 5
+3f746: NOP  10
+3f750: MOV Reg RDI, Reg RBX 3
+3f753: ADD Reg RBX, Immediate 8 4
+3f757: CALL libxl_pcitopology_dispose (external)
+3f75c: CMP Reg RBX, Reg RBP 3
+3f75f: JNZ 3f750 (resolved immediate)
+  |
+  `- 3f750,3f761
+3f761: POP Reg RBX 1
+3f762: MOV Reg RDI, Reg R12 3
+3f765: POP Reg RBP 1
+3f766: POP Reg R12 2
+3f768: JMP free (jmp to external function)
+  |
+  `- 

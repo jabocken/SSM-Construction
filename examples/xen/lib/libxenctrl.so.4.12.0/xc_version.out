@@ -1,0 +1,66 @@
+Number of assembly instructions     = 45
+Number of indirect branches         = 1
+Number of unresolved indirect jumps = 1: 1a7ef
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 45
+Number of edges: 44
+
+1a790 (False): 0
+
+1a790: PUSH Reg R13 2
+1a792: PUSH Reg R12 2
+1a794: PUSH Reg RBP 1
+1a795: PUSH Reg RBX 1
+1a796: MOV Reg RBP, Reg RDI 3
+1a799: MOV Reg EBX, Reg ESI 2
+1a79b: SUB Reg RSP, Immediate 56 4
+1a79f: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1a7a8: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Reg RAX 5
+1a7ad: XOR Reg EAX, Reg EAX 2
+1a7af: CMP Reg ESI, Immediate 10 3
+1a7b2: MOV Address (SizeDir 64 (FromReg RSP)), Immediate 0 8
+1a7ba: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Immediate 0 9
+1a7c3: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 2 8
+1a7cb: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RDX 5
+1a7d0: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Immediate 0 9
+1a7d9: JA 1a900 (resolved immediate)
+  |
+  `- 1a7df,1a900
+1a7df: MOV Reg ECX, Reg ESI 2
+1a7e1: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 46700)) 7
+1a7e8: MOVSXD Reg RAX, Address (SizeDir 32 (AddrPlus (FromReg RSI) (AddrTimes (AddrImm 4) (FromReg RCX)))) 4
+1a7ec: ADD Reg RAX, Reg RSI 3
+1a7ef: JMP Reg RAX 2
+  |
+  `- 
+1a852: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
+1a857: XOR Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1a860: MOV Reg EAX, Reg EBX 2
+1a862: JNZ 1a96f (resolved immediate)
+  |
+  `- 1a868,1a96f
+1a868: ADD Reg RSP, Immediate 56 4
+1a86c: POP Reg RBX 1
+1a86d: POP Reg RBP 1
+1a86e: POP Reg R12 2
+1a870: POP Reg R13 2
+1a872: RET  1
+  |
+  `- 
+1a900: CALL __errno_location (external)
+1a905: MOV Reg R13D, Address (SizeDir 32 (FromReg RAX)) 3
+1a908: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 47161)) 7
+1a90f: MOV Reg R12, Reg RAX 3
+1a912: MOV Reg ECX, Reg EBX 2
+1a914: MOV Reg ESI, Immediate 1 5
+1a919: MOV Reg RDI, Reg RBP 3
+1a91c: XOR Reg EAX, Reg EAX 2
+1a91e: MOV Reg EBX, Immediate 4294967274 5
+1a923: CALL xc_report_error (external)
+1a928: MOV Address (SizeDir 32 (FromReg R12)), Reg R13D 4
+1a92c: JMP 1a852 (resolved immediate)
+  |
+  `- 1a852
+1a96f: CALL __stack_chk_fail (external)
+  |
+  `- 

@@ -1,0 +1,34 @@
+Number of assembly instructions     = 15
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 15
+Number of edges: 14
+
+82fc0 (False): 0
+
+82fc0: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 48))) 3
+82fc3: TEST Reg EAX, Reg EAX 2
+82fc5: JNZ 82fe1 (resolved immediate)
+  |
+  `- 82fc7,82fe1
+82fc7: CMP Reg ESI, Immediate 3 3
+82fca: MOV Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 48))), Reg ESI 3
+82fcd: JZ 82fd8 (resolved immediate)
+  |
+  `- 82fcf,82fd8
+82fcf: REPZ RET  2
+  |
+  `- 
+82fd8: ADD Reg RDI, Immediate 64 4
+82fdc: JMP libxl_device_disk_init (jmp to external function)
+  |
+  `- 
+82fe1: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 152328)) 7
+82fe8: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 146782)) 7
+82fef: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 146805)) 7
+82ff6: SUB Reg RSP, Immediate 8 4
+82ffa: MOV Reg EDX, Immediate 2431 5
+82fff: CALL __assert_fail (external)
+  |
+  `- 

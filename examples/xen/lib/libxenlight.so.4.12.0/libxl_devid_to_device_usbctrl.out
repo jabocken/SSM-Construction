@@ -1,0 +1,59 @@
+Number of assembly instructions     = 38
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 38
+Number of edges: 38
+
+57340 (False): 0
+
+57340: PUSH Reg R14 2
+57342: PUSH Reg R13 2
+57344: MOV Reg R13, Reg RDI 3
+57347: PUSH Reg R12 2
+57349: PUSH Reg RBP 1
+5734a: MOV Reg R12, Reg RCX 3
+5734d: PUSH Reg RBX 1
+5734e: MOV Reg EBX, Reg EDX 2
+57350: SUB Reg RSP, Immediate 16 4
+57354: LEA Reg RDX, Address (AddrPlus (FromReg RSP) (AddrImm 4)) 5
+57359: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))), Immediate 0 8
+57361: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+5736a: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
+5736f: XOR Reg EAX, Reg EAX 2
+57371: CALL libxl_device_usbctrl_list (external)
+57376: TEST Reg RAX, Reg RAX 3
+57379: JZ 5740c (resolved immediate)
+  |
+  `- 5737f,5740c
+5737f: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))) 4
+57383: MOV Reg RBP, Reg RAX 3
+57386: MOV Reg R14D, Immediate 4294967293 6
+5738c: TEST Reg ESI, Reg ESI 2
+5738e: JLE 573c7 (resolved immediate)
+  |
+  `- 573c7
+573c7: MOV Reg RDI, Reg RBP 3
+573ca: CALL libxl_device_usbctrl_list_free (external)
+573cf: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+573d4: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+573dd: MOV Reg EAX, Reg R14D 3
+573e0: JNZ 57414 (resolved immediate)
+  |
+  `- 573e2,57414
+573e2: ADD Reg RSP, Immediate 16 4
+573e6: POP Reg RBX 1
+573e7: POP Reg RBP 1
+573e8: POP Reg R12 2
+573ea: POP Reg R13 2
+573ec: POP Reg R14 2
+573ee: RET  1
+  |
+  `- 
+5740c: MOV Reg R14D, Immediate 4294967293 6
+57412: JMP 573cf (resolved immediate)
+  |
+  `- 573cf
+57414: CALL __stack_chk_fail (external)
+  |
+  `- 

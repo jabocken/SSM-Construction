@@ -1,0 +1,196 @@
+Number of assembly instructions     = 135
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 135
+Number of edges: 146
+
+20500 (True): 41528
+41490 (True): 76e7e, 76ead, 76edd, 76f0d, 76f39, 76f65
+76e60 (False): 0
+
+20500: CMP Address (SizeDir 32 (FromReg RDI)), Reg ESI 2
+20502: MOV Reg EAX, Immediate 1 5
+20507: JLE 20519 (resolved immediate)
+  |
+  `- 20509,20519
+20509: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))) 4
+2050d: MOVSXD Reg RSI, Reg ESI 3
+20510: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RSI)))) 4
+20514: MOV Address (SizeDir 64 (FromReg RDX)), Reg RAX 3
+20517: XOR Reg EAX, Reg EAX 2
+20519: REPZ RET  2
+  |
+  `- 
+41490: PUSH Reg R15 2
+41492: PUSH Reg R14 2
+41494: PUSH Reg R13 2
+41496: PUSH Reg R12 2
+41498: PUSH Reg RBP 1
+41499: PUSH Reg RBX 1
+4149a: SUB Reg RSP, Immediate 24 4
+4149e: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+414a7: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
+414ac: XOR Reg EAX, Reg EAX 2
+414ae: TEST Reg RSI, Reg RSI 3
+414b1: JZ 414b8 (resolved immediate)
+  |
+  `- 414b3,414b8
+414b3: CMP Address (SizeDir 32 (FromReg RSI)), Immediate 64 3
+414b6: JZ 414e0 (resolved immediate)
+  |
+  `- 414b8,414e0
+414b8: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+414bd: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+414c6: JNZ 4155b (resolved immediate)
+  |
+  `- 414cc,4155b
+414cc: ADD Reg RSP, Immediate 24 4
+414d0: POP Reg RBX 1
+414d1: POP Reg RBP 1
+414d2: POP Reg R12 2
+414d4: POP Reg R13 2
+414d6: POP Reg R14 2
+414d8: POP Reg R15 2
+414da: RET  1
+  |
+  `- 
+414e0: MOV Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))) 4
+414e4: XOR Reg EBX, Reg EBX 2
+414e6: MOV Reg R13, Reg RDI 3
+414e9: MOV Reg R14D, Reg EDX 3
+414ec: MOV Address (SizeDir 64 (FromReg RSP)), Immediate 0 8
+414f4: MOV Reg R12, Reg RSP 3
+414f7: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 8))) 3
+414fa: TEST Reg EAX, Reg EAX 2
+414fc: JNZ 4151b (resolved immediate)
+  |
+  `- 414fe,4151b
+414fe: JMP 4152c (resolved immediate)
+  |
+  `- 4152c
+4151b: MOV Reg RDX, Reg R12 3
+4151e: MOV Reg ESI, Reg EBX 2
+41520: MOV Reg RDI, Reg RBP 3
+41523: CALL flexarray_get (internal)
+  |
+  `- 20500
+41528: TEST Reg EAX, Reg EAX 2
+4152a: JZ 41500 (resolved immediate)
+4152c: XOR Reg EAX, Reg EAX 2
+4152e: JMP 414b8 (resolved immediate)
+  |
+  `- 414b8
+4155b: CALL __stack_chk_fail (external)
+  |
+  `- 
+76e60: PUSH Reg R12 2
+76e62: MOV Reg R12, Reg RDI 3
+76e65: PUSH Reg RBP 1
+76e66: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 195659)) 7
+76e6d: PUSH Reg RBX 1
+76e6e: MOV Reg RBP, Reg RDX 3
+76e71: MOV Reg EDX, Immediate 4 5
+76e76: MOV Reg RBX, Reg RSI 3
+76e79: CALL libxl__json_map_get (internal)
+  |
+  `- 41490
+76e7e: TEST Reg RAX, Reg RAX 3
+76e81: JZ 76e99 (resolved immediate)
+  |
+  `- 76e83,76e99
+76e83: MOV Reg RDX, Reg RBP 3
+76e86: MOV Reg RSI, Reg RAX 3
+76e89: MOV Reg RDI, Reg R12 3
+76e8c: CALL libxl__uint32_parse_json (external)
+76e91: TEST Reg EAX, Reg EAX 2
+76e93: JNZ 76f80 (resolved immediate)
+  |
+  `- 76e99,76f80
+76e99: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 195622)) 7
+76ea0: MOV Reg EDX, Immediate 33 5
+76ea5: MOV Reg RSI, Reg RBX 3
+76ea8: CALL libxl__json_map_get (internal)
+76ead: TEST Reg RAX, Reg RAX 3
+76eb0: JZ 76ec9 (resolved immediate)
+  |
+  `- 76eb2,76ec9
+76eb2: LEA Reg RDX, Address (AddrPlus (FromReg RBP) (AddrImm 8)) 4
+76eb6: MOV Reg RSI, Reg RAX 3
+76eb9: MOV Reg RDI, Reg R12 3
+76ebc: CALL libxl__string_parse_json (external)
+76ec1: TEST Reg EAX, Reg EAX 2
+76ec3: JNZ 76f80 (resolved immediate)
+  |
+  `- 76ec9,76f80
+76ec9: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 195590)) 7
+76ed0: MOV Reg EDX, Immediate 4 5
+76ed5: MOV Reg RSI, Reg RBX 3
+76ed8: CALL libxl__json_map_get (internal)
+76edd: TEST Reg RAX, Reg RAX 3
+76ee0: JZ 76ef9 (resolved immediate)
+  |
+  `- 76ee2,76ef9
+76ee2: LEA Reg RDX, Address (AddrPlus (FromReg RBP) (AddrImm 16)) 4
+76ee6: MOV Reg RSI, Reg RAX 3
+76ee9: MOV Reg RDI, Reg R12 3
+76eec: CALL libxl__int_parse_json (external)
+76ef1: TEST Reg EAX, Reg EAX 2
+76ef3: JNZ 76f80 (resolved immediate)
+  |
+  `- 76ef9,76f80
+76ef9: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 155707)) 7
+76f00: MOV Reg EDX, Immediate 64 5
+76f05: MOV Reg RSI, Reg RBX 3
+76f08: CALL libxl__json_map_get (internal)
+76f0d: TEST Reg RAX, Reg RAX 3
+76f10: JZ 76f25 (resolved immediate)
+  |
+  `- 76f12,76f25
+76f12: LEA Reg RDX, Address (AddrPlus (FromReg RBP) (AddrImm 24)) 4
+76f16: MOV Reg RSI, Reg RAX 3
+76f19: MOV Reg RDI, Reg R12 3
+76f1c: CALL libxl__vnc_info_parse_json (external)
+76f21: TEST Reg EAX, Reg EAX 2
+76f23: JNZ 76f80 (resolved immediate)
+  |
+  `- 76f25,76f80
+76f25: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 120855)) 7
+76f2c: MOV Reg EDX, Immediate 64 5
+76f31: MOV Reg RSI, Reg RBX 3
+76f34: CALL libxl__json_map_get (internal)
+76f39: TEST Reg RAX, Reg RAX 3
+76f3c: JZ 76f51 (resolved immediate)
+  |
+  `- 76f3e,76f51
+76f3e: LEA Reg RDX, Address (AddrPlus (FromReg RBP) (AddrImm 56)) 4
+76f42: MOV Reg RSI, Reg RAX 3
+76f45: MOV Reg RDI, Reg R12 3
+76f48: CALL libxl__sdl_info_parse_json (external)
+76f4d: TEST Reg EAX, Reg EAX 2
+76f4f: JNZ 76f80 (resolved immediate)
+  |
+  `- 76f51,76f80
+76f51: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 195460)) 7
+76f58: MOV Reg EDX, Immediate 33 5
+76f5d: MOV Reg RSI, Reg RBX 3
+76f60: CALL libxl__json_map_get (internal)
+76f65: TEST Reg RAX, Reg RAX 3
+76f68: JZ 76f80 (resolved immediate)
+  |
+  `- 76f6a,76f80
+76f6a: POP Reg RBX 1
+76f6b: LEA Reg RDX, Address (AddrPlus (FromReg RBP) (AddrImm 80)) 4
+76f6f: MOV Reg RDI, Reg R12 3
+76f72: MOV Reg RSI, Reg RAX 3
+76f75: POP Reg RBP 1
+76f76: POP Reg R12 2
+76f78: JMP libxl__string_parse_json (jmp to external function)
+  |
+  `- 
+76f80: POP Reg RBX 1
+76f81: POP Reg RBP 1
+76f82: POP Reg R12 2
+76f84: RET  1
+  |
+  `- 

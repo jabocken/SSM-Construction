@@ -1,0 +1,61 @@
+Number of assembly instructions     = 34
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 34
+Number of edges: 37
+
+55b0 (False): 0
+
+55b0: TEST Reg RDI, Reg RDI 3
+55b3: JZ 5620 (resolved immediate)
+  |
+  `- 55b5,5620
+55b5: PUSH Reg RBP 1
+55b6: PUSH Reg RBX 1
+55b7: SUB Reg RSP, Immediate 8 4
+55bb: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 40))) 4
+55bf: TEST Reg RAX, Reg RAX 3
+55c2: JZ 55d1 (resolved immediate)
+  |
+  `- 55c4,55d1
+55c4: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 24))) 4
+55c8: LEA Reg RAX, Address (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX))) 4
+55cc: CMP Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
+55cf: JZ 5600 (resolved immediate)
+  |
+  `- 55d1,5600
+55d1: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 40))) 3
+55d4: MOV Reg RBP, Reg RSI 3
+55d7: MOV Reg RBX, Reg RDI 3
+55da: TEST Reg EAX, Reg EAX 2
+55dc: JNZ 55f0 (resolved immediate)
+  |
+  `- 55de,55f0
+55de: ADD Reg RSP, Immediate 8 4
+55e2: MOV Reg RSI, Reg RBP 3
+55e5: MOV Reg RDI, Reg RBX 3
+55e8: POP Reg RBX 1
+55e9: POP Reg RBP 1
+55ea: JMP xlu__cfg_yyfree (jmp to external function)
+  |
+  `- 
+55f0: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
+55f4: CALL xlu__cfg_yyfree (external)
+55f9: JMP 55de (resolved immediate)
+  |
+  `- 55de
+5600: MOV Address (SizeDir 64 (FromReg RAX)), Immediate 0 7
+5607: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 40))) 3
+560a: MOV Reg RBP, Reg RSI 3
+560d: MOV Reg RBX, Reg RDI 3
+5610: TEST Reg EAX, Reg EAX 2
+5612: JZ 55de (resolved immediate)
+  |
+  `- 55de,5614
+5614: JMP 55f0 (resolved immediate)
+  |
+  `- 55f0
+5620: REPZ RET  2
+  |
+  `- 

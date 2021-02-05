@@ -1,0 +1,30 @@
+Number of assembly instructions     = 15
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 15
+Number of edges: 14
+
+ea0 (False): 0
+
+ea0: SUB Reg RSP, Immediate 24 4
+ea4: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 16))) 3
+ea7: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+eb0: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
+eb5: XOR Reg EAX, Reg EAX 2
+eb7: LEA Reg RDX, Address (AddrPlus (FromReg RSP) (AddrImm 4)) 5
+ebc: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))), Reg ESI 4
+ec0: MOV Reg ESI, Immediate 279810 5
+ec5: CALL ioctl (external)
+eca: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+ecf: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+ed8: JNZ edf (resolved immediate)
+  |
+  `- eda,edf
+eda: ADD Reg RSP, Immediate 24 4
+ede: RET  1
+  |
+  `- 
+edf: CALL __stack_chk_fail (external)
+  |
+  `- 

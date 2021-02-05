@@ -1,0 +1,48 @@
+Number of assembly instructions     = 31
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 31
+Number of edges: 31
+
+41c00 (False): 0
+
+41c00: PUSH Reg RBP 1
+41c01: PUSH Reg RBX 1
+41c02: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 412981)) 7
+41c09: MOV Reg RCX, Reg RSI 3
+41c0c: MOV Reg RBP, Reg RDI 3
+41c0f: MOV Reg ESI, Immediate 1 5
+41c14: SUB Reg RSP, Immediate 24 4
+41c18: MOV Reg EBX, Immediate 3 5
+41c1d: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+41c26: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
+41c2b: XOR Reg EAX, Reg EAX 2
+41c2d: MOV Reg RDI, Reg RSP 3
+41c30: CALL __asprintf_chk (external)
+41c35: CMP Reg EAX, Immediate 4294967295 3
+41c38: JZ 41c54 (resolved immediate)
+  |
+  `- 41c3a,41c54
+41c3a: MOV Reg RSI, Address (SizeDir 64 (FromReg RSP)) 4
+41c3e: MOV Reg RDI, Reg RBP 3
+41c41: MOVSXD Reg RDX, Reg EAX 3
+41c44: CALL yajl_gen_number (external)
+41c49: MOV Reg RDI, Address (SizeDir 64 (FromReg RSP)) 4
+41c4d: MOV Reg EBX, Reg EAX 2
+41c4f: CALL free (external)
+41c54: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+41c59: XOR Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+41c62: MOV Reg EAX, Reg EBX 2
+41c64: JNZ 41c6d (resolved immediate)
+  |
+  `- 41c66,41c6d
+41c66: ADD Reg RSP, Immediate 24 4
+41c6a: POP Reg RBX 1
+41c6b: POP Reg RBP 1
+41c6c: RET  1
+  |
+  `- 
+41c6d: CALL __stack_chk_fail (external)
+  |
+  `- 

@@ -1,0 +1,258 @@
+Number of assembly instructions     = 188
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 188
+Number of edges: 200
+
+40c90 (True): 79abc, 79af6, 79d82
+79a70 (False): 0
+
+40c90: TEST Reg RSI, Reg RSI 3
+40c93: JZ 40cc0 (resolved immediate)
+  |
+  `- 40c95,40cc0
+40c95: PUSH Reg RBP 1
+40c96: PUSH Reg RBX 1
+40c97: MOV Reg RBP, Reg RDI 3
+40c9a: MOV Reg RDI, Reg RSI 3
+40c9d: MOV Reg RBX, Reg RSI 3
+40ca0: SUB Reg RSP, Immediate 8 4
+40ca4: CALL strlen (external)
+40ca9: ADD Reg RSP, Immediate 8 4
+40cad: MOV Reg RSI, Reg RBX 3
+40cb0: MOV Reg RDI, Reg RBP 3
+40cb3: POP Reg RBX 1
+40cb4: POP Reg RBP 1
+40cb5: MOV Reg RDX, Reg RAX 3
+40cb8: JMP yajl_gen_string (jmp to external function)
+  |
+  `- 
+40cc0: JMP yajl_gen_null (jmp to external function)
+  |
+  `- 
+79a70: PUSH Reg RBP 1
+79a71: PUSH Reg RBX 1
+79a72: MOV Reg RBP, Reg RSI 3
+79a75: MOV Reg RBX, Reg RDI 3
+79a78: SUB Reg RSP, Immediate 8 4
+79a7c: CALL yajl_gen_map_open (external)
+79a81: TEST Reg EAX, Reg EAX 2
+79a83: JNZ 79aa4 (resolved immediate)
+  |
+  `- 79a85,79aa4
+79a85: CMP Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))), Immediate 0 5
+79a8a: JZ 79ac0 (resolved immediate)
+  |
+  `- 79a8c,79ac0
+79a8c: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 118621)) 7
+79a93: MOV Reg EDX, Immediate 7 5
+79a98: MOV Reg RDI, Reg RBX 3
+79a9b: CALL yajl_gen_string (external)
+79aa0: TEST Reg EAX, Reg EAX 2
+79aa2: JZ 79ab0 (resolved immediate)
+  |
+  `- 79ab0
+79aa4: ADD Reg RSP, Immediate 8 4
+79aa8: POP Reg RBX 1
+79aa9: POP Reg RBP 1
+79aaa: RET  1
+  |
+  `- 
+79ab0: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))) 4
+79ab4: MOV Reg RDI, Reg RBX 3
+79ab7: CALL libxl__string_gen_json (internal)
+  |
+  `- 40c90
+79abc: TEST Reg EAX, Reg EAX 2
+79abe: JNZ 79aa4 (resolved immediate)
+79ac0: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 8))) 3
+79ac3: TEST Reg EDI, Reg EDI 2
+79ac5: JNZ 79bb0 (resolved immediate)
+  |
+  `- 79acb,79bb0
+79acb: CMP Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))), Immediate 0 5
+79ad0: JZ 79b00 (resolved immediate)
+  |
+  `- 79ad2,79b00
+79ad2: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 129468)) 7
+79ad9: MOV Reg EDX, Immediate 8 5
+79ade: MOV Reg RDI, Reg RBX 3
+79ae1: CALL yajl_gen_string (external)
+79ae6: TEST Reg EAX, Reg EAX 2
+79ae8: JNZ 79aa4 (resolved immediate)
+79aea: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))) 4
+79aee: MOV Reg RDI, Reg RBX 3
+79af1: CALL libxl__string_gen_json (internal)
+79af6: TEST Reg EAX, Reg EAX 2
+79af8: JNZ 79aa4 (resolved immediate)
+79afa: NOP  6
+79b00: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 24))) 3
+79b03: TEST Reg ESI, Reg ESI 2
+79b05: JNZ 79c58 (resolved immediate)
+  |
+  `- 79b0b,79c58
+79b0b: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 28))), Immediate 4294967295 4
+79b0f: JNZ 79be8 (resolved immediate)
+  |
+  `- 79b15,79be8
+79b15: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 32))) 3
+79b18: TEST Reg ECX, Reg ECX 2
+79b1a: JNZ 79c20 (resolved immediate)
+  |
+  `- 79b20,79c20
+79b20: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 36))) 3
+79b23: TEST Reg EDX, Reg EDX 2
+79b25: JNZ 79c90 (resolved immediate)
+  |
+  `- 79b2b,79c90
+79b2b: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 40))) 3
+79b2e: TEST Reg EAX, Reg EAX 2
+79b30: JNZ 79cc8 (resolved immediate)
+79b36: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 44))) 3
+79b39: CMP Reg EAX, Immediate 1 3
+79b3c: JZ 79d1e (resolved immediate)
+  |
+  `- 79b42,79d1e
+79b42: JB 79cfd (resolved immediate)
+  |
+  `- 79b48,79cfd
+79b48: CMP Reg EAX, Immediate 2 3
+79b4b: JNZ 79b9c (resolved immediate)
+  |
+  `- 79b4d,79b9c
+79b4d: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 184772)) 7
+79b54: MOV Reg EDX, Immediate 17 5
+79b59: MOV Reg RDI, Reg RBX 3
+79b5c: CALL yajl_gen_string (external)
+79b61: TEST Reg EAX, Reg EAX 2
+79b63: JNZ 79aa4 (resolved immediate)
+79b69: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 44))) 3
+79b6c: CMP Reg EAX, Immediate 1 3
+79b6f: JZ 79d3f (resolved immediate)
+  |
+  `- 79b75,79d3f
+79b75: JB 79b7c (resolved immediate)
+  |
+  `- 79b77,79b7c
+79b77: CMP Reg EAX, Immediate 2 3
+79b7a: JNZ 79b9c (resolved immediate)
+  |
+  `- 79b7c,79b9c
+79b7c: MOV Reg RDI, Reg RBX 3
+79b7f: CALL yajl_gen_map_open (external)
+79b84: TEST Reg EAX, Reg EAX 2
+79b86: JNZ 79aa4 (resolved immediate)
+79b8c: MOV Reg RDI, Reg RBX 3
+79b8f: CALL yajl_gen_map_close (external)
+79b94: TEST Reg EAX, Reg EAX 2
+79b96: JNZ 79aa4 (resolved immediate)
+79b9c: ADD Reg RSP, Immediate 8 4
+79ba0: MOV Reg RDI, Reg RBX 3
+79ba3: POP Reg RBX 1
+79ba4: POP Reg RBP 1
+79ba5: JMP yajl_gen_map_close (jmp to external function)
+  |
+  `- 
+79bb0: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 184108)) 7
+79bb7: MOV Reg EDX, Immediate 10 5
+79bbc: MOV Reg RDI, Reg RBX 3
+79bbf: CALL yajl_gen_string (external)
+79bc4: TEST Reg EAX, Reg EAX 2
+79bc6: JNZ 79aa4 (resolved immediate)
+79bcc: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 8))) 3
+79bcf: MOV Reg RDI, Reg RBX 3
+79bd2: CALL yajl_gen_integer (external)
+79bd7: TEST Reg EAX, Reg EAX 2
+79bd9: JZ 79acb (resolved immediate)
+  |
+  `- 79acb
+79be8: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 184039)) 7
+79bef: MOV Reg EDX, Immediate 5 5
+79bf4: MOV Reg RDI, Reg RBX 3
+79bf7: CALL yajl_gen_string (external)
+79bfc: TEST Reg EAX, Reg EAX 2
+79bfe: JNZ 79aa4 (resolved immediate)
+79c04: MOVSXD Reg RSI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 28))) 4
+79c08: MOV Reg RDI, Reg RBX 3
+79c0b: CALL yajl_gen_integer (external)
+79c10: TEST Reg EAX, Reg EAX 2
+79c12: JZ 79b15 (resolved immediate)
+  |
+  `- 79b15
+79c20: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 136107)) 7
+79c27: MOV Reg EDX, Immediate 5 5
+79c2c: MOV Reg RDI, Reg RBX 3
+79c2f: CALL yajl_gen_string (external)
+79c34: TEST Reg EAX, Reg EAX 2
+79c36: JNZ 79aa4 (resolved immediate)
+79c3c: MOVSXD Reg RSI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 32))) 4
+79c40: MOV Reg RDI, Reg RBX 3
+79c43: CALL yajl_gen_integer (external)
+79c48: TEST Reg EAX, Reg EAX 2
+79c4a: JZ 79b20 (resolved immediate)
+  |
+  `- 79b20
+79c58: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 183951)) 7
+79c5f: MOV Reg EDX, Immediate 11 5
+79c64: MOV Reg RDI, Reg RBX 3
+79c67: CALL yajl_gen_string (external)
+79c6c: TEST Reg EAX, Reg EAX 2
+79c6e: JNZ 79aa4 (resolved immediate)
+79c74: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 24))) 3
+79c77: MOV Reg RDI, Reg RBX 3
+79c7a: CALL yajl_gen_integer (external)
+79c7f: TEST Reg EAX, Reg EAX 2
+79c81: JZ 79b0b (resolved immediate)
+  |
+  `- 79b0b
+79c90: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 183927)) 7
+79c97: MOV Reg EDX, Immediate 5 5
+79c9c: MOV Reg RDI, Reg RBX 3
+79c9f: CALL yajl_gen_string (external)
+79ca4: TEST Reg EAX, Reg EAX 2
+79ca6: JNZ 79aa4 (resolved immediate)
+79cac: MOVSXD Reg RSI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 36))) 4
+79cb0: MOV Reg RDI, Reg RBX 3
+79cb3: CALL yajl_gen_integer (external)
+79cb8: TEST Reg EAX, Reg EAX 2
+79cba: JZ 79b2b (resolved immediate)
+  |
+  `- 79b2b
+79cfd: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 184306)) 7
+79d04: MOV Reg EDX, Immediate 18 5
+79d09: MOV Reg RDI, Reg RBX 3
+79d0c: CALL yajl_gen_string (external)
+79d11: TEST Reg EAX, Reg EAX 2
+79d13: JZ 79b69 (resolved immediate)
+  |
+  `- 79b69
+79d1e: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 184292)) 7
+79d25: MOV Reg EDX, Immediate 14 5
+79d2a: MOV Reg RDI, Reg RBX 3
+79d2d: CALL yajl_gen_string (external)
+79d32: TEST Reg EAX, Reg EAX 2
+79d34: JZ 79b69 (resolved immediate)
+  |
+  `- 79b69
+79d3f: MOV Reg RDI, Reg RBX 3
+79d42: CALL yajl_gen_map_open (external)
+79d47: TEST Reg EAX, Reg EAX 2
+79d49: JNZ 79aa4 (resolved immediate)
+79d4f: CMP Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 48))), Immediate 0 5
+79d54: JZ 79b8c (resolved immediate)
+  |
+  `- 79b8c,79d5a
+79d5a: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 129039)) 7
+79d61: MOV Reg EDX, Immediate 4 5
+79d66: MOV Reg RDI, Reg RBX 3
+79d69: CALL yajl_gen_string (external)
+79d6e: TEST Reg EAX, Reg EAX 2
+79d70: JNZ 79aa4 (resolved immediate)
+79d76: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 48))) 4
+79d7a: MOV Reg RDI, Reg RBX 3
+79d7d: CALL libxl__string_gen_json (internal)
+79d82: TEST Reg EAX, Reg EAX 2
+79d84: JZ 79b8c (resolved immediate)
+  |
+  `- 79b8c

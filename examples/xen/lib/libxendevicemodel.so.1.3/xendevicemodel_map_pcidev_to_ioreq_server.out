@@ -1,0 +1,56 @@
+Number of assembly instructions     = 33
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 33
+Number of edges: 33
+
+1b50 (False): 0
+
+1b50: PUSH Reg RBX 1
+1b51: MOVZX Reg EAX, Reg CX 3
+1b54: SUB Reg RSP, Immediate 48 4
+1b58: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1b61: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Reg RCX 5
+1b66: XOR Reg ECX, Reg ECX 2
+1b68: CMP Reg R9B, Immediate 31 4
+1b6c: MOV Reg EBX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 64))) 4
+1b70: JA 1bf0 (resolved immediate)
+  |
+  `- 1b72,1bf0
+1b72: CMP Reg BL, Immediate 7 3
+1b75: JA 1bf0 (resolved immediate)
+  |
+  `- 1b77,1bf0
+1b77: MOVZX Reg R8D, Reg R8B 4
+1b7b: SHL Reg RAX, Immediate 16 4
+1b7f: MOVZX Reg R10D, Reg R9B 4
+1b83: SHL Reg R8, Immediate 8 4
+1b87: MOVZX Reg R11D, Reg BL 4
+1b8b: SHL Reg R10, Immediate 3 4
+1b8f: OR Reg R8, Reg RAX 3
+1b92: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 4))), Immediate 0 9
+1b9b: MOV Reg RCX, Reg RSP 3
+1b9e: OR Reg R8, Reg R11 3
+1ba1: MOV Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg DX 5
+  |
+  `- 
+1bd7: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
+1bdc: XOR Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1be5: JNZ 1c02 (resolved immediate)
+  |
+  `- 1be7,1c02
+1be7: ADD Reg RSP, Immediate 48 4
+1beb: POP Reg RBX 1
+1bec: RET  1
+  |
+  `- 
+1bf0: CALL __errno_location (external)
+1bf5: MOV Address (SizeDir 32 (FromReg RAX)), Immediate 22 6
+1bfb: MOV Reg EAX, Immediate 4294967295 5
+1c00: JMP 1bd7 (resolved immediate)
+  |
+  `- 1bd7
+1c02: CALL __stack_chk_fail (external)
+  |
+  `- 

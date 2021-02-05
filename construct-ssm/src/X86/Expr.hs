@@ -1,13 +1,13 @@
 module X86.Expr where
 
 import X86.Datastructures
-import Utils (Simp, simp, sextend_32_64)
+import Utils (Simp, simp, sextend_32_64, zextend_32_64, zextend_64_128)
 
 import qualified Data.Map as M
 import qualified Data.Set as Set
 import Data.Maybe
 import System.IO.Unsafe
-import Debug.Trace
+import Debug.Trace (trace, traceM)
 import Control.Exception.Base (assert)
 import Data.Bits ((.&.), shiftL, shiftR)
 import Data.Bits.Bitwise (mask)
@@ -18,7 +18,6 @@ import Data.Word
 import Data.IORef
 import Numeric (showHex)
 import qualified Control.Exception.Base as A (assert)
-
 
 data Operation =
     FP_MUL
@@ -136,7 +135,7 @@ data Expr =
   | E_flg Flag
   | E_var String ExprSize
   | E_app ExprF [Expr]
-  | E_deref Expr Int
+  | E_deref Expr Expr
   | E_val Word64 Int Bool
   deriving (Show,Ord,Eq)
 
@@ -202,6 +201,9 @@ instance Show ExprSize where
   show AnySize = "any size"
   show Unknown = "unknown"
 
+applyExprSize op (Known s) = Known $ op s
+applyExprSize _ _ = Unknown
+
 -- Add sizes, if they are known
 addExprSize (Known s0) (Known s1) = Known $ s0 + s1
 addExprSize _ _ = Unknown
@@ -219,6 +221,11 @@ getKnownExprSize c e = blah $ getExprSize c e where
   blah (Known s) = s
   blah _ = error $ "Expr " ++ show e ++ " does not have a known size."
 
+getKnownExprSizeMaybe :: Config -> Expr -> Maybe Int
+getKnownExprSizeMaybe c e = blah $ getExprSize c e where
+  blah (Known s) = Just s
+  blah _ = Nothing
+
 getExprSizeWithInfo :: Config -> M.Map Expr ExprSize -> Expr -> ExprSize
 getExprSizeWithInfo c ti = size where
   size (E_app (F2 "strcmp_gt" _) es) = Known 1
@@ -227,13 +234,18 @@ getExprSizeWithInfo c ti = size where
   size (E_app (F2 f _) es) = getReturnSize c f
   size (E_app Concat [e0, e1]) = addExprSize (size e0) $ size e1
   size (E_app (Op CMP) [e0, e1]) = Known 1
+  size (E_app (Op CMPS) [e0, e1]) = Known 1
+  size (E_app (Op CMPSB) [e0, e1]) = Known 1
   size (E_app (Op TEST) [e0, e1]) = Known 1
+  size (E_app (Op BT) [e0, e1]) = Known 1
   size (E_app (Op SUB) [e0, e1]) = exprSizeMax (size e0) $ size e1
   size (E_app (Op ADD) [e0, e1]) = exprSizeMax (size e0) $ size e1
-  size (E_app (Op IMUL) [e0, e1]) = addExprSize (size e0) $ size e1
-  size (E_app (Op MUL) [e0, e1]) = addExprSize (size e0) $ size e1
-  size (E_app (Op DIV) [e0, e1]) = size e1
-  size (E_app (Op IDIV) [e0, e1]) = size e1
+  size (E_app (Op IMUL) [e0, e1]) = size e0
+  size (E_app (Op MUL) [e0, e1]) = size e0
+  -- dividend is twice the size of the output
+  -- (technically divisor is not but for Z3 purposes we extend it to be such)
+  size (E_app (Op DIV) [e0, e1]) = applyExprSize (`div` 2) $ size e0
+  size (E_app (Op IDIV) [e0, e1]) = applyExprSize (`div` 2) $ size e0
   size (E_app (Op SAL) [e0, e1]) = size e0
   size (E_app (Op SAR) [e0, e1]) = size e0
   size (E_app (Op SHL) [e0, e1]) = size e0
@@ -297,7 +309,7 @@ getExprSizeWithInfo c ti = size where
   size (E_app (F IsNAN) [e0]) = Known 1
   size (E_app (TakeBits h l) _) = Known $ h + 1 - l
   size (E_app (SExtend l h) _) = Known $ h
-  size (E_deref e s) = Known $ s * 8
+  size d@(E_deref _ _) = getDerefSize d
   size (E_val _ s _) = Known $ s
   size (E_reg r) =  Known $ getSize r * 8
   size (E_flg f) =  AnySize
@@ -305,7 +317,12 @@ getExprSizeWithInfo c ti = size where
   size (E_var v s) = case M.lookup (E_var v s) ti of
                        Nothing -> Unknown
                        Just si' -> si'
-  size e = error $ "Cannot determine size of " ++ show_expr e
+  size e = trace ("Cannot determine size of " ++ show_expr e) Unknown
+
+getDerefSize :: Expr -> ExprSize
+getDerefSize (E_deref e (E_val s _ _)) = Known $ fromIntegral s * 8
+getDerefSize (E_deref _ _) = Unknown
+getDerefSize e = error $ show e ++ " is not a deref"
 
 getReturnSize c f =
   case M.lookup f $ signatures c of
@@ -324,6 +341,7 @@ exprHasSize c e i =
     Known s -> s == i
     _ -> False
 
+-- Used for expression simplification
 takebits :: Int -> Int -> Word64 -> Word64
 takebits h l i =
   let h' = min 63 h in
@@ -339,7 +357,10 @@ takebits h l i =
 instance Simp Expr where
   simp c e = if e == e' then e' else simp c e' where
     e' = simp' e
-    simp' (E_app Concat [E_val 0 _ _, e1]) = simp'' e1 -- This may not be exactly correct anymore
+    simp' (E_app Concat [E_val 0 s _, e1]) = simped where
+      -- need to pad out concatenations with 0, get Z3 type errors otherwise
+      simped = simp'' $ E_app (F ZExtend) [e1, len]
+      len = E_val (fromIntegral $ s + getKnownExprSize c e1) (- 1) False
     simp' e = simp'' e
     -- 0
     simp'' (E_app (SExtend _ h') [E_val 0 _ b]) = E_val 0 h' b
@@ -353,6 +374,10 @@ instance Simp Expr where
     simp'' (E_app (Op OR) [e, E_val 0 _ _]) = e
     simp'' (E_app (Op XOR) [E_val 0 _ _, e]) = e
     simp'' (E_app (Op XOR) [e, E_val 0 _ _]) = e
+    simp'' (E_app (Op SHL) [e@(E_val 0 _ _), _]) = e
+    simp'' (E_app (Op SHR) [e@(E_val 0 _ _), _]) = e
+    simp'' (E_app (Op SAL) [e@(E_val 0 _ _), _]) = e
+    simp'' (E_app (Op SAR) [e@(E_val 0 _ _), _]) = e
     simp'' (E_app (F IsNAN) [E_val 0 _ b]) = E_val 0 1 b
     simp'' (E_app (F And) [E_val 0 _ b, _]) = E_val 0 1 b
     simp'' (E_app (F And) [_,E_val 0 _ b]) = E_val 0 1 b
@@ -361,6 +386,8 @@ instance Simp Expr where
     -- immediate values
     simp'' (E_app (SExtend 32 64) [E_val imm _ b]) = E_val (sextend_32_64 imm) 64 b
     simp'' (E_app (SExtend 0 64) [E_val imm _ b]) = E_val imm 64 b
+    simp'' (E_app (F ZExtend) [E_val imm 32 b, E_val 64 _ b']) = E_val (zextend_32_64 imm) 64 $ b || b'
+    simp'' (E_app (F ZExtend) [E_val imm 64 b, E_val 128 _ b']) = E_val (zextend_64_128 imm) 128 $ b || b'
     simp'' (E_app (Op MUL) [E_val imm0 s0 b0,E_val imm1 s1 b1]) = E_val (imm0*imm1) s0 (b0 || b1)
     -- take bits / concat
     simp'' (E_app Concat [E_app (F ZExtend) [E_val 0 _ b0, E_val s0 _ b0'], E_app (F ZExtend) [b, E_val s1 _ b1]]) = E_app (F ZExtend) [b, E_val (s0+s1) (-1) $ b0 || b0' || b1]
@@ -400,6 +427,10 @@ instance Simp Expr where
         case getExprSize c e of
           Known s -> if l >= s then E_val 0 0 False else E_app (TakeBits h l) [simp'' e]
           _ -> E_app (TakeBits h l) [simp'' e]
+    -- extension
+    simp'' (E_app (F ZExtend) [E_app (F ZExtend) [e, E_val s _ b], E_val s' size b'])
+      | s' >= s = E_app (F ZExtend) [simp'' e, E_val s' size $ b || b']
+      | otherwise = error "Cannot extend to a smaller size"
     -- arithmetic
     -- decreases the number of immediate values
     simp'' (E_app (Op ADD) [e0, E_val 0 _ b]) = e0
@@ -451,3 +482,11 @@ contains haystack needle = cont haystack where
   cont' (E_app _ vs) = any cont vs
   cont' (E_deref e _) = cont e
   cont' _ = False
+
+-- Return the set of state parts that can possibly be modified by a function call
+volatileStateParts :: [Expr]
+volatileStateParts = map E_flg flgs ++ map E_reg regs where
+  flgs = [ZF, CF, SF, OF, PF, IF, DF]
+  regs = [RAX, RCX, RDX, R8, R9, R10, R11]
+
+traceSizeM c e = traceM $ show e ++ " | " ++ show (getKnownExprSize c e)

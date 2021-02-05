@@ -1,0 +1,40 @@
+Number of assembly instructions     = 23
+Number of indirect branches         = 2
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 2: 20d6, 20e0
+Number of symbolic states (representative of non-determinism): 23
+Number of edges: 25
+
+209c (False): 0
+
+209c: PUSH Reg RBX 1
+209d: MOV Reg RBX, Reg RDI 3
+20a0: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))) 4
+20a4: TEST Reg RDI, Reg RDI 3
+20a7: JZ 20b6 (resolved immediate)
+  |
+  `- 20a9,20b6
+20a9: CALL xs_daemon_close (external)
+20ae: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))), Immediate 0 8
+20b6: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
+20ba: TEST Reg RDX, Reg RDX 3
+20bd: JZ 20d9 (resolved immediate)
+  |
+  `- 20bf,20d9
+20bf: MOV Reg RAX, Address (SizeDir 64 (FromReg RDX)) 3
+20c2: SUB Reg RAX, Immediate 1 4
+20c6: MOV Address (SizeDir 64 (FromReg RDX)), Reg RAX 3
+20c9: TEST Reg RAX, Reg RAX 3
+20cc: JNZ 20d9 (resolved immediate)
+  |
+  `- 20ce,20d9
+20ce: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
+20d2: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
+20d6: CALL Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 48))) 3
+20d9: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+20dd: MOV Reg RDI, Reg RBX 3
+20e0: CALL Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 320))) 6
+20e6: POP Reg RBX 1
+20e7: RET  1
+  |
+  `- 

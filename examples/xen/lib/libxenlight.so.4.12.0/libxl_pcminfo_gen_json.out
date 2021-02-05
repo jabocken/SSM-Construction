@@ -1,0 +1,82 @@
+Number of assembly instructions     = 51
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 51
+Number of edges: 54
+
+7c360 (False): 0
+
+7c360: PUSH Reg R12 2
+7c362: PUSH Reg RBP 1
+7c363: MOV Reg RBP, Reg RSI 3
+7c366: PUSH Reg RBX 1
+7c367: MOV Reg RBX, Reg RDI 3
+7c36a: CALL yajl_gen_map_open (external)
+7c36f: TEST Reg EAX, Reg EAX 2
+7c371: JNZ 7c3b4 (resolved immediate)
+  |
+  `- 7c373,7c3b4
+7c373: CMP Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))), Immediate 0 5
+7c378: JZ 7c381 (resolved immediate)
+  |
+  `- 7c37a,7c381
+7c37a: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+7c37d: TEST Reg EDX, Reg EDX 2
+7c37f: JNZ 7c390 (resolved immediate)
+  |
+  `- 7c381,7c390
+7c381: MOV Reg RDI, Reg RBX 3
+7c384: POP Reg RBX 1
+7c385: POP Reg RBP 1
+7c386: POP Reg R12 2
+7c388: JMP yajl_gen_map_close (jmp to external function)
+  |
+  `- 
+7c390: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 174171)) 7
+7c397: MOV Reg EDX, Immediate 7 5
+7c39c: MOV Reg RDI, Reg RBX 3
+7c39f: CALL yajl_gen_string (external)
+7c3a4: TEST Reg EAX, Reg EAX 2
+7c3a6: JNZ 7c3b4 (resolved immediate)
+7c3a8: MOV Reg RDI, Reg RBX 3
+7c3ab: CALL yajl_gen_array_open (external)
+7c3b0: TEST Reg EAX, Reg EAX 2
+7c3b2: JZ 7c3c0 (resolved immediate)
+  |
+  `- 7c3c0
+7c3b4: POP Reg RBX 1
+7c3b5: POP Reg RBP 1
+7c3b6: POP Reg R12 2
+7c3b8: RET  1
+  |
+  `- 
+7c3c0: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+7c3c3: TEST Reg EAX, Reg EAX 2
+7c3c5: JLE 7c3f8 (resolved immediate)
+  |
+  `- 7c3c7,7c3f8
+7c3c7: XOR Reg R12D, Reg R12D 3
+7c3ca: JMP 7c3de (resolved immediate)
+  |
+  `- 7c3de
+7c3d0: LEA Reg EAX, Address (AddrPlus (FromReg R12) (AddrImm 1)) 5
+7c3d5: ADD Reg R12, Immediate 1 4
+7c3d9: CMP Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+7c3dc: JGE 7c3f8 (resolved immediate)
+  |
+  `- 7c3de,7c3f8
+7c3de: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))) 4
+7c3e2: MOV Reg RDI, Reg RBX 3
+7c3e5: LEA Reg RSI, Address (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg R12))) 4
+7c3e9: CALL libxl_streaminfo_gen_json (external)
+7c3ee: TEST Reg EAX, Reg EAX 2
+7c3f0: JZ 7c3d0 (resolved immediate)
+  |
+  `- 7c3d0
+7c3f8: MOV Reg RDI, Reg RBX 3
+7c3fb: CALL yajl_gen_array_close (external)
+7c400: TEST Reg EAX, Reg EAX 2
+7c402: JZ 7c381 (resolved immediate)
+  |
+  `- 7c381

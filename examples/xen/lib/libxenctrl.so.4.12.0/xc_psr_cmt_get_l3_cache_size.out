@@ -1,0 +1,47 @@
+Number of assembly instructions     = 28
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 28
+Number of edges: 28
+
+23ae0 (False): 0
+
+23ae0: SUB Reg RSP, Immediate 168 7
+23ae7: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+23af0: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 152))), Reg RAX 8
+23af8: XOR Reg EAX, Reg EAX 2
+23afa: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2136880))) 6
+23b00: TEST Reg EAX, Reg EAX 2
+23b02: JZ 23b28 (resolved immediate)
+  |
+  `- 23b04,23b28
+23b04: MOV Address (SizeDir 32 (FromReg RDX)), Reg EAX 2
+23b06: XOR Reg EAX, Reg EAX 2
+23b08: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 152))) 8
+23b10: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+23b19: JNZ 23b64 (resolved immediate)
+  |
+  `- 23b1b,23b64
+23b1b: ADD Reg RSP, Immediate 168 7
+23b22: RET  1
+  |
+  `- 
+23b28: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 32))), Reg ESI 4
+23b2c: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+23b31: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RDX 5
+23b36: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 21 8
+23b3e: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Immediate 2 9
+23b47: CALL xc_sysctl (external)
+23b4c: TEST Reg EAX, Reg EAX 2
+23b4e: JNZ 23b08 (resolved immediate)
+23b50: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))) 5
+23b55: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+23b5a: MOV Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2136784))), Reg ECX 6
+23b60: MOV Address (SizeDir 32 (FromReg RDX)), Reg ECX 2
+23b62: JMP 23b08 (resolved immediate)
+  |
+  `- 23b08
+23b64: CALL __stack_chk_fail (external)
+  |
+  `- 

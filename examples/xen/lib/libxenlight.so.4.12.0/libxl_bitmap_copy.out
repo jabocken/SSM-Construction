@@ -1,0 +1,28 @@
+Number of assembly instructions     = 13
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 13
+Number of edges: 12
+
+3ea10 (False): 0
+
+3ea10: MOVSXD Reg RAX, Address (SizeDir 32 (FromReg RSI)) 3
+3ea13: CMP Reg EAX, Address (SizeDir 32 (FromReg RDX)) 2
+3ea15: JNZ 3ea27 (resolved immediate)
+  |
+  `- 3ea17,3ea27
+3ea17: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))) 4
+3ea1b: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 8))) 4
+3ea1f: MOV Reg RDX, Reg RAX 3
+3ea22: JMP memcpy (jmp to external function)
+  |
+  `- 
+3ea27: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 377810)) 7
+3ea2e: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 376010)) 7
+3ea35: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 376412)) 7
+3ea3c: SUB Reg RSP, Immediate 8 4
+3ea40: MOV Reg EDX, Immediate 636 5
+3ea45: CALL __assert_fail (external)
+  |
+  `- 

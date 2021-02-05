@@ -1,0 +1,107 @@
+Number of assembly instructions     = 72
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 72
+Number of edges: 77
+
+14a0 (False): 0
+
+14a0: PUSH Reg RBX 1
+14a1: SUB Reg RSP, Immediate 64 4
+14a5: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+14ae: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))), Reg RAX 5
+14b3: XOR Reg EAX, Reg EAX 2
+14b5: MOV Reg EAX, Reg EDX 2
+14b7: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RDI 5
+14bc: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 32))), Reg ESI 4
+14c0: AND Reg EAX, Immediate 24 3
+14c3: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 36))), Reg EDX 4
+14c7: CMP Reg EAX, Immediate 8 3
+14ca: JZ 15b0 (resolved immediate)
+  |
+  `- 14d0,15b0
+14d0: CMP Reg EAX, Immediate 16 3
+14d3: JZ 1598 (resolved immediate)
+  |
+  `- 14d9,1598
+14d9: TEST Reg EAX, Reg EAX 2
+14db: JZ 1510 (resolved immediate)
+  |
+  `- 14dd,1510
+14dd: CALL __errno_location (external)
+14e2: XOR Reg EBX, Reg EBX 2
+14e4: MOV Address (SizeDir 32 (FromReg RAX)), Immediate 22 6
+14ea: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))) 5
+14ef: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+14f8: MOV Reg RAX, Reg RBX 3
+14fb: JNZ 15e9 (resolved immediate)
+  |
+  `- 1501,15e9
+1501: ADD Reg RSP, Immediate 64 4
+1505: POP Reg RBX 1
+1506: RET  1
+  |
+  `- 
+1510: CALL fileno (external)
+1515: MOV Reg EDI, Reg EAX 2
+1517: CALL isatty (external)
+151c: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 36))) 4
+1520: TEST Reg EAX, Reg EAX 2
+1522: SETG Address (SizeDir 8 (AddrPlus (FromReg RSP) (AddrImm 48))) 5
+1527: AND Reg EDX, Immediate 2 3
+152a: JNZ 15a2 (resolved immediate)
+  |
+  `- 152c,15a2
+152c: LEA Reg RAX, Address (AddrMinus (FromReg RIP) (AddrImm 835)) 7
+1533: MOV Reg EDI, Immediate 56 5
+1538: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Immediate 0 9
+1541: MOV Address (SizeDir 64 (FromReg RSP)), Reg RAX 4
+1545: LEA Reg RAX, Address (AddrMinus (FromReg RIP) (AddrImm 636)) 7
+154c: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
+1551: LEA Reg RAX, Address (AddrMinus (FromReg RIP) (AddrImm 1448)) 7
+1558: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))), Reg RAX 5
+155d: CALL malloc (external)
+1562: TEST Reg RAX, Reg RAX 3
+1565: MOV Reg RBX, Reg RAX 3
+1568: JZ 15c0 (resolved immediate)
+  |
+  `- 156a,15c0
+156a: MOVDQA Reg XMM0, Address (SizeDir 128 (FromReg RSP)) 5
+156f: MOVUPS Address (SizeDir 128 (FromReg RAX)), Reg XMM0 3
+1572: MOVDQA Reg XMM0, Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 16))) 6
+1578: MOVUPS Address (SizeDir 128 (AddrPlus (FromReg RAX) (AddrImm 16))), Reg XMM0 4
+157c: MOVDQA Reg XMM0, Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 32))) 6
+1582: MOVUPS Address (SizeDir 128 (AddrPlus (FromReg RAX) (AddrImm 32))), Reg XMM0 4
+1586: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))) 5
+158b: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 48))), Reg RAX 4
+158f: JMP 14ea (resolved immediate)
+  |
+  `- 14ea
+1598: AND Reg EDX, Immediate 2 3
+159b: MOV Address (SizeDir 8 (AddrPlus (FromReg RSP) (AddrImm 48))), Immediate 0 5
+15a0: JZ 152c (resolved immediate)
+  |
+  `- 152c,15a2
+15a2: CALL tzset (external)
+15a7: JMP 152c (resolved immediate)
+  |
+  `- 152c
+15b0: MOV Address (SizeDir 8 (AddrPlus (FromReg RSP) (AddrImm 48))), Immediate 1 5
+15b5: JMP 1527 (resolved immediate)
+  |
+  `- 1527
+15c0: CALL __errno_location (external)
+15c5: MOV Reg EDX, Address (SizeDir 32 (FromReg RAX)) 2
+15c7: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 418)) 7
+15ce: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 366)) 7
+15d5: MOV Reg RDI, Reg RSP 3
+15d8: MOV Reg ESI, Immediate 9 5
+15dd: XOR Reg EAX, Reg EAX 2
+15df: CALL xtl_log (external)
+15e4: JMP 14ea (resolved immediate)
+  |
+  `- 14ea
+15e9: CALL __stack_chk_fail (external)
+  |
+  `- 

@@ -1,0 +1,43 @@
+Number of assembly instructions     = 26
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 26
+Number of edges: 26
+
+40bf0 (False): 0
+
+40bf0: PUSH Reg R12 2
+40bf2: PUSH Reg RBP 1
+40bf3: MOV Reg RBP, Reg RDI 3
+40bf6: PUSH Reg RBX 1
+40bf7: MOV Reg RBX, Reg RSI 3
+40bfa: CALL yajl_gen_array_open (external)
+40bff: TEST Reg EAX, Reg EAX 2
+40c01: JNZ 40c30 (resolved immediate)
+  |
+  `- 40c03,40c30
+40c03: LEA Reg R12, Address (AddrPlus (FromReg RBX) (AddrImm 16)) 4
+40c07: MOV Reg ESI, Address (SizeDir 32 (FromReg RBX)) 2
+40c09: MOV Reg RDI, Reg RBP 3
+40c0c: CALL yajl_gen_integer (external)
+40c11: TEST Reg EAX, Reg EAX 2
+40c13: JNZ 40c30 (resolved immediate)
+40c15: ADD Reg RBX, Immediate 4 4
+40c19: CMP Reg RBX, Reg R12 3
+40c1c: JNZ 40c07 (resolved immediate)
+  |
+  `- 40c07,40c1e
+40c1e: POP Reg RBX 1
+40c1f: MOV Reg RDI, Reg RBP 3
+40c22: POP Reg RBP 1
+40c23: POP Reg R12 2
+40c25: JMP yajl_gen_array_close (jmp to external function)
+  |
+  `- 
+40c30: POP Reg RBX 1
+40c31: POP Reg RBP 1
+40c32: POP Reg R12 2
+40c34: RET  1
+  |
+  `- 

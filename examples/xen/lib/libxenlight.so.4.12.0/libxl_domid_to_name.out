@@ -1,0 +1,43 @@
+Number of assembly instructions     = 28
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 28
+Number of edges: 27
+
+3d340 (False): 0
+
+3d340: PUSH Reg RBP 1
+3d341: PUSH Reg RBX 1
+3d342: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 381892)) 7
+3d349: MOV Reg R9D, Reg ESI 3
+3d34c: MOV Reg RBP, Reg RDI 3
+3d34f: MOV Reg ECX, Immediate 25 5
+3d354: SUB Reg RSP, Immediate 72 4
+3d358: MOV Reg EDX, Immediate 1 5
+3d35d: MOV Reg ESI, Immediate 25 5
+3d362: LEA Reg RBX, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+3d367: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+3d370: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))), Reg RAX 5
+3d375: XOR Reg EAX, Reg EAX 2
+3d377: MOV Reg RDI, Reg RBX 3
+3d37a: CALL __snprintf_chk (external)
+3d37f: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))) 4
+3d383: LEA Reg RCX, Address (AddrPlus (FromReg RSP) (AddrImm 12)) 5
+3d388: MOV Reg RDX, Reg RBX 3
+3d38b: XOR Reg ESI, Reg ESI 2
+3d38d: CALL xs_read (external)
+3d392: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))) 5
+3d397: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+3d3a0: JNZ 3d3a9 (resolved immediate)
+  |
+  `- 3d3a2,3d3a9
+3d3a2: ADD Reg RSP, Immediate 72 4
+3d3a6: POP Reg RBX 1
+3d3a7: POP Reg RBP 1
+3d3a8: RET  1
+  |
+  `- 
+3d3a9: CALL __stack_chk_fail (external)
+  |
+  `- 

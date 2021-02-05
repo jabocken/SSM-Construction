@@ -1,0 +1,40 @@
+Number of assembly instructions     = 23
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 23
+Number of edges: 23
+
+74a70 (False): 0
+
+74a70: PUSH Reg RBX 1
+74a71: XOR Reg R9D, Reg R9D 3
+74a74: MOV Reg RBX, Reg RCX 3
+74a77: MOV Reg ECX, Reg EDX 2
+74a79: MOV Reg EDX, Immediate 1 5
+74a7e: SUB Reg RSP, Immediate 16 4
+74a82: MOV Reg R8, Reg RSP 3
+74a85: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+74a8e: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
+74a93: XOR Reg EAX, Reg EAX 2
+74a95: CALL libxl_psr_cmt_get_sample (external)
+74a9a: TEST Reg EAX, Reg EAX 2
+74a9c: JS 74aa8 (resolved immediate)
+  |
+  `- 74a9e,74aa8
+74a9e: MOV Reg RDX, Address (SizeDir 64 (FromReg RSP)) 4
+74aa2: SHR Reg RDX, Immediate 10 4
+74aa6: MOV Address (SizeDir 32 (FromReg RBX)), Reg EDX 2
+74aa8: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+74aad: XOR Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+74ab6: JNZ 74abe (resolved immediate)
+  |
+  `- 74ab8,74abe
+74ab8: ADD Reg RSP, Immediate 16 4
+74abc: POP Reg RBX 1
+74abd: RET  1
+  |
+  `- 
+74abe: CALL __stack_chk_fail (external)
+  |
+  `- 

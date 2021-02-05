@@ -1,0 +1,52 @@
+Number of assembly instructions     = 31
+Number of indirect branches         = 1
+Number of unresolved indirect jumps = 1: 23ecc
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 31
+Number of edges: 30
+
+23e90 (False): 0
+
+23e90: PUSH Reg R13 2
+23e92: PUSH Reg R12 2
+23e94: PUSH Reg RBP 1
+23e95: PUSH Reg RBX 1
+23e96: SUB Reg RSP, Immediate 216 7
+23e9d: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+23ea6: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 200))), Reg RAX 8
+23eae: XOR Reg EAX, Reg EAX 2
+23eb0: CMP Reg EDX, Immediate 5 3
+23eb3: JA 23ff0 (resolved immediate)
+  |
+  `- 23eb9,23ff0
+23eb9: MOV Reg RBX, Reg RDI 3
+23ebc: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 10901)) 7
+23ec3: MOV Reg EDX, Reg EDX 2
+23ec5: MOVSXD Reg RAX, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrTimes (AddrImm 4) (FromReg RDX)))) 4
+23ec9: ADD Reg RAX, Reg RDI 3
+23ecc: JMP Reg RAX 2
+  |
+  `- 
+23f84: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 200))) 8
+23f8c: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+23f95: MOV Reg EAX, Reg R12D 3
+23f98: JNZ 24072 (resolved immediate)
+  |
+  `- 23f9e,24072
+23f9e: ADD Reg RSP, Immediate 216 7
+23fa5: POP Reg RBX 1
+23fa6: POP Reg RBP 1
+23fa7: POP Reg R12 2
+23fa9: POP Reg R13 2
+23fab: RET  1
+  |
+  `- 
+23ff0: CALL __errno_location (external)
+23ff5: MOV Reg R12D, Immediate 4294967295 6
+23ffb: MOV Address (SizeDir 32 (FromReg RAX)), Immediate 22 6
+24001: JMP 23f84 (resolved immediate)
+  |
+  `- 23f84
+24072: CALL __stack_chk_fail (external)
+  |
+  `- 

@@ -1,0 +1,63 @@
+Number of assembly instructions     = 31
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 31
+Number of edges: 31
+
+4330 (True): 54b5
+5480 (False): 0
+
+4330: PUSH Reg RBX 1
+4331: MOV Reg RBX, Reg RDI 3
+4334: MOV Reg EDI, Immediate 16 5
+4339: CALL malloc (external)
+433e: TEST Reg RAX, Reg RAX 3
+4341: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
+4344: JZ 4355 (resolved immediate)
+  |
+  `- 4346,4355
+4346: MOV Address (SizeDir 64 (FromReg RAX)), Immediate 0 7
+434d: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))), Immediate 0 8
+4355: POP Reg RBX 1
+4356: RET  1
+  |
+  `- 
+5480: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 24))) 4
+5484: TEST Reg RAX, Reg RAX 3
+5487: JZ 54a8 (resolved immediate)
+  |
+  `- 5489,54a8
+5489: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))) 4
+548d: TEST Reg RDI, Reg RDI 3
+5490: JZ 54a0 (resolved immediate)
+  |
+  `- 5492,54a0
+5492: JMP closedir (jmp to external function)
+  |
+  `- 
+54a0: REPZ RET  2
+  |
+  `- 
+54a8: SUB Reg RSP, Immediate 8 4
+54ac: ADD Reg RDI, Immediate 24 4
+54b0: CALL get_priv_data.isra.0.part.1 (internal)
+  |
+  `- 4330
+54b5: TEST Reg RAX, Reg RAX 3
+54b8: JNZ 54bf (resolved immediate)
+  |
+  `- 54ba,54bf
+54ba: ADD Reg RSP, Immediate 8 4
+54be: RET  1
+  |
+  `- 
+54bf: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))) 4
+54c3: TEST Reg RDI, Reg RDI 3
+54c6: JZ 54ba (resolved immediate)
+  |
+  `- 54ba,54c8
+54c8: ADD Reg RSP, Immediate 8 4
+54cc: JMP closedir (jmp to external function)
+  |
+  `- 

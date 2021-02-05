@@ -1,0 +1,65 @@
+Number of assembly instructions     = 37
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 37
+Number of edges: 36
+
+830 (True): 8f9
+8f0 (False): 0
+
+830: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2099305)) 7
+837: SUB Reg RSP, Immediate 8 4
+83b: CALL pthread_mutex_lock (external)
+840: TEST Reg EAX, Reg EAX 2
+842: JNZ 849 (resolved immediate)
+  |
+  `- 844,849
+844: ADD Reg RSP, Immediate 8 4
+848: RET  1
+  |
+  `- 
+849: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 441)) 7
+850: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 402)) 7
+857: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 407)) 7
+85e: MOV Reg EDX, Immediate 38 5
+863: CALL __assert_fail (external)
+  |
+  `- 
+870: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2099241)) 7
+877: SUB Reg RSP, Immediate 8 4
+87b: CALL pthread_mutex_unlock (external)
+880: TEST Reg EAX, Reg EAX 2
+882: JNZ 889 (resolved immediate)
+  |
+  `- 884,889
+884: ADD Reg RSP, Immediate 8 4
+888: RET  1
+  |
+  `- 
+889: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 370)) 7
+890: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 338)) 7
+897: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 343)) 7
+89e: MOV Reg EDX, Immediate 43 5
+8a3: CALL __assert_fail (external)
+  |
+  `- 
+8f0: PUSH Reg RBX 1
+8f1: MOV Reg RBX, Reg RDI 3
+8f4: CALL lock (internal)
+  |
+  `- 830
+8f9: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+8fd: TEST Reg RAX, Reg RAX 3
+900: JZ 90e (resolved immediate)
+  |
+  `- 902,90e
+902: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
+906: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 16))), Reg RDX 4
+90a: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
+90e: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
+912: MOV Address (SizeDir 64 (FromReg RDX)), Reg RAX 3
+915: POP Reg RBX 1
+916: JMP 870 (resolved immediate)
+  |
+  `- 870

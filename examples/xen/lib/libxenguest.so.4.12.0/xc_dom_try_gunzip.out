@@ -1,0 +1,75 @@
+Number of assembly instructions     = 52
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 52
+Number of edges: 55
+
+16c80 (False): 0
+
+16c80: PUSH Reg R15 2
+16c82: PUSH Reg R14 2
+16c84: MOV Reg R14, Reg RSI 3
+16c87: PUSH Reg R13 2
+16c89: PUSH Reg R12 2
+16c8b: MOV Reg R13, Reg RDX 3
+16c8e: PUSH Reg RBP 1
+16c8f: PUSH Reg RBX 1
+16c90: MOV Reg RBP, Reg RDI 3
+16c93: SUB Reg RSP, Immediate 8 4
+16c97: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 1224))) 7
+16c9e: MOV Reg RDX, Address (SizeDir 64 (FromReg RDX)) 3
+16ca1: MOV Reg RSI, Address (SizeDir 64 (FromReg RSI)) 3
+16ca4: CALL xc_dom_check_gzip (external)
+16ca9: TEST Reg RAX, Reg RAX 3
+16cac: JNZ 16cc8 (resolved immediate)
+  |
+  `- 16cae,16cc8
+16cae: XOR Reg R12D, Reg R12D 3
+16cb1: ADD Reg RSP, Immediate 8 4
+16cb5: MOV Reg EAX, Reg R12D 3
+16cb8: POP Reg RBX 1
+16cb9: POP Reg RBP 1
+16cba: POP Reg R12 2
+16cbc: POP Reg R13 2
+16cbe: POP Reg R14 2
+16cc0: POP Reg R15 2
+16cc2: RET  1
+  |
+  `- 
+16cc8: MOV Reg RSI, Reg RAX 3
+16ccb: MOV Reg RDI, Reg RBP 3
+16cce: MOV Reg RBX, Reg RAX 3
+16cd1: CALL xc_dom_kernel_check_size (external)
+16cd6: TEST Reg EAX, Reg EAX 2
+16cd8: MOV Reg R12D, Reg EAX 3
+16cdb: JNZ 16cae (resolved immediate)
+  |
+  `- 16cae,16cdd
+16cdd: MOV Reg RSI, Reg RBX 3
+16ce0: MOV Reg RDI, Reg RBP 3
+16ce3: CALL xc_dom_malloc (external)
+16ce8: TEST Reg RAX, Reg RAX 3
+16ceb: MOV Reg R15, Reg RAX 3
+16cee: JZ 16d17 (resolved immediate)
+  |
+  `- 16cf0,16d17
+16cf0: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 1224))) 7
+16cf7: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 0))) 4
+16cfb: MOV Reg R8, Reg RBX 3
+16cfe: MOV Reg RSI, Address (SizeDir 64 (FromReg R14)) 3
+16d01: MOV Reg RCX, Reg RAX 3
+16d04: CALL xc_dom_do_gunzip (external)
+16d09: CMP Reg EAX, Immediate 4294967295 3
+16d0c: JZ 16d17 (resolved immediate)
+  |
+  `- 16d0e,16d17
+16d0e: MOV Address (SizeDir 64 (FromReg R14)), Reg R15 3
+16d11: MOV Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 0))), Reg RBX 4
+16d15: JMP 16cb1 (resolved immediate)
+  |
+  `- 16cb1
+16d17: MOV Reg R12D, Immediate 4294967295 6
+16d1d: JMP 16cb1 (resolved immediate)
+  |
+  `- 16cb1

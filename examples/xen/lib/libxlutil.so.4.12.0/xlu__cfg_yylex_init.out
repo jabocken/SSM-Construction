@@ -1,0 +1,61 @@
+Number of assembly instructions     = 42
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 42
+Number of edges: 41
+
+4290 (False): 0
+
+4290: TEST Reg RDI, Reg RDI 3
+4293: PUSH Reg RBX 1
+4294: JZ 4348 (resolved immediate)
+  |
+  `- 429a,4348
+429a: MOV Reg RBX, Reg RDI 3
+429d: XOR Reg ESI, Reg ESI 2
+429f: MOV Reg EDI, Immediate 168 5
+42a4: CALL xlu__cfg_yyalloc (external)
+42a9: TEST Reg RAX, Reg RAX 3
+42ac: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
+42af: JZ 4330 (resolved immediate)
+  |
+  `- 42b1,4330
+42b1: LEA Reg RDI, Address (AddrPlus (FromReg RAX) (AddrImm 8)) 4
+42b5: MOV Address (SizeDir 64 (FromReg RAX)), Immediate 0 7
+42bc: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 160))), Immediate 0 11
+42c7: AND Reg RDI, Immediate 18446744073709551608 4
+42cb: SUB Reg RAX, Reg RDI 3
+42ce: LEA Reg ECX, Address (AddrPlus (FromReg RAX) (AddrImm 168)) 6
+42d4: XOR Reg EAX, Reg EAX 2
+42d6: SHR Reg ECX, Immediate 3 3
+42d9: REP STOSQ  3
+42dc: MOV Reg RAX, Address (SizeDir 64 (FromReg RBX)) 3
+42df: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 40))), Immediate 0 8
+42e7: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 24))), Immediate 0 8
+42ef: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 32))), Immediate 0 8
+42f7: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 72))), Immediate 0 8
+42ff: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 80))), Immediate 0 8
+4307: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 92))), Immediate 0 8
+430f: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 104))), Immediate 0 8
+4317: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))), Immediate 0 8
+431f: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 16))), Immediate 0 8
+4327: XOR Reg EAX, Reg EAX 2
+4329: POP Reg RBX 1
+432a: RET  1
+  |
+  `- 
+4330: CALL __errno_location (external)
+4335: MOV Address (SizeDir 32 (FromReg RAX)), Immediate 12 6
+433b: MOV Reg EAX, Immediate 1 5
+4340: POP Reg RBX 1
+4341: RET  1
+  |
+  `- 
+4348: CALL __errno_location (external)
+434d: MOV Address (SizeDir 32 (FromReg RAX)), Immediate 22 6
+4353: MOV Reg EAX, Immediate 1 5
+4358: POP Reg RBX 1
+4359: RET  1
+  |
+  `- 

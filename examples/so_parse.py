@@ -119,6 +119,6 @@ if __name__ == '__main__':
 		print('    Totals', total, lifted, *spacer, *ssm, resolved_indirs,
 			jumps, calls, time, sep=' & ', end=' \\\\\n')
 	else:
-		print('Insts	Symbolic states	Indirection	Unresolved jumps	Unresolved calls	Time to Analyze (h:m:s)')
+		print('Done	Total	Insts	Symbolic states	Indirection	Unresolved jumps	Unresolved calls	Time to Analyze (h:m:s)')
 		for name, stat in zip(names, stats):
 			print(name, *stat, sep='\t')

@@ -1,0 +1,96 @@
+Number of assembly instructions     = 67
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 67
+Number of edges: 70
+
+61b40 (False): 0
+
+61b40: PUSH Reg R15 2
+61b42: PUSH Reg R14 2
+61b44: MOV Reg R15D, Reg EDX 3
+61b47: PUSH Reg R13 2
+61b49: PUSH Reg R12 2
+61b4b: PUSH Reg RBP 1
+61b4c: PUSH Reg RBX 1
+61b4d: MOV Reg RBP, Reg RCX 3
+61b50: MOV Reg RBX, Reg RDI 3
+61b53: SUB Reg RSP, Immediate 88 4
+61b57: LEA Reg R12, Address (AddrPlus (FromReg RSP) (AddrImm 48)) 5
+61b5c: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 20))), Reg ESI 4
+61b60: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RDI 5
+61b65: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+61b6e: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 72))), Reg RAX 5
+61b73: XOR Reg EAX, Reg EAX 2
+61b75: MOV Reg RSI, Reg R12 3
+61b78: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RCX 5
+61b7d: CALL libxl_get_freecpus (external)
+61b82: TEST Reg EAX, Reg EAX 2
+61b84: JNZ 61c50 (resolved immediate)
+  |
+  `- 61b8a,61c50
+61b8a: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 44)) 5
+61b8f: MOV Reg RDI, Reg RBX 3
+61b92: MOV Reg R13D, Reg EAX 3
+61b95: CALL libxl_get_cpu_topology (external)
+61b9a: TEST Reg RAX, Reg RAX 3
+61b9d: MOV Reg R14, Reg RAX 3
+61ba0: JZ 61c40 (resolved immediate)
+  |
+  `- 61ba6,61c40
+61ba6: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 44))) 4
+61baa: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Immediate 0 7
+61bb1: TEST Reg EAX, Reg EAX 2
+61bb3: JLE 61be9 (resolved immediate)
+  |
+  `- 61bb5,61be9
+61bb5: MOV Reg RBP, Reg R14 3
+61bb8: XOR Reg EBX, Reg EBX 2
+61bba: NOP  6
+61bc0: MOV Reg ESI, Reg EBX 2
+61bc2: MOV Reg RDI, Reg R12 3
+61bc5: CALL libxl_bitmap_test (external)
+61bca: TEST Reg EAX, Reg EAX 2
+61bcc: JZ 61bd4 (resolved immediate)
+  |
+  `- 61bd4
+61bd4: MOV Reg RDI, Reg RBP 3
+61bd7: ADD Reg EBX, Immediate 1 3
+61bda: ADD Reg RBP, Immediate 12 4
+61bde: CALL libxl_cputopology_dispose (external)
+61be3: CMP Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 44))), Reg EBX 4
+61be7: JG 61bc0 (resolved immediate)
+  |
+  `- 61bc0,61be9
+61be9: MOV Reg RDI, Reg R14 3
+61bec: CALL free (external)
+61bf1: MOV Reg RDI, Reg R12 3
+61bf4: CALL libxl_bitmap_dispose (external)
+61bf9: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 72))) 5
+61bfe: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+61c07: MOV Reg EAX, Reg R13D 3
+61c0a: JNZ 61c58 (resolved immediate)
+  |
+  `- 61c0c,61c58
+61c0c: ADD Reg RSP, Immediate 88 4
+61c10: POP Reg RBX 1
+61c11: POP Reg RBP 1
+61c12: POP Reg R12 2
+61c14: POP Reg R13 2
+61c16: POP Reg R14 2
+61c18: POP Reg R15 2
+61c1a: RET  1
+  |
+  `- 
+61c40: MOV Reg R13D, Immediate 4294967293 6
+61c46: JMP 61bf1 (resolved immediate)
+  |
+  `- 61bf1
+61c50: MOV Reg R13D, Immediate 4294967293 6
+61c56: JMP 61bf9 (resolved immediate)
+  |
+  `- 61bf9
+61c58: CALL __stack_chk_fail (external)
+  |
+  `- 

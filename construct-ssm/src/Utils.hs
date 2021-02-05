@@ -1,6 +1,6 @@
 module Utils where
 
-import Control.Monad.State.Strict
+import Control.Monad.State.Lazy
 import Data.Maybe
 import qualified Data.Foldable as Foldable
 import qualified Data.Map as M
@@ -60,7 +60,6 @@ imap f as = go 0 as
 sMapMaybe :: Ord b => (a -> Maybe b) -> S.Set a -> S.Set b
 sMapMaybe f = S.fromList . mapMaybe f . S.toList
 
-
 -- split a list into chunks of n elements
 split_chunks :: Int -> [a] -> [[a]]
 split_chunks n [] = []
@@ -86,6 +85,15 @@ evalVals f = S.map fst . runVals f
 
 sextend_32_64 :: Word64 -> Word64
 sextend_32_64 w = if testBit w 31 then w .|. 0xFFFFFFFF00000000 else w
+
+-- As w is not guaranteed to be properly formatted for a 32-bit, etc., number
+-- (the input could actually be embedded as >32 bit), we mask the upper 32 bits.
+-- This could actually hide errors earlier so I'm not sure if it's best practice
+zextend_32_64 :: Word64 -> Word64
+zextend_32_64 = (.&.) 0x00000000FFFFFFFF
+
+zextend_64_128 :: Word64 -> Word64
+zextend_64_128 = (.&.) 0x0000000000000000FFFFFFFFFFFFFFFF
 
 -- Control.Monad.Extra has a maybeM that works like maybe but for monads;
 -- however, this style that's more like liftM works better for our purposes.

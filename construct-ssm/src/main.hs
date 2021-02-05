@@ -165,7 +165,7 @@ run (Args filenameB start_address onlyShowSymbols) = do
     putStrLn ""
     c_dis_init
     fci_add_function_call (fromIntegral start) 0
-    let init_state = init_predstate $ fromIntegral start
+    let init_state = initPredState $ fromIntegral start
     let init_bag   = [init_state]
     let init_invs  = M.empty
     (bag,invs) <- execStateT (invgen_post ctxt $ fetch ctxt) (init_bag,init_invs)

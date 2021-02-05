@@ -1,6 +1,6 @@
 module Predicates.DataAccess where
 
-import Control.Monad.State.Strict
+import Control.Monad.State.Lazy
 import Data.Maybe
 import qualified Data.Map as M
 import qualified Data.Set as S
@@ -10,18 +10,14 @@ import Data.Bits ((.&.),(.|.),testBit)
 import System.IO (hPutStrLn, stderr)
 import System.IO.Unsafe (unsafePerformIO)
 
-
-import Predicates.Base
+import Predicates.Base hiding (getUpperBound)
 import Predicates.Mem
 import Predicates.State hiding (State)
 import qualified Predicates.State as PS (State)
 import X86.Datastructures
 import X86.Expr
-import Utils (simp, modifies, showH)
-import Elf.Elf (in_rodata_section, Context, elf_read_address, elf_section_of_addr)
-
-
-import Debug.Trace
+import Utils (simp, modifies, showH, sMapMaybe)
+import Elf.Elf (inRodataSection, Context, elf_read_address, elf_section_of_addr)
 
 -- Get the current instruction pointer
 -- Using evalState as every state should have an RIP value so no need to worry
@@ -29,27 +25,25 @@ import Debug.Trace
 getRegValueExpr :: Register -> PS.State -> ValueExpr
 getRegValueExpr = evalState . getRegValue
 
-getRipValueExpr :: PS.State -> ValueExpr
-getRipValueExpr = getRegValueExpr RIP
+getRIPValueExpr :: PS.State -> ValueExpr
+getRIPValueExpr = getRegValueExpr RIP
 
-getRip :: PS.State -> Word64
-getRip st = case getRipValueExpr st of
+getRIP :: PS.State -> Word64
+getRIP st = case getRIPValueExpr st of
   V_val rip _ _ -> rip
   x             -> error $ "Current RIP is not an immediate: " ++ show x
 
-getRipMaybe :: PS.State -> Maybe Word64
-getRipMaybe st = case getRipValueExpr st of
+getRIPMaybe :: PS.State -> Maybe Word64
+getRIPMaybe st = case getRIPValueExpr st of
   V_val rip _ _ -> Just rip
   _             -> Nothing
-
-
 
 initialVar :: Expr -> ValueExpr
 initialVar (E_flg f) = V_var (show f ++ "0") $ Known 1
 initialVar (E_reg r) = V_var (show r ++ "0") $ Known $ getSize r * 8
 initialVar (E_var v s) = V_var v s -- these are already variables
-initialVar d@(E_deref e s) = V_var (show size ++ iv e ++ "0") $ Known size where
-  size = s * 8
+initialVar d@(E_deref e _) = V_var (show size ++ iv e ++ "0") size where
+  size = getDerefSize d
   iv (E_val v _ b) = "val" ++ show v ++ show b
   iv (E_var v _) = "var" ++ v
   iv (E_app (TakeBits h l) es) = argformat "take" h l es
@@ -86,13 +80,13 @@ overwriteFlags fs op dst srcs = mapM_ overwriteFlag fs where
   overwriteFlag flag = do
     op1 <- getValueExpr dst
     overwrite (V_app (Op op) $ op1 : srcs) $ E_flg flag
-    modifyFlagOps $ M.insert flag $ getRealExpr dst
+    modifyFlagOps $ M.insert flag $ getMaskedExpr dst
 
 overwriteFlagsWithValue :: [Flag] -> Expr -> ValueExpr -> State PS.State ()
 overwriteFlagsWithValue fs dst ve = mapM_ overwriteFlag fs where
   overwriteFlag flag = do
     overwrite ve $ E_flg flag
-    modifyFlagOps $ M.insert flag $ getRealExpr dst
+    modifyFlagOps $ M.insert flag $ getMaskedExpr dst
 
 overwriteFlagsMUL :: ValueExpr -> Int -> State PS.State ()
 overwriteFlagsMUL mul l = mapM_ overwriteFlag [ZF, CF, OF, SF, PF] where
@@ -132,7 +126,7 @@ updateUnary op = update op []
 getter :: Expr -> State PS.State ValueExpr
 getter e = do
   pred <- gets predicate
-  rip <- gets getRip
+  rip <- gets getRIP
   c <- gets config
   let e' = simp c e
   case lookupExpr e' pred of -- don't think this could be done with fromMaybe
@@ -184,7 +178,7 @@ writeWithRegMask rr@(E_reg r) e = do
   return $ write r e' where
     write r e'
       | r `elem` (reg64 ++ reg128) = e
-      | r `elem` reg32 = V_app (TakeBits 31 0) [e]
+      | r `elem` reg32 = V_app (F ZExtend) [V_app (TakeBits 31 0) [e], V_val 64 64 False]
       | r `elem` reg16 = V_app Concat [V_app (TakeBits 63 16) [e'], V_app (TakeBits 15 0) [e]]
       | r `elem` reg8 = V_app Concat [V_app (TakeBits 63 8) [e'], V_app (TakeBits 7 0) [e]]
       | r `elem` reg8h = V_app Concat [V_app Concat [V_app (TakeBits 63 16) [e'], V_app (TakeBits 7 0) [e]], V_app (TakeBits 7 0) [e']]
@@ -196,6 +190,17 @@ getRealExpr :: Expr -> Expr
 getRealExpr (E_reg r) = E_reg $ realReg r
 getRealExpr e = e
 
+getMaskedExpr :: Expr -> Expr
+getMaskedExpr (E_reg r)
+  | r `elem` (reg128 ++ reg64) = rr
+  | r `elem` reg32 = E_app (TakeBits 31 0) [rr]
+  | r `elem` reg16 = E_app (TakeBits 15 0) [rr]
+  | r `elem` reg8 = E_app (TakeBits 7 0) [rr]
+  | r `elem` reg8h = E_app (TakeBits 15 8) [rr]
+  | otherwise = error $ "Unknown register: " ++ show r where
+    rr = E_reg $ realReg r
+getMaskedExpr e = e
+
 -- Evaluates an address to produce an expression (NOT a ValueExpr).
 addrToExpr :: Address -> State PS.State Expr
 addrToExpr addr = do
@@ -204,7 +209,12 @@ addrToExpr addr = do
   return $ simp c e where
     ate (FromReg r) = do
       re <- getRegValue r
-      return $ E_app (TakeBits 63 0) [toExpr re]
+      let expr = toExpr re
+      -- Using ZExtend for better clarity/correctness
+      if getSize r < 8 then
+        return $ E_app (F ZExtend) [expr, E_val 64 (- 1) False]
+      else
+        return expr
     ate (AddrImm i) = return $ E_val (fromIntegral i) 64 False
     ate (AddrMinus a0 a1) = do
       e0 <- ate a0
@@ -217,7 +227,11 @@ addrToExpr addr = do
     ate (AddrTimes a0 a1) = do
       e0 <- ate a0
       e1 <- ate a1
-      return $ E_app (TakeBits 63 0) [E_app (Op MUL) [e0, e1]]
+      c <- gets config
+      when (getExprSize c e0 /= getExprSize c e1) $
+        error $ "Expressions need to be the same size when multiplied:\n"
+        ++ show_expr e0 ++ "\n" ++ show_expr e1
+      return $ E_app (Op MUL) [e0, e1]
     ate (SizeDir _ a) = ate a
 
 -- Evaluates a destination-type operand (the first operand of an instruction).
@@ -225,22 +239,24 @@ dstToExpr :: Operand -> State PS.State Expr
 dstToExpr (Reg r) = return $ E_reg r
 dstToExpr aa@(Address a) = do
   ae <- addrToExpr a
-  return $ E_deref ae $ getOpSize aa
+  return $ E_deref ae $ E_val (fromIntegral $ getOpSize aa) 64 False
 dstToExpr (Immediate _) = error $ "Immediates cannot be dst operands."
-
 
 
 -- Returns the upper bound for the supplied expression in the specified predicate
 -- Only returns explicit values, doesn't work with more complicated expressions
-get_upperBound :: Config -> Expr -> Pred -> Maybe Int
-get_upperBound c e = S.lookupMin . S.map fromJust . S.filter ((/=) Nothing) . S.map get_ub
- where
-  get_ub clause = case clause of
-    (e0 :=  V_val imm _ _) -> if remove_outer_takebits e0 == remove_outer_takebits e then Just (fromIntegral imm) else Nothing
-    (e0 :<  V_val imm _ _) -> if remove_outer_takebits e0 == remove_outer_takebits e then Just (fromIntegral imm - 1) else Nothing
-    (e0 :<- V_val imm _ _) -> if remove_outer_takebits e0 == remove_outer_takebits e then Just (fromIntegral imm - 1) else Nothing
-    _ -> Nothing
-
+getUpperBound :: Config -> Expr -> Pred -> Maybe Int
+getUpperBound c e pred = case e of
+  E_val imm _ _ -> Just $ fromIntegral imm
+  _ -> S.lookupMin $ sMapMaybe getUB pred where
+    getUB clause = case clause of
+      (e0 :=  V_val imm _ _) -> if removeOuterTakeBits e0 == removeOuterTakeBits e
+        then Just $ fromIntegral imm else Nothing
+      (e0 :<  V_val imm _ _) -> if removeOuterTakeBits e0 == removeOuterTakeBits e
+        then Just $ fromIntegral imm - 1 else Nothing
+      (e0 :<- V_val imm _ _) -> if removeOuterTakeBits e0 == removeOuterTakeBits e
+        then Just $ fromIntegral imm - 1 else Nothing
+      _ -> Nothing
 
 -- this function modifies an expression
 -- NOTE: this does not necessarily produce a semantically equivalent expression!
@@ -252,14 +268,14 @@ get_upperBound c e = S.lookupMin . S.map fromJust . S.filter ((/=) Nothing) . S.
 -- The term we are looking to find an upperbound for is:
 --    x
 -- We normalize the term by removing the outermost "takebits" and by normalizing the bitsizes of any used contants
-remove_outer_takebits (E_app (TakeBits _ _) [e]) = remove_outer_takebits e
-remove_outer_takebits (E_app (Op AND)   [e0,e1]) = E_app (Op AND) [remove_outer_takebits e0,remove_outer_takebits e1]
-remove_outer_takebits e = normalize_constants e
- where
-  normalize_constants (E_val v _ _) = E_val v 0 False
-  normalize_constants (E_app f es)  = E_app f (map normalize_constants es)
-  normalize_constants e             = e
-  
+removeOuterTakeBits (E_app (SExtend _ _) [e]) = removeOuterTakeBits e
+removeOuterTakeBits (E_app (TakeBits _ _) [e]) = removeOuterTakeBits e
+removeOuterTakeBits (E_app (Op AND) es) = E_app (Op AND) $ map removeOuterTakeBits es
+removeOuterTakeBits e = normalizeConstants e where
+  normalizeConstants (E_val v _ _) = E_val v 0 False
+  normalizeConstants (E_app f es)  = E_app f $ map normalizeConstants es
+  normalizeConstants e             = e
+
 
 
 
@@ -275,7 +291,7 @@ try_read_data_section ctxt (SizeDir si (AddrPlus a0 a1)) = do
   a1_resolved <- addrToExpr a1
 
 {--
-  when (getRip state `elem` [0x1487d, 0x14881] ) $ unsafePerformIO $ do
+  when (getRIP state `elem` [0x1487d, 0x14881] ) $ unsafePerformIO $ do
     putStrLn $ show a0_resolved
     putStrLn $ show a1_resolved
     putStrLn $ show $ get_var a0_resolved a1_resolved
@@ -284,40 +300,53 @@ try_read_data_section ctxt (SizeDir si (AddrPlus a0 a1)) = do
 
   case get_var a0_resolved a1_resolved of
     Just (1, imm, e) ->
-      if in_rodata_section ctxt imm then
-        case get_upperBound c e pred of
+      if inRodataSection ctxt imm then
+        case getUpperBound c e pred of
           Just ub -> return $ Just $ read_jmp_table_pattern1 si imm ub
           Nothing -> return $ report_error imm e state
       else
         return Nothing
     Just (2, imm0, e1) -> do
       let (E_val imm1 _ _) = e1
-      if in_rodata_section ctxt (imm0 + imm1) then
+      -- Need to keep inRodataSection check here,
+      -- it causes issues with other programs
+      if inRodataSection ctxt $ imm0 + imm1 then
         return $ Just $ read_jmp_table_pattern2 si imm0 imm1
       else
         return Nothing
     Just (3, imm, e) ->
-      if in_rodata_section ctxt imm then
-        case get_upperBound c e pred of
+      if inRodataSection ctxt imm then
+        case getUpperBound c e pred of
           Just ub -> return $ Just $ read_jmp_table_pattern3 si imm ub
           Nothing -> return $ report_error imm e state
       else
         return Nothing
+    -- This pattern is to used with user-created call tables (arrays),
+    -- which are not present in the rodata section. It is not currently used
+    -- due to potential extraneous pattern detections.
+
+    -- calculate the upper bound based on the next symbol encountered after the
+    -- array? something like [0..i | imm + 16 * i < next_symbol]?
+    Just (4, imm, e) -> case getUpperBound c e pred of
+      Just ub -> return $ Just $ read_jmp_table_pattern4 si imm ub
+--      Nothing -> return $ report_error imm e state
+      Nothing -> error $ "Couldn't get upper bound of " ++ show_expr e
+        ++ " in pred " ++ show pred
     _ -> return Nothing
  where
   -- Pattern 1: <63,0>(8 * e) + imm
   get_var (E_app (TakeBits 63 0) [E_app (Op MUL) [E_val 8 64 _, e]])
           (E_val imm _ _)
-    = Just (1, imm, remove_outer_takebits e)
+    = Just (1, imm, removeOuterTakeBits e)
   get_var (E_val imm _ _)
           (E_app (TakeBits 63 0) [E_app (Op MUL) [E_val 8 64 _, e]])
-    = Just (1, imm, remove_outer_takebits e)
+    = Just (1, imm, removeOuterTakeBits e)
   get_var (E_app (TakeBits 63 0) [E_app (Op MUL) [e, E_val 8 64 _]])
           (E_val imm _ _)
-    = Just (1, imm, remove_outer_takebits e)
+    = Just (1, imm, removeOuterTakeBits e)
   get_var (E_val imm _ _)
           (E_app (TakeBits 63 0) [E_app (Op MUL) [e, E_val 8 64 _]])
-    = Just (1, imm, remove_outer_takebits e)
+    = Just (1, imm, removeOuterTakeBits e)
   -- Pattern 2: imm0 + imm1
   get_var    (E_val imm0 _ _)
           e1@(E_val imm1 _ _)
@@ -325,30 +354,34 @@ try_read_data_section ctxt (SizeDir si (AddrPlus a0 a1)) = do
   -- Pattern 3: (<63,0>(8 * e) + imm0) + imm1 --> pattern 1
   get_var (E_app (Op ADD) [E_app (TakeBits 63 0) [E_app (Op MUL) [e,E_val 8 64 _]],E_val imm0 _ _])
           (E_val imm1 _ _)
-    = Just (1, imm0 + imm1, remove_outer_takebits e)
+    = Just (1, imm0 + imm1, removeOuterTakeBits e)
   get_var (E_app (Op ADD) [E_app (TakeBits 63 0) [E_app (Op MUL) [E_val 8 64 _,e]],E_val imm0 _ _])
           (E_val imm1 _ _)
-    = Just (1, imm0 + imm1, remove_outer_takebits e)
+    = Just (1, imm0 + imm1, removeOuterTakeBits e)
   -- Pattern 4: <63,0>(4 * e) + imm
   get_var (E_app (TakeBits 63 0) [E_app (Op MUL) [E_val 4 _ _, e]])
           (E_val imm _ _)
-    = Just (3, imm, remove_outer_takebits e)
+    = Just (3, imm, removeOuterTakeBits e)
   get_var (E_val imm _ _)
           (E_app (TakeBits 63 0) [E_app (Op MUL) [E_val 4 _ _, e]])
-    = Just (3, imm, remove_outer_takebits e)
+    = Just (3, imm, removeOuterTakeBits e)
   get_var (E_app (TakeBits 63 0) [E_app (Op MUL) [e, E_val 4 _ _]])
           (E_val imm _ _)
-    = Just (3, imm, remove_outer_takebits e)
+    = Just (3, imm, removeOuterTakeBits e)
   get_var (E_val imm _ _)
           (E_app (TakeBits 63 0) [E_app (Op MUL) [e, E_val 4 _ _]])
-    = Just (3, imm, remove_outer_takebits e)
+    = Just (3, imm, removeOuterTakeBits e)
   -- Pattern 5: (<31,0>(4 * e) + imm0) + imm1 --> pattern 4
-  get_var (E_app (Op ADD) [E_app (TakeBits 63 0) [E_app (Op MUL) [e,E_val 4 _ _]],E_val imm0 _ _])
+  get_var (E_app (Op ADD) [E_app (TakeBits 63 0) [E_app (Op MUL) [e, E_val 4 _ _]],E_val imm0 _ _])
           (E_val imm1 _ _)
-    = Just (3, imm0 + imm1, remove_outer_takebits e)
-  get_var (E_app (Op ADD) [E_app (TakeBits 63 0) [E_app (Op MUL) [E_val _ _ _,e]],E_val imm0 _ _])
+    = Just (3, imm0 + imm1, removeOuterTakeBits e)
+  get_var (E_app (Op ADD) [E_app (TakeBits 63 0) [E_app (Op MUL) [E_val 4 _ _, e]],E_val imm0 _ _])
           (E_val imm1 _ _)
-    = Just (3, imm0 + imm1, remove_outer_takebits e)
+    = Just (3, imm0 + imm1, removeOuterTakeBits e)
+  -- -- Pattern 6: (var<<4 + imm0) + imm1 --> 16 * var + imm
+  -- get_var (E_app (Op ADD) [E_app (Op SHL) [var, E_app (F ZExtend) [E_val 4 _ _, _]], E_val imm0 _ _])
+  --         (E_val imm1 _ _)
+  --   = Just (4, imm0 + imm1, var)
   get_var _ _ = Nothing
 
 
@@ -392,6 +425,18 @@ try_read_data_section ctxt (SizeDir si (AddrPlus a0 a1)) = do
   read_jmp_table_pattern3_entry si imm jmps var = do
     dat <- elf_read_address ctxt (imm + 4 * fromIntegral var) (si `div` 8)
     -- putStrLn $ "Reading from region [" ++ showH  (imm + 8 * fromIntegral var) ++ ", " ++ show (si `div` 8) ++ "] = " ++ showH dat
+    return $ S.insert dat jmps
+
+  -- Pattern 4
+  read_jmp_table_pattern4 si imm ub = unsafePerformIO $ do -- TODO
+    datas <- foldM (read_jmp_table_pattern4_entry si imm) S.empty [0..ub]
+    putStrLn $ "Read jump table with pattern 4: 16 * var + imm"
+    putStrLn $ "0 <= var <= " ++ show ub ++ " && imm == " ++ showH imm
+    putStrLn $ "Result = {" ++ (intercalate ", " $ map showH $ S.toList datas) ++ "}"
+    return $ S.map (\dat -> V_val dat si True) datas
+
+  read_jmp_table_pattern4_entry si imm jmps var = do
+    dat <- elf_read_address ctxt (imm + 16 * fromIntegral var) (si `div` 8)
     return $ S.insert dat jmps
 
 try_read_data_section _ _ = return Nothing
@@ -443,7 +488,11 @@ updater op updateFunc = updater' op where
   updater' (Reg reg) = updateFunc $ E_reg reg
   updater' (Address addr) = do
     ae <- addrToExpr addr
-    updaterMem (ae, getOpSize op) updateFunc
+    let opSize = V_val (fromIntegral $ getOpSize op) 64 False
+    updaterMem (ae, opSize) updateFunc
 
 overwriter :: Operand -> ValueExpr -> State PS.State ()
 overwriter dst = updater dst . overwrite
+
+overwriterMem :: Region -> ValueExpr -> State PS.State ()
+overwriterMem region = updaterMem region . overwrite

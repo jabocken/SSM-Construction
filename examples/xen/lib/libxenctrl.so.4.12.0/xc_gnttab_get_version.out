@@ -1,0 +1,36 @@
+Number of assembly instructions     = 19
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 19
+Number of edges: 19
+
+14c90 (False): 0
+
+14c90: SUB Reg RSP, Immediate 24 4
+14c94: MOV Reg R8D, Immediate 1 6
+14c9a: MOV Reg ECX, Immediate 8 5
+14c9f: MOV Address (SizeDir 16 (FromReg RSP)), Reg SI 4
+14ca3: MOV Reg RDX, Reg RSP 3
+14ca6: MOV Reg ESI, Immediate 10 5
+14cab: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+14cb4: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
+14cb9: XOR Reg EAX, Reg EAX 2
+14cbb: CALL xc_gnttab_op (external)
+14cc0: TEST Reg EAX, Reg EAX 2
+14cc2: JS 14cc8 (resolved immediate)
+  |
+  `- 14cc4,14cc8
+14cc4: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))) 4
+14cc8: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+14ccd: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+14cd6: JNZ 14cdd (resolved immediate)
+  |
+  `- 14cd8,14cdd
+14cd8: ADD Reg RSP, Immediate 24 4
+14cdc: RET  1
+  |
+  `- 
+14cdd: CALL __stack_chk_fail (external)
+  |
+  `- 

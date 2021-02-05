@@ -1,8 +1,10 @@
-module Predicates.Mem where
-
+module Predicates.Mem (insert_region, regionToExpr, Region, Mem(..),
+  MemTree(..), get_aliases, affected, is_heap, necessarilyEnclosed,
+  mapRegions) where
 
 import Z3
 import Predicates.Base
+import Predicates.Z3 (checkGeq, checkEnc, checkSep)
 import X86.Datastructures
 import X86.Expr
 
@@ -12,12 +14,9 @@ import Data.Word
 import Data.Tree
 import Data.List (find,partition,nubBy,nub,intercalate)
 import Data.Sort (sort)
-import Debug.Trace (traceShow)
 
-
-
--- A region is defined by an expression and a size (integer)
-type Region         = (Expr, Int)
+-- A region is defined by an expression and a size (a value expression)
+type Region         = (Expr, ValueExpr)
 
 -- A memory model consists of a list of memory trees (a forest)
 data Mem            = MemForest [MemTree]
@@ -30,7 +29,7 @@ data MemTree        = MemTree { mt_region :: [Region], mt_children :: Mem }
   deriving (Eq,Ord,Show)
 
 regionToExpr :: Region -> Expr
-regionToExpr = uncurry E_deref
+regionToExpr (e, v) = E_deref e $ toExpr v
 
 -- Pretty printing
 show_region :: Region -> String
@@ -45,26 +44,30 @@ instance Show Mem where
     make_tree   (MemTree rs cs) = Node (show_regions rs) $ make_forest cs
 
 
-region_size (_,s) = s
-region_addr (a,_) = a
+region_size (_, s) = s
+region_addr (a, _) = a
 
-regions_size :: [Region] -> Int
-regions_size ((a,s):rs) = if all (\(_,s') -> s' == s) rs then s else error "Regions do not have same size."
+regionsSize :: [Region] -> ValueExpr
+regionsSize ((a, s) : rs) = if all (\(_, s') -> s' == s) rs then
+  s
+else
+  error "Regions do not have same size."
 
-memtree_size :: MemTree -> Int
-memtree_size (MemTree rs _) = regions_size rs
+memNull :: Mem -> Bool
+memNull (MemForest mts) = null mts
 
-mem_size :: Mem -> Int
-mem_size (MemForest m) = sum $ map memtree_size m
+memtreeSize :: MemTree -> ValueExpr
+memtreeSize (MemTree rs _) = regionsSize rs
+
+memSize :: Mem -> ValueExpr
+memSize (MemForest m) = foldr adder (V_val 0 64 False) $ map memtreeSize m where
+  adder e0 e1 = V_app (Op ADD) [e0, e1]
 
 forany :: Foldable t => (a -> a -> Bool) -> t a -> t a -> Bool
 forany p as bs = any (\a -> any (\b -> p a b) bs) as
 
 forall :: Foldable t => (a -> a -> Bool) -> t a -> t a -> Bool
 forall p as bs = all (\a -> all (\b -> p a b) bs) as
-
-mem_append :: Mem -> Mem -> Mem
-mem_append (MemForest m0) (MemForest m1) = MemForest (sort $ nub $ m0 ++ m1)
 
 (∘∘) :: (c -> d) -> (a -> b -> c) -> (a -> b -> d)
 (f ∘∘ g) x y = f (g x y)
@@ -73,9 +76,11 @@ mem_append (MemForest m0) (MemForest m1) = MemForest (sort $ nub $ m0 ++ m1)
 -- This may produce multiple next memory models.
 -- For example, if a region is inserted that cannot be shown to be necessarily separate from the node of the current tree,
 -- it is inserted both as a sibling and as a child (producing two possible memory models).
-insert_region :: Config -> Region -> Mem -> S.Set Mem
-insert_region c r mem = if contains_region r mem then S.singleton mem else prune_mem_set c $ insert_memtree initial_memtree mem
- where
+insert_region :: Config -> Pred -> Region -> Mem -> S.Set Mem
+insert_region c pred r mem = if contains_region r mem then
+  S.singleton mem
+else
+  prune_mem_set c $ insert_memtree initial_memtree mem where
   -- the initial memtree of region r, no label, no children
   initial_memtree = MemTree [r] (MemForest [])
 
@@ -86,26 +91,34 @@ insert_region c r mem = if contains_region r mem then S.singleton mem else prune
         (MemTree rs' cs') = mt' in
       if forany necessarily_aliasing rs rs' then
         insert_al mt mt' mem
-      else if forany (necessarily_separate c) rs rs' then
+      else if forany (necessarilySeparate c pred) rs rs' then
         -- since r and r' are separate, insert mt somewhere in the siblings and reinsert mt'
         insert_sep mt mt' mem
-      else if regions_size rs < regions_size rs' && forany (necessarily_enclosed c) rs rs' then
+      else if regionsSize rs < regionsSize rs' && forany (necessarilyEnclosed c pred) rs rs' then
         -- since r is enclosed in r', insert mt as a child of mt'
         insert_enc mt mt' mem
-      else if regions_size rs' < regions_size rs && forany (necessarily_enclosed c) rs' rs then
+      else if regionsSize rs' < regionsSize rs && forany (necessarilyEnclosed c pred) rs' rs then
         -- since r' is enclosed in r, insert mt' as a child of mt
         insert_enc2 mt mt' mem
       else
         let -- mt and mt' are possibly separate
-            m_sep  = insert_sep (MemTree rs cs) (MemTree rs' cs') mem
+            m_sep = insert_sep (MemTree rs cs) (MemTree rs' cs') mem
             -- mt is possibly enclosed in mt' if it fits
-            m_enc  = if regions_size rs < regions_size rs' then insert_enc mt mt' mem else S.empty
+            m_enc = if regionsSize rs < regionsSize rs' then
+              insert_enc mt mt' mem
+            else
+              S.empty
             -- mt' is possibly enclosed in mt if it fits
-            m_enc2 = if regions_size rs' < regions_size rs then insert_enc2 mt mt' mem else S.empty
+            m_enc2 = if regionsSize rs' < regionsSize rs then
+              insert_enc2 mt mt' mem
+            else
+              S.empty
             -- mt is possibly aliasing with mt' if it has equal size
-            m_al   = if regions_size rs == regions_size rs' then insert_al mt mt' mem else S.empty in
-          S.unions [ m_sep, m_enc, m_enc2, m_al]
-
+            m_al = if regionsSize rs == regionsSize rs' then
+              insert_al mt mt' mem
+            else
+              S.empty in
+          S.unions [m_sep, m_enc, m_enc2, m_al]
 
   -- let mt be separate from mt'
   -- insert mt into the siblings, then add mt' separately
@@ -124,32 +137,65 @@ insert_region c r mem = if contains_region r mem then S.singleton mem else prune
         mfs' = S.map (MemTree r) mfs in
       S.filter valid_memory_model' $ S.unions $ S.map (flip insert_memtree $ MemForest mem) mfs'
   -- let mt and mt' be aliasing
-  -- append the region aliases, and append the children
-  insert_al (MemTree rs cs) (MemTree rs' cs') mem =
-    S.filter valid_memory_model' $ S.singleton $ MemForest $ (MemTree (sort $ nub $ rs ++ rs') (mem_append cs cs')):mem
+  -- append the region aliases and merge the children
+  ---- this may result in more memory models than would actually make sense
+  ---- (i.e. [a,4] and [b.4] alias so [a+2,2] and [b+2,2] should as well,
+  ---- but the below could actually produce models for the children not
+  ---- aliasing too),
+  ---- but valid_memory_model' will hopefully eliminate the inconsistent ones.
+  -- The "simple" version seems to provide the same results in most cases,
+  -- but there are occasions where both the child memory models are non-empty
+  -- and thus a more advanced methodology is needed for those
+  -- (though the ultimate behavior seems to be the same in many (all?) cases
+  -- anyway).
+  insert_al (MemTree rs cs) (MemTree rs' cs') mem = result where
+    -- TODO: rerun with this version once the rest are done, see if it's any faster
+    result = if memNull cs then -- some shortcuts just in case
+      S.singleton $ MemForest $ (MemTree aliasRegs cs') : mem
+    else if memNull cs' then
+      S.singleton $ MemForest $ (MemTree aliasRegs cs) : mem
+    else
+      S.filter valid_memory_model' forests
+    -- I think the usage of sort here is to help with equality testing; really,
+    -- MemForest should hold a set rather than a list.
+    forests = S.map (\m -> MemForest $ sort $ m : mem) prepend
+    prepend = toPrepend $ memAppend cs cs'
+    aliasRegs = sort $ nub $ rs ++ rs'
+    toPrepend :: S.Set Mem -> S.Set MemTree
+    toPrepend ms = S.map (MemTree aliasRegs) ms
+    memAppend :: Mem -> Mem -> S.Set Mem
+    memAppend (MemForest mts) m = foldr memAppend' (S.singleton m) mts
+    memAppend' :: MemTree -> S.Set Mem -> S.Set Mem
+    memAppend' mt ms = S.unions $ S.map (insert_memtree mt) ms
+
 
   -- do children fit in their parents, are all children possibly enclosed in their parents, are all siblings possible separate
-  valid_memory_model' mem = if fit_mem mem then all_children_possibly_enclosed mem && all_siblings_possibly_separate mem else False
+  valid_memory_model' mem = if fit_mem mem then
+    allChildrenPossiblyEnclosed mem && allSiblingsPossiblySeparate mem
+  else
+    False
 
   -- a sanity check: does the child fit into the parent?
   fit_mem (MemForest mf) = all fit mf
-  fit (MemTree rs cs) = regions_size rs >= mem_size cs && fit_mem cs
+  fit (MemTree rs cs) = regionsSize rs `geq` memSize cs && fit_mem cs
   -- are all children possibly enclosed in their parents?
-  all_children_possibly_enclosed (MemForest []) = True
-  all_children_possibly_enclosed (MemForest ((MemTree rs (MemForest cs)):mem)) =
-    regions_size rs >= mem_size (MemForest cs) && all (possibly_enclosed rs) cs
-    && all_children_possibly_enclosed (MemForest cs) && all_children_possibly_enclosed (MemForest mem)
+  allChildrenPossiblyEnclosed (MemForest []) = True
+  allChildrenPossiblyEnclosed (MemForest ((MemTree rs (MemForest cs)):mem)) =
+    regionsSize rs `geq` memSize (MemForest cs) && all (possiblyEnclosed rs) cs
+    && allChildrenPossiblyEnclosed (MemForest cs) && allChildrenPossiblyEnclosed (MemForest mem)
 
-  possibly_enclosed rs (MemTree cs _) = all (\r  -> all (\cc  -> r == cc || not (necessarily_separate c r cc)) cs) rs
+  geq = checkGeq c pred
 
-  all_siblings_possibly_separate (MemForest mem) =
-    (all_mutually_possibly_separate $ map mt_region mem)
-    && (all all_siblings_possibly_separate $ map mt_children mem)
+  possiblyEnclosed rs (MemTree cs _) = all (\r  -> all (\cc  -> r == cc || not (necessarilySeparate c pred r cc)) cs) rs
 
-  all_mutually_possibly_separate [] = True
-  all_mutually_possibly_separate (rs:rss) = all (possibly_separate rs) rss && all_mutually_possibly_separate rss
+  allSiblingsPossiblySeparate (MemForest mem) =
+    (allMutuallyPossiblySeparate $ map mt_region mem)
+    && (all allSiblingsPossiblySeparate $ map mt_children mem)
 
-  possibly_separate rs0 rs1 = all (\r0 -> all (\r1 -> r0 /= r1 && not (necessarily_enclosed c r0 r1) && not (necessarily_enclosed c r1 r0)) rs1) rs0
+  allMutuallyPossiblySeparate [] = True
+  allMutuallyPossiblySeparate (rs:rss) = all (possiblySeparate rs) rss && allMutuallyPossiblySeparate rss
+
+  possiblySeparate rs0 rs1 = all (\r0 -> all (\r1 -> r0 /= r1 && not (necessarilyEnclosed c pred r0 r1) && not (necessarilyEnclosed c pred r1 r0)) rs1) rs0
 
 -- returns the set of regions affected by a write to the given region
 -- assumes the region is present in the memory model, i.e., that "insert_region r" has been applied
@@ -212,84 +258,87 @@ prune_mem_set c = S.fromList . map fst . nubBy equalMem . S.toList {--. S.filter
   add_aliased m  = (m,replace_aliases m)
   equalMem (_,m0) (_,m1) = m0 == m1
 
-valid_memory_model :: Config -> Mem -> Bool
-valid_memory_model c m = all_siblings_possibly_separate m -- && all_children_possibly_enclosed m
+valid_memory_model :: Config -> Pred -> Mem -> Bool
+valid_memory_model c pred m = allSiblingsPossiblySeparate m -- && allChildrenPossiblyEnclosed m
  where
-  all_siblings_possibly_separate (MemForest mem) =
-    (all_mutually_possibly_separate $ map mt_region mem)
-    && (all all_siblings_possibly_separate $ map mt_children mem)
+  allSiblingsPossiblySeparate (MemForest mem) =
+    (allMutuallyPossiblySeparate $ map mt_region mem)
+    && (all allSiblingsPossiblySeparate $ map mt_children mem)
 
-  all_mutually_possibly_separate [] = True
-  all_mutually_possibly_separate (r:rs) = all (possibly_separate r) rs && all_mutually_possibly_separate rs
-
-
-  all_children_possibly_enclosed (MemForest []) = True
-  all_children_possibly_enclosed (MemForest ((MemTree rs (MemForest cs)):mem)) =
-    regions_size rs >= mem_size (MemForest cs) && all (possibly_enclosed rs) cs
-    && all_children_possibly_enclosed (MemForest cs) && all_children_possibly_enclosed (MemForest mem)
-
-  possibly_enclosed rs (MemTree cs _) = all (\r  -> all (\cc  -> r == cc || not (necessarily_separate c r cc)) cs) rs
-  possibly_separate rs0 rs1           = all (\r0 -> all (\r1 -> r0 /= r1 && not (necessarily_enclosed c r0 r1) && not (necessarily_enclosed c r1 r0)) rs1) rs0
+  allMutuallyPossiblySeparate [] = True
+  allMutuallyPossiblySeparate (r:rs) = all (possiblySeparate r) rs && allMutuallyPossiblySeparate rs
 
 
+  allChildrenPossiblyEnclosed (MemForest []) = True
+  allChildrenPossiblyEnclosed (MemForest ((MemTree rs (MemForest cs)):mem)) =
+    regionsSize rs `geq` memSize (MemForest cs) && all (possiblyEnclosed rs) cs
+    && allChildrenPossiblyEnclosed (MemForest cs) && allChildrenPossiblyEnclosed (MemForest mem)
 
+  geq = checkGeq c pred
 
+  possiblyEnclosed rs (MemTree cs _) = all (\r  -> all (\cc  -> r == cc || not (necessarilySeparate c pred r cc)) cs) rs
+  possiblySeparate rs0 rs1           = all (\r0 -> all (\r1 -> r0 /= r1 && not (necessarilyEnclosed c pred r0 r1) && not (necessarilyEnclosed c pred r1 r0)) rs1) rs0
 
-
-necessarily_separate :: Config -> Region -> Region -> Bool
+necessarilySeparate :: Config -> Pred -> Region -> Region -> Bool
 -- [rsp - o0, s0] \bowtie [rsp - o1, s1] <--> o0 - s0 >= o1 \/ o1 - s1 >= o0
-necessarily_separate _ (E_app (Op SUB) [E_var "RSP0" _, E_val offset0 _ _], s0) (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], s1) =
+necessarilySeparate _ _ (E_app (Op SUB) [E_var "RSP0" _, E_val offset0 _ _], V_val s0 _ _) (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], V_val s1 _ _) =
   if s0 > fromIntegral offset0 || s1 > fromIntegral offset1 then
     error "hallo"
   else
     fromIntegral offset0 - s0 >= fromIntegral offset1 || fromIntegral offset1 - s1 >= fromIntegral offset0
 -- [rsp + o0, s0] \bowtie [rsp + o1, s1] <--> o0 + s0 <= o1 \/ o1 + s1 <= o0
-necessarily_separate c r0@(E_app (Op ADD) [e0, E_val offset0 _ _], s0) r1@(E_app (Op ADD) [e1, E_val offset1 _ _], s1) =
+necessarilySeparate c pred r0@(E_app (Op ADD) [e0, E_val offset0 _ _], V_val s0 _ _) r1@(E_app (Op ADD) [e1, E_val offset1 _ _], V_val s1 _ _) =
   if e0 == e1 then
     fromIntegral offset0 + s0 <= fromIntegral offset1 || fromIntegral offset1 + s1 <= fromIntegral offset0
   else case (e0,e1) of
     (E_var v0 _, E_var v1 _) -> if same_part e0 e1 then False else True
-    _ -> necessarily_separate' c r0 r1
+    _ -> necessarilySeparate' c pred r0 r1
 -- [rsp,s0] \bowtie [rsp - o1, s1] <--> True
-necessarily_separate _ (E_var "RSP0" _, s0) (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], s1) =
+necessarilySeparate _ _ (E_var "RSP0" _, V_val s0 _ _) (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], V_val s1 _ _) =
   if  s1 > fromIntegral offset1 then
     error "hallo"
   else
     True
-necessarily_separate _ (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], s1) (E_var "RSP0" _, s0) =
+necessarilySeparate _ _ (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], V_val s1 _ _) (E_var "RSP0" _, V_val s0 _ _) =
   if  s1 > fromIntegral offset1 then
     error "hallo"
   else
     True
 -- [rsp0 + o0,s0] \bowtie [rsp0 - o1,s1] <--> True
-necessarily_separate c (E_app (Op ADD) [E_var "RSP0" _, E_val offset0 _ _], s0) (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], s1) =
+necessarilySeparate c _ (E_app (Op ADD) [E_var "RSP0" _, E_val offset0 _ _], V_val s0 _ _) (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], V_val s1 _ _) =
   if  s1 > fromIntegral offset1 then
     error "hallo"
   else
     True
-necessarily_separate c (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], s1) (E_app (Op ADD) [E_var "RSP0" _, E_val offset0 _ _], s0) =
+necessarilySeparate c _ (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], V_val s1 _ _) (E_app (Op ADD) [E_var "RSP0" _, E_val offset0 _ _], V_val s0 _ _) =
   if  s1 > fromIntegral offset1 then
     error "hallo"
   else
     True
 -- [imm0,s0] \bowtie [imm1,s1] <--> imm0 + s0 <= imm1 || imm1 + s1 <= imm0
-necessarily_separate _ (E_val imm0 _ _,s0) (E_val imm1 _ _,s1) = imm0 + fromIntegral s0 <= imm1 || imm1 + fromIntegral s1 <= imm0
+necessarilySeparate _ _ (E_val imm0 _ _, V_val s0 _ _) (E_val imm1 _ _, V_val s1 _ _) =
+  imm0 + fromIntegral s0 <= imm1 || imm1 + fromIntegral s1 <= imm0
 -- [rsp,s0] \bowtie [rsp + o1, s1] <--> s0 <= o1
-necessarily_separate c r0@(e0, s0) r1@(E_app (Op ADD) [e1, E_val offset1 _ _], s1) =
+necessarilySeparate c pred r0@(e0, V_val s0 _ _) r1@(E_app (Op ADD) [e1, E_val offset1 _ _], V_val s1 _ _) =
   if e0 == e1 then
     s0 <= fromIntegral offset1
   else case (e0,e1) of
     (E_var v0 _, E_var v1 _) -> if same_part e0 e1 then False else True
-    _ -> necessarily_separate' c r0 r1
-necessarily_separate c r1@(E_app (Op ADD) [e1, E_val offset1 _ _], s1) r0@(e0, s0) =
+    _ -> necessarilySeparate' c pred r0 r1
+necessarilySeparate c pred r1@(E_app (Op ADD) [e1, E_val offset1 _ _], V_val s1 _ _) r0@(e0, V_val s0 _ _) =
   if e0 == e1 then
     s0 <= fromIntegral offset1
   else case (e0,e1) of
     (E_var v0 _, E_var v1 _) -> if same_part e0 e1 then False else True
-    _ -> necessarily_separate' c r0 r1
-necessarily_separate c r0 r1 = necessarily_separate' c r0 r1
+    _ -> necessarilySeparate' c pred r0 r1
+necessarilySeparate c pred r0 r1 = necessarilySeparate' c pred r0 r1
+
 -- remainder
-necessarily_separate' c (e0,s0) (e1,s1) = if same_part e0 e1 then check_sep c e0 s0 e1 s1 == Just True else True
+necessarilySeparate' :: Config -> Pred -> Region -> Region -> Bool
+necessarilySeparate' c pred (e0, s0) (e1, s1) = if same_part e0 e1 then
+  checkSep c pred e0 s0 e1 s1 == Just True
+else
+  True
 
 same_part e0 e1 = (is_stackframe e0 && is_stackframe e1) || ( is_global e0 && is_global e1) || (is_tls e0 && is_tls e1) || (is_heap e0 && is_heap e1)
 
@@ -297,62 +346,57 @@ same_part e0 e1 = (is_stackframe e0 && is_stackframe e1) || ( is_global e0 && is
 necessarily_aliasing :: Region -> Region -> Bool
 necessarily_aliasing = (==)
 
-necessarily_enclosed :: Config -> Region -> Region -> Bool
--- [rsp - o0, s0] \sqsubset [rsp - o1, s1] <--> o1 >= o0 /\ o1 - s0 >=  o1 - s1
-necessarily_enclosed _ (E_app (Op SUB) [E_var "RSP0" _, E_val offset0 _ _], s0) (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], s1) =
+-- This function makes the assumption that, for ADD/SUB, the offsets are
+-- positive. That already has caused problems in some cases, but those cases are
+-- to some degree handled by some simp rules. Shouldn't have to worry about zero
+-- offsets as those should be simped away too, though.
+necessarilyEnclosed :: Config -> Pred -> Region -> Region -> Bool
+-- [rsp - o0, s0] \sqsubset [rsp - o1, s1] <--> o1 >= o0 /\ o1 - s0 >= o1 - s1
+necessarilyEnclosed _ _ (E_app (Op SUB) [E_var "RSP0" _, E_val offset0 _ _], V_val s0 _ _) (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], V_val s1 _ _) =
   if s0 > fromIntegral offset0 || s1 > fromIntegral offset1 then
     error "hallo"
   else
     (fromIntegral offset1 :: Int) >= fromIntegral offset0 && fromIntegral offset0 - s0 >= fromIntegral offset1 - s1
 -- [rsp + o0, s0] \sqsubset [rsp + o1, s1] <--> (o0 >= o1 && o0 + s0 < o1 + s1) || other way around
-necessarily_enclosed c r0@(E_app (Op ADD) [e0, E_val offset0 _ _], s0) r1@(E_app (Op ADD) [e1, E_val offset1 _ _], s1) =
+necessarilyEnclosed c pred r0@(E_app (Op ADD) [e0, E_val offset0 _ _], V_val s0 _ _) r1@(E_app (Op ADD) [e1, E_val offset1 _ _], V_val s1 _ _) =
   if e0 == e1 then
     (offset0 >= offset1 && offset0 + fromIntegral s0 <= offset1 + fromIntegral s1)
       ||
     (offset1 >= offset0 && offset1 + fromIntegral s1 <= offset0 + fromIntegral s0)
   else case (e0,e1) of
     (E_var v0 _, E_var v1 _) -> False -- if same_part e0 e1 then s0 <= s1 else False
-    _ -> necessarily_enclosed' c r0 r1
+    _ -> necessarilyEnclosed' c pred r0 r1
 -- [rsp,s0] \sqsubset [rsp - o1, s1] <--> False
-necessarily_enclosed _ (E_var "RSP0" _, s0) (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], s1) =
+necessarilyEnclosed _ _ (E_var "RSP0" _, V_val s0 _ _) (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], V_val s1 _ _) =
   if s1 > fromIntegral offset1 then
     error "hallo"
   else
     False
-necessarily_enclosed _ (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], s1) (E_var "RSP0" _, s0) =
+necessarilyEnclosed _ _ (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], V_val s1 _ _) (E_var "RSP0" _, V_val s0 _ _) =
   if s1 > fromIntegral offset1 then
     error "hallo"
   else
     False
 -- [rsp0 + o0,s0] \sqsubset [rsp0 - o1,s1] <--> False
-necessarily_enclosed c (E_app (Op ADD) [E_var "RSP0" _, E_val offset0 _ _], s0) (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], s1) =
+necessarilyEnclosed _ _ (E_app (Op ADD) [E_var "RSP0" _, E_val offset0 _ _], V_val s0 _ _) (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], V_val s1 _ _) =
   if  s1 > fromIntegral offset1 then
     error "hallo"
   else
     False
-necessarily_enclosed c (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], s1) (E_app (Op ADD) [E_var "RSP0" _, E_val offset0 _ _], s0) =
+necessarilyEnclosed _ _ (E_app (Op SUB) [E_var "RSP0" _, E_val offset1 _ _], V_val s1 _ _) (E_app (Op ADD) [E_var "RSP0" _, E_val offset0 _ _], V_val s0 _ _) =
   if  s1 > fromIntegral offset1 then
     error "hallo"
   else
     False
 -- [imm0,s0] \sqsubset [imm1,s1] <--> (imm0 <= imm1 && imm1 < imm0 + s0) || (imm1 <= imm0 && imm0 < imm1 + s1)
-necessarily_enclosed _ (E_val imm0 _ _,s0) (E_val imm1 _ _,s1) = (imm0 <= imm1 && imm1 < imm0 + fromIntegral s0) || (imm1 <= imm0 && imm0 < imm1 + fromIntegral s1)
--- [rsp,s0] \sqsubset [rsp + o1, s1] <--> False
-necessarily_enclosed c r0@(e0, s0) r1@(E_app (Op ADD) [e1, E_val offset1 _ _], s1) =
-  if e0 == e1 then
-    False
-  else case (e0,e1) of
-    (E_var v0 _, E_var v1 _) -> False -- if same_part e0 e1 then s0 <= s1 else False
-    _ -> necessarily_enclosed' c r0 r1
-necessarily_enclosed c r1@(E_app (Op ADD) [e1, E_val offset1 _ _], s1) r0@(e0, s0) =
-  if e0 == e1 then
-    False
-   else case (e0,e1) of
-    (E_var v0 _, E_var v1 _) -> False -- if same_part e0 e1 then s1 <= s0 else False
-    _ -> necessarily_enclosed' c r1 r0
-necessarily_enclosed c r0 r1 = necessarily_enclosed' c r0 r1
+necessarilyEnclosed _ _ (E_val imm0 _ _, V_val s0 _ _) (E_val imm1 _ _, V_val s1 _ _) =
+  (imm0 <= imm1 && imm1 < imm0 + fromIntegral s0) || (imm1 <= imm0 && imm0 < imm1 + fromIntegral s1)
+necessarilyEnclosed c pred r0 r1 = necessarilyEnclosed' c pred r0 r1
 
-necessarily_enclosed' c (e0,s0) (e1,s1) = if same_part e0 e1 then check_enc c e0 s0 e1 s1 == Just True else False
+necessarilyEnclosed' c pred (e0, s0) (e1, s1) = if same_part e0 e1 then
+  checkEnc c pred e0 s0 e1 s1 == Just True
+else
+  False
 
 is_heap :: Expr -> Bool
 is_heap e = not (is_stackframe e) && not (is_global e) && not (is_tls e)
@@ -370,5 +414,7 @@ is_stackframe (E_var "RSP0" _)  = True
 is_stackframe (E_app _ es) = any is_stackframe es
 is_stackframe _            = False
 
-
-
+-- The naming here isn't really correct as this doesn't map to another Mem
+mapRegions :: (Region -> a) -> Mem -> [a]
+mapRegions f (MemForest mts) = concatMap mapRegions' mts where
+  mapRegions' (MemTree als cs) = map f als ++ mapRegions f cs

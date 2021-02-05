@@ -1,0 +1,128 @@
+Number of assembly instructions     = 94
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 94
+Number of edges: 100
+
+40670 (True): 72c8c, 72cbc, 72cea
+72c30 (False): 0
+
+40670: PUSH Reg RBP 1
+40671: PUSH Reg RBX 1
+40672: MOV Reg RBP, Reg RDI 3
+40675: MOV Reg RDI, Reg RSI 3
+40678: MOV Reg RBX, Reg RSI 3
+4067b: SUB Reg RSP, Immediate 8 4
+4067f: CALL strlen (external)
+40684: ADD Reg RSP, Immediate 8 4
+40688: MOV Reg RSI, Reg RBX 3
+4068b: MOV Reg RDI, Reg RBP 3
+4068e: POP Reg RBX 1
+4068f: POP Reg RBP 1
+40690: MOV Reg RDX, Reg RAX 3
+40693: JMP yajl_gen_string (jmp to external function)
+  |
+  `- 
+72c30: PUSH Reg R13 2
+72c32: PUSH Reg R12 2
+72c34: MOV Reg R12, Reg RDI 3
+72c37: PUSH Reg RBP 1
+72c38: PUSH Reg RBX 1
+72c39: SUB Reg RSP, Immediate 8 4
+72c3d: MOV Reg RBP, Address (SizeDir 64 (FromReg RSI)) 3
+72c40: CALL yajl_gen_array_open (external)
+72c45: TEST Reg EAX, Reg EAX 2
+72c47: JNZ 72d40 (resolved immediate)
+  |
+  `- 72c4d,72d40
+72c4d: TEST Reg RBP, Reg RBP 3
+72c50: JZ 72d28 (resolved immediate)
+  |
+  `- 72c56,72d28
+72c56: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Immediate 4294967295 4
+72c5a: JZ 72d28 (resolved immediate)
+  |
+  `- 72c60,72d28
+72c60: LEA Reg R13, Address (AddrPlus (FromReg RIP) (AddrImm 2437721)) 7
+72c67: MOV Reg RDI, Reg R12 3
+72c6a: CALL yajl_gen_map_open (external)
+72c6f: TEST Reg EAX, Reg EAX 2
+72c71: JNZ 72d40 (resolved immediate)
+72c77: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Immediate 4294967295 4
+72c7b: JZ 72ca7 (resolved immediate)
+  |
+  `- 72c7d,72ca7
+72c7d: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 207760)) 7
+72c84: MOV Reg RDI, Reg R12 3
+72c87: CALL libxl__yajl_gen_asciiz (internal)
+  |
+  `- 72c8c,40670
+72c8c: TEST Reg EAX, Reg EAX 2
+72c8e: JNZ 72d40 (resolved immediate)
+72c94: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+72c97: MOV Reg RDI, Reg R12 3
+72c9a: CALL yajl_gen_integer (external)
+72c9f: TEST Reg EAX, Reg EAX 2
+72ca1: JNZ 72d40 (resolved immediate)
+72ca7: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 4))), Immediate 4294967295 4
+72cab: JZ 72cd3 (resolved immediate)
+  |
+  `- 72cad,72cd3
+72cad: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 207709)) 7
+72cb4: MOV Reg RDI, Reg R12 3
+72cb7: CALL libxl__yajl_gen_asciiz (internal)
+72cbc: TEST Reg EAX, Reg EAX 2
+72cbe: JNZ 72d40 (resolved immediate)
+72cc4: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 4))) 3
+72cc7: MOV Reg RDI, Reg R12 3
+72cca: CALL yajl_gen_integer (external)
+72ccf: TEST Reg EAX, Reg EAX 2
+72cd1: JNZ 72d40 (resolved immediate)
+72cd3: XOR Reg EBX, Reg EBX 2
+72cd5: CMP Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RBP) (FromReg RBX)) (AddrImm 8))), Immediate 0 6
+72cdb: JZ 72d04 (resolved immediate)
+  |
+  `- 72cdd,72d04
+72cdd: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg R13) (FromReg RBX)) (AddrImm 0))) 5
+72ce2: MOV Reg RDI, Reg R12 3
+72ce5: CALL libxl__yajl_gen_asciiz (internal)
+72cea: TEST Reg EAX, Reg EAX 2
+72cec: JNZ 72d40 (resolved immediate)
+72cee: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RBP) (FromReg RBX)) (AddrImm 8))) 5
+72cf3: MOV Reg EDX, Immediate 32 5
+72cf8: MOV Reg RDI, Reg R12 3
+72cfb: CALL yajl_gen_string (external)
+72d00: TEST Reg EAX, Reg EAX 2
+72d02: JNZ 72d40 (resolved immediate)
+72d04: ADD Reg RBX, Immediate 8 4
+72d08: CMP Reg RBX, Immediate 32 4
+72d0c: JNZ 72cd5 (resolved immediate)
+  |
+  `- 72cd5,72d0e
+72d0e: MOV Reg RDI, Reg R12 3
+72d11: CALL yajl_gen_map_close (external)
+72d16: TEST Reg EAX, Reg EAX 2
+72d18: JNZ 72d40 (resolved immediate)
+72d1a: ADD Reg RBP, Immediate 40 4
+72d1e: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Immediate 4294967295 4
+72d22: JNZ 72c67 (resolved immediate)
+  |
+  `- 72c67,72d28
+72d28: ADD Reg RSP, Immediate 8 4
+72d2c: MOV Reg RDI, Reg R12 3
+72d2f: POP Reg RBX 1
+72d30: POP Reg RBP 1
+72d31: POP Reg R12 2
+72d33: POP Reg R13 2
+72d35: JMP yajl_gen_array_close (jmp to external function)
+  |
+  `- 
+72d40: ADD Reg RSP, Immediate 8 4
+72d44: POP Reg RBX 1
+72d45: POP Reg RBP 1
+72d46: POP Reg R12 2
+72d48: POP Reg R13 2
+72d4a: RET  1
+  |
+  `- 

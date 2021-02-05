@@ -1,0 +1,26 @@
+Number of assembly instructions     = 11
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 11
+Number of edges: 10
+
+83030 (False): 0
+
+83030: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 4))) 3
+83033: TEST Reg EAX, Reg EAX 2
+83035: JNZ 8303b (resolved immediate)
+  |
+  `- 83037,8303b
+83037: MOV Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 4))), Reg ESI 3
+8303a: RET  1
+  |
+  `- 
+8303b: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 152206)) 7
+83042: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 146692)) 7
+83049: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 146715)) 7
+83050: SUB Reg RSP, Immediate 8 4
+83054: MOV Reg EDX, Immediate 2460 5
+83059: CALL __assert_fail (external)
+  |
+  `- 

@@ -26,3 +26,41 @@ Let `$(FILE)` denote a binary of interest. Assuming `stack install` has been run
 If you only ran `stack build`, then in the `construct-ssm` folder, this should work instead:
 
     stack exec construct-ssm -- $(FILE) [start_addr] > $(FILE).out 2> $(FILE).err
+
+# Using in a larger project
+
+Our recommended method for integrating usage of this tool with a makefile-based
+build process is to add the command as a make target with the final build target
+as a prerequisite. For example, if an implicit target is used to produce the
+program `example`, or an explicit target named `example`,
+you could add the following target to your top-level makefile:
+
+    analyze: example
+        time construct-ssm example > example.out 2> example.err
+
+This will run the tool on the program and place regular output in `example.out`,
+with warnings and error messages, as well as the time it took to execute the
+analysis, going in `example.err`.
+We recommend adding that target to the `.PHONY` list as well
+(https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html)
+in case a file with that name is also present in your project folder.
+
+If you wish that rule to be executed when you run `make`,
+put it first in your makefile.
+If you have multiple analyses that could be run in parallel,
+using a (phony) target like `analyses: analysis1 analysis2 analysis3`,
+without providing a recipe (commands) for the target, will allow executing those
+in parallel with a command like `make -j3 analyses`.
+
+This tool has been confirmed to work with binaries produced by both GCC and Clang,
+so feel free to use either of those compilers.
+Make uses your default compiler by default, but if you want to use another and
+are unsure of how to do so, you can specify the compiler in your makefiles using
+the variables `CC` (for C programs) and `CXX` (for C++ programs), e.g.
+
+    CC := clang
+    CXX := clang++
+
+You can instead specify those on the command line instead, e.g.
+
+    CC=clang CXX=clang++ make analyze

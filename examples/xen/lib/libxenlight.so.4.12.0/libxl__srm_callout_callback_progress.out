@@ -1,0 +1,76 @@
+Number of assembly instructions     = 48
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 48
+Number of edges: 46
+
+47ee0 (False): 0
+4e890 (True): 47efe
+
+47ee0: PUSH Reg R13 2
+47ee2: PUSH Reg R12 2
+47ee4: MOV Reg R13, Reg RCX 3
+47ee7: PUSH Reg RBP 1
+47ee8: PUSH Reg RBX 1
+47ee9: MOV Reg RBX, Reg RDI 3
+47eec: MOV Reg RBP, Reg RSI 3
+47eef: MOV Reg R12, Reg RDX 3
+47ef2: SUB Reg RSP, Immediate 8 4
+47ef6: MOV Reg RDI, Address (SizeDir 64 (FromReg R8)) 3
+47ef9: CALL libxl__ao_inprogress_gc (internal)
+  |
+  `- 4e890
+47efe: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 16))) 4
+47f02: MOV Reg R8, Reg R13 3
+47f05: MOV Reg RCX, Reg R12 3
+47f08: MOV Reg RDX, Reg RBP 3
+47f0b: MOV Reg RSI, Reg RBX 3
+47f0e: MOV Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
+47f11: ADD Reg RSP, Immediate 8 4
+47f15: POP Reg RBX 1
+47f16: POP Reg RBP 1
+47f17: POP Reg R12 2
+47f19: POP Reg R13 2
+47f1b: JMP xtl_progress (jmp to external function)
+  |
+  `- 
+4e890: SUB Reg RSP, Immediate 8 4
+4e894: TEST Reg RDI, Reg RDI 3
+4e897: JZ 4e8b0 (resolved immediate)
+  |
+  `- 4e899,4e8b0
+4e899: CMP Address (SizeDir 32 (FromReg RDI)), Immediate 2700791296 6
+4e89f: JNZ 4e8ee (resolved immediate)
+  |
+  `- 4e8a1,4e8ee
+4e8a1: TEST Address (SizeDir 8 (AddrPlus (FromReg RDI) (AddrImm 4))), Immediate 4 4
+4e8a5: JNZ 4e8cf (resolved immediate)
+  |
+  `- 4e8a7,4e8cf
+4e8a7: LEA Reg RAX, Address (AddrPlus (FromReg RDI) (AddrImm 64)) 4
+4e8ab: ADD Reg RSP, Immediate 8 4
+4e8af: RET  1
+  |
+  `- 
+4e8b0: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 326905)) 7
+4e8b7: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 323576)) 7
+4e8be: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 313941)) 7
+4e8c5: MOV Reg EDX, Immediate 1864 5
+4e8ca: CALL __assert_fail (external)
+  |
+  `- 
+4e8cf: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 326874)) 7
+4e8d6: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 323545)) 7
+4e8dd: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 324020)) 7
+4e8e4: MOV Reg EDX, Immediate 1866 5
+4e8e9: CALL __assert_fail (external)
+  |
+  `- 
+4e8ee: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 326843)) 7
+4e8f5: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 323514)) 7
+4e8fc: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 323943)) 7
+4e903: MOV Reg EDX, Immediate 1865 5
+4e908: CALL __assert_fail (external)
+  |
+  `- 

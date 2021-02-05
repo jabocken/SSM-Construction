@@ -1,0 +1,78 @@
+Number of assembly instructions     = 57
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 57
+Number of edges: 58
+
+6ee0 (False): 0
+
+6ee0: PUSH Reg R14 2
+6ee2: PUSH Reg R13 2
+6ee4: MOV Reg R13, Reg RDI 3
+6ee7: PUSH Reg R12 2
+6ee9: MOV Reg R12D, Reg EDX 3
+6eec: PUSH Reg RBP 1
+6eed: MOV Reg RBP, Reg RSI 3
+6ef0: PUSH Reg RBX 1
+6ef1: JMP 6efd (resolved immediate)
+  |
+  `- 6efd
+6ef8: CMP Reg EAX, Reg R12D 3
+6efb: JZ 6f48 (resolved immediate)
+  |
+  `- 6efd,6f48
+6efd: MOV Reg RDI, Reg RBP 3
+6f00: CALL xenevtchn_pending (external)
+6f05: TEST Reg EAX, Reg EAX 2
+6f07: MOV Reg EBX, Reg EAX 2
+6f09: JNS 6ef8 (resolved immediate)
+  |
+  `- 6ef8,6f0b
+6f0b: CALL __errno_location (external)
+6f10: MOV Reg R12D, Address (SizeDir 32 (FromReg RAX)) 3
+6f13: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 106902)) 7
+6f1a: MOV Reg RBP, Reg RAX 3
+6f1d: MOV Reg ECX, Reg EBX 2
+6f1f: MOV Reg ESI, Immediate 1 5
+6f24: MOV Reg RDI, Reg R13 3
+6f27: XOR Reg EAX, Reg EAX 2
+6f29: MOV Reg EBX, Immediate 4294967295 5
+6f2e: CALL xc_report_error (external)
+6f33: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R12D 4
+6f37: MOV Reg EAX, Reg EBX 2
+6f39: POP Reg RBX 1
+6f3a: POP Reg RBP 1
+6f3b: POP Reg R12 2
+6f3d: POP Reg R13 2
+6f3f: POP Reg R14 2
+6f41: RET  1
+  |
+  `- 
+6f48: MOV Reg ESI, Reg R12D 3
+6f4b: MOV Reg RDI, Reg RBP 3
+6f4e: XOR Reg EBX, Reg EBX 2
+6f50: CALL xenevtchn_unmask (external)
+6f55: TEST Reg EAX, Reg EAX 2
+6f57: JNS 6f37 (resolved immediate)
+  |
+  `- 6f37,6f59
+6f59: CALL __errno_location (external)
+6f5e: MOV Reg R14D, Address (SizeDir 32 (FromReg RAX)) 3
+6f61: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 106872)) 7
+6f68: MOV Reg RBP, Reg RAX 3
+6f6b: MOV Reg ECX, Reg R12D 3
+6f6e: MOV Reg RDI, Reg R13 3
+6f71: XOR Reg EAX, Reg EAX 2
+6f73: MOV Reg ESI, Immediate 1 5
+6f78: CALL xc_report_error (external)
+6f7d: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R14D 4
+6f81: MOV Reg EAX, Reg EBX 2
+6f83: POP Reg RBX 1
+6f84: POP Reg RBP 1
+6f85: POP Reg R12 2
+6f87: POP Reg R13 2
+6f89: POP Reg R14 2
+6f8b: RET  1
+  |
+  `- 

@@ -1,0 +1,42 @@
+Number of assembly instructions     = 22
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 22
+Number of edges: 20
+
+11d0 (False): 0
+1950 (True): 11de
+
+11d0: PUSH Reg RBP 1
+11d1: PUSH Reg RBX 1
+11d2: MOV Reg RBX, Reg RSI 3
+11d5: SUB Reg RSP, Immediate 8 4
+11d9: CALL osdep_xenforeignmemory_unmap_resource (internal)
+  |
+  `- 1950
+11de: MOV Reg RDI, Reg RBX 3
+11e1: MOV Reg EBP, Reg EAX 2
+11e3: CALL free (external)
+11e8: ADD Reg RSP, Immediate 8 4
+11ec: MOV Reg EAX, Reg EBP 2
+11ee: POP Reg RBX 1
+11ef: POP Reg RBP 1
+11f0: RET  1
+  |
+  `- 
+1950: TEST Reg RSI, Reg RSI 3
+1953: JZ 1970 (resolved immediate)
+  |
+  `- 1955,1970
+1955: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 24))) 4
+1959: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 32))) 4
+195d: SHL Reg RAX, Immediate 12 4
+1961: MOV Reg RSI, Reg RAX 3
+1964: JMP munmap (jmp to external function)
+  |
+  `- 
+1970: XOR Reg EAX, Reg EAX 2
+1972: RET  1
+  |
+  `- 

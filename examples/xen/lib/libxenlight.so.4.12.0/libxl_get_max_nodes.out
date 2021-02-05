@@ -1,0 +1,24 @@
+Number of assembly instructions     = 9
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 9
+Number of edges: 9
+
+3f220 (False): 0
+
+3f220: SUB Reg RSP, Immediate 8 4
+3f224: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
+3f228: CALL xc_get_max_nodes (external)
+3f22d: TEST Reg EAX, Reg EAX 2
+3f22f: JS 3f240 (resolved immediate)
+  |
+  `- 3f231,3f240
+3f231: ADD Reg RSP, Immediate 8 4
+3f235: RET  1
+  |
+  `- 
+3f240: MOV Reg EAX, Immediate 4294967293 5
+3f245: JMP 3f231 (resolved immediate)
+  |
+  `- 3f231

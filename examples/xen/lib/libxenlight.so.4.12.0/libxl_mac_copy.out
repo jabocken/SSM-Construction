@@ -1,0 +1,21 @@
+Number of assembly instructions     = 8
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 8
+Number of edges: 8
+
+22220 (False): 0
+
+22220: XOR Reg EAX, Reg EAX 2
+22222: NOP  6
+22228: MOVZX Reg ECX, Address (SizeDir 8 (AddrPlus (FromReg RDX) (FromReg RAX))) 4
+2222c: MOV Address (SizeDir 8 (AddrPlus (FromReg RSI) (FromReg RAX))), Reg CL 3
+2222f: ADD Reg RAX, Immediate 1 4
+22233: CMP Reg RAX, Immediate 6 4
+22237: JNZ 22228 (resolved immediate)
+  |
+  `- 22228,22239
+22239: REPZ RET  2
+  |
+  `- 

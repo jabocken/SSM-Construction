@@ -1,0 +1,47 @@
+Number of assembly instructions     = 30
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 30
+Number of edges: 30
+
+36bb0 (False): 0
+
+36bb0: SUB Reg RSP, Immediate 216 7
+36bb7: TEST Reg AL, Reg AL 2
+36bb9: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 64))), Reg R8 5
+36bbe: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 72))), Reg R9 5
+36bc3: JZ 36bfc (resolved immediate)
+  |
+  `- 36bc5,36bfc
+36bc5: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 80))), Reg XMM0 5
+36bca: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 96))), Reg XMM1 5
+36bcf: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 112))), Reg XMM2 5
+36bd4: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 128))), Reg XMM3 8
+36bdc: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 144))), Reg XMM4 8
+36be4: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 160))), Reg XMM5 8
+36bec: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 176))), Reg XMM6 8
+36bf4: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 192))), Reg XMM7 8
+36bfc: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+36c05: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
+36c0a: XOR Reg EAX, Reg EAX 2
+36c0c: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 224)) 8
+36c14: MOV Reg R8, Reg RSP 3
+36c17: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
+36c1c: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 32)) 5
+36c21: MOV Address (SizeDir 32 (FromReg RSP)), Immediate 32 7
+36c28: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))), Immediate 48 8
+36c30: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))), Reg RAX 5
+36c35: CALL libxl__xs_vprintf (external)
+36c3a: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
+36c3f: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+36c48: JNZ 36c52 (resolved immediate)
+  |
+  `- 36c4a,36c52
+36c4a: ADD Reg RSP, Immediate 216 7
+36c51: RET  1
+  |
+  `- 
+36c52: CALL __stack_chk_fail (external)
+  |
+  `- 

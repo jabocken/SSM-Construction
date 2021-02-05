@@ -50,9 +50,9 @@ Disassembly of section .text:
     106d:	and    rsp,0xfffffffffffffff0
     1071:	push   rax
     1072:	push   rsp
-    1073:	lea    r8,[rip+0x296]        # 1310 <__libc_csu_fini>
-    107a:	lea    rcx,[rip+0x21f]        # 12a0 <__libc_csu_init>
-    1081:	lea    rdi,[rip+0x1ee]        # 1276 <main>
+    1073:	lea    r8,[rip+0x256]        # 12d0 <__libc_csu_fini>
+    107a:	lea    rcx,[rip+0x1df]        # 1260 <__libc_csu_init>
+    1081:	lea    rdi,[rip+0x1b4]        # 123c <main>
     1088:	call   QWORD PTR [rip+0x2f52]        # 3fe0 <__libc_start_main@GLIBC_2.2.5>
     108e:	hlt    
     108f:	nop
@@ -114,145 +114,126 @@ Disassembly of section .text:
     1149:	endbr64 
     114d:	push   rbp
     114e:	mov    rbp,rsp
-    1151:	push   rbx
-    1152:	sub    rsp,0x38
-    1156:	mov    DWORD PTR [rbp-0x34],edi
-    1159:	mov    rax,QWORD PTR fs:0x28
-    1162:	mov    QWORD PTR [rbp-0x18],rax
-    1166:	xor    eax,eax
-    1168:	mov    rax,rsp
-    116b:	mov    rsi,rax
-    116e:	mov    DWORD PTR [rbp-0x2c],0x1
-    1175:	mov    eax,DWORD PTR [rbp-0x34]
-    1178:	mov    edx,eax
-    117a:	sub    rdx,0x1
-    117e:	mov    QWORD PTR [rbp-0x28],rdx
-    1182:	mov    edx,eax
-    1184:	mov    r8,rdx
-    1187:	mov    r9d,0x0
-    118d:	mov    edx,eax
-    118f:	mov    rcx,rdx
-    1192:	mov    ebx,0x0
-    1197:	mov    eax,eax
-    1199:	lea    rdx,[rax*4+0x0]
-    11a1:	mov    eax,0x10
-    11a6:	sub    rax,0x1
-    11aa:	add    rax,rdx
-    11ad:	mov    edi,0x10
-    11b2:	mov    edx,0x0
-    11b7:	div    rdi
-    11ba:	imul   rax,rax,0x10
-    11be:	mov    rdx,rax
-    11c1:	and    rdx,0xfffffffffffff000
-    11c8:	mov    rbx,rsp
-    11cb:	sub    rbx,rdx
-    11ce:	mov    rdx,rbx
-    11d1:	cmp    rsp,rdx
-    11d4:	je     11e8 <local_array+0x9f>
-    11d6:	sub    rsp,0x1000
-    11dd:	or     QWORD PTR [rsp+0xff8],0x0
-    11e6:	jmp    11d1 <local_array+0x88>
-    11e8:	mov    rdx,rax
-    11eb:	and    edx,0xfff
-    11f1:	sub    rsp,rdx
-    11f4:	mov    rdx,rax
-    11f7:	and    edx,0xfff
-    11fd:	test   rdx,rdx
-    1200:	je     1212 <local_array+0xc9>
-    1202:	and    eax,0xfff
-    1207:	sub    rax,0x8
-    120b:	add    rax,rsp
-    120e:	or     QWORD PTR [rax],0x0
-    1212:	mov    rax,rsp
-    1215:	add    rax,0x3
-    1219:	shr    rax,0x2
-    121d:	shl    rax,0x2
-    1221:	mov    QWORD PTR [rbp-0x20],rax
-    1225:	mov    DWORD PTR [rbp-0x30],0x0
-    122c:	jmp    1242 <local_array+0xf9>
-    122e:	shl    DWORD PTR [rbp-0x2c],1
-    1231:	mov    rax,QWORD PTR [rbp-0x20]
-    1235:	mov    edx,DWORD PTR [rbp-0x30]
-    1238:	mov    ecx,DWORD PTR [rbp-0x2c]
-    123b:	mov    DWORD PTR [rax+rdx*4],ecx
-    123e:	add    DWORD PTR [rbp-0x30],0x1
-    1242:	mov    eax,DWORD PTR [rbp-0x30]
-    1245:	cmp    eax,DWORD PTR [rbp-0x34]
-    1248:	jb     122e <local_array+0xe5>
-    124a:	mov    eax,DWORD PTR [rbp-0x34]
-    124d:	lea    edx,[rax-0x1]
-    1250:	mov    rax,QWORD PTR [rbp-0x20]
-    1254:	mov    edx,edx
-    1256:	mov    eax,DWORD PTR [rax+rdx*4]
-    1259:	mov    rsp,rsi
-    125c:	mov    rdi,QWORD PTR [rbp-0x18]
-    1260:	xor    rdi,QWORD PTR fs:0x28
-    1269:	je     1270 <local_array+0x127>
-    126b:	call   1050 <__stack_chk_fail@plt>
-    1270:	mov    rbx,QWORD PTR [rbp-0x8]
-    1274:	leave  
-    1275:	ret    
+    1151:	sub    rsp,0x30
+    1155:	mov    DWORD PTR [rbp-0x24],edi
+    1158:	mov    rax,QWORD PTR fs:0x28
+    1161:	mov    QWORD PTR [rbp-0x8],rax
+    1165:	xor    eax,eax
+    1167:	mov    rax,rsp
+    116a:	mov    rcx,rax
+    116d:	mov    eax,DWORD PTR [rbp-0x24]
+    1170:	mov    edx,eax
+    1172:	sub    rdx,0x1
+    1176:	mov    QWORD PTR [rbp-0x18],rdx
+    117a:	mov    edx,eax
+    117c:	mov    r10,rdx
+    117f:	mov    r11d,0x0
+    1185:	mov    edx,eax
+    1187:	mov    r8,rdx
+    118a:	mov    r9d,0x0
+    1190:	mov    eax,eax
+    1192:	lea    rdx,[rax*4+0x0]
+    119a:	mov    eax,0x10
+    119f:	sub    rax,0x1
+    11a3:	add    rax,rdx
+    11a6:	mov    edi,0x10
+    11ab:	mov    edx,0x0
+    11b0:	div    rdi
+    11b3:	imul   rax,rax,0x10
+    11b7:	mov    rdx,rax
+    11ba:	and    rdx,0xfffffffffffff000
+    11c1:	mov    rsi,rsp
+    11c4:	sub    rsi,rdx
+    11c7:	mov    rdx,rsi
+    11ca:	cmp    rsp,rdx
+    11cd:	je     11e1 <local_array+0x98>
+    11cf:	sub    rsp,0x1000
+    11d6:	or     QWORD PTR [rsp+0xff8],0x0
+    11df:	jmp    11ca <local_array+0x81>
+    11e1:	mov    rdx,rax
+    11e4:	and    edx,0xfff
+    11ea:	sub    rsp,rdx
+    11ed:	mov    rdx,rax
+    11f0:	and    edx,0xfff
+    11f6:	test   rdx,rdx
+    11f9:	je     120b <local_array+0xc2>
+    11fb:	and    eax,0xfff
+    1200:	sub    rax,0x8
+    1204:	add    rax,rsp
+    1207:	or     QWORD PTR [rax],0x0
+    120b:	mov    rax,rsp
+    120e:	add    rax,0x3
+    1212:	shr    rax,0x2
+    1216:	shl    rax,0x2
+    121a:	mov    QWORD PTR [rbp-0x10],rax
+    121e:	mov    eax,0x1
+    1223:	mov    rsp,rcx
+    1226:	mov    rdi,QWORD PTR [rbp-0x8]
+    122a:	xor    rdi,QWORD PTR fs:0x28
+    1233:	je     123a <local_array+0xf1>
+    1235:	call   1050 <__stack_chk_fail@plt>
+    123a:	leave  
+    123b:	ret    
 
-0000000000001276 <main>:
-    1276:	endbr64 
-    127a:	push   rbp
-    127b:	mov    rbp,rsp
-    127e:	sub    rsp,0x10
-    1282:	mov    DWORD PTR [rbp-0x4],edi
-    1285:	mov    QWORD PTR [rbp-0x10],rsi
-    1289:	mov    eax,DWORD PTR [rbp-0x4]
-    128c:	mov    edi,eax
-    128e:	call   1149 <local_array>
-    1293:	leave  
-    1294:	ret    
-    1295:	nop    WORD PTR cs:[rax+rax*1+0x0]
-    129f:	nop
+000000000000123c <main>:
+    123c:	endbr64 
+    1240:	push   rbp
+    1241:	mov    rbp,rsp
+    1244:	sub    rsp,0x10
+    1248:	mov    DWORD PTR [rbp-0x4],edi
+    124b:	mov    QWORD PTR [rbp-0x10],rsi
+    124f:	mov    eax,DWORD PTR [rbp-0x4]
+    1252:	mov    edi,eax
+    1254:	call   1149 <local_array>
+    1259:	leave  
+    125a:	ret    
+    125b:	nop    DWORD PTR [rax+rax*1+0x0]
 
-00000000000012a0 <__libc_csu_init>:
-    12a0:	endbr64 
-    12a4:	push   r15
-    12a6:	lea    r15,[rip+0x2b0b]        # 3db8 <__frame_dummy_init_array_entry>
-    12ad:	push   r14
-    12af:	mov    r14,rdx
-    12b2:	push   r13
-    12b4:	mov    r13,rsi
-    12b7:	push   r12
-    12b9:	mov    r12d,edi
-    12bc:	push   rbp
-    12bd:	lea    rbp,[rip+0x2afc]        # 3dc0 <__do_global_dtors_aux_fini_array_entry>
-    12c4:	push   rbx
-    12c5:	sub    rbp,r15
-    12c8:	sub    rsp,0x8
-    12cc:	call   1000 <_init>
-    12d1:	sar    rbp,0x3
-    12d5:	je     12f6 <__libc_csu_init+0x56>
-    12d7:	xor    ebx,ebx
-    12d9:	nop    DWORD PTR [rax+0x0]
-    12e0:	mov    rdx,r14
-    12e3:	mov    rsi,r13
-    12e6:	mov    edi,r12d
-    12e9:	call   QWORD PTR [r15+rbx*8]
-    12ed:	add    rbx,0x1
-    12f1:	cmp    rbp,rbx
-    12f4:	jne    12e0 <__libc_csu_init+0x40>
-    12f6:	add    rsp,0x8
-    12fa:	pop    rbx
-    12fb:	pop    rbp
-    12fc:	pop    r12
-    12fe:	pop    r13
-    1300:	pop    r14
-    1302:	pop    r15
-    1304:	ret    
-    1305:	data16 nop WORD PTR cs:[rax+rax*1+0x0]
+0000000000001260 <__libc_csu_init>:
+    1260:	endbr64 
+    1264:	push   r15
+    1266:	lea    r15,[rip+0x2b4b]        # 3db8 <__frame_dummy_init_array_entry>
+    126d:	push   r14
+    126f:	mov    r14,rdx
+    1272:	push   r13
+    1274:	mov    r13,rsi
+    1277:	push   r12
+    1279:	mov    r12d,edi
+    127c:	push   rbp
+    127d:	lea    rbp,[rip+0x2b3c]        # 3dc0 <__do_global_dtors_aux_fini_array_entry>
+    1284:	push   rbx
+    1285:	sub    rbp,r15
+    1288:	sub    rsp,0x8
+    128c:	call   1000 <_init>
+    1291:	sar    rbp,0x3
+    1295:	je     12b6 <__libc_csu_init+0x56>
+    1297:	xor    ebx,ebx
+    1299:	nop    DWORD PTR [rax+0x0]
+    12a0:	mov    rdx,r14
+    12a3:	mov    rsi,r13
+    12a6:	mov    edi,r12d
+    12a9:	call   QWORD PTR [r15+rbx*8]
+    12ad:	add    rbx,0x1
+    12b1:	cmp    rbp,rbx
+    12b4:	jne    12a0 <__libc_csu_init+0x40>
+    12b6:	add    rsp,0x8
+    12ba:	pop    rbx
+    12bb:	pop    rbp
+    12bc:	pop    r12
+    12be:	pop    r13
+    12c0:	pop    r14
+    12c2:	pop    r15
+    12c4:	ret    
+    12c5:	data16 nop WORD PTR cs:[rax+rax*1+0x0]
 
-0000000000001310 <__libc_csu_fini>:
-    1310:	endbr64 
-    1314:	ret    
+00000000000012d0 <__libc_csu_fini>:
+    12d0:	endbr64 
+    12d4:	ret    
 
 Disassembly of section .fini:
 
-0000000000001318 <_fini>:
-    1318:	endbr64 
-    131c:	sub    rsp,0x8
-    1320:	add    rsp,0x8
-    1324:	ret    
+00000000000012d8 <_fini>:
+    12d8:	endbr64 
+    12dc:	sub    rsp,0x8
+    12e0:	add    rsp,0x8
+    12e4:	ret    

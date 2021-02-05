@@ -2,22 +2,21 @@
 module Predicates.Transforms (nd_step) where
 
 import Control.Exception.Base (assert)
-import Control.Monad.State.Strict hiding (State)
-import qualified Control.Monad.State.Strict as SL (State)
+import Control.Monad.State.Lazy hiding (State)
+import qualified Control.Monad.State.Lazy as SL (State)
 import qualified Data.Set as S
 import qualified Data.Map as M--TEMP
-import Predicates.Mem --TEMP
 import Data.Word (Word64)
-import Data.Maybe(mapMaybe)
-import Data.List (intercalate)
+import Data.Maybe (isJust, mapMaybe)
+import Data.List (find, intercalate)
 import System.IO.Unsafe -- TODO
 import System.IO (hPutStrLn, stderr)
-import Debug.Trace
 
 import Predicates.Base
 import Predicates.DataAccess
 import Predicates.Flags
-import Predicates.Mem (insert_region)
+import Predicates.Mem hiding (insert_region)
+import Predicates.DynamicMem
 import Predicates.State
 import Predicates.FunctionCallInfo
 import X86.Datastructures
@@ -51,41 +50,42 @@ actionDstSrc ctxt dst src = actionDstSrcSize ctxt dst src $ getOpSize dst
 -- given an instruction, update the memory model
 -- may produce multiple next symbolic states, in case multiple next memory models are produced.
 insertRegions :: Instr -> State -> S.Set State
-insertRegions i ss = add_regions_to_ss (regions_of_instr i ss) ss
- where
+insertRegions i ss = add_regions_to_ss (regionsOfInstr i ss) ss where
   add_regions_to_ss []     ss = S.singleton ss
-  add_regions_to_ss (r:rs) ss = S.unions $ S.map (add_regions_to_ss rs) $ add_region_to_ss r ss
+  add_regions_to_ss (r:rs) ss = S.unions $ S.map (add_regions_to_ss rs) $ insertRegionDyn r ss
 
-  add_region_to_ss r ss = S.map (mk_sstate ss) $ insert_region (config ss) r mem
-  mem = memoryModel ss
-  mk_sstate ss m = ss {memoryModel = m}
-
--- given an instruction, return the set of memory regions written to / read from
+-- given an instruction, return the set of memory regions written to/read from
 -- PUSH: [rsp - s,s] with s the operand size
-regions_of_instr (Instr _ _ PUSH (Just op) _ _ _ _) state = [region] where
-  evaller = getValueExpr $ E_app (Op SUB) [E_reg RSP, E_val size' 64 False]
+regionsOfInstr (Instr _ _ PUSH (Just op) _ _ _ _) state = [region] where
+  size = V_val (fromIntegral $ getOpSize op) 64 False
+  evaller = getValueExpr $ E_app (Op SUB) [E_reg RSP, toExpr size]
   rspValue = evalState evaller state
-  size = getOpSize op
-  size' = fromIntegral size
   region = (toExpr $ rspValue, size)
 -- POP: [rsp,s] with s the operand size
-regions_of_instr (Instr _ _ POP (Just op) _ _ _ _) state = [region] where
+regionsOfInstr (Instr _ _ POP (Just op) _ _ _ _) state = [region] where
   rspValue = evalState (getRegValue RSP) state
   size = fromIntegral $ getOpSize op
-  region = (toExpr $ rspValue, size)
+  region = (toExpr $ rspValue, V_val size 64 False)
 -- CALL: [rsp-8,8]
-regions_of_instr (Instr _ _ CALL _ _ _ _ _) state = [region] where
-  evaller = getValueExpr $ E_app (Op SUB) [E_reg RSP, E_val 8 64 False]
+regionsOfInstr (Instr _ _ CALL _ _ _ _ _) state = [region] where
+  evaller = getValueExpr $ E_app (Op SUB) [E_reg RSP, size8]
   rspValue = evalState evaller state
-  region = (toExpr $ rspValue, 8)
+  region = (toExpr $ rspValue, vSize8)
 -- REMAINING
-regions_of_instr i@(Instr _ _ _ o1 o2 o3 _ _) state = map resolve_region $ concatMap operand_to_regions [o1,o2,o3]
- where
-  operand_to_regions (Just (Address (SizeDir s a))) = [(a, s `div` 8)]
-  operand_to_regions (Just (Address _))             = [] -- Memory address without size directive, can happen in case of a LEA
-  operand_to_regions _                              = []
+regionsOfInstr i@(Instr _ _ _ o1 o2 o3 _ _) state = mapper [o1, o2, o3] where
+  mapper = map resolveRegion . concatMap opToRegs
+  opToRegs (Just (Address (SizeDir s a))) = [(a, V_val (fromIntegral $ s `div` 8) 64 False)]
+  opToRegs (Just (Address _))             = [] -- Memory address without size directive, can happen in case of a LEA
+  opToRegs _                              = []
+  resolveRegion (a, s) = (evalState (addrToExpr a) state, s)
 
-  resolve_region (a, s) = (evalState (addrToExpr a) state, s)
+-- No dynamic handling for CAV submission
+dynamicHandling :: String -> State -> State
+-- dynamicHandling "malloc" = malloc
+-- dynamicHandling "calloc" = calloc
+-- dynamicHandling "realloc" = realloc
+-- dynamicHandling "free" = removeMalloc
+dynamicHandling _ = id
 
 jump :: Context -> Instr -> State -> S.Set State
 jump ctxt i state = unsafePerformIO $ do -- TODO make IO monad
@@ -93,29 +93,30 @@ jump ctxt i state = unsafePerformIO $ do -- TODO make IO monad
   case call_info of
     Nothing                  -> do_jump
     Just (_, _, False)       -> do_jump
-    Just (funcname, _, True) ->
+    Just (funcName, _, True) ->
     -- a jump which is actually a call to an external function
-      if funcname `elem` terminating_functions then
+      if funcName `elem` terminating_functions then
         return S.empty
       else do
         -- Assign bottom to all volatile state parts, such as flags and caller-saved registers
-        putStrLn $ "Jump to external function: " ++ funcname
-        let state' = foldr removeExprState state volatile_state_parts
+        putStrLn $ "Jump to external function: " ++ funcName
+        let state' = foldr removeExprState state volatileStateParts
+        let state'' = dynamicHandling funcName state'
         -- insert a return
-        return $ transform ctxt (Instr (i_addr i) Nothing RET Nothing Nothing Nothing Nothing 0) state'
+        return $ transform ctxt (Instr (i_addr i) Nothing RET Nothing Nothing Nothing Nothing 0) state''
  where
   do_jump = do
     ret <- resolve_jmp_operand1 ctxt i
     case ret of
       Just imm ->
       -- an immediate jump: go to the address
-        return $ S.singleton $ execState (overwriteRIP ctxt (Immediate imm)) state
+        return $ S.singleton $ execState (overwriteRIP ctxt $ Immediate imm) state
       Nothing -> do
       -- an indirect jump
         let Just op1 = i_op1 i
         nxt_addrs <- resolve_indirection ctxt op1 state
         putStrLn $ "Indirect jump to addresses: " ++ intercalate ", " (map showH $ S.toList nxt_addrs)
-        return $ S.map (\nxt_addr -> execState (overwriteRIP ctxt (Immediate nxt_addr)) state) nxt_addrs
+        return $ S.map (\nxt_addr -> execState (overwriteRIP ctxt $ Immediate nxt_addr) state) nxt_addrs
 
 conditionalJump :: Context -> Instr -> String -> State -> S.Set State
 conditionalJump ctxt i flag state = newStates where
@@ -167,16 +168,26 @@ setCond dst flag state = newStates where
 movzx :: Context -> Operand -> Operand -> Int -> State -> S.Set State
 movzx ctxt dst src size = execVals execer . stater where
   stater = runState $ opToValueExpr ctxt src $ getOpSize dst
-  execer value = overwriter dst $ V_app (TakeBits size 0) [value]
+  execer value = do
+    let taken = V_app (TakeBits size 0) [value]
+    let opSize = fromIntegral $ 8 * getOpSize dst
+    let opSize' = fromIntegral $ opSize
+    let extValue = V_app (F ZExtend) [taken, V_val opSize (- 1) False]
+    if size + 1 < opSize' then do
+      overwriter dst extValue
+    else if size + 1 == opSize' then do
+      overwriter dst taken
+    else
+      error "Dst cannot be smaller than truncated src"
 
 -- sign-extended moves
 movsx :: Context -> Operand -> Operand -> State -> S.Set State
 movsx ctxt dst src = execVals execer . runState valueExprGetter where
-  s1 = getOpSize dst
-  s2 = getOpSize src
-  valueExprGetter = opToValueExpr ctxt src s2
+  to = getOpSize dst
+  from = getOpSize src
+  valueExprGetter = opToValueExpr ctxt src from
   execer ve = do
-    let value = V_app (SExtend (8 * s2) (8 * s1)) [ve]
+    let value = V_app (SExtend (8 * from) (8 * to)) [ve]
     updater dst $ overwrite value
 
 -- sign-extended moves spanning over two registers
@@ -186,7 +197,7 @@ mov_dbl_sx ctxt dst src = execVals execer . runState valueExprGetter where
   s2 = getOpSize src
   valueExprGetter = opToValueExpr ctxt src s2
   execer ve = do
-    let value = V_app (TakeBits (8*s2) (16*s2-1)) [V_app (SExtend (8*s1) (16 * s2)) [ve]]
+    let value = V_app (TakeBits (16*s2-1) (8*s2)) [V_app (SExtend (8*s1) (16 * s2)) [ve]]
     updater dst $ overwrite value
 
 -- For LODS*; load string at address (R)SI into AL/AX/EAX/RAX based on size of arg
@@ -232,43 +243,46 @@ mul3 ctxt opcode r op2 op3 = actionDstSrcSize ctxt op2 op3 size mulM where
   size = getSize r
   mulM e2 e3 = do
     let mul = V_app (Op opcode) [e2, e3]
-    let h = size * 8
-    overwriteReg r $ V_app (TakeBits (h - 1) 0) [mul]
+    overwriteReg r mul
     -- everything but CF and OF are undefined; those two depend on if the upper
     -- part is 0 or not.
-    overwriteFlagsMUL mul h
+    overwriteFlagsMUL mul $ size * 8
 
 mul2 :: Context -> Opcode -> Register -> Operand -> State -> S.Set State
 mul2 ctxt opcode r op2 = actionDstSrc ctxt (Reg r) op2 mulM where
   mulM e1 e2 = do
     let mul = V_app (Op opcode) [e1, e2]
-    let h = getSize r * 8
-    overwriteReg r $ V_app (TakeBits (h - 1) 0) [mul]
-    overwriteFlagsMUL mul h
+    overwriteReg r mul
+    overwriteFlagsMUL mul $ 8 * getSize r
 
 mul1 :: Context -> Opcode -> Operand -> State -> S.Set State
 mul1 ctxt opcode op = execVals postGetter . runState opGetter where
   opGetter = opToValueExpr ctxt op size
   size = getOpSize op
-  (dst1, dst0) = case size of -- not using the braces isn't working
-      8 -> (RDX, RAX)
-      4 -> (EDX, EAX)
-      2 -> (DX, AX)
-      1 -> (AH, AL)
+  (dst1, dst0) = case size of
+    8 -> (RDX, RAX)
+    4 -> (EDX, EAX)
+    2 -> (DX, AX)
+    1 -> (AH, AL)
   l = size * 8
   postGetter e1 = do
     e0 <- getValueExpr $ E_reg dst0
-    let mul = V_app (Op opcode) [e0, e1]
+    let e0' = extend e0
+    let e1' = extend e1
+    let mul = V_app (Op opcode) [e0', e1']
     overwriteReg dst0 $ V_app (TakeBits (l - 1) 0) [mul]
     overwriteReg dst1 $ V_app (TakeBits (l * 2 - 1) l) [mul]
     overwriteFlagsMUL mul l
+  extend e = case opcode of
+    MUL -> V_app (F ZExtend) [e, V_val (fromIntegral $ l * 2) (- 1) False]
+    IMUL -> V_app (SExtend l $ l * 2) [e]
+    _ -> error $ show opcode ++ "is not (I)MUL"
 
 -- For (I)DIV
 idiv :: Context -> Opcode -> Operand -> State -> S.Set State
 idiv ctxt opcode op = execVals action . runState opGetter where
   opGetter = opToValueExpr ctxt op size
   size = getOpSize op
-  valSize = V_val (fromIntegral $ size * 8) (- 1) False
   modOp = case opcode of
     DIV -> F Mod
     IDIV -> F IMod
@@ -277,39 +291,49 @@ idiv ctxt opcode op = execVals action . runState opGetter where
     8 -> (RDX, RAX)
     4 -> (EDX, EAX)
     2 -> (DX, AX)
-    1 -> (DL, AL)
+    1 -> (AH, AL)
   action d = do
-    -- dividend
-    dividendH <- getValueExpr $ E_reg h
-    dividendL <- getValueExpr $ E_reg l
-    let appH = V_app (F ZExtend) [dividendH, valSize]
-    let appL = V_app (F ZExtend) [dividendL, valSize]
-    let dividend = V_app Concat [appH, appL]
-    -- divisor
-    let divisor = V_app (F ZExtend) [d, valSize]
+    dividendH <- getRegValue h
+    dividendL <- getRegValue l
+    let dividend = V_app Concat [dividendH, dividendL]
+    let divisor = extend d
     let value = V_app (Op opcode) [dividend, divisor]
     opExpr <- dstToExpr op
     overwriteReg l value
     overwriteReg h $ V_app modOp [dividend, divisor]
     -- (I)DIV sets all these flags to undefined
     overwriteFlagsWithValue [ZF, CF, OF, SF, PF] opExpr value
+  -- The x86 ISA has the divisor be half the size of the dividend but Z3 expects
+  -- them to be the same size.
+  dividendSize = size * 16
+  divisorSize = size * 8
+  ext = V_val (fromIntegral dividendSize) (- 1) False
+  extend e = case opcode of
+    DIV -> V_app (F ZExtend) [e, ext]
+    IDIV -> V_app (SExtend divisorSize dividendSize) [e]
+    _ -> error $ show opcode ++ "is not (I)DIV"
+
+-- Z3 requires the shift/rotate size match the operand to shift/rotate
+getShiftRotateVal :: Operand -> ValueExpr -> ValueExpr
+getShiftRotateVal dst srcVal = extended where
+  extended = V_app (F ZExtend) [masked, extendSize]
+  masked = V_app (TakeBits maskSize 0) [srcVal]
+  maskSize = if size == 8 then 5 else 4 -- an x86 restriction
+  extendSize = V_val (fromIntegral $ 8 * size) (- 1) False
+  size = getOpSize dst
 
 zShifter :: Context -> Opcode -> Operand -> Operand -> State -> S.Set State
-zShifter ctxt op dst src = actionDstSrc ctxt dst src $ \dstVal srcVal -> do
-  let size = getOpSize dst
+zShifter ctxt op dst src = actionDstSrc ctxt dst src $ \dstValue srcValue -> do
+  let shift = V_app (Op op) [dstValue, getShiftRotateVal dst srcValue]
   dstExpr <- dstToExpr dst
-  let shiftSize = V_val (fromIntegral $ 8 * size) (- 1) False
-  let shift = V_app (Op op) [V_app (F ZExtend) [dstVal, shiftSize], srcVal]
   overwriter dst shift
   overwriteFlagsWithValue [CF] dstExpr shift -- not sure if this works right
 
 -- TODO: handle carry flag option (RCR, RCL)
 rotate :: Context -> Opcode -> Operand -> Operand -> State -> S.Set State
 rotate ctxt op dst src = assert (op `elem` rotates) actioner where
-  size = getOpSize dst
-  actioner = actionDstSrcSize ctxt dst src size $ \dstValue srcValue -> do
-    let rotSize = V_val (fromIntegral $ 8 * size) (- 1) False
-    let rot = V_app (Op op) [V_app (F ZExtend) [dstValue, rotSize], srcValue]
+  actioner = actionDstSrc ctxt dst src $ \dstValue srcValue -> do
+    let rot = V_app (Op op) [dstValue, getShiftRotateVal dst srcValue]
     overwriter dst rot
 
 -- Push an operand onto the stack
@@ -317,13 +341,13 @@ push :: Context -> Operand -> State -> S.Set State
 push ctxt op = updater . runState exprGetter where
   exprGetter = do
     let size = getOpSize op
-    let size' = fromIntegral size
-    nspValue <- getValueExpr $ E_app (Op SUB) [E_reg RSP, E_val size' 64 False]
+    let size' = V_val (fromIntegral size) 64 False
+    nspValue <- getValueExpr $ E_app (Op SUB) [E_reg RSP, toExpr size']
     overwriteReg RSP nspValue
-    let region = (toExpr $ nspValue, size) -- using fully-evaluated expression
+    let region = (toExpr nspValue, size') -- using fully-evaluated expression
     values <- opToValueExpr ctxt op size
     return (region, values)
-  updater ((r, vs), s) = execVals (updaterMem r . overwrite) (vs, s)
+  updater ((r, vs), s) = execVals (overwriterMem r) (vs, s)
 
 -- Pop an operand from the stack
 pop :: Context -> Operand -> State -> S.Set State
@@ -335,7 +359,6 @@ pop ctxt op = execVals ow . runState valueExprGetter where
     nspValue <- getValueExpr $ E_app (Op ADD) [E_reg RSP, E_val size' 64 False]
     overwriter op stackValue
     overwriteReg RSP nspValue
-
 
 {-- BEGIN (Mode 1):
     Treat internall calls simply by unfolding them.
@@ -354,48 +377,77 @@ internalCall ctxt addr = pusher . runState (do
 
 
 {-- BEGIN (Mode 2):
-    Treat internall calls by cleaning up the state and adding the state after the call
-    as an unreachable one.
+    Treat internall calls by cleaning up the state and adding the state after
+    the call as an unreachable one.
     Less precise, but more scalable.
 --}
 internalCall_mode2 :: Context -> Word64 -> Bool -> State -> IO (S.Set State)
-internalCall_mode2 ctxt addr set_reachable state = do
-  is_called   <- fci_address_has_been_called addr
-  does_return <- fci_is_returning addr
-  let ret_addr = getRip state
+internalCall_mode2 ctxt addr setReachable state = do
+  let retAddr = getRIP state
+  isCalled   <- fci_address_has_been_called addr -- to remove later
+  doesReturn <- fci_is_returning addr -- to remove later
 
   if addr == 0 then
   -- This happens in case a function pointer is stored in the binary but not linked yet.
   -- Thus similar to an external call.
-    return $ S.fromList [state_after_call  { reachable = True } ]
-  else if is_called then do
-    putStrLn $ "Function starting at " ++ showH addr ++ " has been called before: returning = " ++ show does_return
-    fci_add_function_call addr ret_addr
-    return $ S.fromList [state_after_call  { reachable = set_reachable || does_return } ]
+    -- Still need to clear stuff on external call as we don't know what they do.
+    return $ S.singleton $ stateAfterCallRet {
+      isReachable = True,
+      isPostRet = True
+    }
+  else if isCalled then do -- to remove later
+    putStrLn $ "Function starting at " ++ showH addr
+      ++ " has been called before: returning = " ++ show doesReturn
+    fci_add_function_call addr retAddr
+    return $ S.fromList [stateAfterCallRet {
+      isReachable = setReachable || doesReturn
+    }]
   else do
-    putStrLn $ "Function starting at " ++ showH addr ++ " has not been called before. Start address = " ++ showH addr ++ ", return address = " ++ showH ret_addr
-    fci_add_function_call addr ret_addr
-    return $ S.fromList [state_called, state_after_call { reachable = set_reachable } ]
+    putStrLn $ "Function call with start address = " ++ showH addr
+      ++ " and return address = " ++ showH retAddr
+    -- Context-sensitive now but we still need to add an after-call state to do
+    -- proper merging/restoration of non-volatile state parts
+    -- (as those are removed from the on-call state)
+    fci_add_function_call addr retAddr
+    return $ S.fromList [stateCalled, stateAfterCallRet {
+      isReachable = setReachable,
+      isPostRet = True
+    }]
  where
   -- the state at the start of the function call
-  -- a clean predictae containg only relevant register values
+  -- a clean predicate containg only relevant register values and dynamic pointers
   -- the return address is set to the current RIP as a true immediate
-  state_called = State empty_config cleaned_mem M.empty (S.singleton (E_reg RSP)) 0 True $ cleaned_predicate
---  cleaned_mem = MemForest [MemTree [region] $ MemForest []]
-  cleaned_mem = MemForest [] -- Using empty region for submission; try the above line for a potentially more accurate version that excludes more binaries
-  region = (E_var "RSP0" (Known 64), 8)
-  cleaned_predicate = S.insert  (E_reg RIP := V_val addr 64 False)
-                      $ S.insert (E_deref (E_var "RSP0" (Known 64)) 8 := V_val (getRip state) 64 True)
-                      $ S.insert (E_reg RSP := V_var "RSP0" (Known 64))
-                      $ S.filter keep $ predicate state
-  -- IF and DF registers must be preserved for internal calls, it seems programs
-  -- rely on that behavior.
-  -- TODO: maybe get rid of IF? Don't remember if it's necessary here. DF definitely is, though.
-  keep clause = get_lhs clause `elem` map (Just . E_flg) [DF, IF]
+  stateCalled = State empty_config cleanedMem M.empty cleanedVars dynCount True False cleanedPredicate
+  dynCount = dynamicCount state
+  cleanedMem = cleanMemory $ memoryModel state
+  cleanedVars = S.insert (E_reg RSP) $ S.filter isDynamic $ setVars state
+  region = (rsp0, vSize8)
+  rspTree = MemTree [(rsp0, vSize8)] $ MemForest []
+  rip = V_val (getRIP state) 64 True
+  cleanedPredicate = S.insert (E_reg RIP := V_val addr 64 False)
+                   $ S.insert (E_deref rsp0 size8 := rip)
+                   $ S.insert (E_reg RSP := vRsp0)
+                   $ S.filter keep $ predicate state
+  keep clause = flags where
+--  keep clause = dynamicsLHS || dynamicsRHS || potentialFunPtr || flags where
+    -- Want to keep any AlwaysFalses
+    dynamicsLHS = maybe True hasDynamics $ get_lhs clause
+    dynamicsRHS = maybe True (hasDynamics . toExpr) $ get_rhs clause
+    -- Can't keep stack stuff, sadly, because we reset RSP0
+    potentialFunPtr = (not . isStack) clause && notRIP && potential
+    notRIP = maybe True (not . isRIP) $ get_lhs clause
+    isRIP (E_reg RIP) = True
+    isRIP _ = False
+    potential = maybe False isPotentialFunPtr $ get_rhs clause
+    -- IF and DF registers must be preserved for internal calls, it seems
+    -- programs rely on that behavior.
+    flags = get_lhs clause `elem` map (Just . E_flg) [DF, IF]
 
-  -- the state after return. All volatile parts are cleaned, and the state is set to non-reachable
-  -- It will be set to reachable only after clean termination of the function call
-  state_after_call = foldr removeExprState state volatile_state_parts_internal
+    isPotentialFunPtr (V_val addr 64 _) = inTextSection ctxt addr
+    isPotentialFunPtr _ = False
+
+  -- the state after return. All volatile parts are cleaned
+  stateAfterCallRet = foldr removeExprState state volatileStateParts
 
 -- END (Mode 2) }
 
@@ -406,29 +458,15 @@ call_main ctxt addr state = S.fromList [state_called]
   -- the state at the start of the function call
   -- a clean predicate containing only relevant register values
   -- the return address is set to 0 indicating that exploration can terminate
-  state_called = State empty_config cleaned_mem M.empty S.empty 0 True $ cleaned_predicate
---  cleaned_mem = MemForest [MemTree [region] $ MemForest []]
-  cleaned_mem = MemForest [] -- Using empty region for submission; try the above line for a potentially more accurate version that excludes more binaries
-  region = (E_var "RSP0" (Known 64), 8)
-  cleaned_predicate = S.fromList [ E_reg RIP := V_val addr 64 False,
-                                   E_deref (E_var "RSP0" (Known 64)) 8 := V_val 0 64 True]
-
+  -- This function assumes that main is only called at the start of a program.
+  state_called = State empty_config cleaned_mem M.empty S.empty 0 True False $ cleaned_predicate
+  cleaned_mem = MemForest [MemTree [region] $ MemForest []]
+  region = (rsp0, vSize8)
+  z = V_val 0 64 True
+  cleaned_predicate = S.fromList [E_reg RIP := V_val addr 64 False,
+                                  E_deref rsp0 size8 := z]
 
 {-- END TEMP --}
-
--- Return the set of state parts that can possibly be modified by a function call
-volatile_state_parts :: [Expr]
-volatile_state_parts = map E_flg flgs ++ map E_reg regs
- where
-  flgs = [ZF, CF, SF, OF, PF, IF, DF]
-  regs = [RAX, RCX, RDX, R8, R9, R10, R11]
-
--- Return the set of state parts that can possibly be modified by a function call
-volatile_state_parts_internal :: [Expr]
-volatile_state_parts_internal = map E_flg flgs ++ map E_reg regs
- where
-  flgs = [ZF, CF, SF, OF, PF]
-  regs = [RAX, RCX, RDX, R8, R9, R10, R11]
 
 -- resolve an indrection
 resolve_indirection :: Context -> Operand -> State -> IO (S.Set Word64)
@@ -447,12 +485,13 @@ resolve_indirection ctxt op state = do
       hPutStrLn stderr $ "Precondition = " ++ (show $ predicate state)
       return S.empty
 
--- Performs a return, possibly incrementing RSP by a set number of g
+-- Performs a return, incrementing RSP and jumping to an address (kind of)
+-- if the retaddr is a bare value; may also pop off additional bytes if specified
 ret :: Context -> Operand -> State -> S.Set State
 ret ctxt bytesOp st = execVals returner $ runState getRet st where
   returner (V_val retAddr _ _) = do
     overwriteRIP ctxt $ Address (SizeDir 64 (FromReg RSP))
-    newRSP <- getValueExpr $ E_app (Op ADD) [E_reg RSP, E_val 8 64 False]
+    newRSP <- getValueExpr $ E_app (Op ADD) [E_reg RSP, size8]
     bytesToPop <- opToValueExprSingular ctxt bytesOp 64
     overwriteReg RSP $ V_app (Op ADD) [newRSP, bytesToPop]
     overwriteReg RIP (V_var ("returned_@_0x" ++ showH retAddr) (Known 64))
@@ -765,7 +804,7 @@ transform ctxt (Instr _ _ DEC (Just op) _ _ _ _) state = newState where
 transform ctxt (Instr _ _ INC (Just op) _ _ _ _) state = newState where
   newState = S.singleton $ execState (do
     e <- dstToExpr op
-    let value = V_val 1 (getOpSize op) False
+    let value = V_val 1 (8 * getOpSize op) False
     updater op $ update ADD [value]
     overwriteFlags [ZF, OF, SF, PF] SUB e [value]) state
 -- CVTSD2SS
@@ -822,12 +861,24 @@ transform ctxt (Instr _ _ ROR (Just op1) (Just op2) _ _ _) state =
 transform ctxt i@(Instr _ _ CALL (Just op1) _ _ _ _) state = unsafePerformIO (do -- TODO make IO monad
   callInfo <- get_call_info ctxt i
   case callInfo of
-    Just ("__libc_start_main",_,_) -> do
+    Just ("__libc_start_main", _, _) -> do
     -- __libc_start_main: push the current rip (note that it has already been incremented) and set RIP to RDI
       let (V_val rdi _ _, state') = runState (getRegValue RDI) state -- runState just in case
       let ss                      = call_main ctxt rdi state'
       putStrLn $ "Executing __libc_start_main\nCalling main function at address: " ++ showH rdi ++ "\n"
       return ss
+    Just ("pthread_create", _, True) -> do
+      let (funAddr, state') = runState (getRegValue RDI) state
+      case funAddr of
+        V_val funAddr _ _ -> do
+          putStrLn $ "Function called in own thread at: " ++ showH funAddr ++ "\n"
+          return $ S.singleton $ execState (overwriteRIP ctxt $ Immediate funAddr) state'
+        nonImmFunAddr -> do
+          putStrLn $ "Call to pthread_create with non-immediate function address: "
+            ++ show nonImmFunAddr
+          -- Assign bottom to all volatile state parts, such as flags and caller-saved registers
+          let state' = foldr removeExprState state volatileStateParts
+          return $ S.singleton state'
     Just (funcName, a', False) -> do
     -- internal function:
       ss <- internalCall_mode2 ctxt a' False state
@@ -840,13 +891,14 @@ transform ctxt i@(Instr _ _ CALL (Just op1) _ _ _ _) state = unsafePerformIO (do
       else do
         -- Assign bottom to all volatile state parts, such as flags and caller-saved registers
         putStrLn $ "Call to external function: " ++ funcName
-        let state' = foldr removeExprState state volatile_state_parts
-        return $ S.singleton state'
+        let state' = foldr removeExprState state volatileStateParts
+        let state'' = dynamicHandling funcName state'
+        return $ S.singleton state''
     Nothing -> do
     -- An indirect call
       nxtAddrs <- resolve_indirection ctxt op1 state
       putStrLn $ "Indirect call to addresses: " ++ intercalate ", " (map showH $ S.toList nxtAddrs) ++ "\n" ++ show i
-      let state' = foldr removeExprState state volatile_state_parts_internal
+      let state' = foldr removeExprState state volatileStateParts
       if S.null nxtAddrs then
         return $ S.singleton state'
       else do
@@ -918,7 +970,7 @@ transform ctxt i state = let
         overwriteFlags [ZF, CF, OF, SF, PF] opcode e []) state
       _ -> error $ "Cannot transform predicate with instruction " ++ inst
   -- STANDARD BINARY INSTRUCTIONS
-  else if opcode `elem` [SUB, ADD, MUL, IMUL, AND, OR, XOR] then
+  else if opcode `elem` [SUB, ADD, AND, OR, XOR] then
     case (i_op1 i, i_op2 i) of
       (Just dst, Just src) -> actionSrc ctxt dst src action state where
         action value = do
@@ -989,51 +1041,51 @@ transform ctxt i state = let
 -- 4.) filter out any necessarily inconsistent states
 nd_step :: Context -> Instr -> State -> S.Set State
 nd_step ctxt i s =
-  --if any (\s -> any (\cl -> exists_different_equality cl $ predicate s) $ predicate s) next_states then
+  --if any (\s -> any (\cl -> existsDifferentEquality cl $ predicate s) $ predicate s) next_states then
   --  error $ "Instruction: " ++ show_instruction i ++ " caused different equalities. Initial state =\n"
   --           ++ show (predicate s) ++ "\n\nResult = " ++ intercalate "\n,\n" (map (show . predicate) $ S.toList next_states)
   --if all unique_lhs $ S.map predicate next_states then
-    next_states
+      next_states
   --else
   --  error $ "Instruction: " ++ show_instruction i ++ " caused non-unique LHS's. Initial state =\n"
   --           ++ show (predicate s) ++ "\n\nResult = " ++ intercalate "\n,\n" (map (show . predicate) $ S.toList next_states)
   --          ++ "\n\n" ++ show (map (\s -> get_non_uniques $ mapMaybe get_lhs $ S.toList $ S.filter is_equality $ predicate s) $ S.toList next_states)
  where
   next_states = filtered $ insertRegions i $ incrRIP (i_size i) s
-  filtered    = S.filter (not . necesarily_inconsistent) . smap
+  filtered    = S.filter (not . necessarilyInconsistent) . smap
   smap        = S.unions . S.map (transform ctxt i)
-
 
 -- return true if the state is necessarily inconsistent
 -- For example, if the state contains an equality of the form 0 == 1
 -- or if it contains x == 0 /\ x == 1
-necesarily_inconsistent :: State -> Bool
-necesarily_inconsistent = necesarily_inconsistent . S.toList . predicate where
-  necesarily_inconsistent [] = False
-  necesarily_inconsistent (cl@(e := v)   : clauses) = necesarily_inconsistent_clause cl || e :!=  v `elem` clauses  || exists_different_equality cl clauses || necesarily_inconsistent clauses
-  necesarily_inconsistent (cl@(e :!= v)  : clauses) = necesarily_inconsistent_clause cl || e :=   v `elem` clauses  || necesarily_inconsistent clauses
-  necesarily_inconsistent (cl@(e :<- v)  : clauses) = necesarily_inconsistent_clause cl || e :>=- v `elem` clauses  || necesarily_inconsistent clauses
-  necesarily_inconsistent (cl@(e :< v)   : clauses) = necesarily_inconsistent_clause cl || e :>=  v `elem` clauses  || necesarily_inconsistent clauses
-  necesarily_inconsistent (cl@(e :>= v)  : clauses) = necesarily_inconsistent_clause cl || e :<   v `elem` clauses  || necesarily_inconsistent clauses
-  necesarily_inconsistent (cl@(e :>=- v) : clauses) = necesarily_inconsistent_clause cl || e :<-  v `elem` clauses  || necesarily_inconsistent clauses
-  necesarily_inconsistent (cl : clauses)           = necesarily_inconsistent_clause cl || necesarily_inconsistent clauses
+necessarilyInconsistent :: State -> Bool
+necessarilyInconsistent = ni . S.toList . predicate where
+  ni [] = False
+  ni (cl@(e := v)   : clauses) = niClause cl || e :!=  v `elem` clauses || existsDifferentEquality cl clauses || ni clauses
+  ni (cl@(e :!= v)  : clauses) = niClause cl || e :=   v `elem` clauses || ni clauses
+  ni (cl@(e :<- v)  : clauses) = niClause cl || e :>=- v `elem` clauses || ni clauses
+  ni (cl@(e :< v)   : clauses) = niClause cl || e :>=  v `elem` clauses || ni clauses
+  ni (cl@(e :>= v)  : clauses) = niClause cl || e :<   v `elem` clauses || ni clauses
+  ni (cl@(e :>=- v) : clauses) = niClause cl || e :<-  v `elem` clauses || ni clauses
+  ni (cl            : clauses) = niClause cl || ni clauses
 
-  necesarily_inconsistent_clause (E_val i0 _ _ :=  V_val i1 _ _)  = i0 /= i1
-  necesarily_inconsistent_clause (E_val i0 _ _ :!= V_val i1 _ _)  = i0 == i1
-  necesarily_inconsistent_clause (E_val i0 _ _ :>= V_val i1 _ _) = i0 < i1
-  necesarily_inconsistent_clause (E_val i0 _ _ :<  V_val i1 _ _) = i0 >= i1
-  necesarily_inconsistent_clause (E_val i0 _ _ :<- V_val i1 _ _) = (fromIntegral i0::Int) >= (fromIntegral i1::Int)
-  necesarily_inconsistent_clause _                               = False
-  -- TODO extend this
+  niClause (E_val i0 _ _ :=   V_val i1 _ _) = i0 /= i1
+  niClause (E_val i0 _ _ :!=  V_val i1 _ _) = i0 == i1
+  niClause (E_val i0 _ _ :>=  V_val i1 _ _) = i0 < i1
+  niClause (E_val i0 _ _ :>=- V_val i1 _ _) = (fromIntegral i0::Int) < (fromIntegral i1::Int)
+  niClause (E_val i0 _ _ :<   V_val i1 _ _) = i0 >= i1
+  niClause (E_val i0 _ _ :<-  V_val i1 _ _) = (fromIntegral i0::Int) >= (fromIntegral i1::Int)
+  niClause _                                = False
+  -- TODO extend this?
 
--- return true if 1.) cl is an equality and 2.) there exists an equality in the given set of clauses that assign a different immediate to the same lhs
-exists_different_equality cl0@(lhs := V_val _ _ _) clauses = any (different_immediate cl0) clauses
- where
-  different_immediate (lhs0 := V_val i0 _ _) (lhs1 := V_val i1 _ _) = i0 /= i1 && lhs0 == lhs1
-  different_immediate _ _ = False
-exists_different_equality _ _ = False
-
-
+  {- returns true if
+    1.) cl is an equality and
+    2.) there exists an equality in the given set of clauses that assigns a different immediate to the same lhs
+  -}
+  existsDifferentEquality cl0@(lhs := V_val _ _ _) clauses = any (differentImmediate cl0) clauses
+  existsDifferentEquality _ _ = False
+  differentImmediate (lhs0 := V_val i0 _ _) (lhs1 := V_val i1 _ _) = lhs0 == lhs1 && i0 /= i1
+  differentImmediate _ _ = False
 
 -- increment the rip with the given size
 incrRIP :: Int -> State -> State

@@ -1,0 +1,125 @@
+Number of assembly instructions     = 83
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 83
+Number of edges: 87
+
+3bdb0 (True): 6341c
+63390 (False): 0
+
+3bdb0: PUSH Reg R12 2
+3bdb2: PUSH Reg RBP 1
+3bdb3: PUSH Reg RBX 1
+3bdb4: MOV Reg EAX, Address (SizeDir 32 (FromReg RDI)) 2
+3bdb6: TEST Reg EAX, Reg EAX 2
+3bdb8: JS 3be14 (resolved immediate)
+  |
+  `- 3bdba,3be14
+3bdba: MOV Reg R12, Reg RDI 3
+3bdbd: MOV Reg EBP, Immediate 0 5
+3bdc2: MOV Reg EBX, Immediate 0 5
+3bdc7: JZ 3bdf4 (resolved immediate)
+  |
+  `- 3bdc9,3bdf4
+3bdc9: NOP  7
+3bdd0: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 8))) 5
+3bdd5: ADD Reg EBX, Immediate 1 3
+3bdd8: ADD Reg RAX, Reg RBP 3
+3bddb: ADD Reg RBP, Immediate 8 4
+3bddf: MOV Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
+3bde2: MOV Address (SizeDir 64 (FromReg RAX)), Immediate 0 7
+3bde9: CALL free (external)
+3bdee: CMP Address (SizeDir 32 (FromReg R12)), Reg EBX 4
+3bdf2: JG 3bdd0 (resolved immediate)
+  |
+  `- 3bdd0,3bdf4
+3bdf4: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 8))) 5
+3bdf9: CALL free (external)
+3bdfe: MOV Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 8))), Immediate 0 9
+3be07: MOV Address (SizeDir 32 (FromReg R12)), Immediate 0 8
+3be0f: POP Reg RBX 1
+3be10: POP Reg RBP 1
+3be11: POP Reg R12 2
+3be13: RET  1
+  |
+  `- 
+3be14: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 387253)) 7
+3be1b: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 386238)) 7
+3be22: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 386248)) 7
+3be29: MOV Reg EDX, Immediate 80 5
+3be2e: CALL __assert_fail (external)
+  |
+  `- 
+63390: PUSH Reg R13 2
+63392: PUSH Reg R12 2
+63394: PUSH Reg RBP 1
+63395: PUSH Reg RBX 1
+63396: SUB Reg RSP, Immediate 184 7
+6339d: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+633a6: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 168))), Reg RAX 8
+633ae: XOR Reg EAX, Reg EAX 2
+633b0: TEST Reg ECX, Reg ECX 2
+633b2: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 0 8
+633ba: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Immediate 0 9
+633c3: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Reg RDI 5
+633c8: JLE 63448 (resolved immediate)
+  |
+  `- 633ca,63448
+633ca: MOV Reg RBP, Reg RDI 3
+633cd: MOV Reg R13, Reg RDX 3
+633d0: MOV Reg EBX, Reg ECX 2
+633d2: LEA Reg R12, Address (AddrPlus (FromReg RSP) (AddrImm 48)) 5
+633d7: JMP 633ff (resolved immediate)
+  |
+  `- 633ff
+633e0: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 80))) 5
+633e5: SHL Reg RAX, Immediate 2 4
+633e9: CMP Reg RAX, Reg R13 3
+633ec: JAE 63450 (resolved immediate)
+  |
+  `- 633ee,63450
+633ee: SUB Reg EBX, Immediate 1 3
+633f1: MOV Reg EDI, Immediate 1 5
+633f6: CALL sleep (external)
+633fb: TEST Reg EBX, Reg EBX 2
+633fd: JZ 63448 (resolved immediate)
+  |
+  `- 633ff,63448
+633ff: MOV Reg RSI, Reg R12 3
+63402: MOV Reg RDI, Reg RBP 3
+63405: CALL libxl_get_physinfo (external)
+6340a: TEST Reg EAX, Reg EAX 2
+6340c: JNS 633e0 (resolved immediate)
+  |
+  `- 633e0,6340e
+6340e: LEA Reg RDI, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+63413: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))), Reg EAX 4
+63417: CALL libxl__free_all (internal)
+  |
+  `- 3bdb0
+6341c: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 168))) 8
+63424: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+6342d: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 4
+63431: JNZ 63454 (resolved immediate)
+  |
+  `- 63433,63454
+63433: ADD Reg RSP, Immediate 184 7
+6343a: POP Reg RBX 1
+6343b: POP Reg RBP 1
+6343c: POP Reg R12 2
+6343e: POP Reg R13 2
+63440: RET  1
+  |
+  `- 
+63448: MOV Reg EAX, Immediate 4294967291 5
+6344d: JMP 6340e (resolved immediate)
+  |
+  `- 6340e
+63450: XOR Reg EAX, Reg EAX 2
+63452: JMP 6340e (resolved immediate)
+  |
+  `- 6340e
+63454: CALL __stack_chk_fail (external)
+  |
+  `- 

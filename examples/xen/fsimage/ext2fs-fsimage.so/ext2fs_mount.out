@@ -1,0 +1,35 @@
+Number of assembly instructions     = 20
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 20
+Number of edges: 19
+
+1d00 (False): 0
+
+1d00: PUSH Reg RBX 1
+1d01: MOV Reg RBX, Reg RDI 3
+1d04: CALL fsig_file_buf (external)
+1d09: XOR Reg EDX, Reg EDX 2
+1d0b: MOV Reg R8, Reg RAX 3
+1d0e: MOV Reg ECX, Immediate 1024 5
+1d13: MOV Reg ESI, Immediate 2 5
+1d18: MOV Reg RDI, Reg RBX 3
+1d1b: CALL fsig_devread (external)
+1d20: TEST Reg EAX, Reg EAX 2
+1d22: JNZ 1d30 (resolved immediate)
+  |
+  `- 1d24,1d30
+1d24: POP Reg RBX 1
+1d25: RET  1
+  |
+  `- 
+1d30: MOV Reg RDI, Reg RBX 3
+1d33: CALL fsig_file_buf (external)
+1d38: CMP Address (SizeDir 16 (AddrPlus (FromReg RAX) (AddrImm 56))), Immediate 61267 6
+1d3e: POP Reg RBX 1
+1d3f: SETZ Reg AL 3
+1d42: MOVZX Reg EAX, Reg AL 3
+1d45: RET  1
+  |
+  `- 

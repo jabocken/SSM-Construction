@@ -1,0 +1,46 @@
+Number of assembly instructions     = 25
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 25
+Number of edges: 25
+
+4810 (False): 0
+
+4810: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 8))) 3
+4813: CMP Reg EAX, Reg ESI 2
+4815: JGE 4850 (resolved immediate)
+  |
+  `- 4817,4850
+4817: CMP Reg ESI, Immediate 715827881 6
+481d: JG 4858 (resolved immediate)
+  |
+  `- 481f,4858
+481f: PUSH Reg RBP 1
+4820: PUSH Reg RBX 1
+4821: LEA Reg EBP, Address (AddrPlus (AddrPlus (FromReg RAX) (FromReg RSI)) (AddrImm 10)) 4
+4825: MOV Reg RBX, Reg RDI 3
+4828: SUB Reg RSP, Immediate 8 4
+482c: MOV Reg RDI, Address (SizeDir 64 (FromReg RDI)) 3
+482f: MOVSXD Reg RSI, Reg EBP 3
+4832: CALL realloc (external)
+4837: TEST Reg RAX, Reg RAX 3
+483a: JZ 4842 (resolved immediate)
+  |
+  `- 483c,4842
+483c: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
+483f: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 8))), Reg EBP 3
+4842: ADD Reg RSP, Immediate 8 4
+4846: POP Reg RBX 1
+4847: POP Reg RBP 1
+4848: RET  1
+  |
+  `- 
+4850: MOV Reg RAX, Address (SizeDir 64 (FromReg RDI)) 3
+4853: RET  1
+  |
+  `- 
+4858: XOR Reg EAX, Reg EAX 2
+485a: RET  1
+  |
+  `- 

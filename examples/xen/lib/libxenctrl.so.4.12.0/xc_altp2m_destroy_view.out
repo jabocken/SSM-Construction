@@ -1,0 +1,71 @@
+Number of assembly instructions     = 54
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 54
+Number of edges: 54
+
+8f60 (False): 0
+
+8f60: PUSH Reg R14 2
+8f62: PUSH Reg R13 2
+8f64: MOV Reg R14D, Reg ESI 3
+8f67: PUSH Reg R12 2
+8f69: PUSH Reg RBP 1
+8f6a: MOV Reg R13D, Reg EDX 3
+8f6d: PUSH Reg RBX 1
+8f6e: MOV Reg EDX, Immediate 80 5
+8f73: MOV Reg RBX, Immediate 18446744073709551615 7
+8f7a: MOV Reg R12, Reg RDI 3
+8f7d: SUB Reg RSP, Immediate 48 4
+8f81: MOV Reg RBP, Reg RSP 3
+8f84: MOV Address (SizeDir 64 (FromReg RSP)), Immediate 0 8
+8f8c: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Immediate 0 9
+8f95: MOV Reg RSI, Reg RBP 3
+8f98: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 0 8
+8fa0: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RBX 5
+8fa5: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+8fae: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Reg RAX 5
+8fb3: XOR Reg EAX, Reg EAX 2
+8fb5: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Immediate 0 9
+8fbe: CALL xc__hypercall_buffer_alloc (external)
+8fc3: TEST Reg RAX, Reg RAX 3
+8fc6: JZ 901b (resolved immediate)
+  |
+  `- 8fc8,901b
+8fc8: MOV Reg RCX, Immediate 21474836481 10
+8fd2: MOV Address (SizeDir 16 (AddrPlus (FromReg RAX) (AddrImm 8))), Reg R14W 5
+8fd7: MOV Address (SizeDir 16 (AddrPlus (FromReg RAX) (AddrImm 16))), Reg R13W 5
+8fdc: MOV Address (SizeDir 64 (FromReg RAX)), Reg RCX 3
+8fdf: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+8fe4: MOV Reg ESI, Immediate 34 5
+8fe9: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 1088))) 8
+8ff1: MOV Reg EDX, Immediate 25 5
+8ff6: TEST Reg RAX, Reg RAX 3
+8ff9: CMOVZ Reg RAX, Reg RBP 4
+8ffd: MOV Reg RCX, Address (SizeDir 64 (FromReg RAX)) 3
+9000: CALL xencall2 (external)
+9005: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+900a: MOV Reg RDI, Reg R12 3
+900d: MOV Reg EBX, Reg EAX 2
+900f: TEST Reg RSI, Reg RSI 3
+9012: CMOVZ Reg RSI, Reg RBP 4
+9016: CALL xc__hypercall_buffer_free (external)
+901b: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
+9020: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+9029: MOV Reg EAX, Reg EBX 2
+902b: JNZ 903a (resolved immediate)
+  |
+  `- 902d,903a
+902d: ADD Reg RSP, Immediate 48 4
+9031: POP Reg RBX 1
+9032: POP Reg RBP 1
+9033: POP Reg R12 2
+9035: POP Reg R13 2
+9037: POP Reg R14 2
+9039: RET  1
+  |
+  `- 
+903a: CALL __stack_chk_fail (external)
+  |
+  `- 

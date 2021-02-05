@@ -1,0 +1,50 @@
+Number of assembly instructions     = 31
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 31
+Number of edges: 32
+
+6db0 (False): 0
+
+6db0: TEST Reg RDI, Reg RDI 3
+6db3: JZ 6df8 (resolved immediate)
+  |
+  `- 6db5,6df8
+6db5: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
+6db9: MOV Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 32))), Immediate 0 8
+6dc1: MOV Address (SizeDir 8 (FromReg RAX)), Immediate 0 3
+6dc4: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
+6dc8: MOV Address (SizeDir 8 (AddrPlus (FromReg RAX) (AddrImm 1))), Immediate 0 4
+6dcc: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
+6dd0: MOV Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 48))), Immediate 1 7
+6dd7: MOV Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 64))), Immediate 0 7
+6dde: MOV Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))), Reg RAX 4
+6de2: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 40))) 4
+6de6: TEST Reg RAX, Reg RAX 3
+6de9: JZ 6df8 (resolved immediate)
+  |
+  `- 6deb,6df8
+6deb: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 24))) 4
+6def: LEA Reg RAX, Address (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX))) 4
+6df3: CMP Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
+6df6: JZ 6e00 (resolved immediate)
+  |
+  `- 6df8,6e00
+6df8: REPZ RET  2
+  |
+  `- 
+6e00: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 32))) 4
+6e04: MOV Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 56))), Reg RDX 4
+6e08: MOV Reg RDX, Address (SizeDir 64 (FromReg RAX)) 3
+6e0b: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 16))) 4
+6e0f: MOV Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 72))), Reg RDX 4
+6e13: MOV Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 184))), Reg RDX 7
+6e1a: MOV Reg RAX, Address (SizeDir 64 (FromReg RAX)) 3
+6e1d: MOV Reg RAX, Address (SizeDir 64 (FromReg RAX)) 3
+6e20: MOV Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))), Reg RAX 4
+6e24: MOVZX Reg EAX, Address (SizeDir 8 (FromReg RDX)) 3
+6e27: MOV Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 48))), Reg AL 3
+6e2a: RET  1
+  |
+  `- 

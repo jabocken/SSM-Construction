@@ -1,0 +1,72 @@
+Number of assembly instructions     = 45
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 45
+Number of edges: 48
+
+1adf0 (False): 0
+
+1adf0: TEST Reg RDX, Reg RDX 3
+1adf3: PUSH Reg R14 2
+1adf5: PUSH Reg R13 2
+1adf7: PUSH Reg R12 2
+1adf9: PUSH Reg RBP 1
+1adfa: PUSH Reg RBX 1
+1adfb: JZ 1ae50 (resolved immediate)
+  |
+  `- 1adfd,1ae50
+1adfd: MOV Reg R12, Reg RDX 3
+1ae00: MOV Reg R14, Reg RSI 3
+1ae03: MOV Reg R13D, Reg EDI 3
+1ae06: XOR Reg EBX, Reg EBX 2
+1ae08: JMP 1ae1d (resolved immediate)
+  |
+  `- 1ae1d
+1ae10: TEST Reg RAX, Reg RAX 3
+1ae13: JLE 1ae5d (resolved immediate)
+  |
+  `- 1ae15,1ae5d
+1ae15: ADD Reg RBX, Reg RAX 3
+1ae18: CMP Reg R12, Reg RBX 3
+1ae1b: JBE 1ae50 (resolved immediate)
+  |
+  `- 1ae1d,1ae50
+1ae1d: MOV Reg RDX, Reg R12 3
+1ae20: LEA Reg RSI, Address (AddrPlus (FromReg R14) (FromReg RBX)) 4
+1ae24: MOV Reg EDI, Reg R13D 3
+1ae27: SUB Reg RDX, Reg RBX 3
+1ae2a: CALL write (external)
+1ae2f: CMP Reg RAX, Immediate 18446744073709551615 4
+1ae33: MOV Reg RBP, Reg RAX 3
+1ae36: JNZ 1ae10 (resolved immediate)
+  |
+  `- 1ae10,1ae38
+1ae38: CALL __errno_location (external)
+1ae3d: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 4 3
+1ae40: JZ 1ae18 (resolved immediate)
+  |
+  `- 1ae18,1ae42
+1ae42: POP Reg RBX 1
+1ae43: MOV Reg EAX, Reg EBP 2
+1ae45: POP Reg RBP 1
+1ae46: POP Reg R12 2
+1ae48: POP Reg R13 2
+1ae4a: POP Reg R14 2
+1ae4c: RET  1
+  |
+  `- 
+1ae50: XOR Reg EBP, Reg EBP 2
+1ae52: POP Reg RBX 1
+1ae53: MOV Reg EAX, Reg EBP 2
+1ae55: POP Reg RBP 1
+1ae56: POP Reg R12 2
+1ae58: POP Reg R13 2
+1ae5a: POP Reg R14 2
+1ae5c: RET  1
+  |
+  `- 
+1ae5d: OR Reg EBP, Immediate 4294967295 3
+1ae60: JMP 1ae42 (resolved immediate)
+  |
+  `- 1ae42

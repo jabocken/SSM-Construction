@@ -4,8 +4,9 @@
 module Predicates.Base where
 
 import Control.Exception.Base (assert)
+import Control.Monad.Extra ((||^))
 import Data.List (find, intercalate, sort)
-import Data.Maybe (mapMaybe)
+import Data.Maybe (fromMaybe, mapMaybe)
 import qualified Data.Map as M
 import qualified Data.MultiMap as MM
 import qualified Data.Set as S
@@ -21,12 +22,21 @@ data ValueExpr =
   | V_var String ExprSize
   | V_val Word64 Int Bool
   deriving (Eq, Ord)
+-- TODO: need proper ordering for ValueExprs? Relying on Z3 mostly now, though.
 
--- TODO: need proper ordering for ValueExprs!
+size8 = E_val 8 64 False
+vSize8 = V_val 8 64 False
+
+rsp0 = E_var "RSP0" (Known 64)
+vRsp0 = V_var "RSP0" (Known 64)
 
 getValueExprSize c = getExprSize c . toExpr
 valueExprHasSize c = exprHasSize c . toExpr
 getKnownValueExprSize c = getKnownExprSize c . toExpr
+
+-- clauseSizeM c clause = when (not . isFlagEq $ clause) $ do
+--   traceSizeM c $ fromJust $ get_lhs $ clause
+--   traceSizeM c $ toExpr $ fromJust $ get_rhs $ clause
 
 addOne :: Config -> ValueExpr -> ValueExpr
 addOne c ve = simp c $ V_app (Op ADD) [ve, V_val 1 size False] where
@@ -78,12 +88,11 @@ instance Show ValueExpr where
 instance Simp ValueExpr where
   simp c e = if e == e' then e' else simp c e' where
     e' = simp' e
-    simp' (V_app Concat [V_val 0 _ _, e1]) = simp'' e1
+    simp' (V_app Concat [V_val 0 s _, e1]) = simped where
+      -- need to pad out concatenations with 0, get Z3 type errors otherwise
+      simped = simp'' $ V_app (F ZExtend) [e1, len]
+      len = V_val (fromIntegral $ s + getKnownValueExprSize c e1) (- 1) False
     simp' e = simp'' e
-    -- Special experimental cases for programs that, even in 64-bit mode,
-    -- operate on ESP.
-    simp'' (V_app (TakeBits 31 0) [V_var "RSP0" (Known 64)]) = V_var "RSP0" $ Known 64
-    simp'' (V_app (TakeBits 31 0) [V_app (Op SUB) [V_var "RSP0" (Known 64), e]]) = V_app (Op SUB) [V_var "RSP0" (Known 64), e]
     -- 0
     simp'' (V_app (SExtend _ h') [V_val 0 _ b]) = V_val 0 h' b
     simp'' (V_app (Op MUL) [V_val 0 s b, _]) = V_val 0 s b
@@ -96,6 +105,10 @@ instance Simp ValueExpr where
     simp'' (V_app (Op OR) [e, V_val 0 _ _]) = e
     simp'' (V_app (Op XOR) [V_val 0 _ _, e]) = e
     simp'' (V_app (Op XOR) [e, V_val 0 _ _]) = e
+    simp'' (V_app (Op SHL) [e@(V_val 0 _ _), _]) = e
+    simp'' (V_app (Op SHR) [e@(V_val 0 _ _), _]) = e
+    simp'' (V_app (Op SAL) [e@(V_val 0 _ _), _]) = e
+    simp'' (V_app (Op SAR) [e@(V_val 0 _ _), _]) = e
     simp'' (V_app (F IsNAN) [V_val 0 _ b]) = V_val 0 1 b
     simp'' (V_app (F And) [V_val 0 _ b, _]) = V_val 0 1 b
     simp'' (V_app (F And) [_, V_val 0 _ b]) = V_val 0 1 b
@@ -104,6 +117,8 @@ instance Simp ValueExpr where
     -- immediate values
     simp'' (V_app (SExtend 32 64) [V_val imm _ b]) = V_val (sextend_32_64 imm) 64 b
     simp'' (V_app (SExtend 0 64) [V_val imm _ b]) = V_val imm 64 b
+    simp'' (V_app (F ZExtend) [V_val imm 32 b, V_val 64 _ b']) = V_val (zextend_32_64 imm) 64 $ b || b'
+    simp'' (V_app (F ZExtend) [V_val imm 64 b, V_val 128 _ b']) = V_val (zextend_64_128 imm) 128 $ b || b'
     simp'' (V_app (Op MUL) [V_val imm0 s0 b0,V_val imm1 s1 b1]) = V_val (imm0*imm1) s0 (b0 || b1)
     -- Unknown
     simp'' (V_app (SExtend _ h) [V_var "Unknown" _]) = V_var "Unknown" $ Known h
@@ -152,6 +167,10 @@ instance Simp ValueExpr where
         case getValueExprSize c e of
           Known s -> if l >= s then V_val 0 0 False else V_app (TakeBits h l) [simp'' e]
           _ -> V_app (TakeBits h l) [simp'' e]
+    -- extension
+    simp'' (V_app (F ZExtend) [V_app (F ZExtend) [e, V_val s _ b], V_val s' size b'])
+      | s' >= s = V_app (F ZExtend) [simp'' e, V_val s' size $ b || b']
+      | otherwise = error "Cannot extend to a smaller size"
     -- arithmetic
     -- decreases the number of immediate values
     simp'' (V_app (Op ADD) [e0, V_val 0 _ _]) = e0
@@ -343,11 +362,20 @@ lhsApply f (lhs :>= _) = f lhs
 lhsApply f (lhs :>=- _) = f lhs
 lhsApply _ c = error $ "Cannot apply f to clause " ++ show c
 
-mapPred ::  (Expr -> ValueExpr -> a) -> Pred -> [a]
-mapPred f = map (clauseApply f) . S.toList
+rhsApply :: (ValueExpr -> a) -> Clause -> a
+rhsApply f (_ := rhs) = f rhs
+rhsApply f (_ :!= rhs) = f rhs
+rhsApply f (_ :< rhs) = f rhs
+rhsApply f (_ :<- rhs) = f rhs
+rhsApply f (_ :>= rhs) = f rhs
+rhsApply f (_ :>=- rhs) = f rhs
+rhsApply _ c = error $ "Cannot apply f to clause " ++ show c
 
-mapLHS :: (Expr -> a) -> Pred -> [a]
-mapLHS f = map (lhsApply f) . S.toList
+mapPred :: Ord a => (Expr -> ValueExpr -> a) -> Pred -> S.Set a
+mapPred = S.map . clauseApply
+
+mapLHS :: Ord a => (Expr -> a) -> Pred -> S.Set a
+mapLHS = S.map . lhsApply
 
 -- Returns the upper bound for the supplied expression in the specified predicate
 -- Only returns explicit values, doesn't work with more complicated expressions
@@ -359,7 +387,6 @@ getUpperBound c e = maybeMax . mapMaybe getVal . getValues . wind where
   getVal _ = Nothing
   maybeMax [] = Nothing
   maybeMax vs = Just $ maximum vs
-
 
 -- Return the left-hand-side of a clause, if any
 get_lhs :: Clause -> Maybe Expr
@@ -384,5 +411,30 @@ get_rhs (_ :>=- v)  = Just v
 is_equality (_ := _) = True
 is_equality _ = False
 
+-- Returns false if there are multiple qualities for the same LHS
 unique_lhs :: Pred -> Bool
 unique_lhs = all_unique . mapMaybe get_lhs . S.toList . S.filter is_equality
+
+clauseContains :: Clause -> Expr -> Bool
+clauseContains clause e = fromMaybe False $ (lc lhs e) ||^ (lc rhs e) where
+  lc haystack needle = (flip contains) needle <$> haystack
+  lhs = get_lhs clause
+  rhs = toExpr <$> get_rhs clause
+
+-- Returns if the supplied clause contains a volatile state part
+isVolatile :: Clause -> Bool
+isVolatile clause = any (clauseContains clause) volatileStateParts
+
+isStack :: Clause -> Bool
+isStack clause = clauseContains clause rsp0
+
+isFlagEq :: Clause -> Bool
+isFlagEq (E_flg _ := _) = True
+isFlagEq _ = False
+
+-- For testing/sanity checks
+inconsistentSizeClauses :: Config -> Pred -> Pred
+inconsistentSizeClauses c = S.filter inconsistentSize where
+  inconsistentSize clause = not (isFlagEq clause) && lhsSize /= rhsSize where
+    lhsSize = getExprSize c <$> get_lhs clause
+    rhsSize = getValueExprSize c <$> get_rhs clause

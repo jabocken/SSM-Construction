@@ -1,0 +1,31 @@
+Number of assembly instructions     = 14
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 14
+Number of edges: 14
+
+79c0 (False): 0
+
+79c0: CMP Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 352))), Immediate 8 7
+79c7: JZ 79f0 (resolved immediate)
+  |
+  `- 79c9,79f0
+79c9: MOV Reg RDX, Immediate 18446744069414584320 10
+79d3: MOV Reg RAX, Immediate 18446744073709551615 7
+79da: TEST Reg RSI, Reg RDX 3
+79dd: JNZ 79ea (resolved immediate)
+  |
+  `- 79df,79ea
+79df: MOV Reg EAX, Reg ESI 2
+79e1: SHR Reg RSI, Immediate 20 4
+79e5: SHL Reg EAX, Immediate 12 3
+79e8: OR Reg EAX, Reg ESI 2
+79ea: REPZ RET  2
+  |
+  `- 
+79f0: MOV Reg RAX, Reg RSI 3
+79f3: SHL Reg RAX, Immediate 12 4
+79f7: RET  1
+  |
+  `- 

@@ -1,0 +1,43 @@
+Number of assembly instructions     = 23
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 23
+Number of edges: 21
+
+11c0 (False): 0
+1750 (True): 11f5
+
+11c0: PXOR Reg XMM0, Reg XMM0 4
+11c4: SUB Reg RSP, Immediate 72 4
+11c8: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+11d1: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))), Reg RAX 5
+11d6: XOR Reg EAX, Reg EAX 2
+11d8: MOV Reg EAX, Reg ESI 2
+11da: MOV Reg RSI, Reg RSP 3
+11dd: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RDX 5
+11e2: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 16))), Reg XMM0 5
+11e7: MOV Address (SizeDir 64 (FromReg RSP)), Reg RAX 4
+11eb: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 32))), Reg XMM0 5
+11f0: CALL osdep_hypercall (internal)
+  |
+  `- 1750
+11f5: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))) 5
+11fa: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
+1203: JNZ 120a (resolved immediate)
+  |
+  `- 1205,120a
+1205: ADD Reg RSP, Immediate 72 4
+1209: RET  1
+  |
+  `- 
+120a: CALL __stack_chk_fail (external)
+  |
+  `- 
+1750: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 20))) 3
+1753: MOV Reg RDX, Reg RSI 3
+1756: XOR Reg EAX, Reg EAX 2
+1758: MOV Reg ESI, Immediate 3166208 5
+175d: JMP ioctl (jmp to external function)
+  |
+  `- 

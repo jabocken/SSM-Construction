@@ -1,0 +1,65 @@
+Number of assembly instructions     = 41
+Number of indirect branches         = 0
+Number of unresolved indirect jumps = 0: 
+Number of unresolved indirect calls = 0: 
+Number of symbolic states (representative of non-determinism): 41
+Number of edges: 41
+
+4c30 (True): 4d45
+4cf0 (False): 0
+
+4c30: SUB Reg RSP, Immediate 8 4
+4c34: CALL xs_daemon_rundir (external)
+4c39: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 1388)) 7
+4c40: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2111033)) 7
+4c47: MOV Reg R9, Reg RAX 3
+4c4a: MOV Reg EDX, Immediate 1 5
+4c4f: XOR Reg EAX, Reg EAX 2
+4c51: MOV Reg ECX, Immediate 4096 5
+4c56: MOV Reg ESI, Immediate 4096 5
+4c5b: CALL __snprintf_chk (external)
+4c60: CMP Reg EAX, Immediate 4095 5
+4c65: LEA Reg RAX, Address (AddrPlus (FromReg RIP) (AddrImm 2110996)) 7
+4c6c: MOV Reg EDX, Immediate 0 5
+4c71: CMOVG Reg RAX, Reg RDX 4
+4c75: ADD Reg RSP, Immediate 8 4
+4c79: RET  1
+  |
+  `- 
+4cf0: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 1222)) 7
+4cf7: SUB Reg RSP, Immediate 8 4
+4cfb: CALL getenv (external)
+4d00: TEST Reg RAX, Reg RAX 3
+4d03: MOV Reg R9, Reg RAX 3
+4d06: JZ 4d40 (resolved immediate)
+  |
+  `- 4d08,4d40
+4d08: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 1213)) 7
+4d0f: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2106730)) 7
+4d16: XOR Reg EAX, Reg EAX 2
+4d18: MOV Reg ECX, Immediate 4096 5
+4d1d: MOV Reg EDX, Immediate 1 5
+4d22: MOV Reg ESI, Immediate 4096 5
+4d27: CALL __snprintf_chk (external)
+4d2c: CMP Reg EAX, Immediate 4095 5
+4d31: JG 4d4d (resolved immediate)
+  |
+  `- 4d33,4d4d
+4d33: LEA Reg RAX, Address (AddrPlus (FromReg RIP) (AddrImm 2106694)) 7
+4d3a: ADD Reg RSP, Immediate 8 4
+4d3e: RET  1
+  |
+  `- 
+4d40: CALL xs_daemon_path.part.0 (internal)
+  |
+  `- 4c30
+4d45: TEST Reg RAX, Reg RAX 3
+4d48: MOV Reg R9, Reg RAX 3
+4d4b: JNZ 4d08 (resolved immediate)
+  |
+  `- 4d08,4d4d
+4d4d: XOR Reg EAX, Reg EAX 2
+4d4f: ADD Reg RSP, Immediate 8 4
+4d53: RET  1
+  |
+  `- 
