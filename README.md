@@ -1,4 +1,4 @@
-Fthere # Initial setup
+# Initial setup
 
 Assuming a recent (2020) install of an Ubuntu-based Linux distribution with up-to-date default packages, you will need the following additional packages (installable via `apt`):
 
