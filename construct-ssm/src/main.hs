@@ -92,7 +92,7 @@ main = do
 --}
 
 fetch :: Context -> Word64 -> IO Instr
-fetch (elf,_) = fetch_instruction elf
+fetch (elf,_) = fetchInstruction elf
 
 
 print_result :: Context -> M.Map Word64 Info -> IO ()
@@ -163,7 +163,6 @@ run (Args filenameB start_address onlyShowSymbols) = do
   when (not onlyShowSymbols) $ do
     let start = if start_address /= 0 then start_address else fromIntegral entry
     putStrLn ""
-    c_dis_init
     fci_add_function_call (fromIntegral start) 0
     let init_state = initPredState $ fromIntegral start
     let init_bag   = [init_state]

@@ -6,17 +6,15 @@ Assuming a recent (2020) install of an Ubuntu-based Linux distribution with up-t
 
 We also recomment installing the `parallel` package in order to run the case study tests efficiently, if you so desire.
 
-Once those are installed, run the following in `udis86-modified` to install our modified version of the udis86 library:
-
-    ./autogen.sh && ./configure && make && sudo make install
-
 You will also need to install stack (https://docs.haskellstack.org/) by running the following (may require user interaction for running sudo):
 
     curl -sSL https://get.haskellstack.org/ | sh
 
-If you receive a warning about `<usr>/.local/bin` not being in your path, but your top-level user `.profile` file contains code to add it to your path, log out and then log back in to update that (or run `PATH="$HOME/.local/bin:$PATH" in your current shell to have it available immediately).
+We also require installation of version 4.0.2 of `capstone`, which can be downloaded from http://www.capstone-engine.org/download.html and built and installed following the instructions in `COMPILE.TXT`. Newer versions may work, as well as older versions that maintain the same major version number (4), but have not been tested, so if 4.0.2 is not available from that link for whatever reason you can also clone the git repository (https://github.com/aquynh/capstone), run `git checkout 4.0.2`, and then follow the installation instructions in `COMPILE.TXT` as before.
 
-Once complete, follow the instructions in the README in `construct-ssm` to install and use our SSM construction tool.
+If at some point you receive a warning about `<usr>/.local/bin` not being in your path, but your top-level user `.profile` file contains code to add it to your path, log out and then log back in to update that (or run `PATH="$HOME/.local/bin:$PATH" in your current shell to have it available immediately).
+
+Once all of this is done, follow the instructions in the README in `construct-ssm` to install and use our SSM construction tool.
 
 # Example
 

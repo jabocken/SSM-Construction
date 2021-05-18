@@ -1,529 +1,3 @@
-
-xentop:     file format elf64-x86-64
-
-
-Disassembly of section .init:
-
-00000000000027b8 <_init>:
-    27b8:	sub    rsp,0x8
-    27bc:	mov    rax,QWORD PTR [rip+0x204815]        # 206fd8 <__gmon_start__>
-    27c3:	test   rax,rax
-    27c6:	je     27ca <_init+0x12>
-    27c8:	call   rax
-    27ca:	add    rsp,0x8
-    27ce:	ret    
-
-Disassembly of section .plt:
-
-00000000000027d0 <.plt>:
-    27d0:	push   QWORD PTR [rip+0x2044da]        # 206cb0 <_GLOBAL_OFFSET_TABLE_+0x8>
-    27d6:	jmp    QWORD PTR [rip+0x2044dc]        # 206cb8 <_GLOBAL_OFFSET_TABLE_+0x10>
-    27dc:	nop    DWORD PTR [rax+0x0]
-
-00000000000027e0 <log10@plt>:
-    27e0:	jmp    QWORD PTR [rip+0x2044da]        # 206cc0 <log10@GLIBC_2.2.5>
-    27e6:	push   0x0
-    27eb:	jmp    27d0 <.plt>
-
-00000000000027f0 <cbreak@plt>:
-    27f0:	jmp    QWORD PTR [rip+0x2044d2]        # 206cc8 <cbreak@NCURSES_TINFO_5.0.19991023>
-    27f6:	push   0x1
-    27fb:	jmp    27d0 <.plt>
-
-0000000000002800 <xenstat_free_node@plt>:
-    2800:	jmp    QWORD PTR [rip+0x2044ca]        # 206cd0 <xenstat_free_node>
-    2806:	push   0x2
-    280b:	jmp    27d0 <.plt>
-
-0000000000002810 <xenstat_network_tbytes@plt>:
-    2810:	jmp    QWORD PTR [rip+0x2044c2]        # 206cd8 <xenstat_network_tbytes>
-    2816:	push   0x3
-    281b:	jmp    27d0 <.plt>
-
-0000000000002820 <wattr_off@plt>:
-    2820:	jmp    QWORD PTR [rip+0x2044ba]        # 206ce0 <wattr_off@NCURSES_5.0.19991023>
-    2826:	push   0x4
-    282b:	jmp    27d0 <.plt>
-
-0000000000002830 <noecho@plt>:
-    2830:	jmp    QWORD PTR [rip+0x2044b2]        # 206ce8 <noecho@NCURSES_5.0.19991023>
-    2836:	push   0x5
-    283b:	jmp    27d0 <.plt>
-
-0000000000002840 <xenstat_domain_paused@plt>:
-    2840:	jmp    QWORD PTR [rip+0x2044aa]        # 206cf0 <xenstat_domain_paused>
-    2846:	push   0x6
-    284b:	jmp    27d0 <.plt>
-
-0000000000002850 <werase@plt>:
-    2850:	jmp    QWORD PTR [rip+0x2044a2]        # 206cf8 <werase@NCURSES_5.0.19991023>
-    2856:	push   0x7
-    285b:	jmp    27d0 <.plt>
-
-0000000000002860 <xenstat_domain_max_mem@plt>:
-    2860:	jmp    QWORD PTR [rip+0x20449a]        # 206d00 <xenstat_domain_max_mem>
-    2866:	push   0x8
-    286b:	jmp    27d0 <.plt>
-
-0000000000002870 <xenstat_domain_blocked@plt>:
-    2870:	jmp    QWORD PTR [rip+0x204492]        # 206d08 <xenstat_domain_blocked>
-    2876:	push   0x9
-    287b:	jmp    27d0 <.plt>
-
-0000000000002880 <xenstat_node_num_domains@plt>:
-    2880:	jmp    QWORD PTR [rip+0x20448a]        # 206d10 <xenstat_node_num_domains>
-    2886:	push   0xa
-    288b:	jmp    27d0 <.plt>
-
-0000000000002890 <puts@plt>:
-    2890:	jmp    QWORD PTR [rip+0x204482]        # 206d18 <puts@GLIBC_2.2.5>
-    2896:	push   0xb
-    289b:	jmp    27d0 <.plt>
-
-00000000000028a0 <xenstat_domain_vbd@plt>:
-    28a0:	jmp    QWORD PTR [rip+0x20447a]        # 206d20 <xenstat_domain_vbd>
-    28a6:	push   0xc
-    28ab:	jmp    27d0 <.plt>
-
-00000000000028b0 <xenstat_vbd_oo_reqs@plt>:
-    28b0:	jmp    QWORD PTR [rip+0x204472]        # 206d28 <xenstat_vbd_oo_reqs>
-    28b6:	push   0xd
-    28bb:	jmp    27d0 <.plt>
-
-00000000000028c0 <exit@plt>:
-    28c0:	jmp    QWORD PTR [rip+0x20446a]        # 206d30 <exit@GLIBC_2.2.5>
-    28c6:	push   0xe
-    28cb:	jmp    27d0 <.plt>
-
-00000000000028d0 <__printf_chk@plt>:
-    28d0:	jmp    QWORD PTR [rip+0x204462]        # 206d38 <__printf_chk@GLIBC_2.3.4>
-    28d6:	push   0xf
-    28db:	jmp    27d0 <.plt>
-
-00000000000028e0 <strcasecmp@plt>:
-    28e0:	jmp    QWORD PTR [rip+0x20445a]        # 206d40 <strcasecmp@GLIBC_2.2.5>
-    28e6:	push   0x10
-    28eb:	jmp    27d0 <.plt>
-
-00000000000028f0 <gettimeofday@plt>:
-    28f0:	jmp    QWORD PTR [rip+0x204452]        # 206d48 <gettimeofday@GLIBC_2.2.5>
-    28f6:	push   0x11
-    28fb:	jmp    27d0 <.plt>
-
-0000000000002900 <xenstat_tmem_curr_eph_pages@plt>:
-    2900:	jmp    QWORD PTR [rip+0x20444a]        # 206d50 <xenstat_tmem_curr_eph_pages>
-    2906:	push   0x12
-    290b:	jmp    27d0 <.plt>
-
-0000000000002910 <xenstat_domain_vcpu@plt>:
-    2910:	jmp    QWORD PTR [rip+0x204442]        # 206d58 <xenstat_domain_vcpu>
-    2916:	push   0x13
-    291b:	jmp    27d0 <.plt>
-
-0000000000002920 <xenstat_network_tdrop@plt>:
-    2920:	jmp    QWORD PTR [rip+0x20443a]        # 206d60 <xenstat_network_tdrop>
-    2926:	push   0x14
-    292b:	jmp    27d0 <.plt>
-
-0000000000002930 <keypad@plt>:
-    2930:	jmp    QWORD PTR [rip+0x204432]        # 206d68 <keypad@NCURSES_TINFO_5.0.19991023>
-    2936:	push   0x15
-    293b:	jmp    27d0 <.plt>
-
-0000000000002940 <xenstat_vbd_rd_reqs@plt>:
-    2940:	jmp    QWORD PTR [rip+0x20442a]        # 206d70 <xenstat_vbd_rd_reqs>
-    2946:	push   0x16
-    294b:	jmp    27d0 <.plt>
-
-0000000000002950 <xenstat_node_num_cpus@plt>:
-    2950:	jmp    QWORD PTR [rip+0x204422]        # 206d78 <xenstat_node_num_cpus>
-    2956:	push   0x17
-    295b:	jmp    27d0 <.plt>
-
-0000000000002960 <endwin@plt>:
-    2960:	jmp    QWORD PTR [rip+0x20441a]        # 206d80 <endwin@NCURSES_5.0.19991023>
-    2966:	push   0x18
-    296b:	jmp    27d0 <.plt>
-
-0000000000002970 <xenstat_tmem_succ_pers_puts@plt>:
-    2970:	jmp    QWORD PTR [rip+0x204412]        # 206d88 <xenstat_tmem_succ_pers_puts>
-    2976:	push   0x19
-    297b:	jmp    27d0 <.plt>
-
-0000000000002980 <__cxa_atexit@plt>:
-    2980:	jmp    QWORD PTR [rip+0x20440a]        # 206d90 <__cxa_atexit@GLIBC_2.2.5>
-    2986:	push   0x1a
-    298b:	jmp    27d0 <.plt>
-
-0000000000002990 <xenstat_node_cpu_hz@plt>:
-    2990:	jmp    QWORD PTR [rip+0x204402]        # 206d98 <xenstat_node_cpu_hz>
-    2996:	push   0x1b
-    299b:	jmp    27d0 <.plt>
-
-00000000000029a0 <xenstat_network_terrs@plt>:
-    29a0:	jmp    QWORD PTR [rip+0x2043fa]        # 206da0 <xenstat_network_terrs>
-    29a6:	push   0x1c
-    29ab:	jmp    27d0 <.plt>
-
-00000000000029b0 <xenstat_node_freeable_mb@plt>:
-    29b0:	jmp    QWORD PTR [rip+0x2043f2]        # 206da8 <xenstat_node_freeable_mb>
-    29b6:	push   0x1d
-    29bb:	jmp    27d0 <.plt>
-
-00000000000029c0 <waddch@plt>:
-    29c0:	jmp    QWORD PTR [rip+0x2043ea]        # 206db0 <waddch@NCURSES_5.0.19991023>
-    29c6:	push   0x1e
-    29cb:	jmp    27d0 <.plt>
-
-00000000000029d0 <xenstat_domain_crashed@plt>:
-    29d0:	jmp    QWORD PTR [rip+0x2043e2]        # 206db8 <xenstat_domain_crashed>
-    29d6:	push   0x1f
-    29db:	jmp    27d0 <.plt>
-
-00000000000029e0 <xenstat_node_domain@plt>:
-    29e0:	jmp    QWORD PTR [rip+0x2043da]        # 206dc0 <xenstat_node_domain>
-    29e6:	push   0x20
-    29eb:	jmp    27d0 <.plt>
-
-00000000000029f0 <xenstat_domain_tmem@plt>:
-    29f0:	jmp    QWORD PTR [rip+0x2043d2]        # 206dc8 <xenstat_domain_tmem>
-    29f6:	push   0x21
-    29fb:	jmp    27d0 <.plt>
-
-0000000000002a00 <nonl@plt>:
-    2a00:	jmp    QWORD PTR [rip+0x2043ca]        # 206dd0 <nonl@NCURSES_5.0.19991023>
-    2a06:	push   0x22
-    2a0b:	jmp    27d0 <.plt>
-
-0000000000002a10 <free@plt>:
-    2a10:	jmp    QWORD PTR [rip+0x2043c2]        # 206dd8 <free@GLIBC_2.2.5>
-    2a16:	push   0x23
-    2a1b:	jmp    27d0 <.plt>
-
-0000000000002a20 <strlen@plt>:
-    2a20:	jmp    QWORD PTR [rip+0x2043ba]        # 206de0 <strlen@GLIBC_2.2.5>
-    2a26:	push   0x24
-    2a2b:	jmp    27d0 <.plt>
-
-0000000000002a30 <xenstat_domain_ssid@plt>:
-    2a30:	jmp    QWORD PTR [rip+0x2043b2]        # 206de8 <xenstat_domain_ssid>
-    2a36:	push   0x25
-    2a3b:	jmp    27d0 <.plt>
-
-0000000000002a40 <__vfprintf_chk@plt>:
-    2a40:	jmp    QWORD PTR [rip+0x2043aa]        # 206df0 <__vfprintf_chk@GLIBC_2.3.4>
-    2a46:	push   0x26
-    2a4b:	jmp    27d0 <.plt>
-
-0000000000002a50 <__ctype_b_loc@plt>:
-    2a50:	jmp    QWORD PTR [rip+0x2043a2]        # 206df8 <__ctype_b_loc@GLIBC_2.3>
-    2a56:	push   0x27
-    2a5b:	jmp    27d0 <.plt>
-
-0000000000002a60 <xenstat_domain_cur_mem@plt>:
-    2a60:	jmp    QWORD PTR [rip+0x20439a]        # 206e00 <xenstat_domain_cur_mem>
-    2a66:	push   0x28
-    2a6b:	jmp    27d0 <.plt>
-
-0000000000002a70 <xenstat_vcpu_ns@plt>:
-    2a70:	jmp    QWORD PTR [rip+0x204392]        # 206e08 <xenstat_vcpu_ns>
-    2a76:	push   0x29
-    2a7b:	jmp    27d0 <.plt>
-
-0000000000002a80 <use_default_colors@plt>:
-    2a80:	jmp    QWORD PTR [rip+0x20438a]        # 206e10 <use_default_colors@NCURSES_5.0.19991023>
-    2a86:	push   0x2a
-    2a8b:	jmp    27d0 <.plt>
-
-0000000000002a90 <sleep@plt>:
-    2a90:	jmp    QWORD PTR [rip+0x204382]        # 206e18 <sleep@GLIBC_2.2.5>
-    2a96:	push   0x2b
-    2a9b:	jmp    27d0 <.plt>
-
-0000000000002aa0 <init_pair@plt>:
-    2aa0:	jmp    QWORD PTR [rip+0x20437a]        # 206e20 <init_pair@NCURSES_5.0.19991023>
-    2aa6:	push   0x2c
-    2aab:	jmp    27d0 <.plt>
-
-0000000000002ab0 <xenstat_network_rdrop@plt>:
-    2ab0:	jmp    QWORD PTR [rip+0x204372]        # 206e28 <xenstat_network_rdrop>
-    2ab6:	push   0x2d
-    2abb:	jmp    27d0 <.plt>
-
-0000000000002ac0 <xenstat_domain_running@plt>:
-    2ac0:	jmp    QWORD PTR [rip+0x20436a]        # 206e30 <xenstat_domain_running>
-    2ac6:	push   0x2e
-    2acb:	jmp    27d0 <.plt>
-
-0000000000002ad0 <xenstat_node_xen_version@plt>:
-    2ad0:	jmp    QWORD PTR [rip+0x204362]        # 206e38 <xenstat_node_xen_version>
-    2ad6:	push   0x2f
-    2adb:	jmp    27d0 <.plt>
-
-0000000000002ae0 <xenstat_domain_network@plt>:
-    2ae0:	jmp    QWORD PTR [rip+0x20435a]        # 206e40 <xenstat_domain_network>
-    2ae6:	push   0x30
-    2aeb:	jmp    27d0 <.plt>
-
-0000000000002af0 <xenstat_network_rerrs@plt>:
-    2af0:	jmp    QWORD PTR [rip+0x204352]        # 206e48 <xenstat_network_rerrs>
-    2af6:	push   0x31
-    2afb:	jmp    27d0 <.plt>
-
-0000000000002b00 <vwprintw@plt>:
-    2b00:	jmp    QWORD PTR [rip+0x20434a]        # 206e50 <vwprintw@NCURSES_5.0.19991023>
-    2b06:	push   0x32
-    2b0b:	jmp    27d0 <.plt>
-
-0000000000002b10 <xenstat_node_domain_by_index@plt>:
-    2b10:	jmp    QWORD PTR [rip+0x204342]        # 206e58 <xenstat_node_domain_by_index>
-    2b16:	push   0x33
-    2b1b:	jmp    27d0 <.plt>
-
-0000000000002b20 <xenstat_domain_shutdown@plt>:
-    2b20:	jmp    QWORD PTR [rip+0x20433a]        # 206e60 <xenstat_domain_shutdown>
-    2b26:	push   0x34
-    2b2b:	jmp    27d0 <.plt>
-
-0000000000002b30 <sigaction@plt>:
-    2b30:	jmp    QWORD PTR [rip+0x204332]        # 206e68 <sigaction@GLIBC_2.2.5>
-    2b36:	push   0x35
-    2b3b:	jmp    27d0 <.plt>
-
-0000000000002b40 <isendwin@plt>:
-    2b40:	jmp    QWORD PTR [rip+0x20432a]        # 206e70 <isendwin@NCURSES_5.0.19991023>
-    2b46:	push   0x36
-    2b4b:	jmp    27d0 <.plt>
-
-0000000000002b50 <xenstat_domain_name@plt>:
-    2b50:	jmp    QWORD PTR [rip+0x204322]        # 206e78 <xenstat_domain_name>
-    2b56:	push   0x37
-    2b5b:	jmp    27d0 <.plt>
-
-0000000000002b60 <xenstat_vbd_rd_sects@plt>:
-    2b60:	jmp    QWORD PTR [rip+0x20431a]        # 206e80 <xenstat_vbd_rd_sects>
-    2b66:	push   0x38
-    2b6b:	jmp    27d0 <.plt>
-
-0000000000002b70 <fputs@plt>:
-    2b70:	jmp    QWORD PTR [rip+0x204312]        # 206e88 <fputs@GLIBC_2.2.5>
-    2b76:	push   0x39
-    2b7b:	jmp    27d0 <.plt>
-
-0000000000002b80 <strtol@plt>:
-    2b80:	jmp    QWORD PTR [rip+0x20430a]        # 206e90 <strtol@GLIBC_2.2.5>
-    2b86:	push   0x3a
-    2b8b:	jmp    27d0 <.plt>
-
-0000000000002b90 <xenstat_domain_dying@plt>:
-    2b90:	jmp    QWORD PTR [rip+0x204302]        # 206e98 <xenstat_domain_dying>
-    2b96:	push   0x3b
-    2b9b:	jmp    27d0 <.plt>
-
-0000000000002ba0 <start_color@plt>:
-    2ba0:	jmp    QWORD PTR [rip+0x2042fa]        # 206ea0 <start_color@NCURSES_5.0.19991023>
-    2ba6:	push   0x3c
-    2bab:	jmp    27d0 <.plt>
-
-0000000000002bb0 <xenstat_uninit@plt>:
-    2bb0:	jmp    QWORD PTR [rip+0x2042f2]        # 206ea8 <xenstat_uninit>
-    2bb6:	push   0x3d
-    2bbb:	jmp    27d0 <.plt>
-
-0000000000002bc0 <waddnstr@plt>:
-    2bc0:	jmp    QWORD PTR [rip+0x2042ea]        # 206eb0 <waddnstr@NCURSES_5.0.19991023>
-    2bc6:	push   0x3e
-    2bcb:	jmp    27d0 <.plt>
-
-0000000000002bd0 <xenstat_domain_cpu_ns@plt>:
-    2bd0:	jmp    QWORD PTR [rip+0x2042e2]        # 206eb8 <xenstat_domain_cpu_ns>
-    2bd6:	push   0x3f
-    2bdb:	jmp    27d0 <.plt>
-
-0000000000002be0 <xenstat_vbd_wr_sects@plt>:
-    2be0:	jmp    QWORD PTR [rip+0x2042da]        # 206ec0 <xenstat_vbd_wr_sects>
-    2be6:	push   0x40
-    2beb:	jmp    27d0 <.plt>
-
-0000000000002bf0 <wmove@plt>:
-    2bf0:	jmp    QWORD PTR [rip+0x2042d2]        # 206ec8 <wmove@NCURSES_5.0.19991023>
-    2bf6:	push   0x41
-    2bfb:	jmp    27d0 <.plt>
-
-0000000000002c00 <getopt_long@plt>:
-    2c00:	jmp    QWORD PTR [rip+0x2042ca]        # 206ed0 <getopt_long@GLIBC_2.2.5>
-    2c06:	push   0x42
-    2c0b:	jmp    27d0 <.plt>
-
-0000000000002c10 <halfdelay@plt>:
-    2c10:	jmp    QWORD PTR [rip+0x2042c2]        # 206ed8 <halfdelay@NCURSES_TINFO_5.0.19991023>
-    2c16:	push   0x43
-    2c1b:	jmp    27d0 <.plt>
-
-0000000000002c20 <qsort@plt>:
-    2c20:	jmp    QWORD PTR [rip+0x2042ba]        # 206ee0 <qsort@GLIBC_2.2.5>
-    2c26:	push   0x44
-    2c2b:	jmp    27d0 <.plt>
-
-0000000000002c30 <wrefresh@plt>:
-    2c30:	jmp    QWORD PTR [rip+0x2042b2]        # 206ee8 <wrefresh@NCURSES_5.0.19991023>
-    2c36:	push   0x45
-    2c3b:	jmp    27d0 <.plt>
-
-0000000000002c40 <__stack_chk_fail@plt>:
-    2c40:	jmp    QWORD PTR [rip+0x2042aa]        # 206ef0 <__stack_chk_fail@GLIBC_2.4>
-    2c46:	push   0x46
-    2c4b:	jmp    27d0 <.plt>
-
-0000000000002c50 <wgetch@plt>:
-    2c50:	jmp    QWORD PTR [rip+0x2042a2]        # 206ef8 <wgetch@NCURSES_5.0.19991023>
-    2c56:	push   0x47
-    2c5b:	jmp    27d0 <.plt>
-
-0000000000002c60 <xenstat_domain_num_vbds@plt>:
-    2c60:	jmp    QWORD PTR [rip+0x20429a]        # 206f00 <xenstat_domain_num_vbds>
-    2c66:	push   0x48
-    2c6b:	jmp    27d0 <.plt>
-
-0000000000002c70 <xenstat_tmem_succ_eph_gets@plt>:
-    2c70:	jmp    QWORD PTR [rip+0x204292]        # 206f08 <xenstat_tmem_succ_eph_gets>
-    2c76:	push   0x49
-    2c7b:	jmp    27d0 <.plt>
-
-0000000000002c80 <xenstat_domain_id@plt>:
-    2c80:	jmp    QWORD PTR [rip+0x20428a]        # 206f10 <xenstat_domain_id>
-    2c86:	push   0x4a
-    2c8b:	jmp    27d0 <.plt>
-
-0000000000002c90 <calloc@plt>:
-    2c90:	jmp    QWORD PTR [rip+0x204282]        # 206f18 <calloc@GLIBC_2.2.5>
-    2c96:	push   0x4b
-    2c9b:	jmp    27d0 <.plt>
-
-0000000000002ca0 <xenstat_node_tot_mem@plt>:
-    2ca0:	jmp    QWORD PTR [rip+0x20427a]        # 206f20 <xenstat_node_tot_mem>
-    2ca6:	push   0x4c
-    2cab:	jmp    27d0 <.plt>
-
-0000000000002cb0 <xenstat_tmem_succ_pers_gets@plt>:
-    2cb0:	jmp    QWORD PTR [rip+0x204272]        # 206f28 <xenstat_tmem_succ_pers_gets>
-    2cb6:	push   0x4d
-    2cbb:	jmp    27d0 <.plt>
-
-0000000000002cc0 <xenstat_init@plt>:
-    2cc0:	jmp    QWORD PTR [rip+0x20426a]        # 206f30 <xenstat_init>
-    2cc6:	push   0x4e
-    2ccb:	jmp    27d0 <.plt>
-
-0000000000002cd0 <xenstat_vbd_dev@plt>:
-    2cd0:	jmp    QWORD PTR [rip+0x204262]        # 206f38 <xenstat_vbd_dev>
-    2cd6:	push   0x4f
-    2cdb:	jmp    27d0 <.plt>
-
-0000000000002ce0 <__snprintf_chk@plt>:
-    2ce0:	jmp    QWORD PTR [rip+0x20425a]        # 206f40 <__snprintf_chk@GLIBC_2.3.4>
-    2ce6:	push   0x50
-    2ceb:	jmp    27d0 <.plt>
-
-0000000000002cf0 <sigemptyset@plt>:
-    2cf0:	jmp    QWORD PTR [rip+0x204252]        # 206f48 <sigemptyset@GLIBC_2.2.5>
-    2cf6:	push   0x51
-    2cfb:	jmp    27d0 <.plt>
-
-0000000000002d00 <xenstat_vbd_wr_reqs@plt>:
-    2d00:	jmp    QWORD PTR [rip+0x20424a]        # 206f50 <xenstat_vbd_wr_reqs>
-    2d06:	push   0x52
-    2d0b:	jmp    27d0 <.plt>
-
-0000000000002d10 <xenstat_network_rbytes@plt>:
-    2d10:	jmp    QWORD PTR [rip+0x204242]        # 206f58 <xenstat_network_rbytes>
-    2d16:	push   0x53
-    2d1b:	jmp    27d0 <.plt>
-
-0000000000002d20 <wclear@plt>:
-    2d20:	jmp    QWORD PTR [rip+0x20423a]        # 206f60 <wclear@NCURSES_5.0.19991023>
-    2d26:	push   0x54
-    2d2b:	jmp    27d0 <.plt>
-
-0000000000002d30 <xenstat_get_node@plt>:
-    2d30:	jmp    QWORD PTR [rip+0x204232]        # 206f68 <xenstat_get_node>
-    2d36:	push   0x55
-    2d3b:	jmp    27d0 <.plt>
-
-0000000000002d40 <xenstat_node_free_mem@plt>:
-    2d40:	jmp    QWORD PTR [rip+0x20422a]        # 206f70 <xenstat_node_free_mem>
-    2d46:	push   0x56
-    2d4b:	jmp    27d0 <.plt>
-
-0000000000002d50 <initscr@plt>:
-    2d50:	jmp    QWORD PTR [rip+0x204222]        # 206f78 <initscr@NCURSES_5.0.19991023>
-    2d56:	push   0x57
-    2d5b:	jmp    27d0 <.plt>
-
-0000000000002d60 <localtime@plt>:
-    2d60:	jmp    QWORD PTR [rip+0x20421a]        # 206f80 <localtime@GLIBC_2.2.5>
-    2d66:	push   0x58
-    2d6b:	jmp    27d0 <.plt>
-
-0000000000002d70 <xenstat_vcpu_online@plt>:
-    2d70:	jmp    QWORD PTR [rip+0x204212]        # 206f88 <xenstat_vcpu_online>
-    2d76:	push   0x59
-    2d7b:	jmp    27d0 <.plt>
-
-0000000000002d80 <xenstat_vbd_type@plt>:
-    2d80:	jmp    QWORD PTR [rip+0x20420a]        # 206f90 <xenstat_vbd_type>
-    2d86:	push   0x5a
-    2d8b:	jmp    27d0 <.plt>
-
-0000000000002d90 <strftime@plt>:
-    2d90:	jmp    QWORD PTR [rip+0x204202]        # 206f98 <strftime@GLIBC_2.2.5>
-    2d96:	push   0x5b
-    2d9b:	jmp    27d0 <.plt>
-
-0000000000002da0 <printw@plt>:
-    2da0:	jmp    QWORD PTR [rip+0x2041fa]        # 206fa0 <printw@NCURSES_5.0.19991023>
-    2da6:	push   0x5c
-    2dab:	jmp    27d0 <.plt>
-
-0000000000002db0 <xenstat_domain_num_vcpus@plt>:
-    2db0:	jmp    QWORD PTR [rip+0x2041f2]        # 206fa8 <xenstat_domain_num_vcpus>
-    2db6:	push   0x5d
-    2dbb:	jmp    27d0 <.plt>
-
-0000000000002dc0 <xenstat_network_rpackets@plt>:
-    2dc0:	jmp    QWORD PTR [rip+0x2041ea]        # 206fb0 <xenstat_network_rpackets>
-    2dc6:	push   0x5e
-    2dcb:	jmp    27d0 <.plt>
-
-0000000000002dd0 <xenstat_domain_num_networks@plt>:
-    2dd0:	jmp    QWORD PTR [rip+0x2041e2]        # 206fb8 <xenstat_domain_num_networks>
-    2dd6:	push   0x5f
-    2ddb:	jmp    27d0 <.plt>
-
-0000000000002de0 <xenstat_network_tpackets@plt>:
-    2de0:	jmp    QWORD PTR [rip+0x2041da]        # 206fc0 <xenstat_network_tpackets>
-    2de6:	push   0x60
-    2deb:	jmp    27d0 <.plt>
-
-0000000000002df0 <wattr_on@plt>:
-    2df0:	jmp    QWORD PTR [rip+0x2041d2]        # 206fc8 <wattr_on@NCURSES_5.0.19991023>
-    2df6:	push   0x61
-    2dfb:	jmp    27d0 <.plt>
-
-0000000000002e00 <fflush@plt>:
-    2e00:	jmp    QWORD PTR [rip+0x2041ca]        # 206fd0 <fflush@GLIBC_2.2.5>
-    2e06:	push   0x62
-    2e0b:	jmp    27d0 <.plt>
-
-Disassembly of section .plt.got:
-
-0000000000002e10 <__cxa_finalize@plt>:
-    2e10:	jmp    QWORD PTR [rip+0x2041e2]        # 206ff8 <__cxa_finalize@GLIBC_2.2.5>
-    2e16:	xchg   ax,ax
-
-Disassembly of section .text:
-
-0000000000002e20 <fail>:
     2e20:	cmp    QWORD PTR [rip+0x204768],0x0        # 207590 <cwin>
     2e28:	push   rbx
     2e29:	mov    rbx,rdi
@@ -539,8 +13,6 @@ Disassembly of section .text:
     2e50:	call   28c0 <exit@plt>
     2e55:	nop    WORD PTR cs:[rax+rax*1+0x0]
     2e5f:	nop
-
-0000000000002e60 <main>:
     2e60:	push   r15
     2e62:	push   r14
     2e64:	mov    r15d,edi
@@ -687,7 +159,7 @@ Disassembly of section .text:
     312a:	lea    eax,[r15+0x1]
     312e:	mov    BYTE PTR [rbp+r15*1+0x0],bl
     3133:	mov    DWORD PTR [rip+0x2043ff],eax        # 207538 <prompt_val_len>
-    3139:	cdqe   
+    3139:	cdqe
     313b:	mov    BYTE PTR [rbp+rax*1+0x0],0x0
     3140:	jmp    3064 <main+0x204>
     3145:	mov    rdi,rbp
@@ -740,13 +212,13 @@ Disassembly of section .text:
     3236:	pop    r13
     3238:	pop    r14
     323a:	pop    r15
-    323c:	ret    
+    323c:	ret
     323d:	mov    eax,DWORD PTR [rip+0x2042f5]        # 207538 <prompt_val_len>
     3243:	test   eax,eax
     3245:	jle    3257 <main+0x3f7>
     3247:	sub    eax,0x1
     324a:	mov    DWORD PTR [rip+0x2042e8],eax        # 207538 <prompt_val_len>
-    3250:	cdqe   
+    3250:	cdqe
     3252:	mov    BYTE PTR [rbp+rax*1+0x0],0x0
     3257:	lea    rdi,[rip+0x2043b2]        # 207610 <curtime>
     325e:	xor    esi,esi
@@ -865,8 +337,6 @@ Disassembly of section .text:
     3480:	call   2e20 <fail>
     3485:	nop    WORD PTR cs:[rax+rax*1+0x0]
     348f:	nop
-
-0000000000003490 <_start>:
     3490:	xor    ebp,ebp
     3492:	mov    r9,rdx
     3495:	pop    rsi
@@ -878,75 +348,8 @@ Disassembly of section .text:
     34a6:	lea    rcx,[rip+0x1df3]        # 52a0 <__libc_csu_init>
     34ad:	lea    rdi,[rip+0xfffffffffffff9ac]        # 2e60 <main>
     34b4:	call   QWORD PTR [rip+0x203b26]        # 206fe0 <__libc_start_main@GLIBC_2.2.5>
-    34ba:	hlt    
+    34ba:	hlt
     34bb:	nop    DWORD PTR [rax+rax*1+0x0]
-
-00000000000034c0 <deregister_tm_clones>:
-    34c0:	lea    rdi,[rip+0x204031]        # 2074f8 <__TMC_END__>
-    34c7:	push   rbp
-    34c8:	lea    rax,[rip+0x204029]        # 2074f8 <__TMC_END__>
-    34cf:	cmp    rax,rdi
-    34d2:	mov    rbp,rsp
-    34d5:	je     34f0 <deregister_tm_clones+0x30>
-    34d7:	mov    rax,QWORD PTR [rip+0x203b0a]        # 206fe8 <_ITM_deregisterTMCloneTable>
-    34de:	test   rax,rax
-    34e1:	je     34f0 <deregister_tm_clones+0x30>
-    34e3:	pop    rbp
-    34e4:	jmp    rax
-    34e6:	nop    WORD PTR cs:[rax+rax*1+0x0]
-    34f0:	pop    rbp
-    34f1:	ret    
-    34f2:	nop    DWORD PTR [rax+0x0]
-    34f6:	nop    WORD PTR cs:[rax+rax*1+0x0]
-
-0000000000003500 <register_tm_clones>:
-    3500:	lea    rdi,[rip+0x203ff1]        # 2074f8 <__TMC_END__>
-    3507:	lea    rsi,[rip+0x203fea]        # 2074f8 <__TMC_END__>
-    350e:	push   rbp
-    350f:	sub    rsi,rdi
-    3512:	mov    rbp,rsp
-    3515:	sar    rsi,0x3
-    3519:	mov    rax,rsi
-    351c:	shr    rax,0x3f
-    3520:	add    rsi,rax
-    3523:	sar    rsi,1
-    3526:	je     3540 <register_tm_clones+0x40>
-    3528:	mov    rax,QWORD PTR [rip+0x203ac1]        # 206ff0 <_ITM_registerTMCloneTable>
-    352f:	test   rax,rax
-    3532:	je     3540 <register_tm_clones+0x40>
-    3534:	pop    rbp
-    3535:	jmp    rax
-    3537:	nop    WORD PTR [rax+rax*1+0x0]
-    3540:	pop    rbp
-    3541:	ret    
-    3542:	nop    DWORD PTR [rax+0x0]
-    3546:	nop    WORD PTR cs:[rax+rax*1+0x0]
-
-0000000000003550 <__do_global_dtors_aux>:
-    3550:	cmp    BYTE PTR [rip+0x203fd9],0x0        # 207530 <completed.7697>
-    3557:	jne    3588 <__do_global_dtors_aux+0x38>
-    3559:	cmp    QWORD PTR [rip+0x203a97],0x0        # 206ff8 <__cxa_finalize@GLIBC_2.2.5>
-    3561:	push   rbp
-    3562:	mov    rbp,rsp
-    3565:	je     3573 <__do_global_dtors_aux+0x23>
-    3567:	mov    rdi,QWORD PTR [rip+0x203a9a]        # 207008 <__dso_handle>
-    356e:	call   2e10 <__cxa_finalize@plt>
-    3573:	call   34c0 <deregister_tm_clones>
-    3578:	mov    BYTE PTR [rip+0x203fb1],0x1        # 207530 <completed.7697>
-    357f:	pop    rbp
-    3580:	ret    
-    3581:	nop    DWORD PTR [rax+0x0]
-    3588:	repz ret 
-    358a:	nop    WORD PTR [rax+rax*1+0x0]
-
-0000000000003590 <frame_dummy>:
-    3590:	push   rbp
-    3591:	mov    rbp,rsp
-    3594:	pop    rbp
-    3595:	jmp    3500 <register_tm_clones>
-    359a:	nop    WORD PTR [rax+rax*1+0x0]
-
-00000000000035a0 <compare_domains>:
     35a0:	mov    eax,DWORD PTR [rip+0x203fc6]        # 20756c <sort_field>
     35a6:	mov    rsi,QWORD PTR [rsi]
     35a9:	mov    rdi,QWORD PTR [rdi]
@@ -955,8 +358,6 @@ Disassembly of section .text:
     35b7:	mov    rax,QWORD PTR [rax+rdx*8+0x18]
     35bc:	jmp    rax
     35be:	xchg   ax,ax
-
-00000000000035c0 <compare_state>:
     35c0:	push   r14
     35c2:	push   r13
     35c4:	mov    r13,rdi
@@ -988,7 +389,7 @@ Disassembly of section .text:
     3602:	pop    r12
     3604:	pop    r13
     3606:	pop    r14
-    3608:	ret    
+    3608:	ret
     3609:	nop    DWORD PTR [rax+0x0]
     3610:	pop    rbx
     3611:	mov    eax,0xffffffff
@@ -996,7 +397,7 @@ Disassembly of section .text:
     3617:	pop    r12
     3619:	pop    r13
     361b:	pop    r14
-    361d:	ret    
+    361d:	ret
     361e:	xchg   ax,ax
     3620:	pop    rbx
     3621:	mov    eax,0x1
@@ -1004,15 +405,11 @@ Disassembly of section .text:
     3627:	pop    r12
     3629:	pop    r13
     362b:	pop    r14
-    362d:	ret    
+    362d:	ret
     362e:	xchg   ax,ax
-
-0000000000003630 <signal_exit_handler>:
     3630:	mov    DWORD PTR [rip+0x203f4e],0x1        # 207588 <signal_exit>
-    363a:	ret    
+    363a:	ret
     363b:	nop    DWORD PTR [rax+rax*1+0x0]
-
-0000000000003640 <compare_ssid>:
     3640:	push   rbp
     3641:	push   rbx
     3642:	mov    rbp,rdi
@@ -1030,13 +427,11 @@ Disassembly of section .text:
     3668:	add    rsp,0x8
     366c:	pop    rbx
     366d:	pop    rbp
-    366e:	ret    
+    366e:	ret
     366f:	nop
     3670:	mov    eax,0xffffffff
     3675:	jmp    3668 <compare_ssid+0x28>
     3677:	nop    WORD PTR [rax+rax*1+0x0]
-
-0000000000003680 <print>:
     3680:	sub    rsp,0xd8
     3687:	test   al,al
     3689:	mov    QWORD PTR [rsp+0x28],rsi
@@ -1079,7 +474,7 @@ Disassembly of section .text:
     3743:	xor    rax,QWORD PTR fs:0x28
     374c:	jne    379f <print+0x11f>
     374e:	add    rsp,0xd8
-    3755:	ret    
+    3755:	ret
     3756:	nop    WORD PTR cs:[rax+rax*1+0x0]
     3760:	lea    rax,[rsp+0xe0]
     3768:	mov    rdx,rdi
@@ -1096,8 +491,6 @@ Disassembly of section .text:
     379f:	call   2c40 <__stack_chk_fail@plt>
     37a4:	xchg   ax,ax
     37a6:	nop    WORD PTR cs:[rax+rax*1+0x0]
-
-00000000000037b0 <print_ssid>:
     37b0:	sub    rsp,0x8
     37b4:	call   2a30 <xenstat_domain_ssid@plt>
     37b9:	lea    rdi,[rip+0x1b84]        # 5344 <_IO_stdin_used+0x4>
@@ -1106,8 +499,6 @@ Disassembly of section .text:
     37c6:	xor    eax,eax
     37c8:	jmp    3680 <print>
     37cd:	nop    DWORD PTR [rax]
-
-00000000000037d0 <print_state>:
     37d0:	push   r12
     37d2:	push   rbp
     37d3:	mov    r12,rdi
@@ -1130,10 +521,8 @@ Disassembly of section .text:
     3811:	pop    rbx
     3812:	pop    rbp
     3813:	pop    r12
-    3815:	ret    
+    3815:	ret
     3816:	nop    WORD PTR cs:[rax+rax*1+0x0]
-
-0000000000003820 <print_vbds>:
     3820:	sub    rsp,0x8
     3824:	call   2c60 <xenstat_domain_num_vbds@plt>
     3829:	lea    rdi,[rip+0x1b14]        # 5344 <_IO_stdin_used+0x4>
@@ -1142,8 +531,6 @@ Disassembly of section .text:
     3836:	xor    eax,eax
     3838:	jmp    3680 <print>
     383d:	nop    DWORD PTR [rax]
-
-0000000000003840 <compare_vbds>:
     3840:	push   rbp
     3841:	push   rbx
     3842:	mov    rbp,rdi
@@ -1162,11 +549,9 @@ Disassembly of section .text:
     386d:	add    rsp,0x8
     3871:	pop    rbx
     3872:	pop    rbp
-    3873:	ret    
+    3873:	ret
     3874:	xchg   ax,ax
     3876:	nop    WORD PTR cs:[rax+rax*1+0x0]
-
-0000000000003880 <tot_vbd_reqs>:
     3880:	push   r14
     3882:	push   r13
     3884:	mov    r14,rdi
@@ -1212,7 +597,7 @@ Disassembly of section .text:
     38f3:	pop    r12
     38f5:	pop    r13
     38f7:	pop    r14
-    38f9:	ret    
+    38f9:	ret
     38fa:	nop    WORD PTR [rax+rax*1+0x0]
     3900:	mov    rdi,rax
     3903:	call   2d00 <xenstat_vbd_wr_reqs@plt>
@@ -1236,10 +621,8 @@ Disassembly of section .text:
     3938:	pop    r12
     393a:	pop    r13
     393c:	pop    r14
-    393e:	ret    
+    393e:	ret
     393f:	nop
-
-0000000000003940 <print_vbd_wsect>:
     3940:	sub    rsp,0x8
     3944:	mov    esi,0x12
     3949:	call   3880 <tot_vbd_reqs>
@@ -1250,8 +633,6 @@ Disassembly of section .text:
     3962:	xor    eax,eax
     3964:	jmp    3680 <print>
     3969:	nop    DWORD PTR [rax+0x0]
-
-0000000000003970 <compare_vbd_wsect>:
     3970:	push   rbp
     3971:	push   rbx
     3972:	mov    rbp,rdi
@@ -1272,10 +653,8 @@ Disassembly of section .text:
     39aa:	mov    eax,edx
     39ac:	pop    rbx
     39ad:	pop    rbp
-    39ae:	ret    
+    39ae:	ret
     39af:	nop
-
-00000000000039b0 <print_vbd_rsect>:
     39b0:	sub    rsp,0x8
     39b4:	mov    esi,0x11
     39b9:	call   3880 <tot_vbd_reqs>
@@ -1286,8 +665,6 @@ Disassembly of section .text:
     39d2:	xor    eax,eax
     39d4:	jmp    3680 <print>
     39d9:	nop    DWORD PTR [rax+0x0]
-
-00000000000039e0 <compare_vbd_rsect>:
     39e0:	push   rbp
     39e1:	push   rbx
     39e2:	mov    rbp,rdi
@@ -1308,10 +685,8 @@ Disassembly of section .text:
     3a1a:	mov    eax,edx
     3a1c:	pop    rbx
     3a1d:	pop    rbp
-    3a1e:	ret    
+    3a1e:	ret
     3a1f:	nop
-
-0000000000003a20 <print_vbd_wr>:
     3a20:	sub    rsp,0x8
     3a24:	mov    esi,0x10
     3a29:	call   3880 <tot_vbd_reqs>
@@ -1322,8 +697,6 @@ Disassembly of section .text:
     3a42:	xor    eax,eax
     3a44:	jmp    3680 <print>
     3a49:	nop    DWORD PTR [rax+0x0]
-
-0000000000003a50 <compare_vbd_wr>:
     3a50:	push   rbp
     3a51:	push   rbx
     3a52:	mov    rbp,rdi
@@ -1344,10 +717,8 @@ Disassembly of section .text:
     3a8a:	mov    eax,edx
     3a8c:	pop    rbx
     3a8d:	pop    rbp
-    3a8e:	ret    
+    3a8e:	ret
     3a8f:	nop
-
-0000000000003a90 <print_vbd_rd>:
     3a90:	sub    rsp,0x8
     3a94:	mov    esi,0xf
     3a99:	call   3880 <tot_vbd_reqs>
@@ -1358,8 +729,6 @@ Disassembly of section .text:
     3ab2:	xor    eax,eax
     3ab4:	jmp    3680 <print>
     3ab9:	nop    DWORD PTR [rax+0x0]
-
-0000000000003ac0 <compare_vbd_rd>:
     3ac0:	push   rbp
     3ac1:	push   rbx
     3ac2:	mov    rbp,rdi
@@ -1380,10 +749,8 @@ Disassembly of section .text:
     3afa:	mov    eax,edx
     3afc:	pop    rbx
     3afd:	pop    rbp
-    3afe:	ret    
+    3afe:	ret
     3aff:	nop
-
-0000000000003b00 <print_vbd_oo>:
     3b00:	sub    rsp,0x8
     3b04:	mov    esi,0xe
     3b09:	call   3880 <tot_vbd_reqs>
@@ -1394,8 +761,6 @@ Disassembly of section .text:
     3b1e:	jmp    3680 <print>
     3b23:	nop    DWORD PTR [rax]
     3b26:	nop    WORD PTR cs:[rax+rax*1+0x0]
-
-0000000000003b30 <compare_vbd_oo>:
     3b30:	push   rbp
     3b31:	push   rbx
     3b32:	mov    rbp,rdi
@@ -1416,10 +781,8 @@ Disassembly of section .text:
     3b6a:	mov    eax,edx
     3b6c:	pop    rbx
     3b6d:	pop    rbp
-    3b6e:	ret    
+    3b6e:	ret
     3b6f:	nop
-
-0000000000003b70 <print_nets>:
     3b70:	sub    rsp,0x8
     3b74:	call   2dd0 <xenstat_domain_num_networks@plt>
     3b79:	lea    rdi,[rip+0x17c4]        # 5344 <_IO_stdin_used+0x4>
@@ -1428,8 +791,6 @@ Disassembly of section .text:
     3b86:	xor    eax,eax
     3b88:	jmp    3680 <print>
     3b8d:	nop    DWORD PTR [rax]
-
-0000000000003b90 <compare_nets>:
     3b90:	push   rbp
     3b91:	push   rbx
     3b92:	mov    rbp,rdi
@@ -1448,11 +809,9 @@ Disassembly of section .text:
     3bbd:	add    rsp,0x8
     3bc1:	pop    rbx
     3bc2:	pop    rbp
-    3bc3:	ret    
+    3bc3:	ret
     3bc4:	xchg   ax,ax
     3bc6:	nop    WORD PTR cs:[rax+rax*1+0x0]
-
-0000000000003bd0 <tot_net_bytes>:
     3bd0:	push   r14
     3bd2:	push   r13
     3bd4:	mov    r14d,esi
@@ -1489,7 +848,7 @@ Disassembly of section .text:
     3c27:	pop    r12
     3c29:	pop    r13
     3c2b:	pop    r14
-    3c2d:	ret    
+    3c2d:	ret
     3c2e:	xchg   ax,ax
     3c30:	xor    ebp,ebp
     3c32:	pop    rbx
@@ -1498,10 +857,8 @@ Disassembly of section .text:
     3c37:	pop    r12
     3c39:	pop    r13
     3c3b:	pop    r14
-    3c3d:	ret    
+    3c3d:	ret
     3c3e:	xchg   ax,ax
-
-0000000000003c40 <print_net_rx>:
     3c40:	sub    rsp,0x8
     3c44:	mov    esi,0x1
     3c49:	call   3bd0 <tot_net_bytes>
@@ -1513,8 +870,6 @@ Disassembly of section .text:
     3c66:	xor    eax,eax
     3c68:	jmp    3680 <print>
     3c6d:	nop    DWORD PTR [rax]
-
-0000000000003c70 <compare_net_rx>:
     3c70:	push   rbp
     3c71:	push   rbx
     3c72:	mov    rbp,rdi
@@ -1535,10 +890,8 @@ Disassembly of section .text:
     3caa:	mov    eax,edx
     3cac:	pop    rbx
     3cad:	pop    rbp
-    3cae:	ret    
+    3cae:	ret
     3caf:	nop
-
-0000000000003cb0 <print_net_tx>:
     3cb0:	sub    rsp,0x8
     3cb4:	xor    esi,esi
     3cb6:	call   3bd0 <tot_net_bytes>
@@ -1550,8 +903,6 @@ Disassembly of section .text:
     3cd3:	xor    eax,eax
     3cd5:	jmp    3680 <print>
     3cda:	nop    WORD PTR [rax+rax*1+0x0]
-
-0000000000003ce0 <compare_net_tx>:
     3ce0:	push   rbp
     3ce1:	push   rbx
     3ce2:	mov    rbp,rdi
@@ -1572,10 +923,8 @@ Disassembly of section .text:
     3d14:	mov    eax,edx
     3d16:	pop    rbx
     3d17:	pop    rbp
-    3d18:	ret    
+    3d18:	ret
     3d19:	nop    DWORD PTR [rax+0x0]
-
-0000000000003d20 <print_vcpus>:
     3d20:	sub    rsp,0x8
     3d24:	call   2db0 <xenstat_domain_num_vcpus@plt>
     3d29:	lea    rdi,[rip+0x1627]        # 5357 <_IO_stdin_used+0x17>
@@ -1584,8 +933,6 @@ Disassembly of section .text:
     3d36:	xor    eax,eax
     3d38:	jmp    3680 <print>
     3d3d:	nop    DWORD PTR [rax]
-
-0000000000003d40 <compare_vcpus>:
     3d40:	push   rbp
     3d41:	push   rbx
     3d42:	mov    rbp,rdi
@@ -1604,11 +951,9 @@ Disassembly of section .text:
     3d6d:	add    rsp,0x8
     3d71:	pop    rbx
     3d72:	pop    rbp
-    3d73:	ret    
+    3d73:	ret
     3d74:	xchg   ax,ax
     3d76:	nop    WORD PTR cs:[rax+rax*1+0x0]
-
-0000000000003d80 <compare_maxmem>:
     3d80:	push   rbp
     3d81:	push   rbx
     3d82:	mov    rbp,rdi
@@ -1627,11 +972,9 @@ Disassembly of section .text:
     3db0:	mov    eax,edx
     3db2:	pop    rbx
     3db3:	pop    rbp
-    3db4:	ret    
+    3db4:	ret
     3db5:	nop
     3db6:	nop    WORD PTR cs:[rax+rax*1+0x0]
-
-0000000000003dc0 <print_mem_pct>:
     3dc0:	push   rbx
     3dc1:	call   2a60 <xenstat_domain_cur_mem@plt>
     3dc6:	mov    rdi,QWORD PTR [rip+0x2037a3]        # 207570 <cur_node>
@@ -1670,8 +1013,6 @@ Disassembly of section .text:
     3e43:	addsd  xmm1,xmm1
     3e47:	jmp    3df1 <print_mem_pct+0x31>
     3e49:	nop    DWORD PTR [rax+0x0]
-
-0000000000003e50 <print_mem>:
     3e50:	sub    rsp,0x8
     3e54:	call   2a60 <xenstat_domain_cur_mem@plt>
     3e59:	lea    rdi,[rip+0x1501]        # 5361 <_IO_stdin_used+0x21>
@@ -1682,8 +1023,6 @@ Disassembly of section .text:
     3e6d:	jmp    3680 <print>
     3e72:	nop    DWORD PTR [rax+0x0]
     3e76:	nop    WORD PTR cs:[rax+rax*1+0x0]
-
-0000000000003e80 <compare_mem>:
     3e80:	push   rbp
     3e81:	push   rbx
     3e82:	mov    rbp,rdi
@@ -1702,11 +1041,9 @@ Disassembly of section .text:
     3eb0:	mov    eax,edx
     3eb2:	pop    rbx
     3eb3:	pop    rbp
-    3eb4:	ret    
+    3eb4:	ret
     3eb5:	nop
     3eb6:	nop    WORD PTR cs:[rax+rax*1+0x0]
-
-0000000000003ec0 <print_cpu>:
     3ec0:	sub    rsp,0x8
     3ec4:	call   2bd0 <xenstat_domain_cpu_ns@plt>
     3ec9:	movabs rdx,0x44b82fa09b5a53
@@ -1720,8 +1057,6 @@ Disassembly of section .text:
     3eee:	jmp    3680 <print>
     3ef3:	nop    DWORD PTR [rax]
     3ef6:	nop    WORD PTR cs:[rax+rax*1+0x0]
-
-0000000000003f00 <compare_cpu>:
     3f00:	push   rbp
     3f01:	push   rbx
     3f02:	mov    rbp,rdi
@@ -1740,11 +1075,9 @@ Disassembly of section .text:
     3f30:	mov    eax,edx
     3f32:	pop    rbx
     3f33:	pop    rbp
-    3f34:	ret    
+    3f34:	ret
     3f35:	nop
     3f36:	nop    WORD PTR cs:[rax+rax*1+0x0]
-
-0000000000003f40 <compare_name>:
     3f40:	push   rbp
     3f41:	push   rbx
     3f42:	mov    rbp,rdi
@@ -1761,8 +1094,6 @@ Disassembly of section .text:
     3f67:	pop    rbp
     3f68:	jmp    28e0 <strcasecmp@plt>
     3f6d:	nop    DWORD PTR [rax]
-
-0000000000003f70 <cleanup>:
     3f70:	sub    rsp,0x8
     3f74:	cmp    QWORD PTR [rip+0x203614],0x0        # 207590 <cwin>
     3f7c:	je     3f87 <cleanup+0x17>
@@ -1784,13 +1115,11 @@ Disassembly of section .text:
     3fb9:	jmp    2bb0 <xenstat_uninit@plt>
     3fbe:	xchg   ax,ax
     3fc0:	add    rsp,0x8
-    3fc4:	ret    
+    3fc4:	ret
     3fc5:	nop    DWORD PTR [rax]
     3fc8:	call   2960 <endwin@plt>
     3fcd:	jmp    3f87 <cleanup+0x17>
     3fcf:	nop
-
-0000000000003fd0 <set_delay>:
     3fd0:	sub    rsp,0x8
     3fd4:	xor    esi,esi
     3fd6:	mov    edx,0xa
@@ -1799,10 +1128,8 @@ Disassembly of section .text:
     3fe2:	jle    3fea <set_delay+0x1a>
     3fe4:	mov    DWORD PTR [rip+0x20319a],eax        # 207184 <delay>
     3fea:	add    rsp,0x8
-    3fee:	ret    
+    3fee:	ret
     3fef:	nop
-
-0000000000003ff0 <print_maxmem>:
     3ff0:	sub    rsp,0x8
     3ff4:	call   2860 <xenstat_domain_max_mem@plt>
     3ff9:	cmp    rax,0xffffffffffffffff
@@ -1820,8 +1147,6 @@ Disassembly of section .text:
     4030:	add    rsp,0x8
     4034:	jmp    3680 <print>
     4039:	nop    DWORD PTR [rax+0x0]
-
-0000000000004040 <print_max_pct>:
     4040:	push   rbx
     4041:	mov    rbx,rdi
     4044:	call   2860 <xenstat_domain_max_mem@plt>
@@ -1871,8 +1196,6 @@ Disassembly of section .text:
     40f7:	xor    eax,eax
     40f9:	jmp    3680 <print>
     40fe:	xchg   ax,ax
-
-0000000000004100 <get_cpu_pct.part.2>:
     4100:	push   rbp
     4101:	push   rbx
     4102:	mov    rbx,rdi
@@ -1910,7 +1233,7 @@ Disassembly of section .text:
     4197:	add    rsp,0x18
     419b:	pop    rbx
     419c:	pop    rbp
-    419d:	ret    
+    419d:	ret
     419e:	xchg   ax,ax
     41a0:	mov    rax,rbx
     41a3:	pxor   xmm0,xmm0
@@ -1921,8 +1244,6 @@ Disassembly of section .text:
     41b5:	addsd  xmm0,xmm0
     41b9:	jmp    4189 <get_cpu_pct.part.2+0x89>
     41bb:	nop    DWORD PTR [rax+rax*1+0x0]
-
-00000000000041c0 <print_cpu_pct>:
     41c0:	sub    rsp,0x8
     41c4:	cmp    QWORD PTR [rip+0x2033ac],0x0        # 207578 <prev_node>
     41cc:	pxor   xmm0,xmm0
@@ -1933,8 +1254,6 @@ Disassembly of section .text:
     41e3:	add    rsp,0x8
     41e7:	jmp    3680 <print>
     41ec:	nop    DWORD PTR [rax+0x0]
-
-00000000000041f0 <compare_cpu_pct>:
     41f0:	push   rbp
     41f1:	push   rbx
     41f2:	sub    rsp,0x18
@@ -1962,7 +1281,7 @@ Disassembly of section .text:
     4255:	add    rsp,0x18
     4259:	pop    rbx
     425a:	pop    rbp
-    425b:	ret    
+    425b:	ret
     425c:	nop    DWORD PTR [rax+0x0]
     4260:	subsd  xmm0,xmm1
     4264:	movabs rax,0x8000000000000000
@@ -1979,7 +1298,7 @@ Disassembly of section .text:
     4290:	neg    eax
     4292:	pop    rbx
     4293:	pop    rbp
-    4294:	ret    
+    4294:	ret
     4295:	nop    DWORD PTR [rax]
     4298:	subsd  xmm0,xmm1
     429c:	movabs rax,0x8000000000000000
@@ -1990,8 +1309,6 @@ Disassembly of section .text:
     42b2:	jmp    424b <compare_cpu_pct+0x5b>
     42b4:	xchg   ax,ax
     42b6:	nop    WORD PTR cs:[rax+rax*1+0x0]
-
-00000000000042c0 <print_name>:
     42c0:	sub    rsp,0x8
     42c4:	mov    eax,DWORD PTR [rip+0x20327e]        # 207548 <show_full_name>
     42ca:	test   eax,eax
@@ -2010,24 +1327,18 @@ Disassembly of section .text:
     4305:	add    rsp,0x8
     4309:	xor    eax,eax
     430b:	jmp    3680 <print>
-
-0000000000004310 <xentop_attron.part.4>:
     4310:	movsxd rsi,edi
     4313:	mov    rdi,QWORD PTR [rip+0x2031f6]        # 207510 <stdscr@@NCURSES_TINFO_5.0.19991023>
     431a:	xor    edx,edx
     431c:	jmp    2df0 <wattr_on@plt>
     4321:	nop    DWORD PTR [rax+rax*1+0x0]
     4326:	nop    WORD PTR cs:[rax+rax*1+0x0]
-
-0000000000004330 <xentop_attroff.part.5>:
     4330:	movsxd rsi,edi
     4333:	mov    rdi,QWORD PTR [rip+0x2031d6]        # 207510 <stdscr@@NCURSES_TINFO_5.0.19991023>
     433a:	xor    edx,edx
     433c:	jmp    2820 <wattr_off@plt>
     4341:	nop    DWORD PTR [rax+rax*1+0x0]
     4346:	nop    WORD PTR cs:[rax+rax*1+0x0]
-
-0000000000004350 <attr_addstr>:
     4350:	push   rbx
     4351:	mov    ebx,edi
     4353:	sub    rsp,0x10
@@ -2042,7 +1353,7 @@ Disassembly of section .text:
     437a:	je     4388 <attr_addstr+0x38>
     437c:	add    rsp,0x10
     4380:	pop    rbx
-    4381:	ret    
+    4381:	ret
     4382:	nop    WORD PTR [rax+rax*1+0x0]
     4388:	add    rsp,0x10
     438c:	mov    edi,ebx
@@ -2054,8 +1365,6 @@ Disassembly of section .text:
     43a2:	mov    rsi,QWORD PTR [rsp+0x8]
     43a7:	jmp    4361 <attr_addstr+0x11>
     43a9:	nop    DWORD PTR [rax+0x0]
-
-00000000000043b0 <do_tmem>:
     43b0:	push   r13
     43b2:	push   r12
     43b4:	push   rbp
@@ -2084,7 +1393,7 @@ Disassembly of section .text:
     43fe:	pop    rbp
     43ff:	pop    r12
     4401:	pop    r13
-    4403:	ret    
+    4403:	ret
     4404:	nop    DWORD PTR [rax+0x0]
     4408:	add    rsp,0x8
     440c:	mov    rcx,r13
@@ -2099,8 +1408,6 @@ Disassembly of section .text:
     4425:	xor    eax,eax
     4427:	jmp    3680 <print>
     442c:	nop    DWORD PTR [rax+0x0]
-
-0000000000004430 <top>:
     4430:	push   r15
     4432:	push   r14
     4434:	push   r13
@@ -2921,58 +2228,3 @@ Disassembly of section .text:
     528e:	lea    rdi,[rip+0x12e]        # 53c3 <_IO_stdin_used+0x83>
     5295:	call   2e20 <fail>
     529a:	nop    WORD PTR [rax+rax*1+0x0]
-
-00000000000052a0 <__libc_csu_init>:
-    52a0:	push   r15
-    52a2:	push   r14
-    52a4:	mov    r15,rdx
-    52a7:	push   r13
-    52a9:	push   r12
-    52ab:	lea    r12,[rip+0x2017b6]        # 206a68 <__frame_dummy_init_array_entry>
-    52b2:	push   rbp
-    52b3:	lea    rbp,[rip+0x2017b6]        # 206a70 <__init_array_end>
-    52ba:	push   rbx
-    52bb:	mov    r13d,edi
-    52be:	mov    r14,rsi
-    52c1:	sub    rbp,r12
-    52c4:	sub    rsp,0x8
-    52c8:	sar    rbp,0x3
-    52cc:	call   27b8 <_init>
-    52d1:	test   rbp,rbp
-    52d4:	je     52f6 <__libc_csu_init+0x56>
-    52d6:	xor    ebx,ebx
-    52d8:	nop    DWORD PTR [rax+rax*1+0x0]
-    52e0:	mov    rdx,r15
-    52e3:	mov    rsi,r14
-    52e6:	mov    edi,r13d
-    52e9:	call   QWORD PTR [r12+rbx*8]
-    52ed:	add    rbx,0x1
-    52f1:	cmp    rbp,rbx
-    52f4:	jne    52e0 <__libc_csu_init+0x40>
-    52f6:	add    rsp,0x8
-    52fa:	pop    rbx
-    52fb:	pop    rbp
-    52fc:	pop    r12
-    52fe:	pop    r13
-    5300:	pop    r14
-    5302:	pop    r15
-    5304:	ret    
-    5305:	nop
-    5306:	nop    WORD PTR cs:[rax+rax*1+0x0]
-
-0000000000005310 <__libc_csu_fini>:
-    5310:	repz ret 
-    5312:	nop    WORD PTR cs:[rax+rax*1+0x0]
-    531c:	nop    DWORD PTR [rax+0x0]
-
-0000000000005320 <atexit>:
-    5320:	mov    rdx,QWORD PTR [rip+0x201ce1]        # 207008 <__dso_handle>
-    5327:	xor    esi,esi
-    5329:	jmp    2980 <__cxa_atexit@plt>
-
-Disassembly of section .fini:
-
-0000000000005330 <_fini>:
-    5330:	sub    rsp,0x8
-    5334:	add    rsp,0x8
-    5338:	ret    

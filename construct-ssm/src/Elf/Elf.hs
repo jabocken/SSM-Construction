@@ -203,10 +203,10 @@ address_of_symbol ctxt@(elf,symbols) symb = do
 --
 -- Assumes op = CALL or JMP
 get_call_info :: Context -> Instr -> IO (Maybe (String, Word64, Bool))
-get_call_info ctxt@(elf,symbols) i@(Instr addr prefix op op1 op2 op3 _ instr_size) = do
+get_call_info ctxt@(elf,symbols) i@(Instr addr prefix op op1 op2 op3 _ instrSize) = do
   case op1 of
     Just (Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm offset)))) -> do
-      let a = addr + fromIntegral instr_size + fromIntegral offset
+      let a = addr + fromIntegral instrSize + fromIntegral offset
       case M.lookup a symbols of
         Just f@"__libc_start_main" -> return $ Just (f, a, True)
         _ -> call_info_op1
@@ -217,25 +217,24 @@ get_call_info ctxt@(elf,symbols) i@(Instr addr prefix op op1 op2 op3 _ instr_siz
     ret <- resolve_jmp_operand1 ctxt i
     case ret of
       Nothing -> return Nothing
-      Just a' -> call_info_with_start_address a'
+      Just a' -> callInfoWithStartAddress a'
 
-  call_info_with_start_address a' = do
+  callInfoWithStartAddress a' = do
     case find (sectionWithAddr a') (Elf.elfSections elf) of
       Just s ->
         if Elf.elfSectionName s `elem` [".plt",".plt.got",".got.plt", ".plt.sec"] then do
-          i' <- fetch_instruction_in_section elf a' s
+          i' <- fetchInstructionInSection elf a' s
           case i' of
-            (Instr a' _ ENDBR64 _ _ _ _ instr_size') -> do -- Push or jump should be next
-              call_info_with_start_address $ a' + fromIntegral instr_size'
-            (Instr a' _ PUSH _ _ _ _ instr_size') -> do -- Jump should be next; not modeling the push because we assume the external call resets it
-              call_info_with_start_address $ a' + fromIntegral instr_size'
-            (Instr a' _ JMP (Just (Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm offset'))))) _ _ _ instr_size') -> do
-              case M.lookup (fromIntegral (fromIntegral a' + instr_size' + offset')) symbols of
-                Just func_name -> return $ Just (func_name, addr + fromIntegral instr_size, True)
+            (Instr a' _ ENDBR64 _ _ _ _ instrSize') -> do -- Push or jump should be next
+              callInfoWithStartAddress $ a' + fromIntegral instrSize'
+            (Instr a' _ PUSH _ _ _ _ instrSize') -> do -- Jump should be next; not modeling the push because we assume the external call resets it
+              callInfoWithStartAddress $ a' + fromIntegral instrSize'
+            (Instr a' _ JMP (Just (Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm offset'))))) _ _ _ instrSize') -> do
+              case M.lookup (fromIntegral (fromIntegral a' + instrSize' + offset')) symbols of
+                Just func_name -> return $ Just (func_name, addr + fromIntegral instrSize, True)
                 Nothing        -> return $ Just ("anon_func_plt_" ++ showH a', a', True)
-            (Instr a' _ JMP (Just (Immediate ii)) _ _ _ instrSize) -> do
-              let jmp = fromIntegral a' + fromIntegral instrSize + fromIntegral ii :: Word64
-              call_info_with_start_address jmp -- assuming jump back into PLT section
+            (Instr _ _ JMP (Just (Immediate ii)) _ _ _ _) -> do
+              callInfoWithStartAddress ii -- assuming jump back into PLT section
             i -> error $ "Non-jump in PLT: " ++ show_instruction i
         else
           case M.lookup a' symbols of
@@ -243,7 +242,7 @@ get_call_info ctxt@(elf,symbols) i@(Instr addr prefix op op1 op2 op3 _ instr_siz
             Just f  -> return $ Just (f, a', False)
       _ ->   case op1 of
                Just (Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm offset)))) -> do
-                 let a' = addr + fromIntegral instr_size + fromIntegral offset
+                 let a' = addr + fromIntegral instrSize + fromIntegral offset
                  case M.lookup a' symbols of
                    Just f -> return $ Just (f, a', True)
                    _ -> error $ "Cannot read operand 1 of instruction:\n" ++ show_instruction i
@@ -253,19 +252,15 @@ get_call_info ctxt@(elf,symbols) i@(Instr addr prefix op op1 op2 op3 _ instr_siz
 -- tries to resolve the first operand of an instruction to an immediate value, if possible
 -- then computes the address to which is jumped
 -- Assumes op = CALL or JMP
-resolve_jmp_operand1 ctxt (Instr addr prefix op op1 op2 op3 _ instr_size) =
+resolve_jmp_operand1 ctxt (Instr addr prefix op op1 op2 op3 _ instrSize) =
   case op1 of
     Just (Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm offset)))) -> do
-      dat <- elf_read_address ctxt (addr + fromIntegral instr_size + fromIntegral offset) 8
-      -- putStrLn $ "Read from region [" ++ showH (addr + fromIntegral instr_size + fromIntegral offset) ++ ", 8] = " ++ showH dat
+      dat <- elf_read_address ctxt (addr + fromIntegral instrSize + fromIntegral offset) 8
+      -- putStrLn $ "Read from region [" ++ showH (addr + fromIntegral instrSize + fromIntegral offset) ++ ", 8] = " ++ showH dat
       return $ Just dat
-    Just (Immediate a) -> do
-      return $ Just $ fromIntegral (fromIntegral addr + fromIntegral instr_size + fromIntegral a :: Word64)
+    -- capstone immediates are fully-resolved function addresses
+    Just (Immediate a) -> return $ Just a
     _  -> return Nothing
-
-
-
-
 
 
 -- pretty print an instruction

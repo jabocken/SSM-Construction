@@ -89,7 +89,8 @@ instance Show Instr
   show = show_instruction
 
 -- Instruction prefixes
-data Prefix = InvalidPrefix | REP | REPZ | REPNZ | LOCK | DATA16
+-- For our purposes, REPZ is redundant with REP due to behavior of capstone
+data Prefix = InvalidPrefix | REP | REPNZ | LOCK | DATA16
   deriving (Show,Eq,Ord,Read)
 
 

@@ -911,7 +911,9 @@ transform ctxt i@(Instr _ _ JMP (Just addr) _ _ _ _) state = jump ctxt i state
 transform ctxt (Instr _ _ RET (Just bytes) _ _ _ _) state = ret ctxt bytes state
 transform ctxt (Instr _ _ RET _ _ _ _ _) state = ret ctxt (Immediate 0) state
 -- CMPSB
-transform ctxt i@(Instr _ (Just REPZ) CMPSB Nothing _ _ _ _) state = cmpsbState where
+-- REPZ is technically the "correct" version but in machine code the same byte
+-- is used for both REP and REPZ so we'll just handle it as REP everywhere
+transform ctxt i@(Instr _ (Just REP) CMPSB Nothing _ _ _ _) state = cmpsbState where
   cmpsbState = S.singleton $ execState cmpsb state
   cmpsb = do
     rsi <- getValueExpr $ E_reg RSI
