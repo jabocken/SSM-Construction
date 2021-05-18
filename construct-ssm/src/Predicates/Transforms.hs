@@ -670,17 +670,17 @@ transform ctxt (Instr _ _ MOVSS (Just dst) (Just src) _ _ _) s = movzx ctxt dst 
 transform ctxt (Instr _ _ MOVSX (Just dst) (Just src) _ _ _) s = movsx ctxt dst src s
 transform ctxt (Instr _ _ MOVSXD (Just dst) (Just src) _ _ _) s = movsx ctxt dst src s
 -- REP MOVSQ
-transform _ (Instr _ (Just _) MOVSQ Nothing _ _ _ _) state = S.singleton state --TODO
+transform _ (Instr _ (Just _) MOVSQ a b _ _ _) state = S.singleton state --TODO
 -- REP MOVSD
-transform _ (Instr _ (Just REP) MOVSD Nothing Nothing _ _ _) state = S.singleton state --TODO
+transform _ (Instr _ (Just REP) MOVSD a b _ _ _) state = S.singleton state --TODO
 -- REP MOVSB
-transform _ (Instr _ _ MOVSB Nothing Nothing _ _ _) state = S.singleton state --TODO
+transform _ (Instr _ _ MOVSB a b _ _ _) state = S.singleton state --TODO
 -- REP STOSD
-transform _ (Instr _ (Just _) STOSD Nothing _ _ _ _) state = S.singleton state --TODO
+transform _ (Instr _ (Just _) STOSD a b _ _ _) state = S.singleton state --TODO
 -- REP STOSQ
-transform _ (Instr _ (Just _) STOSQ Nothing _ _ _ _) state = S.singleton state --TODO
+transform _ (Instr _ (Just _) STOSQ a b _ _ _) state = S.singleton state --TODO
 -- REP SCASB
-transform _ (Instr _ (Just _) SCASB Nothing _ _ _ _) state = S.singleton state --TODO
+transform _ (Instr _ (Just _) SCASB a b _ _ _) state = S.singleton state --TODO
 -- CDQE
 transform ctxt (Instr _ _ CDQE _ _ _ _ _) s = movsx ctxt (Reg RAX) (Reg EAX) s
 -- CQD
@@ -913,12 +913,15 @@ transform ctxt (Instr _ _ RET _ _ _ _ _) state = ret ctxt (Immediate 0) state
 -- CMPSB
 -- REPZ is technically the "correct" version but in machine code the same byte
 -- is used for both REP and REPZ so we'll just handle it as REP everywhere
-transform ctxt i@(Instr _ (Just REP) CMPSB Nothing _ _ _ _) state = cmpsbState where
+-- It seems capstone treats the with-args form as CMPSB too, though the arguments
+-- are irrelevant as they only specify the size anyway.
+transform ctxt i@(Instr _ (Just REP) CMPSB _ _ _ _ _) state = cmpsbState where
   cmpsbState = S.singleton $ execState cmpsb state
   cmpsb = do
-    rsi <- getValueExpr $ E_reg RSI
-    rdi <- getValueExpr $ E_reg RDI
-    overwriteFlags [ZF, CF, OF, SF, PF] CMPSB (toExpr rsi) [rdi] -- TODO RCX is also an input
+    rsi <- opToValueExprSingular ctxt (Address $ SizeDir 8 $ FromReg RSI) 1
+    rdi <- opToValueExprSingular ctxt (Address $ SizeDir 8 $ FromReg RDI) 1
+    overwriteFlags [ZF, CF, OF, SF, PF] CMPSB (toExpr rsi) [rdi]
+    -- TODO: looping! Can't actually handle that here, though.
 -- BT
 transform ctxt i@(Instr _ _ BT (Just dst) (Just src) _ _ _) state = btState where
   btState = actionDstSrc ctxt dst src bt state

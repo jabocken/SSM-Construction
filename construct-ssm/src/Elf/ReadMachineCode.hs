@@ -66,7 +66,10 @@ disassembleInstruction byteStr addr = do
 -- Can be up to four bytes but we only care about the first.
 disPrefix :: X86.CsX86 -> Maybe Prefix
 disPrefix info = prefixer <$> (firster $ X86.prefix info)  where
-  firster (a, _, _, _) = a
+  firster (a, _, _, addrOverride) = case addrOverride of
+    -- insts like CMPSB use this
+    Just e -> error "We do not currently support address overrides"
+    Nothing -> a
   -- Note: REP and REPZ have the same prefix byte! For our purposes we can just use REP everywhere
   -- Could also parse from the string operand, capstone includes it that way.
   prefixer 0xF3 = REP
