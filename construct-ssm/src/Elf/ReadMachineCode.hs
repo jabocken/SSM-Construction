@@ -7,8 +7,9 @@ import Utils
 
 import qualified Data.Elf as Elf
 import qualified Data.ByteString as BS
-import Data.List (find, intercalate, repeat, intersect)
-import Data.Char (chr, toUpper, ord)
+import Data.List (find)
+import Data.List.Extra (stripInfix)
+import Data.Char (toUpper)
 import Data.Word
 import Data.Maybe (fromJust)
 import Control.Monad (forM, forM_, when)
@@ -67,14 +68,17 @@ disPrefix :: X86.CsX86 -> Maybe Prefix
 disPrefix info = prefixer <$> (firster $ X86.prefix info)  where
   firster (a, _, _, _) = a
   -- Note: REP and REPZ have the same prefix byte! For our purposes we can just use REP everywhere
+  -- Could also parse from the string operand, capstone includes it that way.
   prefixer 0xF3 = REP
   prefixer 0xF2 = REPNZ
   prefixer 0xF0 = LOCK
   prefixer p = error $ "Prefix = " ++ show p
 
 parseMnemonic :: Word64 -> [Char] -> Opcode
-parseMnemonic addr s =
-  case readsPrec 5 $ map toUpper s of
+parseMnemonic addr s = reader where
+  -- ignoring prefix; could be useful for disPrefix if we wanted
+  split = maybe s snd $ stripInfix " " s
+  reader = case readsPrec 5 $ map toUpper split of
     [(m, s')] -> m
     _ -> error $ "Cannot parse opcode: " ++ s ++ " at address: 0x" ++ showH addr
 
