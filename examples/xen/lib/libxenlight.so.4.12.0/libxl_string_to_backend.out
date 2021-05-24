@@ -8,46 +8,46 @@ Number of edges: 50
 3d840 (False): 0
 
 3d840: PUSH Reg RBX 1
-3d841: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 376004)) 7
+3d841: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 376004))) 7
 3d848: MOV Reg ECX, Immediate 4 5
 3d84d: MOV Reg RAX, Reg RSI 3
 3d850: SUB Reg RSP, Immediate 16 4
-3d854: REPZ CMPSB  2
+3d854: REP CMPSB Address (SizeDir 8 (FromReg RSI)), Address (SizeDir 8 (FromReg RDI)) 2
 3d856: SETA Reg BL 3
 3d859: SBB Reg BL, Immediate 0 3
 3d85c: MOVSX Reg EBX, Reg BL 3
 3d85f: TEST Reg EBX, Reg EBX 2
-3d861: JZ 3d980 (resolved immediate)
+3d861: JE 3d980 (resolved immediate)
   |
   `- 3d867,3d980
-3d867: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 386973)) 7
+3d867: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 386973))) 7
 3d86e: MOV Reg ECX, Immediate 5 5
 3d873: MOV Reg RSI, Reg RAX 3
-3d876: REPZ CMPSB  2
+3d876: REP CMPSB Address (SizeDir 8 (FromReg RSI)), Address (SizeDir 8 (FromReg RDI)) 2
 3d878: SETA Reg CL 3
 3d87b: SBB Reg CL, Immediate 0 3
 3d87e: TEST Reg CL, Reg CL 2
-3d880: JZ 3d970 (resolved immediate)
+3d880: JE 3d970 (resolved immediate)
   |
   `- 3d886,3d970
-3d886: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 375929)) 7
+3d886: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 375929))) 7
 3d88d: MOV Reg ECX, Immediate 6 5
 3d892: MOV Reg RSI, Reg RAX 3
-3d895: REPZ CMPSB  2
+3d895: REP CMPSB Address (SizeDir 8 (FromReg RSI)), Address (SizeDir 8 (FromReg RDI)) 2
 3d897: SETA Reg CL 3
 3d89a: SBB Reg CL, Immediate 0 3
 3d89d: TEST Reg CL, Reg CL 2
-3d89f: JZ 3d956 (resolved immediate)
-3d8a5: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 429502)) 7
+3d89f: JE 3d956 (resolved immediate)
+3d8a5: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 429502))) 7
 3d8ac: MOV Reg ECX, Immediate 4 5
 3d8b1: MOV Reg RSI, Reg RAX 3
 3d8b4: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RDX 5
-3d8b9: REPZ CMPSB  2
+3d8b9: REP CMPSB Address (SizeDir 8 (FromReg RSI)), Address (SizeDir 8 (FromReg RDI)) 2
 3d8bb: SETA Reg BL 3
 3d8be: SBB Reg BL, Immediate 0 3
 3d8c1: MOVSX Reg EBX, Reg BL 3
 3d8c4: TEST Reg EBX, Reg EBX 2
-3d8c6: JNZ 3d990 (resolved immediate)
+3d8c6: JNE 3d990 (resolved immediate)
   |
   `- 3d990
 3d970: MOV Address (SizeDir 32 (FromReg RDX)), Immediate 2 6

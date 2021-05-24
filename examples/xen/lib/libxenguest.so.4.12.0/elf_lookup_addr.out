@@ -14,11 +14,11 @@ Number of edges: 48
 14597: MOV Reg RBX, Reg RDI 3
 1459a: CALL elf_sym_by_name (external)
 1459f: TEST Reg RAX, Reg RAX 3
-145a2: JZ 14610 (resolved immediate)
+145a2: JE 14610 (resolved immediate)
   |
   `- 145a4,14610
 145a4: CMP Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 16))), Immediate 2 4
-145a8: JZ 145f0 (resolved immediate)
+145a8: JE 145f0 (resolved immediate)
   |
   `- 145aa,145f0
 145aa: MOV Reg ECX, Immediate 4 5
@@ -27,8 +27,8 @@ Number of edges: 48
 145b7: MOV Reg RDI, Reg RBX 3
 145ba: CALL elf_access_unsigned (external)
 145bf: MOV Reg R12, Reg RAX 3
-145c2: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 66055)) 7
-145c9: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 65585)) 7
+145c2: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 66055))) 7
+145c9: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 65585))) 7
 145d0: MOV Reg R9, Reg R12 3
 145d3: MOV Reg R8, Reg RBP 3
 145d6: MOV Reg RDI, Reg RBX 3
@@ -51,8 +51,8 @@ Number of edges: 48
 14608: JMP 145c2 (resolved immediate)
   |
   `- 145c2
-14610: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 65977)) 7
-14617: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 65488)) 7
+14610: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 65977))) 7
+14617: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 65488))) 7
 1461e: MOV Reg R8, Reg RBP 3
 14621: MOV Reg RDI, Reg RBX 3
 14624: MOV Reg R12, Immediate 18446744073709551615 7

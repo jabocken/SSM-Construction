@@ -8,7 +8,7 @@ Number of edges: 22
 5d10 (False): 0
 
 5d10: CMP Address (SizeDir 32 (FromReg RSI)), Immediate 1 3
-5d13: JNZ 5d20 (resolved immediate)
+5d13: JNE 5d20 (resolved immediate)
   |
   `- 5d15,5d20
 5d15: ADD Reg RSI, Immediate 8 4
@@ -20,12 +20,12 @@ Number of edges: 22
 5d20: TEST Reg ECX, Reg ECX 2
 5d22: PUSH Reg RBX 1
 5d23: MOV Reg RBX, Reg RDX 3
-5d26: JNZ 5d4b (resolved immediate)
+5d26: JNE 5d4b (resolved immediate)
   |
   `- 5d28,5d4b
 5d28: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))) 4
 5d2c: MOV Reg R9D, Address (SizeDir 32 (AddrPlus (FromReg RSI) (AddrImm 28))) 4
-5d30: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 21329)) 7
+5d30: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 21329))) 7
 5d37: MOV Reg R8D, Address (SizeDir 32 (AddrPlus (FromReg RSI) (AddrImm 24))) 4
 5d3b: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
 5d3f: MOV Reg ESI, Immediate 1 5

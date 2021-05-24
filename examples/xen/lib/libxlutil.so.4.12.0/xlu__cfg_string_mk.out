@@ -13,7 +13,7 @@ Number of edges: 31
 6206: PUSH Reg RBX 1
 6207: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 8))) 3
 620a: TEST Reg EAX, Reg EAX 2
-620c: JNZ 624a (resolved immediate)
+620c: JNE 624a (resolved immediate)
   |
   `- 620e,624a
 620e: MOV Reg RBX, Reg RDI 3
@@ -21,7 +21,7 @@ Number of edges: 31
 6216: MOV Reg R12, Reg RDX 3
 6219: CALL malloc (external)
 621e: TEST Reg RAX, Reg RAX 3
-6221: JZ 6240 (resolved immediate)
+6221: JE 6240 (resolved immediate)
   |
   `- 6223,6240
 6223: MOVDQU Reg XMM0, Address (SizeDir 128 (FromReg R12)) 6

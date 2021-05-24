@@ -7,8 +7,8 @@ Number of edges: 21
 
 c80 (False): 0
 
-c80: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2106425)) 7
-c87: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2106418)) 7
+c80: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2106425))) 7
+c87: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2106418))) 7
 c8e: PUSH Reg RBP 1
 c8f: SUB Reg RSI, Reg RDI 3
 c92: MOV Reg RBP, Reg RSP 3
@@ -17,12 +17,12 @@ c99: MOV Reg RAX, Reg RSI 3
 c9c: SHR Reg RAX, Immediate 63 4
 ca0: ADD Reg RSI, Reg RAX 3
 ca3: SAR Reg RSI, Immediate 1 3
-ca6: JZ cc0 (resolved immediate)
+ca6: JE cc0 (resolved immediate)
   |
   `- ca8,cc0
 ca8: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2106177))) 7
 caf: TEST Reg RAX, Reg RAX 3
-cb2: JZ cc0 (resolved immediate)
+cb2: JE cc0 (resolved immediate)
   |
   `- cc0
 cc0: POP Reg RBP 1

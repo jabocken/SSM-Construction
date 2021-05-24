@@ -8,7 +8,7 @@ Number of edges: 21
 7cd70 (False): 0
 
 7cd70: TEST Reg RDI, Reg RDI 3
-7cd73: JZ 7cdb0 (resolved immediate)
+7cd73: JE 7cdb0 (resolved immediate)
   |
   `- 7cd75,7cdb0
 7cd75: PUSH Reg RBX 1
@@ -18,7 +18,7 @@ Number of edges: 21
 7cd81: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
 7cd85: CALL free (external)
 7cd8a: CMP Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 44))), Immediate 1 4
-7cd8e: JZ 7cdb8 (resolved immediate)
+7cd8e: JE 7cdb8 (resolved immediate)
   |
   `- 7cd90,7cdb8
 7cd90: PXOR Reg XMM0, Reg XMM0 4
@@ -30,7 +30,7 @@ Number of edges: 21
 7cda8: RET  1
   |
   `- 
-7cdb0: REPZ RET  2
+7cdb0: RET  2
   |
   `- 
 7cdb8: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 48))) 4

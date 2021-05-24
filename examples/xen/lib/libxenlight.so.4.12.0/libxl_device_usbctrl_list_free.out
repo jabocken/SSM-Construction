@@ -15,16 +15,16 @@ Number of edges: 22
 56fd9: JLE 57001 (resolved immediate)
   |
   `- 56fdb,57001
-56fdb: LEA Reg EAX, Address (AddrMinus (FromReg RSI) (AddrImm 1)) 3
+56fdb: LEA Reg EAX, Address (SizeDir 32 (AddrMinus (FromReg RSI) (AddrImm 1))) 3
 56fde: MOV Reg RBX, Reg RDI 3
 56fe1: SHL Reg RAX, Immediate 5 4
-56fe5: LEA Reg RBP, Address (AddrPlus (AddrPlus (FromReg RDI) (FromReg RAX)) (AddrImm 32)) 5
+56fe5: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RDI) (AddrTimes (AddrImm 1) (FromReg RAX))) (AddrImm 32))) 5
 56fea: NOP  6
 56ff0: MOV Reg RDI, Reg RBX 3
 56ff3: ADD Reg RBX, Immediate 32 4
 56ff7: CALL libxl_device_usbctrl_dispose (external)
 56ffc: CMP Reg RBX, Reg RBP 3
-56fff: JNZ 56ff0 (resolved immediate)
+56fff: JNE 56ff0 (resolved immediate)
   |
   `- 56ff0,57001
 57001: POP Reg RBX 1

@@ -11,10 +11,10 @@ Number of edges: 37
 9931: MOV Reg RBX, Reg RSI 3
 9934: MOVZX Reg ESI, Address (SizeDir 16 (FromReg RSI)) 3
 9937: CMP Reg SI, Address (SizeDir 16 (AddrPlus (FromReg RBX) (AddrImm 2))) 4
-993b: JNZ 9990 (resolved immediate)
+993b: JNE 9990 (resolved immediate)
   |
   `- 993d,9990
-993d: CMP Reg SI, Immediate 65531 4
+993d: CMP Reg SI, Immediate 18446744073709551611 4
 9941: JA 99a0 (resolved immediate)
   |
   `- 9943,99a0
@@ -25,7 +25,7 @@ Number of edges: 37
 9951: SHL Reg RSI, Immediate 6 4
 9955: CALL realloc (external)
 995a: TEST Reg RAX, Reg RAX 3
-995d: JZ 9989 (resolved immediate)
+995d: JE 9989 (resolved immediate)
   |
   `- 995f,9989
 995f: MOVZX Reg ESI, Address (SizeDir 16 (FromReg RBX)) 3

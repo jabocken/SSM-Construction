@@ -14,10 +14,10 @@ Number of edges: 31
 17927: MOV Reg RBX, Reg RDI 3
 1792a: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 1224))) 7
 17931: MOV Reg RBP, Reg RSI 3
-17934: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 58005)) 7
-1793b: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 55952)) 7
+17934: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 58005))) 7
+1793b: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 55952))) 7
 17942: XOR Reg EAX, Reg EAX 2
-17944: LEA Reg R12, Address (AddrPlus (FromReg RBX) (AddrImm 8)) 4
+17944: LEA Reg R12, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
 17948: CALL xc_dom_printf (external)
 1794d: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 152))) 7
 17954: MOV Reg RDX, Reg R12 3
@@ -26,7 +26,7 @@ Number of edges: 31
 1795d: CALL xc_dom_malloc_filemap (external)
 17962: TEST Reg RAX, Reg RAX 3
 17965: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
-17968: JZ 17980 (resolved immediate)
+17968: JE 17980 (resolved immediate)
   |
   `- 1796a,17980
 1796a: MOV Reg RDX, Reg R12 3

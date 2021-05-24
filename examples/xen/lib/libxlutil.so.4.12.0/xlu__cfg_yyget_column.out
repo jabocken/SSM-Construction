@@ -10,16 +10,16 @@ Number of edges: 11
 40b0: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 40))) 4
 40b4: XOR Reg EAX, Reg EAX 2
 40b6: TEST Reg RDX, Reg RDX 3
-40b9: JZ 40cb (resolved immediate)
+40b9: JE 40cb (resolved immediate)
   |
   `- 40bb,40cb
 40bb: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 24))) 4
 40bf: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 8) (FromReg RCX)))) 4
 40c3: TEST Reg RDX, Reg RDX 3
-40c6: JZ 40cb (resolved immediate)
+40c6: JE 40cb (resolved immediate)
   |
   `- 40c8,40cb
 40c8: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RDX) (AddrImm 56))) 3
-40cb: REPZ RET  2
+40cb: RET  2
   |
   `- 

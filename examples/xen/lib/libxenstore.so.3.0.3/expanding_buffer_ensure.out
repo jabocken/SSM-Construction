@@ -18,14 +18,14 @@ Number of edges: 25
   `- 481f,4858
 481f: PUSH Reg RBP 1
 4820: PUSH Reg RBX 1
-4821: LEA Reg EBP, Address (AddrPlus (AddrPlus (FromReg RAX) (FromReg RSI)) (AddrImm 10)) 4
+4821: LEA Reg EBP, Address (SizeDir 32 (AddrPlus (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 1) (FromReg RSI))) (AddrImm 10))) 4
 4825: MOV Reg RBX, Reg RDI 3
 4828: SUB Reg RSP, Immediate 8 4
 482c: MOV Reg RDI, Address (SizeDir 64 (FromReg RDI)) 3
 482f: MOVSXD Reg RSI, Reg EBP 3
 4832: CALL realloc (external)
 4837: TEST Reg RAX, Reg RAX 3
-483a: JZ 4842 (resolved immediate)
+483a: JE 4842 (resolved immediate)
   |
   `- 483c,4842
 483c: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3

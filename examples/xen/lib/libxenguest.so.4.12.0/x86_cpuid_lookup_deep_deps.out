@@ -8,16 +8,16 @@ Number of edges: 60
 15b40 (False): 0
 
 15b40: MOV Reg EAX, Reg EDI 2
-15b42: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 62967)) 7
+15b42: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 62967))) 7
 15b49: SHR Reg EAX, Immediate 3 3
-15b4c: MOVSX Reg EDX, Address (SizeDir 8 (AddrPlus (FromReg RDX) (FromReg RAX))) 4
+15b4c: MOVSX Reg EDX, Address (SizeDir 8 (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 1) (FromReg RAX)))) 4
 15b50: MOV Reg EAX, Reg EDI 2
 15b52: AND Reg EAX, Immediate 7 3
 15b55: BT Reg EDX, Reg EAX 3
 15b58: JAE 15ba5 (resolved immediate)
   |
   `- 15b5a,15ba5
-15b5a: LEA Reg R9, Address (AddrPlus (FromReg RIP) (AddrImm 62015)) 7
+15b5a: LEA Reg R9, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 62015))) 7
 15b61: MOV Reg ECX, Immediate 41 5
 15b66: MOV Reg ESI, Immediate 21 5
 15b6b: XOR Reg R8D, Reg R8D 3
@@ -35,10 +35,10 @@ Number of edges: 60
 15b80: MOV Reg EAX, Reg EDX 2
 15b82: SUB Reg EAX, Reg R8D 3
 15b85: SHR Reg EAX, Immediate 1 2
-15b87: LEA Reg ECX, Address (AddrPlus (FromReg RAX) (FromReg R8)) 4
-15b8b: LEA Reg RSI, Address (AddrPlus (FromReg RCX) (AddrTimes (AddrImm 4) (FromReg RCX))) 4
+15b87: LEA Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 1) (FromReg R8)))) 4
+15b8b: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RCX) (AddrTimes (AddrImm 4) (FromReg RCX)))) 4
 15b8f: MOV Reg RAX, Reg RCX 3
-15b92: LEA Reg RCX, Address (AddrPlus (FromReg RCX) (AddrTimes (AddrImm 2) (FromReg RSI))) 4
+15b92: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RCX) (AddrTimes (AddrImm 2) (FromReg RSI)))) 4
 15b96: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg R9) (AddrTimes (AddrImm 4) (FromReg RCX)))) 4
 15b9a: CMP Reg ECX, Reg EDI 2
 15b9c: JBE 15bb8 (resolved immediate)
@@ -60,7 +60,7 @@ Number of edges: 60
 15bba: JBE 15bdf (resolved immediate)
   |
   `- 15bbc,15bdf
-15bbc: LEA Reg R8D, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 4
+15bbc: LEA Reg R8D, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 1))) 4
 15bc0: CMP Reg R8D, Reg EDX 3
 15bc3: JAE 15ba5 (resolved immediate)
   |
@@ -70,16 +70,16 @@ Number of edges: 60
 15bc9: SUB Reg EAX, Reg R8D 3
 15bcc: SHR Reg EAX, Immediate 1 2
 15bce: ADD Reg EAX, Reg R8D 3
-15bd1: LEA Reg RCX, Address (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 4) (FromReg RAX))) 4
-15bd5: LEA Reg RAX, Address (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 2) (FromReg RCX))) 4
+15bd1: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 4) (FromReg RAX)))) 4
+15bd5: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 2) (FromReg RCX)))) 4
 15bd9: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg R9) (AddrTimes (AddrImm 4) (FromReg RAX)))) 4
 15bdd: JMP 15b6e (resolved immediate)
   |
   `- 15b6e
-15bdf: LEA Reg RDX, Address (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 4) (FromReg RAX))) 4
-15be3: LEA Reg RDX, Address (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 2) (FromReg RDX))) 4
-15be7: LEA Reg RAX, Address (AddrPlus (FromReg RIP) (AddrImm 61874)) 7
-15bee: LEA Reg RAX, Address (AddrPlus (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 4) (FromReg RDX))) (AddrImm 4)) 5
+15bdf: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 4) (FromReg RAX)))) 4
+15be3: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 2) (FromReg RDX)))) 4
+15be7: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 61874))) 7
+15bee: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 4) (FromReg RDX))) (AddrImm 4))) 5
 15bf3: RET  1
   |
   `- 

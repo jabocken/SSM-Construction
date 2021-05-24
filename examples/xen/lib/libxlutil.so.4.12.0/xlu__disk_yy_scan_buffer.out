@@ -11,7 +11,7 @@ Number of edges: 59
 2fcb: SUB Reg RSP, Immediate 8 4
 2fcf: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2150410))) 7
 2fd6: MOV Reg RCX, Reg RDI 3
-2fd9: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 43521)) 7
+2fd9: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 43521))) 7
 2fe0: MOV Reg ESI, Immediate 1 5
 2fe5: MOV Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
 2fe8: XOR Reg EAX, Reg EAX 2
@@ -29,13 +29,13 @@ Number of edges: 59
 754e: JBE 75c8 (resolved immediate)
   |
   `- 7550,75c8
-7550: CMP Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RDI) (FromReg RSI)) (AddrImm 2))), Immediate 0 5
-7555: LEA Reg R13, Address (AddrMinus (FromReg RSI) (AddrImm 2)) 4
-7559: JNZ 75c8 (resolved immediate)
+7550: CMP Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RDI) (AddrTimes (AddrImm 1) (FromReg RSI))) (AddrImm 2))), Immediate 0 5
+7555: LEA Reg R13, Address (SizeDir 64 (AddrMinus (FromReg RSI) (AddrImm 2))) 4
+7559: JNE 75c8 (resolved immediate)
   |
   `- 755b,75c8
-755b: CMP Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RDI) (FromReg RSI)) (AddrImm 1))), Immediate 0 5
-7560: JNZ 75c8 (resolved immediate)
+755b: CMP Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RDI) (AddrTimes (AddrImm 1) (FromReg RSI))) (AddrImm 1))), Immediate 0 5
+7560: JNE 75c8 (resolved immediate)
   |
   `- 7562,75c8
 7562: MOV Reg RBP, Reg RDI 3
@@ -45,7 +45,7 @@ Number of edges: 59
 7570: CALL xlu__disk_yyalloc (external)
 7575: TEST Reg RAX, Reg RAX 3
 7578: MOV Reg RBX, Reg RAX 3
-757b: JZ 75d8 (resolved immediate)
+757b: JE 75d8 (resolved immediate)
   |
   `- 757d,75d8
 757d: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 24))), Reg R13 4
@@ -78,7 +78,7 @@ Number of edges: 59
 75d7: RET  1
   |
   `- 
-75d8: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 16481)) 7
+75d8: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 16481))) 7
 75df: CALL yy_fatal_error.isra.2 (internal)
   |
   `- 2fcb

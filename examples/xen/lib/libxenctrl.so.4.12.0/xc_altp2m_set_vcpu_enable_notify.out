@@ -32,10 +32,10 @@ Number of edges: 58
 8cda: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Immediate 0 9
 8ce3: CALL xc__hypercall_buffer_alloc (external)
 8ce8: TEST Reg RAX, Reg RAX 3
-8ceb: JZ 8d43 (resolved immediate)
+8ceb: JE 8d43 (resolved immediate)
   |
   `- 8ced,8d43
-8ced: MOV Reg RCX, Immediate 12884901889 10
+8ced: MOVABS Reg RCX, Immediate 12884901889 10
 8cf7: MOV Address (SizeDir 16 (AddrPlus (FromReg RAX) (AddrImm 8))), Reg R14W 5
 8cfc: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 16))), Reg R13D 4
 8d00: MOV Address (SizeDir 64 (FromReg RAX)), Reg RCX 3
@@ -45,19 +45,19 @@ Number of edges: 58
 8d11: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 1088))) 8
 8d19: MOV Reg EDX, Immediate 25 5
 8d1e: TEST Reg RAX, Reg RAX 3
-8d21: CMOVZ Reg RAX, Reg RBP 4
+8d21: CMOVE Reg RAX, Reg RBP 4
 8d25: MOV Reg RCX, Address (SizeDir 64 (FromReg RAX)) 3
 8d28: CALL xencall2 (external)
 8d2d: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 8d32: MOV Reg RDI, Reg R12 3
 8d35: MOV Reg EBX, Reg EAX 2
 8d37: TEST Reg RSI, Reg RSI 3
-8d3a: CMOVZ Reg RSI, Reg RBP 4
+8d3a: CMOVE Reg RSI, Reg RBP 4
 8d3e: CALL xc__hypercall_buffer_free (external)
 8d43: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
 8d48: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 8d51: MOV Reg EAX, Reg EBX 2
-8d53: JNZ 8d64 (resolved immediate)
+8d53: JNE 8d64 (resolved immediate)
   |
   `- 8d55,8d64
 8d55: ADD Reg RSP, Immediate 56 4

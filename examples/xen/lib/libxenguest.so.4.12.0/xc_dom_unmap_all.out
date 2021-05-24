@@ -9,7 +9,7 @@ Number of edges: 12
 
 174c0: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 1144))) 7
 174c7: TEST Reg RAX, Reg RAX 3
-174ca: JZ 174f0 (resolved immediate)
+174ca: JE 174f0 (resolved immediate)
   |
   `- 174cc,174f0
 174cc: PUSH Reg RBX 1
@@ -19,9 +19,9 @@ Number of edges: 12
 174d7: CALL xc_dom_unmap_one (external)
 174dc: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1144))) 7
 174e3: TEST Reg RAX, Reg RAX 3
-174e6: JNZ 174d0 (resolved immediate)
+174e6: JNE 174d0 (resolved immediate)
   |
   `- 174d0
-174f0: REPZ RET  2
+174f0: RET  2
   |
   `- 

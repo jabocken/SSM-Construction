@@ -15,16 +15,16 @@ Number of edges: 22
 3f3c9: JLE 3f3f1 (resolved immediate)
   |
   `- 3f3cb,3f3f1
-3f3cb: LEA Reg EAX, Address (AddrMinus (FromReg RSI) (AddrImm 1)) 3
+3f3cb: LEA Reg EAX, Address (SizeDir 32 (AddrMinus (FromReg RSI) (AddrImm 1))) 3
 3f3ce: MOV Reg RBX, Reg RDI 3
-3f3d1: LEA Reg RAX, Address (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 2) (FromReg RAX))) 4
-3f3d5: LEA Reg RBP, Address (AddrPlus (AddrPlus (FromReg RDI) (AddrTimes (AddrImm 4) (FromReg RAX))) (AddrImm 12)) 5
+3f3d1: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 2) (FromReg RAX)))) 4
+3f3d5: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RDI) (AddrTimes (AddrImm 4) (FromReg RAX))) (AddrImm 12))) 5
 3f3da: NOP  6
 3f3e0: MOV Reg RDI, Reg RBX 3
 3f3e3: ADD Reg RBX, Immediate 12 4
 3f3e7: CALL libxl_cputopology_dispose (external)
 3f3ec: CMP Reg RBX, Reg RBP 3
-3f3ef: JNZ 3f3e0 (resolved immediate)
+3f3ef: JNE 3f3e0 (resolved immediate)
   |
   `- 3f3e0,3f3f1
 3f3f1: POP Reg RBX 1

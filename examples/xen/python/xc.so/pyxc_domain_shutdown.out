@@ -1,9 +1,9 @@
-Number of assembly instructions     = 101
+Number of assembly instructions     = 100
 Number of indirect branches         = 1
 Number of unresolved indirect jumps = 0: 
 Number of unresolved indirect calls = 1: 4b52
-Number of symbolic states (representative of non-determinism): 101
-Number of edges: 106
+Number of symbolic states (representative of non-determinism): 100
+Number of edges: 103
 
 4ac7 (True): 8773
 8702 (False): 0
@@ -13,7 +13,7 @@ Number of edges: 106
 4ac9: SUB Reg RSP, Immediate 8 4
 4acd: MOV Reg RBP, Reg RDI 3
 4ad0: TEST Reg RDI, Reg RDI 3
-4ad3: JZ 4b64 (resolved immediate)
+4ad3: JE 4b64 (resolved immediate)
   |
   `- 4ad9,4b64
 4ad9: CALL xc_get_last_error (external)
@@ -22,27 +22,25 @@ Number of edges: 106
 4ae3: CALL xc_error_code_to_desc (external)
 4ae8: MOV Reg ESI, Address (SizeDir 32 (FromReg RBX)) 2
 4aea: TEST Reg ESI, Reg ESI 2
-4aec: JZ 4bb0 (resolved immediate)
+4aec: JE 4bb0 (resolved immediate)
   |
   `- 4af2,4bb0
 4af2: CMP Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 4))), Immediate 0 4
-4af6: JZ 4bc1 (resolved immediate)
+4af6: JE 4bc1 (resolved immediate)
   |
   `- 4afc,4bc1
-4afc: LEA Reg RCX, Address (AddrPlus (FromReg RBX) (AddrImm 4)) 4
+4afc: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 4))) 4
 4b00: MOV Reg RDX, Reg RAX 3
-4b03: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 17259)) 7
+4b03: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 17259))) 7
 4b0a: MOV Reg EAX, Immediate 0 5
 4b0f: CALL Py_BuildValue (external)
 4b14: MOV Reg RBX, Reg RAX 3
 4b17: TEST Reg RBP, Reg RBP 3
-4b1a: JZ 4b24 (resolved immediate)
-  |
-  `- 4b1c,4b24
+4b1a: JE 4b24 (resolved immediate)
 4b1c: MOV Reg RDI, Reg RBP 3
 4b1f: CALL xc_clear_last_error (external)
 4b24: TEST Reg RBX, Reg RBX 3
-4b27: JZ 4b5a (resolved immediate)
+4b27: JE 4b5a (resolved immediate)
   |
   `- 4b29,4b5a
 4b29: MOV Reg RSI, Reg RBX 3
@@ -52,7 +50,7 @@ Number of edges: 106
 4b3b: SUB Reg RAX, Immediate 1 4
 4b3f: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
 4b42: TEST Reg RAX, Reg RAX 3
-4b45: JNZ 4bdd (resolved immediate)
+4b45: JNE 4bdd (resolved immediate)
   |
   `- 4b4b,4bdd
 4b4b: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
@@ -70,18 +68,17 @@ Number of edges: 106
 4b69: MOV Reg EDI, Address (SizeDir 32 (FromReg RAX)) 2
 4b6b: CALL strerror (external)
 4b70: MOV Reg R9, Reg RAX 3
-4b73: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 17118)) 7
+4b73: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 17118))) 7
 4b7a: MOV Reg ECX, Immediate 1024 5
 4b7f: MOV Reg EDX, Immediate 1 5
 4b84: MOV Reg ESI, Immediate 1024 5
-4b89: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2144244)) 7
+4b89: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2144244))) 7
 4b90: MOV Reg EAX, Immediate 0 5
 4b95: CALL __snprintf_chk (external)
 4b9a: MOV Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2144220))), Immediate 1 10
-4ba4: LEA Reg RBX, Address (AddrPlus (FromReg RIP) (AddrImm 2144213)) 7
-4bab: JMP 4ae1 (resolved immediate)
+4ba4: LEA Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2144213))) 7
   |
-  `- 4ae1
+  `- 
 4bb0: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2145297))) 7
 4bb7: CALL PyErr_SetFromErrno (external)
 4bbc: MOV Reg RBX, Reg RAX 3
@@ -89,7 +86,7 @@ Number of edges: 106
   |
   `- 4b5a
 4bc1: MOV Reg RDX, Reg RAX 3
-4bc4: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 17072)) 7
+4bc4: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 17072))) 7
 4bcb: MOV Reg EAX, Immediate 0 5
 4bd0: CALL Py_BuildValue (external)
 4bd5: MOV Reg RBX, Reg RAX 3
@@ -107,12 +104,12 @@ Number of edges: 106
 870d: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 8716: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
 871b: XOR Reg EAX, Reg EAX 2
-871d: LEA Reg RCX, Address (AddrPlus (FromReg RSP) (AddrImm 4)) 5
+871d: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 4))) 5
 8722: MOV Reg RDX, Reg RSP 3
-8725: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2520)) 7
+8725: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2520))) 7
 872c: CALL PyArg_ParseTuple (external)
 8731: TEST Reg EAX, Reg EAX 2
-8733: JZ 8775 (resolved immediate)
+8733: JE 8775 (resolved immediate)
   |
   `- 8735,8775
 8735: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
@@ -120,12 +117,12 @@ Number of edges: 106
 873d: MOV Reg ESI, Address (SizeDir 32 (FromReg RSP)) 3
 8740: CALL xc_domain_shutdown (external)
 8745: TEST Reg EAX, Reg EAX 2
-8747: JNZ 876a (resolved immediate)
+8747: JNE 876a (resolved immediate)
   |
   `- 876a
 8754: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 8759: XOR Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-8762: JNZ 877c (resolved immediate)
+8762: JNE 877c (resolved immediate)
   |
   `- 8764,877c
 8764: ADD Reg RSP, Immediate 16 4

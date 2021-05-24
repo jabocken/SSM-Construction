@@ -17,14 +17,14 @@ Number of edges: 62
 12be: CALL malloc (external)
 12c3: TEST Reg RAX, Reg RAX 3
 12c6: MOV Reg RBX, Reg RAX 3
-12c9: JZ 12ee (resolved immediate)
+12c9: JE 12ee (resolved immediate)
   |
   `- 12cb,12ee
 12cb: TEST Reg RBP, Reg RBP 3
 12ce: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 16))), Immediate 4294967295 7
 12d5: MOV Address (SizeDir 64 (FromReg RAX)), Reg RBP 3
 12d8: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))), Immediate 0 8
-12e0: JZ 1300 (resolved immediate)
+12e0: JE 1300 (resolved immediate)
   |
   `- 12e2,1300
 12e2: MOV Reg RDI, Reg RBX 3
@@ -50,7 +50,7 @@ Number of edges: 62
 1316: TEST Reg RAX, Reg RAX 3
 1319: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))), Reg RAX 4
 131d: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
-1320: JNZ 12e2 (resolved immediate)
+1320: JNE 12e2 (resolved immediate)
   |
   `- 12e2,1322
 1322: NOP  6
@@ -67,8 +67,8 @@ Number of edges: 62
   |
   `- 12ee
 1420: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 16))) 3
-1423: CMP Reg EDI, Immediate 4294967295 3
-1426: JZ 1430 (resolved immediate)
+1423: CMP Reg EDI, Immediate 18446744073709551615 3
+1426: JE 1430 (resolved immediate)
   |
   `- 1428,1430
 1428: JMP close (jmp to external function)
@@ -80,12 +80,12 @@ Number of edges: 62
   `- 
 1c60: PUSH Reg RBX 1
 1c61: MOV Reg RBX, Reg RDI 3
-1c64: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 860)) 7
+1c64: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 860))) 7
 1c6b: XOR Reg EAX, Reg EAX 2
 1c6d: MOV Reg ESI, Immediate 2 5
 1c72: CALL open (external)
-1c77: CMP Reg EAX, Immediate 4294967295 3
-1c7a: JZ 1c81 (resolved immediate)
+1c77: CMP Reg EAX, Immediate 18446744073709551615 3
+1c7a: JE 1c81 (resolved immediate)
   |
   `- 1c7c,1c81
 1c7c: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 16))), Reg EAX 3

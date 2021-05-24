@@ -33,80 +33,80 @@ Number of edges: 100
 72c3d: MOV Reg RBP, Address (SizeDir 64 (FromReg RSI)) 3
 72c40: CALL yajl_gen_array_open (external)
 72c45: TEST Reg EAX, Reg EAX 2
-72c47: JNZ 72d40 (resolved immediate)
+72c47: JNE 72d40 (resolved immediate)
   |
   `- 72c4d,72d40
 72c4d: TEST Reg RBP, Reg RBP 3
-72c50: JZ 72d28 (resolved immediate)
+72c50: JE 72d28 (resolved immediate)
   |
   `- 72c56,72d28
-72c56: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Immediate 4294967295 4
-72c5a: JZ 72d28 (resolved immediate)
+72c56: CMP Address (SizeDir 32 (FromReg RBP)), Immediate 18446744073709551615 4
+72c5a: JE 72d28 (resolved immediate)
   |
   `- 72c60,72d28
-72c60: LEA Reg R13, Address (AddrPlus (FromReg RIP) (AddrImm 2437721)) 7
+72c60: LEA Reg R13, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2437721))) 7
 72c67: MOV Reg RDI, Reg R12 3
 72c6a: CALL yajl_gen_map_open (external)
 72c6f: TEST Reg EAX, Reg EAX 2
-72c71: JNZ 72d40 (resolved immediate)
-72c77: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Immediate 4294967295 4
-72c7b: JZ 72ca7 (resolved immediate)
+72c71: JNE 72d40 (resolved immediate)
+72c77: CMP Address (SizeDir 32 (FromReg RBP)), Immediate 18446744073709551615 4
+72c7b: JE 72ca7 (resolved immediate)
   |
   `- 72c7d,72ca7
-72c7d: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 207760)) 7
+72c7d: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 207760))) 7
 72c84: MOV Reg RDI, Reg R12 3
 72c87: CALL libxl__yajl_gen_asciiz (internal)
   |
   `- 72c8c,40670
 72c8c: TEST Reg EAX, Reg EAX 2
-72c8e: JNZ 72d40 (resolved immediate)
-72c94: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+72c8e: JNE 72d40 (resolved immediate)
+72c94: MOV Reg ESI, Address (SizeDir 32 (FromReg RBP)) 3
 72c97: MOV Reg RDI, Reg R12 3
 72c9a: CALL yajl_gen_integer (external)
 72c9f: TEST Reg EAX, Reg EAX 2
-72ca1: JNZ 72d40 (resolved immediate)
-72ca7: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 4))), Immediate 4294967295 4
-72cab: JZ 72cd3 (resolved immediate)
+72ca1: JNE 72d40 (resolved immediate)
+72ca7: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 4))), Immediate 18446744073709551615 4
+72cab: JE 72cd3 (resolved immediate)
   |
   `- 72cad,72cd3
-72cad: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 207709)) 7
+72cad: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 207709))) 7
 72cb4: MOV Reg RDI, Reg R12 3
 72cb7: CALL libxl__yajl_gen_asciiz (internal)
 72cbc: TEST Reg EAX, Reg EAX 2
-72cbe: JNZ 72d40 (resolved immediate)
+72cbe: JNE 72d40 (resolved immediate)
 72cc4: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 4))) 3
 72cc7: MOV Reg RDI, Reg R12 3
 72cca: CALL yajl_gen_integer (external)
 72ccf: TEST Reg EAX, Reg EAX 2
-72cd1: JNZ 72d40 (resolved immediate)
+72cd1: JNE 72d40 (resolved immediate)
 72cd3: XOR Reg EBX, Reg EBX 2
-72cd5: CMP Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RBP) (FromReg RBX)) (AddrImm 8))), Immediate 0 6
-72cdb: JZ 72d04 (resolved immediate)
+72cd5: CMP Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RBP) (AddrTimes (AddrImm 1) (FromReg RBX))) (AddrImm 8))), Immediate 0 6
+72cdb: JE 72d04 (resolved immediate)
   |
   `- 72cdd,72d04
-72cdd: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg R13) (FromReg RBX)) (AddrImm 0))) 5
+72cdd: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrTimes (AddrImm 1) (FromReg RBX)))) 5
 72ce2: MOV Reg RDI, Reg R12 3
 72ce5: CALL libxl__yajl_gen_asciiz (internal)
 72cea: TEST Reg EAX, Reg EAX 2
-72cec: JNZ 72d40 (resolved immediate)
-72cee: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RBP) (FromReg RBX)) (AddrImm 8))) 5
+72cec: JNE 72d40 (resolved immediate)
+72cee: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RBP) (AddrTimes (AddrImm 1) (FromReg RBX))) (AddrImm 8))) 5
 72cf3: MOV Reg EDX, Immediate 32 5
 72cf8: MOV Reg RDI, Reg R12 3
 72cfb: CALL yajl_gen_string (external)
 72d00: TEST Reg EAX, Reg EAX 2
-72d02: JNZ 72d40 (resolved immediate)
+72d02: JNE 72d40 (resolved immediate)
 72d04: ADD Reg RBX, Immediate 8 4
 72d08: CMP Reg RBX, Immediate 32 4
-72d0c: JNZ 72cd5 (resolved immediate)
+72d0c: JNE 72cd5 (resolved immediate)
   |
   `- 72cd5,72d0e
 72d0e: MOV Reg RDI, Reg R12 3
 72d11: CALL yajl_gen_map_close (external)
 72d16: TEST Reg EAX, Reg EAX 2
-72d18: JNZ 72d40 (resolved immediate)
+72d18: JNE 72d40 (resolved immediate)
 72d1a: ADD Reg RBP, Immediate 40 4
-72d1e: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Immediate 4294967295 4
-72d22: JNZ 72c67 (resolved immediate)
+72d1e: CMP Address (SizeDir 32 (FromReg RBP)), Immediate 18446744073709551615 4
+72d22: JNE 72c67 (resolved immediate)
   |
   `- 72c67,72d28
 72d28: ADD Reg RSP, Immediate 8 4

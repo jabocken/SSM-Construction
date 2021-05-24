@@ -16,7 +16,7 @@ Number of edges: 55
 76fd: MOV Reg RBP, Address (SizeDir 64 (FromReg RDI)) 3
 7700: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))) 4
 7704: CMP Reg EBX, Immediate 24 3
-7707: JNZ 7738 (resolved immediate)
+7707: JNE 7738 (resolved immediate)
   |
   `- 7709,7738
 7709: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 8))) 3
@@ -27,7 +27,7 @@ Number of edges: 55
 771b: MOV Reg EDX, Address (SizeDir 32 (FromReg RAX)) 2
 771d: CALL xc_domain_set_tsc_info (external)
 7722: TEST Reg EAX, Reg EAX 2
-7724: JNZ 776c (resolved immediate)
+7724: JNE 776c (resolved immediate)
   |
   `- 7726,776c
 7726: ADD Reg RSP, Immediate 8 4
@@ -40,7 +40,7 @@ Number of edges: 55
   `- 
 7738: CALL __errno_location (external)
 773d: MOV Reg R13D, Address (SizeDir 32 (FromReg RAX)) 3
-7740: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 105849)) 7
+7740: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 105849))) 7
 7747: MOV Reg R12, Reg RAX 3
 774a: MOV Reg R8D, Immediate 24 6
 7750: XOR Reg EAX, Reg EAX 2
@@ -60,7 +60,7 @@ Number of edges: 55
 777a: MOV Reg ESI, Reg R12D 3
 777d: CALL xc_strerror (external)
 7782: MOV Reg ECX, Address (SizeDir 32 (FromReg RBX)) 2
-7784: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 105837)) 7
+7784: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 105837))) 7
 778b: MOV Reg R8, Reg RAX 3
 778e: MOV Reg ESI, Immediate 1 5
 7793: XOR Reg EAX, Reg EAX 2

@@ -16,7 +16,7 @@ Number of edges: 52
 19a4b: MOV Reg RBX, Reg RDI 3
 19a4e: MOV Reg R12D, Reg ESI 3
 19a51: SUB Reg RSP, Immediate 40 4
-19a55: LEA Reg R8, Address (AddrPlus (FromReg RSP) (AddrImm 8)) 5
+19a55: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 19a5a: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RDX 5
 19a5f: MOV Reg EDX, Immediate 1 5
 19a64: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
@@ -24,10 +24,10 @@ Number of edges: 52
 19a72: XOR Reg EAX, Reg EAX 2
 19a74: CALL xc_domain_decrease_reservation_exact (external)
 19a79: TEST Reg EAX, Reg EAX 2
-19a7b: JNZ 19ac0 (resolved immediate)
+19a7b: JNE 19ac0 (resolved immediate)
   |
   `- 19a7d,19ac0
-19a7d: LEA Reg R9, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+19a7d: LEA Reg R9, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 19a82: XOR Reg ECX, Reg ECX 2
 19a84: MOV Reg R8D, Immediate 32 6
 19a8a: MOV Reg EDX, Immediate 1 5
@@ -35,11 +35,11 @@ Number of edges: 52
 19a92: MOV Reg RDI, Reg RBX 3
 19a95: CALL xc_domain_increase_reservation_exact (external)
 19a9a: TEST Reg EAX, Reg EAX 2
-19a9c: JNZ 19af8 (resolved immediate)
+19a9c: JNE 19af8 (resolved immediate)
 19a9e: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 19aa3: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 19aa8: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-19ab1: JNZ 19b13 (resolved immediate)
+19ab1: JNE 19b13 (resolved immediate)
   |
   `- 19ab3,19b13
 19ab3: ADD Reg RSP, Immediate 40 4
@@ -53,7 +53,7 @@ Number of edges: 52
 19ac0: CALL __errno_location (external)
 19ac5: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
 19ac9: MOV Reg R13D, Address (SizeDir 32 (FromReg RAX)) 3
-19acc: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 50197)) 7
+19acc: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 50197))) 7
 19ad3: MOV Reg R12, Reg RAX 3
 19ad6: MOV Reg R9, Reg RBP 3
 19ad9: XOR Reg EAX, Reg EAX 2

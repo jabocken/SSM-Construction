@@ -24,21 +24,21 @@ Number of edges: 33
 1c07: CALL ioctl (external)
 1c0c: TEST Reg EAX, Reg EAX 2
 1c0e: MOV Reg EBX, Reg EAX 2
-1c10: JZ 1c37 (resolved immediate)
+1c10: JE 1c37 (resolved immediate)
   |
   `- 1c12,1c37
 1c12: CALL __errno_location (external)
-1c17: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))) 4
+1c17: MOV Reg RDI, Address (SizeDir 64 (FromReg RBP)) 4
 1c1b: MOV Reg EDX, Address (SizeDir 32 (FromReg RAX)) 2
-1c1d: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 1084)) 7
-1c24: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 801)) 7
+1c1d: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 1084))) 7
+1c24: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 801))) 7
 1c2b: MOV Reg ESI, Immediate 8 5
 1c30: XOR Reg EAX, Reg EAX 2
 1c32: CALL xtl_log (external)
 1c37: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 1c3c: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 1c45: MOV Reg EAX, Reg EBX 2
-1c47: JNZ 1c50 (resolved immediate)
+1c47: JNE 1c50 (resolved immediate)
   |
   `- 1c49,1c50
 1c49: ADD Reg RSP, Immediate 24 4

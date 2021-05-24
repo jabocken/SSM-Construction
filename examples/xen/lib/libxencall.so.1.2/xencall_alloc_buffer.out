@@ -8,12 +8,12 @@ Number of edges: 13
 1610 (False): 0
 
 1610: PUSH Reg RBX 1
-1611: LEA Reg RBX, Address (AddrPlus (FromReg RSI) (AddrImm 4111)) 7
+1611: LEA Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 4111))) 7
 1618: SHR Reg RBX, Immediate 12 4
 161c: MOVSXD Reg RSI, Reg EBX 3
 161f: CALL xencall_alloc_buffer_pages (external)
 1624: TEST Reg RAX, Reg RAX 3
-1627: JZ 1638 (resolved immediate)
+1627: JE 1638 (resolved immediate)
   |
   `- 1629,1638
 1629: MOV Address (SizeDir 32 (FromReg RAX)), Reg EBX 2

@@ -13,22 +13,22 @@ Number of edges: 25
 145a: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
 145f: XOR Reg EAX, Reg EAX 2
 1461: MOV Reg RDX, Reg RSP 3
-1464: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 354)) 7
+1464: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 354))) 7
 146b: CALL PyArg_ParseTuple (external)
 1470: TEST Reg EAX, Reg EAX 2
-1472: JZ 14aa (resolved immediate)
+1472: JE 14aa (resolved immediate)
   |
   `- 1474,14aa
 1474: MOV Reg RAX, Address (SizeDir 64 (FromReg RSP)) 4
 1478: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 16))) 4
 147c: CALL fsi_fs_bootstring (external)
 1481: MOV Reg RSI, Reg RAX 3
-1484: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 327)) 7
+1484: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 327))) 7
 148b: MOV Reg EAX, Immediate 0 5
 1490: CALL Py_BuildValue (external)
 1495: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 149a: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-14a3: JNZ 14b1 (resolved immediate)
+14a3: JNE 14b1 (resolved immediate)
   |
   `- 14a5,14b1
 14a5: ADD Reg RSP, Immediate 24 4

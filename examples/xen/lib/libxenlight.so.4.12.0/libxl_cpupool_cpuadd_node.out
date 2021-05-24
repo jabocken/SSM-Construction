@@ -17,7 +17,7 @@ Number of edges: 70
 61b4d: MOV Reg RBP, Reg RCX 3
 61b50: MOV Reg RBX, Reg RDI 3
 61b53: SUB Reg RSP, Immediate 88 4
-61b57: LEA Reg R12, Address (AddrPlus (FromReg RSP) (AddrImm 48)) 5
+61b57: LEA Reg R12, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))) 5
 61b5c: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 20))), Reg ESI 4
 61b60: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RDI 5
 61b65: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
@@ -27,20 +27,20 @@ Number of edges: 70
 61b78: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RCX 5
 61b7d: CALL libxl_get_freecpus (external)
 61b82: TEST Reg EAX, Reg EAX 2
-61b84: JNZ 61c50 (resolved immediate)
+61b84: JNE 61c50 (resolved immediate)
   |
   `- 61b8a,61c50
-61b8a: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 44)) 5
+61b8a: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 44))) 5
 61b8f: MOV Reg RDI, Reg RBX 3
 61b92: MOV Reg R13D, Reg EAX 3
 61b95: CALL libxl_get_cpu_topology (external)
 61b9a: TEST Reg RAX, Reg RAX 3
 61b9d: MOV Reg R14, Reg RAX 3
-61ba0: JZ 61c40 (resolved immediate)
+61ba0: JE 61c40 (resolved immediate)
   |
   `- 61ba6,61c40
 61ba6: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 44))) 4
-61baa: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Immediate 0 7
+61baa: MOV Address (SizeDir 32 (FromReg RBP)), Immediate 0 7
 61bb1: TEST Reg EAX, Reg EAX 2
 61bb3: JLE 61be9 (resolved immediate)
   |
@@ -52,7 +52,7 @@ Number of edges: 70
 61bc2: MOV Reg RDI, Reg R12 3
 61bc5: CALL libxl_bitmap_test (external)
 61bca: TEST Reg EAX, Reg EAX 2
-61bcc: JZ 61bd4 (resolved immediate)
+61bcc: JE 61bd4 (resolved immediate)
   |
   `- 61bd4
 61bd4: MOV Reg RDI, Reg RBP 3
@@ -70,7 +70,7 @@ Number of edges: 70
 61bf9: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 72))) 5
 61bfe: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 61c07: MOV Reg EAX, Reg R13D 3
-61c0a: JNZ 61c58 (resolved immediate)
+61c0a: JNE 61c58 (resolved immediate)
   |
   `- 61c0c,61c58
 61c0c: ADD Reg RSP, Immediate 88 4

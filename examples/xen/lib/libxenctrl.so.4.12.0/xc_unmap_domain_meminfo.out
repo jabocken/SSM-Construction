@@ -17,7 +17,7 @@ Number of edges: 27
 12663: CALL free (external)
 12668: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
 1266c: TEST Reg RDI, Reg RDI 3
-1266f: JZ 12693 (resolved immediate)
+1266f: JE 12693 (resolved immediate)
   |
   `- 12671,12693
 12671: MOV Reg EAX, Immediate 4096 5
@@ -25,7 +25,7 @@ Number of edges: 27
 12678: DIV Reg R12D 3
 1267b: XOR Reg EDX, Reg EDX 2
 1267d: MOV Reg ECX, Reg EAX 2
-1267f: LEA Reg RAX, Address (AddrMinus (AddrPlus (FromReg RBP) (FromReg RCX)) (AddrImm 1)) 5
+1267f: LEA Reg RAX, Address (SizeDir 64 (AddrMinus (AddrPlus (FromReg RBP) (AddrTimes (AddrImm 1) (FromReg RCX))) (AddrImm 1))) 5
 12684: DIV Reg RCX 3
 12687: SHL Reg RAX, Immediate 12 4
 1268b: MOV Reg RSI, Reg RAX 3

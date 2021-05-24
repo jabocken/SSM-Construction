@@ -26,7 +26,7 @@ Number of edges: 53
 2521: XOR Reg EAX, Reg EAX 2
 2523: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))) 4
 2527: TEST Reg RBX, Reg RBX 3
-252a: JZ 2592 (resolved immediate)
+252a: JE 2592 (resolved immediate)
   |
   `- 252c,2592
 252c: CALL PyEval_SaveThread (external)
@@ -37,12 +37,12 @@ Number of edges: 53
 253e: MOV Reg RDI, Reg RBP 3
 2541: CALL PyEval_RestoreThread (external)
 2546: TEST Reg EBX, Reg EBX 2
-2548: JZ 25a3 (resolved immediate)
+2548: JE 25a3 (resolved immediate)
   |
   `- 254a,25a3
 254a: MOV Reg RBP, Reg RSP 3
 254d: MOV Reg R9D, Reg EBX 3
-2550: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 3484)) 7
+2550: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 3484))) 7
 2557: MOV Reg ECX, Immediate 24 5
 255c: MOV Reg EDX, Immediate 1 5
 2561: MOV Reg ESI, Immediate 24 5
@@ -53,7 +53,7 @@ Number of edges: 53
 2576: CALL PyString_FromString (external)
 257b: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 2580: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-2589: JNZ 25b6 (resolved immediate)
+2589: JNE 25b6 (resolved immediate)
   |
   `- 258b,25b6
 258b: ADD Reg RSP, Immediate 40 4

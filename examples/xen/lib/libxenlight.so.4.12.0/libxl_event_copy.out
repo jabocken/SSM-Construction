@@ -19,7 +19,7 @@ Number of edges: 91
 3bdba: MOV Reg R12, Reg RDI 3
 3bdbd: MOV Reg EBP, Immediate 0 5
 3bdc2: MOV Reg EBX, Immediate 0 5
-3bdc7: JZ 3bdf4 (resolved immediate)
+3bdc7: JE 3bdf4 (resolved immediate)
   |
   `- 3bdc9,3bdf4
 3bdc9: NOP  7
@@ -44,9 +44,9 @@ Number of edges: 91
 3be13: RET  1
   |
   `- 
-3be14: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 387253)) 7
-3be1b: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 386238)) 7
-3be22: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 386248)) 7
+3be14: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 387253))) 7
+3be1b: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 386238))) 7
+3be22: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 386248))) 7
 3be29: MOV Reg EDX, Immediate 80 5
 3be2e: CALL __assert_fail (external)
   |
@@ -75,15 +75,15 @@ Number of edges: 91
 81d64: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 48))), Reg EAX 3
 81d67: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 48))) 3
 81d6a: CMP Reg EAX, Immediate 3 3
-81d6d: JZ 81dc0 (resolved immediate)
+81d6d: JE 81dc0 (resolved immediate)
   |
   `- 81d6f,81dc0
 81d6f: CMP Reg EAX, Immediate 4 3
-81d72: JZ 81db0 (resolved immediate)
+81d72: JE 81db0 (resolved immediate)
   |
   `- 81d74,81db0
 81d74: CMP Reg EAX, Immediate 1 3
-81d77: JZ 81da0 (resolved immediate)
+81d77: JE 81da0 (resolved immediate)
   |
   `- 81d79,81da0
 81d79: MOV Reg RDI, Reg RSP 3
@@ -92,7 +92,7 @@ Number of edges: 91
   `- 3bdb0
 81d81: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 81d86: XOR Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-81d8f: JNZ 81de2 (resolved immediate)
+81d8f: JNE 81de2 (resolved immediate)
   |
   `- 81d91,81de2
 81d91: ADD Reg RSP, Immediate 32 4
@@ -112,12 +112,12 @@ Number of edges: 91
 81db6: JMP 81d79 (resolved immediate)
   |
   `- 81d79
-81dc0: LEA Reg RDX, Address (AddrPlus (FromReg RBX) (AddrImm 56)) 4
-81dc4: LEA Reg RSI, Address (AddrPlus (FromReg RBP) (AddrImm 56)) 4
+81dc0: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 56))) 4
+81dc4: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 56))) 4
 81dc8: MOV Reg RDI, Reg R12 3
 81dcb: CALL libxl_string_copy (external)
-81dd0: LEA Reg RDX, Address (AddrPlus (FromReg RBX) (AddrImm 64)) 4
-81dd4: LEA Reg RSI, Address (AddrPlus (FromReg RBP) (AddrImm 64)) 4
+81dd0: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 64))) 4
+81dd4: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 64))) 4
 81dd8: MOV Reg RDI, Reg R12 3
 81ddb: CALL libxl_device_disk_copy (external)
 81de0: JMP 81d79 (resolved immediate)

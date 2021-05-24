@@ -18,26 +18,26 @@ Number of edges: 72
 1969: PUSH Reg RBX 1
 196a: SUB Reg RSP, Immediate 24 4
 196e: TEST Reg ECX, Reg ECX 2
-1970: JZ 1a30 (resolved immediate)
+1970: JE 1a30 (resolved immediate)
   |
   `- 1976,1a30
-1976: LEA Reg EAX, Address (AddrMinus (FromReg RCX) (AddrImm 1)) 3
+1976: LEA Reg EAX, Address (SizeDir 32 (AddrMinus (FromReg RCX) (AddrImm 1))) 3
 1979: MOV Reg R12, Reg RDI 3
 197c: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))), Reg EDX 4
 1980: MOV Reg R15D, Reg ESI 3
 1983: MOV Reg EBX, Reg ECX 2
 1985: MOV Reg R14, Reg R8 3
-1988: LEA Reg RDI, Address (AddrPlus (AddrTimes (AddrImm 4) (FromReg RAX)) (AddrImm 20)) 8
+1988: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (AddrTimes (AddrImm 4) (FromReg RAX)) (AddrImm 20))) 8
 1990: MOV Reg R13, Reg R9 3
 1993: CALL malloc (external)
 1998: TEST Reg RAX, Reg RAX 3
 199b: MOV Reg RBP, Reg RAX 3
 199e: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 4
-19a2: JZ 1a48 (resolved immediate)
+19a2: JE 1a48 (resolved immediate)
   |
   `- 19a8,1a48
 19a8: MOV Address (SizeDir 32 (FromReg RAX)), Reg EDX 2
-19aa: LEA Reg RDI, Address (AddrPlus (FromReg RAX) (AddrImm 16)) 4
+19aa: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 16))) 4
 19ae: MOV Reg EDX, Reg EBX 2
 19b0: SHL Reg RDX, Immediate 2 4
 19b4: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 4))), Reg EBX 3
@@ -51,11 +51,11 @@ Number of edges: 72
 19d2: CALL ioctl (external)
 19d7: TEST Reg EAX, Reg EAX 2
 19d9: MOV Reg EBX, Reg EAX 2
-19db: JNZ 1a00 (resolved immediate)
+19db: JNE 1a00 (resolved immediate)
   |
   `- 19dd,1a00
 19dd: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 8))) 3
-19e0: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Reg EAX 4
+19e0: MOV Address (SizeDir 32 (FromReg R13)), Reg EAX 4
 19e4: MOV Reg RDI, Reg RBP 3
 19e7: CALL free (external)
 19ec: ADD Reg RSP, Immediate 24 4
@@ -72,8 +72,8 @@ Number of edges: 72
 1a00: CALL __errno_location (external)
 1a05: MOV Reg RDI, Address (SizeDir 64 (FromReg R12)) 4
 1a09: MOV Reg EDX, Address (SizeDir 32 (FromReg RAX)) 2
-1a0b: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 1502)) 7
-1a12: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 1331)) 7
+1a0b: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 1502))) 7
+1a12: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 1331))) 7
 1a19: MOV Reg ESI, Immediate 8 5
 1a1e: XOR Reg EAX, Reg EAX 2
 1a20: CALL xtl_log (external)

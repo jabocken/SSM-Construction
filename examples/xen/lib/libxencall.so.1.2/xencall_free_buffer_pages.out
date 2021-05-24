@@ -15,14 +15,14 @@ Number of edges: 150
 1394: SUB Reg RSP, Immediate 8 4
 1398: CALL __errno_location (external)
 139d: AND Reg EBX, Immediate 1 3
-13a0: JNZ 13b6 (resolved immediate)
+13a0: JNE 13b6 (resolved immediate)
   |
   `- 13a2,13b6
 13a2: MOV Reg EBX, Address (SizeDir 32 (FromReg RAX)) 2
-13a4: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2104661)) 7
+13a4: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2104661))) 7
 13ab: MOV Reg RBP, Reg RAX 3
 13ae: CALL pthread_mutex_lock (external)
-13b3: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg EBX 3
+13b3: MOV Address (SizeDir 32 (FromReg RBP)), Reg EBX 3
 13b6: ADD Reg RSP, Immediate 8 4
 13ba: POP Reg RBX 1
 13bb: POP Reg RBP 1
@@ -35,14 +35,14 @@ Number of edges: 150
 13c4: SUB Reg RSP, Immediate 8 4
 13c8: CALL __errno_location (external)
 13cd: AND Reg EBX, Immediate 1 3
-13d0: JNZ 13e6 (resolved immediate)
+13d0: JNE 13e6 (resolved immediate)
   |
   `- 13d2,13e6
 13d2: MOV Reg EBX, Address (SizeDir 32 (FromReg RAX)) 2
-13d4: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2104613)) 7
+13d4: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2104613))) 7
 13db: MOV Reg RBP, Reg RAX 3
 13de: CALL pthread_mutex_unlock (external)
-13e3: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg EBX 3
+13e3: MOV Address (SizeDir 32 (FromReg RBP)), Reg EBX 3
 13e6: ADD Reg RSP, Immediate 8 4
 13ea: POP Reg RBX 1
 13eb: POP Reg RBP 1
@@ -50,7 +50,7 @@ Number of edges: 150
   |
   `- 
 1590: TEST Reg RSI, Reg RSI 3
-1593: JZ 15d8 (resolved immediate)
+1593: JE 15d8 (resolved immediate)
   |
   `- 1595,15d8
 1595: PUSH Reg R12 2
@@ -66,7 +66,7 @@ Number of edges: 150
 15aa: ADD Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 100))), Immediate 1 4
 15ae: SUB Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 104))), Immediate 1 4
 15b2: CMP Reg R12, Immediate 1 4
-15b6: JZ 15e0 (resolved immediate)
+15b6: JE 15e0 (resolved immediate)
   |
   `- 15b8,15e0
 15b8: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 16))) 3
@@ -82,7 +82,7 @@ Number of edges: 150
 15cd: JMP 18f0 (resolved immediate)
   |
   `- 18f0
-15d8: REPZ RET  2
+15d8: RET  2
   |
   `- 
 15e0: MOVSXD Reg RAX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 56))) 4
@@ -91,7 +91,7 @@ Number of edges: 150
 15ea: JG 1600 (resolved immediate)
   |
   `- 15ec,1600
-15ec: LEA Reg EDX, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 3
+15ec: LEA Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 1))) 3
 15ef: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 56))), Reg EDX 3
 15f2: MOV Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RBX) (AddrTimes (AddrImm 8) (FromReg RAX))) (AddrImm 64))), Reg RBP 5
 15f7: POP Reg RBX 1
@@ -126,7 +126,7 @@ Number of edges: 150
 1918: MOV Reg RSI, Reg RBX 3
 191b: MOV Reg RDI, Reg R12 3
 191e: CALL munmap (external)
-1923: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R13D 4
+1923: MOV Address (SizeDir 32 (FromReg RBP)), Reg R13D 4
 1927: POP Reg RBX 1
 1928: POP Reg RBP 1
 1929: POP Reg R12 2

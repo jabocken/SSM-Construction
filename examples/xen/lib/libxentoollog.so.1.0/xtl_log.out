@@ -10,7 +10,7 @@ e50 (False): 0
 e50: SUB Reg RSP, Immediate 216 7
 e57: TEST Reg AL, Reg AL 2
 e59: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 72))), Reg R9 5
-e5e: JZ e97 (resolved immediate)
+e5e: JE e97 (resolved immediate)
   |
   `- e60,e97
 e60: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 80))), Reg XMM0 5
@@ -24,17 +24,17 @@ e8f: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 192))), Reg XM
 e97: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 ea0: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
 ea5: XOR Reg EAX, Reg EAX 2
-ea7: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 224)) 8
+ea7: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 224))) 8
 eaf: MOV Reg R9, Reg RSP 3
 eb2: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
-eb7: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 32)) 5
+eb7: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))) 5
 ebc: MOV Address (SizeDir 32 (FromReg RSP)), Immediate 40 7
 ec3: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))), Immediate 48 8
 ecb: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))), Reg RAX 5
 ed0: CALL xtl_logv (external)
 ed5: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 eda: XOR Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-ee3: JNZ eed (resolved immediate)
+ee3: JNE eed (resolved immediate)
   |
   `- ee5,eed
 ee5: ADD Reg RSP, Immediate 216 7

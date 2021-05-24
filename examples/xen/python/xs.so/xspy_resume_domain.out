@@ -10,7 +10,7 @@ Number of edges: 59
 2181 (False): 0
 
 1ee6: TEST Reg DIL, Reg DIL 3
-1ee9: JZ 1ef7 (resolved immediate)
+1ee9: JE 1ef7 (resolved immediate)
   |
   `- 1eeb,1ef7
 1eeb: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2109678))) 7
@@ -44,17 +44,17 @@ Number of edges: 59
 2195: XOR Reg ECX, Reg ECX 2
 2197: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))) 4
 219b: TEST Reg RBX, Reg RBX 3
-219e: JZ 21fd (resolved immediate)
+219e: JE 21fd (resolved immediate)
   |
   `- 21a0,21fd
 21a0: MOV Reg RAX, Reg RSI 3
-21a3: LEA Reg RDX, Address (AddrPlus (FromReg RSP) (AddrImm 4)) 5
-21a8: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 4436)) 7
+21a3: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 4))) 5
+21a8: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 4436))) 7
 21af: MOV Reg RDI, Reg RAX 3
 21b2: MOV Reg EAX, Immediate 0 5
 21b7: CALL PyArg_ParseTuple (external)
 21bc: TEST Reg EAX, Reg EAX 2
-21be: JZ 220e (resolved immediate)
+21be: JE 220e (resolved immediate)
   |
   `- 21c0,220e
 21c0: CALL PyEval_SaveThread (external)
@@ -71,7 +71,7 @@ Number of edges: 59
   `- 1ee6
 21e6: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 21eb: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-21f4: JNZ 2215 (resolved immediate)
+21f4: JNE 2215 (resolved immediate)
   |
   `- 21f6,2215
 21f6: ADD Reg RSP, Immediate 24 4

@@ -14,10 +14,10 @@ Number of edges: 60
   |
   `- 127fc,1280a
 127fc: TEST Reg RAX, Reg RAX 3
-127ff: JZ 1280a (resolved immediate)
+127ff: JE 1280a (resolved immediate)
   |
   `- 12801,1280a
-12801: LEA Reg R8, Address (AddrPlus (FromReg RCX) (FromReg RAX)) 4
+12801: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RCX) (AddrTimes (AddrImm 1) (FromReg RAX)))) 4
 12805: CMP Reg RSI, Reg R8 3
 12808: JBE 12888 (resolved immediate)
   |
@@ -25,14 +25,14 @@ Number of edges: 60
 1280a: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 56))) 4
 1280e: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 64))) 4
 12812: TEST Reg RAX, Reg RAX 3
-12815: JZ 12838 (resolved immediate)
+12815: JE 12838 (resolved immediate)
   |
   `- 12817,12838
 12817: CMP Reg RAX, Reg RSI 3
 1281a: JA 12838 (resolved immediate)
   |
   `- 1281c,12838
-1281c: LEA Reg R8, Address (AddrPlus (FromReg RCX) (FromReg RAX)) 4
+1281c: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RCX) (AddrTimes (AddrImm 1) (FromReg RAX)))) 4
 12820: CMP Reg RSI, Reg R8 3
 12823: JA 12838 (resolved immediate)
   |
@@ -48,19 +48,19 @@ Number of edges: 60
 12838: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 112))) 4
 1283c: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 120))) 4
 12840: TEST Reg RAX, Reg RAX 3
-12843: JZ 12853 (resolved immediate)
+12843: JE 12853 (resolved immediate)
   |
   `- 12845,12853
 12845: CMP Reg RAX, Reg RSI 3
 12848: JA 12853 (resolved immediate)
   |
   `- 1284a,12853
-1284a: LEA Reg R8, Address (AddrPlus (FromReg RCX) (FromReg RAX)) 4
+1284a: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RCX) (AddrTimes (AddrImm 1) (FromReg RAX)))) 4
 1284e: CMP Reg RSI, Reg R8 3
 12851: JBE 12870 (resolved immediate)
   |
   `- 12853,12870
-12853: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 72919)) 7
+12853: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 72919))) 7
 1285a: SUB Reg RSP, Immediate 8 4
 1285e: CALL elf_mark_broken (external)
 12863: XOR Reg EAX, Reg EAX 2
@@ -75,7 +75,7 @@ Number of edges: 60
 1287e: JA 12853 (resolved immediate)
   |
   `- 12853,12880
-12880: REPZ RET  2
+12880: RET  2
   |
   `- 
 12888: SUB Reg RCX, Reg RSI 3
@@ -85,6 +85,6 @@ Number of edges: 60
 12896: JA 1280a (resolved immediate)
   |
   `- 1280a,1289c
-1289c: REPZ RET  2
+1289c: RET  2
   |
   `- 

@@ -9,7 +9,7 @@ Number of edges: 64
 7a830 (False): 0
 
 40c90: TEST Reg RSI, Reg RSI 3
-40c93: JZ 40cc0 (resolved immediate)
+40c93: JE 40cc0 (resolved immediate)
   |
   `- 40c95,40cc0
 40c95: PUSH Reg RBP 1
@@ -38,19 +38,19 @@ Number of edges: 64
 7a838: SUB Reg RSP, Immediate 8 4
 7a83c: CALL yajl_gen_map_open (external)
 7a841: TEST Reg EAX, Reg EAX 2
-7a843: JNZ 7a864 (resolved immediate)
+7a843: JNE 7a864 (resolved immediate)
   |
   `- 7a845,7a864
-7a845: CMP Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))), Immediate 0 5
-7a84a: JZ 7a880 (resolved immediate)
+7a845: CMP Address (SizeDir 64 (FromReg RBP)), Immediate 0 5
+7a84a: JE 7a880 (resolved immediate)
   |
   `- 7a84c,7a880
-7a84c: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 180473)) 7
+7a84c: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 180473))) 7
 7a853: MOV Reg EDX, Immediate 9 5
 7a858: MOV Reg RDI, Reg RBX 3
 7a85b: CALL yajl_gen_string (external)
 7a860: TEST Reg EAX, Reg EAX 2
-7a862: JZ 7a870 (resolved immediate)
+7a862: JE 7a870 (resolved immediate)
   |
   `- 7a870
 7a864: ADD Reg RSP, Immediate 8 4
@@ -59,21 +59,21 @@ Number of edges: 64
 7a86a: RET  1
   |
   `- 
-7a870: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))) 4
+7a870: MOV Reg RSI, Address (SizeDir 64 (FromReg RBP)) 4
 7a874: MOV Reg RDI, Reg RBX 3
 7a877: CALL libxl__string_gen_json (internal)
   |
   `- 40c90
 7a87c: TEST Reg EAX, Reg EAX 2
-7a87e: JNZ 7a864 (resolved immediate)
+7a87e: JNE 7a864 (resolved immediate)
 7a880: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 8))) 3
 7a883: TEST Reg EDX, Reg EDX 2
-7a885: JNZ 7a8c8 (resolved immediate)
+7a885: JNE 7a8c8 (resolved immediate)
   |
   `- 7a887,7a8c8
 7a887: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 12))) 3
 7a88a: TEST Reg EAX, Reg EAX 2
-7a88c: JZ 7a8b5 (resolved immediate)
+7a88c: JE 7a8b5 (resolved immediate)
   |
   `- 7a8b5
 7a8b5: ADD Reg RSP, Immediate 8 4
@@ -83,16 +83,16 @@ Number of edges: 64
 7a8be: JMP yajl_gen_map_close (jmp to external function)
   |
   `- 
-7a8c8: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 174300)) 7
+7a8c8: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 174300))) 7
 7a8cf: MOV Reg EDX, Immediate 5 5
 7a8d4: MOV Reg RDI, Reg RBX 3
 7a8d7: CALL yajl_gen_string (external)
 7a8dc: TEST Reg EAX, Reg EAX 2
-7a8de: JNZ 7a864 (resolved immediate)
+7a8de: JNE 7a864 (resolved immediate)
 7a8e0: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 8))) 3
 7a8e3: MOV Reg RDI, Reg RBX 3
 7a8e6: CALL yajl_gen_integer (external)
 7a8eb: TEST Reg EAX, Reg EAX 2
-7a8ed: JZ 7a887 (resolved immediate)
+7a8ed: JE 7a887 (resolved immediate)
   |
   `- 7a887

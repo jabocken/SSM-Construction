@@ -39,9 +39,9 @@ Number of edges: 208
 14f1: MOVSXD Reg R11, Reg EDX 3
 14f4: SUB Reg RSP, Immediate 72 4
 14f8: MOV Reg R14D, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 16))) 4
-14fc: LEA Reg EAX, Address (AddrPlus (FromReg RSI) (AddrTimes (AddrImm 2) (FromReg RSI))) 3
+14fc: LEA Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSI) (AddrTimes (AddrImm 2) (FromReg RSI)))) 3
 14ff: MOV Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 96))), Reg RDI 4
-1503: LEA Reg ESI, Address (AddrPlus (AddrTimes (AddrImm 8) (FromReg RAX)) (AddrImm 4095)) 7
+1503: LEA Reg ESI, Address (SizeDir 32 (AddrPlus (AddrTimes (AddrImm 8) (FromReg RAX)) (AddrImm 4095))) 7
 150a: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 1513: MOV Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 56))), Reg RDI 4
 1517: XOR Reg EDI, Reg EDI 2
@@ -52,31 +52,31 @@ Number of edges: 208
 1528: JA 1668 (resolved immediate)
   |
   `- 152e,1668
-152e: LEA Reg EAX, Address (AddrMinus (FromReg R12) (AddrImm 1)) 5
-1533: LEA Reg RAX, Address (AddrPlus (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 2) (FromReg RAX))) (AddrImm 3)) 5
-1538: LEA Reg RAX, Address (AddrPlus (AddrTimes (AddrImm 8) (FromReg RAX)) (AddrImm 30)) 8
+152e: LEA Reg EAX, Address (SizeDir 32 (AddrMinus (FromReg R12) (AddrImm 1))) 5
+1533: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 2) (FromReg RAX))) (AddrImm 3))) 5
+1538: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (AddrTimes (AddrImm 8) (FromReg RAX)) (AddrImm 30))) 8
 1540: SHR Reg RAX, Immediate 4 4
 1544: SHL Reg RAX, Immediate 4 4
 1548: SUB Reg RSP, Reg RAX 3
-154b: LEA Reg RBX, Address (AddrPlus (FromReg RSP) (AddrImm 15)) 5
+154b: LEA Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 15))) 5
 1550: AND Reg RBX, Immediate 18446744073709551600 4
 1554: TEST Reg R12D, Reg R12D 3
-1557: JZ 158c (resolved immediate)
+1557: JE 158c (resolved immediate)
   |
   `- 1559,158c
-1559: LEA Reg ECX, Address (AddrMinus (FromReg R12) (AddrImm 1)) 5
+1559: LEA Reg ECX, Address (SizeDir 32 (AddrMinus (FromReg R12) (AddrImm 1))) 5
 155e: SHL Reg R11, Immediate 2 4
 1562: XOR Reg EAX, Reg EAX 2
 1564: ADD Reg RCX, Immediate 1 4
 1568: NOP  8
-1570: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))) 4
+1570: MOV Reg EDX, Address (SizeDir 32 (FromReg R13)) 4
 1574: ADD Reg R13, Reg R11 3
 1577: MOV Address (SizeDir 32 (AddrPlus (AddrPlus (FromReg RBX) (AddrTimes (AddrImm 8) (FromReg RAX))) (AddrImm 16))), Reg EDX 4
 157b: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg R10) (AddrTimes (AddrImm 4) (FromReg RAX)))) 4
 157f: MOV Address (SizeDir 32 (AddrPlus (AddrPlus (FromReg RBX) (AddrTimes (AddrImm 8) (FromReg RAX))) (AddrImm 20))), Reg EDX 4
 1583: ADD Reg RAX, Immediate 1 4
 1587: CMP Reg RAX, Reg RCX 3
-158a: JNZ 1570 (resolved immediate)
+158a: JNE 1570 (resolved immediate)
   |
   `- 1570,158c
 158c: XOR Reg EAX, Reg EAX 2
@@ -88,7 +88,7 @@ Number of edges: 208
 159f: CALL ioctl (external)
 15a4: SHL Reg R13, Immediate 12 4
 15a8: TEST Reg EAX, Reg EAX 2
-15aa: JZ 15d7 (resolved immediate)
+15aa: JE 15d7 (resolved immediate)
   |
   `- 15ac,15d7
 15ac: JMP 16d8 (resolved immediate)
@@ -98,7 +98,7 @@ Number of edges: 208
 15bd: MOV Reg R9D, Address (SizeDir 32 (FromReg RAX)) 3
 15c0: MOV Reg R10, Reg RAX 3
 15c3: CMP Reg R9D, Immediate 11 4
-15c7: JNZ 1710 (resolved immediate)
+15c7: JNE 1710 (resolved immediate)
   |
   `- 15cd,1710
 15cd: MOV Reg EDI, Immediate 1000 5
@@ -112,7 +112,7 @@ Number of edges: 208
 15eb: CALL mmap (external)
 15f0: CMP Reg RAX, Immediate 18446744073709551615 4
 15f4: MOV Reg R9, Reg RAX 3
-15f7: JZ 15b8 (resolved immediate)
+15f7: JE 15b8 (resolved immediate)
   |
   `- 15b8,15f9
 15f9: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 16))) 3
@@ -123,8 +123,8 @@ Number of edges: 208
 160e: JA 1778 (resolved immediate)
   |
   `- 1614,1778
-1614: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 24))), Immediate 4294967295 4
-1618: JNZ 1810 (resolved immediate)
+1614: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 24))), Immediate 18446744073709551615 4
+1618: JNE 1810 (resolved immediate)
   |
   `- 161e,1810
 161e: NOP  2
@@ -140,10 +140,10 @@ Number of edges: 208
 163c: MOV Reg RSI, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 56))) 4
 1640: XOR Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 1649: MOV Reg RAX, Reg R9 3
-164c: JNZ 181a (resolved immediate)
+164c: JNE 181a (resolved immediate)
   |
   `- 1652,181a
-1652: LEA Reg RSP, Address (AddrMinus (FromReg RBP) (AddrImm 40)) 4
+1652: LEA Reg RSP, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 40))) 4
 1656: POP Reg RBX 1
 1657: POP Reg R12 2
 1659: POP Reg R13 2
@@ -166,14 +166,14 @@ Number of edges: 208
 1691: MOV Reg RBX, Reg RAX 3
 1694: MOVSXD Reg R11, Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 104))) 4
 1698: MOV Reg R10, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 112))) 4
-169c: JNZ 1554 (resolved immediate)
+169c: JNE 1554 (resolved immediate)
   |
   `- 1554,16a2
 16a2: CALL __errno_location (external)
 16a7: MOV Reg EDX, Address (SizeDir 32 (FromReg RAX)) 2
 16a9: MOV Reg RAX, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 96))) 4
-16ad: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 2207)) 7
-16b4: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2193)) 7
+16ad: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2207))) 7
+16b4: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2193))) 7
 16bb: MOV Reg ESI, Immediate 8 5
 16c0: MOV Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
 16c3: XOR Reg EAX, Reg EAX 2
@@ -185,8 +185,8 @@ Number of edges: 208
 16d8: CALL __errno_location (external)
 16dd: MOV Reg EDX, Address (SizeDir 32 (FromReg RAX)) 2
 16df: MOV Reg RAX, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 96))) 4
-16e3: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 2172)) 7
-16ea: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2139)) 7
+16e3: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2172))) 7
+16ea: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2139))) 7
 16f1: MOV Reg ESI, Immediate 8 5
 16f6: MOV Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
 16f9: XOR Reg EAX, Reg EAX 2
@@ -195,10 +195,10 @@ Number of edges: 208
 1703: JMP 1620 (resolved immediate)
   |
   `- 1620
-1710: LEA Reg R15, Address (AddrMinus (FromReg RBP) (AddrImm 80)) 4
+1710: LEA Reg R15, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 80))) 4
 1714: MOV Reg RAX, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 96))) 4
-1718: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 2176)) 7
-171f: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2086)) 7
+1718: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2176))) 7
+171f: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2086))) 7
 1726: MOV Reg EDX, Reg R9D 3
 1729: MOV Reg ESI, Immediate 8 5
 172e: MOV Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 112))), Reg R10 4
@@ -222,17 +222,17 @@ Number of edges: 208
   |
   `- 1620
 1778: ADD Reg RAX, Reg RDX 3
-177b: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 24))), Immediate 4294967295 4
+177b: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 24))), Immediate 18446744073709551615 4
 177f: MOV Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 72))), Immediate 1 7
 1786: MOV Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 80))), Reg RAX 4
-178a: JZ 179a (resolved immediate)
+178a: JE 179a (resolved immediate)
   |
   `- 178c,179a
 178c: MOV Reg EAX, Immediate 3 5
 1791: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 24))) 3
 1794: MOV Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 72))), Reg EAX 3
 1797: MOV Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 68))), Reg EDI 3
-179a: LEA Reg R15, Address (AddrMinus (FromReg RBP) (AddrImm 80)) 4
+179a: LEA Reg R15, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 80))) 4
 179e: XOR Reg EAX, Reg EAX 2
 17a0: MOV Reg ESI, Immediate 1066759 5
 17a5: MOV Reg EDI, Reg R14D 3
@@ -241,7 +241,7 @@ Number of edges: 208
 17af: CALL ioctl (external)
 17b4: TEST Reg EAX, Reg EAX 2
 17b6: MOV Reg R9, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 104))) 4
-17ba: JZ 1620 (resolved immediate)
+17ba: JE 1620 (resolved immediate)
   |
   `- 1620
 1810: MOV Reg EAX, Immediate 2 5

@@ -12,12 +12,12 @@ Number of edges: 20
   |
   `- 22604,2263c
 22604: MOV Reg EDX, Reg EDX 2
-22606: LEA Reg RAX, Address (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 4) (FromReg RDX))) 4
+22606: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 4) (FromReg RDX)))) 4
 2260a: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))) 4
 2260e: SHL Reg RAX, Immediate 3 4
 22612: ADD Reg RDX, Reg RAX 3
 22615: CMP Address (SizeDir 64 (FromReg RDX)), Immediate 0 4
-22619: JZ 2263c (resolved immediate)
+22619: JE 2263c (resolved immediate)
   |
   `- 2261b,2263c
 2261b: MOVDQU Reg XMM0, Address (SizeDir 128 (FromReg RDX)) 4
@@ -27,7 +27,7 @@ Number of edges: 20
 2262b: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 32))) 4
 2262f: MOV Address (SizeDir 64 (AddrPlus (FromReg RCX) (AddrImm 32))), Reg RDX 4
 22633: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))) 4
-22637: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (FromReg RAX))) 4
+22637: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 1) (FromReg RAX)))) 4
 2263b: RET  1
   |
   `- 

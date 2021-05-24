@@ -30,7 +30,7 @@ Number of edges: 36
 4432: MOV Reg RBX, Reg RAX 3
 4435: CALL memcmp (external)
 443a: TEST Reg EAX, Reg EAX 2
-443c: JNZ 4452 (resolved immediate)
+443c: JNE 4452 (resolved immediate)
   |
   `- 443e,4452
 443e: CMP Reg R14, Reg RBX 3
@@ -38,8 +38,8 @@ Number of edges: 36
 4447: JBE 4452 (resolved immediate)
   |
   `- 4449,4452
-4449: CMP Address (SizeDir 8 (AddrPlus (AddrPlus (FromReg RBP) (FromReg RBX)) (AddrImm 0))), Immediate 47 5
-444e: SETZ Reg R13B 4
+4449: CMP Address (SizeDir 8 (AddrPlus (FromReg RBP) (AddrTimes (AddrImm 1) (FromReg RBX)))), Immediate 47 5
+444e: SETE Reg R13B 4
 4452: POP Reg RBX 1
 4453: MOV Reg EAX, Reg R13D 3
 4456: POP Reg RBP 1

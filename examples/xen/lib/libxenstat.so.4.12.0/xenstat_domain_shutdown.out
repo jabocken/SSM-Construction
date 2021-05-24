@@ -10,13 +10,13 @@ Number of edges: 9
 3580: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 16))) 3
 3583: MOV Reg EAX, Reg EDX 2
 3585: AND Reg EAX, Immediate 4 3
-3588: JZ 3595 (resolved immediate)
+3588: JE 3595 (resolved immediate)
   |
   `- 358a,3595
 358a: SHR Reg EDX, Immediate 16 3
 358d: XOR Reg EAX, Reg EAX 2
 358f: CMP Reg DL, Immediate 3 3
-3592: SETNZ Reg AL 3
-3595: REPZ RET  2
+3592: SETNE Reg AL 3
+3595: RET  2
   |
   `- 

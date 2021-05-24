@@ -11,17 +11,17 @@ Number of edges: 22
 82d51: MOV Reg RBX, Reg RDI 3
 82d54: MOV Address (SizeDir 64 (FromReg RDI)), Immediate 0 7
 82d5b: MOV Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 1200))), Immediate 0 11
-82d66: LEA Reg RDI, Address (AddrPlus (FromReg RDI) (AddrImm 8)) 4
+82d66: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
 82d6a: MOV Reg RCX, Reg RBX 3
 82d6d: XOR Reg EAX, Reg EAX 2
 82d6f: AND Reg RDI, Immediate 18446744073709551608 4
 82d73: SUB Reg RCX, Reg RDI 3
 82d76: ADD Reg ECX, Immediate 1208 6
 82d7c: SHR Reg ECX, Immediate 3 3
-82d7f: REP STOSQ  3
+82d7f: REP STOSQ Address (SizeDir 64 (FromReg RDI)), Reg RAX 3
 82d82: MOV Reg RDI, Reg RBX 3
 82d85: CALL libxl_domain_create_info_init (external)
-82d8a: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 88)) 4
+82d8a: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 88))) 4
 82d8e: CALL libxl_domain_build_info_init (external)
 82d93: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 1184))), Immediate 1 10
 82d9d: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 1188))), Immediate 1 10

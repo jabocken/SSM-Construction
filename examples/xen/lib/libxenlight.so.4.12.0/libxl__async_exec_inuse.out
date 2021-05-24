@@ -11,17 +11,17 @@ Number of edges: 13
 43736: NOT Reg EAX 2
 43738: SHR Reg EAX, Immediate 31 3
 4373b: CMP Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 64))), Immediate 0 5
-43740: SETNZ Reg DL 3
+43740: SETNE Reg DL 3
 43743: CMP Reg AL, Reg DL 2
-43745: JNZ 43749 (resolved immediate)
+43745: JNE 43749 (resolved immediate)
   |
   `- 43747,43749
-43747: REPZ RET  2
+43747: RET  2
   |
   `- 
-43749: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 360560)) 7
-43750: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 359305)) 7
-43757: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 359717)) 7
+43749: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 360560))) 7
+43750: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 359305))) 7
+43757: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 359717))) 7
 4375e: SUB Reg RSP, Immediate 8 4
 43762: MOV Reg EDX, Immediate 618 5
 43767: CALL __assert_fail (external)

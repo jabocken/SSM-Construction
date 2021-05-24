@@ -14,7 +14,7 @@ Number of edges: 116
 18b39: PUSH Reg R12 2
 18b3b: PUSH Reg RBP 1
 18b3c: PUSH Reg RBX 1
-18b3d: LEA Reg RBX, Address (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 2) (FromReg RDX))) 4
+18b3d: LEA Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 2) (FromReg RDX)))) 4
 18b41: MOV Reg RBP, Reg RDX 3
 18b44: SUB Reg RSP, Immediate 40 4
 18b48: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 2328))) 7
@@ -26,24 +26,24 @@ Number of edges: 116
 18b62: CALL xc_dom_malloc (external)
 18b67: TEST Reg RAX, Reg RAX 3
 18b6a: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
-18b6f: JZ 18c3d (resolved immediate)
+18b6f: JE 18c3d (resolved immediate)
   |
   `- 18b75,18c3d
 18b75: TEST Reg RBP, Reg RBP 3
-18b78: JZ 18be7 (resolved immediate)
+18b78: JE 18be7 (resolved immediate)
   |
   `- 18b7a,18be7
 18b7a: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 18b7f: MOV Reg R14, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 18b84: MOV Reg R12, Immediate 18446744073709551615 7
-18b8b: LEA Reg R13, Address (AddrPlus (FromReg RAX) (AddrImm 8)) 4
-18b8f: LEA Reg RBX, Address (AddrPlus (AddrPlus (FromReg RAX) (FromReg RBX)) (AddrImm 8)) 5
+18b8b: LEA Reg R13, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))) 4
+18b8f: LEA Reg RBX, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 1) (FromReg RBX))) (AddrImm 8))) 5
 18b94: NOP  4
 18b98: MOV Reg RDI, Reg R15 3
 18b9b: CALL xc_dom_translated (external)
 18ba0: TEST Reg AL, Reg AL 2
 18ba2: MOV Reg RSI, Reg R14 3
-18ba5: JNZ 18bd6 (resolved immediate)
+18ba5: JNE 18bd6 (resolved immediate)
   |
   `- 18ba7,18bd6
 18ba7: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R15) (AddrImm 1120))) 7
@@ -62,11 +62,11 @@ Number of edges: 116
 18bc8: SUB Reg RSI, Reg RAX 3
 18bcb: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R15) (AddrImm 1104))) 7
 18bd2: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RSI)))) 4
-18bd6: MOV Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 0))), Reg RSI 4
+18bd6: MOV Address (SizeDir 64 (FromReg R13)), Reg RSI 4
 18bda: ADD Reg R13, Immediate 24 4
 18bde: ADD Reg R14, Immediate 1 4
 18be2: CMP Reg R13, Reg RBX 3
-18be5: JNZ 18b98 (resolved immediate)
+18be5: JNE 18b98 (resolved immediate)
   |
   `- 18b98,18be7
 18be7: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 20))) 4
@@ -87,7 +87,7 @@ Number of edges: 116
 18c24: TEST Reg RBX, Reg RBX 3
 18c27: POP Reg RAX 1
 18c28: POP Reg RDX 1
-18c29: JZ 18c75 (resolved immediate)
+18c29: JE 18c75 (resolved immediate)
   |
   `- 18c2b,18c75
 18c2b: ADD Reg RSP, Immediate 40 4
@@ -103,10 +103,10 @@ Number of edges: 116
   `- 
 18c3d: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R15) (AddrImm 1224))) 7
 18c44: PUSH Reg RBP 1
-18c45: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 53711)) 7
+18c45: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 53711))) 7
 18c4c: PUSH Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))) 4
-18c50: LEA Reg R9, Address (AddrPlus (FromReg RIP) (AddrImm 54905)) 7
-18c57: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 54114)) 7
+18c50: LEA Reg R9, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 54905))) 7
+18c57: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 54114))) 7
 18c5e: MOV Reg ECX, Immediate 1 5
 18c63: MOV Reg EDX, Immediate 143 5
 18c68: XOR Reg EAX, Reg EAX 2
@@ -123,11 +123,11 @@ Number of edges: 116
 18c80: CALL strerror (external)
 18c85: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R15) (AddrImm 1224))) 7
 18c8c: PUSH Reg RAX 1
-18c8d: LEA Reg R9, Address (AddrPlus (FromReg RIP) (AddrImm 54844)) 7
+18c8d: LEA Reg R9, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 54844))) 7
 18c94: PUSH Reg R12 2
-18c96: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 54107)) 7
+18c96: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 54107))) 7
 18c9d: PUSH Reg RBP 1
-18c9e: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 53622)) 7
+18c9e: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 53622))) 7
 18ca5: PUSH Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))) 4
 18ca9: MOV Reg ECX, Immediate 1 5
 18cae: MOV Reg EDX, Immediate 159 5

@@ -30,19 +30,19 @@ Number of edges: 78
 2d38: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Immediate 0 9
 2d41: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))) 4
 2d45: TEST Reg RBX, Reg RBX 3
-2d48: JZ 2e67 (resolved immediate)
+2d48: JE 2e67 (resolved immediate)
   |
   `- 2d4e,2e67
 2d4e: MOV Reg RAX, Reg RSI 3
 2d51: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))), Immediate 0 8
-2d59: LEA Reg RCX, Address (AddrPlus (FromReg RSP) (AddrImm 8)) 5
-2d5e: LEA Reg RDX, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
-2d63: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 1410)) 7
+2d59: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+2d5e: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
+2d63: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 1410))) 7
 2d6a: MOV Reg RDI, Reg RAX 3
 2d6d: MOV Reg EAX, Immediate 0 5
 2d72: CALL PyArg_ParseTuple (external)
 2d77: TEST Reg EAX, Reg EAX 2
-2d79: JZ 2e8d (resolved immediate)
+2d79: JE 2e8d (resolved immediate)
   |
   `- 2d7f,2e8d
 2d7f: MOV Reg EDX, Immediate 16 5
@@ -52,7 +52,7 @@ Number of edges: 78
 2d93: MOV Reg R12, Reg RAX 3
 2d96: CALL PyEval_SaveThread (external)
 2d9b: MOV Reg RBP, Reg RAX 3
-2d9e: LEA Reg RCX, Address (AddrPlus (FromReg RSP) (AddrImm 4)) 5
+2d9e: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 4))) 5
 2da3: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 2da8: MOV Reg ESI, Reg R12D 3
 2dab: MOV Reg RDI, Reg RBX 3
@@ -61,14 +61,14 @@ Number of edges: 78
 2db6: MOV Reg RDI, Reg RBP 3
 2db9: CALL PyEval_RestoreThread (external)
 2dbe: TEST Reg R12, Reg R12 3
-2dc1: JZ 2e79 (resolved immediate)
+2dc1: JE 2e79 (resolved immediate)
   |
   `- 2dc7,2e79
 2dc7: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))) 4
 2dcb: CALL PyList_New (external)
 2dd0: MOV Reg R13, Reg RAX 3
 2dd3: CMP Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))), Immediate 0 5
-2dd8: JZ 2e3f (resolved immediate)
+2dd8: JE 2e3f (resolved immediate)
   |
   `- 2e3f
 2e3f: MOV Reg RDI, Reg R12 3
@@ -76,7 +76,7 @@ Number of edges: 78
 2e47: MOV Reg RAX, Reg R13 3
 2e4a: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 2e4f: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-2e58: JNZ 2e95 (resolved immediate)
+2e58: JNE 2e95 (resolved immediate)
   |
   `- 2e5a,2e95
 2e5a: ADD Reg RSP, Immediate 32 4

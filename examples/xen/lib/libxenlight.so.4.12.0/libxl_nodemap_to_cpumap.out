@@ -1,9 +1,9 @@
-Number of assembly instructions     = 42
+Number of assembly instructions     = 63
 Number of indirect branches         = 0
 Number of unresolved indirect jumps = 0: 
 Number of unresolved indirect calls = 0: 
-Number of symbolic states (representative of non-determinism): 42
-Number of edges: 42
+Number of symbolic states (representative of non-determinism): 63
+Number of edges: 67
 
 3f4d0 (False): 0
 
@@ -15,7 +15,7 @@ Number of edges: 42
 3f4da: MOV Reg R12, Reg RSI 3
 3f4dd: PUSH Reg RBX 1
 3f4de: SUB Reg RSP, Immediate 16 4
-3f4e2: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 4)) 5
+3f4e2: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 4))) 5
 3f4e7: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))), Immediate 0 8
 3f4ef: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 3f4f8: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
@@ -23,10 +23,10 @@ Number of edges: 42
 3f4ff: CALL libxl_get_cpu_topology (external)
 3f504: TEST Reg RAX, Reg RAX 3
 3f507: MOV Reg R14, Reg RAX 3
-3f50a: JZ 3f590 (resolved immediate)
+3f50a: JE 3f590 (resolved immediate)
   |
   `- 3f510,3f590
-3f510: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))) 4
+3f510: MOV Reg EDX, Address (SizeDir 32 (FromReg R13)) 4
 3f514: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 8))) 4
 3f518: XOR Reg ESI, Reg ESI 2
 3f51a: CALL memset (external)
@@ -34,14 +34,43 @@ Number of edges: 42
 3f523: TEST Reg ESI, Reg ESI 2
 3f525: JLE 3f567 (resolved immediate)
   |
-  `- 3f567
+  `- 3f527,3f567
+3f527: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg R14) (AddrImm 8))) 4
+3f52b: XOR Reg EBX, Reg EBX 2
+3f52d: JMP 3f53f (resolved immediate)
+  |
+  `- 3f53f
+3f530: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))) 4
+3f534: ADD Reg EBX, Immediate 1 3
+3f537: ADD Reg RBP, Immediate 12 4
+3f53b: CMP Reg ESI, Reg EBX 2
+3f53d: JLE 3f567 (resolved immediate)
+  |
+  `- 3f53f,3f567
+3f53f: MOV Reg ESI, Address (SizeDir 32 (FromReg RBP)) 3
+3f542: MOV Reg RDI, Reg R12 3
+3f545: CALL libxl_bitmap_test (external)
+3f54a: TEST Reg EAX, Reg EAX 2
+3f54c: JE 3f530 (resolved immediate)
+  |
+  `- 3f530,3f54e
+3f54e: MOV Reg ESI, Reg EBX 2
+3f550: MOV Reg RDI, Reg R13 3
+3f553: ADD Reg EBX, Immediate 1 3
+3f556: CALL libxl_bitmap_set (external)
+3f55b: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))) 4
+3f55f: ADD Reg RBP, Immediate 12 4
+3f563: CMP Reg ESI, Reg EBX 2
+3f565: JG 3f53f (resolved immediate)
+  |
+  `- 3f53f,3f567
 3f567: XOR Reg EBX, Reg EBX 2
 3f569: MOV Reg RDI, Reg R14 3
 3f56c: CALL libxl_cputopology_list_free (external)
 3f571: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 3f576: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 3f57f: MOV Reg EAX, Reg EBX 2
-3f581: JNZ 3f59b (resolved immediate)
+3f581: JNE 3f59b (resolved immediate)
   |
   `- 3f583,3f59b
 3f583: ADD Reg RSP, Immediate 16 4

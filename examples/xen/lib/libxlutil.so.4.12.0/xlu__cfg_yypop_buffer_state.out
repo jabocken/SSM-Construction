@@ -9,13 +9,13 @@ Number of edges: 46
 
 5630: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 40))) 4
 5634: TEST Reg RAX, Reg RAX 3
-5637: JZ 56d0 (resolved immediate)
+5637: JE 56d0 (resolved immediate)
   |
   `- 563d,56d0
 563d: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 24))) 4
 5641: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX)))) 4
 5645: TEST Reg RAX, Reg RAX 3
-5648: JZ 56d0 (resolved immediate)
+5648: JE 56d0 (resolved immediate)
   |
   `- 564e,56d0
 564e: PUSH Reg RBX 1
@@ -28,21 +28,21 @@ Number of edges: 46
 5665: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX)))), Immediate 0 8
 566d: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
 5671: TEST Reg RAX, Reg RAX 3
-5674: JZ 567e (resolved immediate)
+5674: JE 567e (resolved immediate)
   |
   `- 5676,567e
 5676: SUB Reg RAX, Immediate 1 4
 567a: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))), Reg RAX 4
 567e: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 40))) 4
 5682: TEST Reg RAX, Reg RAX 3
-5685: JZ 56c8 (resolved immediate)
+5685: JE 56c8 (resolved immediate)
   |
   `- 5687,56c8
 5687: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
-568b: LEA Reg RAX, Address (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX))) 4
+568b: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX)))) 4
 568f: MOV Reg RDX, Address (SizeDir 64 (FromReg RAX)) 3
 5692: TEST Reg RDX, Reg RDX 3
-5695: JZ 56c8 (resolved immediate)
+5695: JE 56c8 (resolved immediate)
   |
   `- 5697,56c8
 5697: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 32))) 4
@@ -61,6 +61,6 @@ Number of edges: 46
 56c9: RET  1
   |
   `- 
-56d0: REPZ RET  2
+56d0: RET  2
   |
   `- 

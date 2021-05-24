@@ -14,18 +14,18 @@ Number of edges: 37
 1db12: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 136))), Reg RCX 8
 1db1a: XOR Reg ECX, Reg ECX 2
 1db1c: TEST Reg RDI, Reg RDI 3
-1db1f: JZ 1db80 (resolved immediate)
+1db1f: JE 1db80 (resolved immediate)
   |
   `- 1db21,1db80
 1db21: TEST Reg RDX, Reg RDX 3
 1db24: MOV Reg RAX, Reg RDX 3
-1db27: JZ 1db80 (resolved immediate)
+1db27: JE 1db80 (resolved immediate)
   |
   `- 1db29,1db80
 1db29: MOV Reg RBP, Reg RSP 3
 1db2c: MOV Reg RBX, Reg RDI 3
 1db2f: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))), Reg ESI 4
-1db33: LEA Reg RDI, Address (AddrPlus (FromReg RBP) (AddrImm 16)) 4
+1db33: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))) 4
 1db37: MOV Reg RSI, Reg RAX 3
 1db3a: MOV Reg EDX, Immediate 15 5
 1db3f: MOV Address (SizeDir 32 (FromReg RSP)), Immediate 12 7
@@ -37,7 +37,7 @@ Number of edges: 37
 1db5e: CALL xc_sysctl (external)
 1db63: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 136))) 8
 1db6b: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-1db74: JNZ 1db92 (resolved immediate)
+1db74: JNE 1db92 (resolved immediate)
   |
   `- 1db76,1db92
 1db76: ADD Reg RSP, Immediate 152 7

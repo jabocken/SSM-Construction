@@ -8,7 +8,7 @@ Number of edges: 46
 321e (False): 0
 
 321e: PUSH Reg RBX 1
-321f: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2105370)) 7
+321f: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2105370))) 7
 3226: CALL PyType_Ready (external)
 322b: TEST Reg EAX, Reg EAX 2
 322d: JS 32bd (resolved immediate)
@@ -17,32 +17,32 @@ Number of edges: 46
 3233: MOV Reg R8D, Immediate 1013 6
 3239: MOV Reg ECX, Immediate 0 5
 323e: MOV Reg EDX, Immediate 0 5
-3243: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2106454)) 7
-324a: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 218)) 7
+3243: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2106454))) 7
+324a: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 218))) 7
 3251: CALL Py_InitModule4_64 (external)
 3256: MOV Reg RBX, Reg RAX 3
 3259: TEST Reg RAX, Reg RAX 3
-325c: JZ 32bd (resolved immediate)
+325c: JE 32bd (resolved immediate)
   |
   `- 325e,32bd
 325e: MOV Reg EDX, Immediate 0 5
 3263: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2104678))) 7
 326a: MOV Reg RSI, Address (SizeDir 64 (FromReg RAX)) 3
-326d: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 199)) 7
+326d: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 199))) 7
 3274: CALL PyErr_NewException (external)
 3279: MOV Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2106432))), Reg RAX 7
 3280: TEST Reg RAX, Reg RAX 3
-3283: JZ 32bf (resolved immediate)
+3283: JE 32bf (resolved immediate)
   |
   `- 3285,32bf
 3285: ADD Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2105267))), Immediate 1 8
-328d: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 2105260)) 7
-3294: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 157)) 7
+328d: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2105260))) 7
+3294: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 157))) 7
 329b: MOV Reg RDI, Reg RBX 3
 329e: CALL PyModule_AddObject (external)
 32a3: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2106390))) 7
 32aa: ADD Address (SizeDir 64 (FromReg RDX)), Immediate 1 4
-32ae: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 150)) 7
+32ae: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 150))) 7
 32b5: MOV Reg RDI, Reg RBX 3
 32b8: CALL PyModule_AddObject (external)
 32bd: POP Reg RBX 1
@@ -53,7 +53,7 @@ Number of edges: 46
 32c2: SUB Reg RAX, Immediate 1 4
 32c6: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
 32c9: TEST Reg RAX, Reg RAX 3
-32cc: JNZ 32bd (resolved immediate)
+32cc: JNE 32bd (resolved immediate)
   |
   `- 32bd,32ce
 32ce: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4

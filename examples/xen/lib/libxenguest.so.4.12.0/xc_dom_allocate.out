@@ -8,7 +8,7 @@ Number of edges: 80
 176e0 (False): 0
 
 176e0: PUSH Reg R13 2
-176e2: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 53790)) 7
+176e2: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 53790))) 7
 176e9: PUSH Reg R12 2
 176eb: PUSH Reg RBP 1
 176ec: PUSH Reg RBX 1
@@ -17,15 +17,15 @@ Number of edges: 80
 176f3: MOV Reg RBP, Reg RDX 3
 176f6: SUB Reg RSP, Immediate 8 4
 176fa: TEST Reg RDX, Reg RDX 3
-176fd: CMOVNZ Reg R8, Reg RDX 4
+176fd: CMOVNE Reg R8, Reg RDX 4
 17701: TEST Reg RSI, Reg RSI 3
-17704: JZ 17800 (resolved immediate)
+17704: JE 17800 (resolved immediate)
   |
   `- 1770a,17800
 1770a: MOV Reg RCX, Reg RSI 3
-1770d: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 58684)) 7
+1770d: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 58684))) 7
 17714: MOV Reg R12, Reg RSI 3
-17717: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 57914)) 7
+17717: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 57914))) 7
 1771e: XOR Reg EAX, Reg EAX 2
 17720: CALL xc_dom_printf (external)
 17725: MOV Reg ESI, Immediate 1 5
@@ -33,7 +33,7 @@ Number of edges: 80
 1772f: CALL calloc (external)
 17734: TEST Reg RAX, Reg RAX 3
 17737: MOV Reg RBX, Reg RAX 3
-1773a: JZ 177e8 (resolved immediate)
+1773a: JE 177e8 (resolved immediate)
   |
   `- 17740,177e8
 17740: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1224))), Reg R13 7
@@ -45,10 +45,10 @@ Number of edges: 80
 1776e: CALL xc_dom_strdup (external)
 17773: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 176))), Reg RAX 7
 1777a: TEST Reg RBP, Reg RBP 3
-1777d: JZ 17790 (resolved immediate)
+1777d: JE 17790 (resolved immediate)
   |
   `- 1777f,17790
-1777f: LEA Reg RSI, Address (AddrPlus (FromReg RBX) (AddrImm 192)) 7
+1777f: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 192))) 7
 17786: XOR Reg EDX, Reg EDX 2
 17788: MOV Reg RDI, Reg RBP 3
 1778b: CALL elf_xen_parse_features (external)
@@ -80,8 +80,8 @@ Number of edges: 80
 177f7: RET  1
   |
   `- 
-17800: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 58441)) 7
-17807: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 57674)) 7
+17800: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 58441))) 7
+17807: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 57674))) 7
 1780e: XOR Reg EAX, Reg EAX 2
 17810: CALL xc_dom_printf (external)
 17815: MOV Reg ESI, Immediate 1 5
@@ -89,7 +89,7 @@ Number of edges: 80
 1781f: CALL calloc (external)
 17824: TEST Reg RAX, Reg RAX 3
 17827: MOV Reg RBX, Reg RAX 3
-1782a: JZ 177e8 (resolved immediate)
+1782a: JE 177e8 (resolved immediate)
   |
   `- 177e8,1782c
 1782c: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1224))), Reg R13 7

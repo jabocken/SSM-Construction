@@ -9,12 +9,12 @@ Number of edges: 24
 1420 (True): 114e
 
 1130: TEST Reg RDI, Reg RDI 3
-1133: JZ 1170 (resolved immediate)
+1133: JE 1170 (resolved immediate)
   |
   `- 1135,1170
 1135: PUSH Reg RBX 1
 1136: MOV Reg RBX, Reg RDI 3
-1139: LEA Reg RDI, Address (AddrPlus (FromReg RDI) (AddrImm 24)) 4
+1139: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 24))) 4
 113d: SUB Reg RSP, Immediate 16 4
 1141: CALL xentoolcore__deregister_active_handle (external)
 1146: MOV Reg RDI, Reg RBX 3
@@ -37,8 +37,8 @@ Number of edges: 24
   |
   `- 
 1420: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 16))) 3
-1423: CMP Reg EDI, Immediate 4294967295 3
-1426: JZ 1430 (resolved immediate)
+1423: CMP Reg EDI, Immediate 18446744073709551615 3
+1426: JE 1430 (resolved immediate)
   |
   `- 1428,1430
 1428: JMP close (jmp to external function)

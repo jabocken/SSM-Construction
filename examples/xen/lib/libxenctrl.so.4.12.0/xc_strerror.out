@@ -8,24 +8,24 @@ Number of edges: 44
 19b20 (False): 0
 
 19b20: TEST Address (SizeDir 8 (FromReg RDI)), Immediate 2 3
-19b23: JNZ 19b90 (resolved immediate)
+19b23: JNE 19b90 (resolved immediate)
   |
   `- 19b25,19b90
 19b25: PUSH Reg RBP 1
 19b26: PUSH Reg RBX 1
-19b27: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2177786)) 7
+19b27: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2177786))) 7
 19b2e: MOV Reg EBP, Reg ESI 2
-19b30: LEA Reg RSI, Address (AddrMinus (FromReg RIP) (AddrImm 1783)) 7
+19b30: LEA Reg RSI, Address (SizeDir 64 (AddrMinus (FromReg RIP) (AddrImm 1783))) 7
 19b37: SUB Reg RSP, Immediate 8 4
 19b3b: CALL pthread_once (external)
 19b40: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2177766))) 6
 19b46: CALL pthread_getspecific (external)
 19b4b: TEST Reg RAX, Reg RAX 3
 19b4e: MOV Reg RBX, Reg RAX 3
-19b51: JZ 19ba0 (resolved immediate)
+19b51: JE 19ba0 (resolved immediate)
   |
   `- 19b53,19ba0
-19b53: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2177702)) 7
+19b53: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2177702))) 7
 19b5a: CALL pthread_mutex_lock (external)
 19b5f: MOV Reg EDI, Reg EBP 2
 19b61: CALL strerror (external)
@@ -33,7 +33,7 @@ Number of edges: 44
 19b69: MOV Reg EDX, Immediate 32 5
 19b6e: MOV Reg RSI, Reg RAX 3
 19b71: CALL strncpy (external)
-19b76: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2177667)) 7
+19b76: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2177667))) 7
 19b7d: MOV Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 31))), Immediate 0 4
 19b81: CALL pthread_mutex_unlock (external)
 19b86: ADD Reg RSP, Immediate 8 4
@@ -51,7 +51,7 @@ Number of edges: 44
 19ba5: CALL malloc (external)
 19baa: TEST Reg RAX, Reg RAX 3
 19bad: MOV Reg RBX, Reg RAX 3
-19bb0: JZ 19bc8 (resolved immediate)
+19bb0: JE 19bc8 (resolved immediate)
   |
   `- 19bb2,19bc8
 19bb2: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2177652))) 6
@@ -60,7 +60,7 @@ Number of edges: 44
 19bc0: JMP 19b53 (resolved immediate)
   |
   `- 19b53
-19bc8: LEA Reg RBX, Address (AddrPlus (FromReg RIP) (AddrImm 49741)) 7
+19bc8: LEA Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 49741))) 7
 19bcf: JMP 19b86 (resolved immediate)
   |
   `- 19b86

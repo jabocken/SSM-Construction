@@ -27,12 +27,12 @@ a40 (False): 0
 944: MOV Reg RBX, Reg RAX 3
 947: CALL xc_tbuf_get_size (external)
 94c: TEST Reg EAX, Reg EAX 2
-94e: JZ 9f4 (resolved immediate)
+94e: JE 9f4 (resolved immediate)
   |
   `- 954,9f4
-954: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 637)) 7
+954: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 637))) 7
 95b: CALL perror (external)
-960: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 681)) 7
+960: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 681))) 7
 967: CALL puts (external)
 96c: CMP Reg R12D, Immediate 1 4
 970: JLE a1e (resolved immediate)
@@ -47,18 +47,18 @@ a40 (False): 0
 98c: MOV Address (SizeDir 64 (FromReg RSP)), Reg RAX 4
 990: CALL xc_tbuf_set_size (external)
 995: TEST Reg EAX, Reg EAX 2
-997: JNZ a2a (resolved immediate)
+997: JNE a2a (resolved immediate)
   |
   `- 99d,a2a
-99d: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 801)) 7
+99d: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 801))) 7
 9a4: CALL puts (external)
 9a9: MOV Reg RSI, Reg RBP 3
 9ac: MOV Reg RDI, Reg RBX 3
 9af: CALL xc_tbuf_get_size (external)
 9b4: TEST Reg EAX, Reg EAX 2
-9b6: JNZ a10 (resolved immediate)
+9b6: JNE a10 (resolved immediate)
 9b8: MOV Reg RDX, Address (SizeDir 64 (FromReg RSP)) 4
-9bc: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 790)) 7
+9bc: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 790))) 7
 9c3: MOV Reg EDI, Immediate 1 5
 9c8: XOR Reg EAX, Reg EAX 2
 9ca: CALL __printf_chk (external)
@@ -67,7 +67,7 @@ a40 (False): 0
 9d7: XOR Reg EAX, Reg EAX 2
 9d9: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 9de: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-9e7: JNZ a25 (resolved immediate)
+9e7: JNE a25 (resolved immediate)
   |
   `- 9e9,a25
 9e9: ADD Reg RSP, Immediate 24 4
@@ -79,7 +79,7 @@ a40 (False): 0
   |
   `- 
 9f4: MOV Reg RDX, Address (SizeDir 64 (FromReg RSP)) 4
-9f8: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 657)) 7
+9f8: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 657))) 7
 9ff: MOV Reg EDI, Immediate 1 5
 a04: XOR Reg EAX, Reg EAX 2
 a06: CALL __printf_chk (external)
@@ -93,7 +93,7 @@ a20: CALL exit (external)
 a25: CALL __stack_chk_fail (external)
   |
   `- 
-a2a: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 633)) 7
+a2a: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 633))) 7
 a31: CALL perror (external)
 a36: MOV Reg EDI, Immediate 1 5
 a3b: CALL exit (external)
@@ -106,9 +106,9 @@ a46: MOV Reg RDX, Reg RSP 3
 a49: AND Reg RSP, Immediate 18446744073709551600 4
 a4d: PUSH Reg RAX 1
 a4e: PUSH Reg RSP 1
-a4f: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 362)) 7
-a56: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 243)) 7
-a5d: LEA Reg RDI, Address (AddrMinus (FromReg RIP) (AddrImm 340)) 7
+a4f: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 362))) 7
+a56: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 243))) 7
+a5d: LEA Reg RDI, Address (SizeDir 64 (AddrMinus (FromReg RIP) (AddrImm 340))) 7
 a64: CALL __libc_start_main (external)
   |
   `- 910

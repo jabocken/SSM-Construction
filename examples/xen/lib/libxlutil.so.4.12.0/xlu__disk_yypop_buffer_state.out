@@ -9,13 +9,13 @@ Number of edges: 46
 
 8e60: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 40))) 4
 8e64: TEST Reg RAX, Reg RAX 3
-8e67: JZ 8f00 (resolved immediate)
+8e67: JE 8f00 (resolved immediate)
   |
   `- 8e6d,8f00
 8e6d: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 24))) 4
 8e71: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX)))) 4
 8e75: TEST Reg RAX, Reg RAX 3
-8e78: JZ 8f00 (resolved immediate)
+8e78: JE 8f00 (resolved immediate)
   |
   `- 8e7e,8f00
 8e7e: PUSH Reg RBX 1
@@ -28,21 +28,21 @@ Number of edges: 46
 8e95: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX)))), Immediate 0 8
 8e9d: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
 8ea1: TEST Reg RAX, Reg RAX 3
-8ea4: JZ 8eae (resolved immediate)
+8ea4: JE 8eae (resolved immediate)
   |
   `- 8ea6,8eae
 8ea6: SUB Reg RAX, Immediate 1 4
 8eaa: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))), Reg RAX 4
 8eae: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 40))) 4
 8eb2: TEST Reg RAX, Reg RAX 3
-8eb5: JZ 8ef8 (resolved immediate)
+8eb5: JE 8ef8 (resolved immediate)
   |
   `- 8eb7,8ef8
 8eb7: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
-8ebb: LEA Reg RAX, Address (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX))) 4
+8ebb: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX)))) 4
 8ebf: MOV Reg RDX, Address (SizeDir 64 (FromReg RAX)) 3
 8ec2: TEST Reg RDX, Reg RDX 3
-8ec5: JZ 8ef8 (resolved immediate)
+8ec5: JE 8ef8 (resolved immediate)
   |
   `- 8ec7,8ef8
 8ec7: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 32))) 4
@@ -61,6 +61,6 @@ Number of edges: 46
 8ef9: RET  1
   |
   `- 
-8f00: REPZ RET  2
+8f00: RET  2
   |
   `- 

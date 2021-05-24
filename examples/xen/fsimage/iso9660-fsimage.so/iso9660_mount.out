@@ -36,7 +36,7 @@ a24: ADD Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2102938))
 a2a: SAR Reg EDX, Reg CL 2
 a2c: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2102870))) 6
 a32: AND Reg EBX, Immediate 511 6
-a38: LEA Reg ESI, Address (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 4) (FromReg R14))) 4
+a38: LEA Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 4) (FromReg R14)))) 4
 a3c: MOV Reg EDX, Reg EBX 2
 a3e: MOV Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2102912))), Reg EAX 6
 a44: SAR Reg EAX, Immediate 11 3
@@ -88,12 +88,12 @@ f6e: JMP f7c (resolved immediate)
   `- f7c
 f70: ADD Reg EBX, Immediate 1 3
 f73: CMP Reg EBX, Immediate 32 3
-f76: JZ 1000 (resolved immediate)
+f76: JE 1000 (resolved immediate)
   |
   `- f7c,1000
 f7c: MOV Reg RDI, Reg RBP 3
 f7f: CALL fsig_file_buf (external)
-f84: LEA Reg R8, Address (AddrPlus (FromReg RAX) (AddrImm 2048)) 7
+f84: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 2048))) 7
 f8b: XOR Reg EDX, Reg EDX 2
 f8d: MOV Reg ECX, Immediate 2048 5
 f92: MOV Reg ESI, Reg EBX 2
@@ -102,23 +102,23 @@ f97: CALL iso9660_devread (internal)
   |
   `- f9c,9f0
 f9c: TEST Reg EAX, Reg EAX 2
-f9e: JZ 1000 (resolved immediate)
+f9e: JE 1000 (resolved immediate)
   |
   `- fa0,1000
 fa0: MOV Reg RDI, Reg RBP 3
 fa3: CALL fsig_file_buf (external)
 fa8: CMP Address (SizeDir 8 (AddrPlus (FromReg RAX) (AddrImm 2048))), Immediate 1 7
-faf: JNZ f70 (resolved immediate)
+faf: JNE f70 (resolved immediate)
   |
   `- f70,fb1
 fb1: MOV Reg RDI, Reg RBP 3
 fb4: CALL fsig_file_buf (external)
 fb9: CMP Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 2049))), Immediate 808469571 10
-fc3: JNZ f70 (resolved immediate)
+fc3: JNE f70 (resolved immediate)
   |
   `- f70,fc5
 fc5: CMP Address (SizeDir 8 (AddrPlus (FromReg RAX) (AddrImm 2053))), Immediate 49 7
-fcc: JNZ f70 (resolved immediate)
+fcc: JNE f70 (resolved immediate)
   |
   `- f70,fce
 fce: MOV Reg RDI, Reg RBP 3

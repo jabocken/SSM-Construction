@@ -9,7 +9,7 @@ Number of edges: 128
 8e0f0 (False): 0
 
 40c90: TEST Reg RSI, Reg RSI 3
-40c93: JZ 40cc0 (resolved immediate)
+40c93: JE 40cc0 (resolved immediate)
   |
   `- 40c95,40cc0
 40c95: PUSH Reg RBP 1
@@ -40,24 +40,24 @@ Number of edges: 128
 8e0fc: SUB Reg RSP, Immediate 8 4
 8e100: CALL yajl_gen_map_open (external)
 8e105: TEST Reg EAX, Reg EAX 2
-8e107: JNZ 8e133 (resolved immediate)
+8e107: JNE 8e133 (resolved immediate)
   |
   `- 8e109,8e133
-8e109: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+8e109: MOV Reg EDX, Address (SizeDir 32 (FromReg RBP)) 3
 8e10c: TEST Reg EDX, Reg EDX 2
-8e10e: JNZ 8e220 (resolved immediate)
+8e10e: JNE 8e220 (resolved immediate)
   |
   `- 8e114,8e220
 8e114: CMP Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))), Immediate 0 5
-8e119: JZ 8e150 (resolved immediate)
+8e119: JE 8e150 (resolved immediate)
   |
   `- 8e11b,8e150
-8e11b: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 100772)) 7
+8e11b: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 100772))) 7
 8e122: MOV Reg EDX, Immediate 15 5
 8e127: MOV Reg RDI, Reg RBX 3
 8e12a: CALL yajl_gen_string (external)
 8e12f: TEST Reg EAX, Reg EAX 2
-8e131: JZ 8e140 (resolved immediate)
+8e131: JE 8e140 (resolved immediate)
   |
   `- 8e140
 8e133: ADD Reg RSP, Immediate 8 4
@@ -74,60 +74,60 @@ Number of edges: 128
   |
   `- 8e14c,40c90
 8e14c: TEST Reg EAX, Reg EAX 2
-8e14e: JNZ 8e133 (resolved immediate)
-8e150: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 16))), Immediate 4294967295 4
-8e154: JNZ 8e258 (resolved immediate)
+8e14e: JNE 8e133 (resolved immediate)
+8e150: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 16))), Immediate 18446744073709551615 4
+8e154: JNE 8e258 (resolved immediate)
   |
   `- 8e15a,8e258
 8e15a: CMP Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 24))), Immediate 0 5
-8e15f: JZ 8e190 (resolved immediate)
+8e15f: JE 8e190 (resolved immediate)
   |
   `- 8e161,8e190
-8e161: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 104029)) 7
+8e161: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 104029))) 7
 8e168: MOV Reg EDX, Immediate 10 5
 8e16d: MOV Reg RDI, Reg RBX 3
 8e170: CALL yajl_gen_string (external)
 8e175: TEST Reg EAX, Reg EAX 2
-8e177: JNZ 8e133 (resolved immediate)
+8e177: JNE 8e133 (resolved immediate)
 8e179: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 24))) 4
 8e17d: MOV Reg RDI, Reg RBX 3
 8e180: CALL libxl__string_gen_json (internal)
 8e185: TEST Reg EAX, Reg EAX 2
-8e187: JNZ 8e133 (resolved immediate)
+8e187: JNE 8e133 (resolved immediate)
 8e189: NOP  7
 8e190: CMP Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 32))), Immediate 0 5
-8e195: JZ 8e1c3 (resolved immediate)
+8e195: JE 8e1c3 (resolved immediate)
   |
   `- 8e197,8e1c3
-8e197: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 103986)) 7
+8e197: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 103986))) 7
 8e19e: MOV Reg EDX, Immediate 9 5
 8e1a3: MOV Reg RDI, Reg RBX 3
 8e1a6: CALL yajl_gen_string (external)
 8e1ab: TEST Reg EAX, Reg EAX 2
-8e1ad: JNZ 8e133 (resolved immediate)
+8e1ad: JNE 8e133 (resolved immediate)
 8e1af: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 32))) 4
 8e1b3: MOV Reg RDI, Reg RBX 3
 8e1b6: CALL libxl__string_gen_json (internal)
 8e1bb: TEST Reg EAX, Reg EAX 2
-8e1bd: JNZ 8e133 (resolved immediate)
-8e1c3: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 45944)) 7
+8e1bd: JNE 8e133 (resolved immediate)
+8e1c3: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 45944))) 7
 8e1ca: MOV Reg EDX, Immediate 6 5
 8e1cf: MOV Reg RDI, Reg RBX 3
 8e1d2: CALL yajl_gen_string (external)
 8e1d7: TEST Reg EAX, Reg EAX 2
-8e1d9: JNZ 8e133 (resolved immediate)
-8e1df: LEA Reg RSI, Address (AddrPlus (FromReg RBP) (AddrImm 40)) 4
+8e1d9: JNE 8e133 (resolved immediate)
+8e1df: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 40))) 4
 8e1e3: MOV Reg RDI, Reg RBX 3
 8e1e6: CALL libxl_vsnd_params_gen_json (external)
 8e1eb: TEST Reg EAX, Reg EAX 2
-8e1ed: JNZ 8e133 (resolved immediate)
+8e1ed: JNE 8e133 (resolved immediate)
 8e1f3: CMP Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 96))), Immediate 0 5
-8e1f8: JZ 8e205 (resolved immediate)
+8e1f8: JE 8e205 (resolved immediate)
   |
   `- 8e1fa,8e205
 8e1fa: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 88))) 3
 8e1fd: TEST Reg EAX, Reg EAX 2
-8e1ff: JNZ 8e28d (resolved immediate)
+8e1ff: JNE 8e28d (resolved immediate)
 8e205: ADD Reg RSP, Immediate 8 4
 8e209: MOV Reg RDI, Reg RBX 3
 8e20c: POP Reg RBX 1
@@ -137,29 +137,29 @@ Number of edges: 128
 8e212: JMP yajl_gen_map_close (jmp to external function)
   |
   `- 
-8e220: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 100497)) 7
+8e220: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 100497))) 7
 8e227: MOV Reg EDX, Immediate 13 5
 8e22c: MOV Reg RDI, Reg RBX 3
 8e22f: CALL yajl_gen_string (external)
 8e234: TEST Reg EAX, Reg EAX 2
-8e236: JNZ 8e133 (resolved immediate)
-8e23c: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+8e236: JNE 8e133 (resolved immediate)
+8e23c: MOV Reg ESI, Address (SizeDir 32 (FromReg RBP)) 3
 8e23f: MOV Reg RDI, Reg RBX 3
 8e242: CALL yajl_gen_integer (external)
 8e247: TEST Reg EAX, Reg EAX 2
-8e249: JZ 8e114 (resolved immediate)
+8e249: JE 8e114 (resolved immediate)
   |
   `- 8e114
-8e258: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 100471)) 7
+8e258: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 100471))) 7
 8e25f: MOV Reg EDX, Immediate 5 5
 8e264: MOV Reg RDI, Reg RBX 3
 8e267: CALL yajl_gen_string (external)
 8e26c: TEST Reg EAX, Reg EAX 2
-8e26e: JNZ 8e133 (resolved immediate)
+8e26e: JNE 8e133 (resolved immediate)
 8e274: MOVSXD Reg RSI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 16))) 4
 8e278: MOV Reg RDI, Reg RBX 3
 8e27b: CALL yajl_gen_integer (external)
 8e280: TEST Reg EAX, Reg EAX 2
-8e282: JZ 8e15a (resolved immediate)
+8e282: JE 8e15a (resolved immediate)
   |
   `- 8e15a

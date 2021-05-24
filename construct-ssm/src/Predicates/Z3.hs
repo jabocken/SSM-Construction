@@ -155,13 +155,13 @@ mkCheckEncProblem c pred e0 v0 e1 v1 = do
   ast2 <- z3mkExpr c varASTs s0
   ast3 <- z3mkExpr c varASTs s1
   ax1 <- maybeM2 mkBvuge x ast0
-  maybeM1 assert =<< maybeMList mkAnd [assms, ax1] -- negation of implication
+  negOfImp assms ax1
   ax2 <- maybeM2 mkBvult x =<< maybeM2 mkBvadd ast0 ast2
-  maybeM1 assert =<< maybeMList mkAnd [assms, ax2] -- negation of implication
+  negOfImp assms ax2
   seq0 <- maybeM2 mkBvult x ast1
   seq1 <- maybeM2 mkBvuge x =<< maybeM2 mkBvadd ast1 ast3
   ax3 <- maybeMList mkOr [seq0, seq1]
-  maybeM1 assert =<< maybeMList mkAnd [assms, ax3] -- negation of implication
+  negOfImp assms ax3
   maybeM check
 
 -- Block (e0,s0) is overlapping with (e1,s1) iff:
@@ -188,7 +188,7 @@ mkCheckOverlapProblem c pred e0 v0 e1 v1 = do
   seq11 <- maybeM2 mkBvuge ast1 =<< maybeM2 mkBvadd ast0 ast2
   seq1 <- maybeMList mkOr [seq10, seq11]
   notQ <- maybeMList mkAnd [seq0, seq1]
-  maybeM1 assert =<< maybeMList mkAnd [assms, notQ] -- negation of implication
+  negOfImp assms notQ
   maybeM check
 
 -- Blocks (e0,s0) and (e1,s1) are separated iff for any address x:
@@ -209,13 +209,13 @@ mkCheckSepProblem c pred e0 v0 e1 v1 = do
   ast2 <- z3mkExpr c varASTs s0
   ast3 <- z3mkExpr c varASTs s1
   notQ <- maybeM2 mkBvuge x ast0
-  maybeM1 assert =<< maybeMList mkAnd [assms, notQ] -- negation of implication
+  negOfImp assms notQ
   notQ <- maybeM2 mkBvult x =<< maybeM2 mkBvadd ast0 ast2
-  maybeM1 assert =<< maybeMList mkAnd [assms, notQ] -- negation of implication
+  negOfImp assms notQ
   notQ <- maybeM2 mkBvuge x ast1
-  maybeM1 assert =<< maybeMList mkAnd [assms, notQ] -- negation of implication
+  negOfImp assms notQ
   notQ <- maybeM2 mkBvult x =<< maybeM2 mkBvadd ast1 ast3
-  maybeM1 assert =<< maybeMList mkAnd [assms, notQ] -- negation of implication
+  negOfImp assms notQ
   maybeM check
 
 checkEnc :: Config -> Pred -> Expr -> ValueExpr -> Expr -> ValueExpr -> Maybe Bool
@@ -299,5 +299,5 @@ checkGeq c pred v0 v1 = checker $ do
   ast0 <- z3mkExpr c varASTs e0
   ast1 <- z3mkExpr c varASTs e1
   notQ <- maybeM2 mkBvult ast0 ast1
-  maybeM1 assert =<< maybeMList mkAnd [assms, notQ] -- negation of implication
+  negOfImp assms notQ
   maybeM check

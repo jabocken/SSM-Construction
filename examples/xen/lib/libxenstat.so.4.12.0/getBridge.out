@@ -24,35 +24,35 @@ Number of edges: 77
 4434: XOR Reg EAX, Reg EAX 2
 4436: MOV Reg RBP, Reg RSP 3
 4439: MOV Reg RDI, Reg RBP 3
-443c: REP STOSQ  3
-443f: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 4768)) 7
+443c: REP STOSQ Address (SizeDir 64 (FromReg RDI)), Reg RAX 3
+443f: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 4768))) 7
 4446: CALL opendir (external)
 444b: MOV Reg RBX, Reg RAX 3
 444e: NOP  2
 4450: MOV Reg RDI, Reg RBX 3
 4453: CALL readdir (external)
 4458: TEST Reg RAX, Reg RAX 3
-445b: JZ 44d0 (resolved immediate)
+445b: JE 44d0 (resolved immediate)
   |
   `- 445d,44d0
 445d: MOVZX Reg EDX, Address (SizeDir 8 (AddrPlus (FromReg RAX) (AddrImm 19))) 4
 4461: CMP Reg DL, Immediate 46 3
-4464: JZ 4450 (resolved immediate)
+4464: JE 4450 (resolved immediate)
   |
   `- 4450,4466
 4466: TEST Reg DL, Reg DL 2
-4468: JZ 4450 (resolved immediate)
+4468: JE 4450 (resolved immediate)
   |
   `- 4450,446a
-446a: LEA Reg R15, Address (AddrPlus (FromReg RAX) (AddrImm 19)) 4
+446a: LEA Reg R15, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 19))) 4
 446e: MOV Reg RSI, Reg R13 3
 4471: MOV Reg RDI, Reg R15 3
 4474: CALL strstr (external)
 4479: TEST Reg RAX, Reg RAX 3
-447c: JNZ 4450 (resolved immediate)
+447c: JNE 4450 (resolved immediate)
   |
   `- 4450,447e
-447e: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 4720)) 7
+447e: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 4720))) 7
 4485: MOV Reg R8, Reg R15 3
 4488: MOV Reg EDX, Immediate 512 5
 448d: MOV Reg ESI, Immediate 1 5
@@ -62,18 +62,18 @@ Number of edges: 77
 449c: MOV Reg RDI, Reg RBP 3
 449f: CALL access (external)
 44a4: TEST Reg EAX, Reg EAX 2
-44a6: JNZ 4450 (resolved immediate)
+44a6: JNE 4450 (resolved immediate)
   |
   `- 4450,44a8
 44a8: MOV Reg RDX, Reg R12 3
 44ab: MOV Reg RSI, Reg R15 3
 44ae: MOV Reg RDI, Reg R14 3
 44b1: CALL strncpy (external)
-44b6: MOV Address (SizeDir 8 (AddrPlus (FromReg R14) (FromReg R12))), Immediate 0 5
+44b6: MOV Address (SizeDir 8 (AddrPlus (FromReg R14) (AddrTimes (AddrImm 1) (FromReg R12)))), Immediate 0 5
 44bb: MOV Reg RDI, Reg RBX 3
 44be: CALL readdir (external)
 44c3: TEST Reg RAX, Reg RAX 3
-44c6: JNZ 445d (resolved immediate)
+44c6: JNE 445d (resolved immediate)
   |
   `- 445d,44c8
 44c8: NOP  8
@@ -81,7 +81,7 @@ Number of edges: 77
 44d3: CALL closedir (external)
 44d8: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 520))) 8
 44e0: XOR Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-44e9: JNZ 44fd (resolved immediate)
+44e9: JNE 44fd (resolved immediate)
   |
   `- 44eb,44fd
 44eb: ADD Reg RSP, Immediate 536 7

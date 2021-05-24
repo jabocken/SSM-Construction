@@ -8,7 +8,7 @@ Number of edges: 37
 7dac0 (False): 0
 
 7dac0: TEST Reg RDI, Reg RDI 3
-7dac3: JZ 7db38 (resolved immediate)
+7dac3: JE 7db38 (resolved immediate)
   |
   `- 7dac5,7db38
 7dac5: PUSH Reg R12 2
@@ -17,7 +17,7 @@ Number of edges: 37
 7dac9: MOV Reg RBX, Reg RDI 3
 7dacc: MOV Reg RDI, Address (SizeDir 64 (FromReg RDI)) 3
 7dacf: CALL free (external)
-7dad4: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 8)) 4
+7dad4: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
 7dad8: CALL libxl_vsnd_params_dispose (external)
 7dadd: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 56))) 3
 7dae0: TEST Reg EAX, Reg EAX 2
@@ -50,6 +50,6 @@ Number of edges: 37
 7db30: RET  1
   |
   `- 
-7db38: REPZ RET  2
+7db38: RET  2
   |
   `- 

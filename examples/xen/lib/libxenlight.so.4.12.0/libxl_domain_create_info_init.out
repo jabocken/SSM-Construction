@@ -10,14 +10,14 @@ Number of edges: 12
 82560: MOV Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 4))), Immediate 0 8
 82568: MOV Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 80))), Immediate 0 8
 82570: MOV Reg RDX, Reg RDI 3
-82573: LEA Reg RDI, Address (AddrPlus (FromReg RDI) (AddrImm 12)) 4
+82573: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 12))) 4
 82577: MOV Reg EAX, Reg EDX 2
 82579: AND Reg RDI, Immediate 18446744073709551608 4
 8257d: SUB Reg EAX, Reg EDI 2
-8257f: LEA Reg ECX, Address (AddrPlus (FromReg RAX) (AddrImm 88)) 3
+8257f: LEA Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 88))) 3
 82582: XOR Reg EAX, Reg EAX 2
 82584: SHR Reg ECX, Immediate 3 3
-82587: REP STOSQ  3
+82587: REP STOSQ Address (SizeDir 64 (FromReg RDI)), Reg RAX 3
 8258a: MOV Address (SizeDir 32 (FromReg RDX)), Immediate 4294967295 6
 82590: RET  1
   |

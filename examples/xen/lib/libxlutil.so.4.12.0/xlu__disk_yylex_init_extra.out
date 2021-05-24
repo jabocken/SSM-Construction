@@ -20,7 +20,7 @@ Number of edges: 65
 71a8: XOR Reg EAX, Reg EAX 2
 71aa: CALL xlu__disk_yyset_extra (external)
 71af: TEST Reg RBX, Reg RBX 3
-71b2: JZ 72b8 (resolved immediate)
+71b2: JE 72b8 (resolved immediate)
   |
   `- 71b8,72b8
 71b8: MOV Reg RSI, Reg R12 3
@@ -28,18 +28,18 @@ Number of edges: 65
 71c0: CALL xlu__disk_yyalloc (external)
 71c5: TEST Reg RAX, Reg RAX 3
 71c8: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
-71cb: JZ 72a0 (resolved immediate)
+71cb: JE 72a0 (resolved immediate)
   |
   `- 71d1,72a0
-71d1: LEA Reg RDI, Address (AddrPlus (FromReg RAX) (AddrImm 8)) 4
+71d1: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))) 4
 71d5: MOV Address (SizeDir 64 (FromReg RAX)), Immediate 0 7
 71dc: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 192))), Immediate 0 11
 71e7: AND Reg RDI, Immediate 18446744073709551608 4
 71eb: SUB Reg RAX, Reg RDI 3
-71ee: LEA Reg ECX, Address (AddrPlus (FromReg RAX) (AddrImm 200)) 6
+71ee: LEA Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 200))) 6
 71f4: XOR Reg EAX, Reg EAX 2
 71f6: SHR Reg ECX, Immediate 3 3
-71f9: REP STOSQ  3
+71f9: REP STOSQ Address (SizeDir 64 (FromReg RDI)), Reg RAX 3
 71fc: MOV Reg RDI, Reg RBP 3
 71ff: MOV Reg RSI, Address (SizeDir 64 (FromReg RBX)) 3
 7202: CALL xlu__disk_yyset_extra (external)
@@ -60,7 +60,7 @@ Number of edges: 65
 727d: XOR Reg EAX, Reg EAX 2
 727f: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 200))) 8
 7287: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-7290: JNZ 72ca (resolved immediate)
+7290: JNE 72ca (resolved immediate)
   |
   `- 7292,72ca
 7292: ADD Reg RSP, Immediate 208 7

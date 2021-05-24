@@ -17,11 +17,11 @@ Number of edges: 91
 135e: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
 1363: XOR Reg EAX, Reg EAX 2
 1365: MOV Reg R8, Reg RSP 3
-1368: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2101393)) 7
-136f: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 604)) 7
+1368: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2101393))) 7
+136f: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 604))) 7
 1376: CALL PyArg_ParseTupleAndKeywords (external)
 137b: TEST Reg EAX, Reg EAX 2
-137d: JZ 141b (resolved immediate)
+137d: JE 141b (resolved immediate)
   |
   `- 1383,141b
 1383: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2100286))) 7
@@ -32,23 +32,23 @@ Number of edges: 91
 1399: CALL PyObject_Init (external)
 139e: MOV Reg RBX, Reg RAX 3
 13a1: TEST Reg RAX, Reg RAX 3
-13a4: JZ 1422 (resolved immediate)
+13a4: JE 1422 (resolved immediate)
   |
   `- 13a6,1422
 13a6: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 16))), Reg RBP 4
-13aa: ADD Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))), Immediate 1 5
+13aa: ADD Address (SizeDir 64 (FromReg RBP)), Immediate 1 5
 13af: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))) 4
 13b3: MOV Reg RSI, Address (SizeDir 64 (FromReg RSP)) 4
 13b7: CALL fsi_open_file (external)
 13bc: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))), Reg RAX 4
 13c0: TEST Reg RAX, Reg RAX 3
-13c3: JZ 13df (resolved immediate)
+13c3: JE 13df (resolved immediate)
   |
   `- 13c5,13df
 13c5: MOV Reg RAX, Reg RBX 3
 13c8: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 13cd: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-13d6: JNZ 1429 (resolved immediate)
+13d6: JNE 1429 (resolved immediate)
   |
   `- 13d8,1429
 13d8: ADD Reg RSP, Immediate 24 4
@@ -62,7 +62,7 @@ Number of edges: 91
 13e6: SUB Reg RAX, Immediate 1 4
 13ea: MOV Address (SizeDir 64 (FromReg RDX)), Reg RAX 3
 13ed: TEST Reg RAX, Reg RAX 3
-13f0: JNZ 13fd (resolved immediate)
+13f0: JNE 13fd (resolved immediate)
   |
   `- 13f2,13fd
 13f2: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4

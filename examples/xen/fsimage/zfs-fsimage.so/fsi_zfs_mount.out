@@ -17,7 +17,7 @@ Number of edges: 26
 1cea: SHR Reg RAX, Immediate 10 4
 1cee: TEST Reg RSI, Reg RSI 3
 1cf1: MOV Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 16))), Reg RAX 4
-1cf5: JZ 1d40 (resolved immediate)
+1cf5: JE 1d40 (resolved immediate)
   |
   `- 1cf7,1d40
 1cf7: PUSH Reg RBX 1
@@ -33,7 +33,7 @@ Number of edges: 26
   |
   `- 
 1d18: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2110057))) 7
-1d1f: LEA Reg RDX, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 4
+1d1f: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 1))) 4
 1d23: MOV Reg RSI, Reg RBX 3
 1d26: MOV Reg ECX, Immediate 256 5
 1d2b: CALL __memcpy_chk (external)

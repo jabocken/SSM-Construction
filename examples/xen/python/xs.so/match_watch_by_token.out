@@ -30,11 +30,11 @@ Number of edges: 66
 271f: XOR Reg EAX, Reg EAX 2
 2721: MOV Reg RDX, Reg RSP 3
 2724: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))) 4
-2728: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 3016)) 7
+2728: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 3016))) 7
 272f: CALL sscanf (external)
 2734: MOV Reg EBP, Immediate 0 5
 2739: CMP Reg EAX, Immediate 1 3
-273c: JNZ 2768 (resolved immediate)
+273c: JNE 2768 (resolved immediate)
   |
   `- 273e,2768
 273e: MOVSXD Reg RBX, Reg EBP 3
@@ -48,7 +48,7 @@ Number of edges: 66
 2755: MOV Reg RSI, Reg RBX 3
 2758: CALL PyList_GetItem (external)
 275d: CMP Reg RAX, Address (SizeDir 64 (FromReg RSP)) 4
-2761: JZ 2779 (resolved immediate)
+2761: JE 2779 (resolved immediate)
   |
   `- 2763,2779
 2763: ADD Reg EBP, Immediate 1 3
@@ -66,17 +66,17 @@ Number of edges: 66
 2779: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 24))) 5
 277e: CALL PyList_Size (external)
 2783: CMP Reg RBX, Reg RAX 3
-2786: JZ 27bc (resolved immediate)
+2786: JE 27bc (resolved immediate)
   |
   `- 2788,27bc
 2788: MOV Reg RDX, Address (SizeDir 64 (FromReg RSP)) 4
-278c: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 0))) 4
-2790: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2916)) 7
+278c: MOV Reg RSI, Address (SizeDir 64 (FromReg R13)) 4
+2790: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2916))) 7
 2797: MOV Reg EAX, Immediate 0 5
 279c: CALL Py_BuildValue (external)
 27a1: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 27a6: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-27af: JNZ 27cd (resolved immediate)
+27af: JNE 27cd (resolved immediate)
   |
   `- 27b1,27cd
 27b1: ADD Reg RSP, Immediate 24 4

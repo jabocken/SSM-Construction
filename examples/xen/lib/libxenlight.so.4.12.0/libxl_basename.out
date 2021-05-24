@@ -8,11 +8,11 @@ Number of edges: 18
 3d2e0 (False): 0
 
 3d2e0: TEST Reg RDI, Reg RDI 3
-3d2e3: JZ 3d310 (resolved immediate)
+3d2e3: JE 3d310 (resolved immediate)
   |
   `- 3d2e5,3d310
 3d2e5: CMP Address (SizeDir 8 (FromReg RDI)), Immediate 0 3
-3d2e8: JZ 3d310 (resolved immediate)
+3d2e8: JE 3d310 (resolved immediate)
   |
   `- 3d2ea,3d310
 3d2ea: PUSH Reg RBX 1
@@ -20,15 +20,15 @@ Number of edges: 18
 3d2f0: MOV Reg RBX, Reg RDI 3
 3d2f3: CALL strrchr (external)
 3d2f8: TEST Reg RAX, Reg RAX 3
-3d2fb: JZ 3d320 (resolved immediate)
+3d2fb: JE 3d320 (resolved immediate)
   |
   `- 3d2fd,3d320
 3d2fd: POP Reg RBX 1
-3d2fe: LEA Reg RDI, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 4
+3d2fe: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 1))) 4
 3d302: JMP strdup (jmp to external function)
   |
   `- 
-3d310: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 382291)) 7
+3d310: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 382291))) 7
 3d317: JMP strdup (jmp to external function)
   |
   `- 

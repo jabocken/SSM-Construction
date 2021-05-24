@@ -9,7 +9,7 @@ Number of edges: 198
 79640 (False): 0
 
 40c90: TEST Reg RSI, Reg RSI 3
-40c93: JZ 40cc0 (resolved immediate)
+40c93: JE 40cc0 (resolved immediate)
   |
   `- 40c95,40cc0
 40c95: PUSH Reg RBP 1
@@ -38,34 +38,34 @@ Number of edges: 198
 79648: SUB Reg RSP, Immediate 8 4
 7964c: CALL yajl_gen_map_open (external)
 79651: TEST Reg EAX, Reg EAX 2
-79653: JNZ 79696 (resolved immediate)
+79653: JNE 79696 (resolved immediate)
   |
   `- 79655,79696
 79655: MOV Reg R10D, Address (SizeDir 32 (FromReg RBX)) 3
 79658: TEST Reg R10D, Reg R10D 3
-7965b: JNZ 796a0 (resolved immediate)
+7965b: JNE 796a0 (resolved immediate)
   |
   `- 7965d,796a0
 7965d: MOV Reg R9D, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 4))) 4
 79661: TEST Reg R9D, Reg R9D 3
-79664: JNZ 79808 (resolved immediate)
+79664: JNE 79808 (resolved immediate)
   |
   `- 7966a,79808
 7966a: MOV Reg R8D, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
 7966e: TEST Reg R8D, Reg R8D 3
-79671: JNZ 797d0 (resolved immediate)
+79671: JNE 797d0 (resolved immediate)
   |
   `- 79677,797d0
 79677: CMP Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))), Immediate 0 5
-7967c: JZ 796e0 (resolved immediate)
+7967c: JE 796e0 (resolved immediate)
   |
   `- 7967e,796e0
-7967e: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 157204)) 7
+7967e: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 157204))) 7
 79685: MOV Reg EDX, Immediate 4 5
 7968a: MOV Reg RDI, Reg RBP 3
 7968d: CALL yajl_gen_string (external)
 79692: TEST Reg EAX, Reg EAX 2
-79694: JZ 796d0 (resolved immediate)
+79694: JE 796d0 (resolved immediate)
   |
   `- 796d0
 79696: ADD Reg RSP, Immediate 8 4
@@ -74,17 +74,17 @@ Number of edges: 198
 7969c: RET  1
   |
   `- 
-796a0: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 163651)) 7
+796a0: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 163651))) 7
 796a7: MOV Reg EDX, Immediate 6 5
 796ac: MOV Reg RDI, Reg RBP 3
 796af: CALL yajl_gen_string (external)
 796b4: TEST Reg EAX, Reg EAX 2
-796b6: JNZ 79696 (resolved immediate)
+796b6: JNE 79696 (resolved immediate)
 796b8: MOV Reg RSI, Reg RBX 3
 796bb: MOV Reg RDI, Reg RBP 3
 796be: CALL libxl_defbool_gen_json (external)
 796c3: TEST Reg EAX, Reg EAX 2
-796c5: JZ 7965d (resolved immediate)
+796c5: JE 7965d (resolved immediate)
   |
   `- 7965d
 796d0: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
@@ -93,76 +93,76 @@ Number of edges: 198
   |
   `- 796dc,40c90
 796dc: TEST Reg EAX, Reg EAX 2
-796de: JNZ 79696 (resolved immediate)
+796de: JNE 79696 (resolved immediate)
 796e0: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 24))) 3
 796e3: TEST Reg EDI, Reg EDI 2
-796e5: JNZ 79878 (resolved immediate)
+796e5: JNE 79878 (resolved immediate)
   |
   `- 796eb,79878
 796eb: CMP Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 32))), Immediate 0 5
-796f0: JZ 79720 (resolved immediate)
+796f0: JE 79720 (resolved immediate)
   |
   `- 796f2,79720
-796f2: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 112065)) 7
+796f2: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 112065))) 7
 796f9: MOV Reg EDX, Immediate 6 5
 796fe: MOV Reg RDI, Reg RBP 3
 79701: CALL yajl_gen_string (external)
 79706: TEST Reg EAX, Reg EAX 2
-79708: JNZ 79696 (resolved immediate)
+79708: JNE 79696 (resolved immediate)
 7970a: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 32))) 4
 7970e: MOV Reg RDI, Reg RBP 3
 79711: CALL libxl__string_gen_json (internal)
 79716: TEST Reg EAX, Reg EAX 2
-79718: JNZ 79696 (resolved immediate)
+79718: JNE 79696 (resolved immediate)
 7971e: NOP  2
 79720: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 40))) 3
 79723: TEST Reg ESI, Reg ESI 2
-79725: JNZ 79840 (resolved immediate)
+79725: JNE 79840 (resolved immediate)
   |
   `- 7972b,79840
 7972b: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 44))) 3
 7972e: TEST Reg ECX, Reg ECX 2
-79730: JNZ 798b0 (resolved immediate)
+79730: JNE 798b0 (resolved immediate)
   |
   `- 79736,798b0
 79736: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 48))) 3
 79739: TEST Reg EDX, Reg EDX 2
-7973b: JNZ 798e5 (resolved immediate)
+7973b: JNE 798e5 (resolved immediate)
   |
   `- 79741,798e5
 79741: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 52))) 3
 79744: TEST Reg EAX, Reg EAX 2
-79746: JNZ 7991a (resolved immediate)
+79746: JNE 7991a (resolved immediate)
 7974c: CMP Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 56))), Immediate 0 5
-79751: JZ 79783 (resolved immediate)
+79751: JE 79783 (resolved immediate)
   |
   `- 79753,79783
-79753: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 184919)) 7
+79753: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 184919))) 7
 7975a: MOV Reg EDX, Immediate 17 5
 7975f: MOV Reg RDI, Reg RBP 3
 79762: CALL yajl_gen_string (external)
 79767: TEST Reg EAX, Reg EAX 2
-79769: JNZ 79696 (resolved immediate)
+79769: JNE 79696 (resolved immediate)
 7976f: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 56))) 4
 79773: MOV Reg RDI, Reg RBP 3
 79776: CALL libxl__string_gen_json (internal)
 7977b: TEST Reg EAX, Reg EAX 2
-7977d: JNZ 79696 (resolved immediate)
+7977d: JNE 79696 (resolved immediate)
 79783: CMP Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 64))), Immediate 0 5
-79788: JZ 797ba (resolved immediate)
+79788: JE 797ba (resolved immediate)
   |
   `- 7978a,797ba
-7978a: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 184882)) 7
+7978a: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 184882))) 7
 79791: MOV Reg EDX, Immediate 15 5
 79796: MOV Reg RDI, Reg RBP 3
 79799: CALL yajl_gen_string (external)
 7979e: TEST Reg EAX, Reg EAX 2
-797a0: JNZ 79696 (resolved immediate)
+797a0: JNE 79696 (resolved immediate)
 797a6: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 64))) 4
 797aa: MOV Reg RDI, Reg RBP 3
 797ad: CALL libxl__string_gen_json (internal)
 797b2: TEST Reg EAX, Reg EAX 2
-797b4: JNZ 79696 (resolved immediate)
+797b4: JNE 79696 (resolved immediate)
 797ba: ADD Reg RSP, Immediate 8 4
 797be: MOV Reg RDI, Reg RBP 3
 797c1: POP Reg RBX 1
@@ -170,81 +170,81 @@ Number of edges: 198
 797c3: JMP yajl_gen_map_close (jmp to external function)
   |
   `- 
-797d0: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 184714)) 7
+797d0: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 184714))) 7
 797d7: MOV Reg EDX, Immediate 8 5
 797dc: MOV Reg RDI, Reg RBP 3
 797df: CALL yajl_gen_string (external)
 797e4: TEST Reg EAX, Reg EAX 2
-797e6: JNZ 79696 (resolved immediate)
+797e6: JNE 79696 (resolved immediate)
 797ec: MOVSXD Reg RSI, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
 797f0: MOV Reg RDI, Reg RBP 3
 797f3: CALL yajl_gen_integer (external)
 797f8: TEST Reg EAX, Reg EAX 2
-797fa: JZ 79677 (resolved immediate)
+797fa: JE 79677 (resolved immediate)
   |
   `- 79677
-79808: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 165650)) 7
+79808: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 165650))) 7
 7980f: MOV Reg EDX, Immediate 4 5
 79814: MOV Reg RDI, Reg RBP 3
 79817: CALL yajl_gen_string (external)
 7981c: TEST Reg EAX, Reg EAX 2
-7981e: JNZ 79696 (resolved immediate)
+7981e: JNE 79696 (resolved immediate)
 79824: MOVSXD Reg RSI, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 4))) 4
 79828: MOV Reg RDI, Reg RBP 3
 7982b: CALL yajl_gen_integer (external)
 79830: TEST Reg EAX, Reg EAX 2
-79832: JZ 7966a (resolved immediate)
+79832: JE 7966a (resolved immediate)
   |
   `- 7966a
-79840: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 184629)) 7
+79840: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 184629))) 7
 79847: MOV Reg EDX, Immediate 11 5
 7984c: MOV Reg RDI, Reg RBP 3
 7984f: CALL yajl_gen_string (external)
 79854: TEST Reg EAX, Reg EAX 2
-79856: JNZ 79696 (resolved immediate)
-7985c: LEA Reg RSI, Address (AddrPlus (FromReg RBX) (AddrImm 40)) 4
+79856: JNE 79696 (resolved immediate)
+7985c: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 40))) 4
 79860: MOV Reg RDI, Reg RBP 3
 79863: CALL libxl_defbool_gen_json (external)
 79868: TEST Reg EAX, Reg EAX 2
-7986a: JZ 7972b (resolved immediate)
+7986a: JE 7972b (resolved immediate)
   |
   `- 7972b
-79878: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 184555)) 7
+79878: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 184555))) 7
 7987f: MOV Reg EDX, Immediate 17 5
 79884: MOV Reg RDI, Reg RBP 3
 79887: CALL yajl_gen_string (external)
 7988c: TEST Reg EAX, Reg EAX 2
-7988e: JNZ 79696 (resolved immediate)
-79894: LEA Reg RSI, Address (AddrPlus (FromReg RBX) (AddrImm 24)) 4
+7988e: JNE 79696 (resolved immediate)
+79894: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
 79898: MOV Reg RDI, Reg RBP 3
 7989b: CALL libxl_defbool_gen_json (external)
 798a0: TEST Reg EAX, Reg EAX 2
-798a2: JZ 796eb (resolved immediate)
+798a2: JE 796eb (resolved immediate)
   |
   `- 796eb
-798b0: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 184529)) 7
+798b0: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 184529))) 7
 798b7: MOV Reg EDX, Immediate 7 5
 798bc: MOV Reg RDI, Reg RBP 3
 798bf: CALL yajl_gen_string (external)
 798c4: TEST Reg EAX, Reg EAX 2
-798c6: JNZ 79696 (resolved immediate)
-798cc: LEA Reg RSI, Address (AddrPlus (FromReg RBX) (AddrImm 44)) 4
+798c6: JNE 79696 (resolved immediate)
+798cc: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 44))) 4
 798d0: MOV Reg RDI, Reg RBP 3
 798d3: CALL libxl_defbool_gen_json (external)
 798d8: TEST Reg EAX, Reg EAX 2
-798da: JZ 79736 (resolved immediate)
+798da: JE 79736 (resolved immediate)
   |
   `- 79736
-798e5: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 184484)) 7
+798e5: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 184484))) 7
 798ec: MOV Reg EDX, Immediate 17 5
 798f1: MOV Reg RDI, Reg RBP 3
 798f4: CALL yajl_gen_string (external)
 798f9: TEST Reg EAX, Reg EAX 2
-798fb: JNZ 79696 (resolved immediate)
-79901: LEA Reg RSI, Address (AddrPlus (FromReg RBX) (AddrImm 48)) 4
+798fb: JNE 79696 (resolved immediate)
+79901: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 48))) 4
 79905: MOV Reg RDI, Reg RBP 3
 79908: CALL libxl_defbool_gen_json (external)
 7990d: TEST Reg EAX, Reg EAX 2
-7990f: JZ 79741 (resolved immediate)
+7990f: JE 79741 (resolved immediate)
   |
   `- 79741

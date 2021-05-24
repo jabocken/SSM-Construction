@@ -8,7 +8,7 @@ Number of edges: 127
 7d510 (False): 0
 
 7d510: TEST Reg RDI, Reg RDI 3
-7d513: JZ 7d7d0 (resolved immediate)
+7d513: JE 7d7d0 (resolved immediate)
   |
   `- 7d519,7d7d0
 7d519: PUSH Reg RBX 1
@@ -125,19 +125,19 @@ Number of edges: 127
 7d78e: CALL free (external)
 7d793: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 488))) 7
 7d79a: CALL free (external)
-7d79f: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 8)) 4
+7d79f: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
 7d7a3: MOV Address (SizeDir 64 (FromReg RBX)), Immediate 0 7
 7d7aa: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 488))), Immediate 0 11
 7d7b5: XOR Reg EAX, Reg EAX 2
 7d7b7: AND Reg RDI, Immediate 18446744073709551608 4
 7d7bb: SUB Reg RBX, Reg RDI 3
-7d7be: LEA Reg ECX, Address (AddrPlus (FromReg RBX) (AddrImm 496)) 6
+7d7be: LEA Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 496))) 6
 7d7c4: SHR Reg ECX, Immediate 3 3
-7d7c7: REP STOSQ  3
+7d7c7: REP STOSQ Address (SizeDir 64 (FromReg RDI)), Reg RAX 3
 7d7ca: POP Reg RBX 1
 7d7cb: RET  1
   |
   `- 
-7d7d0: REPZ RET  2
+7d7d0: RET  2
   |
   `- 

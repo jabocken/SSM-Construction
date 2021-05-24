@@ -15,11 +15,11 @@ Number of edges: 56
 17999: MOV Reg RBP, Reg RDI 3
 1799c: MOV Reg R12, Reg RSI 3
 1799f: MOV Reg R13, Reg RDX 3
-179a2: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 55849)) 7
+179a2: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 55849))) 7
 179a9: SUB Reg RSP, Immediate 8 4
 179ad: MOV Reg EBX, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 16))) 3
-179b0: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 57849)) 7
-179b7: LEA Reg EAX, Address (AddrPlus (FromReg RBX) (AddrImm 1)) 3
+179b0: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 57849))) 7
+179b7: LEA Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 1))) 3
 179ba: MOV Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 16))), Reg EAX 3
 179bd: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 1224))) 7
 179c4: XOR Reg EAX, Reg EAX 2
@@ -27,20 +27,20 @@ Number of edges: 56
 179cb: MOV Reg EAX, Reg EBX 2
 179cd: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 160))) 7
 179d4: MOV Reg RSI, Reg R12 3
-179d7: LEA Reg RBX, Address (AddrPlus (AddrTimes (AddrImm 8) (FromReg RAX)) (AddrImm 0)) 8
+179d7: LEA Reg RBX, Address (SizeDir 64 (AddrTimes (AddrImm 8) (FromReg RAX))) 8
 179df: MOV Reg RDI, Reg RBP 3
 179e2: SUB Reg RBX, Reg RAX 3
 179e5: SHL Reg RBX, Immediate 3 4
-179e9: LEA Reg RDX, Address (AddrPlus (AddrPlus (FromReg RBP) (FromReg RBX)) (AddrImm 32)) 5
+179e9: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RBP) (AddrTimes (AddrImm 1) (FromReg RBX))) (AddrImm 32))) 5
 179ee: ADD Reg RBX, Reg RBP 3
 179f1: CALL xc_dom_malloc_filemap (external)
 179f6: TEST Reg RAX, Reg RAX 3
 179f9: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))), Reg RAX 4
-179fd: JZ 17a45 (resolved immediate)
+179fd: JE 17a45 (resolved immediate)
   |
   `- 179ff,17a45
 179ff: TEST Reg R13, Reg R13 3
-17a02: JZ 17a30 (resolved immediate)
+17a02: JE 17a30 (resolved immediate)
   |
   `- 17a04,17a30
 17a04: MOV Reg RSI, Reg R13 3
@@ -48,7 +48,7 @@ Number of edges: 56
 17a0a: CALL xc_dom_strdup (external)
 17a0f: TEST Reg RAX, Reg RAX 3
 17a12: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 40))), Reg RAX 4
-17a16: SETZ Reg AL 3
+17a16: SETE Reg AL 3
 17a19: MOVZX Reg EAX, Reg AL 3
 17a1c: NEG Reg EAX 2
 17a1e: ADD Reg RSP, Immediate 8 4

@@ -13,7 +13,7 @@ Number of edges: 49
 2d7b: CALL calloc (external)
 2d80: TEST Reg RAX, Reg RAX 3
 2d83: MOV Reg RBX, Reg RAX 3
-2d86: JZ 2dba (resolved immediate)
+2d86: JE 2dba (resolved immediate)
   |
   `- 2d88,2dba
 2d88: MOV Reg EDI, Immediate 30 5
@@ -29,13 +29,13 @@ Number of edges: 49
 2d9f: CALL xc_interface_open (external)
 2da4: TEST Reg RAX, Reg RAX 3
 2da7: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
-2daa: JZ 2de0 (resolved immediate)
+2daa: JE 2de0 (resolved immediate)
   |
   `- 2dac,2de0
 2dac: CALL xs_daemon_open_readonly (external)
 2db1: TEST Reg RAX, Reg RAX 3
 2db4: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))), Reg RAX 4
-2db8: JZ 2e00 (resolved immediate)
+2db8: JE 2e00 (resolved immediate)
   |
   `- 2dba,2e00
 2dba: MOV Reg RAX, Reg RBX 3
@@ -43,7 +43,7 @@ Number of edges: 49
 2dbe: RET  1
   |
   `- 
-2dc0: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 10019)) 7
+2dc0: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 10019))) 7
 2dc7: CALL perror (external)
 2dcc: MOV Reg RDI, Reg RBX 3
 2dcf: XOR Reg EBX, Reg EBX 2
@@ -51,7 +51,7 @@ Number of edges: 49
 2dd6: JMP 2dba (resolved immediate)
   |
   `- 2dba
-2de0: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 10017)) 7
+2de0: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 10017))) 7
 2de7: CALL perror (external)
 2dec: MOV Reg RDI, Reg RBX 3
 2def: XOR Reg EBX, Reg EBX 2
@@ -59,7 +59,7 @@ Number of edges: 49
 2df6: JMP 2dba (resolved immediate)
   |
   `- 2dba
-2e00: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 10003)) 7
+2e00: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 10003))) 7
 2e07: CALL perror (external)
 2e0c: MOV Reg RDI, Address (SizeDir 64 (FromReg RBX)) 3
 2e0f: CALL xc_interface_close (external)

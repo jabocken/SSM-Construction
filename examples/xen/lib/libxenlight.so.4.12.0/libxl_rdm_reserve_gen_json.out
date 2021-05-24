@@ -9,7 +9,7 @@ Number of edges: 52
 83c10 (False): 0
 
 40c90: TEST Reg RSI, Reg RSI 3
-40c93: JZ 40cc0 (resolved immediate)
+40c93: JE 40cc0 (resolved immediate)
   |
   `- 40c95,40cc0
 40c95: PUSH Reg RBP 1
@@ -41,22 +41,22 @@ Number of edges: 52
 83c18: SUB Reg RSP, Immediate 8 4
 83c1c: CALL yajl_gen_map_open (external)
 83c21: TEST Reg EAX, Reg EAX 2
-83c23: JNZ 83c4a (resolved immediate)
+83c23: JNE 83c4a (resolved immediate)
   |
   `- 83c25,83c4a
-83c25: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+83c25: MOV Reg EAX, Address (SizeDir 32 (FromReg RBP)) 3
 83c28: TEST Reg EAX, Reg EAX 2
-83c2a: JNZ 83c58 (resolved immediate)
-83c2c: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 4))), Immediate 4294967295 4
-83c30: JZ 83ca7 (resolved immediate)
+83c2a: JNE 83c58 (resolved immediate)
+83c2c: CMP Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 4))), Immediate 18446744073709551615 4
+83c30: JE 83ca7 (resolved immediate)
   |
   `- 83c32,83ca7
-83c32: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 146665)) 7
+83c32: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 146665))) 7
 83c39: MOV Reg EDX, Immediate 6 5
 83c3e: MOV Reg RDI, Reg RBX 3
 83c41: CALL yajl_gen_string (external)
 83c46: TEST Reg EAX, Reg EAX 2
-83c48: JZ 83c90 (resolved immediate)
+83c48: JE 83c90 (resolved immediate)
   |
   `- 83c90
 83c4a: ADD Reg RSP, Immediate 8 4
@@ -73,7 +73,7 @@ Number of edges: 52
   |
   `- 40cd0
 83ca3: TEST Reg EAX, Reg EAX 2
-83ca5: JNZ 83c4a (resolved immediate)
+83ca5: JNE 83c4a (resolved immediate)
 83ca7: ADD Reg RSP, Immediate 8 4
 83cab: MOV Reg RDI, Reg RBX 3
 83cae: POP Reg RBX 1

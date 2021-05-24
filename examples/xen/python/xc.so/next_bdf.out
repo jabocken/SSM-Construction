@@ -11,7 +11,7 @@ Number of edges: 71
 767b: SUB Reg RSP, Immediate 8 4
 767f: MOV Reg ESI, Immediate 120 5
 7684: CALL strchr (external)
-7689: LEA Reg RDI, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 4
+7689: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 1))) 4
 768d: MOV Reg EDX, Immediate 16 5
 7692: MOV Reg ESI, Immediate 0 5
 7697: CALL strtol (external)
@@ -29,7 +29,7 @@ Number of edges: 71
 76af: MOV Reg RBP, Address (SizeDir 64 (FromReg RDI)) 3
 76b2: MOV Reg R9D, Immediate 0 6
 76b8: TEST Reg RBP, Reg RBP 3
-76bb: JZ 7767 (resolved immediate)
+76bb: JE 7767 (resolved immediate)
   |
   `- 76c1,7767
 76c1: MOV Reg R12, Reg R8 3
@@ -42,7 +42,7 @@ Number of edges: 71
 76d8: CALL strchr (external)
 76dd: MOV Reg R9D, Immediate 0 6
 76e3: TEST Reg RAX, Reg RAX 3
-76e6: JZ 7767 (resolved immediate)
+76e6: JE 7767 (resolved immediate)
   |
   `- 76e8,7767
 76e8: MOV Reg RDI, Reg RBP 3
@@ -53,21 +53,21 @@ Number of edges: 71
 76f3: MOV Reg ESI, Immediate 44 5
 76f8: MOV Reg RDI, Reg RBP 3
 76fb: CALL strchr (external)
-7700: LEA Reg RBP, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 4
+7700: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 1))) 4
 7704: MOV Reg RDI, Reg RBP 3
 7707: CALL token_value (internal)
 770c: MOV Address (SizeDir 32 (FromReg R14)), Reg EAX 3
 770f: MOV Reg ESI, Immediate 44 5
 7714: MOV Reg RDI, Reg RBP 3
 7717: CALL strchr (external)
-771c: LEA Reg RBP, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 4
+771c: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 1))) 4
 7720: MOV Reg RDI, Reg RBP 3
 7723: CALL token_value (internal)
-7728: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Reg EAX 4
+7728: MOV Address (SizeDir 32 (FromReg R13)), Reg EAX 4
 772c: MOV Reg ESI, Immediate 44 5
 7731: MOV Reg RDI, Reg RBP 3
 7734: CALL strchr (external)
-7739: LEA Reg RBP, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 4
+7739: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 1))) 4
 773d: MOV Reg RDI, Reg RBP 3
 7740: CALL token_value (internal)
 7745: MOV Address (SizeDir 32 (FromReg R12)), Reg EAX 4

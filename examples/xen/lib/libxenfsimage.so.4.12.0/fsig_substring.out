@@ -10,25 +10,25 @@ Number of edges: 22
 2070: MOVZX Reg EAX, Address (SizeDir 8 (FromReg RDI)) 3
 2073: MOVZX Reg EDX, Address (SizeDir 8 (FromReg RSI)) 3
 2076: CMP Reg DL, Reg AL 2
-2078: JNZ 2093 (resolved immediate)
+2078: JNE 2093 (resolved immediate)
   |
   `- 207a,2093
 207a: TEST Reg DL, Reg DL 2
-207c: JNZ 2084 (resolved immediate)
+207c: JNE 2084 (resolved immediate)
   |
   `- 207e,2084
 207e: JMP 20a0 (resolved immediate)
   |
   `- 20a0
 2080: TEST Reg AL, Reg AL 2
-2082: JZ 20a0 (resolved immediate)
+2082: JE 20a0 (resolved immediate)
   |
   `- 2084,20a0
 2084: ADD Reg RDI, Immediate 1 4
 2088: ADD Reg RSI, Immediate 1 4
 208c: MOVZX Reg EAX, Address (SizeDir 8 (FromReg RDI)) 3
 208f: CMP Reg AL, Address (SizeDir 8 (FromReg RSI)) 2
-2091: JZ 2080 (resolved immediate)
+2091: JE 2080 (resolved immediate)
   |
   `- 2080,2093
 2093: CMP Reg AL, Immediate 1 2

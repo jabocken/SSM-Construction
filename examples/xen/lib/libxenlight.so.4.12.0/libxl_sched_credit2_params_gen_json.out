@@ -14,12 +14,12 @@ Number of edges: 19
 793c8: SUB Reg RSP, Immediate 8 4
 793cc: CALL yajl_gen_map_open (external)
 793d1: TEST Reg EAX, Reg EAX 2
-793d3: JNZ 793f4 (resolved immediate)
+793d3: JNE 793f4 (resolved immediate)
   |
   `- 793d5,793f4
-793d5: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+793d5: MOV Reg EAX, Address (SizeDir 32 (FromReg RBP)) 3
 793d8: TEST Reg EAX, Reg EAX 2
-793da: JZ 79410 (resolved immediate)
+793da: JE 79410 (resolved immediate)
   |
   `- 79410
 793f4: ADD Reg RSP, Immediate 8 4

@@ -8,12 +8,12 @@ Number of edges: 20
 910 (True): 9c8
 9a0 (False): 0
 
-910: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2103209)) 7
+910: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2103209))) 7
 917: PUSH Reg RBP 1
-918: LEA Reg RAX, Address (AddrPlus (FromReg RIP) (AddrImm 2103201)) 7
+918: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2103201))) 7
 91f: CMP Reg RAX, Reg RDI 3
 922: MOV Reg RBP, Reg RSP 3
-925: JZ 940 (resolved immediate)
+925: JE 940 (resolved immediate)
   |
   `- 940
 940: POP Reg RBP 1
@@ -21,13 +21,13 @@ Number of edges: 20
   |
   `- 
 9a0: CMP Address (SizeDir 8 (AddrPlus (FromReg RIP) (AddrImm 2103065))), Immediate 0 7
-9a7: JNZ 9d8 (resolved immediate)
+9a7: JNE 9d8 (resolved immediate)
   |
   `- 9a9,9d8
 9a9: CMP Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2102855))), Immediate 0 8
 9b1: PUSH Reg RBP 1
 9b2: MOV Reg RBP, Reg RSP 3
-9b5: JZ 9c3 (resolved immediate)
+9b5: JE 9c3 (resolved immediate)
   |
   `- 9b7,9c3
 9b7: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2102978))) 7
@@ -40,6 +40,6 @@ Number of edges: 20
 9d0: RET  1
   |
   `- 
-9d8: REPZ RET  2
+9d8: RET  2
   |
   `- 

@@ -24,7 +24,7 @@ Number of edges: 63
 219fe: CALL do_memory_op (external)
 21a03: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 21a08: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-21a11: JNZ 21a18 (resolved immediate)
+21a11: JNE 21a18 (resolved immediate)
   |
   `- 21a13,21a18
 21a13: ADD Reg RSP, Immediate 40 4
@@ -46,11 +46,11 @@ Number of edges: 63
 21ae4: CALL __errno_location (external)
 21ae9: TEST Reg RBX, Reg RBX 3
 21aec: MOV Address (SizeDir 32 (FromReg RAX)), Immediate 22 6
-21af2: JZ 21b50 (resolved immediate)
+21af2: JE 21b50 (resolved immediate)
   |
   `- 21af4,21b50
 21af4: TEST Reg EBX, Immediate 4095 6
-21afa: JNZ 21b50 (resolved immediate)
+21afa: JNE 21b50 (resolved immediate)
   |
   `- 21afc,21b50
 21afc: MOV Reg ESI, Immediate 4096 5
@@ -58,7 +58,7 @@ Number of edges: 63
 21b04: MOV Reg RBP, Reg RAX 3
 21b07: CALL mlock (external)
 21b0c: TEST Reg EAX, Reg EAX 2
-21b0e: JNZ 21b50 (resolved immediate)
+21b0e: JNE 21b50 (resolved immediate)
   |
   `- 21b10,21b50
 21b10: MOV Reg ESI, Reg R13D 3
@@ -69,12 +69,12 @@ Number of edges: 63
 21b21: CALL xc_mem_paging_memop (internal)
   |
   `- 219c0
-21b26: MOV Reg R13D, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 4
+21b26: MOV Reg R13D, Address (SizeDir 32 (FromReg RBP)) 4
 21b2a: MOV Reg ESI, Immediate 4096 5
 21b2f: MOV Reg RDI, Reg RBX 3
 21b32: MOV Reg R12D, Reg EAX 3
 21b35: CALL munlock (external)
-21b3a: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R13D 4
+21b3a: MOV Address (SizeDir 32 (FromReg RBP)), Reg R13D 4
 21b3e: POP Reg RBX 1
 21b3f: MOV Reg EAX, Reg R12D 3
 21b42: POP Reg RBP 1

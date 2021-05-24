@@ -11,10 +11,10 @@ Number of edges: 11
 1044: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 16))) 3
 1047: MOV Reg EDX, Immediate 4 5
 104c: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))), Reg ESI 4
-1050: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 12)) 5
+1050: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 12))) 5
 1055: CALL write (external)
 105a: CMP Reg RAX, Immediate 4 4
-105e: SETNZ Reg AL 3
+105e: SETNE Reg AL 3
 1061: ADD Reg RSP, Immediate 24 4
 1065: MOVZX Reg EAX, Reg AL 3
 1068: NEG Reg EAX 2

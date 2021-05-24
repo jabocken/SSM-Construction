@@ -1,9 +1,9 @@
-Number of assembly instructions     = 107
+Number of assembly instructions     = 112
 Number of indirect branches         = 0
 Number of unresolved indirect jumps = 0: 
 Number of unresolved indirect calls = 0: 
-Number of symbolic states (representative of non-determinism): 107
-Number of edges: 108
+Number of symbolic states (representative of non-determinism): 112
+Number of edges: 114
 
 db0 (False): 0
 
@@ -19,25 +19,28 @@ dcb: XOR Reg EAX, Reg EAX 2
 dcd: CALL fsig_file_buf (external)
 dd2: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RAX) (AddrImm 8197))) 7
 dd9: CMP Reg AL, Immediate 2 2
-ddb: JZ f30 (resolved immediate)
+ddb: JE f30 (resolved immediate)
   |
   `- de1,f30
 de1: CMP Reg AL, Immediate 3 2
-de3: JNZ f0d (resolved immediate)
+de3: JNE f0d (resolved immediate)
   |
   `- de9,f0d
 de9: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2106232))) 7
-df0: LEA Reg R12, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+df0: LEA Reg R12, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 df5: MOV Reg EBP, Immediate 4294967295 5
-dfa: LEA Reg R13, Address (AddrPlus (FromReg RSP) (AddrImm 8)) 5
+dfa: LEA Reg R13, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 dff: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
 e04: JMP e31 (resolved immediate)
   |
   `- e31
 e10: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2106202))) 6
 e16: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2106164))) 6
-  |
-  `- 
+e1c: MOV Reg R8, Reg R13 3
+e1f: MOV Reg ECX, Immediate 8 5
+e24: MOV Reg RDI, Reg RBX 3
+e27: CALL fsig_devread (external)
+e2c: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 e31: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2106117))) 6
 e37: MOV Reg EDX, Reg EAX 2
 e39: SHR Reg RAX, Immediate 32 4
@@ -62,14 +65,14 @@ e6e: SHL Reg ESI, Reg CL 2
 e70: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RIP) (AddrImm 2106042))) 6
 e76: NOT Reg ESI 2
 e78: AND Reg EAX, Reg ESI 2
-e7a: LEA Reg RSI, Address (AddrPlus (FromReg RDX) (FromReg RAX)) 4
+e7a: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 1) (FromReg RAX)))) 4
 e7e: XOR Reg EDX, Reg EDX 2
 e80: SHL Reg RSI, Reg CL 3
 e83: MOV Reg ECX, Immediate 24 5
 e88: MOV Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2106049))), Reg RSI 7
 e8f: CALL fsig_devread (external)
 e94: CMP Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 20))), Immediate 0 6
-e9a: JNZ e10 (resolved immediate)
+e9a: JNE e10 (resolved immediate)
   |
   `- e10,ea0
 ea0: MOVZX Reg EAX, Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 22))) 5
@@ -104,7 +107,7 @@ f03: SHL Reg RBP, Reg CL 3
 f06: MOV Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2105915))), Reg RBP 7
 f0d: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
 f12: XOR Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-f1b: JNZ f62 (resolved immediate)
+f1b: JNE f62 (resolved immediate)
   |
   `- f1d,f62
 f1d: ADD Reg RSP, Immediate 56 4

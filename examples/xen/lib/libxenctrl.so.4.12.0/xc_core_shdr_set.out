@@ -22,7 +22,7 @@ Number of edges: 136
 99cd: MOV Address (SizeDir 64 (FromReg RSP)), Reg RDI 4
 99d1: MOV Reg RDI, Reg RCX 3
 99d4: CALL strlen (external)
-99d9: LEA Reg EDX, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 3
+99d9: LEA Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 1))) 3
 99dc: MOVZX Reg EAX, Address (SizeDir 16 (AddrPlus (FromReg R12) (AddrImm 8))) 6
 99e2: MOV Reg ESI, Immediate 65535 5
 99e7: MOVZX Reg EDI, Reg DX 3
@@ -49,7 +49,7 @@ Number of edges: 136
 9a1c: CALL realloc (external)
 9a21: TEST Reg RAX, Reg RAX 3
 9a24: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 4
-9a28: JZ 9b50 (resolved immediate)
+9a28: JE 9b50 (resolved immediate)
   |
   `- 9a2e,9b50
 9a2e: SHL Address (SizeDir 16 (AddrPlus (FromReg R12) (AddrImm 10))), Immediate 1 6
@@ -63,7 +63,7 @@ Number of edges: 136
 9a4f: MOV Reg EDX, Address (SizeDir 32 (FromReg RSP)) 3
 9a52: ADD Address (SizeDir 16 (AddrPlus (FromReg R12) (AddrImm 8))), Reg DX 6
 9a58: TEST Reg BP, Reg BP 3
-9a5b: JZ 9b8f (resolved immediate)
+9a5b: JE 9b8f (resolved immediate)
   |
   `- 9a61,9b8f
 9a61: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 80))) 5
@@ -97,7 +97,7 @@ Number of edges: 136
 9abe: MOV Reg RDI, Reg R14 3
 9ac1: CALL xc_strerror (external)
 9ac6: MOV Reg ECX, Address (SizeDir 32 (FromReg RBX)) 2
-9ac8: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 110897)) 7
+9ac8: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 110897))) 7
 9acf: MOV Reg R8, Reg RAX 3
 9ad2: MOV Reg RDI, Reg R14 3
 9ad5: XOR Reg EAX, Reg EAX 2
@@ -122,7 +122,7 @@ Number of edges: 136
 9b0e: MOV Reg RDI, Reg R15 3
 9b11: CALL xc_strerror (external)
 9b16: MOV Reg ECX, Address (SizeDir 32 (FromReg RBX)) 2
-9b18: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 110817)) 7
+9b18: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 110817))) 7
 9b1f: MOV Reg R8, Reg RAX 3
 9b22: MOV Reg RDI, Reg R15 3
 9b25: XOR Reg EAX, Reg EAX 2
@@ -148,7 +148,7 @@ Number of edges: 136
 9b60: MOV Reg RDI, Reg R14 3
 9b63: CALL xc_strerror (external)
 9b68: MOV Reg ECX, Address (SizeDir 32 (FromReg RBX)) 2
-9b6a: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 110767)) 7
+9b6a: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 110767))) 7
 9b71: MOV Reg R8, Reg RAX 3
 9b74: MOV Reg ESI, Immediate 1 5
 9b79: XOR Reg EAX, Reg EAX 2

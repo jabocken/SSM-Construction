@@ -15,17 +15,17 @@ Number of edges: 43
 577b: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 5784: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Reg RAX 5
 5789: XOR Reg EAX, Reg EAX 2
-578b: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 20)) 5
+578b: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 20))) 5
 5790: PUSH Reg RAX 1
-5791: LEA Reg R9, Address (AddrPlus (FromReg RSP) (AddrImm 32)) 5
-5796: LEA Reg R8, Address (AddrPlus (FromReg RSP) (AddrImm 24)) 5
-579b: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2138142)) 7
-57a2: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 14102)) 7
+5791: LEA Reg R9, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))) 5
+5796: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
+579b: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2138142))) 7
+57a2: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 14102))) 7
 57a9: MOV Reg EAX, Immediate 0 5
 57ae: CALL PyArg_ParseTupleAndKeywords (external)
 57b3: ADD Reg RSP, Immediate 16 4
 57b7: TEST Reg EAX, Reg EAX 2
-57b9: JZ 580b (resolved immediate)
+57b9: JE 580b (resolved immediate)
   |
   `- 57bb,580b
 57bb: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
@@ -41,7 +41,7 @@ Number of edges: 43
 57dc: ADD Address (SizeDir 64 (FromReg RAX)), Immediate 1 4
 57e0: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 57e5: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-57ee: JNZ 5812 (resolved immediate)
+57ee: JNE 5812 (resolved immediate)
   |
   `- 57f0,5812
 57f0: ADD Reg RSP, Immediate 32 4
@@ -50,7 +50,7 @@ Number of edges: 43
   |
   `- 
 57f6: MOV Reg ESI, Reg EAX 2
-57f8: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 14920)) 7
+57f8: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 14920))) 7
 57ff: MOV Reg EAX, Immediate 0 5
 5804: CALL Py_BuildValue (external)
 5809: JMP 57e0 (resolved immediate)

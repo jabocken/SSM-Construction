@@ -11,15 +11,15 @@ d90: CMP Reg EDI, Immediate 9 3
 d93: JA da3 (resolved immediate)
   |
   `- d95,da3
-d95: LEA Reg RAX, Address (AddrPlus (FromReg RIP) (AddrImm 2101220)) 7
+d95: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2101220))) 7
 d9c: MOV Reg EDI, Reg EDI 2
 d9e: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDI)))) 4
 da2: RET  1
   |
   `- 
-da3: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2342)) 7
-daa: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 2127)) 7
-db1: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2216)) 7
+da3: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2342))) 7
+daa: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2127))) 7
+db1: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2216))) 7
 db8: SUB Reg RSP, Immediate 8 4
 dbc: MOV Reg EDX, Immediate 37 5
 dc1: CALL __assert_fail (external)

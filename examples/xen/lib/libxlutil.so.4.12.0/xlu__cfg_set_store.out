@@ -9,7 +9,7 @@ Number of edges: 45
 
 6420: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 8))) 3
 6423: TEST Reg EAX, Reg EAX 2
-6425: JNZ 6478 (resolved immediate)
+6425: JNE 6478 (resolved immediate)
   |
   `- 6427,6478
 6427: PUSH Reg R13 2
@@ -22,16 +22,16 @@ Number of edges: 45
 6435: MOV Reg RBX, Reg RSI 3
 6438: SUB Reg RSP, Immediate 8 4
 643c: TEST Reg RSI, Reg RSI 3
-643f: JZ 6496 (resolved immediate)
+643f: JE 6496 (resolved immediate)
   |
   `- 6441,6496
 6441: MOV Reg EDI, Immediate 32 5
 6446: CALL malloc (external)
 644b: TEST Reg RAX, Reg RAX 3
-644e: JZ 6480 (resolved immediate)
+644e: JE 6480 (resolved immediate)
   |
   `- 6450,6480
-6450: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 0))) 4
+6450: MOV Reg RDX, Address (SizeDir 64 (FromReg R13)) 4
 6454: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))), Reg RBX 4
 6458: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 16))), Reg R12 4
 645c: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 24))), Reg EBP 3
@@ -46,7 +46,7 @@ Number of edges: 45
 6472: RET  1
   |
   `- 
-6478: REPZ RET  2
+6478: RET  2
   |
   `- 
 6480: CALL __errno_location (external)
@@ -60,9 +60,9 @@ Number of edges: 45
 6495: RET  1
   |
   `- 
-6496: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 20131)) 7
-649d: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 19934)) 7
-64a4: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 19999)) 7
+6496: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 20131))) 7
+649d: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 19934))) 7
+64a4: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 19999))) 7
 64ab: MOV Reg EDX, Immediate 459 5
 64b0: CALL __assert_fail (external)
   |

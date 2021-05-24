@@ -8,7 +8,7 @@ Number of edges: 25
 7ce80 (False): 0
 
 7ce80: TEST Reg RDI, Reg RDI 3
-7ce83: JZ 7cee0 (resolved immediate)
+7ce83: JE 7cee0 (resolved immediate)
   |
   `- 7ce85,7cee0
 7ce85: PUSH Reg RBX 1
@@ -17,25 +17,25 @@ Number of edges: 25
 7ce8d: CALL free (external)
 7ce92: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
 7ce96: CALL free (external)
-7ce9b: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 48)) 4
+7ce9b: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 48))) 4
 7ce9f: CALL libxl_key_value_list_dispose (external)
-7cea4: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 56)) 4
+7cea4: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 56))) 4
 7cea8: CALL libxl_key_value_list_dispose (external)
 7cead: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 72))) 4
 7ceb1: CALL free (external)
-7ceb6: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 8)) 4
+7ceb6: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
 7ceba: MOV Address (SizeDir 64 (FromReg RBX)), Immediate 0 7
 7cec1: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 80))), Immediate 0 8
 7cec9: XOR Reg EAX, Reg EAX 2
 7cecb: AND Reg RDI, Immediate 18446744073709551608 4
 7cecf: SUB Reg RBX, Reg RDI 3
-7ced2: LEA Reg ECX, Address (AddrPlus (FromReg RBX) (AddrImm 88)) 3
+7ced2: LEA Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 88))) 3
 7ced5: SHR Reg ECX, Immediate 3 3
-7ced8: REP STOSQ  3
+7ced8: REP STOSQ Address (SizeDir 64 (FromReg RDI)), Reg RAX 3
 7cedb: POP Reg RBX 1
 7cedc: RET  1
   |
   `- 
-7cee0: REPZ RET  2
+7cee0: RET  2
   |
   `- 

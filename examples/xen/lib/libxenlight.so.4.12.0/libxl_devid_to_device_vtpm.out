@@ -19,7 +19,7 @@ Number of edges: 172
 3bdba: MOV Reg R12, Reg RDI 3
 3bdbd: MOV Reg EBP, Immediate 0 5
 3bdc2: MOV Reg EBX, Immediate 0 5
-3bdc7: JZ 3bdf4 (resolved immediate)
+3bdc7: JE 3bdf4 (resolved immediate)
   |
   `- 3bdc9,3bdf4
 3bdc9: NOP  7
@@ -44,9 +44,9 @@ Number of edges: 172
 3be13: RET  1
   |
   `- 
-3be14: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 387253)) 7
-3be1b: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 386238)) 7
-3be22: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 386248)) 7
+3be14: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 387253))) 7
+3be1b: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 386238))) 7
+3be22: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 386248))) 7
 3be29: MOV Reg EDX, Immediate 80 5
 3be2e: CALL __assert_fail (external)
   |
@@ -63,8 +63,8 @@ Number of edges: 172
 58b02: MOV Reg R13, Reg RDI 3
 58b05: SUB Reg RSP, Immediate 56 4
 58b09: MOV Reg R12, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2547224))) 7
-58b10: LEA Reg RBP, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
-58b15: LEA Reg RCX, Address (AddrPlus (FromReg RSP) (AddrImm 12)) 5
+58b10: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
+58b15: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 12))) 5
 58b1a: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Reg RDI 5
 58b1f: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 58b28: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Reg RAX 5
@@ -75,7 +75,7 @@ Number of edges: 172
 58b3d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Immediate 0 9
 58b46: CALL libxl__device_list (external)
 58b4b: TEST Reg RAX, Reg RAX 3
-58b4e: JZ 58bfa (resolved immediate)
+58b4e: JE 58bfa (resolved immediate)
   |
   `- 58b54,58bfa
 58b54: MOV Reg RDI, Reg RBX 3
@@ -87,24 +87,24 @@ Number of edges: 172
   |
   `- 58b67,58b92
 58b67: CMP Reg R14D, Address (SizeDir 32 (AddrPlus (FromReg R15) (AddrImm 16))) 4
-58b6b: JZ 58bd0 (resolved immediate)
+58b6b: JE 58bd0 (resolved immediate)
   |
   `- 58b6d,58bd0
-58b6d: LEA Reg EAX, Address (AddrMinus (FromReg RDX) (AddrImm 1)) 3
-58b70: LEA Reg RCX, Address (AddrPlus (FromReg R15) (AddrImm 40)) 4
-58b74: LEA Reg RAX, Address (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 4) (FromReg RAX))) 4
-58b78: LEA Reg RSI, Address (AddrPlus (AddrPlus (FromReg R15) (AddrTimes (AddrImm 8) (FromReg RAX))) (AddrImm 40)) 5
+58b6d: LEA Reg EAX, Address (SizeDir 32 (AddrMinus (FromReg RDX) (AddrImm 1))) 3
+58b70: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg R15) (AddrImm 40))) 4
+58b74: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 4) (FromReg RAX)))) 4
+58b78: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg R15) (AddrTimes (AddrImm 8) (FromReg RAX))) (AddrImm 40))) 5
 58b7d: JMP 58b8d (resolved immediate)
   |
   `- 58b8d
 58b80: MOV Reg RDI, Reg RCX 3
 58b83: ADD Reg RCX, Immediate 40 4
 58b87: CMP Address (SizeDir 32 (AddrMinus (FromReg RCX) (AddrImm 24))), Reg R14D 4
-58b8b: JZ 58bd8 (resolved immediate)
+58b8b: JE 58bd8 (resolved immediate)
   |
   `- 58b8d,58bd8
 58b8d: CMP Reg RCX, Reg RSI 3
-58b90: JNZ 58b80 (resolved immediate)
+58b90: JNE 58b80 (resolved immediate)
   |
   `- 58b80,58b92
 58b92: MOV Reg EBX, Immediate 1 5
@@ -118,7 +118,7 @@ Number of edges: 172
 58baa: MOV Reg EAX, Reg EBX 2
 58bac: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
 58bb1: XOR Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-58bba: JNZ 58c01 (resolved immediate)
+58bba: JNE 58c01 (resolved immediate)
   |
   `- 58bbc,58c01
 58bbc: ADD Reg RSP, Immediate 56 4
@@ -134,8 +134,8 @@ Number of edges: 172
 58bd0: MOV Reg RDI, Reg R15 3
 58bd3: NOP  5
 58bd8: MOV Reg EAX, Address (SizeDir 32 (FromReg RDI)) 2
-58bda: LEA Reg RDX, Address (AddrPlus (FromReg RDI) (AddrImm 20)) 4
-58bde: LEA Reg RSI, Address (AddrPlus (FromReg RBX) (AddrImm 20)) 4
+58bda: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 20))) 4
+58bde: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 20))) 4
 58be2: MOV Address (SizeDir 32 (FromReg RBX)), Reg EAX 2
 58be4: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 16))) 3
 58be7: MOV Reg RDI, Reg R13 3

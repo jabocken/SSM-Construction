@@ -17,19 +17,19 @@ Number of edges: 68
 108e: CALL malloc (external)
 1093: TEST Reg RAX, Reg RAX 3
 1096: MOV Reg RBX, Reg RAX 3
-1099: JZ 10d6 (resolved immediate)
+1099: JE 10d6 (resolved immediate)
   |
   `- 109b,10d6
 109b: MOV Address (SizeDir 64 (FromReg RAX)), Reg RBP 3
 109e: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 16))), Immediate 4294967295 7
-10a5: LEA Reg RBP, Address (AddrPlus (FromReg RBX) (AddrImm 24)) 4
+10a5: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
 10a9: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))), Immediate 0 8
-10b1: LEA Reg RAX, Address (AddrMinus (FromReg RIP) (AddrImm 72)) 7
+10b1: LEA Reg RAX, Address (SizeDir 64 (AddrMinus (FromReg RIP) (AddrImm 72))) 7
 10b8: MOV Reg RDI, Reg RBP 3
 10bb: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))), Reg RAX 4
 10bf: CALL xentoolcore__register_active_handle (external)
 10c4: CMP Address (SizeDir 64 (FromReg RBX)), Immediate 0 4
-10c8: JZ 10e0 (resolved immediate)
+10c8: JE 10e0 (resolved immediate)
   |
   `- 10ca,10e0
 10ca: MOV Reg RDI, Reg RBX 3
@@ -55,7 +55,7 @@ Number of edges: 68
 10f6: TEST Reg RAX, Reg RAX 3
 10f9: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))), Reg RAX 4
 10fd: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
-1100: JNZ 10ca (resolved immediate)
+1100: JNE 10ca (resolved immediate)
   |
   `- 10ca,1102
 1102: NOP  6
@@ -75,12 +75,12 @@ Number of edges: 68
   `- 10d6
 13f0: PUSH Reg RBX 1
 13f1: MOV Reg RBX, Reg RDI 3
-13f4: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2853)) 7
+13f4: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2853))) 7
 13fb: XOR Reg EAX, Reg EAX 2
 13fd: MOV Reg ESI, Immediate 524290 5
 1402: CALL open (external)
-1407: CMP Reg EAX, Immediate 4294967295 3
-140a: JZ 1411 (resolved immediate)
+1407: CMP Reg EAX, Immediate 18446744073709551615 3
+140a: JE 1411 (resolved immediate)
   |
   `- 140c,1411
 140c: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 16))), Reg EAX 3
@@ -90,8 +90,8 @@ Number of edges: 68
   |
   `- 
 1420: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 16))) 3
-1423: CMP Reg EDI, Immediate 4294967295 3
-1426: JZ 1430 (resolved immediate)
+1423: CMP Reg EDI, Immediate 18446744073709551615 3
+1426: JE 1430 (resolved immediate)
   |
   `- 1428,1430
 1428: JMP close (jmp to external function)

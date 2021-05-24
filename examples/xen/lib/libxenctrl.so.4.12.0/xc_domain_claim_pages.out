@@ -22,20 +22,20 @@ ff73: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 8))) 4
 ff77: MOV Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg SI 5
 ff7c: MOV Reg ESI, Immediate 24 5
 ff81: TEST Reg RAX, Reg RAX 3
-ff84: CMOVZ Reg RAX, Reg RDX 4
+ff84: CMOVE Reg RAX, Reg RDX 4
 ff88: MOV Reg RDX, Reg RSP 3
 ff8b: MOV Reg RAX, Address (SizeDir 64 (FromReg RAX)) 3
 ff8e: MOV Address (SizeDir 64 (FromReg RSP)), Reg RAX 4
 ff92: CALL do_memory_op (external)
-ff97: CMP Reg EAX, Immediate 4294967295 3
+ff97: CMP Reg EAX, Immediate 18446744073709551615 3
 ff9a: MOV Reg EBX, Reg EAX 2
-ff9c: JZ ffc0 (resolved immediate)
+ff9c: JE ffc0 (resolved immediate)
   |
   `- ff9e,ffc0
 ff9e: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
 ffa3: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 ffac: MOV Reg EAX, Reg EBX 2
-ffae: JNZ ffd4 (resolved immediate)
+ffae: JNE ffd4 (resolved immediate)
   |
   `- ffb0,ffd4
 ffb0: ADD Reg RSP, Immediate 48 4
@@ -45,7 +45,7 @@ ffb5: RET  1
   `- 
 ffc0: CALL __errno_location (external)
 ffc5: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 38 3
-ffc8: JNZ ff9e (resolved immediate)
+ffc8: JNE ff9e (resolved immediate)
   |
   `- ff9e,ffca
 ffca: MOV Address (SizeDir 32 (FromReg RAX)), Immediate 0 6

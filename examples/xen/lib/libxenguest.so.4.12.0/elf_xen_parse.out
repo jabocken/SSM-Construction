@@ -1,9 +1,9 @@
-Number of assembly instructions     = 357
+Number of assembly instructions     = 309
 Number of indirect branches         = 0
 Number of unresolved indirect jumps = 0: 
 Number of unresolved indirect calls = 0: 
-Number of symbolic states (representative of non-determinism): 357
-Number of edges: 381
+Number of symbolic states (representative of non-determinism): 309
+Number of edges: 330
 
 15130 (False): 0
 
@@ -16,7 +16,7 @@ Number of edges: 381
 1513e: PUSH Reg RBP 1
 1513f: PUSH Reg RBX 1
 15140: MOV Reg RBX, Reg RDI 3
-15143: LEA Reg RDI, Address (AddrPlus (FromReg RSI) (AddrImm 8)) 4
+15143: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))) 4
 15147: XOR Reg R13D, Reg R13D 3
 1514a: XOR Reg R15D, Reg R15D 3
 1514d: SUB Reg RSP, Immediate 40 4
@@ -30,7 +30,7 @@ Number of edges: 381
 15176: MOV Address (SizeDir 64 (FromReg RSI)), Immediate 0 7
 1517d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 624))), Immediate 0 11
 15188: SHR Reg ECX, Immediate 3 3
-1518b: REP STOSQ  3
+1518b: REP STOSQ Address (SizeDir 64 (FromReg RDI)), Reg RAX 3
 1518e: MOV Reg RAX, Immediate 18446744073709551615 7
 15195: MOV Reg RDI, Reg RBX 3
 15198: MOV Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 552))), Reg RAX 7
@@ -42,10 +42,10 @@ Number of edges: 381
 151c2: MOV Address (SizeDir 32 (AddrPlus (FromReg RSI) (AddrImm 608))), Reg EAX 6
 151c8: CALL elf_phdr_count (external)
 151cd: MOV Reg R14D, Reg EAX 3
-151d0: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 20)) 5
+151d0: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 20))) 5
 151d5: TEST Reg R14D, Reg R14D 3
 151d8: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
-151dd: JNZ 15282 (resolved immediate)
+151dd: JNE 15282 (resolved immediate)
   |
   `- 151e3,15282
 151e3: JMP 15570 (resolved immediate)
@@ -57,14 +57,14 @@ Number of edges: 381
 151fa: MOV Reg RDI, Reg RBX 3
 151fd: CALL elf_access_unsigned (external)
 15202: CMP Reg RAX, Immediate 4 4
-15206: SETNZ Reg AL 3
+15206: SETNE Reg AL 3
 15209: TEST Reg AL, Reg AL 2
-1520b: JNZ 15279 (resolved immediate)
+1520b: JNE 15279 (resolved immediate)
   |
   `- 15279
 15279: ADD Reg R13D, Immediate 1 4
 1527d: CMP Reg R14D, Reg R13D 3
-15280: JZ 152a8 (resolved immediate)
+15280: JE 152a8 (resolved immediate)
   |
   `- 15282,152a8
 15282: MOV Reg ESI, Reg R13D 3
@@ -76,11 +76,11 @@ Number of edges: 381
 15298: MOV Reg RBP, Reg RAX 3
 1529b: CALL elf_access_ok (external)
 152a0: TEST Reg AL, Reg AL 2
-152a2: JNZ 151f0 (resolved immediate)
+152a2: JNE 151f0 (resolved immediate)
   |
   `- 151f0,152a8
 152a8: TEST Reg R15D, Reg R15D 3
-152ab: JZ 15570 (resolved immediate)
+152ab: JE 15570 (resolved immediate)
   |
   `- 15570
 152b1: CMP Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 8))), Immediate 0 6
@@ -88,26 +88,26 @@ Number of edges: 381
 152bb: MOV Reg ECX, Immediate 2 5
 152c0: MOV Reg EDX, Immediate 18 5
 152c5: MOV Reg RDI, Reg RBX 3
-152c8: JNZ 154b0 (resolved immediate)
+152c8: JNE 154b0 (resolved immediate)
   |
   `- 152ce,154b0
 152ce: CMP Address (SizeDir 64 (FromReg R12)), Immediate 0 5
-152d3: JNZ 154b0 (resolved immediate)
+152d3: JNE 154b0 (resolved immediate)
   |
   `- 152d9,154b0
 152d9: CALL elf_access_unsigned (external)
 152de: CMP Reg EAX, Immediate 3 3
-152e1: JZ 158aa (resolved immediate)
+152e1: JE 158aa (resolved immediate)
   |
   `- 152e7,158aa
 152e7: CMP Reg EAX, Immediate 62 3
-152ea: JZ 158aa (resolved immediate)
+152ea: JE 158aa (resolved immediate)
   |
   `- 152f0,158aa
 152f0: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 592))) 8
 152f8: MOV Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 552))) 8
 15300: CMP Reg RAX, Immediate 18446744073709551615 4
-15304: JZ 156c0 (resolved immediate)
+15304: JE 156c0 (resolved immediate)
   |
   `- 156c0
 15314: SUB Reg RBP, Reg RAX 3
@@ -118,52 +118,52 @@ Number of edges: 381
 1532a: ADD Reg RAX, Reg RBP 3
 1532d: CMP Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 560))), Immediate 18446744073709551615 9
 15336: MOV Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 624))), Reg RAX 8
-1533e: JZ 15740 (resolved immediate)
+1533e: JE 15740 (resolved immediate)
   |
   `- 15740
-15353: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 62930)) 7
+15353: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 62930))) 7
 1535a: XOR Reg ESI, Reg ESI 2
 1535c: XOR Reg EAX, Reg EAX 2
 1535e: MOV Reg RDI, Reg RBX 3
 15361: CALL elf_call_log_callback (external)
 15366: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 552))) 8
-1536e: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 62920)) 7
+1536e: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 62920))) 7
 15375: XOR Reg ESI, Reg ESI 2
 15377: XOR Reg EAX, Reg EAX 2
 15379: MOV Reg RDI, Reg RBX 3
 1537c: CALL elf_call_log_callback (external)
 15381: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 592))) 8
-15389: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 62923)) 7
+15389: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 62923))) 7
 15390: XOR Reg ESI, Reg ESI 2
 15392: XOR Reg EAX, Reg EAX 2
 15394: MOV Reg RDI, Reg RBX 3
 15397: CALL elf_call_log_callback (external)
-1539c: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 62934)) 7
+1539c: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 62934))) 7
 153a3: XOR Reg ESI, Reg ESI 2
 153a5: XOR Reg EAX, Reg EAX 2
 153a7: MOV Reg RCX, Reg RBP 3
 153aa: MOV Reg RDI, Reg RBX 3
 153ad: CALL elf_call_log_callback (external)
 153b2: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 616))) 8
-153ba: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 62934)) 7
+153ba: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 62934))) 7
 153c1: XOR Reg ESI, Reg ESI 2
 153c3: XOR Reg EAX, Reg EAX 2
 153c5: MOV Reg RDI, Reg RBX 3
 153c8: CALL elf_call_log_callback (external)
 153cd: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 624))) 8
-153d5: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 62937)) 7
+153d5: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 62937))) 7
 153dc: XOR Reg ESI, Reg ESI 2
 153de: XOR Reg EAX, Reg EAX 2
 153e0: MOV Reg RDI, Reg RBX 3
 153e3: CALL elf_call_log_callback (external)
 153e8: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 560))) 8
-153f0: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 62940)) 7
+153f0: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 62940))) 7
 153f7: XOR Reg ESI, Reg ESI 2
 153f9: XOR Reg EAX, Reg EAX 2
 153fb: MOV Reg RDI, Reg RBX 3
 153fe: CALL elf_call_log_callback (external)
 15403: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 584))) 8
-1540b: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 62943)) 7
+1540b: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 62943))) 7
 15412: XOR Reg EAX, Reg EAX 2
 15414: XOR Reg ESI, Reg ESI 2
 15416: MOV Reg RDI, Reg RBX 3
@@ -189,11 +189,11 @@ Number of edges: 381
   `- 1545f,157a0
 1545f: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 584))) 8
 15467: CMP Reg RCX, Immediate 18446744073709551615 4
-1546b: SETNZ Reg SIL 4
+1546b: SETNE Reg SIL 4
 1546f: CMP Reg RAX, Reg RCX 3
 15472: SETBE Reg AL 3
 15475: TEST Reg SIL, Reg AL 3
-15478: JZ 15483 (resolved immediate)
+15478: JE 15483 (resolved immediate)
   |
   `- 1547a,15483
 1547a: CMP Reg RDX, Reg RCX 3
@@ -203,7 +203,7 @@ Number of edges: 381
 15483: XOR Reg EAX, Reg EAX 2
 15485: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 1548a: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-15493: JNZ 158b6 (resolved immediate)
+15493: JNE 158b6 (resolved immediate)
   |
   `- 15499,158b6
 15499: ADD Reg RSP, Immediate 40 4
@@ -218,61 +218,21 @@ Number of edges: 381
   `- 
 154b0: CALL elf_access_unsigned (external)
 154b5: CMP Reg RAX, Immediate 40 4
-154b9: SETZ Reg AL 3
+154b9: SETE Reg AL 3
 154bc: TEST Reg AL, Reg AL 2
-154be: JNZ 157c0 (resolved immediate)
+154be: JNE 157c0 (resolved immediate)
   |
   `- 154c4,157c0
-154c4: CMP Address (SizeDir 32 (AddrPlus (FromReg R12) (AddrImm 608))), Immediate 4294967295 9
-154cd: JNZ 15840 (resolved immediate)
-154d3: CMP Address (SizeDir 8 (AddrPlus (FromReg R12) (AddrImm 528))), Immediate 0 9
-154dc: JNZ 157f8 (resolved immediate)
+154c4: CMP Address (SizeDir 32 (AddrPlus (FromReg R12) (AddrImm 608))), Immediate 18446744073709551615 9
+154cd: JNE 15840 (resolved immediate)
   |
-  `- 154e2,157f8
-154e2: CMP Address (SizeDir 8 (AddrPlus (FromReg R12) (AddrImm 480))), Immediate 0 9
-154eb: LEA Reg RDX, Address (AddrPlus (FromReg R12) (AddrImm 480)) 8
-154f3: JZ 15864 (resolved immediate)
-  |
-  `- 154f9,15864
-154f9: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 62494)) 7
-15500: MOV Reg ECX, Immediate 5 5
-15505: MOV Reg RSI, Reg RDX 3
-15508: REPZ CMPSB  2
-1550a: SETA Reg AL 3
-1550d: SBB Reg AL, Immediate 0 2
-1550f: TEST Reg AL, Reg AL 2
-15511: JNZ 15864 (resolved immediate)
-15517: CMP Address (SizeDir 8 (AddrPlus (FromReg R12) (AddrImm 512))), Immediate 0 9
-15520: LEA Reg R8, Address (AddrPlus (FromReg R12) (AddrImm 512)) 8
-15528: JZ 15548 (resolved immediate)
-  |
-  `- 1552a,15548
-1552a: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 62451)) 7
-15531: MOV Reg ECX, Immediate 7 5
-15536: MOV Reg RSI, Reg R8 3
-15539: REPZ CMPSB  2
-1553b: SETA Reg AL 3
-1553e: SBB Reg AL, Immediate 0 2
-15540: TEST Reg AL, Reg AL 2
-15542: JZ 152f0 (resolved immediate)
-  |
-  `- 152f0
-15548: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 63257)) 7
-1554f: XOR Reg EAX, Reg EAX 2
-15551: MOV Reg ECX, Immediate 16 5
-15556: MOV Reg ESI, Immediate 1 5
-1555b: MOV Reg RDI, Reg RBX 3
-1555e: CALL elf_call_log_callback (external)
-15563: MOV Reg EAX, Immediate 4294967295 5
-15568: JMP 15485 (resolved immediate)
-  |
-  `- 15485
+  `- 15840
 15570: MOV Reg RDI, Reg RBX 3
 15573: XOR Reg R14D, Reg R14D 3
 15576: MOV Reg R13D, Immediate 1 6
 1557c: CALL elf_shdr_count (external)
 15581: MOV Reg R15D, Reg EAX 3
-15584: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 20)) 5
+15584: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 20))) 5
 15589: CMP Reg R15D, Immediate 1 4
 1558d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
 15592: JA 15624 (resolved immediate)
@@ -287,14 +247,14 @@ Number of edges: 381
 155ad: MOV Reg RDI, Reg RBX 3
 155b0: CALL elf_access_unsigned (external)
 155b5: CMP Reg RAX, Immediate 7 4
-155b9: SETNZ Reg AL 3
+155b9: SETNE Reg AL 3
 155bc: TEST Reg AL, Reg AL 2
-155be: JNZ 1561b (resolved immediate)
+155be: JNE 1561b (resolved immediate)
   |
   `- 1561b
 1561b: ADD Reg R13D, Immediate 1 4
 1561f: CMP Reg R15D, Reg R13D 3
-15622: JZ 1564a (resolved immediate)
+15622: JE 1564a (resolved immediate)
   |
   `- 15624,1564a
 15624: MOV Reg ESI, Reg R13D 3
@@ -306,16 +266,16 @@ Number of edges: 381
 1563a: MOV Reg RBP, Reg RAX 3
 1563d: CALL elf_access_ok (external)
 15642: TEST Reg AL, Reg AL 2
-15644: JNZ 155a0 (resolved immediate)
+15644: JNE 155a0 (resolved immediate)
   |
   `- 155a0,1564a
 1564a: TEST Reg R14D, Reg R14D 3
-1564d: JNZ 152b1 (resolved immediate)
-15653: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 62090)) 7
+1564d: JNE 152b1 (resolved immediate)
+15653: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 62090))) 7
 1565a: MOV Reg RDI, Reg RBX 3
 1565d: CALL elf_shdr_by_name (external)
 15662: TEST Reg RAX, Reg RAX 3
-15665: JZ 152b1 (resolved immediate)
+15665: JE 152b1 (resolved immediate)
   |
   `- 152b1,1566b
 1566b: MOV Reg RDI, Reg RBX 3
@@ -327,7 +287,7 @@ Number of edges: 381
 15686: MOV Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 16))), Immediate 0 9
 1568f: MOV Reg RSI, Reg RAX 3
 15692: CALL elf_strfmt (external)
-15697: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 62034)) 7
+15697: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 62034))) 7
 1569e: MOV Reg RCX, Reg RAX 3
 156a1: XOR Reg ESI, Reg ESI 2
 156a3: MOV Reg RDI, Reg RBX 3
@@ -340,8 +300,8 @@ Number of edges: 381
   |
   `- 152b1
 156c0: CMP Reg RBP, Immediate 18446744073709551615 4
-156c4: JNZ 156f5 (resolved immediate)
-156c6: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 62995)) 7
+156c4: JNE 156f5 (resolved immediate)
+156c6: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 62995))) 7
 156cd: XOR Reg EAX, Reg EAX 2
 156cf: XOR Reg ECX, Reg ECX 2
 156d1: XOR Reg ESI, Reg ESI 2
@@ -350,14 +310,14 @@ Number of edges: 381
 156e2: CALL elf_call_log_callback (external)
 156e7: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 592))) 8
 156ef: CMP Reg RAX, Immediate 18446744073709551615 4
-156f3: JNZ 1572c (resolved immediate)
+156f3: JNE 1572c (resolved immediate)
 156f5: CMP Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 8))), Immediate 0 6
-156fb: JNZ 157e0 (resolved immediate)
+156fb: JNE 157e0 (resolved immediate)
   |
   `- 15701,157e0
 15701: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 552))) 8
 15709: MOV Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 592))), Reg RCX 8
-15711: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 62960)) 7
+15711: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 62960))) 7
 15718: XOR Reg EAX, Reg EAX 2
 1571a: XOR Reg ESI, Reg ESI 2
 1571c: MOV Reg RDI, Reg RBX 3
@@ -369,7 +329,7 @@ Number of edges: 381
   `- 15314
 15740: CMP Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 16))), Immediate 2 4
 15744: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
-15748: JZ 15820 (resolved immediate)
+15748: JE 15820 (resolved immediate)
   |
   `- 1574e,15820
 1574e: MOV Reg ECX, Immediate 4 5
@@ -378,7 +338,7 @@ Number of edges: 381
 1575b: CALL elf_access_unsigned (external)
 15760: CMP Address (SizeDir 8 (AddrPlus (FromReg R12) (AddrImm 548))), Immediate 0 9
 15769: MOV Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 560))), Reg RAX 8
-15771: JZ 15353 (resolved immediate)
+15771: JE 15353 (resolved immediate)
   |
   `- 15353,15777
 15777: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 80))) 4
@@ -386,7 +346,7 @@ Number of edges: 381
 1577e: CALL elf_parse_bsdsyms (external)
 15783: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 104))) 4
 15787: TEST Reg RAX, Reg RAX 3
-1578a: JZ 15353 (resolved immediate)
+1578a: JE 15353 (resolved immediate)
   |
   `- 15353,15790
 15790: ADD Reg RAX, Reg RBP 3
@@ -394,7 +354,7 @@ Number of edges: 381
 1579b: JMP 15353 (resolved immediate)
   |
   `- 15353
-157a0: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 62857)) 7
+157a0: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 62857))) 7
 157a7: MOV Reg ESI, Immediate 1 5
 157ac: MOV Reg RDI, Reg RBX 3
 157af: XOR Reg EAX, Reg EAX 2
@@ -403,7 +363,7 @@ Number of edges: 381
 157bb: JMP 15485 (resolved immediate)
   |
   `- 15485
-157c0: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 62457)) 7
+157c0: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 62457))) 7
 157c7: XOR Reg ESI, Reg ESI 2
 157c9: MOV Reg RDI, Reg RBX 3
 157cc: XOR Reg EAX, Reg EAX 2
@@ -416,16 +376,6 @@ Number of edges: 381
 157ee: JMP 15711 (resolved immediate)
   |
   `- 15711
-157f8: LEA Reg RSI, Address (AddrPlus (FromReg R12) (AddrImm 528)) 8
-15800: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 68677)) 7
-15807: MOV Reg ECX, Immediate 7 5
-1580c: REPZ CMPSB  2
-1580e: SETA Reg AL 3
-15811: SBB Reg AL, Immediate 0 2
-15813: TEST Reg AL, Reg AL 2
-15815: JZ 15517 (resolved immediate)
-  |
-  `- 15517
 15820: MOV Reg ECX, Immediate 8 5
 15825: MOV Reg EDX, Immediate 24 5
 1582a: MOV Reg RDI, Reg RBX 3
@@ -433,27 +383,19 @@ Number of edges: 381
 15832: JMP 15760 (resolved immediate)
   |
   `- 15760
-15858: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 62721)) 7
+15840: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 61633))) 7
+15847: XOR Reg ESI, Reg ESI 2
+15849: MOV Reg RDI, Reg RBX 3
+1584c: XOR Reg EAX, Reg EAX 2
+1584e: CALL elf_call_log_callback (external)
+15853: JMP 152f0 (resolved immediate)
+  |
+  `- 152f0
+15858: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 62721))) 7
 1585f: JMP 157a7 (resolved immediate)
   |
   `- 157a7
-15864: SUB Reg RSP, Immediate 8 4
-15868: LEA Reg R8, Address (AddrPlus (FromReg R12) (AddrImm 528)) 8
-15870: XOR Reg EAX, Reg EAX 2
-15872: PUSH Reg RDX 1
-15873: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 62318)) 7
-1587a: MOV Reg R9D, Immediate 16 6
-15880: MOV Reg ECX, Immediate 16 5
-15885: MOV Reg ESI, Immediate 1 5
-1588a: MOV Reg RDI, Reg RBX 3
-1588d: CALL elf_call_log_callback (external)
-15892: POP Reg RAX 1
-15893: MOV Reg EAX, Immediate 4294967295 5
-15898: POP Reg RDX 1
-15899: JMP 15485 (resolved immediate)
-  |
-  `- 15485
-158aa: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 62143)) 7
+158aa: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 62143))) 7
 158b1: JMP 157a7 (resolved immediate)
   |
   `- 157a7

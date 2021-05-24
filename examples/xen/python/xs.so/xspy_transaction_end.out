@@ -28,20 +28,20 @@ Number of edges: 106
 2417: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))), Immediate 0 8
 241f: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))) 4
 2423: TEST Reg RBX, Reg RBX 3
-2426: JZ 24d0 (resolved immediate)
+2426: JE 24d0 (resolved immediate)
   |
   `- 242c,24d0
 242c: MOV Reg RAX, Reg RSI 3
 242f: MOV Reg RSI, Reg RDX 3
-2432: LEA Reg R9, Address (AddrPlus (FromReg RSP) (AddrImm 12)) 5
-2437: LEA Reg R8, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
-243c: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2108861)) 7
-2443: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 3749)) 7
+2432: LEA Reg R9, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 12))) 5
+2437: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
+243c: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2108861))) 7
+2443: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 3749))) 7
 244a: MOV Reg RDI, Reg RAX 3
 244d: MOV Reg EAX, Immediate 0 5
 2452: CALL PyArg_ParseTupleAndKeywords (external)
 2457: TEST Reg EAX, Reg EAX 2
-2459: JZ 2501 (resolved immediate)
+2459: JE 2501 (resolved immediate)
   |
   `- 245f,2501
 245f: MOV Reg EDX, Immediate 16 5
@@ -52,7 +52,7 @@ Number of edges: 106
 2476: CALL PyEval_SaveThread (external)
 247b: MOV Reg RBP, Reg RAX 3
 247e: CMP Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))), Immediate 0 5
-2483: SETNZ Reg DL 3
+2483: SETNE Reg DL 3
 2486: MOVZX Reg EDX, Reg DL 3
 2489: MOV Reg ESI, Reg R12D 3
 248c: MOV Reg RDI, Reg RBX 3
@@ -61,19 +61,19 @@ Number of edges: 106
 2496: MOV Reg RDI, Reg RBP 3
 2499: CALL PyEval_RestoreThread (external)
 249e: TEST Reg BL, Reg BL 2
-24a0: JNZ 24e1 (resolved immediate)
+24a0: JNE 24e1 (resolved immediate)
   |
   `- 24a2,24e1
 24a2: CALL __errno_location (external)
 24a7: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 11 3
-24aa: JNZ 24ee (resolved immediate)
+24aa: JNE 24ee (resolved immediate)
   |
   `- 24ac,24ee
 24ac: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2108173))) 7
 24b3: ADD Address (SizeDir 64 (FromReg RAX)), Immediate 1 4
 24b7: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 24bc: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-24c5: JNZ 2508 (resolved immediate)
+24c5: JNE 2508 (resolved immediate)
   |
   `- 24c7,2508
 24c7: ADD Reg RSP, Immediate 32 4

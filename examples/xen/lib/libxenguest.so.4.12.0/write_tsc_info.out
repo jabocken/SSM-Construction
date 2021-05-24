@@ -15,15 +15,15 @@ Number of edges: 54
 762b: SUB Reg RSP, Immediate 48 4
 762f: MOV Reg RBP, Address (SizeDir 64 (FromReg RDI)) 3
 7632: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 8))) 3
-7635: LEA Reg RDX, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+7635: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 763a: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Immediate 0 9
 7643: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 764c: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Reg RAX 5
 7651: XOR Reg EAX, Reg EAX 2
-7653: LEA Reg RCX, Address (AddrPlus (FromReg RDX) (AddrImm 8)) 4
-7657: LEA Reg R9, Address (AddrPlus (FromReg RDX) (AddrImm 16)) 4
-765b: LEA Reg R8, Address (AddrPlus (FromReg RDX) (AddrImm 4)) 4
-765f: MOV Reg RAX, Immediate 103079215112 10
+7653: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 8))) 4
+7657: LEA Reg R9, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 16))) 4
+765b: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 4))) 4
+765f: MOVABS Reg RAX, Immediate 103079215112 10
 7669: MOV Reg RDI, Reg RBP 3
 766c: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RDX 5
 7671: MOVAPS Address (SizeDir 128 (AddrPlus (FromReg RSP) (AddrImm 16))), Reg XMM0 5
@@ -40,7 +40,7 @@ Number of edges: 54
 768d: CALL write_split_record (external)
 7692: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
 7697: XOR Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-76a0: JNZ 76eb (resolved immediate)
+76a0: JNE 76eb (resolved immediate)
   |
   `- 76a2,76eb
 76a2: ADD Reg RSP, Immediate 48 4
@@ -57,7 +57,7 @@ Number of edges: 54
 76be: MOV Reg ESI, Reg R12D 3
 76c1: CALL xc_strerror (external)
 76c6: MOV Reg ECX, Address (SizeDir 32 (FromReg RBX)) 2
-76c8: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 105921)) 7
+76c8: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 105921))) 7
 76cf: MOV Reg R8, Reg RAX 3
 76d2: MOV Reg ESI, Immediate 1 5
 76d7: XOR Reg EAX, Reg EAX 2

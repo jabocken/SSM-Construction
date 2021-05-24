@@ -17,7 +17,7 @@ Number of edges: 45
 4dbf: MOV Reg RBX, Reg R12 3
 4dc2: SUB Reg RSP, Immediate 8 4
 4dc6: TEST Reg R12D, Reg R12D 3
-4dc9: JZ 4e10 (resolved immediate)
+4dc9: JE 4e10 (resolved immediate)
   |
   `- 4dcb,4e10
 4dcb: NOP  5
@@ -29,13 +29,13 @@ Number of edges: 45
 4de0: JS 4df8 (resolved immediate)
   |
   `- 4de2,4df8
-4de2: JZ 4e02 (resolved immediate)
+4de2: JE 4e02 (resolved immediate)
   |
   `- 4de4,4e02
 4de4: MOVSXD Reg RDX, Reg EAX 3
 4de7: ADD Reg RBP, Reg RDX 3
 4dea: SUB Reg EBX, Reg EAX 2
-4dec: JZ 4e10 (resolved immediate)
+4dec: JE 4e10 (resolved immediate)
   |
   `- 4dee,4e10
 4dee: MOV Reg R12D, Reg EBX 3
@@ -44,7 +44,7 @@ Number of edges: 45
   `- 4dd0
 4df8: CALL __errno_location (external)
 4dfd: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 4 3
-4e00: JZ 4dd0 (resolved immediate)
+4e00: JE 4dd0 (resolved immediate)
   |
   `- 4dd0,4e02
 4e02: ADD Reg RSP, Immediate 8 4

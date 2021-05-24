@@ -20,16 +20,16 @@ Number of edges: 210
 12277: JAE 124a1 (resolved immediate)
   |
   `- 1227d,124a1
-1227d: MOVZX Reg R15D, Address (SizeDir 8 (AddrPlus (FromReg RSI) (FromReg RBP))) 5
+1227d: MOVZX Reg R15D, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrTimes (AddrImm 1) (FromReg RBP)))) 5
 12282: MOV Reg RAX, Reg RSI 3
 12285: MOV Reg R10, Reg RCX 3
 12288: CMP Reg R15B, Immediate 128 4
-1228c: JZ 12390 (resolved immediate)
+1228c: JE 12390 (resolved immediate)
   |
   `- 12292,12390
 12292: TEST Reg R15B, Reg R15B 3
-12295: LEA Reg R9, Address (AddrPlus (FromReg RBP) (AddrImm 1)) 4
-12299: JZ 12340 (resolved immediate)
+12295: LEA Reg R9, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 1))) 4
+12299: JE 12340 (resolved immediate)
   |
   `- 1229f,12340
 1229f: XOR Reg EBX, Reg EBX 2
@@ -37,28 +37,28 @@ Number of edges: 210
   |
   `- 12303
 122a8: MOV Reg ECX, Reg R13D 3
-122ab: LEA Reg RBP, Address (AddrPlus (FromReg RCX) (FromReg R14)) 4
+122ab: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RCX) (AddrTimes (AddrImm 1) (FromReg R14)))) 4
 122af: CMP Reg RBP, Reg RDX 3
 122b2: JA 123e0 (resolved immediate)
   |
   `- 122b8,123e0
-122b8: LEA Reg R11D, Address (AddrPlus (FromReg RBX) (FromReg R13)) 4
+122b8: LEA Reg R11D, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrTimes (AddrImm 1) (FromReg R13)))) 4
 122bc: CMP Reg R11D, Immediate 4096 7
 122c3: JA 123e0 (resolved immediate)
   |
   `- 122c9,123e0
 122c9: ADD Reg RBX, Reg R8 3
 122cc: CMP Reg R13D, Immediate 8 4
-122d0: LEA Reg RSI, Address (AddrPlus (FromReg RAX) (FromReg R14)) 4
+122d0: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 1) (FromReg R14)))) 4
 122d4: JAE 12358 (resolved immediate)
   |
   `- 122da,12358
 122da: TEST Reg R13B, Immediate 4 4
-122de: JNZ 12490 (resolved immediate)
+122de: JNE 12490 (resolved immediate)
   |
   `- 122e4,12490
 122e4: TEST Reg R13D, Reg R13D 3
-122e7: JZ 122ee (resolved immediate)
+122e7: JE 122ee (resolved immediate)
   |
   `- 122e9,122ee
 122e9: MOVZX Reg ECX, Address (SizeDir 8 (FromReg RSI)) 3
@@ -72,16 +72,16 @@ Number of edges: 210
 122fc: JAE 12330 (resolved immediate)
   |
   `- 122fe,12330
-122fe: MOVZX Reg R15D, Address (SizeDir 8 (AddrPlus (FromReg RAX) (FromReg RBP))) 5
+122fe: MOVZX Reg R15D, Address (SizeDir 8 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 1) (FromReg RBP)))) 5
 12303: MOV Reg R13D, Reg R15D 3
 12306: AND Reg R13D, Immediate 127 4
 1230a: SHL Reg R13D, Immediate 2 4
 1230e: TEST Reg R13D, Reg R13D 3
-12311: JZ 12438 (resolved immediate)
+12311: JE 12438 (resolved immediate)
   |
   `- 12317,12438
 12317: TEST Reg R15B, Reg R15B 3
-1231a: LEA Reg R14, Address (AddrPlus (FromReg RBP) (AddrImm 1)) 4
+1231a: LEA Reg R14, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 1))) 4
 1231e: JNS 122a8 (resolved immediate)
   |
   `- 122a8,12320
@@ -91,7 +91,7 @@ Number of edges: 210
   |
   `- 122f1
 12330: CMP Reg EBX, Immediate 4096 6
-12336: JNZ 12503 (resolved immediate)
+12336: JNE 12503 (resolved immediate)
   |
   `- 1233c,12503
 1233c: MOV Reg R9, Reg RBP 3
@@ -110,26 +110,26 @@ Number of edges: 210
   `- 
 12358: MOV Reg RDI, Address (SizeDir 64 (FromReg RSI)) 3
 1235b: MOV Address (SizeDir 64 (FromReg RBX)), Reg RDI 3
-1235e: MOV Reg RDI, Address (SizeDir 64 (AddrMinus (AddrPlus (FromReg RSI) (FromReg RCX)) (AddrImm 8))) 5
-12363: MOV Address (SizeDir 64 (AddrMinus (AddrPlus (FromReg RBX) (FromReg RCX)) (AddrImm 8))), Reg RDI 5
-12368: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 8)) 4
+1235e: MOV Reg RDI, Address (SizeDir 64 (AddrMinus (AddrPlus (FromReg RSI) (AddrTimes (AddrImm 1) (FromReg RCX))) (AddrImm 8))) 5
+12363: MOV Address (SizeDir 64 (AddrMinus (AddrPlus (FromReg RBX) (AddrTimes (AddrImm 1) (FromReg RCX))) (AddrImm 8))), Reg RDI 5
+12368: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
 1236c: AND Reg RDI, Immediate 18446744073709551608 4
 12370: SUB Reg RBX, Reg RDI 3
 12373: SUB Reg RSI, Reg RBX 3
 12376: ADD Reg EBX, Reg R13D 3
 12379: SHR Reg EBX, Immediate 3 3
 1237c: MOV Reg ECX, Reg EBX 2
-1237e: REP MOVSQ  3
+1237e: REP MOVSQ Address (SizeDir 64 (FromReg RDI)), Address (SizeDir 64 (FromReg RSI)) 3
 12381: JMP 122ee (resolved immediate)
   |
   `- 122ee
-12390: LEA Reg R9, Address (AddrPlus (FromReg RBP) (AddrImm 4097)) 7
+12390: LEA Reg R9, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 4097))) 7
 12397: CMP Reg R9, Reg RDX 3
 1239a: JA 124df (resolved immediate)
   |
   `- 123a0,124df
-123a0: LEA Reg RSI, Address (AddrPlus (AddrPlus (FromReg RSI) (FromReg RBP)) (AddrImm 1)) 5
-123a5: LEA Reg RDI, Address (AddrPlus (FromReg R8) (AddrImm 8)) 4
+123a0: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RSI) (AddrTimes (AddrImm 1) (FromReg RBP))) (AddrImm 1))) 5
+123a5: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R8) (AddrImm 8))) 4
 123a9: MOV Reg RAX, Address (SizeDir 64 (FromReg RSI)) 3
 123ac: AND Reg RDI, Immediate 18446744073709551608 4
 123b0: MOV Address (SizeDir 64 (FromReg R8)), Reg RAX 3
@@ -140,7 +140,7 @@ Number of edges: 210
 123c7: ADD Reg R8D, Immediate 4096 7
 123ce: SHR Reg R8D, Immediate 3 4
 123d2: MOV Reg ECX, Reg R8D 3
-123d5: REP MOVSQ  3
+123d5: REP MOVSQ Address (SizeDir 64 (FromReg RDI)), Address (SizeDir 64 (FromReg RSI)) 3
 123d8: JMP 12340 (resolved immediate)
   |
   `- 12340
@@ -157,9 +157,9 @@ Number of edges: 210
 12403: XOR Reg EAX, Reg EAX 2
 12405: MOV Reg ESI, Immediate 1 5
 1240a: MOV Reg R9, Reg RDX 3
-1240d: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 73620)) 7
+1240d: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 73620))) 7
 12414: CALL xc_report_error (external)
-12419: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R15D 4
+12419: MOV Address (SizeDir 32 (FromReg RBP)), Reg R15D 4
 1241d: POP Reg RAX 1
 1241e: POP Reg RDX 1
 1241f: MOV Reg EAX, Immediate 4294967295 5
@@ -187,9 +187,9 @@ Number of edges: 210
 12462: MOV Reg RDI, Reg R12 3
 12465: XOR Reg EAX, Reg EAX 2
 12467: MOV Reg R9, Reg RDX 3
-1246a: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 73415)) 7
+1246a: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 73415))) 7
 12471: CALL xc_report_error (external)
-12476: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Reg R14D 4
+12476: MOV Address (SizeDir 32 (FromReg R13)), Reg R14D 4
 1247a: MOV Reg EAX, Immediate 4294967295 5
 1247f: POP Reg RCX 1
 12480: POP Reg RSI 1
@@ -205,8 +205,8 @@ Number of edges: 210
   `- 
 12490: MOV Reg EDI, Address (SizeDir 32 (FromReg RSI)) 2
 12492: MOV Address (SizeDir 32 (FromReg RBX)), Reg EDI 2
-12494: MOV Reg ESI, Address (SizeDir 32 (AddrMinus (AddrPlus (FromReg RSI) (FromReg RCX)) (AddrImm 4))) 4
-12498: MOV Address (SizeDir 32 (AddrMinus (AddrPlus (FromReg RBX) (FromReg RCX)) (AddrImm 4))), Reg ESI 4
+12494: MOV Reg ESI, Address (SizeDir 32 (AddrMinus (AddrPlus (FromReg RSI) (AddrTimes (AddrImm 1) (FromReg RCX))) (AddrImm 4))) 4
+12498: MOV Address (SizeDir 32 (AddrMinus (AddrPlus (FromReg RBX) (AddrTimes (AddrImm 1) (FromReg RCX))) (AddrImm 4))), Reg ESI 4
 1249c: JMP 122ee (resolved immediate)
   |
   `- 122ee
@@ -217,7 +217,7 @@ Number of edges: 210
 124b3: MOV Reg RBX, Reg RAX 3
 124b6: MOV Reg RCX, Reg RBP 3
 124b9: MOV Reg R8, Reg RDX 3
-124bc: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 73165)) 7
+124bc: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 73165))) 7
 124c3: XOR Reg EAX, Reg EAX 2
 124c5: MOV Reg ESI, Immediate 1 5
 124ca: MOV Reg RDI, Reg R12 3
@@ -234,7 +234,7 @@ Number of edges: 210
 124f1: MOV Reg R13D, Address (SizeDir 32 (FromReg RAX)) 3
 124f4: MOV Reg RCX, Reg RBP 3
 124f7: MOV Reg R8, Reg RDX 3
-124fa: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 73183)) 7
+124fa: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 73183))) 7
 12501: JMP 124c3 (resolved immediate)
   |
   `- 124c3
@@ -249,9 +249,9 @@ Number of edges: 210
 12520: MOV Reg ESI, Immediate 1 5
 12525: MOV Reg RDI, Reg R12 3
 12528: MOV Reg R8, Reg RDX 3
-1252b: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 73446)) 7
+1252b: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 73446))) 7
 12532: CALL xc_report_error (external)
-12537: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Reg R14D 4
+12537: MOV Address (SizeDir 32 (FromReg R13)), Reg R14D 4
 1253b: MOV Reg EAX, Immediate 4294967295 5
 12540: JMP 12345 (resolved immediate)
   |

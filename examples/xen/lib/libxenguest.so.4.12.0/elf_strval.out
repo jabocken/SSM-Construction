@@ -22,20 +22,20 @@ Number of edges: 39
 12c2b: MOV Reg RDI, Reg R12 3
 12c2e: CALL elf_access_unsigned (external)
 12c33: TEST Reg RAX, Reg RAX 3
-12c36: JZ 12c68 (resolved immediate)
+12c36: JE 12c68 (resolved immediate)
   |
   `- 12c38,12c68
 12c38: CMP Reg RBX, Immediate 4096 7
-12c3f: JZ 12c70 (resolved immediate)
+12c3f: JE 12c70 (resolved immediate)
   |
   `- 12c41,12c70
 12c41: ADD Reg RBX, Immediate 1 4
-12c45: LEA Reg RSI, Address (AddrPlus (FromReg RBX) (FromReg RBP)) 4
+12c45: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrTimes (AddrImm 1) (FromReg RBP)))) 4
 12c49: MOV Reg EDX, Immediate 1 5
 12c4e: MOV Reg RDI, Reg R12 3
 12c51: CALL elf_access_ok (external)
 12c56: TEST Reg AL, Reg AL 2
-12c58: JNZ 12c20 (resolved immediate)
+12c58: JNE 12c20 (resolved immediate)
   |
   `- 12c20,12c5a
 12c5a: XOR Reg EAX, Reg EAX 2
@@ -52,7 +52,7 @@ Number of edges: 39
 12c6f: RET  1
   |
   `- 
-12c70: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 71915)) 7
+12c70: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 71915))) 7
 12c77: MOV Reg RDI, Reg R12 3
 12c7a: CALL elf_mark_broken (external)
 12c7f: XOR Reg EAX, Reg EAX 2

@@ -21,11 +21,11 @@ Number of edges: 46
 19950: MOV Reg EBP, Reg ESI 2
 19952: CALL xc_map_foreign_range (external)
 19957: TEST Reg RAX, Reg RAX 3
-1995a: JZ 199c0 (resolved immediate)
+1995a: JE 199c0 (resolved immediate)
   |
   `- 1995c,199c0
-1995c: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 0))) 4
-19960: LEA Reg RDI, Address (AddrPlus (FromReg RAX) (AddrImm 8)) 4
+1995c: MOV Reg RDX, Address (SizeDir 64 (FromReg R13)) 4
+19960: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))) 4
 19964: MOV Reg RSI, Reg R13 3
 19967: AND Reg RDI, Immediate 18446744073709551608 4
 1996b: MOV Address (SizeDir 64 (FromReg RAX)), Reg RDX 3
@@ -37,7 +37,7 @@ Number of edges: 46
 19985: ADD Reg EDX, Immediate 4096 6
 1998b: SHR Reg EDX, Immediate 3 3
 1998e: MOV Reg ECX, Reg EDX 2
-19990: REP MOVSQ  3
+19990: REP MOVSQ Address (SizeDir 64 (FromReg RDI)), Address (SizeDir 64 (FromReg RSI)) 3
 19993: MOV Reg ESI, Immediate 4096 5
 19998: MOV Reg RDI, Reg RAX 3
 1999b: CALL munmap (external)

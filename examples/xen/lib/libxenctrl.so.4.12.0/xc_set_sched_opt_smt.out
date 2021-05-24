@@ -16,28 +16,28 @@ Number of edges: 81
 1dcc0: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 1dcc9: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 184))), Reg RAX 8
 1dcd1: XOR Reg EAX, Reg EAX 2
-1dcd3: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 48)) 5
+1dcd3: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))) 5
 1dcd8: MOV Reg RBP, Reg RSP 3
 1dcdb: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 64))), Reg ESI 4
 1dcdf: MOV Reg RSI, Reg RBP 3
 1dce2: MOV Address (SizeDir 64 (FromReg RSP)), Immediate 0 8
 1dcea: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Immediate 0 9
 1dcf3: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
-1dcf8: MOV Reg RAX, Immediate 77309411340 10
+1dcf8: MOVABS Reg RAX, Immediate 77309411340 10
 1dd02: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 3 8
 1dd0a: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Immediate 136 9
 1dd13: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))), Reg RAX 5
 1dd18: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))), Immediate 33 9
 1dd21: CALL xc__hypercall_bounce_pre (external)
 1dd26: TEST Reg EAX, Reg EAX 2
-1dd28: JNZ 1ddcb (resolved immediate)
+1dd28: JNE 1ddcb (resolved immediate)
   |
   `- 1dd2e,1ddcb
 1dd2e: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 1dd33: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1088))) 7
 1dd3a: MOV Reg ESI, Immediate 35 5
 1dd3f: TEST Reg RAX, Reg RAX 3
-1dd42: CMOVZ Reg RAX, Reg RBP 4
+1dd42: CMOVE Reg RAX, Reg RBP 4
 1dd46: MOV Reg RDX, Address (SizeDir 64 (FromReg RAX)) 3
 1dd49: CALL xencall1 (external)
 1dd4e: TEST Reg EAX, Reg EAX 2
@@ -48,12 +48,12 @@ Number of edges: 81
 1dd55: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 1dd5a: MOV Reg RDI, Reg RBX 3
 1dd5d: TEST Reg RSI, Reg RSI 3
-1dd60: CMOVZ Reg RSI, Reg RBP 4
+1dd60: CMOVE Reg RSI, Reg RBP 4
 1dd64: CALL xc__hypercall_bounce_post (external)
 1dd69: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 184))) 8
 1dd71: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 1dd7a: MOV Reg EAX, Reg R12D 3
-1dd7d: JNZ 1de0c (resolved immediate)
+1dd7d: JNE 1de0c (resolved immediate)
   |
   `- 1dd83,1de0c
 1dd83: ADD Reg RSP, Immediate 200 7
@@ -67,17 +67,17 @@ Number of edges: 81
 1dd98: CALL __errno_location (external)
 1dd9d: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 13 3
 1dda0: MOV Reg R13, Reg RAX 3
-1dda3: JNZ 1dd55 (resolved immediate)
+1dda3: JNE 1dd55 (resolved immediate)
   |
   `- 1dd55,1dda5
 1dda5: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
-1dda9: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 29800)) 7
+1dda9: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 29800))) 7
 1ddb0: XOR Reg ECX, Reg ECX 2
 1ddb2: MOV Reg EDX, Immediate 3 5
 1ddb7: MOV Reg RDI, Reg RBX 3
 1ddba: XOR Reg EAX, Reg EAX 2
 1ddbc: CALL xc_report (external)
-1ddc1: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Immediate 13 8
+1ddc1: MOV Address (SizeDir 32 (FromReg R13)), Immediate 13 8
 1ddc9: JMP 1dd55 (resolved immediate)
   |
   `- 1dd55
@@ -87,14 +87,14 @@ Number of edges: 81
 1ddd6: MOV Reg RDI, Reg RBX 3
 1ddd9: MOV Reg ESI, Reg R12D 3
 1dddc: CALL xc_strerror (external)
-1dde1: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
-1dde4: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 29685)) 7
+1dde1: MOV Reg ECX, Address (SizeDir 32 (FromReg RBP)) 3
+1dde4: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 29685))) 7
 1ddeb: MOV Reg R8, Reg RAX 3
 1ddee: MOV Reg ESI, Immediate 1 5
 1ddf3: MOV Reg RDI, Reg RBX 3
 1ddf6: XOR Reg EAX, Reg EAX 2
 1ddf8: CALL xc_report_error (external)
-1ddfd: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R12D 4
+1ddfd: MOV Address (SizeDir 32 (FromReg RBP)), Reg R12D 4
 1de01: MOV Reg R12D, Immediate 4294967295 6
 1de07: JMP 1dd69 (resolved immediate)
   |

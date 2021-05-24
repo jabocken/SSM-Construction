@@ -16,12 +16,12 @@ Number of edges: 29
 144e: AND Reg EBX, Reg EDX 2
 1450: OR Reg EBX, Reg ESI 2
 1452: TEST Reg BL, Immediate 4 3
-1455: JZ 145e (resolved immediate)
+1455: JE 145e (resolved immediate)
   |
   `- 1457,145e
 1457: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 40))) 3
 145a: TEST Reg ECX, Reg ECX 2
-145c: JNZ 1470 (resolved immediate)
+145c: JNE 1470 (resolved immediate)
   |
   `- 145e,1470
 145e: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 36))), Reg EBX 3
@@ -32,8 +32,8 @@ Number of edges: 29
   |
   `- 
 1470: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 24))) 4
-1474: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 686)) 7
-147b: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 610)) 7
+1474: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 686))) 7
+147b: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 610))) 7
 1482: MOV Reg ESI, Immediate 1 5
 1487: XOR Reg EAX, Reg EAX 2
 1489: CALL __fprintf_chk (external)

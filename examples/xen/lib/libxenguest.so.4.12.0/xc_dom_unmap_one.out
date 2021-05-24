@@ -12,7 +12,7 @@ Number of edges: 54
 17403: PUSH Reg RBX 1
 17404: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 1144))) 7
 1740b: TEST Reg RBX, Reg RBX 3
-1740e: JZ 1743b (resolved immediate)
+1740e: JE 1743b (resolved immediate)
   |
   `- 17410,1743b
 17410: XOR Reg EBP, Reg EBP 2
@@ -34,7 +34,7 @@ Number of edges: 54
 17430: MOV Reg RAX, Address (SizeDir 64 (FromReg RBX)) 3
 17433: MOV Reg RBP, Reg RBX 3
 17436: TEST Reg RAX, Reg RAX 3
-17439: JNZ 17418 (resolved immediate)
+17439: JNE 17418 (resolved immediate)
   |
   `- 17418,1743b
 1743b: POP Reg RBX 1
@@ -42,8 +42,8 @@ Number of edges: 54
 1743d: POP Reg R12 2
 1743f: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 1224))) 7
 17446: MOV Reg RCX, Reg RSI 3
-17449: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 59456)) 7
-17450: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 58585)) 7
+17449: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 59456))) 7
+17450: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 58585))) 7
 17457: XOR Reg EAX, Reg EAX 2
 17459: JMP xc_dom_printf (jmp to external function)
   |
@@ -56,11 +56,11 @@ Number of edges: 54
 17474: MOV Reg RSI, Reg RDX 3
 17477: CALL munmap (external)
 1747c: TEST Reg RBP, Reg RBP 3
-1747f: JZ 174b0 (resolved immediate)
+1747f: JE 174b0 (resolved immediate)
   |
   `- 17481,174b0
 17481: MOV Reg RAX, Address (SizeDir 64 (FromReg RBX)) 3
-17484: MOV Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg RAX 4
+17484: MOV Address (SizeDir 64 (FromReg RBP)), Reg RAX 4
 17488: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
 1748c: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
 17490: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg R12) (AddrImm 1232))) 8

@@ -27,8 +27,8 @@ b056: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))), Reg EAX 4
 b05a: JS b0b0 (resolved immediate)
   |
   `- b05c,b0b0
-b05c: LEA Reg RDX, Address (AddrPlus (FromReg RSP) (AddrImm 4)) 5
-b061: LEA Reg RCX, Address (AddrMinus (FromReg RIP) (AddrImm 6088)) 7
+b05c: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 4))) 5
+b061: LEA Reg RCX, Address (SizeDir 64 (AddrMinus (FromReg RIP) (AddrImm 6088))) 7
 b068: MOV Reg ESI, Reg EBX 2
 b06a: MOV Reg RDI, Reg RBP 3
 b06d: CALL xc_domain_dumpcore_via_callback (external)
@@ -42,7 +42,7 @@ b089: CALL close (external)
 b08e: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 b093: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 b09c: MOV Reg EAX, Reg EBX 2
-b09e: JNZ b0ec (resolved immediate)
+b09e: JNE b0ec (resolved immediate)
   |
   `- b0a0,b0ec
 b0a0: ADD Reg RSP, Immediate 24 4
@@ -59,15 +59,15 @@ b0b7: MOV Reg R13, Reg RAX 3
 b0ba: MOV Reg RDI, Reg RBP 3
 b0bd: MOV Reg ESI, Reg EBX 2
 b0bf: CALL xc_strerror (external)
-b0c4: MOV Reg R8D, Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))) 4
-b0c8: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 106289)) 7
+b0c4: MOV Reg R8D, Address (SizeDir 32 (FromReg R13)) 4
+b0c8: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 106289))) 7
 b0cf: MOV Reg R9, Reg RAX 3
 b0d2: MOV Reg RCX, Reg R12 3
 b0d5: MOV Reg ESI, Immediate 1 5
 b0da: MOV Reg RDI, Reg RBP 3
 b0dd: XOR Reg EAX, Reg EAX 2
 b0df: CALL xc_report_error (external)
-b0e4: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Reg EBX 4
+b0e4: MOV Address (SizeDir 32 (FromReg R13)), Reg EBX 4
 b0e8: NEG Reg EBX 2
 b0ea: JMP b08e (resolved immediate)
   |

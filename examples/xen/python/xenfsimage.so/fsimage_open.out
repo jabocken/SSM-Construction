@@ -16,17 +16,17 @@ Number of edges: 80
 14cf: XOR Reg EAX, Reg EAX 2
 14d1: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 0 9
 14da: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Immediate 0 9
-14e3: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+14e3: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 14e8: PUSH Reg RAX 1
-14e9: LEA Reg R9, Address (AddrPlus (FromReg RSP) (AddrImm 32)) 5
-14ee: LEA Reg R8, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
-14f3: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2100966)) 7
-14fa: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 206)) 7
+14e9: LEA Reg R9, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))) 5
+14ee: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
+14f3: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2100966))) 7
+14fa: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 206))) 7
 1501: MOV Reg EAX, Immediate 0 5
 1506: CALL PyArg_ParseTupleAndKeywords (external)
 150b: ADD Reg RSP, Immediate 16 4
 150f: TEST Reg EAX, Reg EAX 2
-1511: JZ 1581 (resolved immediate)
+1511: JE 1581 (resolved immediate)
   |
   `- 1513,1581
 1513: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2099918))) 7
@@ -37,7 +37,7 @@ Number of edges: 80
 1529: CALL PyObject_Init (external)
 152e: MOV Reg RBX, Reg RAX 3
 1531: TEST Reg RAX, Reg RAX 3
-1534: JZ 1588 (resolved immediate)
+1534: JE 1588 (resolved immediate)
   |
   `- 1536,1588
 1536: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
@@ -46,13 +46,13 @@ Number of edges: 80
 1544: CALL fsi_open_fsimage (external)
 1549: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))), Reg RAX 4
 154d: TEST Reg RAX, Reg RAX 3
-1550: JZ 156b (resolved immediate)
+1550: JE 156b (resolved immediate)
   |
   `- 1552,156b
 1552: MOV Reg RAX, Reg RBX 3
 1555: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 155a: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-1563: JNZ 158f (resolved immediate)
+1563: JNE 158f (resolved immediate)
   |
   `- 1565,158f
 1565: ADD Reg RSP, Immediate 32 4

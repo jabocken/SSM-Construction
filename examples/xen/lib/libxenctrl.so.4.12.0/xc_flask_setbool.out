@@ -16,7 +16,7 @@ Number of edges: 72
 187dc: MOV Reg RDI, Reg RSI 3
 187df: MOV Reg RBP, Reg RSI 3
 187e2: SUB Reg RSP, Immediate 104 4
-187e6: LEA Reg R12, Address (AddrPlus (FromReg RSP) (AddrImm 48)) 5
+187e6: LEA Reg R12, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))) 5
 187eb: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 72))), Reg RSI 5
 187f0: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))), Immediate 0 9
 187f9: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
@@ -30,7 +30,7 @@ Number of edges: 72
 18825: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 80))), Reg RAX 5
 1882a: CALL xc__hypercall_bounce_pre (external)
 1882f: TEST Reg EAX, Reg EAX 2
-18831: JNZ 188aa (resolved immediate)
+18831: JNE 188aa (resolved immediate)
   |
   `- 18833,188aa
 18833: MOV Reg RDI, Reg RBP 3
@@ -44,7 +44,7 @@ Number of edges: 72
 1885d: MOV Reg RSI, Reg RSP 3
 18860: MOV Reg RDI, Reg RBX 3
 18863: TEST Reg RAX, Reg RAX 3
-18866: CMOVZ Reg RAX, Reg R12 4
+18866: CMOVE Reg RAX, Reg R12 4
 1886a: MOV Reg RAX, Address (SizeDir 64 (FromReg RAX)) 3
 1886d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
 18872: CALL xc_flask_op (external)
@@ -52,12 +52,12 @@ Number of edges: 72
 1887c: MOV Reg RDI, Reg RBX 3
 1887f: MOV Reg EBP, Reg EAX 2
 18881: TEST Reg RSI, Reg RSI 3
-18884: CMOVZ Reg RSI, Reg R12 4
+18884: CMOVE Reg RSI, Reg R12 4
 18888: CALL xc__hypercall_bounce_post (external)
 1888d: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 88))) 5
 18892: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 1889b: MOV Reg EAX, Reg EBP 2
-1889d: JNZ 188e7 (resolved immediate)
+1889d: JNE 188e7 (resolved immediate)
   |
   `- 1889f,188e7
 1889f: ADD Reg RSP, Immediate 104 4
@@ -74,14 +74,14 @@ Number of edges: 72
 188b5: MOV Reg RDI, Reg RBX 3
 188b8: MOV Reg ESI, Reg R12D 3
 188bb: CALL xc_strerror (external)
-188c0: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
-188c3: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 54134)) 7
+188c0: MOV Reg ECX, Address (SizeDir 32 (FromReg RBP)) 3
+188c3: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 54134))) 7
 188ca: MOV Reg R8, Reg RAX 3
 188cd: MOV Reg ESI, Immediate 1 5
 188d2: MOV Reg RDI, Reg RBX 3
 188d5: XOR Reg EAX, Reg EAX 2
 188d7: CALL xc_report_error (external)
-188dc: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R12D 4
+188dc: MOV Address (SizeDir 32 (FromReg RBP)), Reg R12D 4
 188e0: MOV Reg EBP, Immediate 4294967295 5
 188e5: JMP 1888d (resolved immediate)
   |

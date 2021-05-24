@@ -9,13 +9,13 @@ Number of edges: 8
 
 22200: XOR Reg EAX, Reg EAX 2
 22202: NOP  6
-22208: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RDX) (FromReg RAX))) 3
-2220b: MOV Address (SizeDir 32 (AddrPlus (FromReg RSI) (FromReg RAX))), Reg ECX 3
+22208: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 1) (FromReg RAX)))) 3
+2220b: MOV Address (SizeDir 32 (AddrPlus (FromReg RSI) (AddrTimes (AddrImm 1) (FromReg RAX)))), Reg ECX 3
 2220e: ADD Reg RAX, Immediate 4 4
 22212: CMP Reg RAX, Immediate 32 4
-22216: JNZ 22208 (resolved immediate)
+22216: JNE 22208 (resolved immediate)
   |
   `- 22208,22218
-22218: REPZ RET  2
+22218: RET  2
   |
   `- 

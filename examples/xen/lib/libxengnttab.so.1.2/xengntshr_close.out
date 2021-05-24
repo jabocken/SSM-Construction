@@ -9,7 +9,7 @@ Number of edges: 22
 1c90 (True): 1362
 
 1350: TEST Reg RDI, Reg RDI 3
-1353: JZ 1388 (resolved immediate)
+1353: JE 1388 (resolved immediate)
   |
   `- 1355,1388
 1355: PUSH Reg RBX 1
@@ -34,8 +34,8 @@ Number of edges: 22
   |
   `- 
 1420: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 16))) 3
-1423: CMP Reg EDI, Immediate 4294967295 3
-1426: JZ 1430 (resolved immediate)
+1423: CMP Reg EDI, Immediate 18446744073709551615 3
+1426: JE 1430 (resolved immediate)
   |
   `- 1428,1430
 1428: JMP close (jmp to external function)

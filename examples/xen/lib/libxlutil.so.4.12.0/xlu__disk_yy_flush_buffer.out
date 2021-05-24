@@ -8,7 +8,7 @@ Number of edges: 32
 6db0 (False): 0
 
 6db0: TEST Reg RDI, Reg RDI 3
-6db3: JZ 6df8 (resolved immediate)
+6db3: JE 6df8 (resolved immediate)
   |
   `- 6db5,6df8
 6db5: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
@@ -22,16 +22,16 @@ Number of edges: 32
 6dde: MOV Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))), Reg RAX 4
 6de2: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 40))) 4
 6de6: TEST Reg RAX, Reg RAX 3
-6de9: JZ 6df8 (resolved immediate)
+6de9: JE 6df8 (resolved immediate)
   |
   `- 6deb,6df8
 6deb: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 24))) 4
-6def: LEA Reg RAX, Address (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX))) 4
+6def: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX)))) 4
 6df3: CMP Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
-6df6: JZ 6e00 (resolved immediate)
+6df6: JE 6e00 (resolved immediate)
   |
   `- 6df8,6e00
-6df8: REPZ RET  2
+6df8: RET  2
   |
   `- 
 6e00: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 32))) 4

@@ -20,7 +20,7 @@ Number of edges: 433
 1f68: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 72))) 3
 1f6b: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 56))) 4
 1f6f: SHL Reg EBX, Reg CL 2
-1f71: LEA Reg EDI, Address (AddrMinus (FromReg RBX) (AddrImm 1)) 3
+1f71: LEA Reg EDI, Address (SizeDir 32 (AddrMinus (FromReg RBX) (AddrImm 1))) 3
 1f74: AND Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 4))) 3
 1f77: MOVSXD Reg RAX, Reg EDX 3
 1f7a: SUB Reg EBX, Reg EDI 2
@@ -41,20 +41,20 @@ Number of edges: 433
 1fa5: MFENCE  3
 1fa8: TEST Address (SizeDir 8 (AddrPlus (FromReg R13) (AddrImm 28))), Immediate 1 5
 1fad: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 8))) 4
-1fb1: JZ 1fe0 (resolved immediate)
+1fb1: JE 1fe0 (resolved immediate)
   |
   `- 1fb3,1fe0
-1fb3: LEA Reg RDX, Address (AddrPlus (FromReg RAX) (AddrImm 23)) 4
+1fb3: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 23))) 4
 1fb7: MOVZX Reg EAX, Address (SizeDir 8 (FromReg RDX)) 3
 1fba: MOV Reg ESI, Reg EAX 2
 1fbc: MOV Reg ECX, Reg EAX 2
 1fbe: AND Reg ESI, Immediate 4294967294 3
 1fc1: LOCK CMPXCHG Address (SizeDir 8 (FromReg RDX)), Reg SIL 5
-1fc6: JNZ 1fba (resolved immediate)
+1fc6: JNE 1fba (resolved immediate)
   |
   `- 1fba,1fc8
 1fc8: AND Reg ECX, Immediate 1 3
-1fcb: JNZ 1ff0 (resolved immediate)
+1fcb: JNE 1ff0 (resolved immediate)
   |
   `- 1fcd,1ff0
 1fcd: MOV Reg EAX, Reg R12D 3
@@ -66,7 +66,7 @@ Number of edges: 433
 1fda: RET  1
   |
   `- 
-1fe0: LEA Reg RDX, Address (AddrPlus (FromReg RAX) (AddrImm 22)) 4
+1fe0: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 22))) 4
 1fe4: JMP 1fb7 (resolved immediate)
   |
   `- 1fb7
@@ -74,7 +74,7 @@ Number of edges: 433
 1ff4: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 16))) 4
 1ff8: CALL xenevtchn_notify (external)
 1ffd: TEST Reg EAX, Reg EAX 2
-1fff: JZ 1fcd (resolved immediate)
+1fff: JE 1fcd (resolved immediate)
   |
   `- 2001,1fcd
 2001: MOV Reg EAX, Immediate 4294967295 5
@@ -83,7 +83,7 @@ Number of edges: 433
   `- 1fd0
 2010: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 64))) 4
 2014: MOV Reg RDX, Reg R12 3
-2017: LEA Reg RSI, Address (AddrPlus (AddrPlus (FromReg RBP) (FromReg RBX)) (AddrImm 0)) 5
+2017: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrTimes (AddrImm 1) (FromReg RBX)))) 5
 201c: SUB Reg RDX, Reg RBX 3
 201f: CALL memcpy (external)
 2024: JMP 1f9d (resolved immediate)
@@ -99,7 +99,7 @@ Number of edges: 433
 22de: MOV Reg RBP, Reg RDX 3
 22e1: CALL libxenvchan_is_open (external)
 22e6: TEST Reg EAX, Reg EAX 2
-22e8: JZ 2408 (resolved immediate)
+22e8: JE 2408 (resolved immediate)
   |
   `- 22ee,2408
 22ee: TEST Address (SizeDir 8 (AddrPlus (FromReg R14) (AddrImm 28))), Immediate 4 5
@@ -107,7 +107,7 @@ Number of edges: 433
 22f7: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg R14) (AddrImm 72))) 4
 22fb: MOV Reg ESI, Address (SizeDir 32 (FromReg RAX)) 2
 22fd: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 4))) 3
-2300: JZ 2420 (resolved immediate)
+2300: JE 2420 (resolved immediate)
   |
   `- 2306,2420
 2306: XOR Reg EBX, Reg EBX 2
@@ -116,12 +116,12 @@ Number of edges: 433
   |
   `- 23b2
 2318: TEST Reg RDI, Reg RDI 3
-231b: JZ 23e8 (resolved immediate)
+231b: JE 23e8 (resolved immediate)
   |
   `- 2321,23e8
 2321: XOR Reg EAX, Reg EAX 2
 2323: TEST Address (SizeDir 8 (AddrPlus (FromReg R14) (AddrImm 28))), Immediate 1 5
-2328: SETZ Reg AL 3
+2328: SETE Reg AL 3
 232b: ADD Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R14) (AddrImm 8))) 4
 232f: ADD Reg RAX, Immediate 22 4
 2333: LOCK OR Address (SizeDir 8 (FromReg RAX)), Immediate 2 4
@@ -149,10 +149,10 @@ Number of edges: 433
 236b: MOV Reg EDX, Reg EBP 2
 236d: SUB Reg EDX, Reg EBX 2
 236f: TEST Reg EDX, Reg EDX 2
-2371: JZ 2388 (resolved immediate)
+2371: JE 2388 (resolved immediate)
   |
   `- 2373,2388
-2373: LEA Reg RSI, Address (AddrPlus (AddrPlus (FromReg R13) (FromReg RBX)) (AddrImm 0)) 5
+2373: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrTimes (AddrImm 1) (FromReg RBX)))) 5
 2378: MOVSXD Reg RDX, Reg EDX 3
 237b: MOV Reg RDI, Reg R14 3
 237e: CALL do_send (internal)
@@ -161,13 +161,13 @@ Number of edges: 433
 2383: CDQE  2
 2385: ADD Reg RBX, Reg RAX 3
 2388: CMP Reg RBX, Reg RBP 3
-238b: JZ 23f6 (resolved immediate)
+238b: JE 23f6 (resolved immediate)
   |
   `- 238d,23f6
 238d: MOV Reg RDI, Reg R14 3
 2390: CALL libxenvchan_wait (external)
 2395: TEST Reg EAX, Reg EAX 2
-2397: JNZ 2408 (resolved immediate)
+2397: JNE 2408 (resolved immediate)
   |
   `- 2408
 23b2: MOV Reg EDX, Reg R12D 3
@@ -197,7 +197,7 @@ Number of edges: 433
   |
   `- 236b,23f1
 23f1: CMP Reg RBX, Reg RBP 3
-23f4: JNZ 238d (resolved immediate)
+23f4: JNE 238d (resolved immediate)
   |
   `- 238d,23f6
 23f6: MOV Reg EAX, Reg EBX 2
@@ -237,7 +237,7 @@ Number of edges: 433
   `- 2442,2483
 2442: XOR Reg EAX, Reg EAX 2
 2444: TEST Address (SizeDir 8 (AddrPlus (FromReg R14) (AddrImm 28))), Immediate 1 5
-2449: SETZ Reg AL 3
+2449: SETE Reg AL 3
 244c: ADD Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R14) (AddrImm 8))) 4
 2450: ADD Reg RAX, Immediate 22 4
 2454: LOCK OR Address (SizeDir 8 (FromReg RAX)), Immediate 2 4
@@ -261,7 +261,7 @@ Number of edges: 433
 2483: CMP Reg RBP, Reg RDX 3
 2486: CMOVBE Reg RDX, Reg RBP 4
 248a: TEST Reg RDX, Reg RDX 3
-248d: JZ 24ad (resolved immediate)
+248d: JE 24ad (resolved immediate)
   |
   `- 248f,24ad
 248f: POP Reg RBX 1
@@ -275,7 +275,7 @@ Number of edges: 433
   |
   `- 1f50
 24a8: TEST Reg RBP, Reg RBP 3
-24ab: JNZ 2442 (resolved immediate)
+24ab: JNE 2442 (resolved immediate)
   |
   `- 2442,24ad
 24ad: POP Reg RBX 1

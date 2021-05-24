@@ -11,36 +11,36 @@ Number of edges: 62
 12942: PUSH Reg RBP 1
 12943: MOV Reg RBP, Reg RCX 3
 12946: PUSH Reg RBX 1
-12947: LEA Reg RBX, Address (AddrPlus (FromReg RSI) (FromReg RDX)) 4
+12947: LEA Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrTimes (AddrImm 1) (FromReg RDX)))) 4
 1294b: MOV Reg RDX, Reg RCX 3
 1294e: MOVZX Reg R12D, Address (SizeDir 8 (AddrPlus (FromReg RDI) (AddrImm 17))) 5
 12953: MOV Reg RSI, Reg RBX 3
 12956: CALL elf_access_ok (external)
 1295b: XOR Reg EDX, Reg EDX 2
 1295d: TEST Reg AL, Reg AL 2
-1295f: JZ 12986 (resolved immediate)
+1295f: JE 12986 (resolved immediate)
   |
   `- 12961,12986
 12961: CMP Reg RBP, Immediate 2 4
-12965: JZ 129a8 (resolved immediate)
+12965: JE 129a8 (resolved immediate)
   |
   `- 12967,129a8
 12967: JBE 129c0 (resolved immediate)
   |
   `- 12969,129c0
 12969: CMP Reg RBP, Immediate 4 4
-1296d: JZ 12990 (resolved immediate)
+1296d: JE 12990 (resolved immediate)
   |
   `- 1296f,12990
 1296f: CMP Reg RBP, Immediate 8 4
-12973: JNZ 129d8 (resolved immediate)
+12973: JNE 129d8 (resolved immediate)
   |
   `- 12975,129d8
 12975: MOV Reg RDX, Address (SizeDir 64 (FromReg RBX)) 3
 12978: CMP Reg R12B, Immediate 1 4
 1297c: MOV Reg RAX, Reg RDX 3
 1297f: BSWAP Reg RAX 3
-12982: CMOVNZ Reg RDX, Reg RAX 4
+12982: CMOVNE Reg RDX, Reg RAX 4
 12986: POP Reg RBX 1
 12987: MOV Reg RAX, Reg RDX 3
 1298a: POP Reg RBP 1
@@ -54,7 +54,7 @@ Number of edges: 62
 12997: POP Reg RBP 1
 12998: MOV Reg EAX, Reg EDX 2
 1299a: BSWAP Reg EAX 2
-1299c: CMOVNZ Reg EDX, Reg EAX 3
+1299c: CMOVNE Reg EDX, Reg EAX 3
 1299f: MOV Reg RAX, Reg RDX 3
 129a2: POP Reg R12 2
 129a4: RET  1
@@ -62,7 +62,7 @@ Number of edges: 62
   `- 
 129a8: CMP Reg R12B, Immediate 1 4
 129ac: MOVZX Reg EDX, Address (SizeDir 16 (FromReg RBX)) 3
-129af: JZ 12986 (resolved immediate)
+129af: JE 12986 (resolved immediate)
   |
   `- 12986,129b1
 129b1: ROR Reg DX, Immediate 8 4
@@ -71,7 +71,7 @@ Number of edges: 62
   |
   `- 12986
 129c0: CMP Reg RBP, Immediate 1 4
-129c4: JNZ 129d8 (resolved immediate)
+129c4: JNE 129d8 (resolved immediate)
   |
   `- 129c6,129d8
 129c6: MOVZX Reg EDX, Address (SizeDir 8 (FromReg RBX)) 3

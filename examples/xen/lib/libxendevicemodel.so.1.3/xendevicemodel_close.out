@@ -13,14 +13,14 @@ Number of edges: 27
 15f2: XOR Reg EBP, Reg EBP 2
 15f4: SUB Reg RSP, Immediate 8 4
 15f8: TEST Reg RDI, Reg RDI 3
-15fb: JZ 162a (resolved immediate)
+15fb: JE 162a (resolved immediate)
   |
   `- 15fd,162a
 15fd: MOV Reg RBX, Reg RDI 3
 1600: CALL osdep_xendevicemodel_close (internal)
   |
   `- 2460
-1605: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 40)) 4
+1605: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 40))) 4
 1609: MOV Reg EBP, Reg EAX 2
 160b: CALL xentoolcore__deregister_active_handle (external)
 1610: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4

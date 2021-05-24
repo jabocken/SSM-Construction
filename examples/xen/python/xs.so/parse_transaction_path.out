@@ -27,7 +27,7 @@ Number of edges: 49
 237c: XOR Reg EAX, Reg EAX 2
 237e: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))) 4
 2382: TEST Reg RAX, Reg RAX 3
-2385: JZ 23c5 (resolved immediate)
+2385: JE 23c5 (resolved immediate)
   |
   `- 2387,23c5
 2387: MOV Reg R9, Reg RSI 3
@@ -35,17 +35,17 @@ Number of edges: 49
 238d: MOV Address (SizeDir 64 (FromReg RDX)), Reg RAX 3
 2390: MOV Reg RDX, Reg RSP 3
 2393: MOV Reg RCX, Reg R8 3
-2396: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 3919)) 7
+2396: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 3919))) 7
 239d: MOV Reg RDI, Reg R9 3
 23a0: MOV Reg EAX, Immediate 0 5
 23a5: CALL PyArg_ParseTuple (external)
 23aa: TEST Reg EAX, Reg EAX 2
-23ac: JNZ 23dd (resolved immediate)
+23ac: JNE 23dd (resolved immediate)
   |
   `- 23ae,23dd
 23ae: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 23b3: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-23bc: JNZ 23fa (resolved immediate)
+23bc: JNE 23fa (resolved immediate)
   |
   `- 23be,23fa
 23be: ADD Reg RSP, Immediate 24 4
@@ -67,7 +67,7 @@ Number of edges: 49
 23e2: MOV Reg ESI, Immediate 0 5
 23e7: MOV Reg RDI, Address (SizeDir 64 (FromReg RSP)) 4
 23eb: CALL strtoul (external)
-23f0: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg EAX 3
+23f0: MOV Address (SizeDir 32 (FromReg RBP)), Reg EAX 3
 23f3: MOV Reg EAX, Immediate 1 5
 23f8: JMP 23ae (resolved immediate)
   |

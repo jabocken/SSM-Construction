@@ -9,8 +9,8 @@ Number of edges: 24
 
 4c30: SUB Reg RSP, Immediate 8 4
 4c34: CALL xs_daemon_rundir (external)
-4c39: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 1388)) 7
-4c40: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2111033)) 7
+4c39: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 1388))) 7
+4c40: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2111033))) 7
 4c47: MOV Reg R9, Reg RAX 3
 4c4a: MOV Reg EDX, Immediate 1 5
 4c4f: XOR Reg EAX, Reg EAX 2
@@ -18,18 +18,18 @@ Number of edges: 24
 4c56: MOV Reg ESI, Immediate 4096 5
 4c5b: CALL __snprintf_chk (external)
 4c60: CMP Reg EAX, Immediate 4095 5
-4c65: LEA Reg RAX, Address (AddrPlus (FromReg RIP) (AddrImm 2110996)) 7
+4c65: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2110996))) 7
 4c6c: MOV Reg EDX, Immediate 0 5
 4c71: CMOVG Reg RAX, Reg RDX 4
 4c75: ADD Reg RSP, Immediate 8 4
 4c79: RET  1
   |
   `- 
-4cc0: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 1270)) 7
+4cc0: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 1270))) 7
 4cc7: SUB Reg RSP, Immediate 8 4
 4ccb: CALL getenv (external)
 4cd0: TEST Reg RAX, Reg RAX 3
-4cd3: JZ 4ce0 (resolved immediate)
+4cd3: JE 4ce0 (resolved immediate)
   |
   `- 4cd5,4ce0
 4cd5: ADD Reg RSP, Immediate 8 4

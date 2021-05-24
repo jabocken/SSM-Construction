@@ -17,7 +17,7 @@ Number of edges: 144
 2043: MOV Reg R12, Reg RDI 3
 2046: MOV Reg RBP, Reg RDX 3
 2049: SHL Reg EBX, Reg CL 2
-204b: LEA Reg ESI, Address (AddrMinus (FromReg RBX) (AddrImm 1)) 3
+204b: LEA Reg ESI, Address (SizeDir 32 (AddrMinus (FromReg RBX) (AddrImm 1))) 3
 204e: AND Reg ESI, Address (SizeDir 32 (FromReg RAX)) 2
 2050: MOVSXD Reg RAX, Reg EDX 3
 2053: SUB Reg EBX, Reg ESI 2
@@ -39,20 +39,20 @@ Number of edges: 144
 2080: MFENCE  3
 2083: TEST Address (SizeDir 8 (AddrPlus (FromReg R12) (AddrImm 28))), Immediate 1 6
 2089: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 8))) 5
-208e: JZ 20b8 (resolved immediate)
+208e: JE 20b8 (resolved immediate)
   |
   `- 2090,20b8
-2090: LEA Reg RDX, Address (AddrPlus (FromReg RAX) (AddrImm 23)) 4
+2090: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 23))) 4
 2094: MOVZX Reg EAX, Address (SizeDir 8 (FromReg RDX)) 3
 2097: MOV Reg ESI, Reg EAX 2
 2099: MOV Reg ECX, Reg EAX 2
 209b: AND Reg ESI, Immediate 4294967293 3
 209e: LOCK CMPXCHG Address (SizeDir 8 (FromReg RDX)), Reg SIL 5
-20a3: JNZ 2097 (resolved immediate)
+20a3: JNE 2097 (resolved immediate)
   |
   `- 2097,20a5
 20a5: AND Reg ECX, Immediate 2 3
-20a8: JNZ 20c0 (resolved immediate)
+20a8: JNE 20c0 (resolved immediate)
   |
   `- 20aa,20c0
 20aa: MOV Reg EAX, Reg EBP 2
@@ -62,7 +62,7 @@ Number of edges: 144
 20b0: RET  1
   |
   `- 
-20b8: LEA Reg RDX, Address (AddrPlus (FromReg RAX) (AddrImm 22)) 4
+20b8: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 22))) 4
 20bc: JMP 2094 (resolved immediate)
   |
   `- 2094
@@ -70,7 +70,7 @@ Number of edges: 144
 20c5: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 16))) 5
 20ca: CALL xenevtchn_notify (external)
 20cf: TEST Reg EAX, Reg EAX 2
-20d1: JZ 20aa (resolved immediate)
+20d1: JE 20aa (resolved immediate)
   |
   `- 20aa,20d3
 20d3: MOV Reg EAX, Immediate 4294967295 5
@@ -79,7 +79,7 @@ Number of edges: 144
   `- 20ac
 20e0: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 40))) 5
 20e5: MOV Reg RDX, Reg RBP 3
-20e8: LEA Reg RDI, Address (AddrPlus (FromReg RAX) (FromReg RBX)) 4
+20e8: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 1) (FromReg RBX)))) 4
 20ec: SUB Reg RDX, Reg RBX 3
 20ef: CALL memcpy (external)
 20f4: JMP 2076 (resolved immediate)
@@ -99,7 +99,7 @@ Number of edges: 144
   `- 2545
 24e0: XOR Reg EAX, Reg EAX 2
 24e2: TEST Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 28))), Immediate 1 4
-24e6: SETZ Reg AL 3
+24e6: SETE Reg AL 3
 24e9: ADD Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
 24ed: ADD Reg RAX, Immediate 22 4
 24f1: LOCK OR Address (SizeDir 8 (FromReg RAX)), Immediate 1 4
@@ -121,11 +121,11 @@ Number of edges: 144
 251a: MOV Reg RDI, Reg RBX 3
 251d: CALL libxenvchan_is_open (external)
 2522: TEST Reg EAX, Reg EAX 2
-2524: JZ 2590 (resolved immediate)
+2524: JE 2590 (resolved immediate)
   |
   `- 2526,2590
 2526: TEST Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 28))), Immediate 4 4
-252a: JZ 25a0 (resolved immediate)
+252a: JE 25a0 (resolved immediate)
   |
   `- 252c,25a0
 252c: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 48))) 3
@@ -138,7 +138,7 @@ Number of edges: 144
 2539: MOV Reg RDI, Reg RBX 3
 253c: CALL libxenvchan_wait (external)
 2541: TEST Reg EAX, Reg EAX 2
-2543: JNZ 2590 (resolved immediate)
+2543: JNE 2590 (resolved immediate)
   |
   `- 2590
 2545: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 32))) 4

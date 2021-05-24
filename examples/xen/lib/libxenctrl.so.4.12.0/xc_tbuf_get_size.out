@@ -17,19 +17,19 @@ Number of edges: 48
 1caba: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 136))), Reg RAX 8
 1cac2: XOR Reg EAX, Reg EAX 2
 1cac4: MOV Reg RSI, Reg RSP 3
-1cac7: MOV Reg RAX, Immediate 77309411330 10
+1cac7: MOVABS Reg RAX, Immediate 77309411330 10
 1cad1: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 8))), Immediate 0 8
 1cad9: MOV Address (SizeDir 64 (FromReg RSP)), Reg RAX 4
 1cadd: CALL xc_sysctl (external)
 1cae2: TEST Reg EAX, Reg EAX 2
 1cae4: MOV Reg EBX, Reg EAX 2
-1cae6: JZ 1cb10 (resolved immediate)
+1cae6: JE 1cb10 (resolved immediate)
   |
   `- 1cae8,1cb10
 1cae8: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 136))) 8
 1caf0: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 1caf9: MOV Reg EAX, Reg EBX 2
-1cafb: JNZ 1cb5e (resolved immediate)
+1cafb: JNE 1cb5e (resolved immediate)
   |
   `- 1cafd,1cb5e
 1cafd: ADD Reg RSP, Immediate 144 7
@@ -46,12 +46,12 @@ Number of edges: 48
 1cb23: MOV Reg RDI, Reg RBP 3
 1cb26: CALL xc_map_foreign_range (external)
 1cb2b: TEST Reg RAX, Reg RAX 3
-1cb2e: JZ 1cb38 (resolved immediate)
+1cb2e: JE 1cb38 (resolved immediate)
   |
   `- 1cb30,1cb38
 1cb30: MOVZX Reg EDX, Address (SizeDir 16 (FromReg RAX)) 3
 1cb33: TEST Reg DX, Reg DX 3
-1cb36: JNZ 1cb58 (resolved immediate)
+1cb36: JNE 1cb58 (resolved immediate)
   |
   `- 1cb38,1cb58
 1cb38: MOV Reg EBX, Immediate 4294967295 5

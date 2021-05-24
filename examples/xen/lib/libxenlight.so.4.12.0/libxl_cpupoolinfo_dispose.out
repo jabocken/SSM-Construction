@@ -8,14 +8,14 @@ Number of edges: 14
 7cd30 (False): 0
 
 7cd30: TEST Reg RDI, Reg RDI 3
-7cd33: JZ 7cd60 (resolved immediate)
+7cd33: JE 7cd60 (resolved immediate)
   |
   `- 7cd35,7cd60
 7cd35: PUSH Reg RBX 1
 7cd36: MOV Reg RBX, Reg RDI 3
 7cd39: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
 7cd3d: CALL free (external)
-7cd42: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 24)) 4
+7cd42: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
 7cd46: CALL libxl_bitmap_dispose (external)
 7cd4b: PXOR Reg XMM0, Reg XMM0 4
 7cd4f: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 32))), Immediate 0 8
@@ -25,6 +25,6 @@ Number of edges: 14
 7cd5f: RET  1
   |
   `- 
-7cd60: REPZ RET  2
+7cd60: RET  2
   |
   `- 

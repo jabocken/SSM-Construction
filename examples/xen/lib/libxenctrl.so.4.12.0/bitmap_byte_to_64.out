@@ -22,11 +22,11 @@ Number of edges: 31
 1ad0a: JLE 1ad30 (resolved immediate)
   |
   `- 1ad0c,1ad30
-1ad0c: LEA Reg ECX, Address (AddrPlus (FromReg RAX) (FromReg R10)) 4
+1ad0c: LEA Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 1) (FromReg R10)))) 4
 1ad10: SUB Reg EDX, Immediate 8 3
 1ad13: MOVSXD Reg RCX, Reg ECX 3
-1ad16: MOVZX Reg R8D, Address (SizeDir 8 (AddrPlus (FromReg RSI) (FromReg RCX))) 5
-1ad1b: LEA Reg ECX, Address (AddrPlus (AddrTimes (AddrImm 8) (FromReg RAX)) (AddrImm 0)) 7
+1ad16: MOVZX Reg R8D, Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrTimes (AddrImm 1) (FromReg RCX)))) 5
+1ad1b: LEA Reg ECX, Address (SizeDir 32 (AddrTimes (AddrImm 8) (FromReg RAX))) 7
 1ad22: ADD Reg EAX, Immediate 1 3
 1ad25: SHL Reg R8, Reg CL 3
 1ad28: OR Reg R9, Reg R8 3
@@ -45,6 +45,6 @@ Number of edges: 31
 1ad48: JMP 1ad0c (resolved immediate)
   |
   `- 1ad0c
-1ad4a: REPZ RET  2
+1ad4a: RET  2
   |
   `- 

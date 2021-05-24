@@ -13,7 +13,7 @@ Number of edges: 57
 1ad57: PUSH Reg R12 2
 1ad59: PUSH Reg RBP 1
 1ad5a: PUSH Reg RBX 1
-1ad5b: JZ 1adbf (resolved immediate)
+1ad5b: JE 1adbf (resolved immediate)
   |
   `- 1ad5d,1adbf
 1ad5d: MOV Reg R12, Reg RDX 3
@@ -22,17 +22,17 @@ Number of edges: 57
 1ad66: XOR Reg EBX, Reg EBX 2
 1ad68: NOP  8
 1ad70: MOV Reg RDX, Reg R12 3
-1ad73: LEA Reg RSI, Address (AddrPlus (FromReg R14) (FromReg RBX)) 4
+1ad73: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg R14) (AddrTimes (AddrImm 1) (FromReg RBX)))) 4
 1ad77: MOV Reg EDI, Reg R13D 3
 1ad7a: SUB Reg RDX, Reg RBX 3
 1ad7d: CALL read (external)
 1ad82: CMP Reg RAX, Immediate 18446744073709551615 4
 1ad86: MOV Reg RBP, Reg RAX 3
-1ad89: JZ 1adb0 (resolved immediate)
+1ad89: JE 1adb0 (resolved immediate)
   |
   `- 1ad8b,1adb0
 1ad8b: CMP Reg RAX, Immediate 0 4
-1ad8f: JNZ 1add0 (resolved immediate)
+1ad8f: JNE 1add0 (resolved immediate)
   |
   `- 1ad91,1add0
 1ad91: CALL __errno_location (external)
@@ -49,7 +49,7 @@ Number of edges: 57
   `- 
 1adb0: CALL __errno_location (external)
 1adb5: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 4 3
-1adb8: JNZ 1ada1 (resolved immediate)
+1adb8: JNE 1ada1 (resolved immediate)
   |
   `- 1ada1,1adba
 1adba: CMP Reg RBX, Reg R12 3

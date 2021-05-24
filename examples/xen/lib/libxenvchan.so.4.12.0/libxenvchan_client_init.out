@@ -24,7 +24,7 @@ Number of edges: 151
 1ba0: CALL malloc (external)
 1ba5: TEST Reg RAX, Reg RAX 3
 1ba8: MOV Reg R15, Reg RAX 3
-1bab: JZ 1c71 (resolved immediate)
+1bab: JE 1c71 (resolved immediate)
   |
   `- 1bb1,1c71
 1bb1: AND Address (SizeDir 8 (AddrPlus (FromReg RAX) (AddrImm 28))), Immediate 254 4
@@ -36,12 +36,12 @@ Number of edges: 151
 1bda: CALL xs_daemon_open (external)
 1bdf: TEST Reg RAX, Reg RAX 3
 1be2: MOV Reg RBX, Reg RAX 3
-1be5: JZ 1e28 (resolved immediate)
+1be5: JE 1e28 (resolved immediate)
   |
   `- 1beb,1e28
-1beb: LEA Reg RBP, Address (AddrPlus (FromReg RSP) (AddrImm 48)) 5
-1bf0: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 3055)) 7
-1bf7: LEA Reg R13, Address (AddrPlus (FromReg RSP) (AddrImm 44)) 5
+1beb: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))) 5
+1bf0: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 3055))) 7
+1bf7: LEA Reg R13, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 44))) 5
 1bfc: MOV Reg R9, Reg R12 3
 1bff: MOV Reg ECX, Immediate 64 5
 1c04: MOV Reg EDX, Immediate 1 5
@@ -56,7 +56,7 @@ Number of edges: 151
 1c23: CALL xs_read (external)
 1c28: TEST Reg RAX, Reg RAX 3
 1c2b: MOV Reg RCX, Reg RAX 3
-1c2e: JZ 1c5e (resolved immediate)
+1c2e: JE 1c5e (resolved immediate)
   |
   `- 1c30,1c5e
 1c30: MOV Reg EDX, Immediate 10 5
@@ -70,7 +70,7 @@ Number of edges: 151
 1c51: CALL free (external)
 1c56: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))) 4
 1c5a: TEST Reg EDX, Reg EDX 2
-1c5c: JNZ 1ca0 (resolved immediate)
+1c5c: JNE 1ca0 (resolved immediate)
   |
   `- 1c5e,1ca0
 1c5e: MOV Reg RDI, Reg R15 3
@@ -81,7 +81,7 @@ Number of edges: 151
 1c71: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 120))) 5
 1c76: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 1c7f: MOV Reg RAX, Reg R15 3
-1c82: JNZ 1efa (resolved immediate)
+1c82: JNE 1efa (resolved immediate)
   |
   `- 1c88,1efa
 1c88: ADD Reg RSP, Immediate 136 7
@@ -94,7 +94,7 @@ Number of edges: 151
 1c99: RET  1
   |
   `- 
-1ca0: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 2891)) 7
+1ca0: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2891))) 7
 1ca7: MOV Reg RDI, Reg RBP 3
 1caa: MOV Reg R9, Reg R12 3
 1cad: MOV Reg ECX, Immediate 64 5
@@ -109,7 +109,7 @@ Number of edges: 151
 1cce: CALL xs_read (external)
 1cd3: TEST Reg RAX, Reg RAX 3
 1cd6: MOV Reg RBP, Reg RAX 3
-1cd9: JZ 1c5e (resolved immediate)
+1cd9: JE 1c5e (resolved immediate)
   |
   `- 1c5e,1cdb
 1cdb: XOR Reg ESI, Reg ESI 2
@@ -121,7 +121,7 @@ Number of edges: 151
 1cf1: CALL free (external)
 1cf6: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg R15) (AddrImm 24))) 4
 1cfa: TEST Reg EAX, Reg EAX 2
-1cfc: JZ 1c5e (resolved immediate)
+1cfc: JE 1c5e (resolved immediate)
   |
   `- 1c5e,1d02
 1d02: XOR Reg ESI, Reg ESI 2
@@ -129,7 +129,7 @@ Number of edges: 151
 1d07: CALL xengnttab_open (external)
 1d0c: TEST Reg RAX, Reg RAX 3
 1d0f: MOV Address (SizeDir 64 (FromReg R15)), Reg RAX 3
-1d12: JZ 1c5e (resolved immediate)
+1d12: JE 1c5e (resolved immediate)
   |
   `- 1c5e,1d18
 1d18: XOR Reg ESI, Reg ESI 2
@@ -137,7 +137,7 @@ Number of edges: 151
 1d1d: CALL xenevtchn_open (external)
 1d22: TEST Reg RAX, Reg RAX 3
 1d25: MOV Address (SizeDir 64 (AddrPlus (FromReg R15) (AddrImm 16))), Reg RAX 4
-1d29: JZ 1c5e (resolved immediate)
+1d29: JE 1c5e (resolved immediate)
   |
   `- 1c5e,1d2f
 1d2f: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg R15) (AddrImm 24))) 4
@@ -154,13 +154,13 @@ Number of edges: 151
 1d51: MOV Reg ESI, Reg EAX 2
 1d53: CALL xenevtchn_unmask (external)
 1d58: TEST Reg EAX, Reg EAX 2
-1d5a: JNZ 1ed9 (resolved immediate)
+1d5a: JNE 1ed9 (resolved immediate)
   |
   `- 1ed9
 1e28: CALL xs_domain_open (external)
 1e2d: TEST Reg RAX, Reg RAX 3
 1e30: MOV Reg RBX, Reg RAX 3
-1e33: JNZ 1beb (resolved immediate)
+1e33: JNE 1beb (resolved immediate)
   |
   `- 1beb,1e39
 1e39: MOV Reg RDI, Reg R15 3

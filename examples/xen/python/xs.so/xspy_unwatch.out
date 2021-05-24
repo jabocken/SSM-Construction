@@ -11,7 +11,7 @@ Number of edges: 108
 2618 (False): 0
 
 1ee6: TEST Reg DIL, Reg DIL 3
-1ee9: JZ 1ef7 (resolved immediate)
+1ee9: JE 1ef7 (resolved immediate)
   |
   `- 1eeb,1ef7
 1eeb: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2109678))) 7
@@ -56,7 +56,7 @@ Number of edges: 108
 25e7: MOV Reg RSI, Reg RBX 3
 25ea: CALL PyList_GetItem (external)
 25ef: CMP Reg RAX, Reg R13 3
-25f2: JZ 25f9 (resolved immediate)
+25f2: JE 25f9 (resolved immediate)
   |
   `- 25f4,25f9
 25f4: ADD Reg EBP, Immediate 1 3
@@ -86,22 +86,22 @@ Number of edges: 108
 2633: XOR Reg EAX, Reg EAX 2
 2635: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))) 4
 2639: TEST Reg RBX, Reg RBX 3
-263c: JZ 26e4 (resolved immediate)
+263c: JE 26e4 (resolved immediate)
   |
   `- 2642,26e4
 2642: MOV Reg RDI, Reg RSI 3
-2645: LEA Reg RCX, Address (AddrPlus (FromReg RSP) (AddrImm 8)) 5
+2645: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 264a: MOV Reg RDX, Reg RSP 3
-264d: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 3250)) 7
+264d: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 3250))) 7
 2654: MOV Reg EAX, Immediate 0 5
 2659: CALL PyArg_ParseTuple (external)
 265e: TEST Reg EAX, Reg EAX 2
-2660: JZ 26f5 (resolved immediate)
+2660: JE 26f5 (resolved immediate)
   |
   `- 2666,26f5
-2666: LEA Reg R12, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+2666: LEA Reg R12, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 266b: MOV Reg R9, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
-2670: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 3200)) 7
+2670: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 3200))) 7
 2677: MOV Reg ECX, Immediate 24 5
 267c: MOV Reg EDX, Immediate 1 5
 2681: MOV Reg ESI, Immediate 24 5
@@ -128,7 +128,7 @@ Number of edges: 108
   `- 1ee6
 26c9: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
 26ce: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-26d7: JNZ 26fc (resolved immediate)
+26d7: JNE 26fc (resolved immediate)
   |
   `- 26d9,26fc
 26d9: ADD Reg RSP, Immediate 56 4

@@ -31,19 +31,19 @@ Number of edges: 102
 1f947: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Reg RAX 5
 1f94c: CALL xc__hypercall_bounce_pre (external)
 1f951: TEST Reg EAX, Reg EAX 2
-1f953: JNZ 1fade (resolved immediate)
+1f953: JNE 1fade (resolved immediate)
   |
   `- 1f959,1fade
 1f959: MOV Reg EAX, Address (SizeDir 32 (FromReg R12)) 4
 1f95d: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 104))), Reg R13D 5
-1f962: LEA Reg R13, Address (AddrPlus (FromReg RSP) (AddrImm 48)) 5
+1f962: LEA Reg R13, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))) 5
 1f967: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 96))), Immediate 26 8
 1f96f: MOV Reg RDI, Reg RBX 3
 1f972: MOV Reg RSI, Reg R13 3
 1f975: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 108))), Reg EAX 4
 1f979: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 1f97e: TEST Reg RAX, Reg RAX 3
-1f981: CMOVZ Reg RAX, Reg RBP 4
+1f981: CMOVE Reg RAX, Reg RBP 4
 1f985: MOV Reg RAX, Address (SizeDir 64 (FromReg RAX)) 3
 1f988: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))), Immediate 0 9
 1f991: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))), Immediate 0 9
@@ -51,16 +51,16 @@ Number of edges: 102
 1f9a2: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 80))), Immediate 136 9
 1f9ab: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 100))), Immediate 18 8
 1f9b3: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 112))), Reg RAX 5
-1f9b8: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 96)) 5
+1f9b8: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 96))) 5
 1f9bd: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 72))), Reg RAX 5
 1f9c2: CALL xc__hypercall_bounce_pre (external)
 1f9c7: TEST Reg EAX, Reg EAX 2
-1f9c9: JNZ 1fa95 (resolved immediate)
+1f9c9: JNE 1fa95 (resolved immediate)
 1f9cf: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))) 5
 1f9d4: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1088))) 7
 1f9db: MOV Reg ESI, Immediate 35 5
 1f9e0: TEST Reg RAX, Reg RAX 3
-1f9e3: CMOVZ Reg RAX, Reg R13 4
+1f9e3: CMOVE Reg RAX, Reg R13 4
 1f9e7: MOV Reg RDX, Address (SizeDir 64 (FromReg RAX)) 3
 1f9ea: CALL xencall1 (external)
 1f9ef: TEST Reg EAX, Reg EAX 2
@@ -71,15 +71,15 @@ Number of edges: 102
 1f9f6: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))) 5
 1f9fb: MOV Reg RDI, Reg RBX 3
 1f9fe: TEST Reg RSI, Reg RSI 3
-1fa01: CMOVZ Reg RSI, Reg R13 4
+1fa01: CMOVE Reg RSI, Reg R13 4
 1fa05: CALL xc__hypercall_bounce_post (external)
 1fa0a: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 1fa0f: MOV Reg RDI, Reg RBX 3
 1fa12: TEST Reg RSI, Reg RSI 3
-1fa15: CMOVZ Reg RSI, Reg RBP 4
+1fa15: CMOVE Reg RSI, Reg RBP 4
 1fa19: CALL xc__hypercall_bounce_post (external)
 1fa1e: TEST Reg R14D, Reg R14D 3
-1fa21: JNZ 1fa2b (resolved immediate)
+1fa21: JNE 1fa2b (resolved immediate)
   |
   `- 1fa23,1fa2b
 1fa23: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 108))) 4
@@ -87,7 +87,7 @@ Number of edges: 102
 1fa2b: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 232))) 8
 1fa33: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 1fa3c: MOV Reg EAX, Reg R14D 3
-1fa3f: JNZ 1faff (resolved immediate)
+1fa3f: JNE 1faff (resolved immediate)
   |
   `- 1fa45,1faff
 1fa45: ADD Reg RSP, Immediate 248 7
@@ -103,11 +103,11 @@ Number of edges: 102
 1fa60: CALL __errno_location (external)
 1fa65: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 13 3
 1fa68: MOV Reg R15, Reg RAX 3
-1fa6b: JNZ 1f9f6 (resolved immediate)
+1fa6b: JNE 1f9f6 (resolved immediate)
   |
   `- 1f9f6,1fa6d
 1fa6d: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
-1fa71: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 32712)) 7
+1fa71: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 32712))) 7
 1fa78: XOR Reg ECX, Reg ECX 2
 1fa7a: MOV Reg EDX, Immediate 3 5
 1fa7f: MOV Reg RDI, Reg RBX 3

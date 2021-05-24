@@ -12,13 +12,13 @@ Number of edges: 33
 210a3: PUSH Reg RBX 1
 210a4: MOV Reg R12, Address (SizeDir 64 (FromReg RDI)) 3
 210a7: TEST Reg R12, Reg R12 3
-210aa: JZ 210fe (resolved immediate)
+210aa: JE 210fe (resolved immediate)
   |
   `- 210ac,210fe
 210ac: MOV Reg RBP, Reg RDI 3
 210af: MOV Reg RDI, Address (SizeDir 64 (FromReg R12)) 4
 210b3: TEST Reg RDI, Reg RDI 3
-210b6: JZ 210ee (resolved immediate)
+210b6: JE 210ee (resolved immediate)
   |
   `- 210b8,210ee
 210b8: MOV Reg RBX, Reg R12 3
@@ -27,7 +27,7 @@ Number of edges: 33
 210c5: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
 210c9: MOV Address (SizeDir 64 (FromReg RBX)), Immediate 0 7
 210d0: TEST Reg RDI, Reg RDI 3
-210d3: JZ 210e2 (resolved immediate)
+210d3: JE 210e2 (resolved immediate)
   |
   `- 210d5,210e2
 210d5: CALL free (external)
@@ -35,12 +35,12 @@ Number of edges: 33
 210e2: ADD Reg RBX, Immediate 16 4
 210e6: MOV Reg RDI, Address (SizeDir 64 (FromReg RBX)) 3
 210e9: TEST Reg RDI, Reg RDI 3
-210ec: JNZ 210c0 (resolved immediate)
+210ec: JNE 210c0 (resolved immediate)
   |
   `- 210c0,210ee
 210ee: MOV Reg RDI, Reg R12 3
 210f1: CALL free (external)
-210f6: MOV Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))), Immediate 0 8
+210f6: MOV Address (SizeDir 64 (FromReg RBP)), Immediate 0 8
 210fe: POP Reg RBX 1
 210ff: POP Reg RBP 1
 21100: POP Reg R12 2

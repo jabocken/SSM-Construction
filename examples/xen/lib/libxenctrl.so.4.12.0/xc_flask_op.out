@@ -25,14 +25,14 @@ Number of edges: 72
 18006: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Immediate 40 9
 1800f: CALL xc__hypercall_bounce_pre (external)
 18014: TEST Reg EAX, Reg EAX 2
-18016: JNZ 180a4 (resolved immediate)
+18016: JNE 180a4 (resolved immediate)
   |
   `- 1801c,180a4
 1801c: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 18021: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1088))) 7
 18028: MOV Reg ESI, Immediate 27 5
 1802d: TEST Reg RAX, Reg RAX 3
-18030: CMOVZ Reg RAX, Reg RBP 4
+18030: CMOVE Reg RAX, Reg RBP 4
 18034: MOV Reg RDX, Address (SizeDir 64 (FromReg RAX)) 3
 18037: CALL xencall1 (external)
 1803c: TEST Reg EAX, Reg EAX 2
@@ -43,12 +43,12 @@ Number of edges: 72
 18043: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 18048: MOV Reg RDI, Reg RBX 3
 1804b: TEST Reg RSI, Reg RSI 3
-1804e: CMOVZ Reg RSI, Reg RBP 4
+1804e: CMOVE Reg RSI, Reg RBP 4
 18052: CALL xc__hypercall_bounce_post (external)
 18057: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
 1805c: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 18065: MOV Reg EAX, Reg R12D 3
-18068: JNZ 180e5 (resolved immediate)
+18068: JNE 180e5 (resolved immediate)
   |
   `- 1806a,180e5
 1806a: ADD Reg RSP, Immediate 48 4
@@ -60,11 +60,11 @@ Number of edges: 72
   `- 
 18078: CALL __errno_location (external)
 1807d: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 13 3
-18080: JNZ 18043 (resolved immediate)
+18080: JNE 18043 (resolved immediate)
   |
   `- 18043,18082
 18082: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2183023))) 7
-18089: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 56408)) 7
+18089: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 56408))) 7
 18090: MOV Reg EDX, Immediate 22 5
 18095: MOV Reg ESI, Immediate 1 5
 1809a: MOV Reg RCX, Address (SizeDir 64 (FromReg RAX)) 3
@@ -78,14 +78,14 @@ Number of edges: 72
 180af: MOV Reg RDI, Reg RBX 3
 180b2: MOV Reg ESI, Reg R12D 3
 180b5: CALL xc_strerror (external)
-180ba: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
-180bd: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 56188)) 7
+180ba: MOV Reg ECX, Address (SizeDir 32 (FromReg RBP)) 3
+180bd: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 56188))) 7
 180c4: MOV Reg R8, Reg RAX 3
 180c7: MOV Reg ESI, Immediate 1 5
 180cc: MOV Reg RDI, Reg RBX 3
 180cf: XOR Reg EAX, Reg EAX 2
 180d1: CALL xc_report_error (external)
-180d6: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R12D 4
+180d6: MOV Address (SizeDir 32 (FromReg RBP)), Reg R12D 4
 180da: MOV Reg R12D, Immediate 4294967295 6
 180e0: JMP 18057 (resolved immediate)
   |

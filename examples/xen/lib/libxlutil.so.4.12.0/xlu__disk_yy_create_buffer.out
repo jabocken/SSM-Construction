@@ -12,7 +12,7 @@ Number of edges: 89
 2fcb: SUB Reg RSP, Immediate 8 4
 2fcf: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2150410))) 7
 2fd6: MOV Reg RCX, Reg RDI 3
-2fd9: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 43521)) 7
+2fd9: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 43521))) 7
 2fe0: MOV Reg ESI, Immediate 1 5
 2fe5: MOV Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
 2fe8: XOR Reg EAX, Reg EAX 2
@@ -39,18 +39,18 @@ Number of edges: 89
 6e5a: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 60))), Immediate 1 7
 6e61: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 40))) 4
 6e65: TEST Reg RAX, Reg RAX 3
-6e68: JZ 6e74 (resolved immediate)
+6e68: JE 6e74 (resolved immediate)
   |
   `- 6e6a,6e74
 6e6a: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 24))) 4
 6e6e: CMP Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX)))) 4
-6e72: JZ 6e7c (resolved immediate)
+6e72: JE 6e7c (resolved immediate)
   |
   `- 6e74,6e7c
 6e74: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 52))), Immediate 1 8
 6e7c: XOR Reg EAX, Reg EAX 2
 6e7e: TEST Reg R12, Reg R12 3
-6e81: JZ 6e9a (resolved immediate)
+6e81: JE 6e9a (resolved immediate)
   |
   `- 6e83,6e9a
 6e83: MOV Reg RDI, Reg R12 3
@@ -61,7 +61,7 @@ Number of edges: 89
 6e94: SETG Reg AL 3
 6e97: MOVZX Reg EAX, Reg AL 3
 6e9a: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 44))), Reg EAX 3
-6e9d: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Reg R14D 4
+6e9d: MOV Address (SizeDir 32 (FromReg R13)), Reg R14D 4
 6ea1: POP Reg RBX 1
 6ea2: POP Reg RBP 1
 6ea3: POP Reg R12 2
@@ -82,18 +82,18 @@ Number of edges: 89
 7016: SUB Reg RSP, Immediate 8 4
 701a: CALL xlu__disk_yyalloc (external)
 701f: TEST Reg RAX, Reg RAX 3
-7022: JZ 7066 (resolved immediate)
+7022: JE 7066 (resolved immediate)
   |
   `- 7024,7066
 7024: MOVSXD Reg RSI, Reg EBP 3
 7027: MOV Reg RBX, Reg RAX 3
-702a: LEA Reg RDI, Address (AddrPlus (FromReg RSI) (AddrImm 2)) 4
+702a: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 2))) 4
 702e: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 24))), Reg RSI 4
 7032: MOV Reg RSI, Reg R12 3
 7035: CALL xlu__disk_yyalloc (external)
 703a: TEST Reg RAX, Reg RAX 3
 703d: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))), Reg RAX 4
-7041: JZ 7066 (resolved immediate)
+7041: JE 7066 (resolved immediate)
   |
   `- 7043,7066
 7043: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 40))), Immediate 1 7
@@ -112,7 +112,7 @@ Number of edges: 89
 7065: RET  1
   |
   `- 
-7066: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 17755)) 7
+7066: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 17755))) 7
 706d: CALL yy_fatal_error.isra.2 (internal)
   |
   `- 2fcb

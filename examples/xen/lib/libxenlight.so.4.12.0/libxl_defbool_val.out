@@ -11,7 +11,7 @@ Number of edges: 13
 212b1: MOV Reg EBX, Reg EDI 2
 212b3: CALL libxl_defbool_is_default (external)
 212b8: TEST Reg AL, Reg AL 2
-212ba: JNZ 212c3 (resolved immediate)
+212ba: JNE 212c3 (resolved immediate)
   |
   `- 212bc,212c3
 212bc: TEST Reg EBX, Reg EBX 2
@@ -20,9 +20,9 @@ Number of edges: 13
 212c2: RET  1
   |
   `- 
-212c3: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 467350)) 7
-212ca: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 465742)) 7
-212d1: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 465946)) 7
+212c3: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 467350))) 7
+212ca: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 465742))) 7
+212d1: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 465946))) 7
 212d8: MOV Reg EDX, Immediate 339 5
 212dd: CALL __assert_fail (external)
   |

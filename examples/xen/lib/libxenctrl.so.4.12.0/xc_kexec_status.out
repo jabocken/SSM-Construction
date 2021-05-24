@@ -29,7 +29,7 @@ Number of edges: 65
 22e22: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Immediate 0 9
 22e2b: CALL xc__hypercall_buffer_alloc (external)
 22e30: TEST Reg RAX, Reg RAX 3
-22e33: JZ 22e92 (resolved immediate)
+22e33: JE 22e92 (resolved immediate)
   |
   `- 22e35,22e92
 22e35: MOV Address (SizeDir 8 (FromReg RAX)), Reg R13B 3
@@ -38,19 +38,19 @@ Number of edges: 65
 22e42: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 1088))) 7
 22e49: MOV Reg ESI, Immediate 37 5
 22e4e: TEST Reg RAX, Reg RAX 3
-22e51: CMOVZ Reg RAX, Reg R12 4
+22e51: CMOVE Reg RAX, Reg R12 4
 22e55: MOV Reg RCX, Address (SizeDir 64 (FromReg RAX)) 3
 22e58: CALL xencall2 (external)
 22e5d: MOV Reg EBX, Reg EAX 2
 22e5f: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 22e64: MOV Reg RDI, Reg RBP 3
 22e67: TEST Reg RSI, Reg RSI 3
-22e6a: CMOVZ Reg RSI, Reg R12 4
+22e6a: CMOVE Reg RSI, Reg R12 4
 22e6e: CALL xc__hypercall_buffer_free (external)
 22e73: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
 22e78: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 22e81: MOV Reg EAX, Reg EBX 2
-22e83: JNZ 22ecb (resolved immediate)
+22e83: JNE 22ecb (resolved immediate)
   |
   `- 22e85,22ecb
 22e85: ADD Reg RSP, Immediate 48 4
@@ -68,14 +68,14 @@ Number of edges: 65
 22e9d: MOV Reg RDI, Reg RBP 3
 22ea0: MOV Reg ESI, Reg R14D 3
 22ea3: CALL xc_strerror (external)
-22ea8: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))) 4
-22eac: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 14741)) 7
+22ea8: MOV Reg ECX, Address (SizeDir 32 (FromReg R13)) 4
+22eac: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 14741))) 7
 22eb3: MOV Reg R8, Reg RAX 3
 22eb6: MOV Reg ESI, Immediate 1 5
 22ebb: MOV Reg RDI, Reg RBP 3
 22ebe: XOR Reg EAX, Reg EAX 2
 22ec0: CALL xc_report_error (external)
-22ec5: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Reg R14D 4
+22ec5: MOV Address (SizeDir 32 (FromReg R13)), Reg R14D 4
 22ec9: JMP 22e5f (resolved immediate)
   |
   `- 22e5f

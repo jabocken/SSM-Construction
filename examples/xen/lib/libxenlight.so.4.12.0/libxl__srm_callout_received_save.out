@@ -22,15 +22,15 @@ Number of edges: 33
 48022: MOV Reg RBX, Reg RDX 3
 48025: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 4802a: MOV Reg EAX, Reg ESI 2
-4802c: LEA Reg R10, Address (AddrPlus (FromReg RDX) (FromReg RAX)) 4
+4802c: LEA Reg R10, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 1) (FromReg RAX)))) 4
 48030: MOVZX Reg EAX, Address (SizeDir 16 (FromReg RDX)) 3
-48033: LEA Reg RDI, Address (AddrPlus (FromReg RDX) (AddrImm 2)) 4
+48033: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 2))) 4
 48037: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RDI 5
 4803c: CMP Reg AX, Immediate 9 4
 48040: JA 48068 (resolved immediate)
   |
   `- 48042,48068
-48042: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 346907)) 7
+48042: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 346907))) 7
 48049: MOVSXD Reg RAX, Address (SizeDir 32 (AddrPlus (FromReg RCX) (AddrTimes (AddrImm 4) (FromReg RAX)))) 4
 4804d: ADD Reg RAX, Reg RCX 3
 48050: JMP Reg RAX 2
@@ -39,7 +39,7 @@ Number of edges: 33
 48068: XOR Reg EAX, Reg EAX 2
 4806a: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
 4806f: XOR Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-48078: JNZ 482f7 (resolved immediate)
+48078: JNE 482f7 (resolved immediate)
   |
   `- 4807e,482f7
 4807e: ADD Reg RSP, Immediate 48 4

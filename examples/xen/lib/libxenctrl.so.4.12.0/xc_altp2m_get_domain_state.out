@@ -31,35 +31,35 @@ Number of edges: 62
 8b07: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Immediate 0 9
 8b10: CALL xc__hypercall_buffer_alloc (external)
 8b15: TEST Reg RAX, Reg RAX 3
-8b18: JZ 8b6f (resolved immediate)
+8b18: JE 8b6f (resolved immediate)
   |
   `- 8b1a,8b6f
 8b1a: MOV Reg RBP, Reg RAX 3
-8b1d: MOV Reg RAX, Immediate 4294967297 10
+8b1d: MOVABS Reg RAX, Immediate 4294967297 10
 8b27: MOV Reg EDX, Immediate 25 5
-8b2c: MOV Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg RAX 4
+8b2c: MOV Address (SizeDir 64 (FromReg RBP)), Reg RAX 4
 8b30: MOV Address (SizeDir 16 (AddrPlus (FromReg RBP) (AddrImm 8))), Reg R15W 5
 8b35: MOV Reg ESI, Immediate 34 5
 8b3a: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 8b3f: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R14) (AddrImm 1088))) 7
 8b46: TEST Reg RAX, Reg RAX 3
-8b49: CMOVZ Reg RAX, Reg R12 4
+8b49: CMOVE Reg RAX, Reg R12 4
 8b4d: MOV Reg RCX, Address (SizeDir 64 (FromReg RAX)) 3
 8b50: CALL xencall2 (external)
 8b55: TEST Reg EAX, Reg EAX 2
 8b57: MOV Reg EBX, Reg EAX 2
-8b59: JZ 8b90 (resolved immediate)
+8b59: JE 8b90 (resolved immediate)
   |
   `- 8b5b,8b90
 8b5b: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 8b60: MOV Reg RDI, Reg R14 3
 8b63: TEST Reg RSI, Reg RSI 3
-8b66: CMOVZ Reg RSI, Reg R12 4
+8b66: CMOVE Reg RSI, Reg R12 4
 8b6a: CALL xc__hypercall_buffer_free (external)
 8b6f: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
 8b74: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 8b7d: MOV Reg EAX, Reg EBX 2
-8b7f: JNZ 8b9b (resolved immediate)
+8b7f: JNE 8b9b (resolved immediate)
   |
   `- 8b81,8b9b
 8b81: ADD Reg RSP, Immediate 56 4
@@ -73,7 +73,7 @@ Number of edges: 62
   |
   `- 
 8b90: CMP Address (SizeDir 8 (AddrPlus (FromReg RBP) (AddrImm 16))), Immediate 0 4
-8b94: SETNZ Address (SizeDir 8 (AddrPlus (FromReg R13) (AddrImm 0))) 5
+8b94: SETNE Address (SizeDir 8 (FromReg R13)) 5
 8b99: JMP 8b5b (resolved immediate)
   |
   `- 8b5b

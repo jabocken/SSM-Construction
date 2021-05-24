@@ -8,7 +8,7 @@ Number of edges: 32
 3f80 (False): 0
 
 3f80: TEST Reg RDI, Reg RDI 3
-3f83: JZ 3fc8 (resolved immediate)
+3f83: JE 3fc8 (resolved immediate)
   |
   `- 3f85,3fc8
 3f85: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
@@ -22,16 +22,16 @@ Number of edges: 32
 3fae: MOV Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))), Reg RAX 4
 3fb2: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 40))) 4
 3fb6: TEST Reg RAX, Reg RAX 3
-3fb9: JZ 3fc8 (resolved immediate)
+3fb9: JE 3fc8 (resolved immediate)
   |
   `- 3fbb,3fc8
 3fbb: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 24))) 4
-3fbf: LEA Reg RAX, Address (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX))) 4
+3fbf: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RDX)))) 4
 3fc3: CMP Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
-3fc6: JZ 3fd0 (resolved immediate)
+3fc6: JE 3fd0 (resolved immediate)
   |
   `- 3fc8,3fd0
-3fc8: REPZ RET  2
+3fc8: RET  2
   |
   `- 
 3fd0: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 32))) 4

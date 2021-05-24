@@ -23,17 +23,17 @@ Number of edges: 283
 96e8: CALL strtoul (external)
 96ed: MOV Reg RDX, Address (SizeDir 64 (FromReg RSP)) 4
 96f1: CMP Reg RDX, Reg RBP 3
-96f4: JZ 9728 (resolved immediate)
+96f4: JE 9728 (resolved immediate)
   |
   `- 96f6,9728
 96f6: CMP Address (SizeDir 8 (FromReg RDX)), Immediate 0 3
-96f9: JNZ 9728 (resolved immediate)
+96f9: JNE 9728 (resolved immediate)
   |
   `- 96fb,9728
 96fb: MOV Reg EDX, Reg EBX 2
 96fd: NOT Reg EDX 2
 96ff: TEST Reg RDX, Reg RAX 3
-9702: JNZ 9728 (resolved immediate)
+9702: JNE 9728 (resolved immediate)
   |
   `- 9704,9728
 9704: AND Reg EBX, Reg EAX 2
@@ -41,7 +41,7 @@ Number of edges: 283
 9708: MOV Address (SizeDir 32 (FromReg R12)), Reg EBX 4
 970c: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 9711: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-971a: JNZ 972f (resolved immediate)
+971a: JNE 972f (resolved immediate)
   |
   `- 971c,972f
 971c: ADD Reg RSP, Immediate 16 4
@@ -75,35 +75,35 @@ Number of edges: 283
 9771: CALL strdup (external)
 9776: TEST Reg RAX, Reg RAX 3
 9779: MOV Address (SizeDir 64 (FromReg RSP)), Reg RAX 4
-977d: JZ 9d34 (resolved immediate)
+977d: JE 9d34 (resolved immediate)
   |
   `- 9783,9d34
 9783: MOV Reg RDX, Reg RAX 3
 9786: MOV Reg ECX, Address (SizeDir 32 (FromReg RDX)) 2
 9788: ADD Reg RDX, Immediate 4 4
-978c: LEA Reg EAX, Address (AddrMinus (FromReg RCX) (AddrImm 16843009)) 6
+978c: LEA Reg EAX, Address (SizeDir 32 (AddrMinus (FromReg RCX) (AddrImm 16843009))) 6
 9792: NOT Reg ECX 2
 9794: AND Reg EAX, Reg ECX 2
 9796: AND Reg EAX, Immediate 2155905152 5
-979b: JZ 9786 (resolved immediate)
+979b: JE 9786 (resolved immediate)
   |
   `- 9786,979d
 979d: MOV Reg ECX, Reg EAX 2
 979f: SHR Reg ECX, Immediate 16 3
 97a2: TEST Reg EAX, Immediate 32896 5
-97a7: CMOVZ Reg EAX, Reg ECX 3
-97aa: LEA Reg RCX, Address (AddrPlus (FromReg RDX) (AddrImm 2)) 4
+97a7: CMOVE Reg EAX, Reg ECX 3
+97aa: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 2))) 4
 97ae: MOV Reg EBX, Reg EAX 2
-97b0: CMOVZ Reg RDX, Reg RCX 4
+97b0: CMOVE Reg RDX, Reg RCX 4
 97b4: ADD Reg BL, Reg AL 2
 97b6: MOV Reg RAX, Address (SizeDir 64 (FromReg RSP)) 4
 97ba: SBB Reg RDX, Immediate 3 4
-97be: LEA Reg R13, Address (AddrPlus (FromReg RDX) (AddrImm 1)) 4
+97be: LEA Reg R13, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 1))) 4
 97c2: CMP Reg RAX, Reg R13 3
 97c5: JAE 9848 (resolved immediate)
   |
   `- 97cb,9848
-97cb: LEA Reg RBX, Address (AddrPlus (FromReg RIP) (AddrImm 17574)) 7
+97cb: LEA Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 17574))) 7
 97d2: MOV Reg R15, Reg RAX 3
 97d5: XOR Reg R12D, Reg R12D 3
 97d8: XOR Reg R14D, Reg R14D 3
@@ -118,13 +118,13 @@ Number of edges: 283
 97f4: JMP Reg RDX 2
   |
   `- 9880
-9800: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 24)) 5
+9800: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 9805: MOV Address (SizeDir 8 (FromReg R15)), Immediate 0 4
 9809: MOV Reg EDX, Immediate 255 5
 980e: MOV Reg RDI, Reg RAX 3
 9811: CALL hex_convert (internal)
 9816: TEST Reg EAX, Reg EAX 2
-9818: JNZ 9848 (resolved immediate)
+9818: JNE 9848 (resolved immediate)
 981a: ADD Reg R15, Immediate 1 4
 981e: CMP Reg R13, Reg R15 3
 9821: JBE 9848 (resolved immediate)
@@ -133,7 +133,7 @@ Number of edges: 283
 9823: MOV Reg RAX, Reg R15 3
 9826: NOP  10
 9830: CMP Address (SizeDir 8 (FromReg R15)), Immediate 46 4
-9834: JZ 9c18 (resolved immediate)
+9834: JE 9c18 (resolved immediate)
   |
   `- 983a,9c18
 983a: ADD Reg R15, Immediate 1 4
@@ -147,7 +147,7 @@ Number of edges: 283
 9851: MOV Reg EAX, Immediate 4294967290 5
 9856: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
 985b: XOR Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-9864: JNZ 9d74 (resolved immediate)
+9864: JNE 9d74 (resolved immediate)
   |
   `- 986a,9d74
 986a: ADD Reg RSP, Immediate 56 4
@@ -161,7 +161,7 @@ Number of edges: 283
   |
   `- 
 9880: CMP Address (SizeDir 8 (FromReg R15)), Immediate 58 4
-9884: JZ 9895 (resolved immediate)
+9884: JE 9895 (resolved immediate)
   |
   `- 9886,9895
 9886: ADD Reg R15, Immediate 1 4
@@ -170,10 +170,10 @@ Number of edges: 283
   |
   `- 9848,988f
 988f: CMP Address (SizeDir 8 (FromReg R15)), Immediate 58 4
-9893: JNZ 9886 (resolved immediate)
+9893: JNE 9886 (resolved immediate)
   |
   `- 9886,9895
-9895: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 20)) 5
+9895: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 20))) 5
 989a: MOV Address (SizeDir 8 (FromReg R15)), Immediate 0 4
 989e: MOV Reg EDX, Immediate 65535 5
 98a3: MOV Reg RDI, Reg RAX 3
@@ -181,7 +181,7 @@ Number of edges: 283
   |
   `- 96c0
 98ab: TEST Reg EAX, Reg EAX 2
-98ad: JNZ 9848 (resolved immediate)
+98ad: JNE 9848 (resolved immediate)
   |
   `- 9848,98af
 98af: ADD Reg R15, Immediate 1 4
@@ -192,11 +192,11 @@ Number of edges: 283
 98b8: MOV Reg RAX, Reg R15 3
 98bb: MOVZX Reg EDX, Address (SizeDir 8 (FromReg R15)) 4
 98bf: CMP Reg DL, Immediate 58 3
-98c2: JZ 9800 (resolved immediate)
+98c2: JE 9800 (resolved immediate)
   |
   `- 9800,98c8
 98c8: CMP Reg DL, Immediate 46 3
-98cb: JZ 9af0 (resolved immediate)
+98cb: JE 9af0 (resolved immediate)
   |
   `- 98d1,9af0
 98d1: ADD Reg R15, Immediate 1 4
@@ -214,13 +214,13 @@ Number of edges: 283
   |
   `- 97e0,9a99
 9a99: CMP Reg R14D, Immediate 8 4
-9a9d: SETNZ Reg DL 3
+9a9d: SETNE Reg DL 3
 9aa0: CMP Reg RAX, Reg R15 3
-9aa3: JNZ 9848 (resolved immediate)
+9aa3: JNE 9848 (resolved immediate)
   |
   `- 9848,9aa9
 9aa9: TEST Reg DL, Reg DL 2
-9aab: JNZ 9848 (resolved immediate)
+9aab: JNE 9848 (resolved immediate)
   |
   `- 9848,9ab1
 9ab1: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 20))) 4
@@ -234,7 +234,7 @@ Number of edges: 283
 9acd: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 28))) 4
 9ad1: MOV Address (SizeDir 8 (AddrPlus (FromReg RBP) (AddrImm 1))), Reg DL 3
 9ad4: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 32))) 4
-9ad8: MOV Address (SizeDir 8 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg DL 3
+9ad8: MOV Address (SizeDir 8 (FromReg RBP)), Reg DL 3
 9adb: CALL free (external)
 9ae0: XOR Reg EAX, Reg EAX 2
 9ae2: JMP 9856 (resolved immediate)
@@ -243,17 +243,17 @@ Number of edges: 283
 9af0: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 20))) 4
 9af4: MOV Address (SizeDir 8 (FromReg R15)), Immediate 0 4
 9af8: TEST Reg EDX, Immediate 4294967040 6
-9afe: JNZ 9848 (resolved immediate)
+9afe: JNE 9848 (resolved immediate)
   |
   `- 9848,9b04
 9b04: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg EDX 4
 9b08: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 20))), Immediate 0 8
-9b10: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 28)) 5
+9b10: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 28))) 5
 9b15: MOV Reg EDX, Immediate 255 5
 9b1a: MOV Reg RDI, Reg RAX 3
 9b1d: CALL hex_convert (internal)
 9b22: TEST Reg EAX, Reg EAX 2
-9b24: JNZ 9848 (resolved immediate)
+9b24: JNE 9848 (resolved immediate)
 9b2a: ADD Reg R15, Immediate 1 4
 9b2e: CMP Reg R13, Reg R15 3
 9b31: JBE 9848 (resolved immediate)
@@ -262,11 +262,11 @@ Number of edges: 283
 9b37: MOV Reg RAX, Reg R15 3
 9b3a: MOVZX Reg EDX, Address (SizeDir 8 (FromReg R15)) 4
 9b3e: TEST Reg DL, Immediate 191 3
-9b41: JZ 9b60 (resolved immediate)
+9b41: JE 9b60 (resolved immediate)
   |
   `- 9b43,9b60
 9b43: CMP Reg DL, Immediate 44 3
-9b46: JZ 9b60 (resolved immediate)
+9b46: JE 9b60 (resolved immediate)
   |
   `- 9b48,9b60
 9b48: ADD Reg R15, Immediate 1 4
@@ -276,33 +276,33 @@ Number of edges: 283
   `- 9848,9b55
 9b55: MOVZX Reg EDX, Address (SizeDir 8 (FromReg R15)) 4
 9b59: TEST Reg DL, Immediate 191 3
-9b5c: JNZ 9b43 (resolved immediate)
+9b5c: JNE 9b43 (resolved immediate)
   |
   `- 9b43,9b5e
 9b5e: NOP  2
 9b60: CMP Reg DL, Immediate 44 3
 9b63: MOV Reg R14D, Immediate 6 6
-9b69: JZ 9b84 (resolved immediate)
+9b69: JE 9b84 (resolved immediate)
   |
   `- 9b6b,9b84
 9b6b: CMP Reg DL, Immediate 64 3
 9b6e: MOV Reg R14D, Immediate 4 6
-9b74: JZ 9b84 (resolved immediate)
+9b74: JE 9b84 (resolved immediate)
   |
   `- 9b76,9b84
 9b76: CMP Reg DL, Immediate 1 3
 9b79: SBB Reg R14D, Reg R14D 3
 9b7c: AND Reg R14D, Immediate 5 4
 9b80: ADD Reg R14D, Immediate 3 4
-9b84: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 16301)) 7
+9b84: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 16301))) 7
 9b8b: MOV Address (SizeDir 8 (FromReg R15)), Immediate 0 4
 9b8f: MOV Reg ECX, Immediate 2 5
 9b94: MOV Reg RSI, Reg RAX 3
-9b97: REPZ CMPSB  2
+9b97: REP CMPSB Address (SizeDir 8 (FromReg RSI)), Address (SizeDir 8 (FromReg RDI)) 2
 9b99: SETA Reg DL 3
 9b9c: SBB Reg DL, Immediate 0 3
 9b9f: TEST Reg DL, Reg DL 2
-9ba1: JNZ 9bf0 (resolved immediate)
+9ba1: JNE 9bf0 (resolved immediate)
   |
   `- 9ba3,9bf0
 9ba3: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 12))), Immediate 4294967295 7
@@ -311,12 +311,12 @@ Number of edges: 283
 9bb1: JMP 9a90 (resolved immediate)
   |
   `- 9a90
-9bf0: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 32)) 5
+9bf0: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))) 5
 9bf5: MOV Reg EDX, Immediate 7 5
 9bfa: MOV Reg RDI, Reg RAX 3
 9bfd: CALL hex_convert (internal)
 9c02: TEST Reg EAX, Reg EAX 2
-9c04: JNZ 9848 (resolved immediate)
+9c04: JNE 9848 (resolved immediate)
 9c0a: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 12))), Immediate 1 7
 9c11: JMP 9baa (resolved immediate)
   |

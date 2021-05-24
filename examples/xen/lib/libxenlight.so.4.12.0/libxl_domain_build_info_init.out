@@ -10,7 +10,7 @@ Number of edges: 30
 82640: PUSH Reg RBP 1
 82641: PUSH Reg RBX 1
 82642: MOV Reg RBX, Reg RDI 3
-82645: LEA Reg RDI, Address (AddrPlus (FromReg RDI) (AddrImm 8)) 4
+82645: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
 82649: MOV Reg RCX, Reg RBX 3
 8264c: XOR Reg EAX, Reg EAX 2
 8264e: SUB Reg RSP, Immediate 8 4
@@ -21,9 +21,9 @@ Number of edges: 30
 82670: SUB Reg RCX, Reg RDI 3
 82673: ADD Reg ECX, Immediate 856 6
 82679: SHR Reg ECX, Immediate 3 3
-8267c: REP STOSQ  3
-8267f: MOV Reg RAX, Immediate 4398046511136 10
-82689: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 256)) 7
+8267c: REP STOSQ Address (SizeDir 64 (FromReg RDI)), Reg RAX 3
+8267f: MOVABS Reg RAX, Immediate 4398046511136 10
+82689: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 256))) 7
 82690: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 96))), Reg RBP 4
 82694: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 104))), Reg RBP 4
 82698: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 112))), Reg RBP 4

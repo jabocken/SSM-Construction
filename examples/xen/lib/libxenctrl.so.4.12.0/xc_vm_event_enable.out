@@ -24,24 +24,24 @@ Number of edges: 172
 202ba: CALL __errno_location (external)
 202bf: TEST Reg R15, Reg R15 3
 202c2: MOV Reg R12, Reg RAX 3
-202c5: JZ 20590 (resolved immediate)
+202c5: JE 20590 (resolved immediate)
   |
   `- 202cb,20590
 202cb: MOV Reg ESI, Reg EBP 2
 202cd: MOV Reg RDI, Reg RBX 3
 202d0: CALL xc_domain_pause (external)
 202d5: TEST Reg EAX, Reg EAX 2
-202d7: JNZ 20550 (resolved immediate)
+202d7: JNE 20550 (resolved immediate)
   |
   `- 202dd,20550
 202dd: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 4
-202e1: LEA Reg RCX, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+202e1: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 202e6: MOV Reg ESI, Reg EBP 2
 202e8: MOV Reg RDI, Reg RBX 3
 202eb: CALL xc_hvm_param_get (external)
 202f0: TEST Reg EAX, Reg EAX 2
 202f2: MOV Reg R13D, Reg EAX 3
-202f5: JZ 20368 (resolved immediate)
+202f5: JE 20368 (resolved immediate)
   |
   `- 20368
 2032a: MOV Reg ESI, Reg EBP 2
@@ -49,13 +49,13 @@ Number of edges: 172
 2032f: CALL xc_domain_unpause (external)
 20334: MOV Reg EDX, Reg R13D 3
 20337: OR Reg EDX, Reg EAX 2
-20339: JNZ 2060e (resolved immediate)
+20339: JNE 2060e (resolved immediate)
   |
   `- 2033f,2060e
 2033f: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
 20344: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 2034d: MOV Reg RAX, Reg R14 3
-20350: JNZ 20626 (resolved immediate)
+20350: JNE 20626 (resolved immediate)
   |
   `- 20356,20626
 20356: ADD Reg RSP, Immediate 56 4
@@ -69,7 +69,7 @@ Number of edges: 172
   |
   `- 
 20368: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
-2036d: LEA Reg R14, Address (AddrPlus (FromReg RSP) (AddrImm 32)) 5
+2036d: LEA Reg R14, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))) 5
 20372: MOV Reg EDX, Immediate 1 5
 20377: MOV Reg ESI, Reg EBP 2
 20379: MOV Reg RDI, Reg RBX 3
@@ -78,10 +78,10 @@ Number of edges: 172
 20384: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Reg RAX 5
 20389: CALL xc_get_pfn_type_batch (external)
 2038e: TEST Reg EAX, Reg EAX 2
-20390: JNZ 20450 (resolved immediate)
+20390: JNE 20450 (resolved immediate)
 20396: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))) 5
 2039b: TEST Reg EAX, Immediate 4026531840 5
-203a0: JNZ 20450 (resolved immediate)
+203a0: JNE 20450 (resolved immediate)
   |
   `- 203a6,20450
 203a6: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
@@ -94,20 +94,20 @@ Number of edges: 172
 203c3: CALL xc_map_foreign_pages (external)
 203c8: TEST Reg RAX, Reg RAX 3
 203cb: MOV Reg R14, Reg RAX 3
-203ce: JZ 205c0 (resolved immediate)
+203ce: JE 205c0 (resolved immediate)
   |
   `- 203d4,205c0
 203d4: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 4
 203d8: CMP Reg EAX, Immediate 28 3
-203db: JZ 205a0 (resolved immediate)
+203db: JE 205a0 (resolved immediate)
   |
   `- 203e1,205a0
 203e1: CMP Reg EAX, Immediate 29 3
-203e4: JZ 204b8 (resolved immediate)
+203e4: JE 204b8 (resolved immediate)
   |
   `- 203ea,204b8
 203ea: CMP Reg EAX, Immediate 27 3
-203ed: JZ 205b0 (resolved immediate)
+203ed: JE 205b0 (resolved immediate)
   |
   `- 203f3,205b0
 203f3: MOV Address (SizeDir 32 (FromReg R12)), Immediate 22 8
@@ -115,17 +115,17 @@ Number of edges: 172
 203fd: MOV Reg RDI, Reg RBX 3
 20400: CALL xc_domain_unpause (external)
 20405: TEST Reg EAX, Reg EAX 2
-20407: JZ 205e8 (resolved immediate)
+20407: JE 205e8 (resolved immediate)
   |
   `- 205e8
 20442: TEST Reg R14, Reg R14 3
-20445: JZ 20602 (resolved immediate)
+20445: JE 20602 (resolved immediate)
   |
   `- 2044b,20602
 2044b: JMP 205ee (resolved immediate)
   |
   `- 205ee
-20450: LEA Reg R9, Address (AddrPlus (FromReg RSP) (AddrImm 24)) 5
+20450: LEA Reg R9, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 20455: XOR Reg R8D, Reg R8D 3
 20458: XOR Reg ECX, Reg ECX 2
 2045a: MOV Reg EDX, Immediate 1 5
@@ -133,7 +133,7 @@ Number of edges: 172
 20461: MOV Reg RDI, Reg RBX 3
 20464: CALL xc_domain_populate_physmap_exact (external)
 20469: TEST Reg EAX, Reg EAX 2
-2046b: JZ 203a6 (resolved immediate)
+2046b: JE 203a6 (resolved immediate)
   |
   `- 203a6
 204b8: MOV Reg ECX, Immediate 3 5
@@ -144,7 +144,7 @@ Number of edges: 172
 204c7: CALL xc_vm_event_control (external)
 204cc: TEST Reg EAX, Reg EAX 2
 204ce: MOV Reg R13D, Reg EAX 3
-204d1: JZ 20510 (resolved immediate)
+204d1: JE 20510 (resolved immediate)
   |
   `- 20510
 204f0: MOV Reg ESI, Immediate 1 5
@@ -155,7 +155,7 @@ Number of edges: 172
 20503: JMP 2032a (resolved immediate)
   |
   `- 2032a
-20510: LEA Reg R8, Address (AddrPlus (FromReg RSP) (AddrImm 24)) 5
+20510: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 20515: XOR Reg ECX, Reg ECX 2
 20517: MOV Reg EDX, Immediate 1 5
 2051c: MOV Reg ESI, Reg EBP 2
@@ -164,7 +164,7 @@ Number of edges: 172
 20526: TEST Reg EAX, Reg EAX 2
 20528: MOV Reg R13D, Reg EAX 3
 2052b: MOV Reg R15D, Address (SizeDir 32 (FromReg R12)) 4
-2052f: JZ 2032a (resolved immediate)
+2052f: JE 2032a (resolved immediate)
   |
   `- 2032a
 20550: MOV Reg EBP, Address (SizeDir 32 (FromReg R12)) 4
@@ -173,7 +173,7 @@ Number of edges: 172
 2055a: MOV Reg ESI, Reg EBP 2
 2055c: CALL xc_strerror (external)
 20561: MOV Reg ECX, Address (SizeDir 32 (FromReg R12)) 4
-20565: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 24588)) 7
+20565: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 24588))) 7
 2056c: MOV Reg R8, Reg RAX 3
 2056f: MOV Reg ESI, Immediate 1 5
 20574: MOV Reg RDI, Reg RBX 3
@@ -202,7 +202,7 @@ Number of edges: 172
 205ca: CALL xc_strerror (external)
 205cf: MOV Reg ECX, Address (SizeDir 32 (FromReg R12)) 4
 205d3: MOV Reg R8, Reg RAX 3
-205d6: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 24603)) 7
+205d6: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 24603))) 7
 205dd: JMP 204f0 (resolved immediate)
   |
   `- 204f0
@@ -217,7 +217,7 @@ Number of edges: 172
   |
   `- 2033f
 2060e: TEST Reg EAX, Reg EAX 2
-20610: JZ 20442 (resolved immediate)
+20610: JE 20442 (resolved immediate)
   |
   `- 20442
 20626: CALL __stack_chk_fail (external)

@@ -14,13 +14,13 @@ Number of edges: 37
 12a1a: SUB Reg RSP, Immediate 8 4
 12a1e: CMP Address (SizeDir 8 (AddrPlus (FromReg RDI) (AddrImm 16))), Immediate 2 4
 12a22: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 24))) 4
-12a26: JZ 12a80 (resolved immediate)
+12a26: JE 12a80 (resolved immediate)
   |
   `- 12a28,12a80
 12a28: MOV Reg EDX, Immediate 48 5
 12a2d: CALL elf_access_unsigned (external)
 12a32: MOV Reg ECX, Reg EAX 2
-12a34: MOV Reg RDX, Immediate 14757395258967641293 10
+12a34: MOVABS Reg RDX, Immediate 14757395258967641293 10
 12a3e: MOV Reg RAX, Reg RDX 3
 12a41: MUL Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))) 4
 12a45: MOV Reg EAX, Immediate 4294967295 5
@@ -35,7 +35,7 @@ Number of edges: 37
 12a5b: JBE 12a6e (resolved immediate)
   |
   `- 12a5d,12a6e
-12a5d: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 72417)) 7
+12a5d: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 72417))) 7
 12a64: MOV Reg RDI, Reg RBP 3
 12a67: CALL elf_mark_broken (external)
 12a6c: MOV Reg ECX, Reg EBX 2

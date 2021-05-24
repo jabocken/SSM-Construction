@@ -16,7 +16,7 @@ Number of edges: 30
 166bf: MOV Reg RBP, Reg RDX 3
 166c2: CALL malloc (external)
 166c7: TEST Reg RAX, Reg RAX 3
-166ca: JZ 16709 (resolved immediate)
+166ca: JE 16709 (resolved immediate)
   |
   `- 166cc,16709
 166cc: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1152))) 7
@@ -36,8 +36,8 @@ Number of edges: 30
   |
   `- 
 16709: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1224))) 7
-16710: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 63129)) 7
-16717: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 60163)) 7
+16710: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 63129))) 7
+16717: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 60163))) 7
 1671e: CALL xc_dom_printf (external)
 16723: MOV Reg EAX, Immediate 4294967295 5
 16728: JMP 16704 (resolved immediate)

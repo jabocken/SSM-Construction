@@ -15,12 +15,12 @@ Number of edges: 54
 4d88: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 4d91: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
 4d96: XOR Reg EAX, Reg EAX 2
-4d98: LEA Reg R8, Address (AddrPlus (FromReg RSP) (AddrImm 4)) 5
-4d9d: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2140908)) 7
-4da4: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 17564)) 7
+4d98: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 4))) 5
+4d9d: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2140908))) 7
+4da4: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 17564))) 7
 4dab: CALL PyArg_ParseTupleAndKeywords (external)
 4db0: TEST Reg EAX, Reg EAX 2
-4db2: JZ 4e40 (resolved immediate)
+4db2: JE 4e40 (resolved immediate)
   |
   `- 4db8,4e40
 4db8: MOV Reg EDX, Immediate 0 5
@@ -29,7 +29,7 @@ Number of edges: 54
 4dc7: CALL xc_interface_open (external)
 4dcc: MOV Reg RBX, Reg RAX 3
 4dcf: TEST Reg RAX, Reg RAX 3
-4dd2: JZ 4e1b (resolved immediate)
+4dd2: JE 4e1b (resolved immediate)
   |
   `- 4dd4,4e1b
 4dd4: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))) 4
@@ -39,16 +39,16 @@ Number of edges: 54
 4de2: MOV Reg RDI, Reg RBX 3
 4de5: CALL xc_interface_close (external)
 4dea: TEST Reg EBP, Reg EBP 2
-4dec: JNZ 4e29 (resolved immediate)
+4dec: JNE 4e29 (resolved immediate)
   |
   `- 4dee,4e29
 4dee: MOV Reg ESI, Immediate 0 5
-4df3: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 17485)) 7
+4df3: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 17485))) 7
 4dfa: MOV Reg EAX, Immediate 0 5
 4dff: CALL Py_BuildValue (external)
 4e04: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 4e09: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-4e12: JNZ 4e47 (resolved immediate)
+4e12: JNE 4e47 (resolved immediate)
   |
   `- 4e14,4e47
 4e14: ADD Reg RSP, Immediate 24 4

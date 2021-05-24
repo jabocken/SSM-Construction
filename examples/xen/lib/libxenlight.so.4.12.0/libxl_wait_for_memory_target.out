@@ -16,7 +16,7 @@ Number of edges: 74
 6346d: PUSH Reg RBX 1
 6346e: MOV Reg EBX, Reg EDX 2
 63470: SUB Reg RSP, Immediate 160 7
-63477: LEA Reg RDX, Address (AddrPlus (FromReg RSP) (AddrImm 24)) 5
+63477: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 6347c: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Immediate 0 9
 63485: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 6348e: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 152))), Reg RAX 8
@@ -26,7 +26,7 @@ Number of edges: 74
 6349f: JS 6352d (resolved immediate)
   |
   `- 634a5,6352d
-634a5: LEA Reg RBP, Address (AddrPlus (FromReg RSP) (AddrImm 32)) 5
+634a5: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))) 5
 634aa: MOV Reg R14, Immediate 18446744073709551615 7
 634b1: MOV Reg RDI, Reg RBP 3
 634b4: CALL libxl_dominfo_init (external)
@@ -39,9 +39,9 @@ Number of edges: 74
 634cd: JB 63550 (resolved immediate)
   |
   `- 634d3,63550
-634d3: LEA Reg EDX, Address (AddrMinus (FromReg RBX) (AddrImm 2)) 3
+634d3: LEA Reg EDX, Address (SizeDir 32 (AddrMinus (FromReg RBX) (AddrImm 2))) 3
 634d6: CMP Reg R14, Reg RAX 3
-634d9: CMOVZ Reg EBX, Reg EDX 3
+634d9: CMOVE Reg EBX, Reg EDX 3
 634dc: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 634e1: TEST Reg EBX, Reg EBX 2
 634e3: JLE 63560 (resolved immediate)
@@ -72,7 +72,7 @@ Number of edges: 74
 63529: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 4
 6352d: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 152))) 8
 63535: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-6353e: JNZ 63574 (resolved immediate)
+6353e: JNE 63574 (resolved immediate)
   |
   `- 63540,63574
 63540: ADD Reg RSP, Immediate 160 7

@@ -8,9 +8,9 @@ Number of edges: 23
 4cc10 (False): 4f8ca
 4f890 (False): 0
 
-4cc10: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 333897)) 7
-4cc17: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 330904)) 7
-4cc1e: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 330968)) 7
+4cc10: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 333897))) 7
+4cc17: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 330904))) 7
+4cc1e: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 330968))) 7
 4cc25: SUB Reg RSP, Immediate 8 4
 4cc29: MOV Reg EDX, Immediate 2213 5
 4cc2e: CALL __assert_fail (external)
@@ -18,11 +18,11 @@ Number of edges: 23
   `- 
 4f890: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))) 4
 4f894: TEST Reg RAX, Reg RAX 3
-4f897: JZ 4f8b0 (resolved immediate)
+4f897: JE 4f8b0 (resolved immediate)
   |
   `- 4f899,4f8b0
 4f899: CMP Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 16))), Immediate 0 5
-4f89e: JNZ 4f8c1 (resolved immediate)
+4f89e: JNE 4f8c1 (resolved immediate)
   |
   `- 4f8a0,4f8c1
 4f8a0: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RAX) (AddrImm 4))) 4

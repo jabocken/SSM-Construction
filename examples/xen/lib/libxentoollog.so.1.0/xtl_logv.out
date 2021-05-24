@@ -23,7 +23,7 @@ dee: MOV Address (SizeDir 64 (FromReg RSP)), Reg R9 4
 df2: CALL __errno_location (external)
 df7: MOV Reg RBX, Reg RAX 3
 dfa: MOV Reg R15D, Address (SizeDir 32 (FromReg RAX)) 3
-dfd: LEA Reg EAX, Address (AddrMinus (FromReg RBP) (AddrImm 1)) 3
+dfd: LEA Reg EAX, Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 1))) 3
 e00: MOV Reg R9, Address (SizeDir 64 (FromReg RSP)) 4
 e04: MOV Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 e09: CMP Reg EAX, Immediate 8 3
@@ -46,9 +46,9 @@ e2c: POP Reg R15 2
 e2e: RET  1
   |
   `- 
-e2f: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2186)) 7
-e36: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 1987)) 7
-e3d: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2116)) 7
+e2f: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2186))) 7
+e36: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 1987))) 7
+e3d: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2116))) 7
 e44: MOV Reg EDX, Immediate 48 5
 e49: CALL __assert_fail (external)
   |

@@ -14,13 +14,13 @@ Number of edges: 24
 16a27: MOV Reg RDI, Reg RSI 3
 16a2a: MOV Reg RBP, Reg RSI 3
 16a2d: CALL strlen (external)
-16a32: LEA Reg RBX, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 4
+16a32: LEA Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 1))) 4
 16a36: MOV Reg RDI, Reg R12 3
 16a39: MOV Reg RSI, Reg RBX 3
 16a3c: CALL xc_dom_malloc (external)
 16a41: TEST Reg RAX, Reg RAX 3
 16a44: MOV Reg RCX, Reg RAX 3
-16a47: JZ 16a5a (resolved immediate)
+16a47: JE 16a5a (resolved immediate)
   |
   `- 16a49,16a5a
 16a49: MOV Reg RDX, Reg RBX 3

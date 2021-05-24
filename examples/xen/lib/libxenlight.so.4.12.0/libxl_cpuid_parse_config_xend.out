@@ -17,12 +17,12 @@ Number of edges: 206
 7253b: MOV Reg RDI, Address (SizeDir 64 (FromReg RDI)) 3
 7253e: MOV Reg EBX, Reg ESI 2
 72540: TEST Reg RDI, Reg RDI 3
-72543: JZ 72600 (resolved immediate)
+72543: JE 72600 (resolved immediate)
   |
   `- 72549,72600
 72549: MOV Reg R8D, Address (SizeDir 32 (FromReg RDI)) 3
-7254c: CMP Reg R8D, Immediate 4294967295 4
-72550: JZ 72600 (resolved immediate)
+7254c: CMP Reg R8D, Immediate 18446744073709551615 4
+72550: JE 72600 (resolved immediate)
   |
   `- 72556,72600
 72556: MOV Reg R10D, Immediate 40 6
@@ -32,21 +32,21 @@ Number of edges: 206
 72567: JMP 72587 (resolved immediate)
   |
   `- 72587
-72570: LEA Reg RBP, Address (AddrPlus (FromReg R10) (FromReg RAX)) 4
+72570: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg R10) (AddrTimes (AddrImm 1) (FromReg RAX)))) 4
 72574: ADD Reg RAX, Immediate 40 4
 72578: MOV Reg R8D, Address (SizeDir 32 (FromReg RAX)) 3
 7257b: MOV Reg ESI, Reg ECX 2
 7257d: ADD Reg RCX, Immediate 1 4
-72581: CMP Reg R8D, Immediate 4294967295 4
-72585: JZ 725a0 (resolved immediate)
+72581: CMP Reg R8D, Immediate 18446744073709551615 4
+72585: JE 725a0 (resolved immediate)
   |
   `- 72587,725a0
 72587: CMP Reg EBX, Reg R8D 3
-7258a: JNZ 72570 (resolved immediate)
+7258a: JNE 72570 (resolved immediate)
   |
   `- 72570,7258c
 7258c: CMP Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 4))), Reg EDX 3
-7258f: JNZ 72570 (resolved immediate)
+7258f: JNE 72570 (resolved immediate)
   |
   `- 72570,72591
 72591: POP Reg RBX 1
@@ -58,25 +58,25 @@ Number of edges: 206
   |
   `- 
 725a0: ADD Reg ESI, Immediate 2 3
-725a3: LEA Reg R12, Address (AddrPlus (FromReg RCX) (AddrTimes (AddrImm 4) (FromReg RCX))) 4
+725a3: LEA Reg R12, Address (SizeDir 64 (AddrPlus (FromReg RCX) (AddrTimes (AddrImm 4) (FromReg RCX)))) 4
 725a7: MOVSXD Reg RSI, Reg ESI 3
-725aa: LEA Reg RSI, Address (AddrPlus (FromReg RSI) (AddrTimes (AddrImm 4) (FromReg RSI))) 4
+725aa: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrTimes (AddrImm 4) (FromReg RSI)))) 4
 725ae: SHL Reg R12, Immediate 3 4
 725b2: SHL Reg RSI, Immediate 3 4
 725b6: MOV Reg R14D, Reg EDX 3
 725b9: CALL realloc (external)
-725be: MOV Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 0))), Reg RAX 4
-725c2: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (FromReg RBP))), Reg EBX 3
-725c5: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 0))) 4
+725be: MOV Address (SizeDir 64 (FromReg R13)), Reg RAX 4
+725c2: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 1) (FromReg RBP)))), Reg EBX 3
+725c5: MOV Reg RAX, Address (SizeDir 64 (FromReg R13)) 4
 725c9: PXOR Reg XMM0, Reg XMM0 4
-725cd: MOV Address (SizeDir 32 (AddrPlus (AddrPlus (FromReg RAX) (FromReg RBP)) (AddrImm 4))), Reg R14D 5
-725d2: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 0))) 4
+725cd: MOV Address (SizeDir 32 (AddrPlus (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 1) (FromReg RBP))) (AddrImm 4))), Reg R14D 5
+725d2: MOV Reg RAX, Address (SizeDir 64 (FromReg R13)) 4
 725d6: ADD Reg RAX, Reg RBP 3
 725d9: MOVUPS Address (SizeDir 128 (AddrPlus (FromReg RAX) (AddrImm 8))), Reg XMM0 4
 725dd: MOVUPS Address (SizeDir 128 (AddrPlus (FromReg RAX) (AddrImm 24))), Reg XMM0 4
-725e1: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 0))) 4
-725e5: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (FromReg R12))), Immediate 4294967295 8
-725ed: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 0))) 4
+725e1: MOV Reg RAX, Address (SizeDir 64 (FromReg R13)) 4
+725e5: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 1) (FromReg R12)))), Immediate 4294967295 8
+725ed: MOV Reg RAX, Address (SizeDir 64 (FromReg R13)) 4
 725f1: POP Reg RBX 1
 725f2: ADD Reg RAX, Reg RBP 3
 725f5: POP Reg RBP 1
@@ -111,23 +111,23 @@ Number of edges: 206
 729f4: MOV Reg R13, Reg RAX 3
 729f7: MOV Reg EAX, Immediate 1 5
 729fc: CMP Reg RCX, Reg RBX 3
-729ff: JZ 72a1e (resolved immediate)
+729ff: JE 72a1e (resolved immediate)
   |
   `- 72a01,72a1e
 72a01: MOVZX Reg ESI, Address (SizeDir 8 (FromReg RCX)) 3
 72a04: MOV Reg EDX, Immediate 4294967295 5
 72a09: CMP Reg SIL, Immediate 44 4
-72a0d: JZ 72b60 (resolved immediate)
+72a0d: JE 72b60 (resolved immediate)
   |
   `- 72a13,72b60
 72a13: CMP Reg SIL, Immediate 58 4
 72a17: MOV Reg EAX, Immediate 3 5
-72a1c: JZ 72a40 (resolved immediate)
+72a1c: JE 72a40 (resolved immediate)
   |
   `- 72a1e,72a40
 72a1e: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 72a23: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-72a2c: JNZ 72b9f (resolved immediate)
+72a2c: JNE 72b9f (resolved immediate)
   |
   `- 72a32,72b9f
 72a32: ADD Reg RSP, Immediate 24 4
@@ -145,19 +145,19 @@ Number of edges: 206
   `- 72530
 72a4b: MOV Reg R12, Reg RAX 3
 72a4e: MOV Reg RAX, Address (SizeDir 64 (FromReg RSP)) 4
-72a52: LEA Reg RDI, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 4
+72a52: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 1))) 4
 72a56: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RAX) (AddrImm 1))) 4
 72a5a: NOP  6
 72a60: TEST Reg AL, Reg AL 2
-72a62: JZ 72b84 (resolved immediate)
+72a62: JE 72b84 (resolved immediate)
   |
   `- 72a68,72b84
 72a68: CMP Reg AL, Immediate 101 2
-72a6a: JNZ 72b50 (resolved immediate)
+72a6a: JNE 72b50 (resolved immediate)
   |
   `- 72a70,72b50
 72a70: CMP Address (SizeDir 8 (AddrPlus (FromReg RDI) (AddrImm 2))), Immediate 120 4
-72a74: JNZ 72b50 (resolved immediate)
+72a74: JNE 72b50 (resolved immediate)
   |
   `- 72a7a,72b50
 72a7a: MOVSX Reg R13, Address (SizeDir 8 (AddrPlus (FromReg RDI) (AddrImm 1))) 5
@@ -172,26 +172,26 @@ Number of edges: 206
   |
   `- 72aa1,72b50
 72aa1: TEST Reg RAX, Reg RAX 3
-72aa4: JZ 72b50 (resolved immediate)
+72aa4: JE 72b50 (resolved immediate)
   |
   `- 72aaa,72b50
-72aaa: LEA Reg RBX, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 4
+72aaa: LEA Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 1))) 4
 72aae: MOV Reg ESI, Immediate 44 5
 72ab3: MOV Reg RDI, Reg RBX 3
 72ab6: CALL strchr (external)
 72abb: TEST Reg RAX, Reg RAX 3
 72abe: MOV Reg RBP, Reg RAX 3
 72ac1: MOV Address (SizeDir 64 (FromReg RSP)), Reg RAX 4
-72ac5: JZ 72b38 (resolved immediate)
+72ac5: JE 72b38 (resolved immediate)
   |
   `- 72ac7,72b38
 72ac7: MOV Reg RAX, Reg RBP 3
 72aca: SUB Reg RAX, Reg RBX 3
 72acd: CMP Reg RAX, Immediate 32 4
-72ad1: JNZ 72b8b (resolved immediate)
+72ad1: JNE 72b8b (resolved immediate)
   |
   `- 72ad7,72b8b
-72ad7: LEA Reg R13, Address (AddrPlus (FromReg R12) (AddrTimes (AddrImm 8) (FromReg R13))) 4
+72ad7: LEA Reg R13, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrTimes (AddrImm 8) (FromReg R13)))) 4
 72adb: MOV Reg ESI, Immediate 1 5
 72ae0: MOV Reg EDI, Immediate 33 5
 72ae5: CALL calloc (external)
@@ -202,25 +202,25 @@ Number of edges: 206
 72afc: CALL strncpy (external)
 72b01: MOV Reg RAX, Address (SizeDir 64 (AddrMinus (FromReg R13) (AddrImm 768))) 7
 72b08: MOV Address (SizeDir 8 (AddrPlus (FromReg RAX) (AddrImm 32))), Immediate 0 4
-72b0c: CMP Address (SizeDir 8 (AddrPlus (FromReg RBP) (AddrImm 0))), Immediate 0 4
-72b10: JZ 72b84 (resolved immediate)
+72b0c: CMP Address (SizeDir 8 (FromReg RBP)), Immediate 0 4
+72b10: JE 72b84 (resolved immediate)
   |
   `- 72b12,72b84
 72b12: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RBP) (AddrImm 1))) 4
-72b16: LEA Reg RDI, Address (AddrPlus (FromReg RBP) (AddrImm 1)) 4
+72b16: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 1))) 4
 72b1a: CMP Reg AL, Immediate 32 2
-72b1c: JZ 72b28 (resolved immediate)
+72b1c: JE 72b28 (resolved immediate)
   |
   `- 72b1e,72b28
 72b1e: NOP  2
 72b20: CMP Reg AL, Immediate 10 2
-72b22: JNZ 72a60 (resolved immediate)
+72b22: JNE 72a60 (resolved immediate)
   |
   `- 72a60,72b28
 72b28: ADD Reg RDI, Immediate 1 4
 72b2c: MOVZX Reg EAX, Address (SizeDir 8 (FromReg RDI)) 3
 72b2f: CMP Reg AL, Immediate 32 2
-72b31: JNZ 72b20 (resolved immediate)
+72b31: JNE 72b20 (resolved immediate)
   |
   `- 72b20,72b33
 72b33: JMP 72b28 (resolved immediate)
@@ -228,7 +228,7 @@ Number of edges: 206
   `- 72b28
 72b38: MOV Reg RDI, Reg RBX 3
 72b3b: CALL strlen (external)
-72b40: LEA Reg RBP, Address (AddrPlus (FromReg RBX) (FromReg RAX)) 4
+72b40: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrTimes (AddrImm 1) (FromReg RAX)))) 4
 72b44: MOV Address (SizeDir 64 (FromReg RSP)), Reg RBP 4
 72b48: JMP 72ac7 (resolved immediate)
   |
@@ -237,14 +237,14 @@ Number of edges: 206
 72b55: JMP 72a1e (resolved immediate)
   |
   `- 72a1e
-72b60: LEA Reg RBX, Address (AddrPlus (FromReg RCX) (AddrImm 1)) 4
+72b60: LEA Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RCX) (AddrImm 1))) 4
 72b64: XOR Reg EDX, Reg EDX 2
 72b66: MOV Reg RSI, Reg RBP 3
 72b69: MOV Reg RDI, Reg RBX 3
 72b6c: CALL strtoul (external)
 72b71: MOV Reg RCX, Address (SizeDir 64 (FromReg RSP)) 4
 72b75: CMP Reg RCX, Reg RBX 3
-72b78: JZ 72b95 (resolved immediate)
+72b78: JE 72b95 (resolved immediate)
   |
   `- 72b7a,72b95
 72b7a: MOV Reg EDX, Reg EAX 2

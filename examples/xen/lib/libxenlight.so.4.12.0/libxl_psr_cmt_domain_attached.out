@@ -9,7 +9,7 @@ Number of edges: 21
 
 74630: SUB Reg RSP, Immediate 24 4
 74634: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
-74638: LEA Reg RDX, Address (AddrPlus (FromReg RSP) (AddrImm 4)) 5
+74638: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 4))) 5
 7463d: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 74646: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
 7464b: XOR Reg EAX, Reg EAX 2
@@ -22,11 +22,11 @@ Number of edges: 21
 74658: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))) 4
 7465c: XOR Reg EDX, Reg EDX 2
 7465e: TEST Reg EAX, Reg EAX 2
-74660: SETNZ Reg DL 3
+74660: SETNE Reg DL 3
 74663: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 74668: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 74671: MOV Reg EAX, Reg EDX 2
-74673: JNZ 7467a (resolved immediate)
+74673: JNE 7467a (resolved immediate)
   |
   `- 74675,7467a
 74675: ADD Reg RSP, Immediate 24 4

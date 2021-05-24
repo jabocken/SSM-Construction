@@ -19,7 +19,7 @@ Number of edges: 78
 20510: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RSI)))) 4
 20514: MOV Address (SizeDir 64 (FromReg RDX)), Reg RAX 3
 20517: XOR Reg EAX, Reg EAX 2
-20519: REPZ RET  2
+20519: RET  2
   |
   `- 
 41160: SUB Reg RSP, Immediate 24 4
@@ -28,17 +28,17 @@ Number of edges: 78
 41172: XOR Reg EAX, Reg EAX 2
 41174: TEST Reg RDI, Reg RDI 3
 41177: MOV Address (SizeDir 64 (FromReg RSP)), Immediate 0 8
-4117f: JZ 41189 (resolved immediate)
+4117f: JE 41189 (resolved immediate)
   |
   `- 41181,41189
 41181: CMP Address (SizeDir 32 (FromReg RDI)), Immediate 128 6
-41187: JZ 411a0 (resolved immediate)
+41187: JE 411a0 (resolved immediate)
   |
   `- 41189,411a0
 41189: XOR Reg EAX, Reg EAX 2
 4118b: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 41190: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-41199: JNZ 411c0 (resolved immediate)
+41199: JNE 411c0 (resolved immediate)
   |
   `- 4119b,411c0
 4119b: ADD Reg RSP, Immediate 24 4
@@ -47,7 +47,7 @@ Number of edges: 78
   `- 
 411a0: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
 411a4: TEST Reg RDI, Reg RDI 3
-411a7: JZ 41189 (resolved immediate)
+411a7: JE 41189 (resolved immediate)
   |
   `- 41189,411a9
 411a9: CMP Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 8))), Reg ESI 3
@@ -59,7 +59,7 @@ Number of edges: 78
   |
   `- 20500
 411b6: TEST Reg EAX, Reg EAX 2
-411b8: JNZ 41189 (resolved immediate)
+411b8: JNE 41189 (resolved immediate)
   |
   `- 41189,411ba
 411ba: MOV Reg RAX, Address (SizeDir 64 (FromReg RSP)) 4
@@ -70,11 +70,11 @@ Number of edges: 78
   |
   `- 
 413b0: TEST Reg RSI, Reg RSI 3
-413b3: JZ 413bd (resolved immediate)
+413b3: JE 413bd (resolved immediate)
   |
   `- 413b5,413bd
 413b5: CMP Address (SizeDir 32 (FromReg RSI)), Immediate 128 6
-413bb: JZ 413c8 (resolved immediate)
+413bb: JE 413c8 (resolved immediate)
   |
   `- 413bd,413c8
 413bd: MOV Reg EAX, Immediate 4294967293 5
@@ -94,11 +94,11 @@ Number of edges: 78
   |
   `- 413e2,41160
 413e2: TEST Reg RAX, Reg RAX 3
-413e5: JZ 413ec (resolved immediate)
+413e5: JE 413ec (resolved immediate)
   |
   `- 413e7,413ec
 413e7: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 4 3
-413ea: JZ 41400 (resolved immediate)
+413ea: JE 41400 (resolved immediate)
   |
   `- 413ec,41400
 413ec: POP Reg RBX 1
@@ -109,10 +109,10 @@ Number of edges: 78
   |
   `- 
 41400: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))) 4
-41404: MOV Address (SizeDir 8 (AddrPlus (FromReg R12) (FromReg RBX))), Reg AL 4
+41404: MOV Address (SizeDir 8 (AddrPlus (FromReg R12) (AddrTimes (AddrImm 1) (FromReg RBX)))), Reg AL 4
 41408: ADD Reg RBX, Immediate 1 4
 4140c: CMP Reg RBX, Immediate 16 4
-41410: JNZ 413d8 (resolved immediate)
+41410: JNE 413d8 (resolved immediate)
   |
   `- 413d8,41412
 41412: POP Reg RBX 1

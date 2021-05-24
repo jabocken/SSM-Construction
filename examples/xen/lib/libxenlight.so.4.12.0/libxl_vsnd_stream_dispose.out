@@ -8,14 +8,14 @@ Number of edges: 15
 7da80 (False): 0
 
 7da80: TEST Reg RDI, Reg RDI 3
-7da83: JZ 7dab0 (resolved immediate)
+7da83: JE 7dab0 (resolved immediate)
   |
   `- 7da85,7dab0
 7da85: PUSH Reg RBX 1
 7da86: MOV Reg RBX, Reg RDI 3
 7da89: MOV Reg RDI, Address (SizeDir 64 (FromReg RDI)) 3
 7da8c: CALL free (external)
-7da91: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 16)) 4
+7da91: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
 7da95: CALL libxl_vsnd_params_dispose (external)
 7da9a: PXOR Reg XMM0, Reg XMM0 4
 7da9e: MOVUPS Address (SizeDir 128 (FromReg RBX)), Reg XMM0 3
@@ -26,6 +26,6 @@ Number of edges: 15
 7daae: RET  1
   |
   `- 
-7dab0: REPZ RET  2
+7dab0: RET  2
   |
   `- 

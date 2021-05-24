@@ -16,24 +16,24 @@ Number of edges: 43
 3fdac: SUB Reg RSP, Immediate 8 4
 3fdb0: MOVZX Reg EBX, Address (SizeDir 8 (FromReg RSI)) 3
 3fdb3: TEST Reg BL, Reg BL 2
-3fdb5: JZ 3fe00 (resolved immediate)
+3fdb5: JE 3fe00 (resolved immediate)
   |
   `- 3fdb7,3fe00
 3fdb7: MOV Reg R13, Reg RDI 3
 3fdba: CALL __ctype_b_loc (external)
 3fdbf: MOV Reg RDX, Address (SizeDir 64 (FromReg RAX)) 3
-3fdc2: LEA Reg RAX, Address (AddrPlus (FromReg RBP) (AddrImm 1)) 4
+3fdc2: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 1))) 4
 3fdc6: JMP 3fddc (resolved immediate)
   |
   `- 3fddc
 3fdd0: ADD Reg RAX, Immediate 1 4
 3fdd4: MOVZX Reg EBX, Address (SizeDir 8 (AddrMinus (FromReg RAX) (AddrImm 1))) 4
 3fdd8: TEST Reg BL, Reg BL 2
-3fdda: JZ 3fe00 (resolved immediate)
+3fdda: JE 3fe00 (resolved immediate)
   |
   `- 3fddc,3fe00
 3fddc: TEST Address (SizeDir 8 (AddrPlus (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 2) (FromReg RBX))) (AddrImm 1))), Immediate 8 5
-3fde1: JNZ 3fdd0 (resolved immediate)
+3fde1: JNE 3fdd0 (resolved immediate)
   |
   `- 3fdd0,3fde3
 3fde3: ADD Reg RSP, Immediate 8 4

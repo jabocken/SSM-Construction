@@ -23,7 +23,7 @@ Number of edges: 101
 23cfa: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 184))) 8
 23d02: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 23d0b: MOV Reg EAX, Reg EBX 2
-23d0d: JNZ 23e81 (resolved immediate)
+23d0d: JNE 23e81 (resolved immediate)
   |
   `- 23d13,23e81
 23d13: ADD Reg RSP, Immediate 200 7
@@ -34,14 +34,14 @@ Number of edges: 101
 23d20: RET  1
   |
   `- 
-23d28: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 48)) 5
+23d28: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))) 5
 23d2d: MOV Reg R12, Reg RSP 3
 23d30: MOV Reg RBP, Reg RDI 3
 23d33: MOV Reg RSI, Reg R12 3
 23d36: MOV Address (SizeDir 64 (FromReg RSP)), Immediate 0 8
 23d3e: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Immediate 0 9
 23d47: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
-23d4c: MOV Reg RAX, Immediate 77309411349 10
+23d4c: MOVABS Reg RAX, Immediate 77309411349 10
 23d56: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 3 8
 23d5e: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Immediate 136 9
 23d67: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))), Reg RAX 5
@@ -49,14 +49,14 @@ Number of edges: 101
 23d75: CALL xc__hypercall_bounce_pre (external)
 23d7a: TEST Reg EAX, Reg EAX 2
 23d7c: MOV Reg EBX, Reg EAX 2
-23d7e: JNZ 23e46 (resolved immediate)
+23d7e: JNE 23e46 (resolved immediate)
   |
   `- 23d84,23e46
 23d84: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 23d89: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 1088))) 7
 23d90: MOV Reg ESI, Immediate 35 5
 23d95: TEST Reg RAX, Reg RAX 3
-23d98: CMOVZ Reg RAX, Reg R12 4
+23d98: CMOVE Reg RAX, Reg R12 4
 23d9c: MOV Reg RDX, Address (SizeDir 64 (FromReg RAX)) 3
 23d9f: CALL xencall1 (external)
 23da4: TEST Reg EAX, Reg EAX 2
@@ -67,10 +67,10 @@ Number of edges: 101
 23dab: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 23db0: MOV Reg RDI, Reg RBP 3
 23db3: TEST Reg RSI, Reg RSI 3
-23db6: CMOVZ Reg RSI, Reg R12 4
+23db6: CMOVE Reg RSI, Reg R12 4
 23dba: CALL xc__hypercall_bounce_post (external)
 23dbf: TEST Reg R13D, Reg R13D 3
-23dc2: JNZ 23cfa (resolved immediate)
+23dc2: JNE 23cfa (resolved immediate)
   |
   `- 23cfa,23dc8
 23dc8: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 64))) 5
@@ -82,25 +82,25 @@ Number of edges: 101
 23de0: CALL __errno_location (external)
 23de5: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 13 3
 23de8: MOV Reg R13, Reg RAX 3
-23deb: JZ 23e08 (resolved immediate)
+23deb: JE 23e08 (resolved immediate)
   |
   `- 23ded,23e08
 23ded: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 23df2: TEST Reg RSI, Reg RSI 3
-23df5: JZ 23e36 (resolved immediate)
+23df5: JE 23e36 (resolved immediate)
   |
   `- 23e36
 23e08: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))) 4
-23e0c: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 5125)) 7
+23e0c: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 5125))) 7
 23e13: XOR Reg ECX, Reg ECX 2
 23e15: XOR Reg EAX, Reg EAX 2
 23e17: MOV Reg EDX, Immediate 3 5
 23e1c: MOV Reg RDI, Reg RBP 3
 23e1f: CALL xc_report (external)
 23e24: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
-23e29: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Immediate 13 8
+23e29: MOV Address (SizeDir 32 (FromReg R13)), Immediate 13 8
 23e31: TEST Reg RSI, Reg RSI 3
-23e34: JNZ 23df7 (resolved immediate)
+23e34: JNE 23df7 (resolved immediate)
 23e36: MOV Reg RSI, Reg R12 3
 23e39: MOV Reg RDI, Reg RBP 3
 23e3c: CALL xc__hypercall_bounce_post (external)
@@ -114,7 +114,7 @@ Number of edges: 101
 23e54: MOV Reg ESI, Reg R12D 3
 23e57: CALL xc_strerror (external)
 23e5c: MOV Reg ECX, Address (SizeDir 32 (FromReg RBX)) 2
-23e5e: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 4987)) 7
+23e5e: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 4987))) 7
 23e65: MOV Reg R8, Reg RAX 3
 23e68: MOV Reg ESI, Immediate 1 5
 23e6d: MOV Reg RDI, Reg RBP 3

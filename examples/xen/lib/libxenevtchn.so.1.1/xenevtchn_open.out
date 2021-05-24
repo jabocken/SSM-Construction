@@ -17,19 +17,19 @@ c7a: SUB Reg RSP, Immediate 8 4
 c7e: CALL malloc (external)
 c83: TEST Reg RAX, Reg RAX 3
 c86: MOV Reg RBX, Reg RAX 3
-c89: JZ cc6 (resolved immediate)
+c89: JE cc6 (resolved immediate)
   |
   `- c8b,cc6
 c8b: MOV Address (SizeDir 64 (FromReg RAX)), Reg RBP 3
 c8e: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 16))), Immediate 4294967295 7
-c95: LEA Reg RBP, Address (AddrPlus (FromReg RBX) (AddrImm 24)) 4
+c95: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
 c99: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))), Immediate 0 8
-ca1: LEA Reg RAX, Address (AddrPlus (FromReg RIP) (AddrImm 216)) 7
+ca1: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 216))) 7
 ca8: MOV Reg RDI, Reg RBP 3
 cab: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))), Reg RAX 4
 caf: CALL xentoolcore__register_active_handle (external)
 cb4: CMP Address (SizeDir 64 (FromReg RBX)), Immediate 0 4
-cb8: JZ cd0 (resolved immediate)
+cb8: JE cd0 (resolved immediate)
   |
   `- cba,cd0
 cba: MOV Reg RDI, Reg RBX 3
@@ -55,7 +55,7 @@ ce1: CALL xtl_createlogger_stdiostream (external)
 ce6: TEST Reg RAX, Reg RAX 3
 ce9: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))), Reg RAX 4
 ced: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
-cf0: JNZ cba (resolved immediate)
+cf0: JNE cba (resolved immediate)
   |
   `- cba,cf2
 cf2: NOP  6
@@ -75,12 +75,12 @@ d1b: JMP cc6 (resolved immediate)
   `- cc6
 da0: PUSH Reg RBX 1
 da1: MOV Reg RBX, Reg RDI 3
-da4: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 714)) 7
+da4: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 714))) 7
 dab: XOR Reg EAX, Reg EAX 2
 dad: MOV Reg ESI, Immediate 524290 5
 db2: CALL open (external)
-db7: CMP Reg EAX, Immediate 4294967295 3
-dba: JZ dc1 (resolved immediate)
+db7: CMP Reg EAX, Immediate 18446744073709551615 3
+dba: JE dc1 (resolved immediate)
   |
   `- dbc,dc1
 dbc: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 16))), Reg EAX 3
@@ -90,8 +90,8 @@ dc2: RET  1
   |
   `- 
 dd0: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 16))) 3
-dd3: CMP Reg EDI, Immediate 4294967295 3
-dd6: JZ de0 (resolved immediate)
+dd3: CMP Reg EDI, Immediate 18446744073709551615 3
+dd6: JE de0 (resolved immediate)
   |
   `- dd8,de0
 dd8: JMP close (jmp to external function)

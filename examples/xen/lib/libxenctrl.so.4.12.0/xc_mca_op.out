@@ -25,7 +25,7 @@ Number of edges: 59
 163d2: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Immediate 152 9
 163db: CALL xc__hypercall_bounce_pre (external)
 163e0: TEST Reg EAX, Reg EAX 2
-163e2: JNZ 16440 (resolved immediate)
+163e2: JNE 16440 (resolved immediate)
   |
   `- 163e4,16440
 163e4: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
@@ -33,19 +33,19 @@ Number of edges: 59
 163f2: MOV Reg ESI, Immediate 48 5
 163f7: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1088))) 7
 163fe: TEST Reg RAX, Reg RAX 3
-16401: CMOVZ Reg RAX, Reg RBP 4
+16401: CMOVE Reg RAX, Reg RBP 4
 16405: MOV Reg RDX, Address (SizeDir 64 (FromReg RAX)) 3
 16408: CALL xencall1 (external)
 1640d: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 16412: MOV Reg RDI, Reg RBX 3
 16415: MOV Reg R12D, Reg EAX 3
 16418: TEST Reg RSI, Reg RSI 3
-1641b: CMOVZ Reg RSI, Reg RBP 4
+1641b: CMOVE Reg RSI, Reg RBP 4
 1641f: CALL xc__hypercall_bounce_post (external)
 16424: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
 16429: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 16432: MOV Reg EAX, Reg R12D 3
-16435: JNZ 1647e (resolved immediate)
+16435: JNE 1647e (resolved immediate)
   |
   `- 16437,1647e
 16437: ADD Reg RSP, Immediate 48 4
@@ -61,14 +61,14 @@ Number of edges: 59
 1644b: MOV Reg RDI, Reg RBX 3
 1644e: MOV Reg ESI, Reg R12D 3
 16451: CALL xc_strerror (external)
-16456: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
-16459: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 63360)) 7
+16456: MOV Reg ECX, Address (SizeDir 32 (FromReg RBP)) 3
+16459: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 63360))) 7
 16460: MOV Reg R8, Reg RAX 3
 16463: MOV Reg ESI, Immediate 1 5
 16468: MOV Reg RDI, Reg RBX 3
 1646b: XOR Reg EAX, Reg EAX 2
 1646d: CALL xc_report_error (external)
-16472: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R12D 4
+16472: MOV Address (SizeDir 32 (FromReg RBP)), Reg R12D 4
 16476: MOV Reg R12D, Immediate 4294967295 6
 1647c: JMP 16424 (resolved immediate)
   |

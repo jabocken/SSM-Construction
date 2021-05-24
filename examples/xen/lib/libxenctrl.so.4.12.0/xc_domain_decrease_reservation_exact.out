@@ -19,7 +19,7 @@ fbc1: MOV Reg RBX, Reg RDX 3
 fbc4: CALL xc_domain_decrease_reservation (external)
 fbc9: MOVSXD Reg RDX, Reg EAX 3
 fbcc: CMP Reg RDX, Reg RBX 3
-fbcf: JZ fbe0 (resolved immediate)
+fbcf: JE fbe0 (resolved immediate)
   |
   `- fbd1,fbe0
 fbd1: TEST Reg EAX, Reg EAX 2
@@ -45,7 +45,7 @@ fbea: RET  1
   `- 
 fbf0: CALL __errno_location (external)
 fbf5: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))) 4
-fbf9: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 88864)) 7
+fbf9: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 88864))) 7
 fc00: PUSH Reg R13 2
 fc02: PUSH Reg RBX 1
 fc03: MOV Reg R14, Reg RAX 3

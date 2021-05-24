@@ -14,16 +14,16 @@ Number of edges: 38
 40ad7: MOV Reg RBP, Address (SizeDir 64 (FromReg RSI)) 3
 40ada: CALL yajl_gen_array_open (external)
 40adf: TEST Reg EAX, Reg EAX 2
-40ae1: JNZ 40b27 (resolved immediate)
+40ae1: JNE 40b27 (resolved immediate)
   |
   `- 40ae3,40b27
 40ae3: TEST Reg RBP, Reg RBP 3
-40ae6: JZ 40b30 (resolved immediate)
+40ae6: JE 40b30 (resolved immediate)
   |
   `- 40ae8,40b30
-40ae8: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))) 4
+40ae8: MOV Reg RBX, Address (SizeDir 64 (FromReg RBP)) 4
 40aec: TEST Reg RBX, Reg RBX 3
-40aef: JZ 40b30 (resolved immediate)
+40aef: JE 40b30 (resolved immediate)
   |
   `- 40af1,40b30
 40af1: ADD Reg RBP, Immediate 8 4
@@ -33,7 +33,7 @@ Number of edges: 38
 40b00: ADD Reg RBP, Immediate 8 4
 40b04: MOV Reg RBX, Address (SizeDir 64 (AddrMinus (FromReg RBP) (AddrImm 8))) 4
 40b08: TEST Reg RBX, Reg RBX 3
-40b0b: JZ 40b30 (resolved immediate)
+40b0b: JE 40b30 (resolved immediate)
   |
   `- 40b0d,40b30
 40b0d: MOV Reg RDI, Reg RBX 3
@@ -43,7 +43,7 @@ Number of edges: 38
 40b1b: MOV Reg RDI, Reg R12 3
 40b1e: CALL yajl_gen_string (external)
 40b23: TEST Reg EAX, Reg EAX 2
-40b25: JZ 40b00 (resolved immediate)
+40b25: JE 40b00 (resolved immediate)
   |
   `- 40b00
 40b27: POP Reg RBX 1

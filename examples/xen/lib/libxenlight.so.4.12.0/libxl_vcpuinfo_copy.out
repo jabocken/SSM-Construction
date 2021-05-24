@@ -19,7 +19,7 @@ Number of edges: 76
 3bdba: MOV Reg R12, Reg RDI 3
 3bdbd: MOV Reg EBP, Immediate 0 5
 3bdc2: MOV Reg EBX, Immediate 0 5
-3bdc7: JZ 3bdf4 (resolved immediate)
+3bdc7: JE 3bdf4 (resolved immediate)
   |
   `- 3bdc9,3bdf4
 3bdc9: NOP  7
@@ -44,9 +44,9 @@ Number of edges: 76
 3be13: RET  1
   |
   `- 
-3be14: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 387253)) 7
-3be1b: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 386238)) 7
-3be22: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 386248)) 7
+3be14: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 387253))) 7
+3be1b: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 386238))) 7
+3be22: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 386248))) 7
 3be29: MOV Reg EDX, Immediate 80 5
 3be2e: CALL __assert_fail (external)
   |
@@ -79,8 +79,8 @@ Number of edges: 76
 814bf: MOV Reg RAX, Address (SizeDir 64 (AddrMinus (FromReg RDX) (AddrImm 8))) 4
 814c3: MOV Address (SizeDir 64 (AddrMinus (FromReg RSI) (AddrImm 8))), Reg RAX 4
 814c7: CALL libxl_bitmap_copy_alloc (external)
-814cc: LEA Reg RDX, Address (AddrPlus (FromReg RBP) (AddrImm 40)) 4
-814d0: LEA Reg RSI, Address (AddrPlus (FromReg RBX) (AddrImm 40)) 4
+814cc: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 40))) 4
+814d0: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 40))) 4
 814d4: MOV Reg RDI, Reg R12 3
 814d7: CALL libxl_bitmap_copy_alloc (external)
 814dc: MOV Reg RDI, Reg RSP 3
@@ -89,7 +89,7 @@ Number of edges: 76
   `- 3bdb0
 814e4: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 814e9: XOR Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-814f2: JNZ 814fd (resolved immediate)
+814f2: JNE 814fd (resolved immediate)
   |
   `- 814f4,814fd
 814f4: ADD Reg RSP, Immediate 32 4

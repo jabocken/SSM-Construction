@@ -15,16 +15,16 @@ Number of edges: 22
 584a9: JLE 584d1 (resolved immediate)
   |
   `- 584ab,584d1
-584ab: LEA Reg EAX, Address (AddrMinus (FromReg RSI) (AddrImm 1)) 3
+584ab: LEA Reg EAX, Address (SizeDir 32 (AddrMinus (FromReg RSI) (AddrImm 1))) 3
 584ae: MOV Reg RBX, Reg RDI 3
 584b1: SHL Reg RAX, Immediate 4 4
-584b5: LEA Reg RBP, Address (AddrPlus (AddrPlus (FromReg RDI) (FromReg RAX)) (AddrImm 16)) 5
+584b5: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RDI) (AddrTimes (AddrImm 1) (FromReg RAX))) (AddrImm 16))) 5
 584ba: NOP  6
 584c0: MOV Reg RDI, Reg RBX 3
 584c3: ADD Reg RBX, Immediate 16 4
 584c7: CALL libxl_device_usbdev_dispose (external)
 584cc: CMP Reg RBX, Reg RBP 3
-584cf: JNZ 584c0 (resolved immediate)
+584cf: JNE 584c0 (resolved immediate)
   |
   `- 584c0,584d1
 584d1: POP Reg RBX 1

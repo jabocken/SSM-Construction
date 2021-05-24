@@ -38,40 +38,40 @@ Number of edges: 97
   |
   `- 6558,6628
 6558: MOVSXD Reg RDX, Reg EAX 3
-655b: MOVZX Reg EDX, Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RBX) (FromReg RDX)) (AddrImm 1))) 5
+655b: MOVZX Reg EDX, Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RBX) (AddrTimes (AddrImm 1) (FromReg RDX))) (AddrImm 1))) 5
 6560: CMP Reg DL, Immediate 10 3
-6563: JZ 6608 (resolved immediate)
+6563: JE 6608 (resolved immediate)
   |
   `- 6569,6608
 6569: CMP Reg DL, Immediate 32 3
-656c: JZ 6573 (resolved immediate)
+656c: JE 6573 (resolved immediate)
   |
   `- 656e,6573
 656e: CMP Reg DL, Immediate 9 3
-6571: JNZ 659e (resolved immediate)
+6571: JNE 659e (resolved immediate)
   |
   `- 6573,659e
-6573: LEA Reg EAX, Address (AddrMinus (FromReg R10) (AddrImm 1)) 4
+6573: LEA Reg EAX, Address (SizeDir 32 (AddrMinus (FromReg R10) (AddrImm 1))) 4
 6577: CDQE  2
 6579: NOP  7
 6580: TEST Reg EAX, Reg EAX 2
 6582: MOV Reg R10D, Reg EAX 3
-6585: JZ 662e (resolved immediate)
+6585: JE 662e (resolved immediate)
   |
   `- 658b,662e
-658b: MOVZX Reg ECX, Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RBX) (FromReg RAX)) (AddrImm 1))) 5
+658b: MOVZX Reg ECX, Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RBX) (AddrTimes (AddrImm 1) (FromReg RAX))) (AddrImm 1))) 5
 6590: SUB Reg RAX, Immediate 1 4
 6594: CMP Reg CL, Immediate 9 3
-6597: JZ 6580 (resolved immediate)
+6597: JE 6580 (resolved immediate)
   |
   `- 6580,6599
 6599: CMP Reg CL, Immediate 32 3
-659c: JZ 6580 (resolved immediate)
+659c: JE 6580 (resolved immediate)
   |
   `- 6580,659e
-659e: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 29759)) 7
-65a5: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 15212)) 7
-65ac: LEA Reg R9, Address (AddrPlus (FromReg RIP) (AddrImm 29714)) 7
+659e: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 29759))) 7
+65a5: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 15212))) 7
+65ac: LEA Reg R9, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 29714))) 7
 65b3: MOV Reg RAX, Address (SizeDir 64 (FromReg R12)) 4
 65b7: SUB Reg RSP, Immediate 8 4
 65bb: MOV Reg R8D, Reg EBP 3
@@ -80,7 +80,7 @@ Number of edges: 97
 65c6: XOR Reg EAX, Reg EAX 2
 65c8: PUSH Reg R13 2
 65ca: PUSH Reg RDX 1
-65cb: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 19366)) 7
+65cb: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 19366))) 7
 65d2: PUSH Reg RSI 1
 65d3: PUSH Reg RBX 1
 65d4: MOV Reg ESI, Immediate 1 5
@@ -89,7 +89,7 @@ Number of edges: 97
 65e0: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg R12) (AddrImm 8))) 5
 65e5: ADD Reg RSP, Immediate 48 4
 65e9: TEST Reg EAX, Reg EAX 2
-65eb: JNZ 6521 (resolved immediate)
+65eb: JNE 6521 (resolved immediate)
   |
   `- 6521,65f1
 65f1: MOV Address (SizeDir 32 (AddrPlus (FromReg R12) (AddrImm 8))), Immediate 22 9
@@ -103,19 +103,19 @@ Number of edges: 97
   `- 
 6608: SUB Reg EBP, Immediate 1 3
 660b: SUB Reg R10D, Immediate 1 4
-660f: JNZ 6648 (resolved immediate)
+660f: JNE 6648 (resolved immediate)
   |
   `- 6611,6648
-6611: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 29644)) 7
-6618: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 19632)) 7
+6611: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 29644))) 7
+6618: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 19632))) 7
 661f: MOV Reg R9, Reg RSI 3
 6622: JMP 65b3 (resolved immediate)
   |
   `- 65b3
-6628: JNZ 659e (resolved immediate)
+6628: JNE 659e (resolved immediate)
   |
   `- 659e,662e
-662e: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 29615)) 7
+662e: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 29615))) 7
 6635: XOR Reg R10D, Reg R10D 3
 6638: MOV Reg RSI, Reg RDX 3
 663b: MOV Reg R9, Reg RDX 3
@@ -123,7 +123,7 @@ Number of edges: 97
   |
   `- 65b3
 6648: MOVSXD Reg RAX, Reg R10D 3
-664b: MOVZX Reg EDX, Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RBX) (FromReg RAX)) (AddrImm 1))) 5
+664b: MOVZX Reg EDX, Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RBX) (AddrTimes (AddrImm 1) (FromReg RAX))) (AddrImm 1))) 5
 6650: JMP 6569 (resolved immediate)
   |
   `- 6569

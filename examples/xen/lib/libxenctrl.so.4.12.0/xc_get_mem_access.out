@@ -24,14 +24,14 @@ Number of edges: 27
 21d9c: MOV Address (SizeDir 8 (FromReg RSP)), Immediate 1 4
 21da0: CALL do_memory_op (external)
 21da5: TEST Reg EAX, Reg EAX 2
-21da7: JNZ 21db0 (resolved immediate)
+21da7: JNE 21db0 (resolved immediate)
   |
   `- 21da9,21db0
 21da9: MOVZX Reg EDX, Address (SizeDir 8 (AddrPlus (FromReg RSP) (AddrImm 1))) 5
 21dae: MOV Address (SizeDir 32 (FromReg RBX)), Reg EDX 2
 21db0: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
 21db5: XOR Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-21dbe: JNZ 21dc6 (resolved immediate)
+21dbe: JNE 21dc6 (resolved immediate)
   |
   `- 21dc0,21dc6
 21dc0: ADD Reg RSP, Immediate 48 4

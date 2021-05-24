@@ -19,7 +19,7 @@ Number of edges: 58
   |
   `- 6efd
 6ef8: CMP Reg EAX, Reg R12D 3
-6efb: JZ 6f48 (resolved immediate)
+6efb: JE 6f48 (resolved immediate)
   |
   `- 6efd,6f48
 6efd: MOV Reg RDI, Reg RBP 3
@@ -31,7 +31,7 @@ Number of edges: 58
   `- 6ef8,6f0b
 6f0b: CALL __errno_location (external)
 6f10: MOV Reg R12D, Address (SizeDir 32 (FromReg RAX)) 3
-6f13: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 106902)) 7
+6f13: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 106902))) 7
 6f1a: MOV Reg RBP, Reg RAX 3
 6f1d: MOV Reg ECX, Reg EBX 2
 6f1f: MOV Reg ESI, Immediate 1 5
@@ -39,7 +39,7 @@ Number of edges: 58
 6f27: XOR Reg EAX, Reg EAX 2
 6f29: MOV Reg EBX, Immediate 4294967295 5
 6f2e: CALL xc_report_error (external)
-6f33: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R12D 4
+6f33: MOV Address (SizeDir 32 (FromReg RBP)), Reg R12D 4
 6f37: MOV Reg EAX, Reg EBX 2
 6f39: POP Reg RBX 1
 6f3a: POP Reg RBP 1
@@ -59,14 +59,14 @@ Number of edges: 58
   `- 6f37,6f59
 6f59: CALL __errno_location (external)
 6f5e: MOV Reg R14D, Address (SizeDir 32 (FromReg RAX)) 3
-6f61: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 106872)) 7
+6f61: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 106872))) 7
 6f68: MOV Reg RBP, Reg RAX 3
 6f6b: MOV Reg ECX, Reg R12D 3
 6f6e: MOV Reg RDI, Reg R13 3
 6f71: XOR Reg EAX, Reg EAX 2
 6f73: MOV Reg ESI, Immediate 1 5
 6f78: CALL xc_report_error (external)
-6f7d: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R14D 4
+6f7d: MOV Address (SizeDir 32 (FromReg RBP)), Reg R14D 4
 6f81: MOV Reg EAX, Reg EBX 2
 6f83: POP Reg RBX 1
 6f84: POP Reg RBP 1

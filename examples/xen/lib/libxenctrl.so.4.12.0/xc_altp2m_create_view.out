@@ -19,7 +19,7 @@ Number of edges: 66
 8e67: MOV Reg EDX, Immediate 80 5
 8e6c: MOV Reg R13, Reg RDI 3
 8e6f: SUB Reg RSP, Immediate 72 4
-8e73: LEA Reg R12, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+8e73: LEA Reg R12, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 8e78: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RCX 5
 8e7d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 0 9
 8e86: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
@@ -32,11 +32,11 @@ Number of edges: 66
 8eaf: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))), Immediate 0 9
 8eb8: CALL xc__hypercall_buffer_alloc (external)
 8ebd: TEST Reg RAX, Reg RAX 3
-8ec0: JZ 8f1f (resolved immediate)
+8ec0: JE 8f1f (resolved immediate)
   |
   `- 8ec2,8f1f
 8ec2: MOV Reg RBX, Reg RAX 3
-8ec5: MOV Reg RAX, Immediate 17179869185 10
+8ec5: MOVABS Reg RAX, Immediate 17179869185 10
 8ecf: MOV Reg EDX, Immediate 25 5
 8ed4: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
 8ed7: MOV Address (SizeDir 16 (AddrPlus (FromReg RBX) (AddrImm 8))), Reg R15W 5
@@ -46,23 +46,23 @@ Number of edges: 66
 8eea: MOV Address (SizeDir 16 (AddrPlus (FromReg RBX) (AddrImm 18))), Reg R14W 5
 8eef: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 1088))) 7
 8ef6: TEST Reg RAX, Reg RAX 3
-8ef9: CMOVZ Reg RAX, Reg R12 4
+8ef9: CMOVE Reg RAX, Reg R12 4
 8efd: MOV Reg RCX, Address (SizeDir 64 (FromReg RAX)) 3
 8f00: CALL xencall2 (external)
 8f05: TEST Reg EAX, Reg EAX 2
 8f07: MOV Reg EBP, Reg EAX 2
-8f09: JZ 8f40 (resolved immediate)
+8f09: JE 8f40 (resolved immediate)
   |
   `- 8f0b,8f40
 8f0b: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 8f10: MOV Reg RDI, Reg R13 3
 8f13: TEST Reg RSI, Reg RSI 3
-8f16: CMOVZ Reg RSI, Reg R12 4
+8f16: CMOVE Reg RSI, Reg R12 4
 8f1a: CALL xc__hypercall_buffer_free (external)
 8f1f: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))) 5
 8f24: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 8f2d: MOV Reg EAX, Reg EBP 2
-8f2f: JNZ 8f4e (resolved immediate)
+8f2f: JNE 8f4e (resolved immediate)
   |
   `- 8f31,8f4e
 8f31: ADD Reg RSP, Immediate 72 4

@@ -14,32 +14,32 @@ Number of edges: 58
 79428: SUB Reg RSP, Immediate 8 4
 7942c: CALL yajl_gen_map_open (external)
 79431: TEST Reg EAX, Reg EAX 2
-79433: JNZ 79498 (resolved immediate)
+79433: JNE 79498 (resolved immediate)
   |
   `- 79435,79498
-79435: CMP Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))), Immediate 0 5
-7943a: JNZ 794a0 (resolved immediate)
+79435: CMP Address (SizeDir 64 (FromReg RBP)), Immediate 0 5
+7943a: JNE 794a0 (resolved immediate)
   |
   `- 7943c,794a0
 7943c: CMP Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))), Immediate 0 5
-79441: JNZ 79480 (resolved immediate)
+79441: JNE 79480 (resolved immediate)
   |
   `- 79443,79480
 79443: CMP Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))), Immediate 18446744073709551615 5
-79448: JZ 79472 (resolved immediate)
+79448: JE 79472 (resolved immediate)
   |
   `- 7944a,79472
-7944a: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 185591)) 7
+7944a: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 185591))) 7
 79451: MOV Reg EDX, Immediate 3 5
 79456: MOV Reg RDI, Reg RBX 3
 79459: CALL yajl_gen_string (external)
 7945e: TEST Reg EAX, Reg EAX 2
-79460: JNZ 79498 (resolved immediate)
+79460: JNE 79498 (resolved immediate)
 79462: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))) 4
 79466: MOV Reg RDI, Reg RBX 3
 79469: CALL libxl__uint64_gen_json (external)
 7946e: TEST Reg EAX, Reg EAX 2
-79470: JNZ 79498 (resolved immediate)
+79470: JNE 79498 (resolved immediate)
 79472: ADD Reg RSP, Immediate 8 4
 79476: MOV Reg RDI, Reg RBX 3
 79479: POP Reg RBX 1
@@ -47,12 +47,12 @@ Number of edges: 58
 7947b: JMP yajl_gen_map_close (jmp to external function)
   |
   `- 
-79480: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 138093)) 7
+79480: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 138093))) 7
 79487: MOV Reg EDX, Immediate 6 5
 7948c: MOV Reg RDI, Reg RBX 3
 7948f: CALL yajl_gen_string (external)
 79494: TEST Reg EAX, Reg EAX 2
-79496: JZ 794d0 (resolved immediate)
+79496: JE 794d0 (resolved immediate)
   |
   `- 794d0
 79498: ADD Reg RSP, Immediate 8 4
@@ -61,23 +61,23 @@ Number of edges: 58
 7949e: RET  1
   |
   `- 
-794a0: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 141115)) 7
+794a0: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 141115))) 7
 794a7: MOV Reg EDX, Immediate 5 5
 794ac: MOV Reg RDI, Reg RBX 3
 794af: CALL yajl_gen_string (external)
 794b4: TEST Reg EAX, Reg EAX 2
-794b6: JNZ 79498 (resolved immediate)
-794b8: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))) 4
+794b6: JNE 79498 (resolved immediate)
+794b8: MOV Reg RSI, Address (SizeDir 64 (FromReg RBP)) 4
 794bc: MOV Reg RDI, Reg RBX 3
 794bf: CALL libxl__uint64_gen_json (external)
 794c4: TEST Reg EAX, Reg EAX 2
-794c6: JZ 7943c (resolved immediate)
+794c6: JE 7943c (resolved immediate)
   |
   `- 7943c
 794d0: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))) 4
 794d4: MOV Reg RDI, Reg RBX 3
 794d7: CALL libxl__uint64_gen_json (external)
 794dc: TEST Reg EAX, Reg EAX 2
-794de: JZ 79443 (resolved immediate)
+794de: JE 79443 (resolved immediate)
   |
   `- 79443

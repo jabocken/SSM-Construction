@@ -9,7 +9,7 @@ Number of edges: 26
 
 5ca0: MOV Reg EAX, Address (SizeDir 32 (FromReg RSI)) 2
 5ca2: TEST Reg EAX, Reg EAX 2
-5ca4: JNZ 5cb0 (resolved immediate)
+5ca4: JNE 5cb0 (resolved immediate)
   |
   `- 5ca6,5cb0
 5ca6: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))) 4
@@ -21,7 +21,7 @@ Number of edges: 26
 5cb0: TEST Reg ECX, Reg ECX 2
 5cb2: PUSH Reg RBX 1
 5cb3: MOV Reg RBX, Reg RDX 3
-5cb6: JZ 5cd0 (resolved immediate)
+5cb6: JE 5cd0 (resolved immediate)
   |
   `- 5cb8,5cd0
 5cb8: MOV Address (SizeDir 64 (FromReg RBX)), Immediate 0 7
@@ -32,7 +32,7 @@ Number of edges: 26
   `- 
 5cd0: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))) 4
 5cd4: MOV Reg R9D, Address (SizeDir 32 (AddrPlus (FromReg RSI) (AddrImm 28))) 4
-5cd8: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 21369)) 7
+5cd8: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 21369))) 7
 5cdf: MOV Reg R8D, Address (SizeDir 32 (AddrPlus (FromReg RSI) (AddrImm 24))) 4
 5ce3: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
 5ce7: MOV Reg ESI, Immediate 1 5

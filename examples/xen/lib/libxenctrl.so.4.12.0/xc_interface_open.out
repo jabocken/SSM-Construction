@@ -21,7 +21,7 @@ Number of edges: 116
 19c0c: XOR Reg EAX, Reg EAX 2
 19c0e: MOV Reg RDI, Reg RSP 3
 19c11: MOV Reg RBP, Reg RSP 3
-19c14: REP STOSQ  3
+19c14: REP STOSQ Address (SizeDir 64 (FromReg RDI)), Reg RAX 3
 19c17: MOV Reg RDI, Reg RBP 3
 19c1a: MOV Address (SizeDir 32 (FromReg RSP)), Reg EDX 3
 19c1d: CALL xc_clear_last_error (external)
@@ -30,28 +30,28 @@ Number of edges: 116
 19c2a: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 0 9
 19c33: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg R13 5
 19c38: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Immediate 0 9
-19c41: JZ 19d20 (resolved immediate)
+19c41: JE 19d20 (resolved immediate)
   |
   `- 19c47,19d20
 19c47: MOV Reg EDI, Immediate 1112 5
 19c4c: CALL malloc (external)
 19c51: TEST Reg RAX, Reg RAX 3
 19c54: MOV Reg RBX, Reg RAX 3
-19c57: JZ 19d78 (resolved immediate)
+19c57: JE 19d78 (resolved immediate)
   |
   `- 19c5d,19d78
 19c5d: TEST Reg R12B, Immediate 1 4
 19c61: MOV Reg ECX, Immediate 139 5
 19c66: MOV Reg RDI, Reg RAX 3
 19c69: MOV Reg RSI, Reg RBP 3
-19c6c: REP MOVSQ  3
-19c6f: JZ 19ca0 (resolved immediate)
+19c6c: REP MOVSQ Address (SizeDir 64 (FromReg RDI)), Address (SizeDir 64 (FromReg RSI)) 3
+19c6f: JE 19ca0 (resolved immediate)
   |
   `- 19c71,19ca0
 19c71: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 1112))) 8
 19c79: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 19c82: MOV Reg RAX, Reg RBX 3
-19c85: JNZ 19dae (resolved immediate)
+19c85: JNE 19dae (resolved immediate)
   |
   `- 19c8b,19dae
 19c8b: ADD Reg RSP, Immediate 1128 7
@@ -69,7 +69,7 @@ Number of edges: 116
 19cac: CALL xencall_open (external)
 19cb1: TEST Reg RAX, Reg RAX 3
 19cb4: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1088))), Reg RAX 7
-19cbb: JZ 19cf0 (resolved immediate)
+19cbb: JE 19cf0 (resolved immediate)
   |
   `- 19cbd,19cf0
 19cbd: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
@@ -78,7 +78,7 @@ Number of edges: 116
 19cc8: TEST Reg RAX, Reg RAX 3
 19ccb: MOV Reg RDI, Reg RAX 3
 19cce: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1096))), Reg RAX 7
-19cd5: JZ 19cf7 (resolved immediate)
+19cd5: JE 19cf7 (resolved immediate)
   |
   `- 19cd7,19cf7
 19cd7: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
@@ -86,7 +86,7 @@ Number of edges: 116
 19cdd: CALL xendevicemodel_open (external)
 19ce2: TEST Reg RAX, Reg RAX 3
 19ce5: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1104))), Reg RAX 7
-19cec: JNZ 19c71 (resolved immediate)
+19cec: JNE 19c71 (resolved immediate)
   |
   `- 19c71,19cee
 19cee: NOP  2
@@ -110,7 +110,7 @@ Number of edges: 116
 19d36: TEST Reg RAX, Reg RAX 3
 19d39: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))), Reg RAX 5
 19d3e: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
-19d43: JNZ 19c47 (resolved immediate)
+19d43: JNE 19c47 (resolved immediate)
   |
   `- 19c47,19d49
 19d49: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 1096))) 8
@@ -130,7 +130,7 @@ Number of edges: 116
 19d86: MOV Reg ESI, Reg R12D 3
 19d89: CALL xc_strerror (external)
 19d8e: MOV Reg ECX, Address (SizeDir 32 (FromReg RBX)) 2
-19d90: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 49585)) 7
+19d90: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 49585))) 7
 19d97: MOV Reg R8, Reg RAX 3
 19d9a: MOV Reg ESI, Immediate 1 5
 19d9f: MOV Reg RDI, Reg RBP 3

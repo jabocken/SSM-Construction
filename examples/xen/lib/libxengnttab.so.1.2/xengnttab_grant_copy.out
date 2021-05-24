@@ -25,14 +25,14 @@ Number of edges: 35
 190c: CALL ioctl (external)
 1911: TEST Reg EAX, Reg EAX 2
 1913: MOV Reg EBX, Reg EAX 2
-1915: JZ 193f (resolved immediate)
+1915: JE 193f (resolved immediate)
   |
   `- 1917,193f
 1917: CALL __errno_location (external)
 191c: MOV Reg EDX, Address (SizeDir 32 (FromReg RAX)) 2
-191e: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))) 4
-1922: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 1666)) 7
-1929: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 1564)) 7
+191e: MOV Reg RDI, Address (SizeDir 64 (FromReg RBP)) 4
+1922: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 1666))) 7
+1929: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 1564))) 7
 1930: MOV Reg ESI, Immediate 8 5
 1935: XOR Reg EAX, Reg EAX 2
 1937: MOV Reg R9D, Reg EDX 3
@@ -40,7 +40,7 @@ Number of edges: 35
 193f: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 1944: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 194d: MOV Reg EAX, Reg EBX 2
-194f: JNZ 1958 (resolved immediate)
+194f: JNE 1958 (resolved immediate)
   |
   `- 1951,1958
 1951: ADD Reg RSP, Immediate 40 4

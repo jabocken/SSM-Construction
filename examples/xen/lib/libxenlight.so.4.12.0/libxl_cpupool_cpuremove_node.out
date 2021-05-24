@@ -17,24 +17,24 @@ Number of edges: 113
 61daf: PUSH Reg RBX 1
 61db0: MOV Reg EBP, Reg EDX 2
 61db2: SUB Reg RSP, Immediate 72 4
-61db6: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 48)) 5
+61db6: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))) 5
 61dbb: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Reg RCX 5
 61dc0: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 61dc9: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))), Reg RDX 5
 61dce: XOR Reg EDX, Reg EDX 2
 61dd0: CALL libxl_list_cpupool (external)
 61dd5: TEST Reg RAX, Reg RAX 3
-61dd8: JZ 61f2a (resolved immediate)
+61dd8: JE 61f2a (resolved immediate)
   |
   `- 61dde,61f2a
-61dde: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 52)) 5
+61dde: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 52))) 5
 61de3: MOV Reg RDI, Reg R14 3
 61de6: MOV Reg R13, Reg RAX 3
 61de9: MOV Reg EBX, Immediate 4294967293 5
 61dee: CALL libxl_get_cpu_topology (external)
 61df3: TEST Reg RAX, Reg RAX 3
 61df6: MOV Reg R15, Reg RAX 3
-61df9: JZ 61eb2 (resolved immediate)
+61df9: JE 61eb2 (resolved immediate)
   |
   `- 61dff,61eb2
 61dff: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))) 5
@@ -58,15 +58,15 @@ Number of edges: 113
   `- 61e37,61ea8
 61e37: MOV Reg R10D, Address (SizeDir 32 (FromReg R8)) 3
 61e3a: CMP Reg R10D, Reg R12D 3
-61e3d: JNZ 61e28 (resolved immediate)
+61e3d: JNE 61e28 (resolved immediate)
   |
   `- 61e28,61e3f
 61e3f: TEST Reg ESI, Reg ESI 2
 61e41: JLE 61e28 (resolved immediate)
   |
   `- 61e28,61e43
-61e43: LEA Reg RAX, Address (AddrPlus (FromReg R8) (AddrImm 24)) 4
-61e47: LEA Reg RCX, Address (AddrPlus (FromReg R15) (AddrImm 8)) 4
+61e43: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg R8) (AddrImm 24))) 4
+61e47: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg R15) (AddrImm 8))) 4
 61e4b: XOR Reg EBX, Reg EBX 2
 61e4d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Reg RAX 5
 61e52: JMP 61e63 (resolved immediate)
@@ -79,7 +79,7 @@ Number of edges: 113
   |
   `- 61e28,61e63
 61e63: CMP Address (SizeDir 32 (FromReg RCX)), Reg EBP 2
-61e65: JNZ 61e58 (resolved immediate)
+61e65: JNE 61e58 (resolved immediate)
   |
   `- 61e58,61e67
 61e67: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
@@ -94,7 +94,7 @@ Number of edges: 113
 61e8e: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 61e93: MOV Reg R9D, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 20))) 5
 61e98: MOV Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
-61e9d: JNZ 61ee0 (resolved immediate)
+61e9d: JNE 61ee0 (resolved immediate)
   |
   `- 61e9f,61ee0
 61e9f: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 52))) 4
@@ -110,7 +110,7 @@ Number of edges: 113
 61ebe: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))) 5
 61ec3: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 61ecc: MOV Reg EAX, Reg EBX 2
-61ece: JNZ 61f31 (resolved immediate)
+61ece: JNE 61f31 (resolved immediate)
   |
   `- 61ed0,61f31
 61ed0: ADD Reg RSP, Immediate 72 4
@@ -136,7 +136,7 @@ Number of edges: 113
 61f08: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 61f0d: MOV Reg R9D, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 20))) 5
 61f12: MOV Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
-61f17: JNZ 61e9f (resolved immediate)
+61f17: JNE 61e9f (resolved immediate)
   |
   `- 61e9f
 61f2a: MOV Reg EBX, Immediate 4294967291 5

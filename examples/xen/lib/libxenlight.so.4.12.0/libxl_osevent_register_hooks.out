@@ -20,7 +20,7 @@ Number of edges: 89
 3bdba: MOV Reg R12, Reg RDI 3
 3bdbd: MOV Reg EBP, Immediate 0 5
 3bdc2: MOV Reg EBX, Immediate 0 5
-3bdc7: JZ 3bdf4 (resolved immediate)
+3bdc7: JE 3bdf4 (resolved immediate)
   |
   `- 3bdc9,3bdf4
 3bdc9: NOP  7
@@ -45,16 +45,16 @@ Number of edges: 89
 3be13: RET  1
   |
   `- 
-3be14: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 387253)) 7
-3be1b: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 386238)) 7
-3be22: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 386248)) 7
+3be14: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 387253))) 7
+3be1b: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 386238))) 7
+3be22: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 386248))) 7
 3be29: MOV Reg EDX, Immediate 80 5
 3be2e: CALL __assert_fail (external)
   |
   `- 
-4cc40: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 335369)) 7
-4cc47: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 287246)) 7
-4cc4e: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 287256)) 7
+4cc40: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 335369))) 7
+4cc47: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 287246))) 7
+4cc4e: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 287256))) 7
 4cc55: SUB Reg RSP, Immediate 8 4
 4cc59: MOV Reg EDX, Immediate 4217 5
 4cc5e: CALL __assert_fail (external)
@@ -76,31 +76,31 @@ Number of edges: 89
 4da51: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Immediate 0 9
 4da5a: CALL pthread_mutex_lock (external)
 4da5f: TEST Reg EAX, Reg EAX 2
-4da61: JNZ 4dab8 (resolved immediate)
+4da61: JNE 4dab8 (resolved immediate)
   |
   `- 4da63,4dab8
 4da63: CMP Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 192))), Immediate 0 8
-4da6b: JNZ 4dae6 (resolved immediate)
+4da6b: JNE 4dae6 (resolved immediate)
   |
   `- 4da6d,4dae6
 4da6d: CMP Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 200))), Immediate 0 8
-4da75: JNZ 4dac7 (resolved immediate)
+4da75: JNE 4dac7 (resolved immediate)
   |
   `- 4da77,4dac7
 4da77: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 4da7c: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 128))), Reg R12 7
 4da83: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 136))), Reg RBP 7
-4da8a: LEA Reg RDI, Address (AddrPlus (FromReg RAX) (AddrImm 64)) 4
+4da8a: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 64))) 4
 4da8e: CALL pthread_mutex_unlock (external)
 4da93: TEST Reg EAX, Reg EAX 2
-4da95: JNZ 4dac2 (resolved immediate)
+4da95: JNE 4dac2 (resolved immediate)
 4da97: MOV Reg RDI, Reg RSP 3
 4da9a: CALL libxl__free_all (internal)
   |
   `- 3bdb0
 4da9f: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 4daa4: XOR Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-4daad: JNZ 4dabd (resolved immediate)
+4daad: JNE 4dabd (resolved immediate)
   |
   `- 4daaf,4dabd
 4daaf: ADD Reg RSP, Immediate 32 4
@@ -116,16 +116,16 @@ Number of edges: 89
 4dabd: CALL __stack_chk_fail (external)
   |
   `- 
-4dac7: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 330914)) 7
-4dace: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 327137)) 7
-4dad5: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 284084)) 7
+4dac7: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 330914))) 7
+4dace: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 327137))) 7
+4dad5: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 284084))) 7
 4dadc: MOV Reg EDX, Immediate 1314 5
 4dae1: CALL __assert_fail (external)
   |
   `- 
-4dae6: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 330883)) 7
-4daed: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 327106)) 7
-4daf4: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 283531)) 7
+4dae6: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 330883))) 7
+4daed: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 327106))) 7
+4daf4: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 283531))) 7
 4dafb: MOV Reg EDX, Immediate 1313 5
 4db00: CALL __assert_fail (external)
   |

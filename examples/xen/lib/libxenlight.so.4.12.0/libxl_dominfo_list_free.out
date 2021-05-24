@@ -15,18 +15,18 @@ Number of edges: 24
 3fc69: JLE 3fc99 (resolved immediate)
   |
   `- 3fc6b,3fc99
-3fc6b: LEA Reg EDX, Address (AddrMinus (FromReg RSI) (AddrImm 1)) 3
+3fc6b: LEA Reg EDX, Address (SizeDir 32 (AddrMinus (FromReg RSI) (AddrImm 1))) 3
 3fc6e: MOV Reg RBX, Reg RDI 3
-3fc71: LEA Reg RAX, Address (AddrPlus (AddrTimes (AddrImm 8) (FromReg RDX)) (AddrImm 0)) 8
+3fc71: LEA Reg RAX, Address (SizeDir 64 (AddrTimes (AddrImm 8) (FromReg RDX))) 8
 3fc79: SUB Reg RAX, Reg RDX 3
 3fc7c: SHL Reg RAX, Immediate 4 4
-3fc80: LEA Reg RBP, Address (AddrPlus (AddrPlus (FromReg RDI) (FromReg RAX)) (AddrImm 112)) 5
+3fc80: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RDI) (AddrTimes (AddrImm 1) (FromReg RAX))) (AddrImm 112))) 5
 3fc85: NOP  3
 3fc88: MOV Reg RDI, Reg RBX 3
 3fc8b: ADD Reg RBX, Immediate 112 4
 3fc8f: CALL libxl_dominfo_dispose (external)
 3fc94: CMP Reg RBX, Reg RBP 3
-3fc97: JNZ 3fc88 (resolved immediate)
+3fc97: JNE 3fc88 (resolved immediate)
   |
   `- 3fc88,3fc99
 3fc99: POP Reg RBX 1

@@ -15,16 +15,16 @@ Number of edges: 22
 3f779: JLE 3f7a1 (resolved immediate)
   |
   `- 3f77b,3f7a1
-3f77b: LEA Reg EAX, Address (AddrMinus (FromReg RSI) (AddrImm 1)) 3
+3f77b: LEA Reg EAX, Address (SizeDir 32 (AddrMinus (FromReg RSI) (AddrImm 1))) 3
 3f77e: MOV Reg RBX, Reg RDI 3
 3f781: SHL Reg RAX, Immediate 5 4
-3f785: LEA Reg RBP, Address (AddrPlus (AddrPlus (FromReg RDI) (FromReg RAX)) (AddrImm 32)) 5
+3f785: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RDI) (AddrTimes (AddrImm 1) (FromReg RAX))) (AddrImm 32))) 5
 3f78a: NOP  6
 3f790: MOV Reg RDI, Reg RBX 3
 3f793: ADD Reg RBX, Immediate 32 4
 3f797: CALL libxl_numainfo_dispose (external)
 3f79c: CMP Reg RBX, Reg RBP 3
-3f79f: JNZ 3f790 (resolved immediate)
+3f79f: JNE 3f790 (resolved immediate)
   |
   `- 3f790,3f7a1
 3f7a1: POP Reg RBX 1

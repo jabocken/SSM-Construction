@@ -20,7 +20,7 @@ Number of edges: 69
 7897: CALL __errno_location (external)
 789c: MOV Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 360))) 7
 78a3: MOV Reg R13D, Address (SizeDir 32 (FromReg RAX)) 3
-78a6: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 105636)) 7
+78a6: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 105636))) 7
 78ad: MOV Reg R12, Reg RAX 3
 78b0: MOV Reg RCX, Reg RBP 3
 78b3: XOR Reg EAX, Reg EAX 2
@@ -29,7 +29,7 @@ Number of edges: 69
 78bd: CALL xc_report_error (external)
 78c2: CMP Reg RBP, Immediate 18446744073709551615 4
 78c6: MOV Address (SizeDir 32 (FromReg R12)), Reg R13D 4
-78ca: JZ 78d5 (resolved immediate)
+78ca: JE 78d5 (resolved immediate)
   |
   `- 78cc,78d5
 78cc: CMP Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 360))), Reg RBP 7
@@ -48,7 +48,7 @@ Number of edges: 69
   `- 
 78e8: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 368))) 7
 78ef: MOV Reg R9, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 392))) 7
-78f6: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 105627)) 7
+78f6: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 105627))) 7
 78fd: MOV Reg RCX, Reg RBP 3
 7900: MOV Reg ESI, Immediate 1 5
 7905: MOV Reg RDI, Reg R14 3
@@ -58,7 +58,7 @@ Number of edges: 69
 7911: CALL xc_report_error (external)
 7916: CMP Reg R15, Immediate 18446744073709551615 4
 791a: MOV Address (SizeDir 32 (FromReg R12)), Reg R13D 4
-791e: JZ 78d5 (resolved immediate)
+791e: JE 78d5 (resolved immediate)
   |
   `- 78d5,7920
 7920: CMP Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 392))), Reg R15 7
@@ -67,14 +67,14 @@ Number of edges: 69
   `- 78d5,7929
 7929: CMP Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 352))), Immediate 8 7
 7930: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 408))) 7
-7937: JZ 7970 (resolved immediate)
+7937: JE 7970 (resolved immediate)
   |
   `- 7939,7970
 7939: MOV Reg R8D, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 4) (FromReg R15)))) 4
 793d: MOV Reg RAX, Immediate 18446744073709551615 7
-7944: CMP Reg R8D, Immediate 4294967295 4
-7948: CMOVZ Reg R8, Reg RAX 4
-794c: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 105489)) 7
+7944: CMP Reg R8D, Immediate 18446744073709551615 4
+7948: CMOVE Reg R8, Reg RAX 4
+794c: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 105489))) 7
 7953: MOV Reg RCX, Reg R15 3
 7956: MOV Reg ESI, Immediate 1 5
 795b: MOV Reg RDI, Reg R14 3

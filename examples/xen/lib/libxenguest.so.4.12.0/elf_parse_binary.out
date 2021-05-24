@@ -18,7 +18,7 @@ Number of edges: 100
 138e1: CALL elf_phdr_count (external)
 138e6: TEST Reg EAX, Reg EAX 2
 138e8: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))), Reg EAX 4
-138ec: JZ 13a00 (resolved immediate)
+138ec: JE 13a00 (resolved immediate)
   |
   `- 138f2,13a00
 138f2: XOR Reg R12D, Reg R12D 3
@@ -34,7 +34,7 @@ Number of edges: 100
 13918: CALL elf_access_unsigned (external)
 1391d: CMP Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 16))), Immediate 2 4
 13921: MOV Reg R15, Reg RAX 3
-13924: JZ 139d9 (resolved immediate)
+13924: JE 139d9 (resolved immediate)
   |
   `- 1392a,139d9
 1392a: MOV Reg RSI, Reg RBP 3
@@ -43,21 +43,21 @@ Number of edges: 100
 13937: MOV Reg RDI, Reg RBX 3
 1393a: CALL elf_access_unsigned (external)
 1393f: MOV Reg RBP, Reg RAX 3
-13942: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 68959)) 7
+13942: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 68959))) 7
 13949: XOR Reg ESI, Reg ESI 2
 1394b: XOR Reg EAX, Reg EAX 2
 1394d: MOV Reg R8, Reg RBP 3
 13950: MOV Reg RCX, Reg R15 3
 13953: MOV Reg RDI, Reg RBX 3
 13956: CALL elf_call_log_callback (external)
-1395b: LEA Reg R9, Address (AddrPlus (FromReg R15) (FromReg RBP)) 4
+1395b: LEA Reg R9, Address (SizeDir 64 (AddrPlus (FromReg R15) (AddrTimes (AddrImm 1) (FromReg RBP)))) 4
 1395f: CMP Reg R13, Reg R15 3
 13962: CMOVA Reg R13, Reg R15 4
 13966: CMP Reg R14, Reg R9 3
 13969: CMOVB Reg R14, Reg R9 4
 1396d: ADD Reg R12D, Immediate 1 4
 13971: CMP Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))), Reg R12D 5
-13976: JZ 13a0a (resolved immediate)
+13976: JE 13a0a (resolved immediate)
   |
   `- 1397c,13a0a
 1397c: MOV Reg ESI, Reg R12D 3
@@ -69,16 +69,16 @@ Number of edges: 100
 13992: MOV Reg RBP, Reg RAX 3
 13995: CALL elf_access_ok (external)
 1399a: TEST Reg AL, Reg AL 2
-1399c: JZ 13a0a (resolved immediate)
+1399c: JE 13a0a (resolved immediate)
   |
   `- 1399e,13a0a
 1399e: MOV Reg RSI, Reg RBP 3
 139a1: MOV Reg RDI, Reg RBX 3
 139a4: CALL elf_phdr_is_loadable (external)
 139a9: TEST Reg AL, Reg AL 2
-139ab: JZ 1396d (resolved immediate)
+139ab: JE 1396d (resolved immediate)
 139ad: CMP Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 16))), Immediate 2 4
-139b1: JNZ 13908 (resolved immediate)
+139b1: JNE 13908 (resolved immediate)
   |
   `- 13908,139b7
 139b7: MOV Reg ECX, Immediate 8 5
@@ -88,7 +88,7 @@ Number of edges: 100
 139c7: CALL elf_access_unsigned (external)
 139cc: CMP Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 16))), Immediate 2 4
 139d0: MOV Reg R15, Reg RAX 3
-139d3: JNZ 1392a (resolved immediate)
+139d3: JNE 1392a (resolved immediate)
   |
   `- 1392a,139d9
 139d9: MOV Reg RSI, Reg RBP 3
@@ -114,7 +114,7 @@ Number of edges: 100
 13a23: POP Reg R13 2
 13a25: POP Reg R14 2
 13a27: POP Reg R15 2
-13a29: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 68468)) 7
+13a29: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 68468))) 7
 13a30: XOR Reg ESI, Reg ESI 2
 13a32: XOR Reg EAX, Reg EAX 2
 13a34: JMP elf_call_log_callback (jmp to external function)

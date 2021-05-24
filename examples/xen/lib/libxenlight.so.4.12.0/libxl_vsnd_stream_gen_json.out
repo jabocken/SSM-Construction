@@ -9,7 +9,7 @@ Number of edges: 60
 8df10 (False): 0
 
 40c90: TEST Reg RSI, Reg RSI 3
-40c93: JZ 40cc0 (resolved immediate)
+40c93: JE 40cc0 (resolved immediate)
   |
   `- 40c95,40cc0
 40c95: PUSH Reg RBP 1
@@ -38,19 +38,19 @@ Number of edges: 60
 8df18: SUB Reg RSP, Immediate 8 4
 8df1c: CALL yajl_gen_map_open (external)
 8df21: TEST Reg EAX, Reg EAX 2
-8df23: JNZ 8df44 (resolved immediate)
+8df23: JNE 8df44 (resolved immediate)
   |
   `- 8df25,8df44
-8df25: CMP Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))), Immediate 0 5
-8df2a: JZ 8df60 (resolved immediate)
+8df25: CMP Address (SizeDir 64 (FromReg RBP)), Immediate 0 5
+8df2a: JE 8df60 (resolved immediate)
   |
   `- 8df2c,8df60
-8df2c: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 100889)) 7
+8df2c: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 100889))) 7
 8df33: MOV Reg EDX, Immediate 9 5
 8df38: MOV Reg RDI, Reg RBX 3
 8df3b: CALL yajl_gen_string (external)
 8df40: TEST Reg EAX, Reg EAX 2
-8df42: JZ 8df50 (resolved immediate)
+8df42: JE 8df50 (resolved immediate)
   |
   `- 8df50
 8df44: ADD Reg RSP, Immediate 8 4
@@ -59,29 +59,29 @@ Number of edges: 60
 8df4a: RET  1
   |
   `- 
-8df50: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))) 4
+8df50: MOV Reg RSI, Address (SizeDir 64 (FromReg RBP)) 4
 8df54: MOV Reg RDI, Reg RBX 3
 8df57: CALL libxl__string_gen_json (internal)
   |
   `- 40c90
 8df5c: TEST Reg EAX, Reg EAX 2
-8df5e: JNZ 8df44 (resolved immediate)
+8df5e: JNE 8df44 (resolved immediate)
 8df60: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 8))) 3
 8df63: TEST Reg EAX, Reg EAX 2
-8df65: JZ 8dfa0 (resolved immediate)
+8df65: JE 8dfa0 (resolved immediate)
   |
   `- 8dfa0
-8dfa0: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 46491)) 7
+8dfa0: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 46491))) 7
 8dfa7: MOV Reg EDX, Immediate 6 5
 8dfac: MOV Reg RDI, Reg RBX 3
 8dfaf: CALL yajl_gen_string (external)
 8dfb4: TEST Reg EAX, Reg EAX 2
-8dfb6: JNZ 8df44 (resolved immediate)
-8dfb8: LEA Reg RSI, Address (AddrPlus (FromReg RBP) (AddrImm 16)) 4
+8dfb6: JNE 8df44 (resolved immediate)
+8dfb8: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))) 4
 8dfbc: MOV Reg RDI, Reg RBX 3
 8dfbf: CALL libxl_vsnd_params_gen_json (external)
 8dfc4: TEST Reg EAX, Reg EAX 2
-8dfc6: JNZ 8df44 (resolved immediate)
+8dfc6: JNE 8df44 (resolved immediate)
 8dfcc: ADD Reg RSP, Immediate 8 4
 8dfd0: MOV Reg RDI, Reg RBX 3
 8dfd3: POP Reg RBX 1

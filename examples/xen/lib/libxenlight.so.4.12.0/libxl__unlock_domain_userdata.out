@@ -14,13 +14,13 @@ Number of edges: 78
 3cce1: MOV Reg RBX, Reg RDI 3
 3cce4: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
 3cce8: TEST Reg RDI, Reg RDI 3
-3cceb: JZ 3ccf2 (resolved immediate)
+3cceb: JE 3ccf2 (resolved immediate)
   |
   `- 3cced,3ccf2
 3cced: CALL unlink (external)
 3ccf2: MOV Reg RDI, Address (SizeDir 64 (FromReg RBX)) 3
 3ccf5: TEST Reg RDI, Reg RDI 3
-3ccf8: JZ 3ccff (resolved immediate)
+3ccf8: JE 3ccff (resolved immediate)
   |
   `- 3ccfa,3ccff
 3ccfa: CALL libxl__carefd_close (internal)
@@ -33,38 +33,38 @@ Number of edges: 78
 3cd0c: JMP free (jmp to external function)
   |
   `- 
-50d60: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2622265)) 7
+50d60: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2622265))) 7
 50d67: SUB Reg RSP, Immediate 8 4
 50d6b: CALL pthread_mutex_lock (external)
 50d70: TEST Reg EAX, Reg EAX 2
-50d72: JNZ 50d79 (resolved immediate)
+50d72: JNE 50d79 (resolved immediate)
   |
   `- 50d74,50d79
 50d74: ADD Reg RSP, Immediate 8 4
 50d78: RET  1
   |
   `- 
-50d79: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 320112)) 7
-50d80: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 318703)) 7
-50d87: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 270559)) 7
+50d79: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 320112))) 7
+50d80: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 318703))) 7
+50d87: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 270559))) 7
 50d8e: MOV Reg EDX, Immediate 69 5
 50d93: CALL __assert_fail (external)
   |
   `- 
-50dd0: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 2622153)) 7
+50dd0: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2622153))) 7
 50dd7: SUB Reg RSP, Immediate 8 4
 50ddb: CALL pthread_mutex_unlock (external)
 50de0: TEST Reg EAX, Reg EAX 2
-50de2: JNZ 50de9 (resolved immediate)
+50de2: JNE 50de9 (resolved immediate)
   |
   `- 50de4,50de9
 50de4: ADD Reg RSP, Immediate 8 4
 50de8: RET  1
   |
   `- 
-50de9: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 319984)) 7
-50df0: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 318591)) 7
-50df7: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 270447)) 7
+50de9: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 319984))) 7
+50df0: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 318591))) 7
+50df7: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 270447))) 7
 50dfe: MOV Reg EDX, Immediate 75 5
 50e03: CALL __assert_fail (external)
   |
@@ -76,7 +76,7 @@ Number of edges: 78
 51416: XOR Reg EBP, Reg EBP 2
 51418: SUB Reg RSP, Immediate 8 4
 5141c: TEST Reg RDI, Reg RDI 3
-5141f: JZ 51466 (resolved immediate)
+5141f: JE 51466 (resolved immediate)
   |
   `- 51421,51466
 51421: MOV Reg RBX, Reg RDI 3
@@ -94,7 +94,7 @@ Number of edges: 78
 5143b: MOV Reg R13D, Address (SizeDir 32 (FromReg RAX)) 3
 5143e: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
 51442: TEST Reg RDX, Reg RDX 3
-51445: JZ 51452 (resolved immediate)
+51445: JE 51452 (resolved immediate)
   |
   `- 51447,51452
 51447: MOV Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 8))), Reg RCX 4

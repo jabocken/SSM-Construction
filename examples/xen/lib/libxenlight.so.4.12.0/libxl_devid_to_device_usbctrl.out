@@ -1,9 +1,9 @@
-Number of assembly instructions     = 38
+Number of assembly instructions     = 60
 Number of indirect branches         = 0
 Number of unresolved indirect jumps = 0: 
 Number of unresolved indirect calls = 0: 
-Number of symbolic states (representative of non-determinism): 38
-Number of edges: 38
+Number of symbolic states (representative of non-determinism): 60
+Number of edges: 64
 
 57340 (False): 0
 
@@ -16,14 +16,14 @@ Number of edges: 38
 5734d: PUSH Reg RBX 1
 5734e: MOV Reg EBX, Reg EDX 2
 57350: SUB Reg RSP, Immediate 16 4
-57354: LEA Reg RDX, Address (AddrPlus (FromReg RSP) (AddrImm 4)) 5
+57354: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 4))) 5
 57359: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))), Immediate 0 8
 57361: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 5736a: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
 5736f: XOR Reg EAX, Reg EAX 2
 57371: CALL libxl_device_usbctrl_list (external)
 57376: TEST Reg RAX, Reg RAX 3
-57379: JZ 5740c (resolved immediate)
+57379: JE 5740c (resolved immediate)
   |
   `- 5737f,5740c
 5737f: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))) 4
@@ -32,13 +32,35 @@ Number of edges: 38
 5738c: TEST Reg ESI, Reg ESI 2
 5738e: JLE 573c7 (resolved immediate)
   |
-  `- 573c7
+  `- 57390,573c7
+57390: CMP Reg EBX, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 4))) 3
+57393: JE 573f0 (resolved immediate)
+  |
+  `- 57395,573f0
+57395: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 32))) 4
+57399: LEA Reg EAX, Address (SizeDir 32 (AddrMinus (FromReg RSI) (AddrImm 1))) 3
+5739c: SHL Reg RAX, Immediate 5 4
+573a0: LEA Reg R8, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RBP) (AddrTimes (AddrImm 1) (FromReg RAX))) (AddrImm 32))) 5
+573a5: JMP 573bc (resolved immediate)
+  |
+  `- 573bc
+573b0: MOV Reg RDX, Reg RDI 3
+573b3: ADD Reg RDI, Immediate 32 4
+573b7: CMP Address (SizeDir 32 (AddrMinus (FromReg RDI) (AddrImm 28))), Reg EBX 3
+573ba: JE 573f8 (resolved immediate)
+  |
+  `- 573bc,573f8
+573bc: CMP Reg RDI, Reg R8 3
+573bf: JNE 573b0 (resolved immediate)
+  |
+  `- 573b0,573c1
+573c1: MOV Reg R14D, Immediate 4294967293 6
 573c7: MOV Reg RDI, Reg RBP 3
 573ca: CALL libxl_device_usbctrl_list_free (external)
 573cf: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 573d4: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 573dd: MOV Reg EAX, Reg R14D 3
-573e0: JNZ 57414 (resolved immediate)
+573e0: JNE 57414 (resolved immediate)
   |
   `- 573e2,57414
 573e2: ADD Reg RSP, Immediate 16 4
@@ -50,6 +72,16 @@ Number of edges: 38
 573ee: RET  1
   |
   `- 
+573f0: MOV Reg RDX, Reg RAX 3
+573f3: NOP  5
+573f8: MOV Reg RSI, Reg R12 3
+573fb: MOV Reg RDI, Reg R13 3
+573fe: XOR Reg R14D, Reg R14D 3
+57401: CALL libxl_device_usbctrl_copy (external)
+57406: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))) 4
+5740a: JMP 573c7 (resolved immediate)
+  |
+  `- 573c7
 5740c: MOV Reg R14D, Immediate 4294967293 6
 57412: JMP 573cf (resolved immediate)
   |

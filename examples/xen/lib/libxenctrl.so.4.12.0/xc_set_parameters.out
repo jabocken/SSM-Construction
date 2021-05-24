@@ -32,37 +32,37 @@ Number of edges: 98
 154bc: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Reg RAX 5
 154c1: CALL xc__hypercall_bounce_pre (external)
 154c6: TEST Reg EAX, Reg EAX 2
-154c8: JNZ 15600 (resolved immediate)
+154c8: JNE 15600 (resolved immediate)
   |
   `- 154ce,15600
 154ce: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 154d3: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 96))), Immediate 28 8
 154db: MOV Reg RDI, Reg RBX 3
 154de: TEST Reg RAX, Reg RAX 3
-154e1: CMOVZ Reg RAX, Reg RBP 4
+154e1: CMOVE Reg RAX, Reg RBP 4
 154e5: XOR Reg EDX, Reg EDX 2
 154e7: MOV Reg RAX, Address (SizeDir 64 (FromReg RAX)) 3
 154ea: MOV Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 112))), Reg R12W 6
-154f0: LEA Reg R12, Address (AddrPlus (FromReg RSP) (AddrImm 48)) 5
+154f0: LEA Reg R12, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))) 5
 154f5: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 114))), Immediate 0 8
 154fd: MOV Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 118))), Reg DX 5
 15502: MOV Reg RSI, Reg R12 3
 15505: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))), Immediate 0 9
 1550e: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))), Immediate 0 9
 15517: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 104))), Reg RAX 5
-1551c: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 96)) 5
+1551c: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 96))) 5
 15521: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 64))), Immediate 3 8
 15529: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 80))), Immediate 136 9
 15532: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 100))), Immediate 18 8
 1553a: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 72))), Reg RAX 5
 1553f: CALL xc__hypercall_bounce_pre (external)
 15544: TEST Reg EAX, Reg EAX 2
-15546: JNZ 15608 (resolved immediate)
+15546: JNE 15608 (resolved immediate)
 1554c: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))) 5
 15551: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1088))) 7
 15558: MOV Reg ESI, Immediate 35 5
 1555d: TEST Reg RAX, Reg RAX 3
-15560: CMOVZ Reg RAX, Reg R12 4
+15560: CMOVE Reg RAX, Reg R12 4
 15564: MOV Reg RDX, Address (SizeDir 64 (FromReg RAX)) 3
 15567: CALL xencall1 (external)
 1556c: TEST Reg EAX, Reg EAX 2
@@ -73,17 +73,17 @@ Number of edges: 98
 15573: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))) 5
 15578: MOV Reg RDI, Reg RBX 3
 1557b: TEST Reg RSI, Reg RSI 3
-1557e: CMOVZ Reg RSI, Reg R12 4
+1557e: CMOVE Reg RSI, Reg R12 4
 15582: CALL xc__hypercall_bounce_post (external)
 15587: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 1558c: MOV Reg RDI, Reg RBX 3
 1558f: TEST Reg RSI, Reg RSI 3
-15592: CMOVZ Reg RSI, Reg RBP 4
+15592: CMOVE Reg RSI, Reg RBP 4
 15596: CALL xc__hypercall_bounce_post (external)
 1559b: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 232))) 8
 155a3: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 155ac: MOV Reg EAX, Reg R13D 3
-155af: JNZ 1564a (resolved immediate)
+155af: JNE 1564a (resolved immediate)
   |
   `- 155b5,1564a
 155b5: ADD Reg RSP, Immediate 240 7
@@ -98,11 +98,11 @@ Number of edges: 98
 155c8: CALL __errno_location (external)
 155cd: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 13 3
 155d0: MOV Reg R14, Reg RAX 3
-155d3: JNZ 15573 (resolved immediate)
+155d3: JNE 15573 (resolved immediate)
   |
   `- 15573,155d5
 155d5: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
-155d9: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 64568)) 7
+155d9: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 64568))) 7
 155e0: XOR Reg ECX, Reg ECX 2
 155e2: MOV Reg EDX, Immediate 3 5
 155e7: MOV Reg RDI, Reg RBX 3

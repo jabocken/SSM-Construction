@@ -16,14 +16,14 @@ Number of edges: 82
 118a0: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 118a9: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 200))), Reg RAX 8
 118b1: XOR Reg EAX, Reg EAX 2
-118b3: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 48)) 5
+118b3: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))) 5
 118b8: MOV Reg RBP, Reg RSP 3
 118bb: MOV Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 56))), Reg SI 5
 118c0: MOV Reg RSI, Reg RBP 3
 118c3: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 72))), Reg EDX 4
 118c7: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 64))), Immediate 0 9
 118d0: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
-118d5: MOV Reg RAX, Immediate 73014444079 10
+118d5: MOVABS Reg RAX, Immediate 73014444079 10
 118df: MOV Address (SizeDir 64 (FromReg RSP)), Immediate 0 8
 118e7: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Immediate 0 9
 118f0: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 3 8
@@ -31,14 +31,14 @@ Number of edges: 82
 11901: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))), Reg RAX 5
 11906: CALL xc__hypercall_bounce_pre (external)
 1190b: TEST Reg EAX, Reg EAX 2
-1190d: JNZ 119a6 (resolved immediate)
+1190d: JNE 119a6 (resolved immediate)
   |
   `- 11913,119a6
 11913: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 11918: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1088))) 7
 1191f: MOV Reg ESI, Immediate 36 5
 11924: TEST Reg RAX, Reg RAX 3
-11927: CMOVZ Reg RAX, Reg RBP 4
+11927: CMOVE Reg RAX, Reg RBP 4
 1192b: MOV Reg RDX, Address (SizeDir 64 (FromReg RAX)) 3
 1192e: CALL xencall1 (external)
 11933: TEST Reg EAX, Reg EAX 2
@@ -49,18 +49,18 @@ Number of edges: 82
 1193a: CALL __errno_location (external)
 1193f: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 13 3
 11942: MOV Reg R13, Reg RAX 3
-11945: JZ 11980 (resolved immediate)
+11945: JE 11980 (resolved immediate)
   |
   `- 11947,11980
 11947: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 1194c: MOV Reg RDI, Reg RBX 3
 1194f: TEST Reg RSI, Reg RSI 3
-11952: CMOVZ Reg RSI, Reg RBP 4
+11952: CMOVE Reg RSI, Reg RBP 4
 11956: CALL xc__hypercall_bounce_post (external)
 1195b: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 200))) 8
 11963: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 1196c: MOV Reg EAX, Reg R12D 3
-1196f: JNZ 119e7 (resolved immediate)
+1196f: JNE 119e7 (resolved immediate)
   |
   `- 11971,119e7
 11971: ADD Reg RSP, Immediate 216 7
@@ -72,13 +72,13 @@ Number of edges: 82
   |
   `- 
 11980: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
-11984: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 80405)) 7
+11984: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 80405))) 7
 1198b: XOR Reg ECX, Reg ECX 2
 1198d: MOV Reg EDX, Immediate 3 5
 11992: MOV Reg RDI, Reg RBX 3
 11995: XOR Reg EAX, Reg EAX 2
 11997: CALL xc_report (external)
-1199c: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Immediate 13 8
+1199c: MOV Address (SizeDir 32 (FromReg R13)), Immediate 13 8
 119a4: JMP 11947 (resolved immediate)
   |
   `- 11947
@@ -88,14 +88,14 @@ Number of edges: 82
 119b1: MOV Reg RDI, Reg RBX 3
 119b4: MOV Reg ESI, Reg R12D 3
 119b7: CALL xc_strerror (external)
-119bc: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
-119bf: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 80290)) 7
+119bc: MOV Reg ECX, Address (SizeDir 32 (FromReg RBP)) 3
+119bf: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 80290))) 7
 119c6: MOV Reg R8, Reg RAX 3
 119c9: MOV Reg ESI, Immediate 1 5
 119ce: MOV Reg RDI, Reg RBX 3
 119d1: XOR Reg EAX, Reg EAX 2
 119d3: CALL xc_report_error (external)
-119d8: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R12D 4
+119d8: MOV Address (SizeDir 32 (FromReg RBP)), Reg R12D 4
 119dc: MOV Reg R12D, Immediate 4294967295 6
 119e2: JMP 1195b (resolved immediate)
   |

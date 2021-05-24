@@ -8,16 +8,16 @@ Number of edges: 52
 41e40 (False): 0
 
 41e40: TEST Reg RSI, Reg RSI 3
-41e43: JZ 41e51 (resolved immediate)
+41e43: JE 41e51 (resolved immediate)
   |
   `- 41e45,41e51
 41e45: MOV Reg EAX, Address (SizeDir 32 (FromReg RSI)) 2
 41e47: CMP Reg EAX, Immediate 4 3
-41e4a: JZ 41e60 (resolved immediate)
+41e4a: JE 41e60 (resolved immediate)
   |
   `- 41e4c,41e60
 41e4c: CMP Reg EAX, Immediate 16 3
-41e4f: JZ 41e70 (resolved immediate)
+41e4f: JE 41e70 (resolved immediate)
   |
   `- 41e51,41e70
 41e51: MOV Reg EAX, Immediate 4294967293 5
@@ -50,11 +50,11 @@ Number of edges: 52
 41e99: MOV Reg R12, Reg RAX 3
 41e9c: CALL strtoull (external)
 41ea1: CMP Reg RAX, Immediate 18446744073709551615 4
-41ea5: JZ 41ec0 (resolved immediate)
+41ea5: JE 41ec0 (resolved immediate)
   |
   `- 41ea7,41ec0
 41ea7: MOV Address (SizeDir 32 (FromReg R12)), Reg R13D 4
-41eab: MOV Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg RAX 4
+41eab: MOV Address (SizeDir 64 (FromReg RBP)), Reg RAX 4
 41eaf: ADD Reg RSP, Immediate 8 4
 41eb3: POP Reg RBX 1
 41eb4: XOR Reg EAX, Reg EAX 2
@@ -65,7 +65,7 @@ Number of edges: 52
   |
   `- 
 41ec0: CMP Address (SizeDir 32 (FromReg R12)), Immediate 34 5
-41ec5: JNZ 41ea7 (resolved immediate)
+41ec5: JNE 41ea7 (resolved immediate)
   |
   `- 41ea7,41ec7
 41ec7: ADD Reg RSP, Immediate 8 4

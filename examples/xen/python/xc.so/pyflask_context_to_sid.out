@@ -15,12 +15,12 @@ Number of edges: 60
 5094: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 509d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
 50a2: XOR Reg EAX, Reg EAX 2
-50a4: LEA Reg R8, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
-50a9: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2140080)) 7
-50b0: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 15804)) 7
+50a4: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
+50a9: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2140080))) 7
+50b0: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 15804))) 7
 50b7: CALL PyArg_ParseTupleAndKeywords (external)
 50bc: TEST Reg EAX, Reg EAX 2
-50be: JZ 5160 (resolved immediate)
+50be: JE 5160 (resolved immediate)
   |
   `- 50c4,5160
 50c4: MOV Reg EDX, Immediate 0 5
@@ -29,32 +29,32 @@ Number of edges: 60
 50d3: CALL xc_interface_open (external)
 50d8: MOV Reg RBX, Reg RAX 3
 50db: TEST Reg RAX, Reg RAX 3
-50de: JZ 513b (resolved immediate)
+50de: JE 513b (resolved immediate)
   |
   `- 50e0,513b
 50e0: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 50e5: MOV Reg RCX, Immediate 18446744073709551615 7
 50ec: MOV Reg EAX, Immediate 0 5
 50f1: MOV Reg RDI, Reg RSI 3
-50f4: REPNZ SCASB  2
+50f4: REPNZ SCASB Reg AL, Address (SizeDir 8 (FromReg RDI)) 2
 50f6: MOV Reg RDX, Reg RCX 3
 50f9: NOT Reg RDX 3
-50fc: LEA Reg RDX, Address (AddrMinus (FromReg RDX) (AddrImm 1)) 4
-5100: LEA Reg RCX, Address (AddrPlus (FromReg RSP) (AddrImm 12)) 5
+50fc: LEA Reg RDX, Address (SizeDir 64 (AddrMinus (FromReg RDX) (AddrImm 1))) 4
+5100: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 12))) 5
 5105: MOV Reg RDI, Reg RBX 3
 5108: CALL xc_flask_context_to_sid (external)
 510d: MOV Reg EBP, Reg EAX 2
 510f: MOV Reg RDI, Reg RBX 3
 5112: CALL xc_interface_close (external)
 5117: TEST Reg EBP, Reg EBP 2
-5119: JNZ 5149 (resolved immediate)
+5119: JNE 5149 (resolved immediate)
   |
   `- 511b,5149
 511b: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 4
 511f: CALL PyInt_FromLong (external)
 5124: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 5129: XOR Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-5132: JNZ 5167 (resolved immediate)
+5132: JNE 5167 (resolved immediate)
   |
   `- 5134,5167
 5134: ADD Reg RSP, Immediate 40 4

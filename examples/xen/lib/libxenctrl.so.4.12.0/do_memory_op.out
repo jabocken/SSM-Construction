@@ -25,7 +25,7 @@ Number of edges: 59
 1a441: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Reg RCX 5
 1a446: CALL xc__hypercall_bounce_pre (external)
 1a44b: TEST Reg EAX, Reg EAX 2
-1a44d: JNZ 1a4a5 (resolved immediate)
+1a44d: JNE 1a4a5 (resolved immediate)
   |
   `- 1a44f,1a4a5
 1a44f: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
@@ -33,19 +33,19 @@ Number of edges: 59
 1a45b: MOVSXD Reg RDX, Reg EBP 3
 1a45e: MOV Reg ESI, Immediate 12 5
 1a463: TEST Reg RAX, Reg RAX 3
-1a466: CMOVZ Reg RAX, Reg R12 4
+1a466: CMOVE Reg RAX, Reg R12 4
 1a46a: MOV Reg RCX, Address (SizeDir 64 (FromReg RAX)) 3
 1a46d: CALL xencall2 (external)
 1a472: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 1a477: MOV Reg RDI, Reg RBX 3
 1a47a: MOVSXD Reg RBP, Reg EAX 3
 1a47d: TEST Reg RSI, Reg RSI 3
-1a480: CMOVZ Reg RSI, Reg R12 4
+1a480: CMOVE Reg RSI, Reg R12 4
 1a484: CALL xc__hypercall_bounce_post (external)
 1a489: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
 1a48e: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 1a497: MOV Reg RAX, Reg RBP 3
-1a49a: JNZ 1a4e4 (resolved immediate)
+1a49a: JNE 1a4e4 (resolved immediate)
   |
   `- 1a49c,1a4e4
 1a49c: ADD Reg RSP, Immediate 48 4
@@ -61,14 +61,14 @@ Number of edges: 59
 1a4b0: MOV Reg RDI, Reg RBX 3
 1a4b3: MOV Reg ESI, Reg R12D 3
 1a4b6: CALL xc_strerror (external)
-1a4bb: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
-1a4be: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 48123)) 7
+1a4bb: MOV Reg ECX, Address (SizeDir 32 (FromReg RBP)) 3
+1a4be: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 48123))) 7
 1a4c5: MOV Reg R8, Reg RAX 3
 1a4c8: MOV Reg ESI, Immediate 1 5
 1a4cd: MOV Reg RDI, Reg RBX 3
 1a4d0: XOR Reg EAX, Reg EAX 2
 1a4d2: CALL xc_report_error (external)
-1a4d7: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R12D 4
+1a4d7: MOV Address (SizeDir 32 (FromReg RBP)), Reg R12D 4
 1a4db: MOV Reg RBP, Immediate 18446744073709551615 7
 1a4e2: JMP 1a489 (resolved immediate)
   |

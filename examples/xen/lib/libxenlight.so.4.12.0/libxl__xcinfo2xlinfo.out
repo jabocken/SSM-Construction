@@ -34,7 +34,7 @@ Number of edges: 84
 670cf: AND Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 36))), Immediate 1 4
 670d3: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 4))) 3
 670d6: AND Reg EDX, Immediate 4 3
-670d9: SETNZ Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 35))) 4
+670d9: SETNE Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 35))) 4
 670dd: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 4))) 3
 670e0: SHR Reg EAX, Immediate 3 3
 670e3: AND Reg EAX, Immediate 1 3
@@ -51,7 +51,7 @@ Number of edges: 84
 67105: SHR Reg AL, Immediate 7 3
 67108: TEST Reg EDX, Reg EDX 2
 6710a: MOV Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 37))), Reg AL 3
-6710d: JZ 671a0 (resolved immediate)
+6710d: JE 671a0 (resolved immediate)
   |
   `- 67113,671a0
 67113: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RBP) (AddrImm 6))) 4
@@ -81,12 +81,12 @@ Number of edges: 84
 6716d: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 104))), Reg EAX 3
 67170: XOR Reg EAX, Reg EAX 2
 67172: TEST Address (SizeDir 8 (AddrPlus (FromReg RBP) (AddrImm 4))), Immediate 2 4
-67176: SETZ Reg AL 3
+67176: SETE Reg AL 3
 67179: ADD Reg EAX, Immediate 1 3
 6717c: MOV Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 108))), Reg EAX 3
 6717f: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 67184: XOR Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-6718d: JNZ 671ac (resolved immediate)
+6718d: JNE 671ac (resolved immediate)
   |
   `- 6718f,671ac
 6718f: ADD Reg RSP, Immediate 24 4

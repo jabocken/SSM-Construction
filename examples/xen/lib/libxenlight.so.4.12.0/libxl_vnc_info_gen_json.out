@@ -9,7 +9,7 @@ Number of edges: 95
 794f0 (False): 0
 
 40c90: TEST Reg RSI, Reg RSI 3
-40c93: JZ 40cc0 (resolved immediate)
+40c93: JE 40cc0 (resolved immediate)
   |
   `- 40c95,40cc0
 40c95: PUSH Reg RBP 1
@@ -38,24 +38,24 @@ Number of edges: 95
 794f8: SUB Reg RSP, Immediate 8 4
 794fc: CALL yajl_gen_map_open (external)
 79501: TEST Reg EAX, Reg EAX 2
-79503: JNZ 7952f (resolved immediate)
+79503: JNE 7952f (resolved immediate)
   |
   `- 79505,7952f
-79505: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+79505: MOV Reg ECX, Address (SizeDir 32 (FromReg RBP)) 3
 79508: TEST Reg ECX, Reg ECX 2
-7950a: JNZ 795d0 (resolved immediate)
+7950a: JNE 795d0 (resolved immediate)
   |
   `- 79510,795d0
 79510: CMP Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))), Immediate 0 5
-79515: JZ 79550 (resolved immediate)
+79515: JE 79550 (resolved immediate)
   |
   `- 79517,79550
-79517: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 145084)) 7
+79517: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 145084))) 7
 7951e: MOV Reg EDX, Immediate 6 5
 79523: MOV Reg RDI, Reg RBX 3
 79526: CALL yajl_gen_string (external)
 7952b: TEST Reg EAX, Reg EAX 2
-7952d: JZ 79540 (resolved immediate)
+7952d: JE 79540 (resolved immediate)
   |
   `- 79540
 7952f: ADD Reg RSP, Immediate 8 4
@@ -70,31 +70,31 @@ Number of edges: 95
   |
   `- 7954c,40c90
 7954c: TEST Reg EAX, Reg EAX 2
-7954e: JNZ 7952f (resolved immediate)
+7954e: JNE 7952f (resolved immediate)
 79550: CMP Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))), Immediate 0 5
-79555: JZ 79580 (resolved immediate)
+79555: JE 79580 (resolved immediate)
   |
   `- 79557,79580
-79557: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 112476)) 7
+79557: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 112476))) 7
 7955e: MOV Reg EDX, Immediate 6 5
 79563: MOV Reg RDI, Reg RBX 3
 79566: CALL yajl_gen_string (external)
 7956b: TEST Reg EAX, Reg EAX 2
-7956d: JNZ 7952f (resolved immediate)
+7956d: JNE 7952f (resolved immediate)
 7956f: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))) 4
 79573: MOV Reg RDI, Reg RBX 3
 79576: CALL libxl__string_gen_json (internal)
 7957b: TEST Reg EAX, Reg EAX 2
-7957d: JNZ 7952f (resolved immediate)
+7957d: JNE 7952f (resolved immediate)
 7957f: NOP  1
 79580: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 24))) 3
 79583: TEST Reg EDX, Reg EDX 2
-79585: JNZ 79608 (resolved immediate)
+79585: JNE 79608 (resolved immediate)
   |
   `- 7958b,79608
 7958b: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 28))) 3
 7958e: TEST Reg EAX, Reg EAX 2
-79590: JZ 795be (resolved immediate)
+79590: JE 795be (resolved immediate)
   |
   `- 795be
 795be: ADD Reg RSP, Immediate 8 4
@@ -104,29 +104,29 @@ Number of edges: 95
 795c7: JMP yajl_gen_map_close (jmp to external function)
   |
   `- 
-795d0: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 163859)) 7
+795d0: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 163859))) 7
 795d7: MOV Reg EDX, Immediate 6 5
 795dc: MOV Reg RDI, Reg RBX 3
 795df: CALL yajl_gen_string (external)
 795e4: TEST Reg EAX, Reg EAX 2
-795e6: JNZ 7952f (resolved immediate)
+795e6: JNE 7952f (resolved immediate)
 795ec: MOV Reg RSI, Reg RBP 3
 795ef: MOV Reg RDI, Reg RBX 3
 795f2: CALL libxl_defbool_gen_json (external)
 795f7: TEST Reg EAX, Reg EAX 2
-795f9: JZ 79510 (resolved immediate)
+795f9: JE 79510 (resolved immediate)
   |
   `- 79510
-79608: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 111222)) 7
+79608: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 111222))) 7
 7960f: MOV Reg EDX, Immediate 7 5
 79614: MOV Reg RDI, Reg RBX 3
 79617: CALL yajl_gen_string (external)
 7961c: TEST Reg EAX, Reg EAX 2
-7961e: JNZ 7952f (resolved immediate)
+7961e: JNE 7952f (resolved immediate)
 79624: MOVSXD Reg RSI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 24))) 4
 79628: MOV Reg RDI, Reg RBX 3
 7962b: CALL yajl_gen_integer (external)
 79630: TEST Reg EAX, Reg EAX 2
-79632: JZ 7958b (resolved immediate)
+79632: JE 7958b (resolved immediate)
   |
   `- 7958b

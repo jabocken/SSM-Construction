@@ -20,11 +20,11 @@ Number of edges: 56
 1836: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Reg RAX 5
 183b: XOR Reg EAX, Reg EAX 2
 183d: TEST Reg RSI, Reg RSI 3
-1840: JZ 18c8 (resolved immediate)
+1840: JE 18c8 (resolved immediate)
   |
   `- 1846,18c8
 1846: MOV Reg R12D, Reg EDX 3
-1849: LEA Reg RDX, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+1849: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 184e: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))), Reg RSI 5
 1853: XOR Reg EAX, Reg EAX 2
 1855: MOV Reg RBX, Reg RSI 3
@@ -32,12 +32,12 @@ Number of edges: 56
 185a: MOV Reg ESI, Immediate 1591042 5
 185f: CALL ioctl (external)
 1864: TEST Reg EAX, Reg EAX 2
-1866: JNZ 1885 (resolved immediate)
+1866: JNE 1885 (resolved immediate)
   |
   `- 1868,1885
 1868: MOV Reg R13D, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 32))) 5
 186d: CMP Reg R13D, Reg R12D 3
-1870: JNZ 18c8 (resolved immediate)
+1870: JNE 18c8 (resolved immediate)
   |
   `- 1872,18c8
 1872: MOV Reg ESI, Reg R13D 3
@@ -45,12 +45,12 @@ Number of edges: 56
 1878: SHL Reg RSI, Immediate 12 4
 187c: CALL munmap (external)
 1881: TEST Reg EAX, Reg EAX 2
-1883: JZ 18a0 (resolved immediate)
+1883: JE 18a0 (resolved immediate)
   |
   `- 18a0
 1885: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
 188a: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-1893: JNZ 18da (resolved immediate)
+1893: JNE 18da (resolved immediate)
   |
   `- 1895,18da
 1895: ADD Reg RSP, Immediate 56 4

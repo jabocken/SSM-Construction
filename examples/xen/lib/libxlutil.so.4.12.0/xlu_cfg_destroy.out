@@ -8,7 +8,7 @@ Number of edges: 24
 5c30 (False): 0
 
 5c30: TEST Reg RDI, Reg RDI 3
-5c33: JZ 5c80 (resolved immediate)
+5c33: JE 5c80 (resolved immediate)
   |
   `- 5c35,5c80
 5c35: PUSH Reg RBP 1
@@ -17,7 +17,7 @@ Number of edges: 24
 5c3a: SUB Reg RSP, Immediate 8 4
 5c3e: MOV Reg RDI, Address (SizeDir 64 (FromReg RDI)) 3
 5c41: TEST Reg RDI, Reg RDI 3
-5c44: JZ 5c60 (resolved immediate)
+5c44: JE 5c60 (resolved immediate)
   |
   `- 5c46,5c60
 5c46: NOP  10
@@ -25,7 +25,7 @@ Number of edges: 24
 5c53: CALL xlu__cfg_set_free (external)
 5c58: TEST Reg RBX, Reg RBX 3
 5c5b: MOV Reg RDI, Reg RBX 3
-5c5e: JNZ 5c50 (resolved immediate)
+5c5e: JNE 5c50 (resolved immediate)
   |
   `- 5c50,5c60
 5c60: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))) 4
@@ -37,6 +37,6 @@ Number of edges: 24
 5c72: JMP free (jmp to external function)
   |
   `- 
-5c80: REPZ RET  2
+5c80: RET  2
   |
   `- 

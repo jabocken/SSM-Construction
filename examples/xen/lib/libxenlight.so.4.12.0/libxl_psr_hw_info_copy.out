@@ -19,7 +19,7 @@ Number of edges: 66
 3bdba: MOV Reg R12, Reg RDI 3
 3bdbd: MOV Reg EBP, Immediate 0 5
 3bdc2: MOV Reg EBX, Immediate 0 5
-3bdc7: JZ 3bdf4 (resolved immediate)
+3bdc7: JE 3bdf4 (resolved immediate)
   |
   `- 3bdc9,3bdf4
 3bdc9: NOP  7
@@ -44,9 +44,9 @@ Number of edges: 66
 3be13: RET  1
   |
   `- 
-3be14: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 387253)) 7
-3be1b: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 386238)) 7
-3be22: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 386248)) 7
+3be14: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 387253))) 7
+3be1b: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 386238))) 7
+3be22: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 386248))) 7
 3be29: MOV Reg EDX, Immediate 80 5
 3be2e: CALL __assert_fail (external)
   |
@@ -64,11 +64,11 @@ Number of edges: 66
 81e90: MOV Address (SizeDir 32 (AddrPlus (FromReg RSI) (AddrImm 4))), Reg EAX 3
 81e93: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RDX) (AddrImm 4))) 3
 81e96: CMP Reg EAX, Immediate 1 3
-81e99: JZ 81ec0 (resolved immediate)
+81e99: JE 81ec0 (resolved immediate)
   |
   `- 81e9b,81ec0
 81e9b: CMP Reg EAX, Immediate 2 3
-81e9e: JZ 81ec0 (resolved immediate)
+81e9e: JE 81ec0 (resolved immediate)
   |
   `- 81ea0,81ec0
 81ea0: MOV Reg RDI, Reg RSP 3
@@ -77,7 +77,7 @@ Number of edges: 66
   `- 3bdb0
 81ea8: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 81ead: XOR Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-81eb6: JNZ 81ed5 (resolved immediate)
+81eb6: JNE 81ed5 (resolved immediate)
   |
   `- 81eb8,81ed5
 81eb8: ADD Reg RSP, Immediate 40 4

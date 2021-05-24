@@ -10,7 +10,7 @@ Number of edges: 7
 13270: TEST Reg RSI, Reg RSI 3
 13273: MOV Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 112))), Reg RSI 4
 13277: MOV Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 120))), Reg RDX 4
-1327b: JZ 13290 (resolved immediate)
+1327b: JE 13290 (resolved immediate)
   |
   `- 1327d,13290
 1327d: MOV Reg RCX, Reg RDX 3
@@ -18,6 +18,6 @@ Number of edges: 7
 13282: JMP elf_memset_safe (jmp to external function)
   |
   `- 
-13290: REPZ RET  2
+13290: RET  2
   |
   `- 

@@ -18,14 +18,14 @@ Number of edges: 21
 23a9f: XOR Reg EAX, Reg EAX 2
 23aa1: CALL xc_sysctl (external)
 23aa6: TEST Reg EAX, Reg EAX 2
-23aa8: JNZ 23ab1 (resolved immediate)
+23aa8: JNE 23ab1 (resolved immediate)
   |
   `- 23aaa,23ab1
 23aaa: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 23aaf: MOV Address (SizeDir 32 (FromReg RBX)), Reg EDX 2
 23ab1: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 136))) 8
 23ab9: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-23ac2: JNZ 23acd (resolved immediate)
+23ac2: JNE 23acd (resolved immediate)
   |
   `- 23ac4,23acd
 23ac4: ADD Reg RSP, Immediate 144 7

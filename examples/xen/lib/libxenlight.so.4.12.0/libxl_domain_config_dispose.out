@@ -8,7 +8,7 @@ Number of edges: 277
 7dbe0 (False): 0
 
 7dbe0: TEST Reg RDI, Reg RDI 3
-7dbe3: JZ 7dff0 (resolved immediate)
+7dbe3: JE 7dff0 (resolved immediate)
   |
   `- 7dbe9,7dff0
 7dbe9: PUSH Reg R12 2
@@ -16,7 +16,7 @@ Number of edges: 277
 7dbec: PUSH Reg RBX 1
 7dbed: MOV Reg RBX, Reg RDI 3
 7dbf0: CALL libxl_domain_create_info_dispose (external)
-7dbf5: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 88)) 4
+7dbf5: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 88))) 4
 7dbf9: CALL libxl_domain_build_info_dispose (external)
 7dbfe: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 944))) 6
 7dc04: TEST Reg EAX, Reg EAX 2
@@ -303,21 +303,21 @@ Number of edges: 277
   `- 7df90,7dfae
 7dfae: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1176))) 7
 7dfb5: CALL free (external)
-7dfba: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 8)) 4
+7dfba: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
 7dfbe: MOV Address (SizeDir 64 (FromReg RBX)), Immediate 0 7
 7dfc5: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1200))), Immediate 0 11
 7dfd0: XOR Reg EAX, Reg EAX 2
 7dfd2: AND Reg RDI, Immediate 18446744073709551608 4
 7dfd6: SUB Reg RBX, Reg RDI 3
-7dfd9: LEA Reg ECX, Address (AddrPlus (FromReg RBX) (AddrImm 1208)) 6
+7dfd9: LEA Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 1208))) 6
 7dfdf: SHR Reg ECX, Immediate 3 3
-7dfe2: REP STOSQ  3
+7dfe2: REP STOSQ Address (SizeDir 64 (FromReg RDI)), Reg RAX 3
 7dfe5: POP Reg RBX 1
 7dfe6: POP Reg RBP 1
 7dfe7: POP Reg R12 2
 7dfe9: RET  1
   |
   `- 
-7dff0: REPZ RET  2
+7dff0: RET  2
   |
   `- 

@@ -19,7 +19,7 @@ Number of edges: 68
 9797: MOV Reg EDX, Immediate 80 5
 979c: MOV Reg R14, Reg RDI 3
 979f: SUB Reg RSP, Immediate 72 4
-97a3: LEA Reg R12, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+97a3: LEA Reg R12, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 97a8: MOV Address (SizeDir 64 (FromReg RSP)), Reg RCX 4
 97ac: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg R8 5
 97b1: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
@@ -33,11 +33,11 @@ Number of edges: 68
 97e3: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))), Immediate 0 9
 97ec: CALL xc__hypercall_buffer_alloc (external)
 97f1: TEST Reg RAX, Reg RAX 3
-97f4: JZ 9857 (resolved immediate)
+97f4: JE 9857 (resolved immediate)
   |
   `- 97f6,9857
 97f6: MOV Reg RBX, Reg RAX 3
-97f9: MOV Reg RAX, Immediate 51539607553 10
+97f9: MOVABS Reg RAX, Immediate 51539607553 10
 9803: MOV Reg RCX, Address (SizeDir 64 (FromReg RSP)) 4
 9807: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
 980a: MOV Address (SizeDir 16 (AddrPlus (FromReg RBX) (AddrImm 8))), Reg R15W 5
@@ -48,23 +48,23 @@ Number of edges: 68
 9823: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))), Reg RCX 4
 9827: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R14) (AddrImm 1088))) 7
 982e: TEST Reg RAX, Reg RAX 3
-9831: CMOVZ Reg RAX, Reg R12 4
+9831: CMOVE Reg RAX, Reg R12 4
 9835: MOV Reg RCX, Address (SizeDir 64 (FromReg RAX)) 3
 9838: CALL xencall2 (external)
 983d: TEST Reg EAX, Reg EAX 2
 983f: MOV Reg EBP, Reg EAX 2
-9841: JZ 9880 (resolved immediate)
+9841: JE 9880 (resolved immediate)
   |
   `- 9843,9880
 9843: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 9848: MOV Reg RDI, Reg R14 3
 984b: TEST Reg RSI, Reg RSI 3
-984e: CMOVZ Reg RSI, Reg R12 4
+984e: CMOVE Reg RSI, Reg R12 4
 9852: CALL xc__hypercall_buffer_free (external)
 9857: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))) 5
 985c: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 9865: MOV Reg EAX, Reg EBP 2
-9867: JNZ 988d (resolved immediate)
+9867: JNE 988d (resolved immediate)
   |
   `- 9869,988d
 9869: ADD Reg RSP, Immediate 72 4

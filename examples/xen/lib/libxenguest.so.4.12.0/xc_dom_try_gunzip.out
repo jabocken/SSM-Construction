@@ -22,7 +22,7 @@ Number of edges: 55
 16ca1: MOV Reg RSI, Address (SizeDir 64 (FromReg RSI)) 3
 16ca4: CALL xc_dom_check_gzip (external)
 16ca9: TEST Reg RAX, Reg RAX 3
-16cac: JNZ 16cc8 (resolved immediate)
+16cac: JNE 16cc8 (resolved immediate)
   |
   `- 16cae,16cc8
 16cae: XOR Reg R12D, Reg R12D 3
@@ -43,7 +43,7 @@ Number of edges: 55
 16cd1: CALL xc_dom_kernel_check_size (external)
 16cd6: TEST Reg EAX, Reg EAX 2
 16cd8: MOV Reg R12D, Reg EAX 3
-16cdb: JNZ 16cae (resolved immediate)
+16cdb: JNE 16cae (resolved immediate)
   |
   `- 16cae,16cdd
 16cdd: MOV Reg RSI, Reg RBX 3
@@ -51,21 +51,21 @@ Number of edges: 55
 16ce3: CALL xc_dom_malloc (external)
 16ce8: TEST Reg RAX, Reg RAX 3
 16ceb: MOV Reg R15, Reg RAX 3
-16cee: JZ 16d17 (resolved immediate)
+16cee: JE 16d17 (resolved immediate)
   |
   `- 16cf0,16d17
 16cf0: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 1224))) 7
-16cf7: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 0))) 4
+16cf7: MOV Reg RDX, Address (SizeDir 64 (FromReg R13)) 4
 16cfb: MOV Reg R8, Reg RBX 3
 16cfe: MOV Reg RSI, Address (SizeDir 64 (FromReg R14)) 3
 16d01: MOV Reg RCX, Reg RAX 3
 16d04: CALL xc_dom_do_gunzip (external)
-16d09: CMP Reg EAX, Immediate 4294967295 3
-16d0c: JZ 16d17 (resolved immediate)
+16d09: CMP Reg EAX, Immediate 18446744073709551615 3
+16d0c: JE 16d17 (resolved immediate)
   |
   `- 16d0e,16d17
 16d0e: MOV Address (SizeDir 64 (FromReg R14)), Reg R15 3
-16d11: MOV Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 0))), Reg RBX 4
+16d11: MOV Address (SizeDir 64 (FromReg R13)), Reg RBX 4
 16d15: JMP 16cb1 (resolved immediate)
   |
   `- 16cb1

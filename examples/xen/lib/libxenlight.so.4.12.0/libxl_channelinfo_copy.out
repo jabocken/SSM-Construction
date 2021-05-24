@@ -19,7 +19,7 @@ Number of edges: 83
 3bdba: MOV Reg R12, Reg RDI 3
 3bdbd: MOV Reg EBP, Immediate 0 5
 3bdc2: MOV Reg EBX, Immediate 0 5
-3bdc7: JZ 3bdf4 (resolved immediate)
+3bdc7: JE 3bdf4 (resolved immediate)
   |
   `- 3bdc9,3bdf4
 3bdc9: NOP  7
@@ -44,9 +44,9 @@ Number of edges: 83
 3be13: RET  1
   |
   `- 
-3be14: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 387253)) 7
-3be1b: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 386238)) 7
-3be22: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 386248)) 7
+3be14: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 387253))) 7
+3be1b: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 386238))) 7
+3be22: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 386248))) 7
 3be29: MOV Reg EDX, Immediate 80 5
 3be2e: CALL __assert_fail (external)
   |
@@ -66,8 +66,8 @@ Number of edges: 83
 7e92d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Immediate 0 9
 7e936: CALL libxl_string_copy (external)
 7e93b: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 8))) 3
-7e93e: LEA Reg RDX, Address (AddrPlus (FromReg RBX) (AddrImm 16)) 4
-7e942: LEA Reg RSI, Address (AddrPlus (FromReg RBP) (AddrImm 16)) 4
+7e93e: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
+7e942: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))) 4
 7e946: MOV Reg RDI, Reg R12 3
 7e949: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 8))), Reg EAX 3
 7e94c: CALL libxl_string_copy (external)
@@ -84,11 +84,11 @@ Number of edges: 83
 7e96f: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 44))) 3
 7e972: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 44))), Reg EAX 3
 7e975: CMP Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 44))), Immediate 1 4
-7e979: JNZ 7e98b (resolved immediate)
+7e979: JNE 7e98b (resolved immediate)
   |
   `- 7e97b,7e98b
-7e97b: LEA Reg RDX, Address (AddrPlus (FromReg RBX) (AddrImm 48)) 4
-7e97f: LEA Reg RSI, Address (AddrPlus (FromReg RBP) (AddrImm 48)) 4
+7e97b: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 48))) 4
+7e97f: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 48))) 4
 7e983: MOV Reg RDI, Reg R12 3
 7e986: CALL libxl_string_copy (external)
 7e98b: MOV Reg RDI, Reg RSP 3
@@ -97,7 +97,7 @@ Number of edges: 83
   `- 3bdb0
 7e993: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 7e998: XOR Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-7e9a1: JNZ 7e9ac (resolved immediate)
+7e9a1: JNE 7e9ac (resolved immediate)
   |
   `- 7e9a3,7e9ac
 7e9a3: ADD Reg RSP, Immediate 32 4

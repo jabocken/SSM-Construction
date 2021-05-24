@@ -22,7 +22,7 @@ f9d9: SUB Reg RSP, Immediate 8 4
 f9dd: CALL xc_domain_increase_reservation (external)
 f9e2: MOVSXD Reg RDX, Reg EAX 3
 f9e5: CMP Reg RDX, Reg RBX 3
-f9e8: JZ fa00 (resolved immediate)
+f9e8: JE fa00 (resolved immediate)
   |
   `- f9ea,fa00
 f9ea: TEST Reg EAX, Reg EAX 2
@@ -53,7 +53,7 @@ fa10: RET  1
 fa18: CALL __errno_location (external)
 fa1d: SUB Reg RSP, Immediate 8 4
 fa21: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))) 4
-fa25: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 89132)) 7
+fa25: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 89132))) 7
 fa2c: PUSH Reg R14 2
 fa2e: PUSH Reg R13 2
 fa30: MOV Reg R15, Reg RAX 3

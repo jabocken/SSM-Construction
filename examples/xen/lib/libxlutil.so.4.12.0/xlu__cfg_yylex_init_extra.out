@@ -20,7 +20,7 @@ Number of edges: 61
 4388: XOR Reg EAX, Reg EAX 2
 438a: CALL xlu__cfg_yyset_extra (external)
 438f: TEST Reg RBX, Reg RBX 3
-4392: JZ 4470 (resolved immediate)
+4392: JE 4470 (resolved immediate)
   |
   `- 4398,4470
 4398: MOV Reg RSI, Reg R12 3
@@ -28,18 +28,18 @@ Number of edges: 61
 43a0: CALL xlu__cfg_yyalloc (external)
 43a5: TEST Reg RAX, Reg RAX 3
 43a8: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
-43ab: JZ 4458 (resolved immediate)
+43ab: JE 4458 (resolved immediate)
   |
   `- 43b1,4458
-43b1: LEA Reg RDI, Address (AddrPlus (FromReg RAX) (AddrImm 8)) 4
+43b1: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))) 4
 43b5: MOV Address (SizeDir 64 (FromReg RAX)), Immediate 0 7
 43bc: MOV Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 160))), Immediate 0 11
 43c7: AND Reg RDI, Immediate 18446744073709551608 4
 43cb: SUB Reg RAX, Reg RDI 3
-43ce: LEA Reg ECX, Address (AddrPlus (FromReg RAX) (AddrImm 168)) 6
+43ce: LEA Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 168))) 6
 43d4: XOR Reg EAX, Reg EAX 2
 43d6: SHR Reg ECX, Immediate 3 3
-43d9: REP STOSQ  3
+43d9: REP STOSQ Address (SizeDir 64 (FromReg RDI)), Reg RAX 3
 43dc: MOV Reg RDI, Reg RBP 3
 43df: MOV Reg RSI, Address (SizeDir 64 (FromReg RBX)) 3
 43e2: CALL xlu__cfg_yyset_extra (external)
@@ -56,7 +56,7 @@ Number of edges: 61
 4432: XOR Reg EAX, Reg EAX 2
 4434: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 168))) 8
 443c: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-4445: JNZ 4482 (resolved immediate)
+4445: JNE 4482 (resolved immediate)
   |
   `- 4447,4482
 4447: ADD Reg RSP, Immediate 176 7

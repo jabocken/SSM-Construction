@@ -15,7 +15,7 @@ Number of edges: 137
 6628: SUB Reg RSP, Immediate 8 4
 662c: CALL xc_dom_translated (external)
 6631: TEST Reg AL, Reg AL 2
-6633: JNZ 6664 (resolved immediate)
+6633: JNE 6664 (resolved immediate)
   |
   `- 6635,6664
 6635: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 1120))) 7
@@ -62,7 +62,7 @@ Number of edges: 137
 1b69d: MOV Reg RDI, Reg R12 3
 1b6a0: CALL xc_dom_allocate (external)
 1b6a5: TEST Reg RAX, Reg RAX 3
-1b6a8: JZ 1b7d0 (resolved immediate)
+1b6a8: JE 1b7d0 (resolved immediate)
   |
   `- 1b6ae,1b7d0
 1b6ae: MOV Reg RSI, Reg RBP 3
@@ -71,15 +71,15 @@ Number of edges: 137
 1b6b7: CALL xc_dom_kernel_file (external)
 1b6bc: TEST Reg EAX, Reg EAX 2
 1b6be: MOV Reg EBP, Reg EAX 2
-1b6c0: JNZ 1b706 (resolved immediate)
+1b6c0: JNE 1b706 (resolved immediate)
   |
   `- 1b6c2,1b706
 1b6c2: TEST Reg R13, Reg R13 3
-1b6c5: JZ 1b6d2 (resolved immediate)
+1b6c5: JE 1b6d2 (resolved immediate)
   |
   `- 1b6c7,1b6d2
-1b6c7: CMP Address (SizeDir 8 (AddrPlus (FromReg R13) (AddrImm 0))), Immediate 0 5
-1b6cc: JNZ 1b7b0 (resolved immediate)
+1b6c7: CMP Address (SizeDir 8 (FromReg R13)), Immediate 0 5
+1b6cc: JNE 1b7b0 (resolved immediate)
   |
   `- 1b6d2,1b7b0
 1b6d2: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 72))) 5
@@ -94,7 +94,7 @@ Number of edges: 137
 1b6fb: CALL xc_dom_boot_xen_init (external)
 1b700: TEST Reg EAX, Reg EAX 2
 1b702: MOV Reg EBP, Reg EAX 2
-1b704: JZ 1b720 (resolved immediate)
+1b704: JE 1b720 (resolved immediate)
   |
   `- 1b720
 1b706: MOV Reg RDI, Reg RBX 3
@@ -114,33 +114,33 @@ Number of edges: 137
 1b723: CALL xc_dom_parse_image (external)
 1b728: TEST Reg EAX, Reg EAX 2
 1b72a: MOV Reg EBP, Reg EAX 2
-1b72c: JNZ 1b706 (resolved immediate)
+1b72c: JNE 1b706 (resolved immediate)
 1b72e: MOV Reg ESI, Reg R15D 3
 1b731: MOV Reg RDI, Reg RBX 3
 1b734: CALL xc_dom_mem_init (external)
 1b739: TEST Reg EAX, Reg EAX 2
 1b73b: MOV Reg EBP, Reg EAX 2
-1b73d: JNZ 1b706 (resolved immediate)
+1b73d: JNE 1b706 (resolved immediate)
 1b73f: MOV Reg RDI, Reg RBX 3
 1b742: CALL xc_dom_boot_mem_init (external)
 1b747: TEST Reg EAX, Reg EAX 2
 1b749: MOV Reg EBP, Reg EAX 2
-1b74b: JNZ 1b706 (resolved immediate)
+1b74b: JNE 1b706 (resolved immediate)
 1b74d: MOV Reg RDI, Reg RBX 3
 1b750: CALL xc_dom_build_image (external)
 1b755: TEST Reg EAX, Reg EAX 2
 1b757: MOV Reg EBP, Reg EAX 2
-1b759: JNZ 1b706 (resolved immediate)
+1b759: JNE 1b706 (resolved immediate)
 1b75b: MOV Reg RDI, Reg RBX 3
 1b75e: CALL xc_dom_boot_image (external)
 1b763: TEST Reg EAX, Reg EAX 2
 1b765: MOV Reg EBP, Reg EAX 2
-1b767: JNZ 1b706 (resolved immediate)
+1b767: JNE 1b706 (resolved immediate)
 1b769: MOV Reg RDI, Reg RBX 3
 1b76c: CALL xc_dom_gnttab_init (external)
 1b771: TEST Reg EAX, Reg EAX 2
 1b773: MOV Reg EBP, Reg EAX 2
-1b775: JNZ 1b706 (resolved immediate)
+1b775: JNE 1b706 (resolved immediate)
 1b777: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1008))) 7
 1b77e: MOV Reg RDI, Reg RBX 3
 1b781: CALL xc_dom_p2m (internal)
@@ -162,7 +162,7 @@ Number of edges: 137
 1b7b8: CALL xc_dom_module_file (external)
 1b7bd: TEST Reg EAX, Reg EAX 2
 1b7bf: MOV Reg EBP, Reg EAX 2
-1b7c1: JNZ 1b706 (resolved immediate)
+1b7c1: JNE 1b706 (resolved immediate)
 1b7c7: JMP 1b6d2 (resolved immediate)
   |
   `- 1b6d2

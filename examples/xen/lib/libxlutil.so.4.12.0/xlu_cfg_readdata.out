@@ -11,25 +11,25 @@ Number of edges: 118
 
 57c0: PUSH Reg RBP 1
 57c1: PUSH Reg RBX 1
-57c2: MOV Reg RAX, Immediate 18446744069414584320 10
+57c2: MOVABS Reg RAX, Immediate 18446744069414584320 10
 57cc: MOV Reg RBP, Reg RSI 3
 57cf: SUB Reg RSP, Immediate 8 4
 57d3: MOV Address (SizeDir 64 (FromReg RDI)), Reg RSI 3
-57d6: LEA Reg RSI, Address (AddrPlus (FromReg RDI) (AddrImm 24)) 4
+57d6: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 24))) 4
 57da: MOV Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))), Reg RAX 4
 57de: MOV Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 16))), Immediate 0 7
 57e5: MOV Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 24))), Immediate 0 8
 57ed: CALL xlu__cfg_yylex_init_extra (external)
 57f2: TEST Reg EAX, Reg EAX 2
 57f4: MOV Reg EBX, Reg EAX 2
-57f6: JZ 581d (resolved immediate)
+57f6: JE 581d (resolved immediate)
   |
   `- 57f8,581d
 57f8: MOV Reg EDI, Reg EAX 2
 57fa: CALL strerror (external)
 57ff: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))) 4
 5803: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))) 4
-5807: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 22234)) 7
+5807: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 22234))) 7
 580e: MOV Reg R8, Reg RAX 3
 5811: MOV Reg ESI, Immediate 1 5
 5816: XOR Reg EAX, Reg EAX 2
@@ -49,17 +49,17 @@ Number of edges: 118
 58f2: MOV Reg RDI, Reg RBX 3
 58f5: CALL xlu__cfg_yyparse (external)
 58fa: TEST Reg EAX, Reg EAX 2
-58fc: JZ 5910 (resolved immediate)
+58fc: JE 5910 (resolved immediate)
   |
   `- 58fe,5910
 58fe: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 8))) 3
 5901: TEST Reg ECX, Reg ECX 2
-5903: JZ 593e (resolved immediate)
+5903: JE 593e (resolved immediate)
   |
   `- 5905,593e
 5905: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 16))) 3
 5908: TEST Reg EAX, Reg EAX 2
-590a: JNZ 5920 (resolved immediate)
+590a: JNE 5920 (resolved immediate)
   |
   `- 590c,5920
 590c: POP Reg RBX 1
@@ -68,7 +68,7 @@ Number of edges: 118
   `- 
 5910: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 8))) 3
 5913: TEST Reg EDX, Reg EDX 2
-5915: JNZ 5905 (resolved immediate)
+5915: JNE 5905 (resolved immediate)
   |
   `- 5905,5917
 5917: POP Reg RBX 1
@@ -76,7 +76,7 @@ Number of edges: 118
   |
   `- 
 5920: MOV Reg RAX, Address (SizeDir 64 (FromReg RBX)) 3
-5923: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 22062)) 7
+5923: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 22062))) 7
 592a: MOV Reg EDX, Immediate 164 5
 592f: POP Reg RBX 1
 5930: MOV Reg ESI, Immediate 1 5
@@ -84,9 +84,9 @@ Number of edges: 118
 5939: JMP fwrite (jmp to external function)
   |
   `- 
-593e: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 23116)) 7
-5945: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 22838)) 7
-594c: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 22844)) 7
+593e: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 23116))) 7
+5945: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 22838))) 7
+594c: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 22844))) 7
 5953: MOV Reg EDX, Immediate 71 5
 5958: CALL __assert_fail (external)
   |
@@ -109,20 +109,20 @@ Number of edges: 118
   |
   `- 57c0
 5ae1: TEST Reg EAX, Reg EAX 2
-5ae3: JZ 5b20 (resolved immediate)
+5ae3: JE 5b20 (resolved immediate)
   |
   `- 5ae5,5b20
 5ae5: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg EAX 4
 5ae9: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 5aee: TEST Reg RDI, Reg RDI 3
-5af1: JZ 5af8 (resolved immediate)
+5af1: JE 5af8 (resolved immediate)
   |
   `- 5af3,5af8
 5af3: CALL xlu__cfg_yylex_destroy (external)
 5af8: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
 5afd: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 5b06: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 8))) 4
-5b0a: JNZ 5b78 (resolved immediate)
+5b0a: JNE 5b78 (resolved immediate)
   |
   `- 5b0c,5b78
 5b0c: ADD Reg RSP, Immediate 56 4
@@ -139,7 +139,7 @@ Number of edges: 118
 5b2b: CALL xlu__cfg_yy_scan_bytes (external)
 5b30: TEST Reg RAX, Reg RAX 3
 5b33: MOV Reg R12, Reg RAX 3
-5b36: JZ 5b50 (resolved immediate)
+5b36: JE 5b50 (resolved immediate)
   |
   `- 5b38,5b50
 5b38: MOV Reg RDI, Reg RBX 3
@@ -154,7 +154,7 @@ Number of edges: 118
   `- 5ae9
 5b50: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))) 4
 5b54: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))) 4
-5b58: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 21713)) 7
+5b58: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 21713))) 7
 5b5f: MOV Reg ESI, Immediate 1 5
 5b64: XOR Reg EAX, Reg EAX 2
 5b66: CALL __fprintf_chk (external)

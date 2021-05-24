@@ -11,17 +11,17 @@ Number of edges: 13
 422c6: NOT Reg EAX 2
 422c8: SHR Reg EAX, Immediate 31 3
 422cb: CMP Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 40))), Immediate 0 5
-422d0: SETNZ Reg DL 3
+422d0: SETNE Reg DL 3
 422d3: CMP Reg AL, Reg DL 2
-422d5: JNZ 422d9 (resolved immediate)
+422d5: JNE 422d9 (resolved immediate)
   |
   `- 422d7,422d9
-422d7: REPZ RET  2
+422d7: RET  2
   |
   `- 
-422d9: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 366272)) 7
-422e0: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 364537)) 7
-422e7: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 364620)) 7
+422d9: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 366272))) 7
+422e0: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 364537))) 7
+422e7: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 364620))) 7
 422ee: SUB Reg RSP, Immediate 8 4
 422f2: MOV Reg EDX, Immediate 41 5
 422f7: CALL __assert_fail (external)

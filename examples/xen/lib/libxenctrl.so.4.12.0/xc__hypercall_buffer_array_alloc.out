@@ -16,11 +16,11 @@ Number of edges: 31
   `- 225a8,225f9
 225a8: MOV Reg EAX, Reg EDX 2
 225aa: MOV Reg R12, Reg RSI 3
-225ad: LEA Reg RBX, Address (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 4) (FromReg RAX))) 4
+225ad: LEA Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 4) (FromReg RAX)))) 4
 225b1: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))) 4
 225b5: SHL Reg RBX, Immediate 3 4
-225b9: CMP Address (SizeDir 64 (AddrPlus (FromReg RAX) (FromReg RBX))), Immediate 0 5
-225be: JNZ 225f9 (resolved immediate)
+225b9: CMP Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 1) (FromReg RBX)))), Immediate 0 5
+225be: JNE 225f9 (resolved immediate)
   |
   `- 225c0,225f9
 225c0: MOV Reg RDX, Reg R8 3
@@ -28,16 +28,16 @@ Number of edges: 31
 225c6: MOV Reg RBP, Reg RCX 3
 225c9: CALL xc__hypercall_buffer_alloc (external)
 225ce: TEST Reg RAX, Reg RAX 3
-225d1: JZ 225f4 (resolved immediate)
+225d1: JE 225f4 (resolved immediate)
   |
   `- 225d3,225f4
 225d3: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 8))) 5
-225d8: MOVDQU Reg XMM0, Address (SizeDir 128 (AddrPlus (FromReg RBP) (AddrImm 0))) 5
-225dd: MOVUPS Address (SizeDir 128 (AddrPlus (FromReg RDX) (FromReg RBX))), Reg XMM0 4
+225d8: MOVDQU Reg XMM0, Address (SizeDir 128 (FromReg RBP)) 5
+225dd: MOVUPS Address (SizeDir 128 (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 1) (FromReg RBX)))), Reg XMM0 4
 225e1: MOVDQU Reg XMM0, Address (SizeDir 128 (AddrPlus (FromReg RBP) (AddrImm 16))) 5
-225e6: MOVUPS Address (SizeDir 128 (AddrPlus (AddrPlus (FromReg RDX) (FromReg RBX)) (AddrImm 16))), Reg XMM0 5
+225e6: MOVUPS Address (SizeDir 128 (AddrPlus (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 1) (FromReg RBX))) (AddrImm 16))), Reg XMM0 5
 225eb: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 32))) 4
-225ef: MOV Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RDX) (FromReg RBX)) (AddrImm 32))), Reg RCX 5
+225ef: MOV Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 1) (FromReg RBX))) (AddrImm 32))), Reg RCX 5
 225f4: POP Reg RBX 1
 225f5: POP Reg RBP 1
 225f6: POP Reg R12 2

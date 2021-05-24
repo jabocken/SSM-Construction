@@ -16,23 +16,23 @@ Number of edges: 264
 136a: MOV Reg ECX, Immediate 64 5
 136f: MOV Reg RBX, Reg RDI 3
 1372: SUB Reg RSP, Immediate 104 4
-1376: LEA Reg R8, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+1376: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 137b: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 1384: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 88))), Reg RAX 5
 1389: XOR Reg EAX, Reg EAX 2
 138b: CALL fsig_devread (external)
 1390: TEST Reg EAX, Reg EAX 2
-1392: JZ 139b (resolved immediate)
+1392: JE 139b (resolved immediate)
   |
   `- 1394,139b
 1394: CMP Address (SizeDir 8 (AddrPlus (FromReg RSP) (AddrImm 29))), Immediate 0 5
-1399: JNZ 13c0 (resolved immediate)
+1399: JNE 13c0 (resolved immediate)
   |
   `- 139b,13c0
 139b: XOR Reg EAX, Reg EAX 2
 139d: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 88))) 5
 13a2: XOR Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-13ab: JNZ 177e (resolved immediate)
+13ab: JNE 177e (resolved immediate)
   |
   `- 13b1,177e
 13b1: ADD Reg RSP, Immediate 104 4
@@ -61,7 +61,7 @@ Number of edges: 264
 1403: MOVZX Reg EAX, Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 35))) 5
 1408: TEST Reg AX, Reg AX 3
 140b: MOVZX Reg EBP, Reg AX 3
-140e: JNZ 1414 (resolved immediate)
+140e: JNE 1414 (resolved immediate)
   |
   `- 1410,1414
 1410: MOV Reg EBP, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 48))) 4
@@ -75,7 +75,7 @@ Number of edges: 264
 1435: MOVZX Reg EAX, Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 38))) 5
 143a: TEST Reg AX, Reg AX 3
 143d: MOVZX Reg EBP, Reg AX 3
-1440: JNZ 1446 (resolved immediate)
+1440: JNE 1446 (resolved immediate)
   |
   `- 1442,1446
 1442: MOV Reg EBP, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 52))) 4
@@ -134,16 +134,16 @@ Number of edges: 264
 1524: CALL fsig_file_buf (external)
 1529: CMP Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 38))), Immediate 0 6
 152f: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 32292))), Reg EBP 6
-1535: JNZ 16f0 (resolved immediate)
+1535: JNE 16f0 (resolved immediate)
   |
   `- 153b,16f0
 153b: CMP Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 33))), Immediate 0 6
-1541: JNZ 139b (resolved immediate)
+1541: JNE 139b (resolved immediate)
   |
   `- 139b,1547
 1547: MOVZX Reg EAX, Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 56))) 5
 154c: TEST Reg AL, Immediate 128 2
-154e: JZ 157f (resolved immediate)
+154e: JE 157f (resolved immediate)
   |
   `- 1550,157f
 1550: MOV Reg EBP, Reg EAX 2
@@ -177,11 +177,11 @@ Number of edges: 264
 15ce: MOV Reg EAX, Reg EBP 2
 15d0: SHL Reg EAX, Reg CL 2
 15d2: CMP Reg R12D, Reg EAX 3
-15d5: JNZ 139b (resolved immediate)
+15d5: JNE 139b (resolved immediate)
   |
   `- 139b,15db
 15db: CMP Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 27))), Immediate 512 7
-15e2: JNZ 139b (resolved immediate)
+15e2: JNE 139b (resolved immediate)
   |
   `- 139b,15e8
 15e8: MOV Reg RDI, Reg RBX 3
@@ -194,7 +194,7 @@ Number of edges: 264
 1608: SUB Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 32296))) 6
 160e: SHL Reg EBP, Reg CL 2
 1610: CMP Reg R13D, Reg EBP 3
-1613: JNZ 139b (resolved immediate)
+1613: JNE 139b (resolved immediate)
   |
   `- 139b,1619
 1619: MOV Reg RDI, Reg RBX 3
@@ -223,17 +223,17 @@ Number of edges: 264
 166b: MOV Reg RDI, Reg RBX 3
 166e: CALL fsig_file_buf (external)
 1673: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 32256))) 6
-1679: LEA Reg R8, Address (AddrPlus (FromReg RSP) (AddrImm 12)) 5
+1679: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 12))) 5
 167e: XOR Reg EDX, Reg EDX 2
 1680: MOV Reg ECX, Immediate 4 5
 1685: MOV Reg RDI, Reg RBX 3
 1688: CALL fsig_devread (external)
 168d: TEST Reg EAX, Reg EAX 2
-168f: JZ 139b (resolved immediate)
+168f: JE 139b (resolved immediate)
 1695: MOV Reg RDI, Reg RBX 3
 1698: CALL fsig_file_buf (external)
 169d: CMP Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 32264))), Immediate 8 7
-16a4: JNZ 1783 (resolved immediate)
+16a4: JNE 1783 (resolved immediate)
   |
   `- 16aa,1783
 16aa: AND Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))), Immediate 268435455 8
@@ -245,7 +245,7 @@ Number of edges: 264
 16c6: MOVZX Reg EAX, Reg AL 3
 16c9: OR Reg EAX, Reg ECX 2
 16cb: CMP Reg EDX, Reg EAX 2
-16cd: JNZ 139b (resolved immediate)
+16cd: JNE 139b (resolved immediate)
   |
   `- 139b,16d3
 16d3: MOV Reg RDI, Reg RBX 3
@@ -259,7 +259,7 @@ Number of edges: 264
 16f3: CALL fsig_file_buf (external)
 16f8: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 32272))) 6
 16fe: TEST Reg EAX, Reg EAX 2
-1700: JZ 139b (resolved immediate)
+1700: JE 139b (resolved immediate)
 1706: MOV Reg RDI, Reg RBX 3
 1709: CALL fsig_file_buf (external)
 170e: MOV Reg RDI, Reg RBX 3
@@ -292,7 +292,7 @@ Number of edges: 264
 1783: MOV Reg RDI, Reg RBX 3
 1786: CALL fsig_file_buf (external)
 178b: CMP Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 32264))), Immediate 4 7
-1792: JZ 17a6 (resolved immediate)
+1792: JE 17a6 (resolved immediate)
   |
   `- 1794,17a6
 1794: AND Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))), Immediate 4095 8

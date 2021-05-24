@@ -12,7 +12,7 @@ Number of edges: 26
 64c2: SUB Reg RSP, Immediate 8 4
 64c6: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 8))) 3
 64c9: TEST Reg EAX, Reg EAX 2
-64cb: JNZ 64f8 (resolved immediate)
+64cb: JNE 64f8 (resolved immediate)
   |
   `- 64cd,64f8
 64cd: MOV Reg RBX, Reg RDI 3
@@ -20,7 +20,7 @@ Number of edges: 26
 64d3: CALL strdup (external)
 64d8: TEST Reg RAX, Reg RAX 3
 64db: MOV Reg RBP, Reg RAX 3
-64de: JNZ 64ea (resolved immediate)
+64de: JNE 64ea (resolved immediate)
   |
   `- 64e0,64ea
 64e0: CALL __errno_location (external)

@@ -25,7 +25,7 @@ Number of edges: 113
 7440: XOR Reg EAX, Reg EAX 2
 7442: CALL read_exact (external)
 7447: TEST Reg EAX, Reg EAX 2
-7449: JNZ 74e1 (resolved immediate)
+7449: JNE 74e1 (resolved immediate)
   |
   `- 744f,74e1
 744f: MOV Reg EBP, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))) 4
@@ -38,7 +38,7 @@ Number of edges: 113
 7464: ADD Reg RCX, Immediate 7 4
 7468: MOV Reg RBX, Reg RCX 3
 746b: AND Reg RBX, Immediate 18446744073709551608 4
-746f: JNZ 74b0 (resolved immediate)
+746f: JNE 74b0 (resolved immediate)
   |
   `- 7471,74b0
 7471: MOV Address (SizeDir 64 (AddrPlus (FromReg R14) (AddrImm 8))), Immediate 0 8
@@ -48,7 +48,7 @@ Number of edges: 113
 7483: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 7488: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 7491: MOV Reg EAX, Reg R15D 3
-7494: JNZ 7617 (resolved immediate)
+7494: JNE 7617 (resolved immediate)
   |
   `- 749a,7617
 749a: ADD Reg RSP, Immediate 24 4
@@ -65,7 +65,7 @@ Number of edges: 113
 74b3: CALL malloc (external)
 74b8: TEST Reg RAX, Reg RAX 3
 74bb: MOV Address (SizeDir 64 (AddrPlus (FromReg R14) (AddrImm 8))), Reg RAX 4
-74bf: JZ 75d5 (resolved immediate)
+74bf: JE 75d5 (resolved immediate)
   |
   `- 74c5,75d5
 74c5: MOV Reg RDX, Reg RBX 3
@@ -73,7 +73,7 @@ Number of edges: 113
 74cb: MOV Reg EDI, Reg R12D 3
 74ce: CALL read_exact (external)
 74d3: TEST Reg EAX, Reg EAX 2
-74d5: JNZ 7569 (resolved immediate)
+74d5: JNE 7569 (resolved immediate)
 74db: MOV Reg EBP, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))) 4
 74df: JMP 7479 (resolved immediate)
   |
@@ -86,7 +86,7 @@ Number of edges: 113
 74f4: MOV Reg ESI, Reg EBP 2
 74f6: CALL xc_strerror (external)
 74fb: MOV Reg ECX, Address (SizeDir 32 (FromReg RBX)) 2
-74fd: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 106092)) 7
+74fd: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 106092))) 7
 7504: MOV Reg R8, Reg RAX 3
 7507: MOV Reg ESI, Immediate 1 5
 750c: MOV Reg RDI, Reg R13 3
@@ -103,7 +103,7 @@ Number of edges: 113
 752b: MOV Reg R15D, Immediate 4294967295 6
 7531: CALL rec_type_to_str (external)
 7536: SUB Reg RSP, Immediate 8 4
-753a: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 106087)) 7
+753a: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 106087))) 7
 7541: MOV Reg R8, Reg RAX 3
 7544: PUSH Immediate 134217728 5
 7549: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))) 4
@@ -125,14 +125,14 @@ Number of edges: 113
 75e3: MOV Reg R15D, Immediate 4294967295 6
 75e9: CALL rec_type_to_str (external)
 75ee: MOV Reg R8D, Address (SizeDir 32 (FromReg RSP)) 4
-75f2: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 105959)) 7
+75f2: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 105959))) 7
 75f9: MOV Reg R9, Reg RAX 3
 75fc: MOV Reg RCX, Reg RBX 3
 75ff: MOV Reg ESI, Immediate 1 5
 7604: MOV Reg RDI, Reg R13 3
 7607: XOR Reg EAX, Reg EAX 2
 7609: CALL xc_report_error (external)
-760e: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R12D 4
+760e: MOV Address (SizeDir 32 (FromReg RBP)), Reg R12D 4
 7612: JMP 7483 (resolved immediate)
   |
   `- 7483

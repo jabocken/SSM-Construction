@@ -23,12 +23,12 @@ Number of edges: 59
 2363: XOR Reg EAX, Reg EAX 2
 2365: CALL fsig_devread (external)
 236a: TEST Reg EAX, Reg EAX 2
-236c: JNZ 2398 (resolved immediate)
+236c: JNE 2398 (resolved immediate)
   |
   `- 236e,2398
 236e: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 216))) 8
 2376: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-237f: JNZ 2417 (resolved immediate)
+237f: JNE 2417 (resolved immediate)
   |
   `- 2385,2417
 2385: ADD Reg RSP, Immediate 224 7
@@ -39,7 +39,7 @@ Number of edges: 59
   |
   `- 
 2398: ADD Reg RBX, Immediate 52 4
-239c: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 191)) 7
+239c: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 191))) 7
 23a3: MOV Address (SizeDir 32 (FromReg R12)), Immediate 1 8
 23ab: MOV Reg RSI, Reg RBX 3
 23ae: CALL fsig_substring (external)
@@ -60,12 +60,12 @@ Number of edges: 59
 23d4: JMP 236e (resolved immediate)
   |
   `- 236e
-23e0: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 113)) 7
+23e0: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 113))) 7
 23e7: MOV Reg RSI, Reg RBX 3
 23ea: CALL fsig_substring (external)
 23ef: TEST Reg EAX, Reg EAX 2
 23f1: JLE 23b7 (resolved immediate)
-23f3: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 84)) 7
+23f3: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 84))) 7
 23fa: MOV Reg RSI, Reg RBX 3
 23fd: CALL fsig_substring (external)
 2402: TEST Reg EAX, Reg EAX 2

@@ -14,7 +14,7 @@ Number of edges: 31
 4339: CALL malloc (external)
 433e: TEST Reg RAX, Reg RAX 3
 4341: MOV Address (SizeDir 64 (FromReg RBX)), Reg RAX 3
-4344: JZ 4355 (resolved immediate)
+4344: JE 4355 (resolved immediate)
   |
   `- 4346,4355
 4346: MOV Address (SizeDir 64 (FromReg RAX)), Immediate 0 7
@@ -25,18 +25,18 @@ Number of edges: 31
   `- 
 5480: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 24))) 4
 5484: TEST Reg RAX, Reg RAX 3
-5487: JZ 54a8 (resolved immediate)
+5487: JE 54a8 (resolved immediate)
   |
   `- 5489,54a8
 5489: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))) 4
 548d: TEST Reg RDI, Reg RDI 3
-5490: JZ 54a0 (resolved immediate)
+5490: JE 54a0 (resolved immediate)
   |
   `- 5492,54a0
 5492: JMP closedir (jmp to external function)
   |
   `- 
-54a0: REPZ RET  2
+54a0: RET  2
   |
   `- 
 54a8: SUB Reg RSP, Immediate 8 4
@@ -45,7 +45,7 @@ Number of edges: 31
   |
   `- 4330
 54b5: TEST Reg RAX, Reg RAX 3
-54b8: JNZ 54bf (resolved immediate)
+54b8: JNE 54bf (resolved immediate)
   |
   `- 54ba,54bf
 54ba: ADD Reg RSP, Immediate 8 4
@@ -54,7 +54,7 @@ Number of edges: 31
   `- 
 54bf: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 8))) 4
 54c3: TEST Reg RDI, Reg RDI 3
-54c6: JZ 54ba (resolved immediate)
+54c6: JE 54ba (resolved immediate)
   |
   `- 54ba,54c8
 54c8: ADD Reg RSP, Immediate 8 4

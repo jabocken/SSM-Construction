@@ -8,11 +8,11 @@ Number of edges: 215
 7d010 (False): 0
 
 7d010: TEST Reg RDI, Reg RDI 3
-7d013: JZ 7d278 (resolved immediate)
+7d013: JE 7d278 (resolved immediate)
   |
   `- 7d019,7d278
 7d019: PUSH Reg R13 2
-7d01b: LEA Reg R13, Address (AddrPlus (FromReg RDI) (AddrImm 8)) 4
+7d01b: LEA Reg R13, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
 7d01f: PUSH Reg R12 2
 7d021: PUSH Reg RBP 1
 7d022: PUSH Reg RBX 1
@@ -20,9 +20,9 @@ Number of edges: 215
 7d026: MOV Reg RDI, Reg R13 3
 7d029: SUB Reg RSP, Immediate 8 4
 7d02d: CALL libxl_bitmap_dispose (external)
-7d032: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 24)) 4
+7d032: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 24))) 4
 7d036: CALL libxl_bitmap_dispose (external)
-7d03b: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 40)) 4
+7d03b: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 40))) 4
 7d03f: CALL libxl_bitmap_dispose (external)
 7d044: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 56))) 3
 7d047: TEST Reg EDI, Reg EDI 2
@@ -63,7 +63,7 @@ Number of edges: 215
 7d09c: CALL free (external)
 7d0a1: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 136))) 7
 7d0a8: CALL free (external)
-7d0ad: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 152)) 7
+7d0ad: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 152))) 7
 7d0b4: CALL libxl_cpuid_dispose (external)
 7d0b9: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 160))) 7
 7d0c0: CALL free (external)
@@ -92,13 +92,13 @@ Number of edges: 215
 7d115: CALL free (external)
 7d11a: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 224))) 7
 7d121: CALL free (external)
-7d126: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 232)) 7
+7d126: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 232))) 7
 7d12d: CALL libxl_string_list_dispose (external)
-7d132: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 240)) 7
+7d132: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 240))) 7
 7d139: CALL libxl_string_list_dispose (external)
-7d13e: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 248)) 7
+7d13e: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 248))) 7
 7d145: CALL libxl_string_list_dispose (external)
-7d14a: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 256)) 7
+7d14a: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 256))) 7
 7d151: CALL libxl_domain_sched_params_dispose (external)
 7d156: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 288))) 6
 7d15c: TEST Reg EDX, Reg EDX 2
@@ -150,19 +150,19 @@ Number of edges: 215
 7d205: CALL free (external)
 7d20a: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 384))) 7
 7d211: CALL free (external)
-7d216: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 392)) 7
+7d216: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 392))) 7
 7d21d: CALL libxl_string_list_dispose (external)
 7d222: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 416))) 6
 7d228: CMP Reg EAX, Immediate 2 3
-7d22b: JZ 7d280 (resolved immediate)
+7d22b: JE 7d280 (resolved immediate)
   |
   `- 7d22d,7d280
 7d22d: CMP Reg EAX, Immediate 3 3
-7d230: JZ 7d3b0 (resolved immediate)
+7d230: JE 7d3b0 (resolved immediate)
   |
   `- 7d236,7d3b0
 7d236: CMP Reg EAX, Immediate 1 3
-7d239: JZ 7d2c0 (resolved immediate)
+7d239: JE 7d2c0 (resolved immediate)
   |
   `- 7d23f,7d2c0
 7d23f: MOV Reg RDI, Reg R13 3
@@ -171,9 +171,9 @@ Number of edges: 215
 7d254: AND Reg RDI, Immediate 18446744073709551608 4
 7d258: XOR Reg EAX, Reg EAX 2
 7d25a: SUB Reg RBX, Reg RDI 3
-7d25d: LEA Reg ECX, Address (AddrPlus (FromReg RBX) (AddrImm 856)) 6
+7d25d: LEA Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBX) (AddrImm 856))) 6
 7d263: SHR Reg ECX, Immediate 3 3
-7d266: REP STOSQ  3
+7d266: REP STOSQ Address (SizeDir 64 (FromReg RDI)), Reg RAX 3
 7d269: ADD Reg RSP, Immediate 8 4
 7d26d: POP Reg RBX 1
 7d26e: POP Reg RBP 1
@@ -182,14 +182,14 @@ Number of edges: 215
 7d273: RET  1
   |
   `- 
-7d278: REPZ RET  2
+7d278: RET  2
   |
   `- 
 7d280: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 424))) 7
 7d287: CALL free (external)
 7d28c: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 440))) 7
 7d293: CALL free (external)
-7d298: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 448)) 7
+7d298: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 448))) 7
 7d29f: CALL libxl_string_list_dispose (external)
 7d2a4: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 456))) 7
 7d2ab: CALL free (external)
@@ -200,9 +200,9 @@ Number of edges: 215
   `- 7d23f
 7d2c0: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 424))) 7
 7d2c7: CALL free (external)
-7d2cc: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 472)) 7
+7d2cc: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 472))) 7
 7d2d3: CALL libxl_bitmap_dispose (external)
-7d2d8: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 488)) 7
+7d2d8: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 488))) 7
 7d2df: CALL libxl_bitmap_dispose (external)
 7d2e4: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 504))) 7
 7d2eb: CALL free (external)
@@ -212,15 +212,15 @@ Number of edges: 215
 7d303: CALL free (external)
 7d308: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 560))) 7
 7d30f: CALL free (external)
-7d314: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 576)) 7
+7d314: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 576))) 7
 7d31b: CALL libxl_vga_interface_info_dispose (external)
-7d320: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 584)) 7
+7d320: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 584))) 7
 7d327: CALL libxl_vnc_info_dispose (external)
 7d32c: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 616))) 7
 7d333: CALL free (external)
-7d338: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 624)) 7
+7d338: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 624))) 7
 7d33f: CALL libxl_sdl_info_dispose (external)
-7d344: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 648)) 7
+7d344: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 648))) 7
 7d34b: CALL libxl_spice_info_dispose (external)
 7d350: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 728))) 7
 7d357: CALL free (external)
@@ -230,11 +230,11 @@ Number of edges: 215
 7d36f: CALL free (external)
 7d374: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 760))) 7
 7d37b: CALL free (external)
-7d380: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 776)) 7
+7d380: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 776))) 7
 7d387: CALL libxl_string_list_dispose (external)
-7d38c: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 808)) 7
+7d38c: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 808))) 7
 7d393: CALL libxl_string_list_dispose (external)
-7d398: LEA Reg RDI, Address (AddrPlus (FromReg RBX) (AddrImm 816)) 7
+7d398: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 816))) 7
 7d39f: CALL libxl_rdm_reserve_dispose (external)
 7d3a4: JMP 7d23f (resolved immediate)
   |

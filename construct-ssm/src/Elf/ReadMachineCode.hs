@@ -108,9 +108,9 @@ disAddress (X86OpMemStruct segment base index scale offset') size' = addr where
       AddrPlus $ FromReg $ mapReg segment
   addr1 = if index == X86RegInvalid then
       assert (scale == 0) Nothing
-    else if scale == 0 then
+    else if scale == 0 then -- does this ever happen when the index is not invalid?
       Just $ FromReg $ mapReg index
-    else
+    else -- TODO: don't need the times if scale is 1
       Just $ AddrTimes (AddrImm $ fromIntegral scale) $ FromReg $ mapReg index
   addr2 = case (base, addr1) of
     (X86RegInvalid, Just a)  -> a

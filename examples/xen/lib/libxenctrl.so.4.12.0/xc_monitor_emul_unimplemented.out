@@ -18,14 +18,14 @@ Number of edges: 84
 21866: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 2186f: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 200))), Reg RAX 8
 21877: XOR Reg EAX, Reg EAX 2
-21879: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 48)) 5
+21879: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))) 5
 2187e: MOV Reg RBP, Reg RSP 3
 21881: MOV Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 56))), Reg SI 5
 21886: MOV Reg RSI, Reg RBP 3
 21889: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 64))), Reg EDX 4
 2188d: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 68))), Immediate 10 8
 21895: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
-2189a: MOV Reg RAX, Immediate 73014444109 10
+2189a: MOVABS Reg RAX, Immediate 73014444109 10
 218a4: MOV Address (SizeDir 64 (FromReg RSP)), Immediate 0 8
 218ac: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Immediate 0 9
 218b5: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 3 8
@@ -33,14 +33,14 @@ Number of edges: 84
 218c6: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))), Reg RAX 5
 218cb: CALL xc__hypercall_bounce_pre (external)
 218d0: TEST Reg EAX, Reg EAX 2
-218d2: JNZ 2196e (resolved immediate)
+218d2: JNE 2196e (resolved immediate)
   |
   `- 218d8,2196e
 218d8: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 218dd: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1088))) 7
 218e4: MOV Reg ESI, Immediate 36 5
 218e9: TEST Reg RAX, Reg RAX 3
-218ec: CMOVZ Reg RAX, Reg RBP 4
+218ec: CMOVE Reg RAX, Reg RBP 4
 218f0: MOV Reg RDX, Address (SizeDir 64 (FromReg RAX)) 3
 218f3: CALL xencall1 (external)
 218f8: TEST Reg EAX, Reg EAX 2
@@ -51,18 +51,18 @@ Number of edges: 84
 218ff: CALL __errno_location (external)
 21904: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 13 3
 21907: MOV Reg R13, Reg RAX 3
-2190a: JZ 21948 (resolved immediate)
+2190a: JE 21948 (resolved immediate)
   |
   `- 2190c,21948
 2190c: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 21911: MOV Reg RDI, Reg RBX 3
 21914: TEST Reg RSI, Reg RSI 3
-21917: CMOVZ Reg RSI, Reg RBP 4
+21917: CMOVE Reg RSI, Reg RBP 4
 2191b: CALL xc__hypercall_bounce_post (external)
 21920: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 200))) 8
 21928: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 21931: MOV Reg EAX, Reg R12D 3
-21934: JNZ 219af (resolved immediate)
+21934: JNE 219af (resolved immediate)
   |
   `- 21936,219af
 21936: ADD Reg RSP, Immediate 216 7
@@ -74,13 +74,13 @@ Number of edges: 84
   |
   `- 
 21948: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
-2194c: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 14925)) 7
+2194c: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 14925))) 7
 21953: XOR Reg ECX, Reg ECX 2
 21955: MOV Reg EDX, Immediate 3 5
 2195a: MOV Reg RDI, Reg RBX 3
 2195d: XOR Reg EAX, Reg EAX 2
 2195f: CALL xc_report (external)
-21964: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Immediate 13 8
+21964: MOV Address (SizeDir 32 (FromReg R13)), Immediate 13 8
 2196c: JMP 2190c (resolved immediate)
   |
   `- 2190c
@@ -90,14 +90,14 @@ Number of edges: 84
 21979: MOV Reg RDI, Reg RBX 3
 2197c: MOV Reg ESI, Reg R12D 3
 2197f: CALL xc_strerror (external)
-21984: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
-21987: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 14810)) 7
+21984: MOV Reg ECX, Address (SizeDir 32 (FromReg RBP)) 3
+21987: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 14810))) 7
 2198e: MOV Reg R8, Reg RAX 3
 21991: MOV Reg ESI, Immediate 1 5
 21996: MOV Reg RDI, Reg RBX 3
 21999: XOR Reg EAX, Reg EAX 2
 2199b: CALL xc_report_error (external)
-219a0: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R12D 4
+219a0: MOV Address (SizeDir 32 (FromReg RBP)), Reg R12D 4
 219a4: MOV Reg R12D, Immediate 4294967295 6
 219aa: JMP 21920 (resolved immediate)
   |

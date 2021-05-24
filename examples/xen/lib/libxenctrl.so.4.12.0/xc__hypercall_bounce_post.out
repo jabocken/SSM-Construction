@@ -13,18 +13,18 @@ Number of edges: 32
 224f5: SUB Reg RSP, Immediate 8 4
 224f9: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 24))) 4
 224fd: CMP Reg RDI, Immediate 18446744073709551615 4
-22501: JZ 2254b (resolved immediate)
+22501: JE 2254b (resolved immediate)
   |
   `- 22503,2254b
 22503: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSI) (AddrImm 16))) 3
 22506: MOV Reg RBX, Reg RSI 3
 22509: TEST Reg EAX, Reg EAX 2
-2250b: JZ 2254b (resolved immediate)
+2250b: JE 2254b (resolved immediate)
   |
   `- 2250d,2254b
 2250d: MOV Reg RSI, Address (SizeDir 64 (FromReg RSI)) 3
 22510: TEST Reg RSI, Reg RSI 3
-22513: JZ 22530 (resolved immediate)
+22513: JE 22530 (resolved immediate)
   |
   `- 22515,22530
 22515: SUB Reg EAX, Immediate 2 3

@@ -18,7 +18,7 @@ Number of edges: 32
 13216: CMP Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 16))), Immediate 2 4
 1321a: MOV Reg R12, Reg RAX 3
 1321d: MOV Reg ECX, Immediate 4 5
-13222: JZ 13250 (resolved immediate)
+13222: JE 13250 (resolved immediate)
   |
   `- 13224,13250
 13224: MOV Reg EDX, Immediate 24 5
@@ -27,11 +27,11 @@ Number of edges: 32
 1322f: CALL elf_access_unsigned (external)
 13234: XOR Reg EDX, Reg EDX 2
 13236: CMP Reg R12, Immediate 1 4
-1323a: JNZ 13241 (resolved immediate)
+1323a: JNE 13241 (resolved immediate)
   |
   `- 1323c,13241
 1323c: TEST Reg AL, Immediate 7 2
-1323e: SETNZ Reg DL 3
+1323e: SETNE Reg DL 3
 13241: POP Reg RBX 1
 13242: MOV Reg EAX, Reg EDX 2
 13244: POP Reg RBP 1

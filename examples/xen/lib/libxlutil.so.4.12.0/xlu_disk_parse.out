@@ -16,14 +16,14 @@ Number of edges: 155
 903c: MOV Reg RDI, Address (SizeDir 64 (FromReg RSI)) 3
 903f: MOV Reg RSI, Address (SizeDir 64 (FromReg RBX)) 3
 9042: TEST Reg RDI, Reg RDI 3
-9045: JZ 9057 (resolved immediate)
+9045: JE 9057 (resolved immediate)
   |
   `- 9047,9057
 9047: CALL xlu__disk_yy_delete_buffer (external)
-904c: MOV Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 0))), Immediate 0 8
+904c: MOV Address (SizeDir 64 (FromReg RBP)), Immediate 0 8
 9054: MOV Reg RSI, Address (SizeDir 64 (FromReg RBX)) 3
 9057: TEST Reg RSI, Reg RSI 3
-905a: JZ 906b (resolved immediate)
+905a: JE 906b (resolved immediate)
   |
   `- 905c,906b
 905c: MOV Reg RDI, Reg RSI 3
@@ -44,7 +44,7 @@ Number of edges: 155
 90fa: PXOR Reg XMM0, Reg XMM0 4
 90fe: SUB Reg RSP, Immediate 88 4
 9102: MOV Address (SizeDir 32 (AddrPlus (FromReg RCX) (AddrImm 52))), Immediate 1 7
-9109: LEA Reg R12, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+9109: LEA Reg R12, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 910e: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RCX 5
 9113: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))), Reg RDI 5
 9118: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
@@ -58,10 +58,10 @@ Number of edges: 155
 9140: JLE 9240 (resolved immediate)
   |
   `- 9146,9240
-9146: LEA Reg EAX, Address (AddrMinus (FromReg RSI) (AddrImm 1)) 3
+9146: LEA Reg EAX, Address (SizeDir 32 (AddrMinus (FromReg RSI) (AddrImm 1))) 3
 9149: MOV Reg RBX, Reg RDX 3
-914c: LEA Reg R13, Address (AddrPlus (FromReg R12) (AddrImm 16)) 5
-9151: LEA Reg R14, Address (AddrPlus (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 8) (FromReg RAX))) (AddrImm 8)) 5
+914c: LEA Reg R13, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 16))) 5
+9151: LEA Reg R14, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 8) (FromReg RAX))) (AddrImm 8))) 5
 9156: JMP 91b2 (resolved immediate)
   |
   `- 91b2
@@ -73,22 +73,22 @@ Number of edges: 155
 9173: CALL xlu__disk_yy_scan_bytes (external)
 9178: TEST Reg RAX, Reg RAX 3
 917b: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Reg RAX 5
-9180: JZ 9238 (resolved immediate)
+9180: JE 9238 (resolved immediate)
   |
   `- 9186,9238
 9186: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))) 5
 918b: CALL xlu__disk_yylex (external)
 9190: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 24))) 4
 9194: TEST Reg ESI, Reg ESI 2
-9196: JNZ 91fc (resolved immediate)
+9196: JNE 91fc (resolved immediate)
   |
   `- 9198,91fc
-9198: LEA Reg RSI, Address (AddrPlus (FromReg R12) (AddrImm 24)) 5
+9198: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 24))) 5
 919d: MOV Reg RDI, Reg R13 3
 91a0: ADD Reg RBX, Immediate 8 4
 91a4: CALL dpc_dispose.isra.0 (internal)
 91a9: CMP Reg R14, Reg RBX 3
-91ac: JZ 9240 (resolved immediate)
+91ac: JE 9240 (resolved immediate)
   |
   `- 91b2,9240
 91b2: MOV Reg RBP, Address (SizeDir 64 (FromReg RBX)) 3
@@ -98,7 +98,7 @@ Number of edges: 155
 91c0: CALL xlu__disk_yylex_init_extra (external)
 91c5: TEST Reg EAX, Reg EAX 2
 91c7: MOV Reg R15D, Reg EAX 3
-91ca: JZ 9160 (resolved immediate)
+91ca: JE 9160 (resolved immediate)
   |
   `- 9160,91cc
 91cc: CALL __errno_location (external)
@@ -109,18 +109,18 @@ Number of edges: 155
 91e0: MOV Reg ESI, Immediate 1 5
 91e5: XOR Reg EAX, Reg EAX 2
 91e7: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 8))) 4
-91eb: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 18389)) 7
+91eb: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 18389))) 7
 91f2: CALL __fprintf_chk (external)
 91f7: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg R15D 5
-91fc: LEA Reg RSI, Address (AddrPlus (FromReg R12) (AddrImm 24)) 5
-9201: LEA Reg RDI, Address (AddrPlus (FromReg R12) (AddrImm 16)) 5
+91fc: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 24))) 5
+9201: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R12) (AddrImm 16))) 5
 9206: CALL dpc_dispose.isra.0 (internal)
   |
   `- 9030
 920b: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 72))) 5
 9210: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 9219: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 24))) 4
-921d: JNZ 92e2 (resolved immediate)
+921d: JNE 92e2 (resolved immediate)
   |
   `- 9223,92e2
 9223: ADD Reg RSP, Immediate 88 4
@@ -140,7 +140,7 @@ Number of edges: 155
 9240: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 9245: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 36))) 3
 9248: TEST Reg ECX, Reg ECX 2
-924a: JNZ 9253 (resolved immediate)
+924a: JNE 9253 (resolved immediate)
   |
   `- 924c,9253
 924c: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 36))), Immediate 4 7
@@ -148,24 +148,24 @@ Number of edges: 155
 9258: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RCX) (AddrImm 56))) 3
 925b: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RCX) (AddrImm 24))) 4
 925f: TEST Reg EDX, Reg EDX 2
-9261: JZ 92ac (resolved immediate)
+9261: JE 92ac (resolved immediate)
   |
   `- 9263,92ac
 9263: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RCX) (AddrImm 16))) 4
 9267: MOV Address (SizeDir 64 (AddrPlus (FromReg RCX) (AddrImm 48))), Immediate 1 8
 926f: TEST Reg RDX, Reg RDX 3
-9272: JZ 92a0 (resolved immediate)
+9272: JE 92a0 (resolved immediate)
   |
   `- 9274,92a0
 9274: CMP Address (SizeDir 8 (FromReg RDX)), Immediate 0 3
-9277: JZ 92a0 (resolved immediate)
+9277: JE 92a0 (resolved immediate)
   |
   `- 9279,92a0
 9279: TEST Reg RAX, Reg RAX 3
-927c: JNZ 91fc (resolved immediate)
+927c: JNE 91fc (resolved immediate)
   |
   `- 91fc,9282
-9282: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 18268)) 7
+9282: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 18268))) 7
 9289: XOR Reg ESI, Reg ESI 2
 928b: MOV Reg RDI, Reg R12 3
 928e: CALL xlu__disk_err (external)
@@ -175,20 +175,20 @@ Number of edges: 155
 92a0: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 92a5: MOV Address (SizeDir 32 (AddrPlus (FromReg RDX) (AddrImm 36))), Immediate 5 7
 92ac: TEST Reg RAX, Reg RAX 3
-92af: JZ 9282 (resolved immediate)
+92af: JE 9282 (resolved immediate)
   |
   `- 9282,92b1
 92b1: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 92b6: CMP Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 16))), Immediate 0 5
-92bb: JNZ 91fc (resolved immediate)
+92bb: JNE 91fc (resolved immediate)
   |
   `- 91fc,92c1
 92c1: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 48))) 3
 92c4: TEST Reg EAX, Reg EAX 2
-92c6: JNZ 91fc (resolved immediate)
+92c6: JNE 91fc (resolved immediate)
   |
   `- 91fc,92cc
-92cc: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 18285)) 7
+92cc: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 18285))) 7
 92d3: XOR Reg ESI, Reg ESI 2
 92d5: MOV Reg RDI, Reg R12 3
 92d8: CALL xlu__disk_err (external)

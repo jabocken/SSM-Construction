@@ -13,18 +13,18 @@ Number of edges: 21
 5f85: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
 5f8a: XOR Reg EAX, Reg EAX 2
 5f8c: MOV Reg RDX, Reg RSP 3
-5f8f: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 13026)) 7
+5f8f: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 13026))) 7
 5f96: CALL PyArg_ParseTuple (external)
 5f9b: TEST Reg EAX, Reg EAX 2
-5f9d: JZ 5fc5 (resolved immediate)
+5f9d: JE 5fc5 (resolved immediate)
   |
   `- 5f9f,5fc5
 5f9f: MOV Reg RAX, Address (SizeDir 64 (FromReg RSP)) 4
-5fa3: LEA Reg RDI, Address (AddrPlus (AddrTimes (AddrImm 4) (FromReg RAX)) (AddrImm 0)) 8
+5fa3: LEA Reg RDI, Address (SizeDir 64 (AddrTimes (AddrImm 4) (FromReg RAX))) 8
 5fab: CALL PyLong_FromUnsignedLong (external)
 5fb0: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 5fb5: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-5fbe: JNZ 5fcc (resolved immediate)
+5fbe: JNE 5fcc (resolved immediate)
   |
   `- 5fc0,5fcc
 5fc0: ADD Reg RSP, Immediate 24 4

@@ -19,7 +19,7 @@ Number of edges: 118
 20510: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 8) (FromReg RSI)))) 4
 20514: MOV Address (SizeDir 64 (FromReg RDX)), Reg RAX 3
 20517: XOR Reg EAX, Reg EAX 2
-20519: REPZ RET  2
+20519: RET  2
   |
   `- 
 41490: PUSH Reg R15 2
@@ -33,16 +33,16 @@ Number of edges: 118
 414a7: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
 414ac: XOR Reg EAX, Reg EAX 2
 414ae: TEST Reg RSI, Reg RSI 3
-414b1: JZ 414b8 (resolved immediate)
+414b1: JE 414b8 (resolved immediate)
   |
   `- 414b3,414b8
 414b3: CMP Address (SizeDir 32 (FromReg RSI)), Immediate 64 3
-414b6: JZ 414e0 (resolved immediate)
+414b6: JE 414e0 (resolved immediate)
   |
   `- 414b8,414e0
 414b8: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 414bd: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-414c6: JNZ 4155b (resolved immediate)
+414c6: JNE 4155b (resolved immediate)
   |
   `- 414cc,4155b
 414cc: ADD Reg RSP, Immediate 24 4
@@ -63,7 +63,7 @@ Number of edges: 118
 414f4: MOV Reg R12, Reg RSP 3
 414f7: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 8))) 3
 414fa: TEST Reg EAX, Reg EAX 2
-414fc: JNZ 4151b (resolved immediate)
+414fc: JNE 4151b (resolved immediate)
   |
   `- 414fe,4151b
 414fe: JMP 4152c (resolved immediate)
@@ -76,7 +76,7 @@ Number of edges: 118
   |
   `- 20500
 41528: TEST Reg EAX, Reg EAX 2
-4152a: JZ 41500 (resolved immediate)
+4152a: JE 41500 (resolved immediate)
 4152c: XOR Reg EAX, Reg EAX 2
 4152e: JMP 414b8 (resolved immediate)
   |
@@ -87,7 +87,7 @@ Number of edges: 118
 76c60: PUSH Reg R12 2
 76c62: MOV Reg R12, Reg RDI 3
 76c65: PUSH Reg RBP 1
-76c66: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 200233)) 7
+76c66: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 200233))) 7
 76c6d: PUSH Reg RBX 1
 76c6e: MOV Reg RBP, Reg RDX 3
 76c71: MOV Reg EDX, Immediate 4 5
@@ -96,7 +96,7 @@ Number of edges: 118
   |
   `- 41490
 76c7e: TEST Reg RAX, Reg RAX 3
-76c81: JZ 76c99 (resolved immediate)
+76c81: JE 76c99 (resolved immediate)
   |
   `- 76c83,76c99
 76c83: MOV Reg RDX, Reg RBP 3
@@ -104,51 +104,51 @@ Number of edges: 118
 76c89: MOV Reg RDI, Reg R12 3
 76c8c: CALL libxl__int_parse_json (external)
 76c91: TEST Reg EAX, Reg EAX 2
-76c93: JNZ 76d20 (resolved immediate)
+76c93: JNE 76d20 (resolved immediate)
   |
   `- 76c99,76d20
-76c99: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 196035)) 7
+76c99: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 196035))) 7
 76ca0: MOV Reg EDX, Immediate 4 5
 76ca5: MOV Reg RSI, Reg RBX 3
 76ca8: CALL libxl__json_map_get (internal)
 76cad: TEST Reg RAX, Reg RAX 3
-76cb0: JZ 76cc5 (resolved immediate)
+76cb0: JE 76cc5 (resolved immediate)
   |
   `- 76cb2,76cc5
-76cb2: LEA Reg RDX, Address (AddrPlus (FromReg RBP) (AddrImm 4)) 4
+76cb2: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 4))) 4
 76cb6: MOV Reg RSI, Reg RAX 3
 76cb9: MOV Reg RDI, Reg R12 3
 76cbc: CALL libxl__uint32_parse_json (external)
 76cc1: TEST Reg EAX, Reg EAX 2
-76cc3: JNZ 76d20 (resolved immediate)
+76cc3: JNE 76d20 (resolved immediate)
   |
   `- 76cc5,76d20
-76cc5: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 196006)) 7
+76cc5: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 196006))) 7
 76ccc: MOV Reg EDX, Immediate 33 5
 76cd1: MOV Reg RSI, Reg RBX 3
 76cd4: CALL libxl__json_map_get (internal)
 76cd9: TEST Reg RAX, Reg RAX 3
-76cdc: JZ 76cf1 (resolved immediate)
+76cdc: JE 76cf1 (resolved immediate)
   |
   `- 76cde,76cf1
-76cde: LEA Reg RDX, Address (AddrPlus (FromReg RBP) (AddrImm 8)) 4
+76cde: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))) 4
 76ce2: MOV Reg RSI, Reg RAX 3
 76ce5: MOV Reg RDI, Reg R12 3
 76ce8: CALL libxl__string_parse_json (external)
 76ced: TEST Reg EAX, Reg EAX 2
-76cef: JNZ 76d20 (resolved immediate)
+76cef: JNE 76d20 (resolved immediate)
   |
   `- 76cf1,76d20
-76cf1: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 195980)) 7
+76cf1: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 195980))) 7
 76cf8: MOV Reg EDX, Immediate 32 5
 76cfd: MOV Reg RSI, Reg RBX 3
 76d00: CALL libxl__json_map_get (internal)
 76d05: TEST Reg RAX, Reg RAX 3
-76d08: JZ 76d20 (resolved immediate)
+76d08: JE 76d20 (resolved immediate)
   |
   `- 76d0a,76d20
 76d0a: POP Reg RBX 1
-76d0b: LEA Reg RDX, Address (AddrPlus (FromReg RBP) (AddrImm 16)) 4
+76d0b: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 16))) 4
 76d0f: MOV Reg RDI, Reg R12 3
 76d12: MOV Reg RSI, Reg RAX 3
 76d15: POP Reg RBP 1

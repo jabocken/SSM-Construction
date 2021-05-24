@@ -16,7 +16,7 @@ Number of edges: 46
 61d1b: MOV Reg EAX, Address (SizeDir 32 (FromReg RDX)) 2
 61d1d: SHL Reg EAX, Immediate 3 3
 61d20: TEST Reg EAX, Reg EAX 2
-61d22: JZ 61d98 (resolved immediate)
+61d22: JE 61d98 (resolved immediate)
   |
   `- 61d24,61d98
 61d24: MOV Reg R13, Reg RDI 3
@@ -30,13 +30,13 @@ Number of edges: 46
 61d47: MOV Reg RDI, Reg RBP 3
 61d4a: CALL libxl_bitmap_test (external)
 61d4f: TEST Reg EAX, Reg EAX 2
-61d51: JZ 61d38 (resolved immediate)
+61d51: JE 61d38 (resolved immediate)
 61d53: MOV Reg EDX, Reg EBX 2
 61d55: MOV Reg ESI, Reg R14D 3
 61d58: MOV Reg RDI, Reg R13 3
 61d5b: CALL libxl_cpupool_cpuremove (external)
 61d60: CMP Reg EAX, Immediate 1 3
-61d63: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+61d63: MOV Reg EAX, Address (SizeDir 32 (FromReg RBP)) 3
 61d66: ADC Reg R12D, Immediate 0 4
 61d6a: ADD Reg EBX, Immediate 1 3
 61d6d: SHL Reg EAX, Immediate 3 3
@@ -47,10 +47,10 @@ Number of edges: 46
 61d74: MOV Reg RDI, Reg RBP 3
 61d77: CALL libxl_bitmap_count_set (external)
 61d7c: CMP Reg EAX, Reg R12D 3
-61d7f: SETZ Reg AL 3
+61d7f: SETE Reg AL 3
 61d82: MOVZX Reg EAX, Reg AL 3
 61d85: POP Reg RBX 1
-61d86: LEA Reg EAX, Address (AddrMinus (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 2) (FromReg RAX))) (AddrImm 3)) 4
+61d86: LEA Reg EAX, Address (SizeDir 32 (AddrMinus (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 2) (FromReg RAX))) (AddrImm 3))) 4
 61d8a: POP Reg RBP 1
 61d8b: POP Reg R12 2
 61d8d: POP Reg R13 2

@@ -20,7 +20,7 @@ Number of edges: 61
 945c: MOV Reg RBX, Reg RDI 3
 945f: MOV Reg R15, Reg RCX 3
 9462: SUB Reg RSP, Immediate 72 4
-9466: LEA Reg RBP, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+9466: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 946b: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg R8 5
 9470: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))), Immediate 0 9
 9479: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
@@ -33,11 +33,11 @@ Number of edges: 61
 94a2: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))), Immediate 0 9
 94ab: CALL xc__hypercall_buffer_alloc (external)
 94b0: TEST Reg RAX, Reg RAX 3
-94b3: JZ 9515 (resolved immediate)
+94b3: JE 9515 (resolved immediate)
   |
   `- 94b5,9515
 94b5: MOV Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
-94ba: MOV Reg RCX, Immediate 34359738369 10
+94ba: MOVABS Reg RCX, Immediate 34359738369 10
 94c4: MOV Address (SizeDir 16 (AddrPlus (FromReg RAX) (AddrImm 8))), Reg R14W 5
 94c9: MOV Address (SizeDir 64 (FromReg RAX)), Reg RCX 3
 94cc: MOV Address (SizeDir 16 (AddrPlus (FromReg RAX) (AddrImm 16))), Reg R13W 5
@@ -48,19 +48,19 @@ Number of edges: 61
 94e3: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 94e8: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1088))) 7
 94ef: TEST Reg RAX, Reg RAX 3
-94f2: CMOVZ Reg RAX, Reg RBP 4
+94f2: CMOVE Reg RAX, Reg RBP 4
 94f6: MOV Reg RCX, Address (SizeDir 64 (FromReg RAX)) 3
 94f9: CALL xencall2 (external)
 94fe: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 9503: MOV Reg RDI, Reg RBX 3
 9506: MOV Reg R12D, Reg EAX 3
 9509: TEST Reg RSI, Reg RSI 3
-950c: CMOVZ Reg RSI, Reg RBP 4
+950c: CMOVE Reg RSI, Reg RBP 4
 9510: CALL xc__hypercall_buffer_free (external)
 9515: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))) 5
 951a: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 9523: MOV Reg EAX, Reg R12D 3
-9526: JNZ 9537 (resolved immediate)
+9526: JNE 9537 (resolved immediate)
   |
   `- 9528,9537
 9528: ADD Reg RSP, Immediate 72 4

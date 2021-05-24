@@ -15,16 +15,16 @@ Number of edges: 22
 3fe69: JLE 3fe91 (resolved immediate)
   |
   `- 3fe6b,3fe91
-3fe6b: LEA Reg EAX, Address (AddrMinus (FromReg RSI) (AddrImm 1)) 3
+3fe6b: LEA Reg EAX, Address (SizeDir 32 (AddrMinus (FromReg RSI) (AddrImm 1))) 3
 3fe6e: MOV Reg RBX, Reg RDI 3
-3fe71: LEA Reg RAX, Address (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 4) (FromReg RAX))) 4
-3fe75: LEA Reg RBP, Address (AddrPlus (AddrPlus (FromReg RDI) (AddrTimes (AddrImm 8) (FromReg RAX))) (AddrImm 40)) 5
+3fe71: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 4) (FromReg RAX)))) 4
+3fe75: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RDI) (AddrTimes (AddrImm 8) (FromReg RAX))) (AddrImm 40))) 5
 3fe7a: NOP  6
 3fe80: MOV Reg RDI, Reg RBX 3
 3fe83: ADD Reg RBX, Immediate 40 4
 3fe87: CALL libxl_cpupoolinfo_dispose (external)
 3fe8c: CMP Reg RBX, Reg RBP 3
-3fe8f: JNZ 3fe80 (resolved immediate)
+3fe8f: JNE 3fe80 (resolved immediate)
   |
   `- 3fe80,3fe91
 3fe91: POP Reg RBX 1

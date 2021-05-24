@@ -15,16 +15,16 @@ Number of edges: 22
 74ad9: JLE 74b01 (resolved immediate)
   |
   `- 74adb,74b01
-74adb: LEA Reg EAX, Address (AddrMinus (FromReg RSI) (AddrImm 1)) 3
+74adb: LEA Reg EAX, Address (SizeDir 32 (AddrMinus (FromReg RSI) (AddrImm 1))) 3
 74ade: MOV Reg RBX, Reg RDI 3
 74ae1: SHL Reg RAX, Immediate 4 4
-74ae5: LEA Reg RBP, Address (AddrPlus (AddrPlus (FromReg RDI) (FromReg RAX)) (AddrImm 16)) 5
+74ae5: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RDI) (AddrTimes (AddrImm 1) (FromReg RAX))) (AddrImm 16))) 5
 74aea: NOP  6
 74af0: MOV Reg RDI, Reg RBX 3
 74af3: ADD Reg RBX, Immediate 16 4
 74af7: CALL libxl_psr_cat_info_dispose (external)
 74afc: CMP Reg RBX, Reg RBP 3
-74aff: JNZ 74af0 (resolved immediate)
+74aff: JNE 74af0 (resolved immediate)
   |
   `- 74af0,74b01
 74b01: POP Reg RBX 1

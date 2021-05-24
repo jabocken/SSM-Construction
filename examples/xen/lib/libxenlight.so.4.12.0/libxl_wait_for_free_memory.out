@@ -19,7 +19,7 @@ Number of edges: 87
 3bdba: MOV Reg R12, Reg RDI 3
 3bdbd: MOV Reg EBP, Immediate 0 5
 3bdc2: MOV Reg EBX, Immediate 0 5
-3bdc7: JZ 3bdf4 (resolved immediate)
+3bdc7: JE 3bdf4 (resolved immediate)
   |
   `- 3bdc9,3bdf4
 3bdc9: NOP  7
@@ -44,9 +44,9 @@ Number of edges: 87
 3be13: RET  1
   |
   `- 
-3be14: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 387253)) 7
-3be1b: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 386238)) 7
-3be22: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 386248)) 7
+3be14: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 387253))) 7
+3be1b: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 386238))) 7
+3be22: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 386248))) 7
 3be29: MOV Reg EDX, Immediate 80 5
 3be2e: CALL __assert_fail (external)
   |
@@ -69,7 +69,7 @@ Number of edges: 87
 633ca: MOV Reg RBP, Reg RDI 3
 633cd: MOV Reg R13, Reg RDX 3
 633d0: MOV Reg EBX, Reg ECX 2
-633d2: LEA Reg R12, Address (AddrPlus (FromReg RSP) (AddrImm 48)) 5
+633d2: LEA Reg R12, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))) 5
 633d7: JMP 633ff (resolved immediate)
   |
   `- 633ff
@@ -83,7 +83,7 @@ Number of edges: 87
 633f1: MOV Reg EDI, Immediate 1 5
 633f6: CALL sleep (external)
 633fb: TEST Reg EBX, Reg EBX 2
-633fd: JZ 63448 (resolved immediate)
+633fd: JE 63448 (resolved immediate)
   |
   `- 633ff,63448
 633ff: MOV Reg RSI, Reg R12 3
@@ -93,7 +93,7 @@ Number of edges: 87
 6340c: JNS 633e0 (resolved immediate)
   |
   `- 633e0,6340e
-6340e: LEA Reg RDI, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+6340e: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 63413: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))), Reg EAX 4
 63417: CALL libxl__free_all (internal)
   |
@@ -101,7 +101,7 @@ Number of edges: 87
 6341c: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 168))) 8
 63424: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 6342d: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 4
-63431: JNZ 63454 (resolved immediate)
+63431: JNE 63454 (resolved immediate)
   |
   `- 63433,63454
 63433: ADD Reg RSP, Immediate 184 7

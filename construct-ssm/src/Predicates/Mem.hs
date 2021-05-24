@@ -139,7 +139,7 @@ else
   -- let mt and mt' be aliasing
   -- append the region aliases and merge the children
   ---- this may result in more memory models than would actually make sense
-  ---- (i.e. [a,4] and [b.4] alias so [a+2,2] and [b+2,2] should as well,
+  ---- (i.e. [a,4] and [b,4] alias so [a+2,2] and [b+2,2] should as well,
   ---- but the below could actually produce models for the children not
   ---- aliasing too),
   ---- but valid_memory_model' will hopefully eliminate the inconsistent ones.
@@ -178,6 +178,7 @@ else
   -- a sanity check: does the child fit into the parent?
   fit_mem (MemForest mf) = all fit mf
   fit (MemTree rs cs) = regionsSize rs `geq` memSize cs && fit_mem cs
+
   -- are all children possibly enclosed in their parents?
   allChildrenPossiblyEnclosed (MemForest []) = True
   allChildrenPossiblyEnclosed (MemForest ((MemTree rs (MemForest cs)):mem)) =

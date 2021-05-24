@@ -11,20 +11,20 @@ Number of edges: 22
 761c: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 7625: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
 762a: XOR Reg EAX, Reg EAX 2
-762c: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 4)) 5
+762c: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 4))) 5
 7631: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 16))) 4
 7635: CALL xc_sched_id (external)
 763a: TEST Reg EAX, Reg EAX 2
-763c: JNZ 7668 (resolved immediate)
+763c: JNE 7668 (resolved immediate)
   |
   `- 763e,7668
 763e: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))) 4
-7642: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 7166)) 7
+7642: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 7166))) 7
 7649: MOV Reg EAX, Immediate 0 5
 764e: CALL Py_BuildValue (external)
 7653: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 7658: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-7661: JNZ 7676 (resolved immediate)
+7661: JNE 7676 (resolved immediate)
   |
   `- 7663,7676
 7663: ADD Reg RSP, Immediate 24 4

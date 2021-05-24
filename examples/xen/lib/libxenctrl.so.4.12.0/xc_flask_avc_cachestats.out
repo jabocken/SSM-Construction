@@ -16,7 +16,7 @@ Number of edges: 79
 18cac: PUSH Reg RBX 1
 18cad: MOV Reg RBP, Reg RSI 3
 18cb0: MOVSXD Reg RSI, Reg EDX 3
-18cb3: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 53246)) 7
+18cb3: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 53246))) 7
 18cba: MOV Reg RDI, Reg RBP 3
 18cbd: SUB Reg RSP, Immediate 56 4
 18cc1: MOV Reg RBX, Reg RSI 3
@@ -40,18 +40,18 @@ Number of edges: 79
 18d03: CALL xc_flask_op (external)
 18d08: TEST Reg EAX, Reg EAX 2
 18d0a: MOV Reg R15D, Reg EAX 3
-18d0d: JZ 18d40 (resolved immediate)
+18d0d: JE 18d40 (resolved immediate)
   |
   `- 18d0f,18d40
 18d0f: CALL __errno_location (external)
 18d14: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 2 3
-18d17: JZ 18d9a (resolved immediate)
+18d17: JE 18d9a (resolved immediate)
   |
   `- 18d1d,18d9a
 18d1d: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
 18d22: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 18d2b: MOV Reg EAX, Reg R15D 3
-18d2e: JNZ 18da2 (resolved immediate)
+18d2e: JNE 18da2 (resolved immediate)
   |
   `- 18d30,18da2
 18d30: ADD Reg RSP, Immediate 56 4
@@ -65,7 +65,7 @@ Number of edges: 79
   |
   `- 
 18d40: SUB Reg RSP, Immediate 8 4
-18d44: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 53172)) 7
+18d44: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 53172))) 7
 18d4b: MOVSXD Reg RSI, Reg EBX 3
 18d4e: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 40))) 4
 18d52: MOV Reg EDX, Immediate 1 5

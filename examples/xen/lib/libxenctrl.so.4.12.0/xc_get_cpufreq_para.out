@@ -47,21 +47,21 @@ Number of edges: 154
 1d84c: MOV Reg R9D, Reg EAX 3
 1d84f: SHL Reg R9D, Immediate 4 4
 1d853: TEST Reg EDX, Reg EDX 2
-1d855: SETNZ Reg R10B 4
+1d855: SETNE Reg R10B 4
 1d859: TEST Reg ECX, Reg ECX 2
 1d85b: MOV Reg R11D, Reg R9D 3
-1d85e: SETNZ Reg R9B 4
+1d85e: SETNE Reg R9B 4
 1d862: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 144))), Reg R11 8
 1d86a: TEST Reg R10B, Reg R9B 3
-1d86d: JZ 1d877 (resolved immediate)
+1d86d: JE 1d877 (resolved immediate)
   |
   `- 1d86f,1d877
 1d86f: TEST Reg EAX, Reg EAX 2
-1d871: JNZ 1d930 (resolved immediate)
+1d871: JNE 1d930 (resolved immediate)
   |
   `- 1d877,1d930
 1d877: XOR Reg R14D, Reg R14D 3
-1d87a: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 160)) 8
+1d87a: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 160))) 8
 1d882: MOV Reg RDI, Reg RBP 3
 1d885: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 160))), Immediate 12 11
 1d890: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 168))), Immediate 17 11
@@ -72,65 +72,65 @@ Number of edges: 154
 1d8b8: CALL xc_sysctl (external)
 1d8bd: TEST Reg EAX, Reg EAX 2
 1d8bf: MOV Reg R13D, Reg EAX 3
-1d8c2: JZ 1da40 (resolved immediate)
+1d8c2: JE 1da40 (resolved immediate)
   |
   `- 1d8c8,1da40
 1d8c8: CALL __errno_location (external)
 1d8cd: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 11 3
-1d8d0: JZ 1dab8 (resolved immediate)
+1d8d0: JE 1dab8 (resolved immediate)
   |
   `- 1d8d6,1dab8
 1d8d6: TEST Reg R14D, Reg R14D 3
-1d8d9: JZ 1da13 (resolved immediate)
+1d8d9: JE 1da13 (resolved immediate)
   |
   `- 1da13
 1d8df: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 120))) 5
-1d8e4: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 112)) 5
+1d8e4: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 112))) 5
 1d8e9: MOV Reg RDI, Reg RBP 3
 1d8ec: TEST Reg RSI, Reg RSI 3
-1d8ef: CMOVZ Reg RSI, Reg RAX 4
+1d8ef: CMOVE Reg RSI, Reg RAX 4
 1d8f3: CALL xc__hypercall_bounce_post (external)
 1d8f8: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 72))) 5
-1d8fd: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 64)) 5
+1d8fd: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 64))) 5
 1d902: MOV Reg RDI, Reg RBP 3
 1d905: TEST Reg RSI, Reg RSI 3
-1d908: CMOVZ Reg RSI, Reg RAX 4
+1d908: CMOVE Reg RSI, Reg RAX 4
 1d90c: CALL xc__hypercall_bounce_post (external)
 1d911: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
-1d916: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+1d916: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 1d91b: MOV Reg RDI, Reg RBP 3
 1d91e: TEST Reg RSI, Reg RSI 3
-1d921: CMOVZ Reg RSI, Reg RAX 4
+1d921: CMOVE Reg RSI, Reg RAX 4
 1d925: CALL xc__hypercall_bounce_post (external)
 1d92a: JMP 1da13 (resolved immediate)
   |
   `- 1da13
 1d930: TEST Reg RDI, Reg RDI 3
-1d933: SETZ Reg DL 3
+1d933: SETE Reg DL 3
 1d936: TEST Reg RSI, Reg RSI 3
-1d939: SETZ Reg AL 3
+1d939: SETE Reg AL 3
 1d93c: OR Reg DL, Reg AL 2
-1d93e: JNZ 1dae0 (resolved immediate)
+1d93e: JNE 1dae0 (resolved immediate)
   |
   `- 1d944,1dae0
 1d944: TEST Reg R8, Reg R8 3
-1d947: JZ 1dae0 (resolved immediate)
+1d947: JE 1dae0 (resolved immediate)
   |
   `- 1d94d,1dae0
-1d94d: LEA Reg R14, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+1d94d: LEA Reg R14, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 1d952: MOV Reg RDI, Reg RBP 3
 1d955: MOV Reg RSI, Reg R14 3
 1d958: CALL xc__hypercall_bounce_pre (external)
 1d95d: TEST Reg EAX, Reg EAX 2
 1d95f: MOV Reg R13D, Reg EAX 3
-1d962: JNZ 1da10 (resolved immediate)
+1d962: JNE 1da10 (resolved immediate)
   |
   `- 1da10
 1da10: XOR Reg R13D, Reg R13D 3
 1da13: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 296))) 8
 1da1b: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 1da24: MOV Reg EAX, Reg R13D 3
-1da27: JNZ 1daf6 (resolved immediate)
+1da27: JNE 1daf6 (resolved immediate)
   |
   `- 1da2d,1daf6
 1da2d: ADD Reg RSP, Immediate 312 7

@@ -16,23 +16,23 @@ Number of edges: 51
 12da: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
 12df: XOR Reg EAX, Reg EAX 2
 12e1: MOV Reg R8, Reg RSP 3
-12e4: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2101541)) 7
-12eb: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 736)) 7
+12e4: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2101541))) 7
+12eb: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 736))) 7
 12f2: CALL PyArg_ParseTupleAndKeywords (external)
 12f7: TEST Reg EAX, Reg EAX 2
-12f9: JZ 133a (resolved immediate)
+12f9: JE 133a (resolved immediate)
   |
   `- 12fb,133a
 12fb: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
 12ff: MOV Reg RSI, Address (SizeDir 64 (FromReg RSP)) 4
 1303: CALL fsi_file_exists (external)
 1308: TEST Reg EAX, Reg EAX 2
-130a: JNZ 132d (resolved immediate)
+130a: JNE 132d (resolved immediate)
   |
   `- 132d
 1317: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 131c: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-1325: JNZ 1341 (resolved immediate)
+1325: JNE 1341 (resolved immediate)
   |
   `- 1327,1341
 1327: ADD Reg RSP, Immediate 16 4

@@ -41,7 +41,7 @@ Number of edges: 184
 1591b: MOV Reg ECX, Reg ECX 2
 1591d: MOV Reg ESI, Reg EBX 2
 1591f: TEST Reg CH, Immediate 255 3
-15922: JZ 1598a (resolved immediate)
+15922: JE 1598a (resolved immediate)
   |
   `- 15924,1598a
 15924: SHL Reg RSI, Immediate 32 4
@@ -55,12 +55,12 @@ Number of edges: 184
 15941: MOV Reg ECX, Immediate 1 5
 15946: CPUID  2
 15948: MOV Reg R8D, Reg ECX 3
-1594b: MOV Reg RCX, Immediate 18446744069414584320 10
+1594b: MOVABS Reg RCX, Immediate 18446744069414584320 10
 15955: MOV Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 344))), Reg RSI 7
 1595c: AND Reg RCX, Reg RSI 3
 1595f: OR Reg RCX, Reg R8 3
 15962: TEST Reg CH, Immediate 255 3
-15965: JZ 1598a (resolved immediate)
+15965: JE 1598a (resolved immediate)
   |
   `- 15967,1598a
 15967: MOV Reg R8, Reg RBX 3
@@ -88,7 +88,7 @@ Number of edges: 184
 159b4: MOV Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 376))), Reg ECX 6
 159ba: MOV Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 380))), Reg EDX 6
 159c0: MOV Reg ECX, Immediate 1 5
-159c5: LEA Reg R8, Address (AddrPlus (FromReg RDI) (AddrImm 400)) 7
+159c5: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 400))) 7
 159cc: CPUID  2
 159ce: MOV Reg R10D, Reg EDX 3
 159d1: OR Reg ESI, Reg ECX 2
@@ -115,7 +115,7 @@ Number of edges: 184
 15a1c: ADD Reg ESI, Immediate 1 3
 15a1f: ADD Reg R8, Immediate 16 4
 15a23: CMP Reg ESI, Immediate 63 3
-15a26: JNZ 15a00 (resolved immediate)
+15a26: JNE 15a00 (resolved immediate)
   |
   `- 15a00,15a28
 15a28: MOV Reg EAX, Immediate 2147483648 5
@@ -133,7 +133,7 @@ Number of edges: 184
 15a57: MOV Reg R9D, Immediate 29 6
 15a5d: NOP  3
 15a60: MOV Reg ESI, Reg R8D 3
-15a63: LEA Reg EAX, Address (AddrMinus (FromReg R8) (AddrImm 2147483648)) 7
+15a63: LEA Reg EAX, Address (SizeDir 32 (AddrMinus (FromReg R8) (AddrImm 2147483648))) 7
 15a6a: ADD Reg R8D, Immediate 1 4
 15a6e: ADD Reg RSI, Immediate 86 4
 15a72: SHL Reg RSI, Immediate 4 4
@@ -163,7 +163,7 @@ Number of edges: 184
 15abb: MOV Reg ECX, Reg ESI 2
 15abd: SHL Reg RAX, Reg CL 3
 15ac0: TEST Reg EAX, Immediate 10384 5
-15ac5: JNZ 15ae4 (resolved immediate)
+15ac5: JNE 15ae4 (resolved immediate)
   |
   `- 15ac7,15ae4
 15ac7: MOV Reg R8D, Reg ESI 3
@@ -188,14 +188,14 @@ Number of edges: 184
 15af9: JBE 158d9 (resolved immediate)
   |
   `- 158d9,15aff
-15aff: LEA Reg R8, Address (AddrPlus (FromReg RDI) (AddrImm 224)) 7
+15aff: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 224))) 7
 15b06: XOR Reg ESI, Reg ESI 2
 15b08: MOV Reg R9D, Immediate 4 6
 15b0e: MOV Reg EAX, Reg R9D 3
 15b11: MOV Reg ECX, Reg ESI 2
 15b13: CPUID  2
 15b15: TEST Reg AL, Immediate 31 2
-15b17: JZ 158d9 (resolved immediate)
+15b17: JE 158d9 (resolved immediate)
   |
   `- 158d9,15b1d
 15b1d: ADD Reg ESI, Immediate 1 3
@@ -205,7 +205,7 @@ Number of edges: 184
 15b2b: MOV Address (SizeDir 32 (AddrPlus (FromReg R8) (AddrImm 12))), Reg EDX 4
 15b2f: ADD Reg R8, Immediate 16 4
 15b33: CMP Reg ESI, Immediate 6 3
-15b36: JNZ 15b0e (resolved immediate)
+15b36: JNE 15b0e (resolved immediate)
   |
   `- 15b0e,15b38
 15b38: JMP 158d9 (resolved immediate)

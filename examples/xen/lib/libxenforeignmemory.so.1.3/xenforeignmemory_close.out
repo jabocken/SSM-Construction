@@ -9,12 +9,12 @@ f40 (False): 0
 1300 (True): f5e
 
 f40: TEST Reg RDI, Reg RDI 3
-f43: JZ f80 (resolved immediate)
+f43: JE f80 (resolved immediate)
   |
   `- f45,f80
 f45: PUSH Reg RBX 1
 f46: MOV Reg RBX, Reg RDI 3
-f49: LEA Reg RDI, Address (AddrPlus (FromReg RDI) (AddrImm 24)) 4
+f49: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 24))) 4
 f4d: SUB Reg RSP, Immediate 16 4
 f51: CALL xentoolcore__deregister_active_handle (external)
 f56: MOV Reg RDI, Reg RBX 3
@@ -37,8 +37,8 @@ f82: RET  1
   |
   `- 
 1300: MOV Reg EDI, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 20))) 3
-1303: CMP Reg EDI, Immediate 4294967295 3
-1306: JZ 1310 (resolved immediate)
+1303: CMP Reg EDI, Immediate 18446744073709551615 3
+1306: JE 1310 (resolved immediate)
   |
   `- 1308,1310
 1308: JMP close (jmp to external function)

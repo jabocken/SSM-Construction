@@ -9,14 +9,14 @@ Number of edges: 13
 
 41de0: TEST Reg RSI, Reg RSI 3
 41de3: MOV Reg EAX, Immediate 4294967293 5
-41de8: JZ 41def (resolved immediate)
+41de8: JE 41def (resolved immediate)
   |
   `- 41dea,41def
 41dea: CMP Address (SizeDir 32 (FromReg RSI)), Immediate 4 3
-41ded: JZ 41df8 (resolved immediate)
+41ded: JE 41df8 (resolved immediate)
   |
   `- 41def,41df8
-41def: REPZ RET  2
+41def: RET  2
   |
   `- 
 41df8: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 8))) 4

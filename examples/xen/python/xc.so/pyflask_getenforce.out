@@ -15,7 +15,7 @@ Number of edges: 35
 4e5c: MOV Reg EDI, Immediate 0 5
 4e61: CALL xc_interface_open (external)
 4e66: TEST Reg RAX, Reg RAX 3
-4e69: JZ 4e9e (resolved immediate)
+4e69: JE 4e9e (resolved immediate)
   |
   `- 4e6b,4e9e
 4e6b: MOV Reg RBX, Reg RAX 3
@@ -29,7 +29,7 @@ Number of edges: 35
   |
   `- 4e84,4eac
 4e84: MOV Reg ESI, Reg EBP 2
-4e86: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 17338)) 7
+4e86: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 17338))) 7
 4e8d: MOV Reg EAX, Immediate 0 5
 4e92: CALL Py_BuildValue (external)
 4e97: ADD Reg RSP, Immediate 8 4

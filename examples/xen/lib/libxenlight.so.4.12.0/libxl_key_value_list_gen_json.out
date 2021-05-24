@@ -14,16 +14,16 @@ Number of edges: 54
 408f7: MOV Reg RBX, Address (SizeDir 64 (FromReg RSI)) 3
 408fa: CALL yajl_gen_map_open (external)
 408ff: TEST Reg EAX, Reg EAX 2
-40901: JNZ 40975 (resolved immediate)
+40901: JNE 40975 (resolved immediate)
   |
   `- 40903,40975
 40903: TEST Reg RBX, Reg RBX 3
-40906: JZ 40980 (resolved immediate)
+40906: JE 40980 (resolved immediate)
   |
   `- 40908,40980
 40908: MOV Reg RBP, Address (SizeDir 64 (FromReg RBX)) 3
 4090b: TEST Reg RBP, Reg RBP 3
-4090e: JZ 40980 (resolved immediate)
+4090e: JE 40980 (resolved immediate)
   |
   `- 40910,40980
 40910: ADD Reg RBX, Immediate 8 4
@@ -37,11 +37,11 @@ Number of edges: 54
 4092e: MOV Reg RDI, Reg R12 3
 40931: CALL yajl_gen_string (external)
 40936: TEST Reg EAX, Reg EAX 2
-40938: JNZ 40975 (resolved immediate)
+40938: JNE 40975 (resolved immediate)
 4093a: ADD Reg RBX, Immediate 16 4
 4093e: MOV Reg RBP, Address (SizeDir 64 (AddrMinus (FromReg RBX) (AddrImm 8))) 4
 40942: TEST Reg RBP, Reg RBP 3
-40945: JZ 40980 (resolved immediate)
+40945: JE 40980 (resolved immediate)
   |
   `- 40947,40980
 40947: MOV Reg RDI, Reg RBP 3
@@ -51,16 +51,16 @@ Number of edges: 54
 40955: MOV Reg RDI, Reg R12 3
 40958: CALL yajl_gen_string (external)
 4095d: TEST Reg EAX, Reg EAX 2
-4095f: JNZ 40975 (resolved immediate)
+4095f: JNE 40975 (resolved immediate)
 40961: MOV Reg RBP, Address (SizeDir 64 (FromReg RBX)) 3
 40964: TEST Reg RBP, Reg RBP 3
-40967: JNZ 40920 (resolved immediate)
+40967: JNE 40920 (resolved immediate)
   |
   `- 40920,40969
 40969: MOV Reg RDI, Reg R12 3
 4096c: CALL yajl_gen_null (external)
 40971: TEST Reg EAX, Reg EAX 2
-40973: JZ 4093a (resolved immediate)
+40973: JE 4093a (resolved immediate)
   |
   `- 4093a
 40975: POP Reg RBX 1

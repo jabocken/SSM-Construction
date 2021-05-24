@@ -19,18 +19,18 @@ Number of edges: 120
 6a1d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 136))), Reg RAX 8
 6a25: XOR Reg EAX, Reg EAX 2
 6a27: CMP Address (SizeDir 8 (FromReg RSI)), Immediate 31 3
-6a2a: JZ 6a60 (resolved immediate)
+6a2a: JE 6a60 (resolved immediate)
   |
   `- 6a2c,6a60
 6a2c: TEST Reg RBX, Reg RBX 3
-6a2f: JZ 6a34 (resolved immediate)
+6a2f: JE 6a34 (resolved immediate)
   |
   `- 6a31,6a34
 6a31: MOV Address (SizeDir 64 (FromReg RBX)), Reg RDX 3
 6a34: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 136))) 8
 6a3c: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 6a45: MOV Reg RAX, Reg RSI 3
-6a48: JNZ 6bab (resolved immediate)
+6a48: JNE 6bab (resolved immediate)
   |
   `- 6a4e,6bab
 6a4e: ADD Reg RSP, Immediate 152 7
@@ -44,12 +44,12 @@ Number of edges: 120
   |
   `- 
 6a60: CMP Address (SizeDir 8 (AddrPlus (FromReg RSI) (AddrImm 1))), Immediate 139 4
-6a64: JNZ 6a2c (resolved immediate)
+6a64: JNE 6a2c (resolved immediate)
   |
   `- 6a2c,6a66
-6a66: MOVZX Reg R14D, Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RSI) (FromReg RDX)) (AddrImm 1))) 6
-6a6c: MOVZX Reg EAX, Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RSI) (FromReg RDX)) (AddrImm 2))) 5
-6a71: LEA Reg RBP, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
+6a66: MOVZX Reg R14D, Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RSI) (AddrTimes (AddrImm 1) (FromReg RDX))) (AddrImm 1))) 6
+6a6c: MOVZX Reg EAX, Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RSI) (AddrTimes (AddrImm 1) (FromReg RDX))) (AddrImm 2))) 5
+6a71: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
 6a76: MOV Reg R15, Reg RDI 3
 6a79: MOV Reg ECX, Immediate 14 5
 6a7e: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RDX 5
@@ -57,26 +57,26 @@ Number of edges: 120
 6a86: MOV Address (SizeDir 64 (FromReg RSP)), Reg RSI 4
 6a8a: SHL Reg R14D, Immediate 8 4
 6a8e: ADD Reg R14D, Reg EAX 3
-6a91: MOVZX Reg EAX, Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RSI) (FromReg RDX)) (AddrImm 3))) 5
+6a91: MOVZX Reg EAX, Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RSI) (AddrTimes (AddrImm 1) (FromReg RDX))) (AddrImm 3))) 5
 6a96: SHL Reg R14D, Immediate 8 4
 6a9a: ADD Reg R14D, Reg EAX 3
-6a9d: MOVZX Reg EAX, Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RSI) (FromReg RDX)) (AddrImm 4))) 5
+6a9d: MOVZX Reg EAX, Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RSI) (AddrTimes (AddrImm 1) (FromReg RDX))) (AddrImm 4))) 5
 6aa2: SHL Reg R14D, Immediate 8 4
 6aa6: ADD Reg R14D, Reg EAX 3
 6aa9: XOR Reg EAX, Reg EAX 2
-6aab: REP STOSQ  3
+6aab: REP STOSQ Address (SizeDir 64 (FromReg RDI)), Reg RAX 3
 6aae: MOVSXD Reg R13, Reg R14D 3
-6ab1: LEA Reg RDI, Address (AddrPlus (FromReg R13) (AddrImm 16)) 4
+6ab1: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 16))) 4
 6ab5: CALL malloc (external)
 6aba: TEST Reg RAX, Reg RAX 3
 6abd: MOV Reg R12, Reg RAX 3
 6ac0: MOV Reg RSI, Address (SizeDir 64 (FromReg RSP)) 4
 6ac4: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
-6ac9: JZ 6b82 (resolved immediate)
+6ac9: JE 6b82 (resolved immediate)
   |
   `- 6acf,6b82
 6acf: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg EDX 4
-6ad3: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 107543)) 7
+6ad3: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 107543))) 7
 6ada: ADD Reg R14D, Immediate 16 4
 6ade: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))), Reg RSI 5
 6ae3: MOV Reg ECX, Immediate 112 5
@@ -87,7 +87,7 @@ Number of edges: 120
 6afa: CALL inflateInit2_ (external)
 6aff: TEST Reg EAX, Reg EAX 2
 6b01: MOV Reg R14D, Reg EAX 3
-6b04: JNZ 6b38 (resolved immediate)
+6b04: JNE 6b38 (resolved immediate)
   |
   `- 6b06,6b38
 6b06: MOV Reg ESI, Immediate 4 5
@@ -97,12 +97,12 @@ Number of edges: 120
 6b16: MOV Reg R14D, Reg EAX 3
 6b19: CALL inflateEnd (external)
 6b1e: CMP Reg R14D, Immediate 1 4
-6b22: JNZ 6b6c (resolved immediate)
+6b22: JNE 6b6c (resolved immediate)
   |
   `- 6b24,6b6c
 6b24: TEST Reg RBX, Reg RBX 3
 6b27: MOV Reg RSI, Reg R12 3
-6b2a: JZ 6a34 (resolved immediate)
+6b2a: JE 6a34 (resolved immediate)
   |
   `- 6a34,6b30
 6b30: MOV Address (SizeDir 64 (FromReg RBX)), Reg R13 3
@@ -111,7 +111,7 @@ Number of edges: 120
   `- 6a34
 6b38: CALL __errno_location (external)
 6b3d: MOV Reg EBP, Address (SizeDir 32 (FromReg RAX)) 2
-6b3f: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 107442)) 7
+6b3f: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 107442))) 7
 6b46: MOV Reg RBX, Reg RAX 3
 6b49: MOV Reg ECX, Reg R14D 3
 6b4c: MOV Reg ESI, Immediate 1 5
@@ -129,13 +129,13 @@ Number of edges: 120
 6b71: MOV Reg ECX, Reg R14D 3
 6b74: MOV Reg RBX, Reg RAX 3
 6b77: MOV Reg EBP, Address (SizeDir 32 (FromReg RAX)) 2
-6b79: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 107412)) 7
+6b79: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 107412))) 7
 6b80: JMP 6b4c (resolved immediate)
   |
   `- 6b4c
 6b82: CALL __errno_location (external)
 6b87: MOV Reg EBP, Address (SizeDir 32 (FromReg RAX)) 2
-6b89: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 107337)) 7
+6b89: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 107337))) 7
 6b90: MOV Reg RBX, Reg RAX 3
 6b93: MOV Reg ESI, Immediate 1 5
 6b98: MOV Reg RDI, Reg R15 3

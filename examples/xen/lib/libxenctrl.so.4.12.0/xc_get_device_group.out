@@ -33,19 +33,19 @@ Number of edges: 115
 1155d: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))), Reg RAX 5
 11562: CALL xc__hypercall_bounce_pre (external)
 11567: TEST Reg EAX, Reg EAX 2
-11569: JNZ 116a8 (resolved immediate)
+11569: JNE 116a8 (resolved immediate)
   |
   `- 1156f,116a8
 1156f: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 11574: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 112))), Reg R14D 5
-11579: LEA Reg R14, Address (AddrPlus (FromReg RSP) (AddrImm 48)) 5
+11579: LEA Reg R14, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))) 5
 1157e: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 96))), Immediate 50 8
 11586: MOV Address (SizeDir 16 (AddrPlus (FromReg RSP) (AddrImm 104))), Reg R12W 6
 1158c: MOV Reg RDI, Reg RBX 3
 1158f: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 116))), Reg R15D 5
 11594: MOV Reg RSI, Reg R14 3
 11597: TEST Reg RAX, Reg RAX 3
-1159a: CMOVZ Reg RAX, Reg RBP 4
+1159a: CMOVE Reg RAX, Reg RBP 4
 1159e: MOV Reg RAX, Address (SizeDir 64 (FromReg RAX)) 3
 115a1: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 48))), Immediate 0 9
 115aa: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))), Immediate 0 9
@@ -53,16 +53,16 @@ Number of edges: 115
 115bb: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 80))), Immediate 144 9
 115c4: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 100))), Immediate 17 8
 115cc: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 128))), Reg RAX 8
-115d4: LEA Reg RAX, Address (AddrPlus (FromReg RSP) (AddrImm 96)) 5
+115d4: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 96))) 5
 115d9: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 72))), Reg RAX 5
 115de: CALL xc__hypercall_bounce_pre (external)
 115e3: TEST Reg EAX, Reg EAX 2
-115e5: JNZ 116e9 (resolved immediate)
+115e5: JNE 116e9 (resolved immediate)
 115eb: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))) 5
 115f0: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1088))) 7
 115f7: MOV Reg ESI, Immediate 36 5
 115fc: TEST Reg RAX, Reg RAX 3
-115ff: CMOVZ Reg RAX, Reg R14 4
+115ff: CMOVE Reg RAX, Reg R14 4
 11603: MOV Reg RDX, Address (SizeDir 64 (FromReg RAX)) 3
 11606: CALL xencall1 (external)
 1160b: TEST Reg EAX, Reg EAX 2
@@ -73,25 +73,25 @@ Number of edges: 115
 11612: CALL __errno_location (external)
 11617: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 13 3
 1161a: MOV Reg R15, Reg RAX 3
-1161d: JZ 11680 (resolved immediate)
+1161d: JE 11680 (resolved immediate)
   |
   `- 1161f,11680
 1161f: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))) 5
 11624: MOV Reg RDI, Reg RBX 3
 11627: TEST Reg RSI, Reg RSI 3
-1162a: CMOVZ Reg RSI, Reg R14 4
+1162a: CMOVE Reg RSI, Reg R14 4
 1162e: CALL xc__hypercall_bounce_post (external)
 11633: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 11638: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 120))) 4
 1163c: MOV Reg RDI, Reg RBX 3
 1163f: TEST Reg RSI, Reg RSI 3
-11642: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Reg EAX 4
-11646: CMOVZ Reg RSI, Reg RBP 4
+11642: MOV Address (SizeDir 32 (FromReg R13)), Reg EAX 4
+11646: CMOVE Reg RSI, Reg RBP 4
 1164a: CALL xc__hypercall_bounce_post (external)
 1164f: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 248))) 8
 11657: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 11660: MOV Reg EAX, Reg R12D 3
-11663: JNZ 1172b (resolved immediate)
+11663: JNE 1172b (resolved immediate)
   |
   `- 11669,1172b
 11669: ADD Reg RSP, Immediate 264 7
@@ -105,7 +105,7 @@ Number of edges: 115
   |
   `- 
 11680: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 8))) 4
-11684: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 81173)) 7
+11684: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 81173))) 7
 1168b: XOR Reg ECX, Reg ECX 2
 1168d: MOV Reg EDX, Immediate 3 5
 11692: MOV Reg RDI, Reg RBX 3
@@ -121,14 +121,14 @@ Number of edges: 115
 116b3: MOV Reg RDI, Reg RBX 3
 116b6: MOV Reg ESI, Reg R12D 3
 116b9: CALL xc_strerror (external)
-116be: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
-116c1: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 82272)) 7
+116be: MOV Reg ECX, Address (SizeDir 32 (FromReg RBP)) 3
+116c1: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 82272))) 7
 116c8: MOV Reg R8, Reg RAX 3
 116cb: MOV Reg ESI, Immediate 1 5
 116d0: MOV Reg RDI, Reg RBX 3
 116d3: XOR Reg EAX, Reg EAX 2
 116d5: CALL xc_report_error (external)
-116da: MOV Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))), Reg R12D 4
+116da: MOV Address (SizeDir 32 (FromReg RBP)), Reg R12D 4
 116de: MOV Reg R12D, Immediate 4294967295 6
 116e4: JMP 1164f (resolved immediate)
   |

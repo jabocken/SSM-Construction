@@ -28,7 +28,7 @@ Number of edges: 75
 12f5e: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
 12f62: CMP Reg AL, Immediate 2 2
 12f64: MOV Reg ECX, Immediate 1 5
-12f69: JZ 12fc0 (resolved immediate)
+12f69: JE 12fc0 (resolved immediate)
   |
   `- 12f6b,12fc0
 12f6b: MOV Reg EDX, Immediate 12 5
@@ -43,14 +43,14 @@ Number of edges: 75
 12f8b: SHR Reg R12, Immediate 4 4
 12f8f: CALL elf_access_unsigned (external)
 12f94: CMP Reg R12, Immediate 1 4
-12f98: JZ 12fd8 (resolved immediate)
+12f98: JE 12fd8 (resolved immediate)
   |
   `- 12f9a,12fd8
 12f9a: MOVZX Reg EAX, Address (SizeDir 8 (AddrPlus (FromReg RBX) (AddrImm 16))) 4
 12f9e: XOR Reg EDX, Reg EDX 2
 12fa0: CMP Reg AL, Immediate 2 2
-12fa2: SETZ Reg DL 3
-12fa5: LEA Reg RBP, Address (AddrPlus (AddrPlus (FromReg RBP) (AddrTimes (AddrImm 8) (FromReg RDX))) (AddrImm 16)) 5
+12fa2: SETE Reg DL 3
+12fa5: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (AddrPlus (FromReg RBP) (AddrTimes (AddrImm 8) (FromReg RDX))) (AddrImm 16))) 5
 12faa: CMP Reg R13, Reg RBP 3
 12fad: JA 12f62 (resolved immediate)
   |
@@ -77,14 +77,14 @@ Number of edges: 75
 12fdf: MOV Reg RSI, Reg RAX 3
 12fe2: CALL elf_strval (external)
 12fe7: TEST Reg RAX, Reg RAX 3
-12fea: JZ 12faf (resolved immediate)
+12fea: JE 12faf (resolved immediate)
   |
   `- 12faf,12fec
 12fec: MOV Reg RSI, Reg R14 3
 12fef: MOV Reg RDI, Reg RAX 3
 12ff2: CALL strcmp (external)
 12ff7: TEST Reg EAX, Reg EAX 2
-12ff9: JNZ 12f9a (resolved immediate)
+12ff9: JNE 12f9a (resolved immediate)
   |
   `- 12f9a,12ffb
 12ffb: POP Reg RBX 1

@@ -662,16 +662,17 @@ transform ctxt (Instr _ _ MOVZX (Just dst) (Just src) _ _ _) s = newStates where
   newStates = movzx ctxt dst src (size * 8 - 1) s
   size = getOpSize src
 -- MOV{Q,SD,SS}
-transform ctxt (Instr _ _ MOVQ (Just dst) (Just src) _ _ _) s = movzx ctxt dst src 63 s
-transform ctxt (Instr _ _ MOVSD (Just dst) (Just src) _ _ _) s = movzx ctxt dst src 63 s
-transform ctxt (Instr _ _ MOVS (Just dst) (Just src) _ _ _) s = movzx ctxt dst src 31 s
-transform ctxt (Instr _ _ MOVSS (Just dst) (Just src) _ _ _) s = movzx ctxt dst src 31 s
+transform ctxt (Instr _ Nothing MOVQ (Just dst) (Just src) _ _ _) s = movzx ctxt dst src 63 s
+transform ctxt (Instr _ Nothing MOVSD (Just dst) (Just src) _ _ _) s = movzx ctxt dst src 63 s
+transform ctxt (Instr _ Nothing MOVS (Just dst) (Just src) _ _ _) s = movzx ctxt dst src 31 s
+transform ctxt (Instr _ Nothing MOVSS (Just dst) (Just src) _ _ _) s = movzx ctxt dst src 31 s
   -- MOVSX(D)
-transform ctxt (Instr _ _ MOVSX (Just dst) (Just src) _ _ _) s = movsx ctxt dst src s
-transform ctxt (Instr _ _ MOVSXD (Just dst) (Just src) _ _ _) s = movsx ctxt dst src s
+transform ctxt (Instr _ Nothing MOVSX (Just dst) (Just src) _ _ _) s = movsx ctxt dst src s
+transform ctxt (Instr _ Nothing MOVSXD (Just dst) (Just src) _ _ _) s = movsx ctxt dst src s
 -- REP MOVSQ
 transform _ (Instr _ (Just _) MOVSQ a b _ _ _) state = S.singleton state --TODO
 -- REP MOVSD
+-- capstone treats MOVS as this as well.
 transform _ (Instr _ (Just REP) MOVSD a b _ _ _) state = S.singleton state --TODO
 -- REP MOVSB
 transform _ (Instr _ _ MOVSB a b _ _ _) state = S.singleton state --TODO
@@ -913,8 +914,9 @@ transform ctxt (Instr _ _ RET _ _ _ _ _) state = ret ctxt (Immediate 0) state
 -- CMPSB
 -- REPZ is technically the "correct" version but in machine code the same byte
 -- is used for both REP and REPZ so we'll just handle it as REP everywhere
--- It seems capstone treats the with-args form as CMPSB too, though the arguments
--- are irrelevant as they only specify the size anyway.
+-- It seems capstone treats the BYTE PTR with-args form as CMPSB too, though the
+-- arguments are irrelevant as they only specify the size anyway and capstone
+-- gave us that in the mnemonic (CMPSB).
 transform ctxt i@(Instr _ (Just REP) CMPSB _ _ _ _ _) state = cmpsbState where
   cmpsbState = S.singleton $ execState cmpsb state
   cmpsb = do

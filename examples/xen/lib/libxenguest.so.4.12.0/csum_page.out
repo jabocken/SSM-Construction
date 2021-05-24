@@ -7,13 +7,13 @@ Number of edges: 11
 
 6c00 (False): 0
 
-6c00: LEA Reg RDX, Address (AddrPlus (FromReg RDI) (AddrImm 4096)) 7
+6c00: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 4096))) 7
 6c07: XOR Reg EAX, Reg EAX 2
 6c09: NOP  7
 6c10: ADD Reg RAX, Address (SizeDir 64 (FromReg RDI)) 3
 6c13: ADD Reg RDI, Immediate 8 4
 6c17: CMP Reg RDX, Reg RDI 3
-6c1a: JNZ 6c10 (resolved immediate)
+6c1a: JNE 6c10 (resolved immediate)
   |
   `- 6c10,6c1c
 6c1c: MOV Reg RDX, Reg RAX 3

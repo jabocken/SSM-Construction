@@ -19,7 +19,7 @@ Number of edges: 45
 10114: CALL xc_domain_populate_physmap (external)
 10119: MOVSXD Reg RDX, Reg EAX 3
 1011c: CMP Reg RDX, Reg RBX 3
-1011f: JZ 10130 (resolved immediate)
+1011f: JE 10130 (resolved immediate)
   |
   `- 10121,10130
 10121: TEST Reg EAX, Reg EAX 2
@@ -45,7 +45,7 @@ Number of edges: 45
   `- 
 10140: CALL __errno_location (external)
 10145: MOV Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RBP) (AddrImm 8))) 4
-10149: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 87712)) 7
+10149: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 87712))) 7
 10150: PUSH Reg R13 2
 10152: PUSH Reg RBX 1
 10153: MOV Reg R14, Reg RAX 3

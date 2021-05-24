@@ -24,13 +24,13 @@ Number of edges: 53
 922b5: CALL xc_flask_sid_to_context (external)
 922ba: TEST Reg EAX, Reg EAX 2
 922bc: MOV Reg EBX, Reg EAX 2
-922be: JZ 922e8 (resolved immediate)
+922be: JE 922e8 (resolved immediate)
   |
   `- 922c0,922e8
 922c0: MOV Reg EAX, Reg EBX 2
 922c2: MOV Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 4104))) 8
 922ca: XOR Reg RBX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-922d3: JNZ 92335 (resolved immediate)
+922d3: JNE 92335 (resolved immediate)
   |
   `- 922d5,92335
 922d5: ADD Reg RSP, Immediate 4120 7
@@ -44,25 +44,25 @@ Number of edges: 53
 922e8: MOV Reg RDX, Reg RBP 3
 922eb: MOV Reg ECX, Address (SizeDir 32 (FromReg RDX)) 2
 922ed: ADD Reg RDX, Immediate 4 4
-922f1: LEA Reg EAX, Address (AddrMinus (FromReg RCX) (AddrImm 16843009)) 6
+922f1: LEA Reg EAX, Address (SizeDir 32 (AddrMinus (FromReg RCX) (AddrImm 16843009))) 6
 922f7: NOT Reg ECX 2
 922f9: AND Reg EAX, Reg ECX 2
 922fb: AND Reg EAX, Immediate 2155905152 5
-92300: JZ 922eb (resolved immediate)
+92300: JE 922eb (resolved immediate)
   |
   `- 922eb,92302
 92302: MOV Reg ECX, Reg EAX 2
 92304: MOV Reg RDI, Reg RBP 3
 92307: SHR Reg ECX, Immediate 16 3
 9230a: TEST Reg EAX, Immediate 32896 5
-9230f: CMOVZ Reg EAX, Reg ECX 3
-92312: LEA Reg RCX, Address (AddrPlus (FromReg RDX) (AddrImm 2)) 4
+9230f: CMOVE Reg EAX, Reg ECX 3
+92312: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrImm 2))) 4
 92316: MOV Reg ESI, Reg EAX 2
-92318: CMOVZ Reg RDX, Reg RCX 4
+92318: CMOVE Reg RDX, Reg RCX 4
 9231c: ADD Reg SIL, Reg AL 3
 9231f: SBB Reg RDX, Immediate 3 4
 92323: SUB Reg RDX, Reg RBP 3
-92326: MOV Address (SizeDir 64 (AddrPlus (FromReg R13) (AddrImm 0))), Reg RDX 4
+92326: MOV Address (SizeDir 64 (FromReg R13)), Reg RDX 4
 9232a: CALL strdup (external)
 9232f: MOV Address (SizeDir 64 (FromReg R12)), Reg RAX 4
 92333: JMP 922c0 (resolved immediate)

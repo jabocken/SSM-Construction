@@ -33,7 +33,7 @@ Number of edges: 70
   |
   `- 6fcb,703e
 6fcb: MOV Reg RBP, Reg RSP 3
-6fce: LEA Reg R8, Address (AddrPlus (FromReg RIP) (AddrImm 106331)) 7
+6fce: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 106331))) 7
 6fd5: MOV Reg R9D, Reg R12D 3
 6fd8: MOV Reg ECX, Immediate 46 5
 6fdd: MOV Reg EDX, Immediate 1 5
@@ -43,7 +43,7 @@ Number of edges: 70
 6fef: MOV Reg RDI, Reg RBP 3
 6ff2: CALL unlink (external)
 6ff7: TEST Reg EAX, Reg EAX 2
-6ff9: JZ 7060 (resolved immediate)
+6ff9: JE 7060 (resolved immediate)
   |
   `- 6ffb,7060
 6ffb: CALL __errno_location (external)
@@ -51,7 +51,7 @@ Number of edges: 70
 7003: MOV Reg R12, Reg RAX 3
 7006: MOV Reg EDI, Reg R14D 3
 7009: CALL strerror (external)
-700e: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 106755)) 7
+700e: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 106755))) 7
 7015: MOV Reg R8, Reg RAX 3
 7018: MOV Reg RCX, Reg RBP 3
 701b: MOV Reg RDI, Reg R13 3
@@ -68,7 +68,7 @@ Number of edges: 70
 7039: MOV Reg EAX, Immediate 4294967295 5
 703e: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 56))) 5
 7043: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-704c: JNZ 7093 (resolved immediate)
+704c: JNE 7093 (resolved immediate)
   |
   `- 704e,7093
 704e: ADD Reg RSP, Immediate 64 4
@@ -84,7 +84,7 @@ Number of edges: 70
 7062: CALL close (external)
 7067: TEST Reg EAX, Reg EAX 2
 7069: MOV Address (SizeDir 32 (FromReg RBX)), Immediate 4294967295 6
-706f: JZ 7039 (resolved immediate)
+706f: JE 7039 (resolved immediate)
   |
   `- 7039
 7093: CALL __stack_chk_fail (external)

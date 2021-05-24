@@ -14,17 +14,17 @@ Number of edges: 34
 79078: SUB Reg RSP, Immediate 8 4
 7907c: CALL yajl_gen_map_open (external)
 79081: TEST Reg EAX, Reg EAX 2
-79083: JNZ 790f8 (resolved immediate)
+79083: JNE 790f8 (resolved immediate)
   |
   `- 79085,790f8
-79085: MOV Reg EDX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 3
+79085: MOV Reg EDX, Address (SizeDir 32 (FromReg RBP)) 3
 79088: TEST Reg EDX, Reg EDX 2
-7908a: JNZ 790d0 (resolved immediate)
+7908a: JNE 790d0 (resolved immediate)
   |
   `- 7908c,790d0
 7908c: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 4))) 3
 7908f: TEST Reg EAX, Reg EAX 2
-79091: JZ 790bb (resolved immediate)
+79091: JE 790bb (resolved immediate)
   |
   `- 790bb
 790bb: ADD Reg RSP, Immediate 8 4
@@ -34,17 +34,17 @@ Number of edges: 34
 790c4: JMP yajl_gen_map_close (jmp to external function)
   |
   `- 
-790d0: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 186931)) 7
+790d0: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 186931))) 7
 790d7: MOV Reg EDX, Immediate 9 5
 790dc: MOV Reg RDI, Reg RBX 3
 790df: CALL yajl_gen_string (external)
 790e4: TEST Reg EAX, Reg EAX 2
-790e6: JNZ 790f8 (resolved immediate)
-790e8: MOVSXD Reg RSI, Address (SizeDir 32 (AddrPlus (FromReg RBP) (AddrImm 0))) 4
+790e6: JNE 790f8 (resolved immediate)
+790e8: MOVSXD Reg RSI, Address (SizeDir 32 (FromReg RBP)) 4
 790ec: MOV Reg RDI, Reg RBX 3
 790ef: CALL yajl_gen_integer (external)
 790f4: TEST Reg EAX, Reg EAX 2
-790f6: JZ 7908c (resolved immediate)
+790f6: JE 7908c (resolved immediate)
   |
   `- 7908c
 790f8: ADD Reg RSP, Immediate 8 4

@@ -10,13 +10,13 @@ Number of edges: 10
 82e70: MOV Address (SizeDir 64 (FromReg RDI)), Immediate 0 7
 82e77: MOV Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 112))), Immediate 0 8
 82e7f: MOV Reg RCX, Reg RDI 3
-82e82: LEA Reg RDI, Address (AddrPlus (FromReg RDI) (AddrImm 8)) 4
+82e82: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RDI) (AddrImm 8))) 4
 82e86: XOR Reg EAX, Reg EAX 2
 82e88: AND Reg RDI, Immediate 18446744073709551608 4
 82e8c: SUB Reg RCX, Reg RDI 3
 82e8f: ADD Reg ECX, Immediate 120 3
 82e92: SHR Reg ECX, Immediate 3 3
-82e95: REP STOSQ  3
+82e95: REP STOSQ Address (SizeDir 64 (FromReg RDI)), Reg RAX 3
 82e98: RET  1
   |
   `- 

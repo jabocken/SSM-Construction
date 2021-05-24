@@ -12,7 +12,7 @@ Number of edges: 146
 767b: SUB Reg RSP, Immediate 8 4
 767f: MOV Reg ESI, Immediate 120 5
 7684: CALL strchr (external)
-7689: LEA Reg RDI, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 4
+7689: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 1))) 4
 768d: MOV Reg EDX, Immediate 16 5
 7692: MOV Reg ESI, Immediate 0 5
 7697: CALL strtol (external)
@@ -30,7 +30,7 @@ Number of edges: 146
 76af: MOV Reg RBP, Address (SizeDir 64 (FromReg RDI)) 3
 76b2: MOV Reg R9D, Immediate 0 6
 76b8: TEST Reg RBP, Reg RBP 3
-76bb: JZ 7767 (resolved immediate)
+76bb: JE 7767 (resolved immediate)
   |
   `- 76c1,7767
 76c1: MOV Reg R12, Reg R8 3
@@ -43,7 +43,7 @@ Number of edges: 146
 76d8: CALL strchr (external)
 76dd: MOV Reg R9D, Immediate 0 6
 76e3: TEST Reg RAX, Reg RAX 3
-76e6: JZ 7767 (resolved immediate)
+76e6: JE 7767 (resolved immediate)
   |
   `- 76e8,7767
 76e8: MOV Reg RDI, Reg RBP 3
@@ -54,21 +54,21 @@ Number of edges: 146
 76f3: MOV Reg ESI, Immediate 44 5
 76f8: MOV Reg RDI, Reg RBP 3
 76fb: CALL strchr (external)
-7700: LEA Reg RBP, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 4
+7700: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 1))) 4
 7704: MOV Reg RDI, Reg RBP 3
 7707: CALL token_value (internal)
 770c: MOV Address (SizeDir 32 (FromReg R14)), Reg EAX 3
 770f: MOV Reg ESI, Immediate 44 5
 7714: MOV Reg RDI, Reg RBP 3
 7717: CALL strchr (external)
-771c: LEA Reg RBP, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 4
+771c: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 1))) 4
 7720: MOV Reg RDI, Reg RBP 3
 7723: CALL token_value (internal)
-7728: MOV Address (SizeDir 32 (AddrPlus (FromReg R13) (AddrImm 0))), Reg EAX 4
+7728: MOV Address (SizeDir 32 (FromReg R13)), Reg EAX 4
 772c: MOV Reg ESI, Immediate 44 5
 7731: MOV Reg RDI, Reg RBP 3
 7734: CALL strchr (external)
-7739: LEA Reg RBP, Address (AddrPlus (FromReg RAX) (AddrImm 1)) 4
+7739: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 1))) 4
 773d: MOV Reg RDI, Reg RBP 3
 7740: CALL token_value (internal)
 7745: MOV Address (SizeDir 32 (FromReg R12)), Reg EAX 4
@@ -103,20 +103,20 @@ Number of edges: 146
 7899: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 78a2: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))), Reg RAX 5
 78a7: XOR Reg EAX, Reg EAX 2
-78a9: LEA Reg R9, Address (AddrPlus (FromReg RSP) (AddrImm 32)) 5
-78ae: LEA Reg R8, Address (AddrPlus (FromReg RSP) (AddrImm 12)) 5
-78b3: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2128966)) 7
-78ba: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 5638)) 7
+78a9: LEA Reg R9, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))) 5
+78ae: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 12))) 5
+78b3: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2128966))) 7
+78ba: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 5638))) 7
 78c1: CALL PyArg_ParseTupleAndKeywords (external)
 78c6: TEST Reg EAX, Reg EAX 2
-78c8: JZ 7984 (resolved immediate)
+78c8: JE 7984 (resolved immediate)
   |
   `- 78ce,7984
-78ce: LEA Reg R14, Address (AddrPlus (FromReg RSP) (AddrImm 28)) 5
-78d3: LEA Reg R13, Address (AddrPlus (FromReg RSP) (AddrImm 24)) 5
-78d8: LEA Reg R12, Address (AddrPlus (FromReg RSP) (AddrImm 20)) 5
-78dd: LEA Reg RBP, Address (AddrPlus (FromReg RSP) (AddrImm 16)) 5
-78e2: LEA Reg RDI, Address (AddrPlus (FromReg RSP) (AddrImm 32)) 5
+78ce: LEA Reg R14, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 28))) 5
+78d3: LEA Reg R13, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
+78d8: LEA Reg R12, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 20))) 5
+78dd: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 16))) 5
+78e2: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 32))) 5
 78e7: MOV Reg R8, Reg R14 3
 78ea: MOV Reg RCX, Reg R13 3
 78ed: MOV Reg RDX, Reg R12 3
@@ -126,7 +126,7 @@ Number of edges: 146
   `- 76a1
 78f8: MOV Reg EBX, Reg EAX 2
 78fa: TEST Reg EAX, Reg EAX 2
-78fc: JZ 7952 (resolved immediate)
+78fc: JE 7952 (resolved immediate)
 78fe: MOV Reg EBX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 28))) 4
 7902: AND Reg EBX, Immediate 7 3
 7905: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 16))) 4
@@ -137,7 +137,7 @@ Number of edges: 146
 7915: MOVZX Reg EAX, Reg AX 3
 7918: OR Reg EAX, Reg EBX 2
 791a: MOV Reg ECX, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 24))) 4
-791e: LEA Reg EBX, Address (AddrPlus (AddrTimes (AddrImm 8) (FromReg RCX)) (AddrImm 0)) 7
+791e: LEA Reg EBX, Address (SizeDir 32 (AddrTimes (AddrImm 8) (FromReg RCX))) 7
 7925: MOVZX Reg EBX, Reg BL 3
 7928: OR Reg EBX, Reg EAX 2
 792a: MOV Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg R15) (AddrImm 16))) 4
@@ -146,18 +146,18 @@ Number of edges: 146
 7935: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 12))) 4
 7939: CALL xc_assign_device (external)
 793e: TEST Reg EAX, Reg EAX 2
-7940: JZ 78e2 (resolved immediate)
+7940: JE 78e2 (resolved immediate)
 7942: CALL __errno_location (external)
 7947: CMP Address (SizeDir 32 (FromReg RAX)), Immediate 38 3
 794a: MOV Reg EAX, Immediate 4294967295 5
-794f: CMOVZ Reg EBX, Reg EAX 3
+794f: CMOVE Reg EBX, Reg EAX 3
 7952: MOV Reg ESI, Reg EBX 2
-7954: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 6380)) 7
+7954: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 6380))) 7
 795b: MOV Reg EAX, Immediate 0 5
 7960: CALL Py_BuildValue (external)
 7965: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 40))) 5
 796a: XOR Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-7973: JNZ 798b (resolved immediate)
+7973: JNE 798b (resolved immediate)
   |
   `- 7975,798b
 7975: ADD Reg RSP, Immediate 56 4

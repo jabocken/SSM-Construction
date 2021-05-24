@@ -9,16 +9,16 @@ Number of edges: 10
 
 82910: MOV Reg EAX, Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 8))) 3
 82913: TEST Reg EAX, Reg EAX 2
-82915: JNZ 8291b (resolved immediate)
+82915: JNE 8291b (resolved immediate)
   |
   `- 82917,8291b
 82917: MOV Address (SizeDir 32 (AddrPlus (FromReg RDI) (AddrImm 8))), Reg ESI 3
 8291a: RET  1
   |
   `- 
-8291b: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 154158)) 7
-82922: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 148516)) 7
-82929: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 148539)) 7
+8291b: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 154158))) 7
+82922: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 148516))) 7
+82929: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 148539))) 7
 82930: SUB Reg RSP, Immediate 8 4
 82934: MOV Reg EDX, Immediate 2229 5
 82939: CALL __assert_fail (external)

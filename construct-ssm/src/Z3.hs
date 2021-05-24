@@ -214,3 +214,11 @@ checker z3problem = unsafePerformIO $ do
   -- putStrLn ("Result = " ++ show result)
   let assert result = A.assert (result /= Undef) $ result == Unsat
   return $ maybe False assert result -- can't determine check if problem fails
+
+-- Only want negation-of-implication style when predicate is convertible,
+-- otherwise fall back to basic handling.
+negOfImp :: Maybe AST -> Maybe AST -> Z3 (Maybe ())
+negOfImp p notQ = if isJust p then
+    maybeM1 assert =<< maybeMList mkAnd [p, notQ]
+  else
+    maybeM1 assert notQ

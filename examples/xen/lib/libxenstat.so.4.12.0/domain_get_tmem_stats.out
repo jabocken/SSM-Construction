@@ -14,7 +14,7 @@ Number of edges: 101
 2e7d: MOV Reg RBX, Reg RSI 3
 2e80: MOV Reg R8D, Immediate 4096 6
 2e86: SUB Reg RSP, Immediate 4144 7
-2e8d: LEA Reg RBP, Address (AddrPlus (FromReg RSP) (AddrImm 24)) 5
+2e8d: LEA Reg RBP, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 2e92: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 2e9b: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 4128))), Reg RAX 8
 2ea3: XOR Reg EAX, Reg EAX 2
@@ -31,7 +31,7 @@ Number of edges: 101
   `- 2eb9,2ee0
 2eb9: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 4120))) 8
 2ec1: XOR Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-2eca: JNZ 3009 (resolved immediate)
+2eca: JNE 3009 (resolved immediate)
   |
   `- 2ed0,3009
 2ed0: ADD Reg RSP, Immediate 4136 7
@@ -40,91 +40,91 @@ Number of edges: 101
 2ed9: RET  1
   |
   `- 
-2ee0: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 9803)) 7
+2ee0: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 9803))) 7
 2ee7: MOV Reg RDI, Reg RBP 3
 2eea: CALL strstr (external)
 2eef: XOR Reg EDX, Reg EDX 2
 2ef1: TEST Reg RAX, Reg RAX 3
-2ef4: JZ 2efc (resolved immediate)
+2ef4: JE 2efc (resolved immediate)
   |
   `- 2ef6,2efc
 2ef6: CMP Address (SizeDir 8 (AddrPlus (FromReg RAX) (AddrImm 2))), Immediate 58 4
-2efa: JZ 2f70 (resolved immediate)
+2efa: JE 2f70 (resolved immediate)
   |
   `- 2efc,2f70
-2efc: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 9783)) 7
+2efc: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 9783))) 7
 2f03: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 96))), Reg RDX 4
 2f07: MOV Reg RDI, Reg RBP 3
 2f0a: CALL strstr (external)
 2f0f: XOR Reg EDX, Reg EDX 2
 2f11: TEST Reg RAX, Reg RAX 3
-2f14: JZ 2f20 (resolved immediate)
+2f14: JE 2f20 (resolved immediate)
   |
   `- 2f16,2f20
 2f16: CMP Address (SizeDir 8 (AddrPlus (FromReg RAX) (AddrImm 2))), Immediate 58 4
-2f1a: JZ 2fe8 (resolved immediate)
+2f1a: JE 2fe8 (resolved immediate)
   |
   `- 2f20,2fe8
-2f20: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 9750)) 7
+2f20: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 9750))) 7
 2f27: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 104))), Reg RDX 4
 2f2b: MOV Reg RDI, Reg RBP 3
 2f2e: CALL strstr (external)
 2f33: XOR Reg EDX, Reg EDX 2
 2f35: TEST Reg RAX, Reg RAX 3
-2f38: JZ 2f44 (resolved immediate)
+2f38: JE 2f44 (resolved immediate)
   |
   `- 2f3a,2f44
 2f3a: CMP Address (SizeDir 8 (AddrPlus (FromReg RAX) (AddrImm 2))), Immediate 58 4
-2f3e: JZ 2fc0 (resolved immediate)
+2f3e: JE 2fc0 (resolved immediate)
   |
   `- 2f44,2fc0
-2f44: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 9717)) 7
+2f44: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 9717))) 7
 2f4b: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 112))), Reg RDX 4
 2f4f: MOV Reg RDI, Reg RBP 3
 2f52: CALL strstr (external)
 2f57: XOR Reg EDX, Reg EDX 2
 2f59: TEST Reg RAX, Reg RAX 3
-2f5c: JZ 2f64 (resolved immediate)
+2f5c: JE 2f64 (resolved immediate)
   |
   `- 2f5e,2f64
 2f5e: CMP Address (SizeDir 8 (AddrPlus (FromReg RAX) (AddrImm 2))), Immediate 58 4
-2f62: JZ 2f98 (resolved immediate)
+2f62: JE 2f98 (resolved immediate)
   |
   `- 2f64,2f98
 2f64: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 120))), Reg RDX 4
 2f68: JMP 2eb9 (resolved immediate)
   |
   `- 2eb9
-2f70: LEA Reg RDX, Address (AddrPlus (FromReg RSP) (AddrImm 8)) 5
-2f75: LEA Reg RDI, Address (AddrPlus (FromReg RAX) (AddrImm 3)) 4
-2f79: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 9653)) 7
+2f70: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+2f75: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 3))) 4
+2f79: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 9653))) 7
 2f80: XOR Reg EAX, Reg EAX 2
 2f82: CALL __isoc99_sscanf (external)
 2f87: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 2f8c: JMP 2efc (resolved immediate)
   |
   `- 2efc
-2f98: LEA Reg RDX, Address (AddrPlus (FromReg RSP) (AddrImm 8)) 5
-2f9d: LEA Reg RDI, Address (AddrPlus (FromReg RAX) (AddrImm 3)) 4
-2fa1: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 9613)) 7
+2f98: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+2f9d: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 3))) 4
+2fa1: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 9613))) 7
 2fa8: XOR Reg EAX, Reg EAX 2
 2faa: CALL __isoc99_sscanf (external)
 2faf: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 2fb4: JMP 2f64 (resolved immediate)
   |
   `- 2f64
-2fc0: LEA Reg RDX, Address (AddrPlus (FromReg RSP) (AddrImm 8)) 5
-2fc5: LEA Reg RDI, Address (AddrPlus (FromReg RAX) (AddrImm 3)) 4
-2fc9: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 9573)) 7
+2fc0: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+2fc5: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 3))) 4
+2fc9: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 9573))) 7
 2fd0: XOR Reg EAX, Reg EAX 2
 2fd2: CALL __isoc99_sscanf (external)
 2fd7: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 2fdc: JMP 2f44 (resolved immediate)
   |
   `- 2f44
-2fe8: LEA Reg RDX, Address (AddrPlus (FromReg RSP) (AddrImm 8)) 5
-2fed: LEA Reg RDI, Address (AddrPlus (FromReg RAX) (AddrImm 3)) 4
-2ff1: LEA Reg RSI, Address (AddrPlus (FromReg RIP) (AddrImm 9533)) 7
+2fe8: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
+2fed: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RAX) (AddrImm 3))) 4
+2ff1: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 9533))) 7
 2ff8: XOR Reg EAX, Reg EAX 2
 2ffa: CALL __isoc99_sscanf (external)
 2fff: MOV Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5

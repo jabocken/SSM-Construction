@@ -18,7 +18,7 @@ Number of edges: 52
 3fff1: MOV Reg RBP, Reg RSI 3
 3fff4: MOV Reg R12, Reg RDX 3
 3fff7: TEST Reg BL, Reg BL 2
-3fff9: JZ 40024 (resolved immediate)
+3fff9: JE 40024 (resolved immediate)
   |
   `- 3fffb,40024
 3fffb: CALL __ctype_b_loc (external)
@@ -28,17 +28,17 @@ Number of edges: 52
   |
   `- 4001d
 40010: ADD Reg RAX, Immediate 1 4
-40014: MOVZX Reg EBX, Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RBP) (FromReg RAX)) (AddrImm 1))) 5
+40014: MOVZX Reg EBX, Address (SizeDir 8 (AddrMinus (AddrPlus (FromReg RBP) (AddrTimes (AddrImm 1) (FromReg RAX))) (AddrImm 1))) 5
 40019: TEST Reg BL, Reg BL 2
-4001b: JZ 40050 (resolved immediate)
+4001b: JE 40050 (resolved immediate)
   |
   `- 4001d,40050
 4001d: TEST Address (SizeDir 8 (AddrPlus (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 2) (FromReg RBX))) (AddrImm 1))), Immediate 8 5
-40022: JNZ 40010 (resolved immediate)
+40022: JNE 40010 (resolved immediate)
   |
   `- 40010,40024
 40024: TEST Reg R14, Reg R14 3
-40027: JZ 40030 (resolved immediate)
+40027: JE 40030 (resolved immediate)
   |
   `- 40029,40030
 40029: MOV Address (SizeDir 32 (FromReg R14)), Immediate 1 7
@@ -59,7 +59,7 @@ Number of edges: 52
 4005a: CALL strtoul (external)
 4005f: TEST Reg R14, Reg R14 3
 40062: MOV Address (SizeDir 32 (FromReg R12)), Reg EAX 4
-40066: JZ 4006f (resolved immediate)
+40066: JE 4006f (resolved immediate)
   |
   `- 40068,4006f
 40068: MOV Address (SizeDir 32 (FromReg R14)), Immediate 0 7

@@ -16,14 +16,14 @@ Number of edges: 74
 3fcbc: PUSH Reg RBX 1
 3fcbd: MOV Reg R12, Reg RDI 3
 3fcc0: SUB Reg RSP, Immediate 40 4
-3fcc4: LEA Reg RSI, Address (AddrPlus (FromReg RSP) (AddrImm 20)) 5
+3fcc4: LEA Reg RSI, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 20))) 5
 3fcc9: MOV Address (SizeDir 64 (FromReg RSP)), Reg RDX 4
 3fccd: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
 3fcd6: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))), Reg RAX 5
 3fcdb: XOR Reg EAX, Reg EAX 2
 3fcdd: CALL libxl_list_domain (external)
 3fce2: TEST Reg RAX, Reg RAX 3
-3fce5: JZ 3fd8f (resolved immediate)
+3fce5: JE 3fd8f (resolved immediate)
   |
   `- 3fceb,3fd8f
 3fceb: MOV Reg ESI, Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 20))) 4
@@ -40,14 +40,14 @@ Number of edges: 74
 3fd06: CALL libxl_domid_to_name (external)
 3fd0b: TEST Reg RAX, Reg RAX 3
 3fd0e: MOV Reg R15, Reg RAX 3
-3fd11: JZ 3fd2a (resolved immediate)
+3fd11: JE 3fd2a (resolved immediate)
   |
   `- 3fd13,3fd2a
 3fd13: MOV Reg RSI, Reg R13 3
 3fd16: MOV Reg RDI, Reg RAX 3
 3fd19: CALL strcmp (external)
 3fd1e: TEST Reg EAX, Reg EAX 2
-3fd20: JZ 3fd70 (resolved immediate)
+3fd20: JE 3fd70 (resolved immediate)
   |
   `- 3fd22,3fd70
 3fd22: MOV Reg RDI, Reg R15 3
@@ -66,7 +66,7 @@ Number of edges: 74
 3fd49: MOV Reg EAX, Address (SizeDir 32 (FromReg RSP)) 3
 3fd4c: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 24))) 5
 3fd51: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-3fd5a: JNZ 3fd96 (resolved immediate)
+3fd5a: JNE 3fd96 (resolved immediate)
   |
   `- 3fd5c,3fd96
 3fd5c: ADD Reg RSP, Immediate 40 4

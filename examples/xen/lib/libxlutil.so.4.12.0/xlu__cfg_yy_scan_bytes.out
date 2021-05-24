@@ -11,7 +11,7 @@ Number of edges: 53
 3f50: SUB Reg RSP, Immediate 8 4
 3f54: MOV Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2146437))) 7
 3f5b: MOV Reg RCX, Reg RDI 3
-3f5e: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 39548)) 7
+3f5e: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 39548))) 7
 3f65: MOV Reg ESI, Immediate 1 5
 3f6a: MOV Reg RDI, Address (SizeDir 64 (FromReg RAX)) 3
 3f6d: XOR Reg EAX, Reg EAX 2
@@ -22,7 +22,7 @@ Number of edges: 53
   `- 
 47b0: PUSH Reg R13 2
 47b2: PUSH Reg R12 2
-47b4: LEA Reg R12, Address (AddrPlus (FromReg RSI) (AddrImm 2)) 4
+47b4: LEA Reg R12, Address (SizeDir 64 (AddrPlus (FromReg RSI) (AddrImm 2))) 4
 47b8: PUSH Reg RBP 1
 47b9: PUSH Reg RBX 1
 47ba: MOV Reg RBP, Reg RDI 3
@@ -33,30 +33,30 @@ Number of edges: 53
 47ca: MOV Reg R13, Reg RDX 3
 47cd: CALL xlu__cfg_yyalloc (external)
 47d2: TEST Reg RAX, Reg RAX 3
-47d5: JZ 4820 (resolved immediate)
+47d5: JE 4820 (resolved immediate)
   |
   `- 47d7,4820
 47d7: XOR Reg ECX, Reg ECX 2
 47d9: TEST Reg RBX, Reg RBX 3
-47dc: JZ 47f2 (resolved immediate)
+47dc: JE 47f2 (resolved immediate)
   |
   `- 47de,47f2
 47de: NOP  2
-47e0: MOVZX Reg ESI, Address (SizeDir 8 (AddrPlus (AddrPlus (FromReg RBP) (FromReg RCX)) (AddrImm 0))) 5
-47e5: MOV Address (SizeDir 8 (AddrPlus (FromReg RAX) (FromReg RCX))), Reg SIL 4
+47e0: MOVZX Reg ESI, Address (SizeDir 8 (AddrPlus (FromReg RBP) (AddrTimes (AddrImm 1) (FromReg RCX)))) 5
+47e5: MOV Address (SizeDir 8 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 1) (FromReg RCX)))), Reg SIL 4
 47e9: ADD Reg RCX, Immediate 1 4
 47ed: CMP Reg RBX, Reg RCX 3
-47f0: JNZ 47e0 (resolved immediate)
+47f0: JNE 47e0 (resolved immediate)
   |
   `- 47e0,47f2
-47f2: MOV Address (SizeDir 8 (AddrPlus (AddrPlus (FromReg RAX) (FromReg RBX)) (AddrImm 1))), Immediate 0 5
-47f7: MOV Address (SizeDir 8 (AddrPlus (FromReg RAX) (FromReg RBX))), Immediate 0 4
+47f2: MOV Address (SizeDir 8 (AddrPlus (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 1) (FromReg RBX))) (AddrImm 1))), Immediate 0 5
+47f7: MOV Address (SizeDir 8 (AddrPlus (FromReg RAX) (AddrTimes (AddrImm 1) (FromReg RBX)))), Immediate 0 4
 47fb: MOV Reg RDX, Reg R13 3
 47fe: MOV Reg RSI, Reg R12 3
 4801: MOV Reg RDI, Reg RAX 3
 4804: CALL xlu__cfg_yy_scan_buffer (external)
 4809: TEST Reg RAX, Reg RAX 3
-480c: JZ 482c (resolved immediate)
+480c: JE 482c (resolved immediate)
   |
   `- 480e,482c
 480e: MOV Address (SizeDir 32 (AddrPlus (FromReg RAX) (AddrImm 40))), Immediate 1 7
@@ -68,11 +68,11 @@ Number of edges: 53
 481f: RET  1
   |
   `- 
-4820: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 24081)) 7
+4820: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 24081))) 7
 4827: CALL yy_fatal_error.isra.0 (internal)
   |
   `- 3f50
-482c: LEA Reg RDI, Address (AddrPlus (FromReg RIP) (AddrImm 24125)) 7
+482c: LEA Reg RDI, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 24125))) 7
 4833: CALL yy_fatal_error.isra.0 (internal)
   |
   `- 

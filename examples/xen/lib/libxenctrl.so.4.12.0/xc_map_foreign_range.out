@@ -25,7 +25,7 @@ Number of edges: 56
 2271d: MOVSXD Reg RDI, Reg EBP 3
 22720: CALL calloc (external)
 22725: TEST Reg RAX, Reg RAX 3
-22728: JZ 22791 (resolved immediate)
+22728: JE 22791 (resolved immediate)
   |
   `- 2272a,22791
 2272a: TEST Reg EBP, Reg EBP 2
@@ -33,12 +33,12 @@ Number of edges: 56
 2272f: JLE 22760 (resolved immediate)
   |
   `- 22731,22760
-22731: LEA Reg ECX, Address (AddrMinus (FromReg RBP) (AddrImm 1)) 3
-22734: LEA Reg RAX, Address (AddrPlus (FromReg RBX) (AddrImm 1)) 4
+22731: LEA Reg ECX, Address (SizeDir 32 (AddrMinus (FromReg RBP) (AddrImm 1))) 3
+22734: LEA Reg RAX, Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 1))) 4
 22738: MOV Reg RDX, Reg RBX 3
 2273b: NEG Reg RDX 3
 2273e: ADD Reg RCX, Reg RAX 3
-22741: LEA Reg RDX, Address (AddrPlus (FromReg R15) (AddrTimes (AddrImm 8) (FromReg RDX))) 4
+22741: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg R15) (AddrTimes (AddrImm 8) (FromReg RDX)))) 4
 22745: JMP 22754 (resolved immediate)
   |
   `- 22754
@@ -46,7 +46,7 @@ Number of edges: 56
 22754: CMP Reg RAX, Reg RCX 3
 22757: MOV Address (SizeDir 64 (AddrPlus (FromReg RDX) (AddrTimes (AddrImm 8) (FromReg RBX)))), Reg RBX 4
 2275b: MOV Reg RBX, Reg RAX 3
-2275e: JNZ 22750 (resolved immediate)
+2275e: JNE 22750 (resolved immediate)
   |
   `- 22750,22760
 22760: MOV Reg RDI, Reg R12 3

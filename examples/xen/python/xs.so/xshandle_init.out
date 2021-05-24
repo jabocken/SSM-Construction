@@ -16,27 +16,27 @@ Number of edges: 35
 1e6c: MOV Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))), Reg RAX 5
 1e71: XOR Reg EAX, Reg EAX 2
 1e73: MOV Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))), Immediate 0 8
-1e7b: LEA Reg R8, Address (AddrPlus (FromReg RSP) (AddrImm 4)) 5
-1e80: LEA Reg RCX, Address (AddrPlus (FromReg RIP) (AddrImm 2110361)) 7
-1e87: LEA Reg RDX, Address (AddrPlus (FromReg RIP) (AddrImm 5218)) 7
+1e7b: LEA Reg R8, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 4))) 5
+1e80: LEA Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 2110361))) 7
+1e87: LEA Reg RDX, Address (SizeDir 64 (AddrPlus (FromReg RIP) (AddrImm 5218))) 7
 1e8e: CALL PyArg_ParseTupleAndKeywords (external)
 1e93: TEST Reg EAX, Reg EAX 2
-1e95: JZ 1ece (resolved immediate)
+1e95: JE 1ece (resolved immediate)
   |
   `- 1e97,1ece
 1e97: CMP Address (SizeDir 32 (AddrPlus (FromReg RSP) (AddrImm 4))), Immediate 0 5
-1e9c: JZ 1ec7 (resolved immediate)
+1e9c: JE 1ec7 (resolved immediate)
   |
   `- 1ec7
 1ea3: MOV Address (SizeDir 64 (AddrPlus (FromReg RBX) (AddrImm 16))), Reg RAX 4
 1ea7: TEST Reg RAX, Reg RAX 3
-1eaa: JZ 1ece (resolved immediate)
+1eaa: JE 1ece (resolved immediate)
   |
   `- 1eac,1ece
 1eac: MOV Reg EAX, Immediate 0 5
 1eb1: MOV Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg RSP) (AddrImm 8))) 5
 1eb6: XOR Reg RCX, Address (SizeDir 64 (AddrPlus (FromReg FS) (AddrImm 40))) 9
-1ebf: JNZ 1ee1 (resolved immediate)
+1ebf: JNE 1ee1 (resolved immediate)
   |
   `- 1ec1,1ee1
 1ec1: ADD Reg RSP, Immediate 16 4
