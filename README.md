@@ -24,7 +24,7 @@ If everything has been set up completely, you should be able to run the makefile
 
 Every binary or library in the `examples` folder has a makefile documenting make rules for running the analysis, creating objdump outputs, and the like. For individual program binaries, you can run the command `make` to start the analysis from the program's entry point. For libraries, you can also use `make`, which will run all of the function analyses in order, but for the purposes of efficiency, we recommend using `make -j<N> -i`, which will execute the process using N processes in parallel. The `-i` option means analysis will continue even after a function analysis fails.
 
-For parallelism on a larger scale, we recommend usage of GNU parallel. The commands we recommend using for this purpose can be found in the `examples/parallel` file. By default, those commands will use all available CPU cores. If you wish to use less, you can use `parallel -j<N> [...]` instead, much like for the plain makefile execution.
+For parallelism on a larger scale, we recommend usage of GNU parallel. The commands we recommend using for this purpose can be found in the `examples/xen/parallel` file, or by running the `parallel.sh` script from the `examples/xen` folder (this will take a while!). By default, those commands will use all available CPU cores. If you wish to use fewer cores, you can use `parallel -j<N> [...]` instead, much like for the plain makefile execution.
 
 To collect info about the program binaries and library functions in a form suitable for pasting into a spreadsheet, you can use the scripts `so_parse.py` and `parse.py`. These python scripts require at least Python 3.5, but a recent-enough version of Python 3 should be installed by default on all recent Ubuntu-based distributions. Those scripts provide command info when executed with the `-h` argument. Examples of using them, from the `examples` folder, are:
 
@@ -35,3 +35,6 @@ We have also provided `make.py` and `so_make.py`, which can be used to produce m
 for testing, use the template `Makefile` in `examples`.
 
 As a final note, the output (.out) and error (.err) files can grow very large. Their contents are useful for investigating the sources of errors and failure, but if you only want to keep the info used for statistics, run `slim_files.py` to trim down the file sizes after analysis. This takes a top-level directory and recursively operates in it on the `.out` and `.err` files, so running `./slim_files.py xen` from `examples` will slim down the entire contents of `xen`.
+
+# Isabelle proofs
+The folder `isabelle` contains Isabelle/HOL proofs and examples. The README in that folder provides instructions for how to utilize Isabelle to verify the proofs in the `isabelle/examples` folder.
