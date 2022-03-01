@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/288908492.svg)](https://zenodo.org/badge/latestdoi/288908492)
+
 # Initial setup
 
 Assuming a recent (2020) install of an Ubuntu-based Linux distribution with up-to-date default packages, you will need the following additional packages (installable via `apt`):
