@@ -1,5 +1,8 @@
 [![DOI](https://zenodo.org/badge/288908492.svg)](https://zenodo.org/badge/latestdoi/288908492)
 
+# Introduction
+This is the artefact belonging the PLDI'22 paper entitled *Formally Verified Lifting of C-compiled x86-64 Binaries*. The purpose of this artefact is to provide a permanent snapshot of the code that can be used to reproduce the results presented in that paper. This code belongs to a larger project, called FoxDec. For an up-to-date version of this code, we refer to [https://ssrg-vt.github.io/FoxDec](https://ssrg-vt.github.io/FoxDec).
+
 # Initial setup
 
 Assuming a recent (2020) install of an Ubuntu-based Linux distribution with up-to-date default packages, you will need the following additional packages (installable via `apt`):
