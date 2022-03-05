@@ -25,7 +25,7 @@ Once all of this is done, follow the instructions in the README in `construct-ss
 
 # Example
 
-If everything has been set up completely, you should be able to run the makefile in `examples/contrived/simple_local_array` with the command `make` to run the analysis on the `simple_local_array` program. The output can be viewed in `simple_local_array.out`, while any diagnostic messages will be documented in `simple_local_array.err`. Feel free to make changes to `simple_local_array.c` and then rerun `make` to rebuild the program and rerun the analysis. If you have made changes, the command `make dump` will produce an objdump output for your new binary.
+If everything has been set up completely, you should be able to run the makefile in `examples/contrived/simple_local_array` with the command `make` to run the analysis on the `simple_local_array` program. The output can be viewed in `simple_local_array.out`, while any diagnostic messages, as well as the time taken to execute the analysis, will be documented in `simple_local_array.err`. The relevant time value will be found between the words "system" and "elapsed" at the end of the `.err` file. Feel free to make changes to `simple_local_array.c` and then rerun `make` to rebuild the program and rerun the analysis. If you have made changes, the command `make dump` will produce an objdump output for your new binary.
 
 # Running test cases
 
@@ -38,10 +38,24 @@ To collect info about the program binaries and library functions in a form suita
     ./parse.py xen/bin
     ./so_parse.py xen/lib
 
-We have also provided `make.py` and `so_make.py`, which can be used to produce makefiles for sets of binaries or libraries, respectively, in their own subfolders, following the layout used for the current contents of `examples`. To create a single makefile
-for testing, use the template `Makefile` in `examples`.
+We have also provided `make.py` and `so_make.py`, which can be used to produce makefiles for sets of binaries or libraries, respectively, in their own subfolders, following the layout used for the current contents of `examples`. To create a single makefile for testing, use the template `Makefile` in `examples`.
 
-As a final note, the output (.out) and error (.err) files can grow very large. Their contents are useful for investigating the sources of errors and failure, but if you only want to keep the info used for statistics, run `slim_files.py` to trim down the file sizes after analysis. This takes a top-level directory and recursively operates in it on the `.out` and `.err` files, so running `./slim_files.py xen` from `examples` will slim down the entire contents of `xen`.
+As a final note, the output (`.out`) and error (`.err`) files can grow very large. Their contents are useful for investigating the sources of errors and failure, but if you only want to keep the info used for statistics, run `slim_files.py` to trim down the file sizes after analysis. This takes a top-level directory and recursively operates in it on the `.out` and `.err` files, so running `./slim_files.py xen` from `examples` will slim down the entire contents of `xen`.
+
+## Collecting the results (reproducing Table 1)
+This section provides info on what to do with the results of running `so_parse.py` and `parse.py`.
+
+### Binaries (`parse.py`)
+In the `examples` folder, run `./parse.py` with the arguments `xen/bin`, `xen/xenbin`, and `xen/sbin` to print to the command line the individual program numbers for the `bin`, `xen/bin`, and `sbin` table entries, respectively. You can also redirect to a results file (by appending `> xen/bin/results.txt` to the command) if you wish to automatically store the data for further examination, though with the amount of info that is printed that should not by necessary. As the `libexec` folder has only one program, its information was extracted manually from `qemu-bridge-helper.out` and `qemu-bridge-helper.err`. For the folders with multiple programs, you will obtain a list of all the statistics for the listed folder in a tab-separated form that can easily be pasted into a spreadsheet, including headers for the various columns. All of the produced counts can then be summed up for each folder as well as all together to get the numbers of instructions, symbolic states, unresolved jumps, unresolved calls, and timing (assuming a spreadsheet program that supports date/time formatting) listed in Table 1. The only tricky column is the count of resolved indirections; our output is the total number of indirections, so you must subtract the number of unresolved jumps and calls from the total number of indirections to obtain the number of resolved indirections. You can also count the numbers of programs with listed statistics to obtain the number of programs that succeeded; however, the information about failed programs (unprovable return addresses, timeouts, concurrency) must be obtained by examining the output files and programs directly.
+
+### Libraries (`parse.py`)
+In the `examples` folder, run the following commands. We are including output file redirection here because the output of these operations can get quite large due to outputting the results for each individual function as well as providing a summary.
+
+    ./so_parse.py xen/lib > xen/lib/results.txt
+    ./so_parse.py xen/fsimage > xen/fsimage/results.txt
+    ./so_parse.py xen/python > xen/python/results.txt
+
+As with the statistics for full binaries, the results are in a tab-separated form with headers that can easily be pasted into a spreadsheet for manipulation. However, due to the amount of information present, we also provide a summary of the results on a per-library level at the end of each `results.txt` file, which are the numbers that we have worked off of. The statistics for the `lib` results can be summed up to obtain the `lib` table entry while the ones for `fsimage` result in the `xenfsimage` entry. Finally, the results file for `xen/python` is split into two entries. The numbers for `xenfsimage.so` alone are the entry for `dist-packages` (*not* `xenfsimage`) in Table 1 while the numbers for `xc.so` and `xs.so` are combined to obtain the results for `lowlevel` in the table. As before, the indirection count minus the number of unresolved jumps and calls will produce the number of resolved indirections.
 
 # Isabelle proofs
-The folder `isabelle` contains Isabelle/HOL proofs and examples. The README in that folder provides instructions for how to utilize Isabelle to verify the proofs in the `isabelle/examples` folder.
+The folder `isabelle` contains Isabelle/HOL proofs and examples. The README in that folder provides instructions for how to utilize Isabelle to verify the proofs in the `isabelle/examples` folder. Currently we do not have a setup to automatically extract the statistics to reproduce Table 2; the main focus of this artifact is the results produced by the `construct-ssm` program.

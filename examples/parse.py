@@ -54,7 +54,7 @@ if __name__ == '__main__':
 		help='The folder containing program subfolders')
 	args = parser.parse_args()
 
-	print('Insts	Symbolic states	Indirection	Unresolved jumps	Unresolved calls	Time to Analyze (h:m:s)')
+	print('		Insts	Symbolic states	Indirection	Unresolved jumps	Unresolved calls	Time to Analyze (h:m:s)')
 	for d in args.folder.iterdir():
 		if d.is_dir():
 			check(d)

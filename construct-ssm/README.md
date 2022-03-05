@@ -37,6 +37,7 @@ analysis, going in `example.err`.
 We recommend adding that target to the `.PHONY` list as well
 (https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html)
 in case a file with that name is also present in your project folder.
+The execution time in `.err` file is in the format produced by the `time` program; we assume the default time format, so if you have something stored in the `TIME` environment variable, please clear it, or our parsing scripts to batch extract info may not work. The relevant time field for our purposes (the one we extract) is the system time, the value printed in between "system" and "elapsed"
 
 If you wish that rule to be executed when you run `make`,
 put it first in your makefile.
@@ -57,3 +58,6 @@ the variables `CC` (for C programs) and `CXX` (for C++ programs), e.g.
 You can instead specify those on the command line instead, e.g.
 
     CC=clang CXX=clang++ make analyze
+
+# Extending the Tool
+This section provides a description of the 

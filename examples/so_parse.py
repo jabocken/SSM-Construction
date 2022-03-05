@@ -92,7 +92,7 @@ if __name__ == '__main__':
 		help='Format output in LaTeX table style rather than spreadsheet format')
 	args = parser.parse_args()
 
-	names, stats = zip(*sorted(check_so(so) for so in args.folder.iterdir()))
+	names, stats = zip(*sorted(check_so(so) for so in args.folder.iterdir() if so.is_dir()))
 	totals = np.stack(stats).sum(0) # gathering all the stats!
 	spacer = ('', '', '')
 
@@ -119,6 +119,6 @@ if __name__ == '__main__':
 		print('    Totals', total, lifted, *spacer, *ssm, resolved_indirs,
 			jumps, calls, time, sep=' & ', end=' \\\\\n')
 	else:
-		print('Done	Total	Insts	Symbolic states	Indirection	Unresolved jumps	Unresolved calls	Time to Analyze (h:m:s)')
+		print('	Done	Total	Insts	Symbolic states	Indirection	Unresolved jumps	Unresolved calls	Time to Analyze (h:m:s)')
 		for name, stat in zip(names, stats):
 			print(name, *stat, sep='\t')
