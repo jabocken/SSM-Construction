@@ -1,5 +1,3 @@
--- http://udis86.sourceforge.net
-
 module Elf.ReadMachineCode where
 
 import X86.Datastructures
