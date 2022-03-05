@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6325652.svg)](https://doi.org/10.5281/zenodo.6325652)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6321164.svg)](https://doi.org/10.5281/zenodo.6321164)
 
 # Introduction
 This is the artifact belonging the PLDI'22 paper entitled *Formally Verified Lifting of C-compiled x86-64 Binaries*. The purpose of this artifact is to provide a permanent snapshot of the code that can be used to reproduce the results presented in that paper. This code belongs to a larger project, called FoxDec. For an up-to-date version of this code, refer to [https://ssrg-vt.github.io/FoxDec](https://ssrg-vt.github.io/FoxDec).
